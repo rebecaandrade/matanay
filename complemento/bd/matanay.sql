@@ -36,22 +36,50 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `matanay`.`Tipo_Entidade`
+-- Table `matanay`.`Loja`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `matanay`.`Tipo_Entidade` (
-  `idTipo_Entidade` INT NOT NULL AUTO_INCREMENT ,
-  `descricao` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`idTipo_Entidade`) )
+CREATE  TABLE IF NOT EXISTS `matanay`.`Loja` (
+  `idLoja` INT NOT NULL AUTO_INCREMENT ,
+  `descricao` VARCHAR(45) NULL ,
+  PRIMARY KEY (`idLoja`) )
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `matanay`.`Telefone`
+-- Table `matanay`.`Sub_Loja`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `matanay`.`Telefone` (
-  `idTelefone` INT NOT NULL AUTO_INCREMENT ,
-  `numero` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`idTelefone`) )
+CREATE  TABLE IF NOT EXISTS `matanay`.`Sub_Loja` (
+  `idSub_Loja` INT NOT NULL AUTO_INCREMENT ,
+  `descricao` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`idSub_Loja`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `matanay`.`Contrato`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `matanay`.`Contrato` (
+  `idContrato` INT NOT NULL AUTO_INCREMENT ,
+  `nome` VARCHAR(45) NULL ,
+  `data_inicio` DATE NULL ,
+  `data_fim` DATE NULL ,
+  `alerta` INT NULL ,
+  `Favorecido_idFavorecido` INT NOT NULL ,
+  `Loja_idLoja` INT NOT NULL ,
+  `Sub_Loja_idSub_Loja` INT NOT NULL ,
+  PRIMARY KEY (`idContrato`, `Favorecido_idFavorecido`, `Loja_idLoja`, `Sub_Loja_idSub_Loja`) ,
+  INDEX `fk_Contrato_Loja1_idx` (`Loja_idLoja` ASC) ,
+  INDEX `fk_Contrato_Sub_Loja1_idx` (`Sub_Loja_idSub_Loja` ASC) ,
+  CONSTRAINT `fk_Contrato_Loja1`
+    FOREIGN KEY (`Loja_idLoja` )
+    REFERENCES `matanay`.`Loja` (`idLoja` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Contrato_Sub_Loja1`
+    FOREIGN KEY (`Sub_Loja_idSub_Loja` )
+    REFERENCES `matanay`.`Sub_Loja` (`idSub_Loja` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -63,7 +91,27 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Favorecido` (
   `banco` VARCHAR(45) NOT NULL ,
   `agencia` VARCHAR(45) NOT NULL ,
   `conta` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`idFavorecido`) )
+  `Contrato_idContrato` INT NOT NULL ,
+  `Contrato_Favorecido_idFavorecido` INT NOT NULL ,
+  `Contrato_Loja_idLoja` INT NOT NULL ,
+  `Contrato_Sub_Loja_idSub_Loja` INT NOT NULL ,
+  PRIMARY KEY (`idFavorecido`, `Contrato_idContrato`, `Contrato_Favorecido_idFavorecido`, `Contrato_Loja_idLoja`, `Contrato_Sub_Loja_idSub_Loja`) ,
+  INDEX `fk_Favorecido_Contrato1_idx` (`Contrato_idContrato` ASC, `Contrato_Favorecido_idFavorecido` ASC, `Contrato_Loja_idLoja` ASC, `Contrato_Sub_Loja_idSub_Loja` ASC) ,
+  CONSTRAINT `fk_Favorecido_Contrato1`
+    FOREIGN KEY (`Contrato_idContrato` , `Contrato_Favorecido_idFavorecido` , `Contrato_Loja_idLoja` , `Contrato_Sub_Loja_idSub_Loja` )
+    REFERENCES `matanay`.`Contrato` (`idContrato` , `Favorecido_idFavorecido` , `Loja_idLoja` , `Sub_Loja_idSub_Loja` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `matanay`.`Tipo_Entidade`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `matanay`.`Tipo_Entidade` (
+  `idTipo_Entidade` INT NOT NULL AUTO_INCREMENT ,
+  `descricao` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`idTipo_Entidade`) )
 ENGINE = InnoDB;
 
 
@@ -82,23 +130,29 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Entidade` (
   `Tipo_Entidade_idTipo_Entidade` INT NOT NULL ,
   `Telefone_idTelefone` INT NOT NULL ,
   `Favorecido_idFavorecido` INT NOT NULL ,
-  PRIMARY KEY (`idEntidade`, `Tipo_Entidade_idTipo_Entidade`, `Telefone_idTelefone`, `Favorecido_idFavorecido`) ,
-  INDEX `fk_Entidade_Tipo_Entidade1_idx` (`Tipo_Entidade_idTipo_Entidade` ASC) ,
-  INDEX `fk_Entidade_Telefone1_idx` (`Telefone_idTelefone` ASC) ,
-  INDEX `fk_Entidade_Favorecido1_idx` (`Favorecido_idFavorecido` ASC) ,
-  CONSTRAINT `fk_Entidade_Tipo_Entidade1`
-    FOREIGN KEY (`Tipo_Entidade_idTipo_Entidade` )
-    REFERENCES `matanay`.`Tipo_Entidade` (`idTipo_Entidade` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Entidade_Telefone1`
-    FOREIGN KEY (`Telefone_idTelefone` )
-    REFERENCES `matanay`.`Telefone` (`idTelefone` )
+  `Contrato_idContrato` INT NOT NULL ,
+  `Contrato_Favorecido_idFavorecido` INT NOT NULL ,
+  `Contrato_Loja_idLoja` INT NOT NULL ,
+  `Contrato_Sub_Loja_idSub_Loja` INT NOT NULL ,
+  `Favorecido_idFavorecido1` INT NOT NULL ,
+  `Tipo_Entidade_idTipo_Entidade1` INT NOT NULL ,
+  PRIMARY KEY (`idEntidade`, `Tipo_Entidade_idTipo_Entidade`, `Telefone_idTelefone`, `Favorecido_idFavorecido`, `Contrato_idContrato`, `Contrato_Favorecido_idFavorecido`, `Contrato_Loja_idLoja`, `Contrato_Sub_Loja_idSub_Loja`, `Favorecido_idFavorecido1`, `Tipo_Entidade_idTipo_Entidade1`) ,
+  INDEX `fk_Entidade_Contrato1_idx` (`Contrato_idContrato` ASC, `Contrato_Favorecido_idFavorecido` ASC, `Contrato_Loja_idLoja` ASC, `Contrato_Sub_Loja_idSub_Loja` ASC) ,
+  INDEX `fk_Entidade_Favorecido1_idx` (`Favorecido_idFavorecido1` ASC) ,
+  INDEX `fk_Entidade_Tipo_Entidade1_idx` (`Tipo_Entidade_idTipo_Entidade1` ASC) ,
+  CONSTRAINT `fk_Entidade_Contrato1`
+    FOREIGN KEY (`Contrato_idContrato` , `Contrato_Favorecido_idFavorecido` , `Contrato_Loja_idLoja` , `Contrato_Sub_Loja_idSub_Loja` )
+    REFERENCES `matanay`.`Contrato` (`idContrato` , `Favorecido_idFavorecido` , `Loja_idLoja` , `Sub_Loja_idSub_Loja` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Entidade_Favorecido1`
-    FOREIGN KEY (`Favorecido_idFavorecido` )
+    FOREIGN KEY (`Favorecido_idFavorecido1` )
     REFERENCES `matanay`.`Favorecido` (`idFavorecido` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Entidade_Tipo_Entidade1`
+    FOREIGN KEY (`Tipo_Entidade_idTipo_Entidade1` )
+    REFERENCES `matanay`.`Tipo_Entidade` (`idTipo_Entidade` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -131,70 +185,6 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Album` (
   CONSTRAINT `fk_Album_Tipo_Album1`
     FOREIGN KEY (`Tipo_Album_idTipo_Album` )
     REFERENCES `matanay`.`Tipo_Album` (`idTipo_Album` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `matanay`.`Loja`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `matanay`.`Loja` (
-  `idLoja` INT NOT NULL AUTO_INCREMENT ,
-  `descricao` VARCHAR(45) NULL ,
-  PRIMARY KEY (`idLoja`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `matanay`.`Sub_Loja`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `matanay`.`Sub_Loja` (
-  `idSub_Loja` INT NOT NULL AUTO_INCREMENT ,
-  `descricao` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`idSub_Loja`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `matanay`.`Contrato`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `matanay`.`Contrato` (
-  `idContrato` INT NOT NULL AUTO_INCREMENT ,
-  `nome` VARCHAR(45) NULL ,
-  `data_inicio` DATE NULL ,
-  `data_fim` DATE NULL ,
-  `alerta` INT NULL ,
-  `Favorecido_idFavorecido` INT NOT NULL ,
-  `Entidade_idEntidade` INT NOT NULL ,
-  `Entidade_Tipo_Entidade_idTipo_Entidade` INT NOT NULL ,
-  `Entidade_Telefone_idTelefone` INT NOT NULL ,
-  `Entidade_Favorecido_idFavorecido` INT NOT NULL ,
-  `Loja_idLoja` INT NOT NULL ,
-  `Sub_Loja_idSub_Loja` INT NOT NULL ,
-  PRIMARY KEY (`idContrato`, `Favorecido_idFavorecido`, `Entidade_idEntidade`, `Entidade_Tipo_Entidade_idTipo_Entidade`, `Entidade_Telefone_idTelefone`, `Entidade_Favorecido_idFavorecido`, `Loja_idLoja`, `Sub_Loja_idSub_Loja`) ,
-  INDEX `fk_Contrato_Favorecido1_idx` (`Favorecido_idFavorecido` ASC) ,
-  INDEX `fk_Contrato_Entidade1_idx` (`Entidade_idEntidade` ASC, `Entidade_Tipo_Entidade_idTipo_Entidade` ASC, `Entidade_Telefone_idTelefone` ASC, `Entidade_Favorecido_idFavorecido` ASC) ,
-  INDEX `fk_Contrato_Loja1_idx` (`Loja_idLoja` ASC) ,
-  INDEX `fk_Contrato_Sub_Loja1_idx` (`Sub_Loja_idSub_Loja` ASC) ,
-  CONSTRAINT `fk_Contrato_Favorecido1`
-    FOREIGN KEY (`Favorecido_idFavorecido` )
-    REFERENCES `matanay`.`Favorecido` (`idFavorecido` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Contrato_Entidade1`
-    FOREIGN KEY (`Entidade_idEntidade` , `Entidade_Tipo_Entidade_idTipo_Entidade` , `Entidade_Telefone_idTelefone` , `Entidade_Favorecido_idFavorecido` )
-    REFERENCES `matanay`.`Entidade` (`idEntidade` , `Tipo_Entidade_idTipo_Entidade` , `Telefone_idTelefone` , `Favorecido_idFavorecido` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Contrato_Loja1`
-    FOREIGN KEY (`Loja_idLoja` )
-    REFERENCES `matanay`.`Loja` (`idLoja` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Contrato_Sub_Loja1`
-    FOREIGN KEY (`Sub_Loja_idSub_Loja` )
-    REFERENCES `matanay`.`Sub_Loja` (`idSub_Loja` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -286,6 +276,23 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `matanay`.`Telefone`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `matanay`.`Telefone` (
+  `idTelefone` INT NOT NULL AUTO_INCREMENT ,
+  `numero` VARCHAR(45) NOT NULL ,
+  `Entidade_idEntidade` INT NOT NULL ,
+  PRIMARY KEY (`idTelefone`, `Entidade_idEntidade`) ,
+  INDEX `fk_Telefone_Entidade1_idx` (`Entidade_idEntidade` ASC) ,
+  CONSTRAINT `fk_Telefone_Entidade1`
+    FOREIGN KEY (`Entidade_idEntidade` )
+    REFERENCES `matanay`.`Entidade` (`idEntidade` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `matanay`.`Faixa`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `matanay`.`Faixa` (
@@ -337,18 +344,33 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `matanay`.`Perfis_has_Funcionalidades` (
   `Perfis_idPerfis` INT NOT NULL ,
-  `Funcionalidades_idFuncionalidades` INT NOT NULL ,
-  PRIMARY KEY (`Perfis_idPerfis`, `Funcionalidades_idFuncionalidades`) ,
-  INDEX `fk_Perfis_has_Funcionalidades_Funcionalidades1_idx` (`Funcionalidades_idFuncionalidades` ASC) ,
+  PRIMARY KEY (`Perfis_idPerfis`) ,
   INDEX `fk_Perfis_has_Funcionalidades_Perfis1_idx` (`Perfis_idPerfis` ASC) ,
   CONSTRAINT `fk_Perfis_has_Funcionalidades_Perfis1`
     FOREIGN KEY (`Perfis_idPerfis` )
     REFERENCES `matanay`.`Perfis` (`idPerfis` )
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Perfis_has_Funcionalidades_Funcionalidades1`
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `matanay`.`Funcionalidades_has_Perfis_has_Funcionalidades`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `matanay`.`Funcionalidades_has_Perfis_has_Funcionalidades` (
+  `Funcionalidades_idFuncionalidades` INT NOT NULL ,
+  `Perfis_has_Funcionalidades_Perfis_idPerfis` INT NOT NULL ,
+  PRIMARY KEY (`Funcionalidades_idFuncionalidades`, `Perfis_has_Funcionalidades_Perfis_idPerfis`) ,
+  INDEX `fk_Funcionalidades_has_Perfis_has_Funcionalidades_Perfis_ha_idx` (`Perfis_has_Funcionalidades_Perfis_idPerfis` ASC) ,
+  INDEX `fk_Funcionalidades_has_Perfis_has_Funcionalidades_Funcional_idx` (`Funcionalidades_idFuncionalidades` ASC) ,
+  CONSTRAINT `fk_Funcionalidades_has_Perfis_has_Funcionalidades_Funcionalid1`
     FOREIGN KEY (`Funcionalidades_idFuncionalidades` )
     REFERENCES `matanay`.`Funcionalidades` (`idFuncionalidades` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Funcionalidades_has_Perfis_has_Funcionalidades_Perfis_has_1`
+    FOREIGN KEY (`Perfis_has_Funcionalidades_Perfis_idPerfis` )
+    REFERENCES `matanay`.`Perfis_has_Funcionalidades` (`Perfis_idPerfis` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
