@@ -51,7 +51,7 @@
                     </select>
                 </td>
             </tr>
-            <tr>Com a magica do css essa linha so aparece se for favorecido 
+            <tr>
                 <td><span><?php if ($flag=="ingles"){?>Bank<?php }else{ ?>Banco<?php  } ?>: </span></td>
                 <td><input class="nome" type="text" value="" name="banco" ><br></td>
             </tr>
@@ -63,17 +63,17 @@
                 <td><span><?php if ($flag=="ingles"){?>Bank Branch<?php }else{ ?>Agencia bancaria<?php  } ?>: </span></td>
                 <td><input class="nome" type="text" value="" name="agencia" ><br></td>
             </tr>
-            <tr>Com a magica do css essa linha so aparece se nao for favorecido 
+            <?php if (($dadofavorecido!=null)&&($dadoentidade!=null)){?><tr>
                 <td><span><?php if ($flag=="ingles"){?>Registed favoreds<?php }else{ ?>Favoritos cadastrados<?php  } ?>: </span></td>
                 <td>
                     <select name="favorecidorelacionado">
                     <?php foreach ($dadofavorecido as $row){ //verifica se a entidade ja foi cadastrada como favorecido
+
                         foreach($dadoentidade as $row1){
-                            $v1=row->Entidade_idEntidade;
-                            $v2=row1->idEntidade;
-                            if (($v1)==($v2)){?>
+                            
+                            if (($row->idEntidade)==($row1->Entidade_idEntidade)){?>
                                 <option value= <?php echo $row->idEntidade;?>><?php echo $row1->nome;?></option>
-                    <?php }}} ?>
+                    <?php }}}} ?>
                     </select>
                 </td>
             </tr>

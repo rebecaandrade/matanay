@@ -28,8 +28,8 @@
       }
       $dados["dadofavorecido"]=$this->favorecido_model->buscar_favorecido();
       $dados["dadoentidade"]=$this->entidade_model->buscar_entidades();
-      var_dump($dados);
-      exit();
+     // var_dump($dados);
+      //exit();
       //esse envio ocorre para que se saiba os favorecidos cadastrados dentro da view de cadastro de entidadesalem de saber o idioma
       $this->load->view("entidade/cadastro_entidade_view", $dados);
 
@@ -69,7 +69,7 @@
           );
           $idfavorecidos=$this->entidade_model->cadastrar_favorecido($favorecido);
         }
-        else//se nao for favorecido pesquisa as entidades favorecidas e as listas em um dropdown, nao sei por que, nao faz sentido
+        else;//se nao for favorecido pesquisa as entidades favorecidas e as listas em um dropdown, nao sei por que, nao faz sentido
 
 
         
