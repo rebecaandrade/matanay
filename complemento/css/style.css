@@ -1,0 +1,220 @@
+* {
+	position: relative;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	font-family: 'Titillium Web';
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	background-color: #EEE;
+}
+
+#content {
+	min-width: 1300px;
+	transition-duration: 0.3s;
+}
+
+#barra {
+	min-width: 1300px;
+	height: 70px;
+	background-color: #333;
+	margin-right: 0;
+	margin-left: 0;
+	margin-top: 0;
+	opacity: 0.9;
+	box-shadow: 1px 1px 5px #333;
+}
+
+#sub_barra {
+	min-width: 1300px;
+	height: 35px;
+	background-color: #777;
+	margin-right: 0;
+	margin-left: 0;
+	margin-top: 0;
+	opacity: 0.9;
+	box-shadow: 1px 1px 3px #777;
+	z-index: -1;
+}
+
+#sub_barra2 {
+	min-width: 1300px;
+	height: 7px;
+	background-color: #FFFF00;
+	margin-right: 0;
+	margin-left: 0;
+	margin-top: 0;
+	opacity: 0.9;
+	z-index: -2;
+}
+
+#lingua {
+	margin-top: -4.5%;
+	margin-right: 0;
+	float: right;
+}
+
+#lingua select {
+	opacity: 0;
+	font-weight: bolder;
+	letter-spacing: 1px;
+	-webkit-appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	background: none;
+}
+
+#lingua option {
+	color: #DDD;
+	border: none;
+	text-align: right;
+	padding-right: 5px;
+	margin-right: 15px;
+}
+
+
+.logo {
+	float: left;
+	text-align: left;
+	margin-left: 1%;
+	width: 300px;
+}
+
+.logo img {
+	width: 216px;
+	height: 90px;
+	margin-top: -3%;
+}
+
+#menu {
+	display: inline-block;
+	margin-top: 1.3%;
+	margin-right: 0.5%;
+	float: right;
+	vertical-align: middle;
+}
+
+#menu ul li {
+	display: inline;
+	color: #EEE;
+	font-weight: bold;
+	font-size: 23px;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+#menu ul li:hover, #menu li a:hover {
+	color: #EEE;
+	border-bottom: 2px solid #FFFF00;
+}
+
+#menu a {
+	text-decoration: none;
+	color: #EEE;
+}
+
+#menu li img {
+	width: 22px;
+}
+
+#sub_menu {
+	display: inline-block;
+	margin-top: 0.2%;
+	margin-right: 30%;
+	float: right;
+	vertical-align: middle;
+}
+
+#sub_menu ul li {
+	display: inline;
+	color: #333;
+	font-weight: bold;
+	font-size: 19px;
+	padding-right: 20px;
+	padding-left: 20px;
+	z-index: 2;
+}
+
+#sub_menu ul li:hover, #sub_menu li a:hover {
+	color: #EEE;
+}
+
+#sub_menu a {
+	text-decoration: none;
+	color: #333;
+}
+
+.circulo {
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	border-right: 5px solid #999;
+	border-bottom: 3px solid #999;
+	background-color: #DDD;
+	margin-left: 7%;
+	margin-top: 7%;
+	text-align: center;
+}
+
+.circulo img {
+	width: 200px;
+	height: 200px;
+	margin-top: 10%;
+	background-color: transparent;
+}
+
+#dados label{
+	display: block;
+	color: #222;
+	font-size: 23px;
+}
+
+#dados {
+	position: absolute;
+	display: inline-block;
+	left: 40%;
+	top: -1%;
+}
+
+#dados input[type="text"] {
+	width: 250px;
+	height: 35px;
+	border: 1px solid #DDD;
+	margin-bottom: 10px;
+	padding-left: 3px;
+	border-radius: 0;
+	font-size: 20px;
+	color: #5C5C5C;
+}
+
+#dados input[type="submit"] {
+	background-color: #777;
+	border-bottom: 4px solid #FFFF00;
+	color: white;
+	width: 257px;
+	height: 40px;
+	font-size: 20px;
+	font-weight: bolder;
+	border-radius: 0;
+	float: right;
+}
+
+#dados input[type="submit"]:hover{
+	background-color: #333;
+	border-bottom: 4px solid #000;
+	transition-duration: 0.3s;
+	color: #FF0;
+}
+
+#dados h2 {
+	font-size: 22px;
+}
+
+label {
+	text-align: right;
+}
