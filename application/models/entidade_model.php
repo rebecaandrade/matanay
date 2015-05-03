@@ -41,7 +41,7 @@ class entidade_model extends CI_Model{
 		return  $this->db->update('entidade', $entidade);
 	}
 	public function atualizar_telefone($telefone){
-		$this->db->where('idEntidade',$telefone['idEntidade']);
+		$this->db->where('idTelefone',$telefone['idTelefone']);
 		return  $this->db->update('telefone', $telefone);
 	}
 	public function atualizar_favorecido($favorecido){

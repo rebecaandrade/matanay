@@ -12,6 +12,8 @@
     <?php $flag="ingles";if ($flag=="ingles"){ $flag1=1;?><h4>Edit Favored</h4><?php }else{ $flag1=0;?><h4>Editar favorecido</h4><?php  } ?>
     <input type="hidden" name='idEntidade' value="<?php echo $dadosentidade->idEntidade; ?>" />
     <input type="hidden" name='favorecido' value="<?php echo $dadosentidade->favorecido; ?>" />
+    <input type="hidden" name='idtelefone1' value="<?php echo $telefone1->idTelefone; ?>" />
+    <input type="hidden" name='idtelefone2' value="<?php echo $telefone2->idTelefone; ?>" />
     <table>
         <thead>
         </thead>

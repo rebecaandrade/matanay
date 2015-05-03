@@ -84,13 +84,13 @@
         $id=$this->input->get('id');
         $dados['dadosentidade']= $this->entidade_model->buscar_entidade_especifica($id);
         $dados['dadosfavorecido']= $this->favorecido_model->buscar_favorecido_especifica($id);
-        $idtelefone=0;
-        $dados['telefone1']= $this->entidade_model->buscar_telefone_especifico($id, $idtelefone);
-        $idtelefone=1;
-        $dados['telefone2']= $this->entidade_model->buscar_telefone_especifico($id, $idtelefone);
+        $rowtelefone=0;
+        $dados['telefone1']= $this->entidade_model->buscar_telefone_especifico($id, $rowtelefone);
+        $rowtelefone=1;
+        $dados['telefone2']= $this->entidade_model->buscar_telefone_especifico($id, $rowtelefone);
         $dados_auxiliar= $this->entidade_model->buscar_entidade_especifica($id);//utilizado para passar o idTipo_entidade para a busca de identificacao na tabela tipo_entidade
         $dados['dadosidentificacao']= $this->entidade_model->buscar_identificacao_especifica($dados_auxiliar->idTipo_Entidade);
-
+        
         $this->load->view('Entidade/editar_entidade_view', $dados);
     }
 
@@ -108,16 +108,19 @@
          );
         $id_entidade=$this->input->post('idEntidade');//coloca os telefones
         $erro[10]=$this->entidade_model->atualizar_entidade($entidade);
-        $telefone = array(
+        $telefone1 = array(
+              'idTelefone'=> $this->input->post('idtelefone1') ,              
               'idEntidade'=>$id_entidade,
               'numero'=>$this->input->post('telefone1')
              );
-        $erro[4]=$this->entidade_model->atualizar_telefone($telefone);//coloca os telefones
-        $telefone = array(
+        $erro[4]=$this->entidade_model->atualizar_telefone($telefone1);//coloca os telefones
+        $telefone2 = array(
+              'idTelefone'=> $this->input->post('idtelefone2') ,
               'idEntidade'=>$id_entidade,
               'numero'=>$this->input->post('telefone2')
              );
-        $erro[0]=$this->entidade_model->atualizar_telefone($telefone);
+        $erro[0]=$this->entidade_model->atualizar_telefone($telefone2);
+
         $favorecido= array(
             'Entidade_idEntidade'=>$id_entidade,
             'banco'=>$this->input->post('banco'),
