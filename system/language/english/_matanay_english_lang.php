@@ -67,3 +67,11 @@ $lang['percentage'] = 'Percentage';
 $lang['perc_artist'] = 'Artist';
 $lang['perc_writer'] = 'Writer';
 $lang['perc_producer'] = 'Producer';
+
+////// MOEDA
+
+$lang['currency_name'] = 'Name';
+$lang['currency_acronym'] = 'Acronym';
+$lang['currency_exchange'] = 'Exchange rate';
+$lang['currency_register'] = 'Register';
+
