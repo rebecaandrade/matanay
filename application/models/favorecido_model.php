@@ -11,6 +11,10 @@ class favorecido_model extends CI_Model{
 		$query=$this->db->query("SELECT * FROM favorecido");
             return $query->result();
 	}
+	function buscar_favorecido_especifica($id){
+    		$this->db->where('Entidade_idEntidade', $id);
+        	return $this->db->get('favorecido')->result()[0];
+   	}
 
 
 

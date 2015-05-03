@@ -1,34 +1,37 @@
+<?php $this->load->view('_include/header') ?>
+
+    <div class="fadein">
+        <div class="circulo"><img src="<?php echo base_url().'complemento/img/entity.png' ?>"></div>
+
+    </div>
+
+<?php $this->load->view('_include/footer') ?>
+
     <div >
-   <?php if ($flag=="ingles"){ $flag1=1;?><h4>Entities</h4><?php }else{ $flag1=0;?><h4>Entidades</h4><?php  } ?>
-   <?php if ($livro!=NULL){?>
+   <?php $flag="ingles"; if ($flag=="ingles"){ $flag1=1;?><h4>Entities</h4><?php }else{ $flag1=0;?><h4>Entidades</h4><?php  } ?>
+   <?php if ($dadoentidade!=NULL){?>
         <table >
             <thead>
                 <tr>
                     <th>   <?php if ($flag=="ingles"){?>Name of the Entity<?php }else{ ?>Nome da Entidade<?php  } ?>  </th>
-                    <th>    <?php if ($flag=="ingles"){?>CPF/CNPJ<?php }else{ ?>CPF/CNPJ<?php  } ?>:    </th>
-                    <th>      Ações       </th>
+                    <th>    <?php if ($flag=="ingles"){?>CPF/CNPJ<?php }else{ ?>CPF/CNPJ<?php  } ?>    </th>
+                    <th>      <?php if ($flag=="ingles"){?>Action<?php }else{ ?>Acao<?php  } ?>      </th>
                 </tr>
             </thead>
             <tbody>
 
-                <?php if (isset($entidades)){
-                    foreach($entidade as $row){?>
-                <tr  id="<?php echo alternator('test1', 'test2'); ?>">
-                    <td><?php echo $row->nome;?></td>
-                    <td><?php echo $row->cpf_cpnj;?></td> 
-                    <?php if ($prioridade==2){?> <td><a href="<?php echo base_url().'index.php/livros/deletar?id='.$row->id?>">Deletar </a>||<a href="<?php echo base_url().'index.php/livros/atualizacao?id='.$row->id?>"> Atualizar</a></td><?php }?>
-                    <?php if (($prioridade==1)&&($row->status=="Acervo Geral")){?> <td><a href="<?php echo base_url().'index.php/emprestimo/reservar_livro?id='.$row->id?>">Pegar livro</a><?php }?>
-                </tr>   
-                <?php }}?>
+                <?php if (isset($dadoentidade)){
+                        foreach($dadoentidade as $row1){?>
+                                <tr>
+                                    <td><?php echo $row1->nome;?></td>
+                                    <td><?php echo $row1->cpf_cnpj;?></td> 
+                                    <td><a href="#"><?php if ($flag=="ingles"){?>Delete<?php }else{ ?>Deletar<?php  } ?> </a>||<a href="<?php echo base_url().'index.php/ENTIDADE/camposatualizacao?id='.$row1->idEntidade ?>"><?php if ($flag=="ingles"){?>Update<?php }else{ ?>Atualizar<?php  } ?></a></td>
+                                </tr> 
+                    <?php }}?>                  
             </tbody>
         </table>
     <?php }else{?>
-    <span>Não há livros cadastrados</span><br>
-    <?php }?>
-    <?php if ($prioridade==2){?>  <br>  
-    <?php }?>
-    <br><br>
-    <?php if($prioridade==2){?>
-    <?php }else{ ?>
-    <?php }?>
+    <span>Não há Entidades cadastrados</span><br>
+    <?php } ?>
+
 </div>

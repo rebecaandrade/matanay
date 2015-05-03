@@ -1,8 +1,17 @@
+<?php $this->load->view('_include/header') ?>
+
+    <div class="fadein">
+        <div class="circulo"><img src="<?php echo base_url().'complemento/img/entity.png' ?>"></div>
+
+    </div>
+
+<?php $this->load->view('_include/footer') ?>
 <div>
-    <?php if ($flag=="ingles"){ $flag1=1;?><h4>Register Entity</h4><?php }else{ $flag1=0;?><h4>Cadastrar Entidade</h4><?php  } ?>
-    <a href="<?php echo base_url().'index.php/entidade/index?id='. 0?>" >Ingles</a>
-    <a href="<?php echo base_url().'index.php/entidade/index?id='. 1?>" >Portugues</a>
-    <?php echo form_open('/entidade/cadastrar')?>
+    <?php $flag="ingles"; ?>
+    <?php if(isset($sucesso)){if ($flag=="ingles"){?>The entity was registed successevely<br><?php  }else{ ?>Entidada cadastrada com sucesso<br><?php } } ?>
+
+
+    <?php echo form_open('/ENTIDADE/cadastrar')?>
         <?php if (isset($variavel)){echo $variavel;}?><br>
         <table>
             <tr>
@@ -72,7 +81,7 @@
                         foreach($dadoentidade as $row1){
                             
                             if (($row->idEntidade)==($row1->Entidade_idEntidade)){?>
-                                <option value= <?php echo $row->idEntidade;?>><?php echo $row1->nome;?></option>
+                                <option value= <?php echo $row1->idEntidade;?>><?php echo $row1->nome;?></option>
                     <?php }}}} ?>
                     </select>
                 </td>
