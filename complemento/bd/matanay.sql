@@ -259,7 +259,7 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Moeda` (
   `idMoeda` INT NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(45) NOT NULL ,
   `sigla` VARCHAR(45) NULL ,
-  `taxa_cambio` INT NULL ,
+  `taxa_cambio` FLOAT NULL ,
   PRIMARY KEY (`idMoeda`) )
 ENGINE = InnoDB;
 
