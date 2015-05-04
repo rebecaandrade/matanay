@@ -6,16 +6,9 @@
 	<link href="<?php echo base_url(); ?>complemento/css/style.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script>
-	$(function(){
-		// Função jquery que desliza a underbar do menu
-	    $(".opcao-menu").hover(function(){
-	    	$("#trilho").css({"visibility": "visible" });
-	        $("#trilho").width($(this).width());
-	        $("#trilho").css({"left": $(this).position().left });
-	    });
-	});
-	</script>
+	<script src="<?php echo base_url(); ?>complemento/js/jquery.min.js"></script>
+	<script src="<?php echo base_url(); ?>complemento/js/jquery.matanay.js"></script>
+
 </head>
 <body>
 	<?php

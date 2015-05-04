@@ -112,7 +112,7 @@ html {
 	color: #EEE;
 }
 #trilho {
-	visibility: hidden;
+	width : 0px;
 	height: 2px;
 	background: #FFFF00;
 	border: none;
