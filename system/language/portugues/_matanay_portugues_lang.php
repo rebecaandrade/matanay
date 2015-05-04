@@ -79,6 +79,6 @@ $lang['porcent_produtor'] 	= 'Produtor';
 $lang['moeda']				= 'Moeda';
 $lang['moeda_nome']			= 'Nome';
 $lang['moeda_sigla']		= 'Sigla';
-$lang['moeda_cambio']		= 'Taxa de cambio';
+$lang['moeda_cambio']		= 'Taxa de câmbio';
 $lang['moeda_cadastrar']	= 'Cadastrar';
 $lang['moeda_erro_listar']	= 'Nenhuma moeda cadastrada';
