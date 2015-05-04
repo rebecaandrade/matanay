@@ -38,40 +38,41 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ////// GERAL
-$lang['deletar']	= 'deletar';
-$lang['editar']		= 'editar';
-$lang['acao']		= 'ação';
+
+$lang['deletar']			= 'deletar';
+$lang['editar']				= 'editar';
+$lang['acao']				= 'ação';
 
 ////// LOGIN
 
-$lang['username'] = 'usuário';
-$lang['password'] = 'senha';
-$lang['login'] = 'Entrar';
-$lang['forgot'] = 'Esqueceu sua senha?';
+$lang['login'] 				= 'usuário';
+$lang['senha'] 				= 'senha';
+$lang['entrar'] 			= 'Entrar';
+$lang['esqueceu_senha'] 	= 'Esqueceu sua senha?';
 
 ////// MENU
 
-$lang['home'] = 'INÍCIO';
-$lang['register'] = 'CADASTROS';
-$lang['report'] = 'RELATÓRIOS';
-$lang['receipt'] = 'VENDAS';
-$lang['logout'] = 'SAIR';
+$lang['home'] 				= 'INÍCIO';
+$lang['cadastros'] 			= 'CADASTROS';
+$lang['relatorios'] 		= 'RELATÓRIOS';
+$lang['vendas'] 			= 'VENDAS';
+$lang['sair'] 				= 'SAIR';
 
 ////// SUB_MENU
 
-$lang['tracks'] = 'FAIXAS';
-$lang['videos'] = 'VÍDEOS';
-$lang['albums'] = 'ÁLBUMS';
-$lang['entitys'] = 'ENTIDADES';
+$lang['faixas'] 			= 'FAIXAS';
+$lang['videos'] 			= 'VÍDEOS';
+$lang['albums'] 			= 'ÁLBUMS';
+$lang['entidades'] 			= 'ENTIDADES';
 
 ////// FAIXAS
 
-$lang['title'] = 'Título';
-$lang['register2'] = 'Cadastrar';
-$lang['percentage'] = 'Porcentagem';
-$lang['perc_artist'] = 'Artista';
-$lang['perc_writer'] = 'Compositor';
-$lang['perc_producer'] = 'Produtor';
+$lang['titulo']	 			= 'Título';
+$lang['cadastrar'] 			= 'Cadastrar';
+$lang['porcentagem'] 		= 'Porcentagem';
+$lang['porcent_artista'] 	= 'Artista';
+$lang['porcent_compositor'] = 'Compositor';
+$lang['porcent_produtor'] 	= 'Produtor';
 
 ////// MOEDA
 

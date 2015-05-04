@@ -23,10 +23,10 @@
 		<div id="menu">
 			<ul>
 				<a class="opcao-menu" href="<?php echo base_url(); ?>index.php/cliente/home"><li><?php echo $this->lang->line('home'); ?></li></a>
-				<a class="opcao-menu" href="<?php echo base_url(); ?>index.php/cliente/menu_cadastrar"><li><?php echo $this->lang->line('register'); ?></li></a>
-				<a class="opcao-menu" href="#"><li><?php echo $this->lang->line('report'); ?></li></a>
-				<a class="opcao-menu" href="#"><li><?php echo $this->lang->line('receipt'); ?></li></a>
-				<a class="opcao-menu" href="<?php echo base_url(); ?>index.php/acesso/deslogar"><li><?php echo $this->lang->line('logout'); ?></li></a>
+				<a class="opcao-menu" href="<?php echo base_url(); ?>index.php/cliente/menu_cadastrar"><li><?php echo $this->lang->line('cadastros'); ?></li></a>
+				<a class="opcao-menu" href="#"><li><?php echo $this->lang->line('relatorios'); ?></li></a>
+				<a class="opcao-menu" href="#"><li><?php echo $this->lang->line('vendas'); ?></li></a>
+				<a class="opcao-menu" href="<?php echo base_url(); ?>index.php/acesso/deslogar"><li><?php echo $this->lang->line('sair'); ?></li></a>
 				<li>
 					<?php if($this->session->userdata('linguagem') == 'english') { ?>
 						<img src="<?php echo base_url().'complemento/img/english.png' ?>">
@@ -57,10 +57,10 @@
 		<div id="sub_menu">
 		<?php if($this->session->userdata('sub_menu') == 2) { ?>
 			<ul>
-				<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><li><?php echo $this->lang->line('tracks'); ?></li></a>
+				<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><li><?php echo $this->lang->line('faixas'); ?></li></a>
 				<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_video"><li><?php echo $this->lang->line('videos'); ?></li></a>
 				<a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><li><?php echo $this->lang->line('albums'); ?></li></a>
-				<a href="<?php echo base_url(); ?>index.php/entidade/cadastra_entidade"><li><?php echo $this->lang->line('entitys'); ?></li></a>
+				<a href="<?php echo base_url(); ?>index.php/entidade/cadastra_entidade"><li><?php echo $this->lang->line('entidades'); ?></li></a>
 			</ul>
 		<?php } ?>
 		</div>

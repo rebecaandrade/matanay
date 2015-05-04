@@ -1,9 +1,7 @@
 <?php $this->load->view('_include/header') ?>
 
-	<div class="fadein">
-		<div class="circulo"><img src=""></div>
+	<div class="circulo"><img src="<?php echo base_url().'complemento/img/moeda.png' ?>"></div>
 
-	</div>
 	<div id="dados">
 		<?php echo form_open('moeda/cadastrar_moeda') ?>
 			<label><?php echo $this->lang->line('moeda_nome'); ?><input type='text' name='nome'></label>
