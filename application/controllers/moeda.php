@@ -33,4 +33,13 @@
 			}
 			redirect('moeda/cadastrar');
 		}
+		public function listar(){
+			// $this->session->set_flashdata('redirect_url', current_url());
+
+			// $linguagem_usuario = $this->session->userdata('linguagem');
+			// $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+			
+			$dados['moedas'] = $this->moeda_model->buscar_moedas();
+			$this->load->view('moeda/listar_moedas',$dados);
+		}
 	} 

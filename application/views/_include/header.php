@@ -7,7 +7,14 @@
 	<link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
 </head>
 <body>
+	<?php
+		if (!($this->session->userdata('linguagem'))) {
+			$this->session->set_userdata('linguagem', 'portugues');
+		}
 
+		$linguagem_usuario = $this->session->userdata('linguagem');
+		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+	?>
 	<div id="barra">
 		<div id="menu">
 			<ul>

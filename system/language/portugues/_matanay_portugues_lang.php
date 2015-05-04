@@ -37,6 +37,11 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+////// GERAL
+$lang['deletar']	= 'deletar';
+$lang['editar']		= 'editar';
+$lang['acao']		= 'ação';
+
 ////// LOGIN
 
 $lang['username'] = 'usuário';
@@ -70,7 +75,9 @@ $lang['perc_producer'] = 'Produtor';
 
 ////// MOEDA
 
+$lang['moeda']				= 'Moeda';
 $lang['moeda_nome']			= 'Nome';
 $lang['moeda_sigla']		= 'Sigla';
 $lang['moeda_cambio']		= 'Taxa de cambio';
 $lang['moeda_cadastrar']	= 'Cadastrar';
+$lang['moeda_erro_listar']	= 'Nenhuma moeda cadastrada';

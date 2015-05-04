@@ -22,9 +22,8 @@
 				return FALSE;
 			}
 		}
-		public function buscar_moeda($nome){
-			$this->db->where('nome',$nome);
-			return $this->db->get('moeda')->row();
+		public function buscar_moedas(){
+			return $this->db->get('moeda')->result();
 			
 		}
 	}
