@@ -1,9 +1,16 @@
 <?php
 	class Moeda_model extends CI_Model {
 		public function cadastrar($nome,$sigla,$cambio){
+
 			if(is_string($cambio)){
 				$cambio = str_replace (',','.',$cambio); //substitui virgulas por pontos para fazer o type casting
-				$cambio = (float) $cambio; // type casting de string para número
+				if((string)(float)$cambio == $cambio){ //verifica se é um numero
+					$cambio = (float) $cambio; // type casting de string para número
+				}
+				else{
+					$this->session->set_userdata('mensagem','Insira um número valido para taxa de cambio.');
+					return FALSE;
+				}
 			}
 			$nome = strtolower($nome);
 			$this->db->where('nome',$nome);
@@ -16,9 +23,11 @@
 						'taxa_cambio'	=> $cambio
 					);
 				$this->db->insert('moeda',$moeda);
+				$this->session->set_userdata('mensagem','Moeda cadastrada com sucesso.');
 				return TRUE;
 			}
 			else{
+				$this->session->set_userdata('mensagem','Moeda já cadastrada.');
 				return FALSE;
 			}
 		}

@@ -21,16 +21,8 @@
 			$nome = $this->input->post('nome');
 			$sigla = $this->input->post('sigla');
 			$cambio = $this->input->post('cambio');
-
-			$cambio = str_replace (',','.',$cambio); //substitui virgulas por pontos para fazer o type casting
-			$cambio = (float) $cambio; // type casting de string para número
 			
-			if($this->moeda_model->cadastrar($nome,$sigla,$cambio)){
-				$this->session->set_userdata('mensagem','Moeda cadastrada com sucesso.');
-			} 
-			else {
-				$this->session->set_userdata('mensagem','Moeda já cadastrada.');
-			}
+			$this->moeda_model->cadastrar($nome,$sigla,$cambio);
 			redirect('moeda/cadastrar');
 		}
 		public function listar(){
