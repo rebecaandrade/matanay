@@ -5,6 +5,17 @@
 	<title>Matanay</title>
 	<link href="<?php echo base_url(); ?>complemento/css/style.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>
+	$(function(){
+		// Função jquery que desliza a underbar do menu
+	    $(".opcao-menu").hover(function(){
+	    	$("#trilho").css({"visibility": "visible" });
+	        $("#trilho").width($(this).width());
+	        $("#trilho").css({"left": $(this).position().left });
+	    });
+	});
+	</script>
 </head>
 <body>
 	<?php
@@ -18,11 +29,11 @@
 	<div id="barra">
 		<div id="menu">
 			<ul>
-				<a href="<?php echo base_url(); ?>index.php/cliente/home"><li><?php echo $this->lang->line('home'); ?></li></a>
-				<a href="<?php echo base_url(); ?>index.php/cliente/menu_cadastrar"><li><?php echo $this->lang->line('register'); ?></li></a>
-				<li><?php echo $this->lang->line('report'); ?></li>
-				<li><?php echo $this->lang->line('receipt'); ?></li>
-				<a href="<?php echo base_url(); ?>index.php/acesso/deslogar"><li><?php echo $this->lang->line('logout'); ?></li></a>
+				<a class="opcao-menu" href="<?php echo base_url(); ?>index.php/cliente/home"><li><?php echo $this->lang->line('home'); ?></li></a>
+				<a class="opcao-menu" href="<?php echo base_url(); ?>index.php/cliente/menu_cadastrar"><li><?php echo $this->lang->line('register'); ?></li></a>
+				<a class="opcao-menu" href="#"><li><?php echo $this->lang->line('report'); ?></li></a>
+				<a class="opcao-menu" href="#"><li><?php echo $this->lang->line('receipt'); ?></li></a>
+				<a class="opcao-menu" href="<?php echo base_url(); ?>index.php/acesso/deslogar"><li><?php echo $this->lang->line('logout'); ?></li></a>
 				<li>
 					<?php if($this->session->userdata('linguagem') == 'english') { ?>
 						<img src="<?php echo base_url().'complemento/img/english.png' ?>">
@@ -30,8 +41,7 @@
 						<img src="<?php echo base_url().'complemento/img/portugues.png' ?>">
 					<?php } ?></li>
 			</ul>
-
-			<div id="lingua">
+			<div id="lingua" class="opcao-menu">
 				<?php echo form_open('acesso/linguagem') ?>
 					<select name="lang" onchange="this.form.submit();">
 						<?php if($this->session->userdata('linguagem') == 'english') { ?>
@@ -44,6 +54,7 @@
 					</select>
 				<?php echo form_close() ?>
 			</div>
+			<hr id="trilho"/>
 		</div>
 
 		<div class="logo"><a href="<?php echo base_url(); ?>index.php/usuario/home">

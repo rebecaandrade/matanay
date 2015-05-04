@@ -110,9 +110,14 @@ html {
 
 #menu ul li:hover, #menu li a:hover {
 	color: #EEE;
-	border-bottom: 2px solid #FFFF00;
 }
-
+#trilho {
+	visibility: hidden;
+	height: 2px;
+	background: #FFFF00;
+	border: none;
+	transition: .3s ease-in-out;
+}
 #menu a {
 	text-decoration: none;
 	color: #EEE;
