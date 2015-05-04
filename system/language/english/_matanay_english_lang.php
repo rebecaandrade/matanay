@@ -70,8 +70,8 @@ $lang['perc_producer'] = 'Producer';
 
 ////// MOEDA
 
-$lang['currency_name'] = 'Name';
-$lang['currency_acronym'] = 'Acronym';
-$lang['currency_exchange'] = 'Exchange rate';
-$lang['currency_register'] = 'Register';
+$lang['moeda_nome'] = 'Name';
+$lang['moeda_sigla'] = 'Acronym';
+$lang['moeda_cambio'] = 'Exchange rate';
+$lang['moeda_cadastrar'] = 'Register';
 

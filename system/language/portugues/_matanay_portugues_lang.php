@@ -70,7 +70,7 @@ $lang['perc_producer'] = 'Produtor';
 
 ////// MOEDA
 
-$lang['currency_name'] = 'Nome';
-$lang['currency_acronym'] = 'Sigla';
-$lang['currency_exchange'] = 'Taxa de cambio';
-$lang['currency_register'] = 'Cadastrar';
+$lang['moeda_nome']			= 'Nome';
+$lang['moeda_sigla']		= 'Sigla';
+$lang['moeda_cambio']		= 'Taxa de cambio';
+$lang['moeda_cadastrar']	= 'Cadastrar';
