@@ -174,7 +174,7 @@ html {
 }
 
 #dados label{
-	display: block;
+	display: inline-block;
 	color: #222;
 	font-size: 23px;
 }
@@ -182,8 +182,10 @@ html {
 #dados {
 	position: absolute;
 	display: inline-block;
+	width: 470px;
 	left: 40%;
 	top: -1%;
+	text-align: right;
 }
 
 #dados input[type="text"] {
@@ -201,7 +203,7 @@ html {
 	background-color: #777;
 	border-bottom: 4px solid #FFFF00;
 	color: white;
-	width: 257px;
+	width: 255px;
 	height: 40px;
 	font-size: 20px;
 	font-weight: bolder;
@@ -216,10 +218,40 @@ html {
 	color: #FF0;
 }
 
+#dados select {
+	width: 255px;
+	height: 37px;
+	border: 1px solid #DDD;
+	margin-bottom: 10px;
+	padding-left: 3px;
+	border-radius: 0;
+	font-size: 20px;
+	color: #5C5C5C;
+}
+
 #dados h2 {
 	font-size: 22px;
 }
 
 label {
 	text-align: right;
+}
+
+.container-faixa {
+	width: 470px;
+	text-align: right;
+	margin-left: 81px;
+}
+
+.entidade-faixa {
+	display: inline !important;
+}
+
+.percentual {
+	display: inline;
+}
+
+.percentual input[type="text"] {
+	width: 55px !important;
+	height: 35px !important;
 }

@@ -70,9 +70,9 @@ $lang['entidades'] 			= 'ENTIDADES';
 $lang['titulo']	 			= 'Título';
 $lang['cadastrar'] 			= 'Cadastrar';
 $lang['porcentagem'] 		= 'Porcentagem';
-$lang['porcent_artista'] 	= 'Artista';
-$lang['porcent_compositor'] = 'Compositor';
-$lang['porcent_produtor'] 	= 'Produtor';
+$lang['artista'] 			= 'Artista';
+$lang['compositor'] 		= 'Compositor';
+$lang['produtor'] 			= 'Produtor';
 
 ////// MOEDA
 
