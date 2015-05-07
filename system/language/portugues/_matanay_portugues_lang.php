@@ -82,3 +82,38 @@ $lang['moeda_sigla']		= 'Sigla';
 $lang['moeda_cambio']		= 'Taxa de câmbio';
 $lang['moeda_cadastrar']	= 'Cadastrar';
 $lang['moeda_erro_listar']	= 'Nenhuma moeda cadastrada';
+
+
+/////ENTIDADES
+$lang['nome_entidade']='Nome da entidade';		
+$lang['cpf_cnpj']='CPF/CNPJ';
+$lang['telefone']	= 'Telefone';
+$lang['telefone_alternativo']	= 'Telefone Alternativo';
+$lang['contato'] = 'Contato';
+$lang['email']	= 'Email do Contato';
+$lang['percentual_fisico']	= 'Porcentagem de ganho mídia física';
+$lang['percentual_digital']	= 'Porcentagem de ganho mídia digital';
+$lang['identificacao']				= 'Identificação';		
+$lang['banco']			= 'Banco';
+$lang['conta']		= 'Conta corrente';
+$lang['agencia']		= 'Agencia Bancária';
+$lang['atual']	='Atual';
+$lang['artista']	='Artista';
+$lang['autor']	='Autor';
+$lang['produtor']	='Produtor';
+$lang['eh_favorecido']	='É um favorecido?';
+$lang['favorecido_cadastrado']	='Favorecidos Registrados';
+$lang['acao']='Ação';
+$lang['delear']='Deletar';
+$lang['editar']='Editar';
+$lang['nao_ha_entidades']='Não há entidades cadastradas!';
+$lang['selecione']='Selecione';
+
+
+
+
+
+
+///////SIM OU NAO
+$lang['sim']	='Sim';
+$lang['nao']	='Não';

@@ -1,7 +1,6 @@
 <div>
     <?php if ($flag=="ingles"){ $flag1=1;?><h4>Register Entity</h4><?php }else{ $flag1=0;?><h4>Cadastrar Entidade</h4><?php  } ?>
-    <a href="<?php echo base_url().'index.php/entidade/index?id='. 0?>" >Ingles</a>
-    <a href="<?php echo base_url().'index.php/entidade/index?id='. 1?>" >Portugues</a>
+
     <?php echo form_open('/entidade/cadastrar')?>
         <?php if (isset($variavel)){echo $variavel;}?><br>
         <table>

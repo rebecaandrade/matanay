@@ -83,3 +83,46 @@ $lang['moeda_cambio']		= 'Exchange rate';
 $lang['moeda_cadastrar']	= 'Register';
 $lang['moeda_erro_listar']	= 'No currency registered';
 
+
+/////ENTIDADES
+$lang['entidade'] = 'Entity';
+$lang['nome_entidade']				= 'Name of the Entity';		
+$lang['cpf_cnpj']			= 'ID';
+$lang['telefone']		= 'Telephone number';
+$lang['telefone_alternativo']		= 'Alternative telephone number';
+$lang['contato']		= 'One to be contacted';
+$lang['email']	= 'One\'s email';
+$lang['percentual_fisico']	= 'Percentage of gain with phisical media';
+$lang['percentual_digital']	= 'Percentage of gain with digital media';
+$lang['identificacao']				= 'Identification';		
+$lang['banco']			= 'Bank';
+$lang['conta']		= 'Checking account';
+$lang['agencia']		= 'Bank Branch';
+$lang['atual']	='Actual';
+$lang['artista']	='Artist';
+$lang['autor']	='Author';
+$lang['produtor']	='Producer';
+$lang['eh_favorecido']	='Is it a favored?';
+$lang['favorecido_cadastrado']	='Registed favoreds';
+
+
+//GERAL
+$lang['acao']='Action';
+$lang['delear']='Delete';
+$lang['editar']='Edit';
+$lang['nao_ha_entidades']='There are no entitys registered!';
+$lang['selecione']='Select';
+
+
+
+
+
+
+
+///////SIM OU NAO
+$lang['sim']	='Yes';
+$lang['nao']	='No';
+
+
+
+

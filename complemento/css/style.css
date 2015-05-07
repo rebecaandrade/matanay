@@ -255,3 +255,73 @@ label {
 	width: 55px !important;
 	height: 35px !important;
 }
+
+
+/**************PAGINAS DAS ENTIADADES**********************/
+.dados_entidade label{
+	display: inline-block;
+	color: #222;
+	font-size: 23px;
+}
+
+.dados_entidade {
+	position: absolute;
+	display: inline-block;
+	width: 470px;
+	left: 40%;
+	top: -1%;
+	text-align: right;
+}
+
+.dados_entidade input[type="text"] {
+	width: 250px;
+	height: 35px;
+	border: 1px solid #DDD;
+	margin-bottom: 10px;
+	padding-left: 3px;
+	border-radius: 0;
+	font-size: 20px;
+	color: #5C5C5C;
+}
+
+.dados_entidade input[type="submit"] {
+	background-color: #777;
+	border-bottom: 4px solid #FFFF00;
+	color: white;
+	width: 255px;
+	height: 40px;
+	font-size: 20px;
+	font-weight: bolder;
+	border-radius: 0;
+	float: right;
+}
+
+.dados_entidade input[type="submit"]:hover{
+	background-color: #333;
+	border-bottom: 4px solid #000;
+	transition-duration: 0.3s;
+	color: #FF0;
+}
+
+
+
+.dados_entidade select {
+	width: 255px;
+	height: 37px;
+	border: 1px solid #DDD;
+	margin-bottom: 10px;
+	padding-left: 3px;
+	border-radius: 0;
+	font-size: 20px;
+	color: #5C5C5C;
+}
+
+.dados_entidade h2 {
+	font-size: 22px;
+}
+
+.dados_entidade #tabela_listagem{
+	display: inline-block;
+	text-align: center;
+}
+/**************FIM - PAGINAS DAS ENTIADADES**********************/

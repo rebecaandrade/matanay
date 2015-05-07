@@ -1,6 +1,6 @@
 <?php
 	
-class favorecido_model extends CI_Model{
+class Favorecido_model extends CI_Model{
 
 
 	public function cadastrar_favorecido($favorecido){

@@ -60,7 +60,7 @@
 				<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><li><?php echo $this->lang->line('faixas'); ?></li></a>
 				<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_video"><li><?php echo $this->lang->line('videos'); ?></li></a>
 				<a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><li><?php echo $this->lang->line('albums'); ?></li></a>
-				<a href="<?php echo base_url(); ?>index.php/entidade/cadastra_entidade"><li><?php echo $this->lang->line('entidades'); ?></li></a>
+				<a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"><li><?php echo $this->lang->line('entidades'); ?></li></a>
 			</ul>
 		<?php } ?>
 		</div>
