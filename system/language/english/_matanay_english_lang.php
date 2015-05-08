@@ -109,6 +109,7 @@ $lang['eh_favorecido']	='Is it a favored?';
 $lang['favorecido_cadastrado']	='Registed favoreds';
 
 //cliente
+$lang['perfis'] = 'Profiles';
 $lang['cliente_nome'] = 'Name';
 $lang['cliente_login'] = 'Login';
 $lang['cliente_senha'] = 'Password';
