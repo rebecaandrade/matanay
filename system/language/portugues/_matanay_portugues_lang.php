@@ -113,12 +113,14 @@ $lang['nao_ha_entidades']='Não há entidades cadastradas!';
 $lang['selecione']='Selecione';
 
 //cliente
+$lang['perfis'] = 'Perfis';
 $lang['cliente_nome'] = 'Nome';
 $lang['cliente_login'] = 'Login';
 $lang['cliente_senha'] = 'Senha';
 $lang['cliente_confirmar_senha'] = 'Confirmação de Senha';
 $lang['cliente_funcionalidades'] = 'Funcionalidades';
 $lang['cliente_cadastrar'] = 'Cadastrar';
+$lang['cliente_erro_listar'] = 'Nenhum cliente cadastrado';
 
 
 
