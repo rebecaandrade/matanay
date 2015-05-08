@@ -35,4 +35,31 @@
 			return $this->db->get('moeda')->result();
 			
 		}
+		public function buscar_moeda($id){
+			$this->db->where('idMoeda',$id);
+			return $this->db->get('moeda')->row();
+			
+		}
+		public function deletar_moeda($id){
+			$this->db->where('idMoeda',$id);
+			return $this->db->delete('moeda');
+		}
+		public function editar_moeda($id,$nome,$sigla,$cambio){
+			$cambio = str_replace (',','.',$cambio); //substitui virgulas por pontos para fazer o type casting
+			if((string)(float)$cambio == $cambio && (string)(int)$id == $id ){ // verifica se o cambio e o id são numeros validos
+				// array de atualização
+				$moeda = array( 
+						'nome'		=> $nome,
+						'sigla'		=> $sigla,
+						'taxa_cambio'	=> $cambio
+					);
+				$this->db->where('idMoeda',$id);
+				$this->db->update('moeda',$moeda);
+				return TRUE;
+			}
+			else{
+				//invalidos
+				return FALSE;
+			}
+		}
 	}
