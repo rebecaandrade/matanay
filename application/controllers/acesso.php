@@ -7,6 +7,15 @@ class Acesso extends CI_Controller {
    		$this->load->model('acesso_model');
 	}
 
+	public function index(){
+		if($this->session->userdata('id_usuario') != false){
+			redirect('cliente/home');
+		}
+		else{
+			redirect('acesso/login');
+		}
+	}
+
 	public function login(){
 		if (!($this->session->userdata('linguagem'))) {
 			$this->session->set_userdata('linguagem', 'portugues');

@@ -5,14 +5,6 @@ class Cliente extends CI_Controller {
    			parent::__construct();
    			$this->load->model('cliente_model');
 		}
-	public function index(){
-		if($this->session->userdata('id_usuario') != false){
-			redirect('cliente/home');
-		}
-		else{
-			redirect('acesso/login');
-		}
-	}
 
 	public function home(){
 		$this->session->set_userdata('sub_menu', 1);
