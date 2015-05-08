@@ -108,6 +108,13 @@ $lang['produtor']	='Producer';
 $lang['eh_favorecido']	='Is it a favored?';
 $lang['favorecido_cadastrado']	='Registed favoreds';
 
+//cliente
+$lang['cliente_nome'] = 'Name';
+$lang['cliente_login'] = 'Login';
+$lang['cliente_senha'] = 'Password';
+$lang['cliente_confirmar_senha'] = 'Confirm Password';
+$lang['cliente_funcionalidades'] = 'Functionalities';
+$lang['cliente_cadastrar'] = 'Register';
 
 //GERAL
 $lang['acao']='Action';
