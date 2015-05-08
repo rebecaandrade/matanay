@@ -8,8 +8,8 @@
 			<label>ISRC <input type='text' name='isrc'></label></br>
 
 			<label><?php echo $this->lang->line('video'); ?>     
-                    <?php echo $this->lang->line('sim'); ?> <input required type="radio" value="1" name="video" >
-                    <?php echo $this->lang->line('nao'); ?> <input required type="radio" value="0" name="video" >
+                    <?php echo $this->lang->line('sim'); ?> <input  type="radio" value="1" name="video" >
+                    <?php echo $this->lang->line('nao'); ?> <input  type="radio" value="0" name="video" >
             </label><br><br>
 
 		<div class="container-faixa">

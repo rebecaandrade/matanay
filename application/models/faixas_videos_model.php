@@ -21,6 +21,16 @@ class Faixas_Videos_model extends CI_Model {
     }
 
     public function cadastrar_faixa($faixa){
+
+        if(is_string($faixa['isrc'])){
+            $faixa['isrc'] = str_replace ("-", "", $faixa['isrc']);
+        }
+
+        if(($faixa['percentual_artista'] + $faixa['percentual_autor'] + $faixa['percentual_produtor']) != 100){
+            $this->session->set_userdata('mensagem', 'A soma das porcentagens não dá 100%');
+            return FALSE;
+        }
+
         return $this->db->insert('faixa', $faixa);
     }
 	
