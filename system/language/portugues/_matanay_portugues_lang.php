@@ -119,6 +119,7 @@ $lang['cliente_senha'] = 'Senha';
 $lang['cliente_confirmar_senha'] = 'Confirmação de Senha';
 $lang['cliente_funcionalidades'] = 'Funcionalidades';
 $lang['cliente_cadastrar'] = 'Cadastrar';
+$lang['cliente_erro_listar'] = 'Nenhum cliente cadastrado';
 
 
 

@@ -115,6 +115,7 @@ $lang['cliente_senha'] = 'Password';
 $lang['cliente_confirmar_senha'] = 'Confirm Password';
 $lang['cliente_funcionalidades'] = 'Functionalities';
 $lang['cliente_cadastrar'] = 'Register';
+$lang['cliente_erro_listar'] = 'No client on record';
 
 //GERAL
 $lang['acao']='Action';

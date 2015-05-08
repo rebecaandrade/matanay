@@ -41,5 +41,8 @@
 				return FALSE;
 			}
 		}
+		public function perfis(){
+			return $this->db->get('perfis')->result();
+		}
 
 	}

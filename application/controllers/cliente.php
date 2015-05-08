@@ -33,7 +33,7 @@ class Cliente extends CI_Controller {
 		
 		$this->load->view('cliente/cadastrar');	
 	}
-	public function cadastra_cliente(){
+	public function cadastra_perfil(){
 		$dados['funcionalidades'] = $this->cliente_model->funcionalidades(); 
 		$this->load->view('cliente/cadastra_cliente',$dados);
 	}
@@ -52,21 +52,25 @@ class Cliente extends CI_Controller {
 						$this->cliente_model->cadastrar_funcionalidades($funcs,$perfil_id);
 					}
 					// setar 'usuario cadastrado com sucesso'
-					redirect('cliente/cadastra_cliente');
+					redirect('cliente/cadastra_perfil');
 				}
 				else{
 					//setar 'preencha todos os campos'
-					redirect('cliente/cadastra_cliente');
+					redirect('cliente/cadastra_perfil');
 				}
 			}
 			else{
 				// setar mensagem de senhas não batem
-				redirect('cliente/cadastra_cliente');
+				redirect('cliente/cadastra_perfil');
 			}
 		}
 		else{
 			// setar 'login já cadastrado'
-			redirect('cliente/cadastra_cliente');
+			redirect('cliente/cadastra_perfil');
 		}
-	}	
+	}
+	public function listar(){
+		$dados['perfis'] = $this->cliente_model->perfis();
+		$this->load->view('cliente/listar_perfis',$dados);
+	}
 }
