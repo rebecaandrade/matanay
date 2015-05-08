@@ -5,8 +5,12 @@
 	<div id="dados">
 	<?php echo form_open('faixas_videos/cadastrar_faixa') ?>
 			<label><?php echo $this->lang->line('titulo'); ?> <input type='text' name='nome'></label>
-			<label>ISRC <input type='text' name='isrc'></label>
+			<label>ISRC <input type='text' name='isrc'></label></br>
 
+			<label><?php echo $this->lang->line('video'); ?>     
+                    <?php echo $this->lang->line('sim'); ?> <input required type="radio" value="1" name="video" >
+                    <?php echo $this->lang->line('nao'); ?> <input required type="radio" value="0" name="video" >
+            </label><br><br>
 
 		<div class="container-faixa">
 			<label class="entidade-faixa"><?php echo $this->lang->line('artista'); ?> <select name='artista'>

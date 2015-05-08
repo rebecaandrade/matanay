@@ -16,6 +16,8 @@
 			$this->session->set_userdata('linguagem', 'portugues');
 		}
 
+		$this->session->set_flashdata('redirect_url', current_url());
+
 		$linguagem_usuario = $this->session->userdata('linguagem');
 		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 	?>
@@ -61,6 +63,7 @@
 				<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_video"><li><?php echo $this->lang->line('videos'); ?></li></a>
 				<a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><li><?php echo $this->lang->line('albums'); ?></li></a>
 				<a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"><li><?php echo $this->lang->line('entidades'); ?></li></a>
+				<a href="<?php echo base_url(); ?>index.php/moeda/listar"><li><?php echo $this->lang->line('moeda_menu'); ?></li></a>
 			</ul>
 		<?php } ?>
 		</div>
