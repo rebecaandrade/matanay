@@ -70,7 +70,7 @@ $lang['entidades'] 			= 'ENTITYS';
 
 $lang['titulo'] 			= 'Title';
 $lang['cadastrar'] 			= 'Register';
-$lang['porcentagem'] 		= 'Percentage';
+$lang['video'] 				= 'Video?';
 $lang['artista'] 			= 'Artist';
 $lang['compositor'] 		= 'Writer';
 $lang['produtor'] 			= 'Producer';

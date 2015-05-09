@@ -4,11 +4,14 @@
 	<meta charset="utf-8">
 	<title>Matanay</title>
 	<link href="<?php echo base_url(); ?>complemento/css/style.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>complemento/css/materialize.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>complemento/js/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>complemento/js/jquery.matanay.js"></script>
-
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="<?php echo base_url(); ?>complemento/js/materialize.js"></script>
+	<script src="<?php echo base_url(); ?>complemento/js/init.js"></script>
 </head>
 <body>
 	<?php
@@ -74,4 +77,4 @@
 
 
 
-	<div id="content">
+

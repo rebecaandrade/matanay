@@ -1,53 +1,95 @@
 <?php $this->load->view('_include/header') ?>
 
-	<div class="circulo"><img src="<?php echo base_url().'complemento/img/faixa.png' ?>"></div>
+<div  class="container">
+    <div class="row">
+      	
+      	<?php echo form_open('faixas_videos/cadastrar_faixa') ?>
+	        <div class="row">
+	        	<div id="titulo" class="col s1">
+        			<i class="mdi-av-queue-music prefix"></i>
+      			</div>
+	          	<div class="input-field col s7">
+	            	<input type="text" name="nome">
+	            	<label><?php echo $this->lang->line('titulo'); ?></label>
+	          	</div>
+	        </div>
 
-	<div id="dados">
-	<?php echo form_open('faixas_videos/cadastrar_faixa') ?>
-			<label><?php echo $this->lang->line('titulo'); ?> <input type='text' name='nome'></label>
-			<label>ISRC <input type='text' name='isrc'></label></br>
+	        <div class="row">
+	          	<div class="input-field col s8">
+	            	<input type="text" name="isrc">
+	            	<label>ISRC</label>
+	          	</div>
+	          	<div class="switch col s2">
+	            	<label>
+	              		Video?
+	              		<input type="checkbox">
+	              		<span class="lever"></span>
+	              		Sim
+	            	</label>
+	          	</div>
+	        </div>
 
-			<label><?php echo $this->lang->line('video'); ?>     
-                    <?php echo $this->lang->line('sim'); ?> <input  type="radio" value="1" name="video" >
-                    <?php echo $this->lang->line('nao'); ?> <input  type="radio" value="0" name="video" >
-            </label><br><br>
+	        <div class="row">
+	          	<div class="input-field col s8">
+	            	<select>
+	              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
+	              		<?php
+                			if(isset($artistas)){
+                    			foreach ($artistas as $artista) { ?>
+                        		<option value="<?php echo $artista->idEntidade; ?>"> <?php echo $artista->nome; ?>
+                		<?php }}?>
+	            	</select>
+	            	<label>Artista</label>
+	          	</div>
+	          	<div class="input-field col s2">
+	            	<input name="percentual_artista" type="text">
+	            	<label>%</label>
+	          	</div>
+	        </div>
 
-		<div class="container-faixa">
-			<label class="entidade-faixa"><?php echo $this->lang->line('artista'); ?> <select name='artista'>
-                <?php
-                if(isset($artistas)){
-                    foreach ($artistas as $artista) { ?>
-                    	<option value="" disabled selected> ------- Selecione ------- </option>
-                        <option value="<?php echo $artista->idEntidade; ?>"> <?php echo $artista->nome; ?>
-                <?php }}?>
-            </select></label>
-            <label class='percentual'><input type='text' name='percentual_artista'> %</label>
-        </div>
-        <div class="container-faixa">	
-            <label class="entidade-faixa"><?php echo $this->lang->line('compositor'); ?> <select name='autor'>
-                <?php
-                if(isset($autores)){
-                    foreach ($autores as $autor) { ?>
-                    	<option value="" disabled selected> ------- Selecione ------- </option>
-                        <option value="<?php echo $autor->idEntidade; ?>"> <?php echo $autor->nome; ?>
-                <?php }}?>
-            </select></label>
-            <label class='percentual'><input type='text' name='percentual_autor'> %</label>
-        </div>
-        <div class="container-faixa">	
-            <label class="entidade-faixa"><?php echo $this->lang->line('produtor'); ?> <select name='produtor'>
-                <?php
-                if(isset($produtores)){
-                    foreach ($produtores as $produtor) { ?>
-                    	<option value="" disabled selected> ------- Selecione ------- </option>
-                        <option value="<?php echo $produtor->idEntidade; ?>"> <?php echo $produtor->nome; ?>
-                <?php }}?>
-            </select></label>
-            <label class='percentual'><input type='text' name='percentual_produtor'> %</label>
-        </div>
+	        <div class="row">
+	          	<div class="input-field col s8">
+	            	<select>
+	              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
+	              		<?php
+                			if(isset($autores)){
+                    			foreach ($autores as $autor) { ?>
+                        		<option value="<?php echo $autor->idEntidade; ?>"> <?php echo $autor->nome; ?>
+                		<?php }}?>
+	            	</select>
+	            	<label>Autor</label>
+	          	</div>
+	          	<div class="input-field col s2">
+	            	<input name="percentual_autor" type="text">
+	            	<label>%</label>
+	          	</div>
+	        </div>
 
-			<input type='submit' value='<?php echo $this->lang->line('cadastrar'); ?>'>
-	<?php echo form_close() ?>
-	</div>
+
+	        <div class="row">
+	          	<div class="input-field col s8">
+	            	<select>
+	              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
+	              		<?php
+                			if(isset($produtores)){
+                    			foreach ($produtores as $produtor) { ?>
+                        		<option value="<?php echo $produtor->idEntidade; ?>"> <?php echo $produtor->nome; ?>
+                		<?php }}?>
+	            	</select>
+	            	<label>Produtor</label>
+	          	</div>
+	          	<div class="input-field col s2">
+	            	<input name="percentual_produtor" type="text">
+	            	<label>%</label>
+	          	</div>
+	        </div>
+
+	        <button class="btn waves-effect waves-light col s8" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
+	          	<i class="mdi-content-send right"></i>
+	        </button>
+	    <?php echo form_close() ?>
+
+    </div>
+</div>
 
 <?php $this->load->view('_include/footer') ?>

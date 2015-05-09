@@ -35,7 +35,7 @@ class Faixas_Videos extends CI_Controller {
             redirect('faixas_videos/cadastra_faixa');       
         }else{
             
-            redirect('faixas_videos/cadastra_faixa');
+            redirect('cliente/home');
         }
 
 	}

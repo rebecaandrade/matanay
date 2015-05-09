@@ -3,7 +3,6 @@
 	margin: 0;
 	border: 0;
 	padding: 0;
-	font-family: 'Titillium Web';
 }
 
 html {
@@ -75,6 +74,10 @@ html {
 	text-align: right;
 	padding-right: 5px;
 	margin-right: 15px;
+}
+
+#titulo, #titulo label {
+	font-size: 3rem;
 }
 
 
