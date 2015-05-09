@@ -21,10 +21,10 @@
 	          	</div>
 	          	<div class="switch col s2">
 	            	<label>
-	              		Video?
+	              		<?php echo $this->lang->line('video');?>
 	              		<input type="checkbox">
 	              		<span class="lever"></span>
-	              		Sim
+	              		<?php echo $this->lang->line('sim');?>
 	            	</label>
 	          	</div>
 	        </div>
@@ -39,7 +39,7 @@
                         		<option value="<?php echo $artista->idEntidade; ?>"> <?php echo $artista->nome; ?>
                 		<?php }}?>
 	            	</select>
-	            	<label>Artista</label>
+	            	<label><?php echo $this->lang->line('artista');?></label>
 	          	</div>
 	          	<div class="input-field col s2">
 	            	<input name="percentual_artista" type="text">
@@ -57,7 +57,7 @@
                         		<option value="<?php echo $autor->idEntidade; ?>"> <?php echo $autor->nome; ?>
                 		<?php }}?>
 	            	</select>
-	            	<label>Autor</label>
+	            	<label><?php echo $this->lang->line('autor');?></label>
 	          	</div>
 	          	<div class="input-field col s2">
 	            	<input name="percentual_autor" type="text">
@@ -76,7 +76,7 @@
                         		<option value="<?php echo $produtor->idEntidade; ?>"> <?php echo $produtor->nome; ?>
                 		<?php }}?>
 	            	</select>
-	            	<label>Produtor</label>
+	            	<label><?php echo $this->lang->line('produtor');?></label>
 	          	</div>
 	          	<div class="input-field col s2">
 	            	<input name="percentual_produtor" type="text">

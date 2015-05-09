@@ -17,6 +17,7 @@ html {
 }
 
 #barra {
+	font-family: "Titillium Web" !important;
 	min-width: 1300px;
 	height: 70px;
 	background-color: #333;
@@ -25,6 +26,7 @@ html {
 	margin-top: 0;
 	opacity: 0.9;
 	box-shadow: 1px 1px 5px #333;
+	z-index: 2;
 }
 
 #sub_barra {
@@ -36,7 +38,7 @@ html {
 	margin-top: 0;
 	opacity: 0.9;
 	box-shadow: 1px 1px 3px #777;
-	z-index: -1;
+	text-align: right;
 }
 
 #sub_barra2 {
@@ -131,10 +133,10 @@ html {
 }
 
 #sub_menu {
+	font-family: "Titillium Web" !important;
 	display: inline-block;
-	margin-top: 0.2%;
-	margin-right: 30%;
-	float: right;
+	margin-top: -0.5%;
+	margin-right: 15%;
 	vertical-align: middle;
 }
 
@@ -145,7 +147,6 @@ html {
 	font-size: 19px;
 	padding-right: 20px;
 	padding-left: 20px;
-	z-index: 2;
 }
 
 #sub_menu ul li:hover, #sub_menu li a:hover {
