@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- Evandro -->
 <html>
 <head>
 	<meta charset="utf-8">
@@ -55,7 +55,7 @@
 			<hr id="trilho"/>
 		</div>
 
-		<div class="logo"><a href="<?php echo base_url(); ?>index.php/usuario/home">
+		<div class="logo"><a href="<?php echo base_url(); ?>index.php/cliente/home">
 			<img src="<?php echo base_url().'complemento/img/logo1.fw.png' ?>"></a></div>
 	</div>	
 

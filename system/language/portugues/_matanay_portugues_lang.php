@@ -44,14 +44,14 @@ $lang['editar']				= 'editar';
 $lang['acao']				= 'ação';
 $lang['novo']				= 'NOVO';
 
-////// LOGIN
+////// LOGIN ////// Evandro
 
 $lang['login'] 				= 'usuário';
 $lang['senha'] 				= 'senha';
 $lang['entrar'] 			= 'Entrar';
 $lang['esqueceu_senha'] 	= 'Esqueceu sua senha?';
 
-////// MENU
+////// MENU ////// Evandro
 
 $lang['home'] 				= 'INÍCIO';
 $lang['cadastros'] 			= 'CADASTROS';
@@ -59,14 +59,13 @@ $lang['relatorios'] 		= 'RELATÓRIOS';
 $lang['vendas'] 			= 'VENDAS';
 $lang['sair'] 				= 'SAIR';
 
-////// SUB_MENU
+////// SUB_MENU ////// Evandro
 
 $lang['faixas'] 			= 'FAIXAS';
-$lang['videos'] 			= 'VÍDEOS';
 $lang['albums'] 			= 'ÁLBUMS';
 $lang['entidades'] 			= 'ENTIDADES';
 
-////// FAIXAS
+////// FAIXAS ////// Evandro
 
 $lang['titulo']	 			= 'Título';
 $lang['cadastrar'] 			= 'Cadastrar';
@@ -74,6 +73,14 @@ $lang['video'] 				= 'Vídeo?';
 $lang['artista'] 			= 'Artista';
 $lang['compositor'] 		= 'Compositor';
 $lang['produtor'] 			= 'Produtor';
+
+////// ALBUMS ////// Evandro
+
+$lang['n_faixas'] 			= 'Nº Faixas';
+$lang['catalogo'] 			= 'Cod. Catálogo';
+$lang['lancamento'] 		= 'Data Lançamento';
+$lang['tipo'] 				= 'Tipo';
+$lang['faixa'] 				= 'Faixa';
 
 ////// MOEDA
 

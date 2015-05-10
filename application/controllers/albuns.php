@@ -12,8 +12,11 @@ class Albuns extends CI_Controller {
 
 		$linguagem_usuario = $this->session->userdata('linguagem');
 		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+
+		$dados['tipos'] = $this->albuns_model->buscar_tipos();
+		$dados['faixas'] = $this->albuns_model->buscar_faixas();
 		
-		$this->load->view('albuns/cadastro_album');
+		$this->load->view('albuns/cadastro_album', $dados);
 	}
 
 }

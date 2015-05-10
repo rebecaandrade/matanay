@@ -4787,7 +4787,8 @@ span.badge {
 
 @media only screen and (min-width : 601px) {
   .container {
-    width: 85%; } }
+    width: 85%;
+    padding-top: 10px; } }
 
 @media only screen and (min-width : 993px) {
   .container {
@@ -5689,7 +5690,7 @@ button.btn-floating {
   margin: 0;
   display: none;
   min-width: 100px;
-  max-height: 650px;
+  max-height: 300px;
   overflow-y: auto;
   opacity: 0;
   position: absolute;
@@ -6028,7 +6029,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
   border-bottom: 1px solid #9e9e9e;
   border-radius: 0;
   outline: none;
-  height: 3rem;
+  height: 2.5rem;
   width: 100%;
   font-size: 1rem;
   margin: 0 0 15px 0;
@@ -6059,7 +6060,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
   position: relative;
   margin-top: 1rem; }
   .input-field label {
-    color: #9e9e9e;
+    color: rgba(0, 0, 0, 0.87);
     position: absolute;
     top: 0.8rem;
     left: 0.75rem;
@@ -6071,6 +6072,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     -ms-transition: .2s ease-out;
     transition: .2s ease-out; }
   .input-field label.active {
+    color: #777;
     font-size: 0.8rem;
     -webkit-transform: translateY(-140%);
     -moz-transform: translateY(-140%);
@@ -6087,7 +6089,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     -ms-transition: color .2s;
     transition: color .2s; }
     .input-field .prefix.active {
-      color: #26a69a; }
+      color: #222; }
   .input-field .prefix ~ input, .input-field .prefix ~ textarea {
     margin-left: 3rem;
     width: 92%;
@@ -6493,8 +6495,8 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     border: none;
     border-bottom: 1px solid #9e9e9e;
     outline: none;
-    height: 3rem;
-    line-height: 3rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
     width: 100%;
     font-size: 1rem;
     margin: 0 0 15px 0;
@@ -6511,7 +6513,8 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   .select-wrapper + label {
     position: absolute;
     top: -14px;
-    font-size: 0.8rem; }
+    font-size: 0.8rem;
+    color: #777 }
 
 select {
   display: none; }
@@ -6657,7 +6660,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 input[type=range] {
   /* fix for FF unable to apply focus style bug  */
-  border: 1px solid white;
+  border: 1px solid #eee;
   /*required for proper track sizing in FF*/ }
 
 input[type=range]::-moz-range-track {
@@ -7717,7 +7720,7 @@ select {
 
 .picker__date-display {
   text-align: center;
-  background-color: #26a69a;
+  background-color: #333;
   color: #fff;
   padding-bottom: 15px;
   font-weight: 300; }
@@ -7725,12 +7728,13 @@ select {
 .picker__nav--prev:hover, .picker__nav--next:hover {
   cursor: pointer;
   color: #000000;
-  background: #a1ded8; }
+  background: #eee; }
 
 .picker__weekday-display {
-  background-color: #1f897f;
+  background-color: #ff0;
+  color: #333;
   padding: 10px;
-  font-weight: 200;
+  font-weight: 400;
   letter-spacing: .5;
   font-size: 1rem;
   margin-bottom: 15px; }
@@ -7767,7 +7771,8 @@ select {
   border: 1px solid transparent; }
 
 .picker__day.picker__day--today {
-  color: #26a69a; }
+  color: #ffd600;
+  font-weight: 600; }
 
 .picker__day.picker__day--today.picker__day--selected {
   color: #fff; }
@@ -7782,8 +7787,8 @@ select {
   -ms-transform: scale(.9);
   -o-transform: scale(.9);
   transform: scale(.9);
-  background-color: #26a69a;
-  color: #ffffff; }
+  background-color: #ff0;
+  color: #333; }
   .picker__day--selected.picker__day--outfocus, .picker__day--selected:hover.picker__day--outfocus, .picker--focused .picker__day--selected.picker__day--outfocus {
     background-color: #a1ded8; }
 
@@ -7794,7 +7799,8 @@ select {
 .picker__close, .picker__today {
   font-size: 1.1rem;
   padding: 0 1rem;
-  color: #26a69a; }
+  color: #ffd600;
+  font-weight: 600; }
 
 .picker__nav--prev:before, .picker__nav--next:before {
   content: " ";

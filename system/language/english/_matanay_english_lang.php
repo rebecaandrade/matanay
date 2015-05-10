@@ -44,14 +44,14 @@ $lang['editar']				= 'edit';
 $lang['acao']				= 'Action';
 $lang['novo']				= 'NEW';
 
-////// LOGIN
+////// LOGIN ////// Evandro
 
 $lang['login'] 				= 'username';
 $lang['senha'] 				= 'password';
 $lang['entrar'] 			= 'Log In';
 $lang['esqueceu_senha'] 	= 'Forgot your password?';
 
-////// MENU
+////// MENU ////// Evandro
 
 $lang['home'] 				= 'HOME';
 $lang['cadastros'] 			= 'REGISTER';
@@ -59,14 +59,14 @@ $lang['relatorios'] 		= 'REPORTS';
 $lang['vendas'] 			= 'RECEIPTS';
 $lang['sair'] 				= 'LOGOUT';
 
-////// SUB_MENU
+////// SUB_MENU ////// Evandro
 
 $lang['faixas'] 			= 'TRACKS';
 $lang['videos'] 			= 'VIDEOS';
 $lang['albums'] 			= 'ALBUMS';
 $lang['entidades'] 			= 'ENTITYS';
 
-////// FAIXAS
+////// FAIXAS ////// Evandro
 
 $lang['titulo'] 			= 'Title';
 $lang['cadastrar'] 			= 'Register';
@@ -74,6 +74,14 @@ $lang['video'] 				= 'Video?';
 $lang['artista'] 			= 'Artist';
 $lang['compositor'] 		= 'Writer';
 $lang['produtor'] 			= 'Producer';
+
+////// ALBUMS ////// Evandro
+
+$lang['n_faixas'] 			= 'Number of Tracks';
+$lang['catalogo'] 			= 'Catalog Code';
+$lang['lancamento'] 		= 'Release Date';
+$lang['tipo'] 				= 'Type';
+$lang['faixa'] 				= 'Track';
 
 ////// MOEDA
 
