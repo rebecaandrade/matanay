@@ -1,6 +1,6 @@
 <?php $this->load->view('_include/header') ?> <!-- Evandro -->
 
-<div  class="container">
+<div class="container">
     <div class="row">
       	
       	<?php echo form_open('faixas_videos/cadastrar_faixa') ?>

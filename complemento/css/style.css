@@ -12,13 +12,11 @@ html {
 }
 
 #content {
-	min-width: 1300px;
 	transition-duration: 0.3s;
 }
 
 #barra {
 	font-family: "Titillium Web" !important;
-	min-width: 1300px;
 	height: 70px;
 	background-color: #333;
 	margin-right: 0;
@@ -26,11 +24,30 @@ html {
 	margin-top: 0;
 	opacity: 0.9;
 	box-shadow: 1px 1px 5px #333;
-	z-index: 2;
+}
+
+#barra2 {
+	background-color: #777 !important;
+	box-shadow: 1px 1px 3px #777 !important;
+	z-index: inherit !important;
+	padding-right: 10% !important;
+}
+
+#barra3 {
+	background-color: #FF0 !important;
+	z-index: inherit !important;
+}
+
+#barra2 ul li a {
+	color: #333 !important;
+	font-size: 19px !important;
+}
+
+#barra2 ul li a:hover {
+	color: #EEE !important;
 }
 
 #sub_barra {
-	min-width: 1300px;
 	height: 35px;
 	background-color: #777;
 	margin-right: 0;
@@ -42,14 +59,12 @@ html {
 }
 
 #sub_barra2 {
-	min-width: 1300px;
 	height: 7px;
 	background-color: #FFFF00;
 	margin-right: 0;
 	margin-left: 0;
 	margin-top: 0;
 	opacity: 0.9;
-	z-index: -2;
 }
 
 #lingua {

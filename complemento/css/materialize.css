@@ -1576,7 +1576,7 @@
   color: #616161 !important; }
 
 .grey.darken-3 {
-  background-color: #424242 !important; }
+  background-color: #333333 !important; }
 
 .grey-text.text-darken-3 {
   color: #424242 !important; }
@@ -4787,17 +4787,19 @@ span.badge {
 
 @media only screen and (min-width : 601px) {
   .container {
-    width: 85%;
-    padding-top: 10px; } }
+    width: 85%; } }
 
 @media only screen and (min-width : 993px) {
   .container {
-    width: 85%;
-    padding-top: 30px; } }
+    width: 85%; } }
 
 .container .row {
   margin-left: -0.75rem;
   margin-right: -0.75rem; }
+
+#form-container {
+  padding-top: 5%;
+}
 
 .section {
   padding-top: 1rem;
@@ -5007,11 +5009,12 @@ span.badge {
         margin-left: 100%; } }
 
 nav {
-  color: #fff;
-  background-color: #ee6e73;
+  color: #eee;
+  background-color: #333;
   width: 100%;
-  height: 56px;
-  line-height: 56px; }
+  height: 70px;
+  line-height: 70px;
+  opacity: 0.9; }
   nav a {
     color: #fff; }
   nav .nav-wrapper {
@@ -5069,10 +5072,12 @@ nav {
       nav ul li:hover, nav ul li.active {
         background-color: rgba(0, 0, 0, 0.1); }
     nav ul a {
-      font-size: 1rem;
-      color: #fff;
+      font-size: 23px;
+      color: #eee;
       display: block;
-      padding: 0 15px; }
+      padding: 0 20px;
+      font-family: "Titillium Web";
+      font-weight: bold; }
     nav ul.left {
       float: left; }
   nav .input-field {
@@ -5113,10 +5118,22 @@ nav {
 
 @media only screen and (min-width : 601px) {
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-    height: 64px;
-    line-height: 64px; }
+    height: 70px;
+    line-height: 70px;
+    margin-bottom: 5%; }
   .navbar-fixed {
-    height: 64px; } }
+    height: 70px; } }
+
+@media only screen and (min-width : 601px) {
+  #barra2, #barra2 .nav-wrapper i, #barra2 a.button-collapse, #barra2 a.button-collapse i {
+    height: 35px;
+    line-height: 35px;
+    box-shadow: 1px 1px 3px #777 !important; } }
+
+@media only screen and (min-width : 601px) {
+  #barra3, #barra3 .nav-wrapper i, #barra3 a.button-collapse, #barra3 a.button-collapse i {
+    height: 7px;
+    line-height: 7px; } }
 
 @font-face {
   font-family: "Roboto";
@@ -5918,8 +5935,8 @@ a.waves-effect .waves-ripple {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-  .collapsible-body p {
-    margin: 0;
+  .collapsible-body a {
+    margin: 0 0 0 2.5rem;
     padding: 2rem; }
 
 .side-nav .collapsible {
@@ -5932,7 +5949,7 @@ a.waves-effect .waves-ripple {
   border: none;
   line-height: inherit;
   height: inherit;
-  margin: 0 1rem; }
+  margin: 0; }
   .side-nav .collapsible-header i {
     line-height: inherit; }
 .side-nav .collapsible-body {
@@ -6759,7 +6776,7 @@ select {
   height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
-  background-color: #FFF;
+  background-color: #eee;
   z-index: 999;
   overflow-y: auto;
   will-change: left; }
@@ -6770,14 +6787,15 @@ select {
   .side-nav .collapsible {
     margin: 0; }
   .side-nav li {
+    color: #444 !important;
     float: none;
     padding: 0 15px; }
     .side-nav li:hover, .side-nav li.active {
       background-color: #ddd; }
   .side-nav a {
-    color: #444;
+    color: #444 !important;
     display: block;
-    font-size: 1rem;
+    font-size: 1.3rem;
     height: 64px;
     line-height: 64px;
     padding: 0 15px; }
@@ -6820,7 +6838,7 @@ select {
   right: 0;
   height: 120vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 997;
+  z-index: -1;
   will-change: opacity; }
 
 /*

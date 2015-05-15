@@ -16,3 +16,18 @@ $(document).ready(function() {
         selectYears: 15 // Creates a dropdown of 15 years to control year
     });
 });
+
+$(document).ready(function() {
+    $(".button-collapse").sideNav();
+});
+
+
+$(document).ready(function() {
+    $(".dropdown-button").dropdown();
+});
+
+$(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
