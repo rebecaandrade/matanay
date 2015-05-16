@@ -29,13 +29,13 @@ html {
 #barra2 {
 	background-color: #777 !important;
 	box-shadow: 1px 1px 3px #777 !important;
-	z-index: inherit !important;
+	
 	padding-right: 10% !important;
 }
 
 #barra3 {
 	background-color: #FF0 !important;
-	z-index: inherit !important;
+	
 }
 
 #barra2 ul li a {

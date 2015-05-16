@@ -4797,8 +4797,8 @@ span.badge {
   margin-left: -0.75rem;
   margin-right: -0.75rem; }
 
-#form-container {
-  padding-top: 5%;
+.container .row form {
+  margin-top: 5%;
 }
 
 .section {
@@ -4814,7 +4814,7 @@ span.badge {
 .row {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 0px; }
+  margin-bottom: 0; }
   .row:after {
     content: "";
     display: table;
@@ -5012,9 +5012,8 @@ nav {
   color: #eee;
   background-color: #333;
   width: 100%;
-  height: 70px;
-  line-height: 70px;
-  opacity: 0.9; }
+  height: 56px;
+  line-height: 56px; }
   nav a {
     color: #fff; }
   nav .nav-wrapper {
@@ -5072,11 +5071,11 @@ nav {
       nav ul li:hover, nav ul li.active {
         background-color: rgba(0, 0, 0, 0.1); }
     nav ul a {
-      font-size: 23px;
+      font-size: 1.5rem;
       color: #eee;
       display: block;
       padding: 0 20px;
-      font-family: "Titillium Web";
+      font-family: "Titillium Web";   
       font-weight: bold; }
     nav ul.left {
       float: left; }
@@ -5118,22 +5117,35 @@ nav {
 
 @media only screen and (min-width : 601px) {
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-    height: 70px;
-    line-height: 70px;
-    margin-bottom: 5%; }
+    height: 64px;
+    line-height: 64px; }
   .navbar-fixed {
-    height: 70px; } }
+    height: 64px; } }
 
-@media only screen and (min-width : 601px) {
-  #barra2, #barra2 .nav-wrapper i, #barra2 a.button-collapse, #barra2 a.button-collapse i {
-    height: 35px;
-    line-height: 35px;
-    box-shadow: 1px 1px 3px #777 !important; } }
+@media only screen and (min-width : 993px) {    
+    #barra2, #barra2 .nav-wrapper i, #barra2 a.button-collapse, #barra2 a.button-collapse i {   
+      height: 33px;   
+      line-height: 33px; } } 
 
-@media only screen and (min-width : 601px) {
-  #barra3, #barra3 .nav-wrapper i, #barra3 a.button-collapse, #barra3 a.button-collapse i {
-    height: 7px;
-    line-height: 7px; } }
+@media only screen and (max-width : 992px) {    
+    #barra2, #barra2 .nav-wrapper i, #barra2 a.button-collapse, #barra2 a.button-collapse i {   
+      height: 20px;   
+      line-height: 20px; } } 
+
+@media only screen and (max-width : 600px) {    
+    #barra2, #barra2 .nav-wrapper i, #barra2 a.button-collapse, #barra2 a.button-collapse i {   
+      height: 0px;   
+      line-height: 0px; } }    
+      
+@media only screen and (min-width : 601px) {    
+  #barra3, #barra3 .nav-wrapper i, #barra3 a.button-collapse, #barra3 a.button-collapse i {   
+    height: 5px;    
+    line-height: 5px; } }
+
+@media only screen and (max-width : 600px) {    
+  #barra3, #barra3 .nav-wrapper i, #barra3 a.button-collapse, #barra3 a.button-collapse i {   
+    height: 5px !important;    
+    line-height: 5px; } }
 
 @font-face {
   font-family: "Roboto";
@@ -5622,7 +5634,6 @@ small {
   text-decoration: none;
   color: #FFF;
   background-color: #777;
- 
   text-align: center;
   letter-spacing: .5px;
   -webkit-transition: .2s ease-out;
@@ -5631,8 +5642,8 @@ small {
   -ms-transition: .2s ease-out;
   transition: .2s ease-out;
   cursor: pointer; }
-  .btn i, .btn-large i {
-    color: #FF0; } 
+  .btn i, .btn-large i {    
+      color: #FF0; }
   .btn:hover, .btn-large:hover {
     background-color: #444; }
 
@@ -5749,6 +5760,7 @@ button.btn-floating {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   vertical-align: middle;
+  z-index: 1;
   will-change: opacity, transform;
   -webkit-transition: all .3s ease-out;
   -moz-transition: all .3s ease-out;
@@ -5936,8 +5948,9 @@ a.waves-effect .waves-ripple {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
   .collapsible-body a {
-    margin: 0 0 0 2.5rem;
-    padding: 2rem; }
+    padding-left: 2.7rem !important; }
+  .collapsible-body a:hover {
+    background-color: #eee; }
 
 .side-nav .collapsible {
   border: none;
@@ -6046,7 +6059,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
   border-bottom: 1px solid #9e9e9e;
   border-radius: 0;
   outline: none;
-  height: 2.5rem;
+  height: 3rem;
   width: 100%;
   font-size: 1rem;
   margin: 0 0 15px 0;
@@ -6512,8 +6525,8 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     border: none;
     border-bottom: 1px solid #9e9e9e;
     outline: none;
-    height: 2.5rem;
-    line-height: 2.5rem;
+    height: 3rem;
+    line-height: 3rem;
     width: 100%;
     font-size: 1rem;
     margin: 0 0 15px 0;
@@ -6530,8 +6543,8 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   .select-wrapper + label {
     position: absolute;
     top: -14px;
-    font-size: 0.8rem;
-    color: #777 }
+    font-size: 0.8rem; 
+    color: #777; }
 
 select {
   display: none; }
@@ -6677,7 +6690,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 input[type=range] {
   /* fix for FF unable to apply focus style bug  */
-  border: 1px solid #eee;
+  border: 1px solid white;
   /*required for proper track sizing in FF*/ }
 
 input[type=range]::-moz-range-track {
@@ -6695,7 +6708,7 @@ input[type=range]::-moz-range-thumb {
 
 /*hide the outline behind the border*/
 input[type=range]:-moz-focusring {
-  outline: 1px solid white;
+  outline: 1px solid #eee;
   outline-offset: -1px; }
 
 input[type=range]:focus::-moz-range-track {
@@ -6776,7 +6789,7 @@ select {
   height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
-  background-color: #eee;
+  background-color: #EEE;
   z-index: 999;
   overflow-y: auto;
   will-change: left; }
@@ -6787,13 +6800,12 @@ select {
   .side-nav .collapsible {
     margin: 0; }
   .side-nav li {
-    color: #444 !important;
     float: none;
     padding: 0 15px; }
     .side-nav li:hover, .side-nav li.active {
       background-color: #ddd; }
   .side-nav a {
-    color: #444 !important;
+    color: #444;
     display: block;
     font-size: 1.3rem;
     height: 64px;
@@ -6805,7 +6817,7 @@ select {
   width: 10px;
   position: fixed;
   top: 0;
-  z-index: 998; }
+  z-index: 990; }
 
 .side-nav.fixed a {
   display: block;
@@ -6838,7 +6850,7 @@ select {
   right: 0;
   height: 120vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: -1;
+  z-index: 997;
   will-change: opacity; }
 
 /*
@@ -7749,7 +7761,7 @@ select {
   background: #eee; }
 
 .picker__weekday-display {
-  background-color: #ff0;
+  background-color: #FF0;
   color: #333;
   padding: 10px;
   font-weight: 400;
@@ -7805,7 +7817,7 @@ select {
   -ms-transform: scale(.9);
   -o-transform: scale(.9);
   transform: scale(.9);
-  background-color: #ff0;
+  background-color: #FF0;
   color: #333; }
   .picker__day--selected.picker__day--outfocus, .picker__day--selected:hover.picker__day--outfocus, .picker--focused .picker__day--selected.picker__day--outfocus {
     background-color: #a1ded8; }
@@ -7817,7 +7829,7 @@ select {
 .picker__close, .picker__today {
   font-size: 1.1rem;
   padding: 0 1rem;
-  color: #ffd600;
+  color: #FFD600;
   font-weight: 600; }
 
 .picker__nav--prev:before, .picker__nav--next:before {

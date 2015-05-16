@@ -36,10 +36,7 @@
 
       		<ul id="nav-mobile" class="side-nav">
         		<li><a class="opcao-menu" href="<?php echo base_url(); ?>index.php/cliente/home"><?php echo $this->lang->line('home'); ?></a></li>
-				<li><a class="opcao-menu" href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
-				<li><a class="opcao-menu" href="#"><?php echo $this->lang->line('vendas'); ?></a></li>
-				<li><a class="opcao-menu" href="<?php echo base_url(); ?>index.php/acesso/deslogar"><?php echo $this->lang->line('sair'); ?></a></li>
-      			
+				
       			<ul class="collapsible" data-collapsible="accordion">
       				<li><div class="collapsible-header"><a><?php echo $this->lang->line('cadastros'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><?php echo $this->lang->line('faixas'); ?></a></div>
@@ -47,8 +44,12 @@
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"><?php echo $this->lang->line('entidades'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a></div></li>
       			</ul>
+
+      			<li><a class="opcao-menu" href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
+				<li><a class="opcao-menu" href="#"><?php echo $this->lang->line('vendas'); ?></a></li>
+				<li><a class="opcao-menu" href="<?php echo base_url(); ?>index.php/acesso/deslogar"><?php echo $this->lang->line('sair'); ?></a></li>
       		</ul>
-  
+
       		<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     	</div>
 
@@ -67,6 +68,14 @@
     	<div id="barra3" class="grey darken-1" role="navigation">
     	</div>
   	</nav>
+
+  	<ul id="dropdown-cadastros" class="dropdown-content">
+	  	<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><li><?php echo $this->lang->line('faixas'); ?></li></a>
+		<a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><li><?php echo $this->lang->line('albums'); ?></li></a>
+		<a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"><li><?php echo $this->lang->line('entidades'); ?></li></a>
+		<a href="<?php echo base_url(); ?>index.php/moeda/listar"><li><?php echo $this->lang->line('moeda_menu'); ?></li></a>
+	</ul>
+
   	<!--
 	<div id="barra">
 		<div id="menu" class="nav-wrapper">
@@ -134,10 +143,3 @@
 
 	<div id="sub_barra2"></div>
 	-->
-
-<ul id="dropdown-cadastros" class="dropdown-content">
-  	<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><li><?php echo $this->lang->line('faixas'); ?></li></a>
-	<a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><li><?php echo $this->lang->line('albums'); ?></li></a>
-	<a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"><li><?php echo $this->lang->line('entidades'); ?></li></a>
-	<a href="<?php echo base_url(); ?>index.php/moeda/listar"><li><?php echo $this->lang->line('moeda_menu'); ?></li></a>
-</ul>
