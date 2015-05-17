@@ -89,19 +89,15 @@ $this->load->view('_include/header') ?>
                 </div>
                 <div id="favorecido" class="box">
                     <div class="row">
-                        <div class="input-field col s12 m12 l8 offset-l2">
+                        <div class="input-field col s12 m12 l2 offset-l2">
                             <label><?php echo $this->lang->line('banco'); ?></label>
                             <input class="nome" required type="text" value="" name="banco" >
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 m12 l8 offset-l2">
+                        <div class="input-field col s12 m6 l3">
                             <label><?php echo $this->lang->line('conta'); ?></label>
                             <input class="nome" required type="text" value="" name="contacorrente" >
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 m12 l8 offset-l2">
+                        <div class="input-field col s12 m6 l3">
                             <label><?php echo $this->lang->line('agencia'); ?></label>
                             <input class="nome" required type="text" value="" name="agencia" >
                         </div>
