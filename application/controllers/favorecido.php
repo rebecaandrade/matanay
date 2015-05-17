@@ -84,7 +84,7 @@
     
     public function cadastrar(){
       //TESTE DOS CAMPOS, Sim, estupido para caralho, deve ter outro jeito para fazer isso, mais estou sem tempo
-      if(($this->input->post('nomeentidade')==null)||($this->input->post('cpf_cnpj')==null)||($this->input->post('contato')==null)||($this->input->post('email')==null)||($this->input->post('porcentagemganhodigital')==null)||( $this->input->post('porcentagemganhofisico')==null)||($this->input->post('identificacao')==null)||($this->input->post('telefone1')==null)||($this->input->post('telefone2')==null)){
+      if(($this->input->post('nomeentidade')==null)||($this->input->post('cpf_cnpj')==null)||($this->input->post('cpf/cnpj')==null)||($this->input->post('contato')==null)||($this->input->post('email')==null)||($this->input->post('porcentagemganhodigital')==null)||( $this->input->post('porcentagemganhofisico')==null)||($this->input->post('identificacao')==null)||($this->input->post('telefone1')==null)||($this->input->post('telefone2')==null)){
           $this->session->set_flashdata('aviso','campo_vazio');
           redirect('favorecido/mostrar_cadastro');
       }
