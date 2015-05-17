@@ -84,14 +84,14 @@
     
     public function cadastrar(){
       //TESTE DOS CAMPOS, Sim, estupido para caralho, deve ter outro jeito para fazer isso, mais estou sem tempo
-      if(($this->input->post('nomeentidade')==null)||($this->input->post('cpf_cnpj')==null)||($this->input->post('contato')==null)||($this->input->post('email')==null)||($this->input->post('porcentagemganhodigital')==null)||( $this->input->post('porcentagemganhofisico')==null)||($this->input->post('identificacao')==null)||($this->input->post('telefone1')==null)||($this->input->post('telefone2')==null)){
+      if(($this->input->post('nomeentidade')==null)||($this->input->post('cpf_cnpj')==null)||($this->input->post('cpf/cnpj')==null)||($this->input->post('contato')==null)||($this->input->post('email')==null)||($this->input->post('porcentagemganhodigital')==null)||( $this->input->post('porcentagemganhofisico')==null)||($this->input->post('identificacao')==null)||($this->input->post('telefone1')==null)||($this->input->post('telefone2')==null)){
           $this->session->set_flashdata('aviso','campo_vazio');
           redirect('favorecido/mostrar_cadastro');
       }
         if ($this->input->post('cpf/cnpj')=="cpf"){
             $validade_cpf=$this->validar_cpf($this->input->post('cpf_cnpj'));
             if($validade_cpf==FALSE){
-              $this->session->set_flashdata('aviso','cnpj_invalido');
+              $this->session->set_flashdata('aviso','cpf_invalido');
               redirect('favorecido/mostrar_cadastro');
             }
         }
@@ -124,6 +124,7 @@
               'percentual_digital' => $this->input->post('porcentagemganhodigital') ,
               'percentual_fisico' => $this->input->post('porcentagemganhofisico') ,
               'idTipo_Entidade' => $this->input->post('identificacao'),
+              'favorecido' => 1 ,
           );
           $id_entidade=$this->Entidade_model->cadastrar_entidade($entidade);//coloca os telefones
           $telefone = array(
