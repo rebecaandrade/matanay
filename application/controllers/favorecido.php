@@ -84,22 +84,22 @@
     
     public function cadastrar(){
       //TESTE DOS CAMPOS, Sim, estupido para caralho, deve ter outro jeito para fazer isso, mais estou sem tempo
-      if(($this->input->post('nomeentidade')==null)||($this->input->post('cpf_cnpj')==null)||($this->input->post('contato')==null)||($this->input->post('email')==null)||($this->input->post('porcentagemganhodigital')==null)||( $this->input->post('porcentagemganhofisico')==null)||($this->input->post('favorecido')==null)||($this->input->post('identificacao')==null)||($this->input->post('telefone1')==null)||($this->input->post('telefone2')==null)){
+      if(($this->input->post('nomeentidade')==null)||($this->input->post('cpf_cnpj')==null)||($this->input->post('contato')==null)||($this->input->post('email')==null)||($this->input->post('porcentagemganhodigital')==null)||( $this->input->post('porcentagemganhofisico')==null)||($this->input->post('identificacao')==null)||($this->input->post('telefone1')==null)||($this->input->post('telefone2')==null)){
           $this->session->set_flashdata('aviso','campo_vazio');
-          redirect('Entidade/mostrar_cadastro');
+          redirect('favorecido/mostrar_cadastro');
       }
         if ($this->input->post('cpf/cnpj')=="cpf"){
             $validade_cpf=$this->validar_cpf($this->input->post('cpf_cnpj'));
             if($validade_cpf==FALSE){
               $this->session->set_flashdata('aviso','cnpj_invalido');
-              redirect('Entidade/mostrar_cadastro');
+              redirect('favorecido/mostrar_cadastro');
             }
         }
         if ($this->input->post('cpf/cnpj')=="cpnj"){
             $validade_cnpj=$this->validar_cpnj($this->input->post('cpf_cnpj'));
             if($validade_cnpj==FALSE){
               $this->session->set_flashdata('aviso','cnpj_invalido');
-              redirect('Entidade/mostrar_cadastro');
+              redirect('favorecido/mostrar_cadastro');
 
             } 
         }
@@ -116,8 +116,6 @@
             $erro["heading"] ="ERRO!!";
             $this->load->view('errors/html/error_general', $erro);///EU SEI QUE NAO ROLA DE DEIXAR ISSO DESSA FORMA
         }*/
-
-        if ($this->input->post('favorecido')){//se for favorecido coloca no banco o que eh pego no form sobre favorecido
           $entidade = array(//recebe do form as informacoes da entidade
               'nome' => $this->input->post('nomeentidade') ,
               'cpf_cnpj' => $this->input->post('cpf_cnpj') ,
@@ -125,7 +123,6 @@
               'email' => $this->input->post('email') ,
               'percentual_digital' => $this->input->post('porcentagemganhodigital') ,
               'percentual_fisico' => $this->input->post('porcentagemganhofisico') ,
-              'favorecido' => $this->input->post('favorecido') ,
               'idTipo_Entidade' => $this->input->post('identificacao'),
           );
           $id_entidade=$this->Entidade_model->cadastrar_entidade($entidade);//coloca os telefones
@@ -147,8 +144,7 @@
               );
           $idfavorecidos=$this->Entidade_model->cadastrar_favorecido($favorecido);
           $this->session->set_flashdata('sucesso', 'cadastro_realizado');
-          redirect('Entidade/mostrar_cadastro');
-        } 
+          redirect('Favorecido/mostrar_cadastro');
     }
     
     public function listar(){

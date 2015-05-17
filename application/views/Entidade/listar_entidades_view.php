@@ -39,3 +39,4 @@ $this->load->view('_include/header') ?>
         <?php } ?>
 
         </div>
+        <?php $this->load->view('_include/footer') ?>
