@@ -91,7 +91,7 @@
         if ($this->input->post('cpf/cnpj')=="cpf"){
             $validade_cpf=$this->validar_cpf($this->input->post('cpf_cnpj'));
             if($validade_cpf==FALSE){
-              $this->session->set_flashdata('aviso','cnpj_invalido');
+              $this->session->set_flashdata('aviso','cpf_invalido');
               redirect('favorecido/mostrar_cadastro');
             }
         }
@@ -124,6 +124,7 @@
               'percentual_digital' => $this->input->post('porcentagemganhodigital') ,
               'percentual_fisico' => $this->input->post('porcentagemganhofisico') ,
               'idTipo_Entidade' => $this->input->post('identificacao'),
+              'favorecido' => 1 ,
           );
           $id_entidade=$this->Entidade_model->cadastrar_entidade($entidade);//coloca os telefones
           $telefone = array(
