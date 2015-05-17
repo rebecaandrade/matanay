@@ -1,71 +1,110 @@
-<div>
-    <?php if ($flag=="ingles"){ $flag1=1;?><h4>Register Entity</h4><?php }else{ $flag1=0;?><h4>Cadastrar Entidade</h4><?php  } ?>
+<?php /*FEITO POR MIM, JADIEL*/
 
-    <?php echo form_open('/entidade/cadastrar')?>
-        <?php if (isset($variavel)){echo $variavel;}?><br>
-        <table>
-            <tr>
-                <td><span><?php if ($flag=="ingles"){?>Name of the Entity<?php }else{ ?>Nome da Entidade<?php  } ?>: </span></td>
-                <td><input class="nome" type="text" value="" name="nomeentidade" ><br></td>
-            </tr>
-            <tr>
-                <td><span>CPF<input class="nome" type="radio" value="cpf" name="cpf/cnpj" >CNPJ<input class="nome" type="radio" value="cpnj" name="cpf/cnpj" >:  </span></td>
-                <td><input class="nome" type="text" value="" name="cpf_cnpj" ><br>    </td>
-            </tr>
-            <tr>
-                <td><span><?php if ($flag=="ingles"){?>Telephone number<?php }else{ ?>Numero para contato<?php  } ?>: </span></td>
-                <td><input class="nome" type="text" value="" name="telefone1" ><br></td>
-            </tr> 
-            <tr>
-                <td><span><?php if ($flag=="ingles"){?>Alternative telephone number<?php }else{ ?>Numero para contato alternativo<?php  } ?>: </span></td>
-                <td><input class="nome" type="text" value="" name="telefone2" ><br></td>
-            </tr>
-            <tr>
-                <td><span><?php if ($flag=="ingles"){?>One to be contacted<?php }else{ ?>Pessoa a ser contatada<?php  } ?>: </span></td>
-                <td><input class="nome" type="text" value="" name="contato" ><br></td>
-            </tr>
-            <tr>
-                <td><span><?php if ($flag=="ingles"){?>One's email<?php }else{ ?>Email do contato<?php  } ?>: </span></td>
-                <td><input class="nome" type="text" value="" name="email" ><br></td>
-            </tr>
-            <tr>
-                <td><span><?php if ($flag=="ingles"){?>Percentage of gain with phisical media<?php }else{ ?>Percentual de ganho com midia fisica<?php  } ?>: </span></td>
-                <td><input class="nome" type="text" value="" name="porcentagemganhofisico" ><br></td>
-            </tr>
-            <tr>
-                <td><span><?php if ($flag=="ingles"){?>Percentage of gain with digital media<?php }else{ ?>Percentual de ganho com midia digital<?php  } ?>: </span></td>
-                <td><input class="nome" type="text" value="" name="porcentagemganhodigital" ><br></td>
-            </tr>
-            <tr>
-                <td><span><?php if ($flag=="ingles"){?>Is it a Favored?<?php }else{ ?>Eh um Favorecido?<?php  } ?> </span></td>
-                <td><?php if ($flag=="ingles"){?>Yes<?php }else{ ?>Sim<?php  } ?><input class="nome" type="radio" value="1" name="favorecido" ><?php if ($flag=="ingles"){?>No<?php }else{ ?>Nao<?php  } ?><input class="nome" type="radio" value="0" name="favorecido" ><br></td>
-            </tr>
-            <tr>
-                <td><span><?php if ($flag=="ingles"){?>Identification<?php }else{ ?>Identificacao<?php  } ?>: </span></td>
-                <td>
-                    <select name="identificacao">
-                    <?php if ($flag=="ingles"){?><option value=1 >Artist</option><?php }else{ ?><option value=1 >Artista</option>
-                    <?php  } ?><?php if ($flag=="ingles"){?><option value=2 >Autor</option><?php }else{ ?><option value=2 >Autor</option>
-                    <?php  } ?><?php if ($flag=="ingles"){?><option value=3 >Producer</option><?php }else{ ?><option value=3 >Produtor</option><?php  } ?><br>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><span><?php if ($flag=="ingles"){?>Bank<?php }else{ ?>Banco<?php  } ?>: </span></td>
-                <td><input class="nome" type="text" value="" name="banco" ><br></td>
-            </tr>
-            <tr>
-                <td><span><?php if ($flag=="ingles"){?>Checking account<?php }else{ ?>Conta corrente<?php  } ?>: </span></td>
-                <td><input class="nome" type="text" value="" name="contacorrente" ><br></td>
-            </tr>
-            <tr>
-                <td><span><?php if ($flag=="ingles"){?>Bank Branch<?php }else{ ?>Agencia bancaria<?php  } ?>: </span></td>
-                <td><input class="nome" type="text" value="" name="agencia" ><br></td>
-            </tr>
-            <tr>
-                <td ></td>
-                <td colspan="2"><input  class="botoes1" type="submit" value="Enviar"><br></td>
-            </tr>
-        </table>
-    <?php form_close() ?>
+$this->load->view('_include/header') ?>
+    
+    
+    <!--<div class="aviso_entidade"><?php if($this->session->flashdata('sucesso')!=null){echo $this->session->flashdata('sucesso');} ?></div class="row">-->
+    <div class="container">
+        
+        <div class="row">
+            <?php echo form_open('/Favorecido/cadastrar')?>
+                <?php if (isset($variavel)){echo $variavel;}?><br>
+                <div class="row">
+                    <div class="aviso_entidade"><?php if($this->session->flashdata('sucesso')!=null){echo $this->lang->line($this->session->flashdata('sucesso'));} ?></div>
+                    <div class="aviso_entidade"><?php if($this->session->flashdata('aviso')!=null){echo $this->lang->line($this->session->flashdata('aviso'));} ?></div>
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <i class="mdi-action-assignment-ind prefix"></i>
+                        <input  id="icon-prefix" required type="text" value="" name="nomeentidade" ><br>
+                        <label><?php echo $this->lang->line('nome_entidade'); ?></label>
+                    </div>
+                </div>
+                <div class="row"><!--a paradinha de dizer se eh CPF ou CNPJ-->
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label>CPF/CNPJ</label>
+                        <input class="nome" required type="text" value="" name="cpf_cnpj" ><br>    
+                     </div>
+                     <div class="switch col s6 offset-s6 m3 l2">
+                        <p>
+                          <input  type="radio" value="cpf" name="cpf/cnpj" id="test1" />
+                          <label for="test1">CPF</label>
+
+                          <input  type="radio" value="cpnj" name="cpf/cnpj" id="test2" />
+                          <label for="test2">CNPJ</label>
+                        </p>
+                    </div>
+                        
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label><?php echo $this->lang->line('telefone'); ?></label>
+                        <input class="nome" required type="text" value="" name="telefone1" ><br>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label><?php echo $this->lang->line('telefone_alternativo'); ?></label>
+                        <input class="nome" required type="text" value="" name="telefone2" ><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label><?php echo $this->lang->line('contato'); ?></label>
+                        <input class="nome" required type="text" value="" name="contato" ><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label><?php echo $this->lang->line('email'); ?></label>
+                        <input class="nome" required type="text" value="" name="email" ><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label><?php echo $this->lang->line('percentual_fisico'); ?></label>
+                        <input class="nome" required type="text" value="" name="porcentagemganhofisico" ><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label><?php echo $this->lang->line('percentual_digital'); ?></label>
+                        <input class="nome" required type="text" value="" name="porcentagemganhodigital" ><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <select name="identificacao" >
+                            <option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
+                            <option value=1 ><?php echo $this->lang->line('artista'); ?></option>
+                            <option value=2 ><?php echo $this->lang->line('autor'); ?></option>
+                            <option value=3 ><?php echo $this->lang->line('produtor'); ?></option><br>
+                        </select>
+                        <label><?php echo $this->lang->line('identificacao'); ?></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                    <label><?php echo $this->lang->line('banco'); ?></label>
+                    <input class="nome" required type="text" value="" name="banco" ><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                    <label><?php echo $this->lang->line('conta'); ?></label>
+                    <input class="nome" required type="text" value="" name="contacorrente" ><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                    <label><?php echo $this->lang->line('agencia'); ?></label>
+                    <input class="nome" required type="text" value="" name="agencia" ><br>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
+                <i class="mdi-content-send right"></i>
+                </button> 
+            <?php form_close() ?>
+        </div>
+    </div>
 </div>
+
+    <?php $this->load->view('_include/footer') ?>

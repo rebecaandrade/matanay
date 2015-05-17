@@ -32,3 +32,18 @@ $(document).ready(function(){
     });
   });
 
+
+
+$(document).ready(function(){
+        $('input[type="radio"]').click(function(){
+            if($(this).attr("value")=="0"){
+                $("#favorecido").hide();
+                $("#nao_favorecido").show();
+            }
+            if($(this).attr("value")=="1"){
+                $("#nao_favorecido").hide();
+                $("#favorecido").show();
+            }
+        });
+    });
+

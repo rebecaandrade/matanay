@@ -26,3 +26,17 @@ $(document).ready(function() {
         selectYears: 15 // Creates a dropdown of 15 years to control year
     });
 });
+
+
+$(document).ready(function(){
+        $('input[type="radio"]').click(function(){
+            if($(this).attr("value")=="0"){
+                $("#favorecido").hide();
+                $("#nao_favorecido").show();
+            }
+            if($(this).attr("value")=="1"){
+                $("#nao_favorecido").hide();
+                $("#favorecido").show();
+            }
+        });
+    });

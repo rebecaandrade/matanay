@@ -1,91 +1,144 @@
-<?php $this->load->view('_include/header') ?>
-        <div class="circulo"><img src="<?php echo base_url().'complemento/img/entity.png' ?>"></div>
-    <?php $teste=0;echo $this->lang->line('entitys'); ?>
-    <div class="dados_entidade">
+<?php /*FEITO POR MIM, JADIEL*/
 
-        <?php echo form_open('/ENTIDADE/cadastrar')?>
-            <?php if (isset($variavel)){echo $variavel;}?><br>
-            <table>
-                <tr>
-                    <td><span><?php echo $this->lang->line('nome_entidade'); ?>: </span></td>
-                    <td><input class="nome" required type="text" value="" name="nomeentidade" ><br></td>
-                </tr>
-                <tr>
-                    <td><span>CPF<input class="nome" required type="radio" value="cpf" name="cpf/cnpj" >CNPJ<input class="nome" required type="radio" value="cpnj" name="cpf/cnpj" >:  </span></td>
-                    <td><input class="nome" required type="text" value="" name="cpf_cnpj" ><br>    </td>
-                </tr>
-                <tr>
-                    <td><span><?php echo $this->lang->line('telefone'); ?>: </span></td>
-                    <td><input class="nome" required type="text" value="" name="telefone1" ><br></td>
-                </tr> 
-                <tr>
-                    <td><span><?php echo $this->lang->line('telefone_alternativo'); ?>: </span></td>
-                    <td><input class="nome" required type="text" value="" name="telefone2" ><br></td>
-                </tr>
-                <tr>
-                    <td><span><?php echo $this->lang->line('contato'); ?>: </span></td>
-                    <td><input class="nome" required type="text" value="" name="contato" ><br></td>
-                </tr>
-                <tr>
-                    <td><span><?php echo $this->lang->line('email'); ?>: </span></td>
-                    <td><input class="nome" required type="text" value="" name="email" ><br></td>
-                </tr>
-                <tr>
-                    <td><span><?php echo $this->lang->line('percentual_fisico'); ?>: </span></td>
-                    <td><input class="nome" required type="text" value="" name="porcentagemganhofisico" ><br></td>
-                </tr>
-                <tr>
-                    <td><span><?php echo $this->lang->line('percentual_digital'); ?>: </span></td>
-                    <td><input class="nome" required type="text" value="" name="porcentagemganhodigital" ><br></td>
-                </tr>
-                <tr>
-                    <td><span><?php echo $this->lang->line('eh_favorecido'); ?> </span></td>
-                    <td><?php echo $this->lang->line('sim'); ?><input class="nome" required type="radio" value="1" name="favorecido" ><?php echo $this->lang->line('nao'); ?><input class="nome" required type="radio" value="0" name="favorecido" ><br></td>
-                </tr>
-                <tr>
-                    <td><span><?php echo $this->lang->line('identificacao'); ?>: </span></td>
-                    <td>
-                        <select name="identificacao" required>
-                                    <option value="" disabled selected> ------- <?php echo $this->lang->line('selecione');?> ------- </option>
-                        <option value=1 ><?php echo $this->lang->line('artista'); ?></option>
-                        <option value=2 ><?php echo $this->lang->line('autor'); ?></option>
-                        <option value=3 ><?php echo $this->lang->line('produtor'); ?></option><br>
+$this->load->view('_include/header') ?>
+    
+    <br>
+    <br>
+    <!--<div class="aviso_entidade"><?php if($this->session->flashdata('sucesso')!=null){echo $this->session->flashdata('sucesso');} ?></div class="row">-->
+    <div class="container">
+        
+        <div class="row">
+            <?php echo form_open('/Entidade/cadastrar')?>
+                <?php if (isset($variavel)){echo $variavel;}?><br>
+                <div class="row">
+                    <div class="aviso_entidade"><?php if($this->session->flashdata('sucesso')!=null){echo $this->lang->line($this->session->flashdata('sucesso'));} ?></div>
+                    <div class="aviso_entidade"><?php if($this->session->flashdata('aviso')!=null){echo $this->lang->line($this->session->flashdata('aviso'));} ?></div>
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <i class="mdi-action-assignment-ind prefix"></i>
+                        <input  id="icon-prefix" required type="text" value="" name="nomeentidade" ><br>
+                        <label><?php echo $this->lang->line('nome_entidade'); ?></label>
+                    </div>
+                     <!--a paradinha de dizer se eh favorecido-->
+                    <div class="switch col s6 offset-s6 m3 l2">
+                        <?php echo $this->lang->line('eh_favorecido'); ?>
+                        <p>
+                          <input  type="radio" value="1" name="favorecido" id="test3" />
+                          <label for="test3"><?php echo $this->lang->line('sim'); ?></label>
+
+                          <input   type="radio" value="0" name="favorecido" id="test4" />
+                          <label for="test4"><?php echo $this->lang->line('nao'); ?></label>
+                        </p>
+                    </div>
+                </div>
+                <div class="row"><!--a paradinha de dizer se eh CPF ou CNPJ-->
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label>CPF/CNPJ</label>
+                        <input class="nome" required type="text" value="" name="cpf_cnpj" ><br>    
+                     </div>
+                     <div class="switch col s6 offset-s6 m3 l2">
+                        <p>
+                          <input  type="radio" value="cpf" name="cpf/cnpj" id="test1" />
+                          <label for="test1">CPF</label>
+
+                          <input  type="radio" value="cpnj" name="cpf/cnpj" id="test2" />
+                          <label for="test2">CNPJ</label>
+                        </p>
+                    </div>
+                        
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label><?php echo $this->lang->line('telefone'); ?></label>
+                        <input class="nome" required type="text" value="" name="telefone1" ><br>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label><?php echo $this->lang->line('telefone_alternativo'); ?></label>
+                        <input class="nome" required type="text" value="" name="telefone2" ><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label><?php echo $this->lang->line('contato'); ?></label>
+                        <input class="nome" required type="text" value="" name="contato" ><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label><?php echo $this->lang->line('email'); ?></label>
+                        <input class="nome" required type="text" value="" name="email" ><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label><?php echo $this->lang->line('percentual_fisico'); ?></label>
+                        <input class="nome" required type="text" value="" name="porcentagemganhofisico" ><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label><?php echo $this->lang->line('percentual_digital'); ?></label>
+                        <input class="nome" required type="text" value="" name="porcentagemganhodigital" ><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <select name="identificacao" >
+                            <option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
+                            <option value=1 ><?php echo $this->lang->line('artista'); ?></option>
+                            <option value=2 ><?php echo $this->lang->line('autor'); ?></option>
+                            <option value=3 ><?php echo $this->lang->line('produtor'); ?></option><br>
                         </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span><?php echo $this->lang->line('banco'); ?>: </span></td>
-                    <td><input class="nome" required type="text" value="" name="banco" ><br></td>
-                </tr>
-                <tr>
-                    <td><span><?php echo $this->lang->line('conta'); ?>: </span></td>
-                    <td><input class="nome" required type="text" value="" name="contacorrente" ><br></td>
-                </tr>
-                <tr>
-                    <td><span><?php echo $this->lang->line('agencia'); ?>: </span></td>
-                    <td><input class="nome" required type="text" value="" name="agencia" ><br></td>
-                </tr>
-                <?php if (($dadofavorecido!=null)&&($dadoentidade!=null)){?><tr>
-                    <td><span><?php echo $this->lang->line('favorecido_cadastrado'); ?>: </span></td>
-                    <td>
-                        <select name="favorecidorelacionado" >
-                        <option value="" disabled selected> ------- <?php echo $this->lang->line('selecione');?> ------- </option>
-                        <?php foreach ($dadoentidade as $row){//verifica se a entidade ja foi cadastrada como favorecido
-                            
-                            foreach($dadofavorecido as $row1){
-                                if (($row->idEntidade)==($row1->Entidade_idEntidade)){  ?>
-                                    <option value= _<?php echo $row->idEntidade;?>><?php echo $row->nome;?></option>
-                        <?php }}}} ?>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td ></td>
-                    <td colspan="2"><input  class="botoes1" required type="submit" value="<?php echo $this->lang->line('cadastrar'); ?>"><br></td>
-                </tr>
-            </table>
-        <?php form_close() ?>
+                        <label><?php echo $this->lang->line('identificacao'); ?></label>
+                    </div>
+                </div>
+                <div id="favorecido" class="box">
+                    <div class="row">
+                        <div class="input-field col s12 m12 l8 offset-l2">
+                            <label><?php echo $this->lang->line('banco'); ?></label>
+                            <input class="nome" required type="text" value="" name="banco" ><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l8 offset-l2">
+                            <label><?php echo $this->lang->line('conta'); ?></label>
+                            <input class="nome" required type="text" value="" name="contacorrente" ><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l8 offset-l2">
+                            <label><?php echo $this->lang->line('agencia'); ?></label>
+                            <input class="nome" required type="text" value="" name="agencia" ><br>
+                        </div>
+                    </div>
+                </div>
+                <div id="nao_favorecido" class="box">
+                    <?php if (($dadofavorecido!=null)&&($dadoentidade!=null)){?>
+                        <div class="row">
+                            <div class="input-field col s12 m12 l8 offset-l2">
+                                <select name="favorecidorelacionado" >
+                                    <option value="" disabled selected> <?php echo $this->lang->line('favorecido_cadastrado');?> </option>
+                                    <?php foreach ($dadoentidade as $row){//verifica se a entidade ja foi cadastrada como favorecido
+                                        foreach($dadofavorecido as $row1){
+                                            if (($row->idEntidade)==($row1->Entidade_idEntidade)){  ?>
+                                                <option value= _<?php echo $row->idEntidade;?>><?php echo $row->nome;?></option>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    <?php } ?>
+                                </select>
+                                <label><?php echo $this->lang->line('favorecido_cadastrado'); ?></label>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+                <button name="botao" class="btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
+                <i class="mdi-content-send right"></i>
+                </button> 
+            <?php form_close() ?>
+        </div>
     </div>
 </div>
 
     <?php $this->load->view('_include/footer') ?>
+

@@ -2204,7 +2204,7 @@ thead {
 td, th {
   padding: 15px 5px;
   display: table-cell;
-  text-align: left;
+  text-align: center;
   vertical-align: middle;
   border-radius: 2px; }
 
@@ -6270,8 +6270,8 @@ textarea {
 
 [type="radio"]:checked + label:after {
   border-radius: 50%;
-  border: 2px solid #26a69a;
-  background-color: #26a69a;
+  border: 2px solid #E3E14C;
+  background-color: #E3E14C;
   z-index: 0;
   -webkit-transform: scale(1.02);
   -moz-transform: scale(1.02);

@@ -1,7 +1,18 @@
-<?php $this->load->view('_include/header') ?>
-    <div class="circulo"><img src="<?php echo base_url().'complemento/img/entity.png' ?>"></div>
+<?php /*FEITO POR MIM JADIEL*/
+$this->load->view('_include/header') ?>
     
-    <div class="dados_entidade">        
+    <br>
+    <br>    
+        
+    <div class="container"> 
+    <br>   
+        <div class="row">
+            <a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro">
+                <button class="btn waves-effect waves-light col s12 m12 l8 offset-l2"> <?php echo $this->lang->line('cadastrar_entidade'); ?>
+                </button> 
+            </a>
+        </div>    
+        <br>
         <?php echo $this->lang->line('entitys'); ?>
         <?php if ($dadoentidade!=NULL){?>
             <table id="tabela_listagem">

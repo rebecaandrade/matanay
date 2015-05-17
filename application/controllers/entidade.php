@@ -1,4 +1,4 @@
-<?php 
+<?php /*FEITO POR MIM JADIEL*/
 
   class Entidade extends CI_Controller {  
 
@@ -11,7 +11,7 @@
     public function index(){
 
       $this->listar();
-      $sucesso=null;
+
       //$this->mostrar_cadastro($sucesso);
         
       } 
@@ -86,20 +86,23 @@
     }
     
     public function cadastrar(){
+      //TESTE DOS CAMPOS, Sim, estupido para caralho, deve ter outro jeito para fazer isso, mais estou sem tempo
+      if(($this->input->post('nomeentidade')==null)||($this->input->post('cpf_cnpj')==null)||($this->input->post('contato')==null)||($this->input->post('email')==null)||($this->input->post('porcentagemganhodigital')==null)||( $this->input->post('porcentagemganhofisico')==null)||($this->input->post('favorecido')==null)||($this->input->post('identificacao')==null)||($this->input->post('telefone1')==null)||($this->input->post('telefone2')==null)){
+          $this->session->set_flashdata('aviso','campo_vazio');
+          redirect('Entidade/mostrar_cadastro');
+      }
         if ($this->input->post('cpf/cnpj')=="cpf"){
             $validade_cpf=$this->validar_cpf($this->input->post('cpf_cnpj'));
             if($validade_cpf==FALSE){
-              $erro["message"]="CPF imválido!!"; 
-              $erro["heading"] ="ERRO!!";
-              $this->load->view('errors/html/error_general', $erro);////EU SEI QUE NAO ROLA DE DEIXAR ISSO DESSA FORMA
+              $this->session->set_flashdata('aviso','cpf_invalido');
+              redirect('Entidade/mostrar_cadastro');
             }
         }
         if ($this->input->post('cpf/cnpj')=="cpnj"){
             $validade_cnpj=$this->validar_cpnj($this->input->post('cpf_cnpj'));
             if($validade_cnpj==FALSE){
-              $erro["message"]="CNPJ imválido!!";  
-              $erro["heading"] ="ERRO!!";
-              $this->load->view('errors/html/error_general', $erro);////EU SEI QUE NAO ROLA DE DEIXAR ISSO DESSA FORMA
+              $this->session->set_flashdata('aviso','cnpj_invalido');
+              redirect('Entidade/mostrar_cadastro');
 
             } 
         }
@@ -117,44 +120,38 @@
             $this->load->view('errors/html/error_general', $erro);///EU SEI QUE NAO ROLA DE DEIXAR ISSO DESSA FORMA
         }*/
 
-        if ($erro==null){
-            if ($this->input->post('favorecido')){//se for favorecido coloca no banco o que eh pego no form sobre favorecido
-              $entidade = array(//recebe do form as informacoes da entidade
-                  'nome' => $this->input->post('nomeentidade') ,
-                  'cpf_cnpj' => $this->input->post('cpf_cnpj') ,
-                  'contato' => $this->input->post('contato') ,
-                  'email' => $this->input->post('email') ,
-                  'percentual_digital' => $this->input->post('porcentagemganhodigital') ,
-                  'percentual_fisico' => $this->input->post('porcentagemganhofisico') ,
-                  'favorecido' => $this->input->post('favorecido') ,
-                  'idTipo_Entidade' => $this->input->post('identificacao'),
+        if ($this->input->post('favorecido')){//se for favorecido coloca no banco o que eh pego no form sobre favorecido
+          $entidade = array(//recebe do form as informacoes da entidade
+              'nome' => $this->input->post('nomeentidade') ,
+              'cpf_cnpj' => $this->input->post('cpf_cnpj') ,
+              'contato' => $this->input->post('contato') ,
+              'email' => $this->input->post('email') ,
+              'percentual_digital' => $this->input->post('porcentagemganhodigital') ,
+              'percentual_fisico' => $this->input->post('porcentagemganhofisico') ,
+              'favorecido' => $this->input->post('favorecido') ,
+              'idTipo_Entidade' => $this->input->post('identificacao'),
+          );
+          $id_entidade=$this->Entidade_model->cadastrar_entidade($entidade);//coloca os telefones
+          $telefone = array(
+                'idEntidade'=>$id_entidade,
+                'numero'=>$this->input->post('telefone1')
+               );
+          $this->Entidade_model->cadastrar_telefone($telefone);//coloca os telefones
+          $telefone = array(
+                'idEntidade'=>$id_entidade,
+                'numero'=>$this->input->post('telefone2')
               );
-              $id_entidade=$this->Entidade_model->cadastrar_entidade($entidade);//coloca os telefones
-
-              $telefone = array(
-                    'idEntidade'=>$id_entidade,
-                    'numero'=>$this->input->post('telefone1')
-                   );
-              $this->Entidade_model->cadastrar_telefone($telefone);//coloca os telefones
-              $telefone = array(
-                    'idEntidade'=>$id_entidade,
-                    'numero'=>$this->input->post('telefone2')
-                   );
-              $this->Entidade_model->cadastrar_telefone($telefone);
-              $favorecido= array(
-                  'Entidade_idEntidade'=>$id_entidade,
-                  'banco'=>$this->input->post('banco'),
-                  'agencia'=>$this->input->post('agencia'),
-                  'conta'=>$this->input->post('contacorrente')
-                  );
-              $idfavorecidos=$this->Entidade_model->cadastrar_favorecido($favorecido);
-              $sucesso="Cadastro realizado com sucesso";
-              $this->mostrar_cadastro($sucesso);
-            }  
-        }
-               
-
-        
+          $this->Entidade_model->cadastrar_telefone($telefone);
+          $favorecido= array(
+              'Entidade_idEntidade'=>$id_entidade,
+              'banco'=>$this->input->post('banco'),
+              'agencia'=>$this->input->post('agencia'),
+              'conta'=>$this->input->post('contacorrente')
+              );
+          $idfavorecidos=$this->Entidade_model->cadastrar_favorecido($favorecido);
+          $this->session->set_flashdata('sucesso', 'cadastro_realizado');
+          redirect('Entidade/mostrar_cadastro');
+        } 
     }
     
     public function listar(){
@@ -164,8 +161,14 @@
     }
     
     public function camposatualizacao(){
-      
+        if($this->session->flashdata('id')!=null){
+            $id=$this->session->flashdata('id');
+        }
+        else
         $id=$this->input->get('id');
+      if ($id==null)
+        redirect('entidade/listar');
+
         $dados['dadosentidade']= $this->Entidade_model->buscar_entidade_especifica($id);
         $dados['dadosfavorecido']= $this->Favorecido_model->buscar_favorecido_especifica($id);
         $rowtelefone=0;
@@ -178,6 +181,29 @@
     }
 
     public function atualizar(){
+      //TESTE DOS CAMPOS, Sim, estupido para caralho, deve ter outro jeito para fazer isso, mais estou sem tempo
+      if(($this->input->post('nome')==null)||($this->input->post('cpf_cnpj')==null)||($this->input->post('contato')==null)||($this->input->post('email')==null)||($this->input->post('percentual_digital')==null)||( $this->input->post('percentual_fisico')==null)||($this->input->post('identificacao')==null)||($this->input->post('telefone1')==null)||($this->input->post('telefone2')==null)){
+          $this->session->set_flashdata('aviso','campo_vazio');
+          $this->session->set_flashdata('id', $this->input->post('idEntidade'));
+          redirect('Entidade/camposatualizacao');
+      }
+        if ($this->input->post('cpf/cnpj')=="cpf"){
+            $validade_cpf=$this->validar_cpf($this->input->post('cpf_cnpj'));
+            if($validade_cpf==FALSE){
+              $this->session->set_flashdata('aviso','cpf_invalido');
+              $this->session->set_flashdata('id', $this->input->post('idEntidade'));
+              redirect('Entidade/camposatualizacao');
+            }
+        }
+        if ($this->input->post('cpf/cnpj')=="cpnj"){
+            $validade_cnpj=$this->validar_cpnj($this->input->post('cpf_cnpj'));
+            if($validade_cnpj==FALSE){
+              $this->session->set_flashdata('aviso','cnpj_invalido');
+              $this->session->set_flashdata('id', $this->input->post('idEntidade'));
+              redirect('Entidade/camposatualizacao');
+
+            } 
+        }
         $entidade = array(//recebe do form as informacoes da entidade
                 'idEntidade'=> $this->input->post('idEntidade') ,
                 'nome' => $this->input->post('nome') ,
@@ -211,7 +237,7 @@
             'conta'=>$this->input->post('conta')
             );
         $erro[1]=$this->Entidade_model->atualizar_favorecido($favorecido);
-        $sucesso="Atualizacao realizado com sucesso";
+        $sucesso="Atualizacao realizado com sucesso!!";
         $this->index();
 
     }

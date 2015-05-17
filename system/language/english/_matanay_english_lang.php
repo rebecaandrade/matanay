@@ -38,7 +38,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ////// GERAL
-
+$lang['ingles']			= 'English';
+$lang['portugues']			= 'Portuguese';
 $lang['deletar']			= 'delete';
 $lang['editar']				= 'edit';
 $lang['acao']				= 'Action';
@@ -65,6 +66,8 @@ $lang['faixas'] 			= 'TRACKS';
 $lang['videos'] 			= 'VIDEOS';
 $lang['albums'] 			= 'ALBUMS';
 $lang['entidades'] 			= 'ENTITYS';
+$lang['favorecido']	='FAVORED';
+$lang['imposto']	='TAX';
 
 ////// FAIXAS ////// Evandro
 
@@ -95,7 +98,7 @@ $lang['moeda_cadastrar']	= 'Register';
 $lang['moeda_erro_listar']	= 'No currency registered';
 
 
-/////ENTIDADES
+/////ENTIDADES  Jadiel
 $lang['entidade'] = 'Entity';
 $lang['nome_entidade']				= 'Name of the Entity';		
 $lang['cpf_cnpj']			= 'ID';
@@ -115,6 +118,24 @@ $lang['autor']	='Author';
 $lang['produtor']	='Producer';
 $lang['eh_favorecido']	='Is it a favored?';
 $lang['favorecido_cadastrado']	='Registed favoreds';
+$lang['cadastro_realizado']='The Entity was successfully registered!';
+$lang['campo_vazio']='One shall not leave an empty field!';
+$lang['cnpj_invalido']='Invalid CNPJ';
+$lang['cpf_invalido']='Invalid CPF';
+$lang['cadastrar_entidade']='Register a new Entity!';
+
+
+
+//IMPOSTO JADIEL
+$lang['imposto_nome']='Name of the Tax';
+$lang['valor']='Value';
+
+
+
+
+
+
+
 
 //cliente
 $lang['perfis'] = 'Profiles';

@@ -39,6 +39,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ////// GERAL
 
+$lang['ingles']			= 'Ingles';
+$lang['portugues']			= 'Português';
 $lang['deletar']			= 'deletar';
 $lang['editar']				= 'editar';
 $lang['acao']				= 'ação';
@@ -64,6 +66,8 @@ $lang['sair'] 				= 'SAIR';
 $lang['faixas'] 			= 'FAIXAS';
 $lang['albums'] 			= 'ÁLBUMS';
 $lang['entidades'] 			= 'ENTIDADES';
+$lang['favorecido']	='FAVORECIDOS';
+$lang['imposto']	='IMPOSTO';
 
 ////// FAIXAS ////// Evandro
 
@@ -94,7 +98,7 @@ $lang['moeda_cadastrar']	= 'Cadastrar';
 $lang['moeda_erro_listar']	= 'Nenhuma moeda cadastrada';
 
 
-/////ENTIDADES
+/////ENTIDADES /*FEITO POR MIM JADIEL*/
 $lang['nome_entidade']='Nome da entidade';		
 $lang['cpf_cnpj']='CPF/CNPJ';
 $lang['telefone']	= 'Telefone';
@@ -118,8 +122,20 @@ $lang['delear']='Deletar';
 $lang['editar']='Editar';
 $lang['nao_ha_entidades']='Não há entidades cadastradas!';
 $lang['selecione']='Selecione';
+$lang['cadastro_realizado']='Cadastro Realizado!';
+$lang['campo_vazio']='Todos os campos devem ser preenxidos!';
+$lang['cnpj_invalido']='CNPJ inválido';
+$lang['cpf_invalido']='CPF inválido';
+$lang['cadastrar_entidade']='Cadastrar uma nova entidade!';
 
-//cliente
+
+//IMPOSTO JADIEL
+$lang['imposto_nome']='Nome do Imposto';
+$lang['valor']='Valor';
+
+
+
+//cliente 
 $lang['perfis'] = 'Perfis';
 $lang['cliente_nome'] = 'Nome';
 $lang['cliente_login'] = 'Login';
@@ -132,6 +148,6 @@ $lang['cliente_erro_listar'] = 'Nenhum cliente cadastrado';
 
 
 
-///////SIM OU NAO
+///////SIM OU NAO /*FEITO POR MIM JADIEL*/
 $lang['sim']	='Sim';
 $lang['nao']	='Não';

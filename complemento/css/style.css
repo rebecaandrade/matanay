@@ -5,6 +5,11 @@
 	padding: 0;
 }
 
+body{
+	height: 500px;
+	width: 100%;
+}
+
 html {
 	width: 100%;
 	height: 100%;
@@ -287,7 +292,14 @@ label {
 }
 
 
-/**************PAGINAS DAS ENTIADADES**********************/
+/**************PAGINAS DAS ENTIADADES Jadiel**********************/
+.box{
+	display: none;
+}
+
+.aviso_entidade{
+	text-align: center;
+}
 .dados_entidade label{
 	display: inline-block;
 	color: #222;
@@ -355,3 +367,12 @@ label {
 	text-align: center;
 }
 /**************FIM - PAGINAS DAS ENTIADADES**********************/
+
+
+
+/**********************Footer Jadiel****************/
+#footer{
+	height: 20%;
+	width: 100%;
+	display: inline-block;
+}

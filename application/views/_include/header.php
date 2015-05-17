@@ -62,10 +62,10 @@
       				<li><div class="collapsible-header"><a><?php echo $this->lang->line('cadastros'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><?php echo $this->lang->line('faixas'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><?php echo $this->lang->line('albums'); ?></a></div>
-      				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"><?php echo $this->lang->line('entidades'); ?></a></div>
-      				<div class="collapsible-body"><a href="#">Favorecido</a></div>
+      				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/entidade/listar"><?php echo $this->lang->line('entidades'); ?></a></div>
+      				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/favorecido/mostrar_cadastro"><?php echo $this->lang->line('favorecido'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a></div>
-      				<div class="collapsible-body"><a href="#">Imposto</a></div></li>
+      				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/imposto/mostrar_cadastro"><?php echo $this->lang->line('imposto'); ?></a></div></li>
       			</ul>
 
       			<li><a class="opcao-menu" href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
@@ -112,10 +112,10 @@
       				<?php if($this->session->userdata('sub_menu') == 2) { ?>
 		        		<li><a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><?php echo $this->lang->line('faixas'); ?></a></li>
 						<li><a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><?php echo $this->lang->line('albums'); ?></a></li>
-						<li><a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"><?php echo $this->lang->line('entidades'); ?></a></li>
-						<li><a href="#">FAVORECIDO</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/entidade/listar"><?php echo $this->lang->line('entidades'); ?></a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/favorecido/mostrar_cadastro"><?php echo $this->lang->line('favorecido'); ?></a></li>
 						<li><a href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a></li>
-						<li><a href="#">IMPOSTO</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/imposto/mostrar_cadastro"><?php echo $this->lang->line('imposto'); ?></a></li>
     				<?php } ?>
     		</div>
     	</div>
