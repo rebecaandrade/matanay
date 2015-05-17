@@ -30,7 +30,7 @@
 	        <div class="row">
 	          	<div class="input-field col s12 m9 l8 offset-l1">
 	            	<select>
-	              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
+	              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option> 
 	              		<?php
                 			if(isset($artistas)){
                     			foreach ($artistas as $artista) { ?>

@@ -29,7 +29,6 @@ html {
 #barra2 {
 	background-color: #777 !important;
 	box-shadow: 1px 1px 3px #777 !important;
-	
 	padding-right: 10% !important;
 }
 
@@ -45,6 +44,46 @@ html {
 
 #barra2 ul li a:hover {
 	color: #EEE !important;
+}
+
+#nav-lang {
+	color: #333 !important;
+	font-weight: 600 !important;
+	font-weight: bolder;
+	letter-spacing: 1px;
+	-webkit-appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	background: none;
+}
+
+#nav-lang .dropdown-content li > a, #nav-lang .dropdown-content li > span{
+	color: #444 !important;
+	font-family: "Titillium Web";
+	margin-left: 5%;
+}
+
+#nav-lang .select-wrapper input.select-dropdown {
+	border-color: -moz-use-text-color -moz-use-text-color #eee;
+}
+
+#menu-lang .select-wrapper input.select-dropdown{
+	opacity: 0 !important;
+	border-color: -moz-use-text-color -moz-use-text-color #E91717 !important;
+}
+
+.flag {
+	width: 20px;
+	height: auto;
+	margin-left: -30px;
+	z-index: 1;
+}
+
+.opcao-menu img {
+	width: 20px;
+	height: auto;
 }
 
 #sub_barra {
@@ -67,36 +106,9 @@ html {
 	opacity: 0.9;
 }
 
-#lingua {
-	margin-top: -4.5%;
-	margin-right: 0;
-	float: right;
-}
-
-#lingua select {
-	opacity: 0;
-	font-weight: bolder;
-	letter-spacing: 1px;
-	-webkit-appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	-ms-appearance: none;
-	appearance: none;
-	background: none;
-}
-
-#lingua option {
-	color: #DDD;
-	border: none;
-	text-align: right;
-	padding-right: 5px;
-	margin-right: 15px;
-}
-
 #titulo, #titulo label {
 	font-size: 3rem;
 }
-
 
 .logo {
 	float: left;

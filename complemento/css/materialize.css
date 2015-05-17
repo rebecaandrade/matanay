@@ -1576,7 +1576,7 @@
   color: #616161 !important; }
 
 .grey.darken-3 {
-  background-color: #333333 !important; }
+  background-color: #424242 !important; }
 
 .grey-text.text-darken-3 {
   color: #424242 !important; }
@@ -1708,7 +1708,8 @@ a {
  * Improve readability when focused and also mouse hovered in all browsers.
  */
 a:active, a:hover {
-  outline: 0; }
+  outline: 0;
+  color: #aaa; }
 
 /* Text-level semantics
    ========================================================================== */
@@ -5760,7 +5761,7 @@ button.btn-floating {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   vertical-align: middle;
-  z-index: 1;
+  z-index: 0;
   will-change: opacity, transform;
   -webkit-transition: all .3s ease-out;
   -moz-transition: all .3s ease-out;
@@ -5929,7 +5930,7 @@ a.waves-effect .waves-ripple {
   height: 3rem;
   line-height: 3rem;
   padding: 0 1rem;
-  background-color: #fff;
+  background-color: transparent;
   border-bottom: 1px solid #ddd; }
   .collapsible-header i {
     width: 2rem;
@@ -5939,6 +5940,10 @@ a.waves-effect .waves-ripple {
     float: left;
     text-align: center;
     margin-right: 1rem; }
+  .collapsible-header img {
+    width: 20px;
+    height: auto;
+  }
 
 .collapsible-body {
   overflow: hidden;
@@ -5951,6 +5956,22 @@ a.waves-effect .waves-ripple {
     padding-left: 2.7rem !important; }
   .collapsible-body a:hover {
     background-color: #eee; }
+
+.collapsible-body img {
+  width: 20px;
+  height: auto;
+  margin-left: 30px;
+}
+
+.collapsible-body input[type="submit"] {
+  font-family: "Titillium Web";
+  font-size: 1.3rem;
+  background: transparent;
+}
+
+.collapsible select {
+  color: #333 !important;
+}
 
 .side-nav .collapsible {
   border: none;
@@ -6541,6 +6562,39 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     .select-wrapper .mdi-navigation-arrow-drop-down.disabled {
       color: rgba(0, 0, 0, 0.26); }
   .select-wrapper + label {
+    position: absolute;
+    top: -14px;
+    font-size: 0.8rem; 
+    color: #777; }
+
+#lingua .select-wrapper {
+  position: relative;
+  width: 40px;
+  z-index: 2; }
+  #lingua .select-wrapper input.select-dropdown {
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0px;
+    outline: none;
+    height: 3.2rem;
+    line-height: 3rem;
+    width: 100%;
+    font-size: 0rem;
+    margin: 0 0 15px 0;
+    padding: 0;
+    display: block;
+    width: 140px; }
+  #lingua .select-wrapper .mdi-navigation-arrow-drop-down {
+    color: initial;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 0; }
+    #lingua .select-wrapper .mdi-navigation-arrow-drop-down.disabled {
+      color: rgba(0, 0, 0, 0.26); }
+  #lingua .select-wrapper + label {
     position: absolute;
     top: -14px;
     font-size: 0.8rem; 

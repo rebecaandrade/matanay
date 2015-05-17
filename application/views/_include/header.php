@@ -32,8 +32,29 @@
 				<li><a class="opcao-menu" href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
 				<li><a class="opcao-menu" href="#"><?php echo $this->lang->line('vendas'); ?></a></li>
 				<li><a class="opcao-menu" href="<?php echo base_url(); ?>index.php/acesso/deslogar"><?php echo $this->lang->line('sair'); ?></a></li>
+      			<li>
+      				<div id="lingua" class="opcao-menu">
+						<?php echo form_open('acesso/linguagem') ?>
+							<select name="lang" onchange="this.form.submit();">
+								<?php if($this->session->userdata('linguagem') == 'english') { ?>
+									<option value="english"><?php echo $this->lang->line('ingles'); ?></option>
+									<option value="portugues"><?php echo $this->lang->line('portugues'); ?></option>
+								<?php } else { ?>	
+									<option value="portugues"><?php echo $this->lang->line('portugues'); ?></option>
+									<option value="english"><?php echo $this->lang->line('ingles'); ?></option>
+								<?php } ?>
+							</select>
+						<?php echo form_close() ?>
+					</div>
+      			</li>
+      			<li>
+      				<?php if($this->session->userdata('linguagem') == 'english') { ?>
+						<img class="flag" src="<?php echo base_url().'complemento/img/english.png' ?>">
+					<?php } else { ?>	
+						<img class="flag" src="<?php echo base_url().'complemento/img/portugues.png' ?>">
+					<?php } ?>
+				</li>
       		</ul>
-
       		<ul id="nav-mobile" class="side-nav">
         		<li><a class="opcao-menu" href="<?php echo base_url(); ?>index.php/cliente/home"><?php echo $this->lang->line('home'); ?></a></li>
 				
@@ -42,12 +63,44 @@
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><?php echo $this->lang->line('faixas'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><?php echo $this->lang->line('albums'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"><?php echo $this->lang->line('entidades'); ?></a></div>
-      				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a></div></li>
+      				<div class="collapsible-body"><a href="#">Favorecido</a></div>
+      				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a></div>
+      				<div class="collapsible-body"><a href="#">Imposto</a></div></li>
       			</ul>
 
       			<li><a class="opcao-menu" href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
 				<li><a class="opcao-menu" href="#"><?php echo $this->lang->line('vendas'); ?></a></li>
 				<li><a class="opcao-menu" href="<?php echo base_url(); ?>index.php/acesso/deslogar"><?php echo $this->lang->line('sair'); ?></a></li>
+      		
+				<ul class="collapsible" data-collapsible="accordion">
+      				<li id="nav-lang">
+      					<div class="collapsible-header"><a>
+      						<?php if($this->session->userdata('linguagem') == 'english') { ?>
+								<img src="<?php echo base_url().'complemento/img/english.png' ?>"> <?php echo $this->lang->line('ingles'); ?>
+							<?php } else { ?>	
+								<img src="<?php echo base_url().'complemento/img/portugues.png' ?>"> <?php echo $this->lang->line('portugues'); ?>
+							<?php } ?>
+      					</a></div>
+
+      					<?php if($this->session->userdata('linguagem') == 'portugues') { ?>
+	      					<div class="collapsible-body">
+	      						<?php echo form_open('acesso/linguagem') ?>
+				      				<input type="hidden" name="lang" value="english">
+	                				<img src="<?php echo base_url().'complemento/img/english.png' ?>">
+	                				<input type='submit' value='<?php echo $this->lang->line('ingles'); ?>'>
+                				<?php echo form_close() ?>
+							</div>
+						<?php } else { ?>
+							<div class="collapsible-body">
+	      						<?php echo form_open('acesso/linguagem') ?>
+				      				<input type="hidden" name="lang" value="portugues">
+	                				<img src="<?php echo base_url().'complemento/img/portugues.png' ?>">
+	                				<input type='submit' value='<?php echo $this->lang->line('portugues'); ?>'>
+                				<?php echo form_close() ?>
+							</div>
+						<?php } ?>
+					</li>
+      			</ul>
       		</ul>
 
       		<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
@@ -60,7 +113,9 @@
 		        		<li><a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><?php echo $this->lang->line('faixas'); ?></a></li>
 						<li><a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><?php echo $this->lang->line('albums'); ?></a></li>
 						<li><a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"><?php echo $this->lang->line('entidades'); ?></a></li>
+						<li><a href="#">FAVORECIDO</a></li>
 						<li><a href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a></li>
+						<li><a href="#">IMPOSTO</a></li>
     				<?php } ?>
     		</div>
     	</div>
@@ -68,78 +123,3 @@
     	<div id="barra3" class="grey darken-1" role="navigation">
     	</div>
   	</nav>
-
-  	<ul id="dropdown-cadastros" class="dropdown-content">
-	  	<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><li><?php echo $this->lang->line('faixas'); ?></li></a>
-		<a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><li><?php echo $this->lang->line('albums'); ?></li></a>
-		<a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"><li><?php echo $this->lang->line('entidades'); ?></li></a>
-		<a href="<?php echo base_url(); ?>index.php/moeda/listar"><li><?php echo $this->lang->line('moeda_menu'); ?></li></a>
-	</ul>
-
-  	<!--
-	<div id="barra">
-		<div id="menu" class="nav-wrapper">
-			<ul class="right hide-on-med-and-down">
-				<a class="opcao-menu" href="<?php echo base_url(); ?>index.php/cliente/home"><li><?php echo $this->lang->line('home'); ?></li></a>
-				<a class="opcao-menu" href="<?php echo base_url(); ?>index.php/cliente/menu_cadastrar"><li><?php echo $this->lang->line('cadastros'); ?></li></a>
-				<a class="opcao-menu" href="#"><li><?php echo $this->lang->line('relatorios'); ?></li></a>
-				<a class="opcao-menu" href="#"><li><?php echo $this->lang->line('vendas'); ?></li></a>
-				<a class="opcao-menu" href="<?php echo base_url(); ?>index.php/acesso/deslogar"><li><?php echo $this->lang->line('sair'); ?></li></a>
-				<li>
-					<?php if($this->session->userdata('linguagem') == 'english') { ?>
-						<img src="<?php echo base_url().'complemento/img/english.png' ?>">
-					<?php } else { ?>	
-						<img src="<?php echo base_url().'complemento/img/portugues.png' ?>">
-					<?php } ?></li>
-			</ul>
-			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-
-			<ul id="nav-mobile" class="side-nav">
-				<a class="opcao-menu" href="<?php echo base_url(); ?>index.php/cliente/home"><li><?php echo $this->lang->line('home'); ?></li></a>
-				<a class="dropdown-button" href="#!" data-activates="dropdown-cadastros"><li>CADASTROS</li></a>
-				<a class="opcao-menu" href="#"><li><?php echo $this->lang->line('relatorios'); ?></li></a>
-				<a class="opcao-menu" href="#"><li><?php echo $this->lang->line('vendas'); ?></li></a>
-				<a class="opcao-menu" href="<?php echo base_url(); ?>index.php/acesso/deslogar"><li><?php echo $this->lang->line('sair'); ?></li></a>
-				<li>
-					<?php if($this->session->userdata('linguagem') == 'english') { ?>
-						<img src="<?php echo base_url().'complemento/img/english.png' ?>">
-					<?php } else { ?>	
-						<img src="<?php echo base_url().'complemento/img/portugues.png' ?>">
-					<?php } ?></li>
-			</ul>
-
-			<div id="lingua" class="opcao-menu">
-				<?php echo form_open('acesso/linguagem') ?>
-					<select name="lang" onchange="this.form.submit();">
-						<?php if($this->session->userdata('linguagem') == 'english') { ?>
-							<option value="english">English</option>
-							<option value="portugues">Português</option>
-						<?php } else { ?>	
-							<option value="portugues">Português</option>
-							<option value="english">English</option>
-						<?php } ?>
-					</select>
-				<?php echo form_close() ?>
-			</div>
-			<hr id="trilho"/>
-		</div>
-
-		<div class="logo"><a href="<?php echo base_url(); ?>index.php/cliente/home">
-			<img src="<?php echo base_url().'complemento/img/logo1.fw.png' ?>"></a></div>
-	</div>	
-
-	<div id="sub_barra"> 
-		<div id="sub_menu">
-		<?php if($this->session->userdata('sub_menu') == 2) { ?>
-			<ul class="right hide-on-med-and-down">
-				<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><li><?php echo $this->lang->line('faixas'); ?></li></a>
-				<a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><li><?php echo $this->lang->line('albums'); ?></li></a>
-				<a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"><li><?php echo $this->lang->line('entidades'); ?></li></a>
-				<a href="<?php echo base_url(); ?>index.php/moeda/listar"><li><?php echo $this->lang->line('moeda_menu'); ?></li></a>
-			</ul>
-		<?php } ?>
-		</div>
-	</div>
-
-	<div id="sub_barra2"></div>
-	-->
