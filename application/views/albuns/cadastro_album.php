@@ -7,25 +7,25 @@
 	        <div class="row">
 	          	<div class="input-field col s12 m12 l8 offset-l2">
 	          		<i class="mdi-av-album prefix"></i>
-	            	<input id="icon-prefix" type="text" name="nome">
+	            	<input required id="icon-prefix" type="text" name="nome">
 	            	<label><?php echo $this->lang->line('titulo'); ?></label>
 	          	</div>
 	        </div>
 
 	        <div class="row">
 	          	<div class="input-field col s12 m6 l4 offset-l2">
-	            	<input type="text" name="upc_ean">
+	            	<input required type="text" name="upc_ean">
 	            	<label>UPC/EAN</label>
 	          	</div>
 	          	<div class="input-field col s12 m6 l4">
-	            	<input type="text" name="upc_ean">
+	            	<input required type="text" name="upc_ean">
 	            	<label><?php echo $this->lang->line('catalogo'); ?></label>
 	          	</div>
 	        </div>
 
 	        <div class="row">
 	          	<div class="input-field col s12 m6 l4 offset-l2">
-	            	<input name="percentual_artista" type="text">
+	            	<input required name="percentual_artista" type="text">
 	            	<label><?php echo $this->lang->line('n_faixas'); ?></label>
 	          	</div>
 	          	<div class="input-field col s12 m6 l4">

@@ -39,8 +39,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ////// GERAL
 
-$lang['ingles']			= 'Ingles';
-$lang['portugues']			= 'Português';
+$lang['ingles']				= 'ENGLISH';
+$lang['portugues']			= 'PORTUGUÊS';
 $lang['deletar']			= 'deletar';
 $lang['editar']				= 'editar';
 $lang['acao']				= 'ação';

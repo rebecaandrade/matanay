@@ -7,14 +7,14 @@
 	        <div class="row">
 	          	<div class="input-field col s12 m9 l8 offset-l1">
 	          		<i class="mdi-av-queue-music prefix"></i>
-	            	<input id="icon-prefix" type="text" name="nome">
+	            	<input required id="icon-prefix" type="text" name="nome">
 	            	<label><?php echo $this->lang->line('titulo'); ?></label>
 	          	</div>
 	        </div>
 
 	        <div class="row">
 	          	<div class="input-field col s12 m9 l8 offset-l1">
-	            	<input type="text" name="isrc">
+	            	<input required type="text" name="isrc">
 	            	<label>ISRC</label>
 	          	</div>
 	          	<div class="switch col s6 offset-s6 m3 l2">
