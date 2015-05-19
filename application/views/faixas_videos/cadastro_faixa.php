@@ -7,14 +7,14 @@
 	        <div class="row">
 	          	<div class="input-field col s12 m9 l8 offset-l1">
 	          		<i class="mdi-av-queue-music prefix"></i>
-	            	<input required id="icon-prefix" type="text" name="nome">
+	            	<input id="icon-prefix" type="text" name="nome">
 	            	<label><?php echo $this->lang->line('titulo'); ?></label>
 	          	</div>
 	        </div>
 
 	        <div class="row">
 	          	<div class="input-field col s12 m9 l8 offset-l1">
-	            	<input required type="text" name="isrc">
+	            	<input type="text" name="isrc">
 	            	<label>ISRC</label>
 	          	</div>
 	          	<div class="switch col s6 offset-s6 m3 l2">
@@ -43,6 +43,26 @@
 	            	<input name="percentual_artista" type="text">
 	            	<label>%</label>
 	          	</div>
+	        </div>
+
+	        <div class="row" id="SelectGroup">
+				<div class="input-field col s12 m9 l8 offset-l1" id="TextBoxDiv1">
+				    <select>
+	              		<option value="" disabled selected><?php echo $this->lang->line("selecione");?></option> 
+	              		<?php
+                			if(isset($artistas)){
+                    			foreach ($artistas as $artista) { ?>
+                        		<option value="<?php echo $artista->idEntidade; ?>"> <?php echo $artista->nome; ?>
+                		<?php }}?>
+	            	</select>
+	            	<label><?php echo $this->lang->line("artista");?></label>
+				</div>
+				<div class="input-field col s12 m3 l2">
+	            	<input name="percentual_artista" type="text">
+	            	<label>%</label>
+	          	</div>
+				<a title="Adicionar" class="btn-floating btn-medium waves-effect waves-light btn tooltipped" 
+					data-position="right" data-delay="50" data-tooltip="Adicionar" id="addButton"><i class="mdi-content-add"></i></a>
 	        </div>
 
 	        <div class="row">

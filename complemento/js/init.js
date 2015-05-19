@@ -69,3 +69,28 @@ $(document).ready(function() {
         e.preventDefault(); $(this).parent('div').remove(); x--;
     })
 });
+
+
+$(document).ready(function () {
+
+        var counter = 2;
+
+        $("#addButton").click(function () {
+
+            if (counter > 10) {
+                alert("Only 10 allow");
+                return false;
+            }
+
+            var newTextBoxDiv = $(document.createElement('div')).attr("id", 'TextBoxDiv' + counter);
+            newTextBoxDiv.after().html('<div class="input-field col s10 m10 l8 offset-l1">' +
+                  '<select id="select' + counter + '" ><option value="" disabled selected></option><option value="' + "val" + ' ">"' + "desc2" + 
+                  '"</option><option value="' + "val2" + ' ">"' + "desc" + '"</option><option value="' + "val3" + 
+                  ' ">"' + "desc3" + '"</option></select><label>Artista ' + counter + ' </label></div><div class="input-field col s12 m3 l2">' +
+                  '<input name="percentual_artista' + counter + '" type="text"><label>%</label></div>');
+
+              newTextBoxDiv.appendTo("#SelectGroup");
+              counter++;
+              $('select').material_select();
+    });
+});

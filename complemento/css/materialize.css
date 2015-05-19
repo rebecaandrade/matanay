@@ -5654,22 +5654,24 @@ small {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  width: 37px;
-  height: 37px;
-  line-height: 37px;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
   padding: 0;
-  background-color: #26a69a;
-  border-radius: 50%;
+  background-color: #777;
+  border-radius: 10%;
   transition: .3s;
   cursor: pointer;
-  vertical-align: middle; }
+  vertical-align: middle;
+  margin-top: 2rem;
+  margin-left: 1rem; }
   .btn-floating i {
     width: inherit;
     display: inline-block;
     text-align: center;
     color: #FFF;
-    font-size: 1.6rem;
-    line-height: 37px; }
+    font-size: 1.4rem;
+    line-height: 25px; }
   .btn-floating:before {
     border-radius: 0; }
   .btn-floating.btn-large {

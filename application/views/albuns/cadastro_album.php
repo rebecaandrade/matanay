@@ -66,13 +66,6 @@
 	          	</div>
 	        </div>
 
-	        <div class="row">
-		        <div class="input_fields_wrap">
-				    <button class="add_field_button">Adicionar Faixa</button>
-				    <div><input class="col l8 offset-l2" type="text" name="mytext[]"></div>
-				</div>
-	        </div>
-
 	        <button class="btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
 	          	<i class="mdi-content-send right"></i>
 	        </button>
