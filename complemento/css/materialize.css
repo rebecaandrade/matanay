@@ -6278,7 +6278,7 @@ textarea {
 [type="radio"]:checked + label:after {
   border-radius: 50%;
   border: 2px solid #E3E14C;
-  background-color: #E3E14C;
+  background-color: #FF0;
   z-index: 0;
   -webkit-transform: scale(1.02);
   -moz-transform: scale(1.02);
