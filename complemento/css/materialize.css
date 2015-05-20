@@ -2060,6 +2060,10 @@ img.responsive-img, video.responsive-video {
   max-width: 100%;
   height: auto; }
 
+.pagination{
+  margin-top: 3%;
+}
+
 .pagination li {
   font-size: 1.2rem;
   float: left;
@@ -2186,7 +2190,7 @@ table {
   table.bordered tr {
     border-bottom: 1px solid #d0d0d0; }
   table.striped tbody tr:nth-child(odd) {
-    background-color: #f2f2f2; }
+    background-color: #ddd; }
   table.hoverable tbody tr {
     -webkit-transition: background-color .25s ease;
     -moz-transition: background-color .25s ease;
@@ -2194,12 +2198,13 @@ table {
     -ms-transition: background-color .25s ease;
     transition: background-color .25s ease; }
     table.hoverable tbody tr:hover {
-      background-color: #f2f2f2; }
+      background-color: #ddd; }
   table.centered thead tr th, table.centered tbody tr td {
     text-align: center; }
 
 thead {
-  border-bottom: 1px solid #d0d0d0; }
+  border-bottom: 1px solid #d0d0d0;
+  font-size: 1.2rem; }
 
 td, th {
   padding: 15px 5px;

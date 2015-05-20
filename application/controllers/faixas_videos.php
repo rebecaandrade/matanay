@@ -40,13 +40,23 @@ class Faixas_Videos extends CI_Controller {
 
 	}
 
-	public function cadastra_video(){
-		$this->session->set_flashdata('redirect_url', current_url());
+	public function listar(){
+		$this->load->library('pagination');
+        $config['base_url'] = base_url('index.php/faixas_videos/listar');
+        $config['total_rows'] = $this->faixas_videos_model->buscar_faixas()->num_rows();
+        $config['uri_segment'] = 3;
+        $config['per_page'] = 5;
 
-		$linguagem_usuario = $this->session->userdata('linguagem');
-		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
-		
-		$this->load->view('faixas_videos/cadastro_video');
+        $qtde = $config['per_page'];
+        ($this->uri->segment(3) != '') ? $inicio = $this->uri->segment(3) : $inicio = 0;
+        $this->pagination->initialize($config);
+
+        $dados = array(
+            'faixas' => $this->faixas_videos_model->buscar_faixas($qtde, $inicio)->result(),
+            'paginas' => $this->pagination->create_links()
+        );
+
+		$this->load->view('faixas_videos/lista_faixas', $dados);
 	}
 
 }

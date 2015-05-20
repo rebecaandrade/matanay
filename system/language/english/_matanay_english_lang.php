@@ -40,10 +40,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ////// GERAL
 $lang['ingles']				= 'ENGLISH';
 $lang['portugues']			= 'PORTUGUÊS';
-$lang['deletar']			= 'delete';
-$lang['editar']				= 'edit';
+$lang['deletar']			= 'Delete';
+$lang['editar']				= 'Edit';
 $lang['acao']				= 'Action';
 $lang['novo']				= 'NEW';
+$lang['nova']				= 'NEW';
 
 ////// LOGIN ////// Evandro
 
@@ -66,8 +67,8 @@ $lang['faixas'] 			= 'TRACKS';
 $lang['videos'] 			= 'VIDEOS';
 $lang['albums'] 			= 'ALBUMS';
 $lang['entidades'] 			= 'ENTITYS';
-$lang['favorecido']	='FAVORED';
-$lang['imposto']	='TAX';
+$lang['favorecido']			= 'FAVORED';
+$lang['imposto']			= 'TAX';
 
 ////// FAIXAS ////// Evandro
 

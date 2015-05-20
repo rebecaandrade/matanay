@@ -20,6 +20,11 @@ class Faixas_Videos_model extends CI_Model {
         return $this->db->get('entidade')->result();
     }
 
+    public function buscar_faixas($qtde=0, $inicio=0){
+        if($qtde > 0) $this->db->limit($qtde, $inicio);
+        return $this->db->get('faixa');
+    }
+
     public function cadastrar_faixa($faixa){
 
         if(is_string($faixa['isrc'])){
