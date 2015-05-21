@@ -7,8 +7,8 @@
 	        <div class="row">
 	          	<div class="input-field col s12 m12 l8 offset-l2">
 	          		<i class="mdi-av-album prefix"></i>
-	            	<input id="icon-prefix" type="text" name="nome">
-	            	<label><?php echo $this->lang->line('titulo'); ?></label>
+	          		<label><?php echo $this->lang->line('titulo'); ?></label>
+	            	<input id="icon-prefix" type="text" name="nome"/>
 	          	</div>
 	        </div>
 
@@ -28,23 +28,23 @@
 
 	        <div class="row">
 	          	<div class="input-field col s12 m6 l4 offset-l2">
-	            	<input type="text" name="upc_ean">
-	            	<label>UPC/EAN</label>
+	          		<label>UPC/EAN</label>
+	            	<input type="text" name="upc_ean"/>
 	          	</div>
 	          	<div class="input-field col s12 m6 l4">
-	            	<input class="n_faixas" name="n_faixas" type="text">
-	            	<label><?php echo $this->lang->line('n_faixas'); ?></label>
+	          		<label><?php echo $this->lang->line('n_faixas'); ?></label>
+	            	<input class="n_faixas" name="n_faixas" type="text"/>
 	          	</div>
 	        </div>
 
 	        <div class="row">
 	          	<div class="input-field col s12 m6 l4 offset-l2">
-	            	<input type="text" name="catalogo">
 	            	<label><?php echo $this->lang->line('catalogo'); ?></label>
+	            	<input type="text" name="catalogo"/>
 	          	</div>
-	          	<div class="input-field col s12 m6 l4">
-	            	<input type="date" class="datepicker" name="ano">
-	            	<label class="active"><?php echo $this->lang->line('lancamento'); ?></label>
+	          	<div class="input-field col s12 m6 l4"/>
+	          		<label><?php echo $this->lang->line('lancamento'); ?></label>
+	            	<input type="text" name="ano"/>
 	          	</div>
 	        </div>
 
@@ -65,11 +65,11 @@
 	        <div id="Tracklist">
 	        	<div class="row">
 		        	<div class="input-field col s2 m1 l1 offset-l1" id="Faixa">
-		            	<input disabled name="ordem_faixa" type="text">
+		            	<input disabled name="ordem_faixa" type="text"/>
 		            	<label># 1</label>
 		          	</div>
 		          	<div class="input-field col s10 m11 l8">
-		            	<select name="faixa1">
+		            	<select name="faixas[]">
 		              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
 		              		<?php
 	                			if(isset($faixas)){
@@ -105,7 +105,7 @@
 	    		$('#Tracklist').append('<div class="row"><div class="input-field col s2 m1 l1 offset-l1" id="Faixa">' +
 				'<input disabled name="ordem_faixa" type="text"><label># ' + counter + '</label></div>' +
 				'<div class="input-field col s10 m11 l8">' +
-				'<select id="select_faixas' + counter + '" name="faixa' + counter + '"><option value="" disabled selected><?php echo $this->lang->line("selecione");?></option>' +
+				'<select id="select_faixas' + counter + '" name="faixas[]"><option value="" disabled selected><?php echo $this->lang->line("selecione");?></option>' +
 				'</select><label><?php echo $this->lang->line("faixa");?> ' + counter + ' </label></div></div>');
 
 	    	

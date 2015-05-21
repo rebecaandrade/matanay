@@ -6,7 +6,7 @@
       	<?php echo form_open('faixas_videos/cadastrar_faixa') ?>
 	        <div class="row">
 	          	<div class="input-field col s12 m9 l8 offset-l1">
-	          		<i class="mdi-av-queue-music prefix"></i>
+	          		<i class="mdi-image-audiotrack prefix"></i>
 	            	<input id="icon-prefix" type="text" name="nome">
 	            	<label><?php echo $this->lang->line('titulo'); ?></label>
 	          	</div>

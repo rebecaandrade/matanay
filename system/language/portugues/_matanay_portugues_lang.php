@@ -83,7 +83,7 @@ $lang['produtor'] 			= 'Produtor';
 
 $lang['n_faixas'] 			= 'Nº Faixas';
 $lang['catalogo'] 			= 'Cod. Catálogo';
-$lang['lancamento'] 		= 'Data Lançamento';
+$lang['lancamento'] 		= 'Ano de Lançamento';
 $lang['tipo'] 				= 'Tipo';
 $lang['faixa'] 				= 'Faixa';
 

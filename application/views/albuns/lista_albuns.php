@@ -2,30 +2,30 @@
 
 <div class="container">
   	<div id="titulo_lista">
-  		<i class="mdi-av-queue-music"></i>
-  		<?php echo $this->lang->line('faixas'); ?>
-  		<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa" 
+  		<i class="mdi-av-my-library-music"></i>
+  		<?php echo $this->lang->line('albums'); ?>
+  		<a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album" 
   			class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo" 
-			data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('nova'); ?>" id="addButton">
+			data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('novo'); ?>" id="addButton">
 			<i class="mdi-content-add"></i>
 		</a>
   	</div>
-    <?php if ($faixas!=NULL){?>
+    <?php if ($albuns!=NULL){?>
         <table class="hoverable bordered">
             <thead>
                 <tr>
                     <th><?php echo $this->lang->line('titulo'); ?></th>
-                    <th>ISRC</th>
+                    <th>UPC/EAN</th>
                     <th><?php echo $this->lang->line('acao'); ?></th>
                 </tr>
             </thead>
             <tbody>
-                <?php if (isset($faixas)){
-                    foreach($faixas as $faixa){?>
+                <?php if (isset($albuns)){
+                    foreach($albuns as $album){?>
                         <tr>
-                            <td><?php echo $faixa->nome;?></td>
-                            <td><?php echo $faixa->isrc;?></td> 
-                            <td><a id="acao" href="<?php echo base_url().'index.php/Entidade/camposatualizacao?id='.$faixa->idFaixa ?>">
+                            <td><?php echo $album->nome;?></td>
+                            <td><?php echo $album->upc_ean;?></td> 
+                            <td><a id="acao" href="<?php echo base_url().'index.php/Entidade/camposatualizacao?id='.$album->idAlbum ?>">
                             		<?php echo $this->lang->line('editar'); ?></a> |
                             	<a id="acao" href="#"><?php echo $this->lang->line('deletar'); ?></a>
                             </td>

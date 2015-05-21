@@ -25,28 +25,43 @@ class Albuns extends CI_Controller {
             'nome' => $this->input->post('nome'),
             'quantidade' => $this->input->post('n_faixas'),
             'upc_ean' => $this->input->post('upc_ean'),
+            'ano' => $this->input->post('ano'),
             'faixa' => 100/$this->input->post('n_faixas'),
             'codigo_catalogo' => $this->input->post('catalogo'),
             'idTipo_Album' => $this->input->post('tipo')
         );
 
-		$n = $this->input->post('n_faixas');
+        $artista = $this->input->post('artista');
 
-		for($i = 0; $i <= $n; $i++){
-	        $faixas = array(
-	        	'idFaixa'+$i => $this->input->post('faixa'+$i)
-	        );
-	    }
+		$faixas = $this->input->post('faixas[]');
 
         if($album['nome'] != NULL){
- 			$this->albuns_model->cadastrar_album($album, $faixas, $n);
+ 			$this->albuns_model->cadastrar_album($album, $artista, $faixas);
 
             redirect('albuns/cadastra_album');       
         }else{
             
             redirect('cliente/home');
         }
+	}
 
+	public function listar(){
+		$this->load->library('pagination');
+        $config['base_url'] = base_url('index.php/albuns/listar');
+        $config['total_rows'] = $this->albuns_model->buscar_albuns()->num_rows();
+        $config['uri_segment'] = 3;
+        $config['per_page'] = 5;
+
+        $qtde = $config['per_page'];
+        ($this->uri->segment(3) != '') ? $inicio = $this->uri->segment(3) : $inicio = 0;
+        $this->pagination->initialize($config);
+
+        $dados = array(
+            'albuns' => $this->albuns_model->buscar_albuns($qtde, $inicio)->result(),
+            'paginas' => $this->pagination->create_links()
+        );
+
+		$this->load->view('albuns/lista_albuns', $dados);
 	}
 
 }

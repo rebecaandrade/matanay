@@ -83,7 +83,7 @@ $lang['produtor'] 			= 'Producer';
 
 $lang['n_faixas'] 			= 'Number of Tracks';
 $lang['catalogo'] 			= 'Catalog Code';
-$lang['lancamento'] 		= 'Release Date';
+$lang['lancamento'] 		= 'Release Year';
 $lang['tipo'] 				= 'Type';
 $lang['faixa'] 				= 'Track';
 

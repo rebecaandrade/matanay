@@ -61,7 +61,7 @@
       			<ul class="collapsible" data-collapsible="accordion">
       				<li><div class="collapsible-header"><a><?php echo $this->lang->line('cadastros'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/faixas_videos/listar"><?php echo $this->lang->line('faixas'); ?></a></div>
-      				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><?php echo $this->lang->line('albums'); ?></a></div>
+      				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/albuns/listar"><?php echo $this->lang->line('albums'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/entidade/listar"><?php echo $this->lang->line('entidades'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/favorecido/mostrar_cadastro"><?php echo $this->lang->line('favorecido'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a></div>
@@ -111,7 +111,7 @@
       			<ul class="right hide-on-med-and-down">
       				<?php if($this->session->userdata('sub_menu') == 2) { ?>
 		        		<li><a href="<?php echo base_url(); ?>index.php/faixas_videos/listar"><?php echo $this->lang->line('faixas'); ?></a></li>
-						<li><a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><?php echo $this->lang->line('albums'); ?></a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/albuns/listar"><?php echo $this->lang->line('albums'); ?></a></li>
 						<li><a href="<?php echo base_url(); ?>index.php/entidade/listar"><?php echo $this->lang->line('entidades'); ?></a></li>
 						<li><a href="<?php echo base_url(); ?>index.php/favorecido/mostrar_cadastro"><?php echo $this->lang->line('favorecido'); ?></a></li>
 						<li><a href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a></li>
