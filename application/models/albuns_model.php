@@ -17,4 +17,21 @@ class Albuns_model extends CI_Model {
         $this->db->order_by('nome', 'asc');
         return $this->db->get('entidade')->result();
     }
+
+    public function cadastrar_album($album, $faixas, $n){
+    	
+		
+		return $this->db->insert('album', $album);
+		$album_id = $this->db->insert_id();
+
+		for($i = 0; $i <= $n; $i++){
+			$tracklist = array(
+				'idAlbum' => $album_id,
+				'idFaixa' => $faixas['idFaixa'+$i]
+			);
+			$this->db->insert('faixa_has_album', $tracklist);
+		}
+
+		
+	}
 }

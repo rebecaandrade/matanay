@@ -21,7 +21,7 @@ html {
 }
 
 #barra {
-	font-family: "Titillium Web" !important;
+	font-family: "Titillium Web", "sans-serif" !important;
 	height: 70px;
 	background-color: #333;
 	margin-right: 0;

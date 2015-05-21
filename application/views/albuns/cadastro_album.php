@@ -3,18 +3,18 @@
 <div class="container">
     <div class="row">
       	
-      	<?php echo form_open('faixas_videos/cadastrar_faixa') ?>
+      	<?php echo form_open('albuns/cadastrar') ?>
 	        <div class="row">
 	          	<div class="input-field col s12 m12 l8 offset-l2">
 	          		<i class="mdi-av-album prefix"></i>
-	            	<input required id="icon-prefix" type="text" name="nome">
+	            	<input id="icon-prefix" type="text" name="nome">
 	            	<label><?php echo $this->lang->line('titulo'); ?></label>
 	          	</div>
 	        </div>
 
 	        <div class="row">
 	          	<div class="input-field col s12 m12 l8 offset-l2">
-	            	<select>
+	            	<select name="artista">
 	              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
 	              		<?php
                 			if(isset($artistas)){
@@ -28,29 +28,29 @@
 
 	        <div class="row">
 	          	<div class="input-field col s12 m6 l4 offset-l2">
-	            	<input required type="text" name="upc_ean">
+	            	<input type="text" name="upc_ean">
 	            	<label>UPC/EAN</label>
 	          	</div>
 	          	<div class="input-field col s12 m6 l4">
-	            	<input required class="n_faixas" name="n_faixas" type="text">
+	            	<input class="n_faixas" name="n_faixas" type="text">
 	            	<label><?php echo $this->lang->line('n_faixas'); ?></label>
 	          	</div>
 	        </div>
 
 	        <div class="row">
 	          	<div class="input-field col s12 m6 l4 offset-l2">
-	            	<input required type="text" name="upc_ean">
+	            	<input type="text" name="catalogo">
 	            	<label><?php echo $this->lang->line('catalogo'); ?></label>
 	          	</div>
 	          	<div class="input-field col s12 m6 l4">
-	            	<input type="date" class="datepicker">
+	            	<input type="date" class="datepicker" name="ano">
 	            	<label class="active"><?php echo $this->lang->line('lancamento'); ?></label>
 	          	</div>
 	        </div>
 
 	        <div class="row">
 	          	<div class="input-field col s12 m12 l8 offset-l2">
-	            	<select>
+	            	<select name="tipo">
 	              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
 	              		<?php
                 			if(isset($tipos)){
@@ -69,7 +69,7 @@
 		            	<label># 1</label>
 		          	</div>
 		          	<div class="input-field col s10 m11 l8">
-		            	<select>
+		            	<select name="faixa1">
 		              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
 		              		<?php
 	                			if(isset($faixas)){
@@ -95,17 +95,28 @@
 
 		var counter = 2;
 
+
 		$(".n_faixas").change(function() {
 
 			var n_faixas = $('input[name=n_faixas]').val();
+			var faixas = $.parseJSON(<?php print json_encode(json_encode($faixas)); ?>);
 
 			for(counter = 2; counter <= n_faixas; counter++){
 	    		$('#Tracklist').append('<div class="row"><div class="input-field col s2 m1 l1 offset-l1" id="Faixa">' +
 				'<input disabled name="ordem_faixa" type="text"><label># ' + counter + '</label></div>' +
 				'<div class="input-field col s10 m11 l8">' +
-				'<select><option value="" disabled selected><?php echo $this->lang->line("selecione");?></option><option value="' + "val" + ' ">"' + "desc2" + 
-				'"</option><option value="' + "val2" + ' ">"' + "desc" + '"</option><option value="' + "val3" + 
-				' ">"' + "desc3" + '"</option></select><label><?php echo $this->lang->line("faixa");?> ' + counter + ' </label></div></div>');
+				'<select id="select_faixas' + counter + '" name="faixa' + counter + '"><option value="" disabled selected><?php echo $this->lang->line("selecione");?></option>' +
+				'</select><label><?php echo $this->lang->line("faixa");?> ' + counter + ' </label></div></div>');
+
+	    	
+	    		$.each(faixas, function(idFaixa, nome){
+            		$('#select_faixas' + counter).append($("<option>",{
+                  		value: nome.idFaixa,
+                  		text: nome.nome
+            		}));
+      			}); 
+            
+	   
 			$('select').material_select();
 			}
 	    });

@@ -20,4 +20,33 @@ class Albuns extends CI_Controller {
 		$this->load->view('albuns/cadastro_album', $dados);
 	}
 
+	public function cadastrar(){
+		$album = array(
+            'nome' => $this->input->post('nome'),
+            'quantidade' => $this->input->post('n_faixas'),
+            'upc_ean' => $this->input->post('upc_ean'),
+            'faixa' => 100/$this->input->post('n_faixas'),
+            'codigo_catalogo' => $this->input->post('catalogo'),
+            'idTipo_Album' => $this->input->post('tipo')
+        );
+
+		$n = $this->input->post('n_faixas');
+
+		for($i = 0; $i <= $n; $i++){
+	        $faixas = array(
+	        	'idFaixa'+$i => $this->input->post('faixa'+$i)
+	        );
+	    }
+
+        if($album['nome'] != NULL){
+ 			$this->albuns_model->cadastrar_album($album, $faixas, $n);
+
+            redirect('albuns/cadastra_album');       
+        }else{
+            
+            redirect('cliente/home');
+        }
+
+	}
+
 }
