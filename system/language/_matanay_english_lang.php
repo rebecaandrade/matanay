@@ -41,6 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $lang['deletar']	= 'delete';
 $lang['editar']		= 'edit';
 $lang['acao']		= 'Action';
+$lang['nome']		= 'Name';
 
 ////// LOGIN
 
@@ -82,6 +83,14 @@ $lang['moeda_cambio']		= 'Exchange rate';
 $lang['moeda_cadastrar']	= 'Register';
 $lang['moeda_erro_listar']	= 'No currency registered';
 
+////// CONTRATO
+
+$lang['data_inicio']		= 'Start date';		
+$lang['data_fim']			= 'End date';
+$lang['alerta']				= 'Alert';
+$lang['mes']				= 'month';
+$lang['meses']				= 'months';
+$lang['contrato_cadastrar']	= 'Register';
 
 /////ENTIDADES
 $lang['entidade'] = 'Entity';

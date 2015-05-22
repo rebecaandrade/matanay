@@ -45,6 +45,7 @@ $lang['editar']				= 'Edit';
 $lang['acao']				= 'Action';
 $lang['novo']				= 'NEW';
 $lang['nova']				= 'NEW';
+$lang['nome']				= 'Name';
 
 ////// LOGIN ////// Evandro
 
@@ -87,7 +88,7 @@ $lang['lancamento'] 		= 'Release Year';
 $lang['tipo'] 				= 'Type';
 $lang['faixa'] 				= 'Track';
 
-////// MOEDA
+////// MOEDA Vitor
 
 $lang['moeda']				= 'Currency';
 $lang['moeda_menu']			= 'CURRENCY';		
@@ -97,6 +98,15 @@ $lang['moeda_cambio']		= 'Exchange rate';
 $lang['moeda_editar']		= 'Update';
 $lang['moeda_cadastrar']	= 'Register';
 $lang['moeda_erro_listar']	= 'No currency registered';
+
+////// CONTRATO
+
+$lang['data_inicio']		= 'Start date';		
+$lang['data_fim']			= 'End date';
+$lang['alerta']				= 'Alert';
+$lang['mes']				= 'month';
+$lang['meses']				= 'months';
+$lang['contrato_cadastrar']	= 'Register';
 
 
 /////ENTIDADES  Jadiel

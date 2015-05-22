@@ -46,6 +46,7 @@ $lang['editar']				= 'Editar';
 $lang['acao']				= 'ação';
 $lang['novo']				= 'NOVO';
 $lang['nova']				= 'NOVA';
+$lang['nome']				= 'Nome';
 
 ////// LOGIN ////// Evandro
 
@@ -87,7 +88,7 @@ $lang['lancamento'] 		= 'Ano de Lançamento';
 $lang['tipo'] 				= 'Tipo';
 $lang['faixa'] 				= 'Faixa';
 
-////// MOEDA
+////// MOEDA ////// Vitor
 
 $lang['moeda']				= 'Moeda';
 $lang['moeda_menu']			= 'MOEDA';
@@ -97,6 +98,15 @@ $lang['moeda_cambio']		= 'Taxa de câmbio';
 $lang['moeda_editar']		= 'Atualizar';
 $lang['moeda_cadastrar']	= 'Cadastrar';
 $lang['moeda_erro_listar']	= 'Nenhuma moeda cadastrada';
+
+////// CONTRATO ////// Vitor
+
+$lang['data_inicio']		= 'Data de inicio';		
+$lang['data_fim']			= 'Data de término';
+$lang['alerta']				= 'Alerta';
+$lang['mes']				= 'mês';
+$lang['meses']				= 'meses';
+$lang['contrato_cadastrar']	= 'Cadastrar';
 
 
 /////ENTIDADES /*FEITO POR MIM JADIEL*/
