@@ -15,8 +15,8 @@ $this->load->view('_include/header') ?>
                     <div class="aviso_entidade"><?php if($this->session->flashdata('sucesso')!=null){echo $this->lang->line($this->session->flashdata('sucesso'));} ?></div>
                     <div class="aviso_entidade"><?php if($this->session->flashdata('aviso')!=null){echo $this->lang->line($this->session->flashdata('aviso'));} ?></div>
                     <div class="input-field col s12 m12 l8 offset-l2">
-                        <i class="mdi-action-assignment-ind prefix"></i>
-                        <label><?php echo $this->lang->line('nome_entidade'); ?></label>
+                        <i class="mdi-action-perm-identity prefix"></i>
+                        <label><?php echo $this->lang->line('nome_favorecido'); ?></label>
                         <input value="<?php echo $dadosentidade->nome; ?>" name="nome" required type="text"/>
                     </div>
                 </div>
@@ -29,13 +29,13 @@ $this->load->view('_include/header') ?>
                 <div class="row">
                     <div class="input-field col s12 m12 l8 offset-l2"> 
                         <label><?php echo $this->lang->line('telefone'); ?>:</label>
-                        <input id="telefone" maxlength="14" value="<?php echo $telefone1->numero; ?>" name="telefone1" required type="text"/>
+                        <input id="telefone" maxlength="14" class="telefone" value="<?php echo $telefone1->numero; ?>" name="telefone1" required type="text"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l8 offset-l2"> 
                         <label><?php echo $this->lang->line('telefone_alternativo'); ?>:</label>
-                        <input id="telefone1" maxlength="14" value="<?php echo $telefone2->numero; ?>" name="telefone2" required type="text"/>
+                        <input id="telefone1" maxlength="14" id="telefone1" value="<?php echo $telefone2->numero; ?>" name="telefone2" required type="text"/>
                     </div>
                 </div>
                 <div class="row">

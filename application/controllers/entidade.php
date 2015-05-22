@@ -187,7 +187,9 @@
           $this->session->set_flashdata('id', $this->input->post('idEntidade'));
           redirect('Entidade/camposatualizacao');
       }
+
         if ($this->input->post('cpf/cnpj')=="cpf"){
+
             $validade_cpf=$this->validar_cpf($this->input->post('cpf_cnpj'));
             if($validade_cpf==FALSE){
               $this->session->set_flashdata('aviso','cpf_invalido');

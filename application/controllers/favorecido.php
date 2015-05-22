@@ -151,7 +151,7 @@
     public function listar(){
         $dados["dadofavorecido"]=$this->Favorecido_model->buscar_favorecido();
         $dados["dadoentidade"]=$this->Entidade_model->buscar_entidades();
-        $this->load->view("Entidade/listar_entidades_view",$dados);
+        $this->load->view("Favorecido/listar_favorecido_view",$dados);
     }
     
     public function camposatualizacao(){
@@ -165,7 +165,7 @@
         $dados['telefone2']= $this->Entidade_model->buscar_telefone_especifico($id, $rowtelefone);
         $dados_auxiliar= $this->Entidade_model->buscar_entidade_especifica($id);//utilizado para passar o idTipo_entidade para a busca de identificacao na tabela tipo_entidade
         $dados['dadosidentificacao']= $this->Entidade_model->buscar_identificacao_especifica($dados_auxiliar->idTipo_Entidade);
-        $this->load->view('Entidade/editar_entidade_view', $dados);
+        $this->load->view('Favorecido/editar_favorecido_view', $dados);
     }
 
     public function atualizar(){

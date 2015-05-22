@@ -416,6 +416,7 @@ label {
 /**********************Footer Jadiel****************/
 #footer{
 	height: 20%;
+	top: 30px;
 	width: 100%;
 	display: inline-block;
 }

@@ -12,6 +12,8 @@
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="<?php echo base_url(); ?>complemento/js/materialize.js"></script>
 	<script src="<?php echo base_url(); ?>complemento/js/init.js"></script>
+	<script src="js/jquery/validate.js"></script>
+	<script src="js/singup-form.js"></script>
 </head>
 <body>
 	<?php
@@ -63,9 +65,9 @@
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/faixas_videos/listar"><?php echo $this->lang->line('faixas'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/albuns/listar"><?php echo $this->lang->line('albums'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/entidade/listar"><?php echo $this->lang->line('entidades'); ?></a></div>
-      				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/favorecido/mostrar_cadastro"><?php echo $this->lang->line('favorecido'); ?></a></div>
+      				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/favorecido/listar"><?php echo $this->lang->line('favorecido'); ?></a></div>
       				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a></div>
-      				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/imposto/mostrar_cadastro"><?php echo $this->lang->line('imposto'); ?></a></div></li>
+      				<div class="collapsible-body"><a href="<?php echo base_url(); ?>index.php/imposto/listar"><?php echo $this->lang->line('imposto'); ?></a></div></li>
       			</ul>
 
       			<li><a class="opcao-menu" href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
@@ -113,9 +115,9 @@
 		        		<li><a href="<?php echo base_url(); ?>index.php/faixas_videos/listar"><?php echo $this->lang->line('faixas'); ?></a></li>
 						<li><a href="<?php echo base_url(); ?>index.php/albuns/listar"><?php echo $this->lang->line('albums'); ?></a></li>
 						<li><a href="<?php echo base_url(); ?>index.php/entidade/listar"><?php echo $this->lang->line('entidades'); ?></a></li>
-						<li><a href="<?php echo base_url(); ?>index.php/favorecido/mostrar_cadastro"><?php echo $this->lang->line('favorecido'); ?></a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/favorecido/listar"><?php echo $this->lang->line('favorecido'); ?></a></li>
 						<li><a href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a></li>
-						<li><a href="<?php echo base_url(); ?>index.php/imposto/mostrar_cadastro"><?php echo $this->lang->line('imposto'); ?></a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/imposto/listar"><?php echo $this->lang->line('imposto'); ?></a></li>
     				<?php } ?>
     		</div>
     	</div>

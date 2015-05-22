@@ -5,16 +5,18 @@ class Imposto extends CI_Controller{
     
     function __construct() {
         parent:: __construct();
-        $this->load->model('imposto_model');
+        $this->load->model('Imposto_model');
 
     }
 
     function index(){
         $this->mostrar_cadastro();
     }
-           
-            
-    
+
+     public function listar(){
+        $dados["dadoimposto"]=$this->Imposto_model->buscar_imposto();
+        $this->load->view("Imposto/listar_impostos_view",$dados);
+    }          
     
     function mostrar_cadastro(){
         $this->load->view('imposto/imposto_view');
@@ -26,7 +28,7 @@ class Imposto extends CI_Controller{
                 'nome'=>$this->input->post('nome'),
                 'valor'=>$this->input->post('valor')
             );
-            $this->imposto_model->cadastrar_imposto($dados);
+            $this->Imposto_model->cadastrar_imposto($dados);
             $this->session->set_flashdata('sucesso', 'cadastro_realizado');
             redirect('Imposto/mostrar_cadastro');
         }
@@ -35,5 +37,11 @@ class Imposto extends CI_Controller{
             redirect('Imposto/mostrar_cadastro');
 
         }
+    }
+
+    function deletar(){
+        $id=$this->input->get('id');
+        $this->Imposto_model->deletar($id);
+        $this->listar();
     }
 }

@@ -47,7 +47,7 @@ $lang['acao']				= 'ação';
 $lang['novo']				= 'NOVO';
 $lang['nova']				= 'NOVA';
 $lang['nome']				= 'Nome';
-
+$lang['selecione']			='Selecione';
 ////// LOGIN ////// Evandro
 
 $lang['login'] 				= 'usuário';
@@ -108,9 +108,9 @@ $lang['mes']				= 'mês';
 $lang['meses']				= 'meses';
 $lang['contrato_cadastrar']	= 'Cadastrar';
 
-
-/////ENTIDADES /*FEITO POR MIM JADIEL*/
+/////ENTIDADES/FAVORECIDO /*FEITO POR MIM JADIEL*/
 $lang['nome_entidade']='Nome da entidade';		
+$lang['nome_favorecido']='Nome do favorecido';
 $lang['cpf_cnpj']='CPF/CNPJ';
 $lang['telefone']	= 'Telefone';
 $lang['telefone_alternativo']	= 'Telefone Alternativo';
@@ -138,6 +138,11 @@ $lang['campo_vazio']='Todos os campos devem ser preenxidos!';
 $lang['cnpj_invalido']='CNPJ inválido';
 $lang['cpf_invalido']='CPF inválido';
 $lang['cadastrar_entidade']='Cadastrar uma nova entidade!';
+$lang['cadastrar_favorecido']='Cadastrar um novo favorecido';
+$lang['nao_ha_entidades']='Não existem entidades cadastradas!';
+$lang['nao_ha_favorecidos']='Não existem favorecidos cadastrados!';
+$lang['nao_ha_impostos']='Não existem impostos cadastrados!';
+
 
 
 //IMPOSTO JADIEL

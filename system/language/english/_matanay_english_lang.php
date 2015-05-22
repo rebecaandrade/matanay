@@ -46,6 +46,7 @@ $lang['acao']				= 'Action';
 $lang['novo']				= 'NEW';
 $lang['nova']				= 'NEW';
 $lang['nome']				= 'Name';
+$lang['selecione']			='Select';
 
 ////// LOGIN ////// Evandro
 
@@ -109,8 +110,9 @@ $lang['meses']				= 'months';
 $lang['contrato_cadastrar']	= 'Register';
 
 
-/////ENTIDADES  Jadiel
+/////ENTIDADES/FAVORECIDO  Jadiel
 $lang['entidade'] = 'Entity';
+$lang['nome_favorecido']='Name of favored';
 $lang['nome_entidade']				= 'Name of the Entity';		
 $lang['cpf_cnpj']			= 'ID';
 $lang['telefone']		= 'Telephone number';
@@ -134,18 +136,15 @@ $lang['campo_vazio']='One shall not leave an empty field!';
 $lang['cnpj_invalido']='Invalid CNPJ';
 $lang['cpf_invalido']='Invalid CPF';
 $lang['cadastrar_entidade']='Register a new Entity!';
-
+$lang['cadastrar_favorecido']='Register a new Favored!';
+$lang['nao_ha_entidades']='There are no entitys registered!';
+$lang['nao_ha_favorecidos']='There are no favoreds registered!';
+$lang['nao_ha_impostos']='There are no taxes registered!';
 
 
 //IMPOSTO JADIEL
 $lang['imposto_nome']='Name of the Tax';
 $lang['valor']='Value';
-
-
-
-
-
-
 
 
 //cliente
@@ -157,16 +156,6 @@ $lang['cliente_confirmar_senha'] = 'Confirm Password';
 $lang['cliente_funcionalidades'] = 'Functionalities';
 $lang['cliente_cadastrar'] = 'Register';
 $lang['cliente_erro_listar'] = 'No client on record';
-
-//GERAL
-$lang['acao']='Action';
-$lang['delear']='Delete';
-$lang['editar']='Edit';
-$lang['nao_ha_entidades']='There are no entitys registered!';
-$lang['selecione']='Select';
-
-
-
 
 
 
