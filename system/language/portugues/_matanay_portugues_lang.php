@@ -43,11 +43,13 @@ $lang['ingles']				= 'ENGLISH';
 $lang['portugues']			= 'PORTUGUÊS';
 $lang['deletar']			= 'Deletar';
 $lang['editar']				= 'Editar';
+$lang['atualizar']			= 'ATUALIZAR';
 $lang['acao']				= 'ação';
 $lang['novo']				= 'NOVO';
 $lang['nova']				= 'NOVA';
 $lang['nome']				= 'Nome';
-$lang['selecione']			='Selecione';
+$lang['selecione']			= 'Selecione';
+
 ////// LOGIN ////// Evandro
 
 $lang['login'] 				= 'usuário';

@@ -7,7 +7,7 @@ $this->load->view('_include/header') ?>
                 <?php echo $this->lang->line('favorecido'); ?>
                 <a href="<?php echo base_url(); ?>index.php/favorecido/mostrar_cadastro" 
                     class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo" 
-                    data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('nova'); ?>" id="addButton">
+                    data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('novo'); ?>" id="addButton">
                     <i class="mdi-content-add"></i>
                 </a>
         </div>   

@@ -59,4 +59,33 @@ class Faixas_Videos extends CI_Controller {
 		$this->load->view('faixas_videos/lista_faixas', $dados);
 	}
 
+    public function editar($id){
+        $dados['faixa'] = $this->faixas_videos_model->buscar_dados($id);
+        $dados['artistas'] = $this->faixas_videos_model->buscar_artistas();
+        $dados['autores'] = $this->faixas_videos_model->buscar_autores();
+        $dados['produtores'] = $this->faixas_videos_model->buscar_produtores();
+
+        $this->load->view('faixas_videos/edita_faixa', $dados);
+    }
+
+    public function atualizar(){
+        $dados = array(
+            'idFaixa' => $this->input->post('idFaixa'),
+            'nome' => $this->input->post('nome'),
+            'isrc' => $this->input->post('isrc'),
+            'percentual_artista' => $this->input->post('percentual_artista'),
+            'percentual_autor' => $this->input->post('percentual_autor'),
+            'percentual_produtor' => $this->input->post('percentual_produtor')
+        );
+
+        if($dados['nome'] != NULL && $dados['isrc'] != NULL){
+            $this->faixas_videos_model->atualizar_faixa($dados);
+            
+            redirect('faixas_videos/listar');       
+        }else{
+            $id = $this->input->post('idFaixa');
+            redirect('faixas_videos/editar', $id);
+        }
+    }
+
 }

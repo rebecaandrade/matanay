@@ -25,7 +25,7 @@
                         <tr>
                             <td><?php echo $faixa->nome;?></td>
                             <td><?php echo $faixa->isrc;?></td> 
-                            <td><a id="acao" href="<?php echo base_url().'index.php/Entidade/camposatualizacao?id='.$faixa->idFaixa ?>">
+                            <td><a id="acao" href="<?php echo base_url(); ?>index.php/faixas_videos/editar/<?php echo $faixa->idFaixa ?>">
                             		<?php echo $this->lang->line('editar'); ?></a> |
                             	<a id="acao" href="#"><?php echo $this->lang->line('deletar'); ?></a>
                             </td>

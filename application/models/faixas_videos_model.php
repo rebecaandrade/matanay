@@ -25,6 +25,16 @@ class Faixas_Videos_model extends CI_Model {
         return $this->db->get('faixa');
     }
 
+    public function atualizar_faixa($dados){
+        $this->db->where('idFaixa', $dados['idFaixa']);
+        return $this->db->update('faixa', $dados);
+    }
+
+    public function buscar_dados($id){
+        $this->db->where('idFaixa', $id);
+        return $this->db->get('faixa')->row();
+    }
+
     public function cadastrar_faixa($faixa){
 
         if(is_string($faixa['isrc'])){
