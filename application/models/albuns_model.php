@@ -23,6 +23,21 @@ class Albuns_model extends CI_Model {
         return $this->db->get('album');
     }
 
+    public function buscar_dados($id){
+        $this->db->where('idAlbum', $id);
+        return $this->db->get('album')->row();
+    }
+
+    public function buscar_artista_album($id){
+        $this->db->where('idAlbum', $id);
+        return $this->db->get('entidade_has_album')->row();
+    }
+
+    public function buscar_tracklist($id){
+        $this->db->where('idAlbum', $id);
+        return $this->db->get('faixa_has_album')->row();
+    }
+
     public function cadastrar_album($album, $artista, $faixas){
     	$this->db->trans_start();
 		$this->db->insert('album', $album);
@@ -44,4 +59,9 @@ class Albuns_model extends CI_Model {
 
 		$this->db->trans_complete();
 	}
+
+    public function atualizar_album($dados){
+        $this->db->where('idAlbum', $dados['idAlbum']);
+        return $this->db->update('album', $dados);
+    }
 }

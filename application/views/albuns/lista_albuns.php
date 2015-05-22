@@ -16,6 +16,7 @@
                 <tr>
                     <th><?php echo $this->lang->line('titulo'); ?></th>
                     <th>UPC/EAN</th>
+                    <th><?php echo $this->lang->line('ano'); ?></th>
                     <th><?php echo $this->lang->line('acao'); ?></th>
                 </tr>
             </thead>
@@ -25,7 +26,8 @@
                         <tr>
                             <td><?php echo $album->nome;?></td>
                             <td><?php echo $album->upc_ean;?></td> 
-                            <td><a id="acao" href="<?php echo base_url().'index.php/Entidade/camposatualizacao?id='.$album->idAlbum ?>">
+                            <td><?php echo $album->ano;?></td>
+                            <td><a id="acao" href="<?php echo base_url(); ?>index.php/albuns/editar/<?php echo $album->idAlbum ?>">
                             		<?php echo $this->lang->line('editar'); ?></a> |
                             	<a id="acao" href="#"><?php echo $this->lang->line('deletar'); ?></a>
                             </td>

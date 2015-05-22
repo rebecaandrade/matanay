@@ -64,4 +64,45 @@ class Albuns extends CI_Controller {
 		$this->load->view('albuns/lista_albuns', $dados);
 	}
 
+    public function editar($id){
+        $dados['album'] = $this->albuns_model->buscar_dados($id);
+        $dados['artista_album'] = $this->albuns_model->buscar_artista_album($id);
+        $dados['artistas'] = $this->albuns_model->buscar_artistas();
+        $dados['tracklist'] = $this->albuns_model->buscar_tracklist($id);
+        $dados['tipos'] = $this->albuns_model->buscar_tipos();
+
+        $this->load->view('albuns/edita_album', $dados);
+    }
+
+    public function atualizar(){
+        $dados = array(
+            'idAlbum' => $this->input->post('idAlbum'),
+            'nome' => $this->input->post('nome'),
+            'quantidade' => $this->input->post('n_faixas'),
+            'upc_ean' => $this->input->post('upc_ean'),
+            'ano' => $this->input->post('ano'),
+            'faixa' => 100/$this->input->post('n_faixas'),
+            'codigo_catalogo' => $this->input->post('catalogo'),
+            'idTipo_Album' => $this->input->post('tipo')
+        );
+
+        if($dados['nome'] != NULL && $dados['ano'] != NULL){
+            $this->albuns_model->atualizar_album($dados);
+            
+            redirect('albuns/listar');       
+        }else{
+            $id = $this->input->post('idAlbum');
+            
+            $dados['album'] = $this->albuns_model->buscar_dados($id);
+            $dados['artista_album'] = $this->albuns_model->buscar_artista_album($id);
+            $dados['artistas'] = $this->albuns_model->buscar_artistas();
+            $dados['tracklist'] = $this->albuns_model->buscar_tracklist($id);
+            $dados['tipos'] = $this->albuns_model->buscar_tipos();
+
+            $this->load->view('albuns/edita_album', $dados);
+        }
+
+
+    }
+
 }
