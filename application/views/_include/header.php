@@ -25,6 +25,10 @@
 
 		$linguagem_usuario = $this->session->userdata('linguagem');
 		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+
+		if (!($this->session->userdata('id_usuario'))){
+			redirect('acesso/index');
+		}
 	?>
 	<nav class="grey darken-3" role="navigation">
     	<div class="nav-wrapper container"><a id="logo-container" href="<?php echo base_url(); ?>index.php/cliente/home" class="brand-logo">MATANAY</a>

@@ -35,7 +35,7 @@ $this->load->view('_include/header') ?>
                 </tbody>
             </table>
         <?php }else{?>
-            <span><?php echo $this->lang->line('nao_ha_entadades'); ?></span><br>
+            <span><?php echo $this->lang->line('nao_ha_entidades'); ?></span><br>
         <?php } ?>
 
         </div>

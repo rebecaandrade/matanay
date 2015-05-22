@@ -47,7 +47,7 @@
 
 	        <div id="SelectGroup">
 	        <div class="row">
-				<div class="input-field col s12 m9 l8 offset-l1" id="Select1">
+				<div class="input-field col s11 m9 l8 offset-l1" id="Select1">
 				    <select>
 	              		<option value="" disabled selected><?php echo $this->lang->line("selecione");?></option> 
 	              		<?php
