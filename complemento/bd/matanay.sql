@@ -92,9 +92,11 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Entidade` (
   `idTipo_Entidade` INT NOT NULL ,
   `idFavorecido` INT NOT NULL ,
   `excluido` BINARY NULL ,
+  `idCliente` INT NOT NULL ,
   PRIMARY KEY (`idEntidade`) ,
   INDEX `fk_Entidade_Tipo_Entidade1_idx` (`idTipo_Entidade` ASC) ,
   INDEX `fk_Entidade_Favorecido1_idx` (`idFavorecido` ASC) ,
+  INDEX `fk_Entidade_Cliente1_idx` (`idCliente` ASC) ,
   CONSTRAINT `fk_Entidade_Tipo_Entidade1`
     FOREIGN KEY (`idTipo_Entidade` )
     REFERENCES `matanay`.`Tipo_Entidade` (`idTipo_Entidade` )
@@ -103,6 +105,11 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Entidade` (
   CONSTRAINT `fk_Entidade_Favorecido1`
     FOREIGN KEY (`idFavorecido` )
     REFERENCES `matanay`.`Favorecido` (`idFavorecido` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Entidade_Cliente1`
+    FOREIGN KEY (`idCliente` )
+    REFERENCES `matanay`.`Cliente` (`idCliente` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -247,7 +254,14 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Moeda` (
   `sigla` VARCHAR(45) NULL ,
   `taxa_cambio` FLOAT NULL ,
   `excluido` BINARY NULL ,
-  PRIMARY KEY (`idMoeda`) )
+  `idCliente` INT NOT NULL ,
+  PRIMARY KEY (`idMoeda`) ,
+  INDEX `fk_Moeda_Cliente1_idx` (`idCliente` ASC) ,
+  CONSTRAINT `fk_Moeda_Cliente1`
+    FOREIGN KEY (`idCliente` )
+    REFERENCES `matanay`.`Cliente` (`idCliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -260,7 +274,14 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Imposto` (
   `idImposto` INT NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(45) NOT NULL ,
   `valor` INT NOT NULL ,
-  PRIMARY KEY (`idImposto`) )
+  `idCliente` INT NOT NULL ,
+  PRIMARY KEY (`idImposto`) ,
+  INDEX `fk_Imposto_Cliente1_idx` (`idCliente` ASC) ,
+  CONSTRAINT `fk_Imposto_Cliente1`
+    FOREIGN KEY (`idCliente` )
+    REFERENCES `matanay`.`Cliente` (`idCliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
