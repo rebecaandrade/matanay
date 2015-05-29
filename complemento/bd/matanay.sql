@@ -55,6 +55,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `matanay`.`Tipo_Favorecido`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `matanay`.`Tipo_Favorecido` ;
+
+CREATE  TABLE IF NOT EXISTS `matanay`.`Tipo_Favorecido` (
+  `idTipo_Favorecido` INT NOT NULL AUTO_INCREMENT ,
+  `descricao` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`idTipo_Favorecido`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `matanay`.`Favorecido`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `matanay`.`Favorecido` ;
@@ -72,7 +84,14 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Favorecido` (
   `percentual_digital` INT NULL ,
   `percentual_fisico` INT NULL ,
   `excluido` BINARY NULL ,
-  PRIMARY KEY (`idFavorecido`) )
+  `idTipo_Favorecido` INT NOT NULL ,
+  PRIMARY KEY (`idFavorecido`) ,
+  INDEX `fk_Favorecido_Tipo_Favorecido1_idx` (`idTipo_Favorecido` ASC) ,
+  CONSTRAINT `fk_Favorecido_Tipo_Favorecido1`
+    FOREIGN KEY (`idTipo_Favorecido` )
+    REFERENCES `matanay`.`Tipo_Favorecido` (`idTipo_Favorecido` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
