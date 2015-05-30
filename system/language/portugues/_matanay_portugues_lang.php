@@ -85,6 +85,7 @@ $lang['video'] 				= 'Vídeo?';
 $lang['artista'] 			= 'Artista';
 $lang['compositor'] 		= 'Compositor';
 $lang['produtor'] 			= 'Produtor';
+$lang['nao_ha_faixas']		= 'Não há faixas cadastradas!';
 
 ////// ALBUMS ////// Evandro
 
@@ -94,6 +95,7 @@ $lang['lancamento'] 		= 'Ano de Lançamento';
 $lang['ano'] 				= 'Ano';
 $lang['tipo'] 				= 'Tipo';
 $lang['faixa'] 				= 'Faixa';
+$lang['nao_ha_albums']		= 'Não há álbuns cadastrados!';
 
 ////// MOEDA ////// Vitor
 

@@ -9,7 +9,7 @@ class Albuns_model extends CI_Model {
 
     public function buscar_faixas(){
         $this->db->order_by('nome', 'asc');
-        return $this->db->get('faixa')->result();
+        return $this->db->get('faixa_video')->result();
     }
 
     public function buscar_artistas(){
@@ -35,7 +35,7 @@ class Albuns_model extends CI_Model {
 
     public function buscar_tracklist($id){
         $this->db->where('idAlbum', $id);
-        return $this->db->get('faixa_has_album')->row();
+        return $this->db->get('album_has_faixa')->row();
     }
 
     public function cadastrar_album($album, $artista, $faixas){
@@ -54,7 +54,7 @@ class Albuns_model extends CI_Model {
 				'idAlbum' => $album_id,
 				'idFaixa' => $faixa->idFaixa
 			);
-			$this->db->insert('faixa_has_album', $tracklist);
+			$this->db->insert('album_has_faixa', $tracklist);
 		}
 
 		$this->db->trans_complete();

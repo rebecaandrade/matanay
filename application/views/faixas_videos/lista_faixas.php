@@ -34,7 +34,7 @@
             </tbody>
         </table>
     <?php }else{?>
-        <span><?php echo $this->lang->line('nao_ha_entidades'); ?></span><br>
+        <span><?php echo $this->lang->line('nao_ha_faixas'); ?></span><br>
     <?php } ?>
 
 	<div id="paginacao">

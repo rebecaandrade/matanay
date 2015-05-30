@@ -22,17 +22,17 @@ class Faixas_Videos_model extends CI_Model {
 
     public function buscar_faixas($qtde=0, $inicio=0){
         if($qtde > 0) $this->db->limit($qtde, $inicio);
-        return $this->db->get('faixa');
+        return $this->db->get('faixa_video');
     }
 
     public function atualizar_faixa($dados){
         $this->db->where('idFaixa', $dados['idFaixa']);
-        return $this->db->update('faixa', $dados);
+        return $this->db->update('faixa_video', $dados);
     }
 
     public function buscar_dados($id){
         $this->db->where('idFaixa', $id);
-        return $this->db->get('faixa')->row();
+        return $this->db->get('faixa_video')->row();
     }
 
     public function cadastrar_faixa($faixa){
@@ -51,7 +51,7 @@ class Faixas_Videos_model extends CI_Model {
             return FALSE;
         }
 
-        return $this->db->insert('faixa', $faixa);
+        return $this->db->insert('faixa_video', $faixa);
     }
 	
 }

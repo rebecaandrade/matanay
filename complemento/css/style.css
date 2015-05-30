@@ -86,6 +86,11 @@ html {
 	z-index: 1;
 }
 
+.nav-logo {
+	width: 15rem !important;
+	padding-top: 0.8rem !important;
+}
+
 #titulo_lista {
 	margin-top: 7% !important;
 	font-family: "Roboto", 'sans-serif' !important;

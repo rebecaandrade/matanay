@@ -84,6 +84,7 @@ $lang['video'] 				= 'Video?';
 $lang['artista'] 			= 'Artist';
 $lang['compositor'] 		= 'Writer';
 $lang['produtor'] 			= 'Producer';
+$lang['nao_ha_faixas']		= 'There are no tracks registered!';
 
 ////// ALBUMS ////// Evandro
 
@@ -93,6 +94,7 @@ $lang['lancamento'] 		= 'Release Year';
 $lang['ano'] 				= 'Year';
 $lang['tipo'] 				= 'Type';
 $lang['faixa'] 				= 'Track';
+$lang['nao_ha_albums']		= 'There are no albums registered!';
 
 ////// MOEDA Vitor
 
