@@ -49,6 +49,10 @@ $lang['novo']				= 'NOVO';
 $lang['nova']				= 'NOVA';
 $lang['nome']				= 'Nome';
 $lang['selecione']			= 'Selecione';
+$lang['procurar']			='Procurar';
+$lang['nada_encontrado']			='Nada encontrado';
+
+
 
 ////// LOGIN ////// Evandro
 

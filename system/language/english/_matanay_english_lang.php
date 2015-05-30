@@ -38,6 +38,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ////// GERAL
+
 $lang['ingles']				= 'ENGLISH';
 $lang['portugues']			= 'PORTUGUÊS';
 $lang['deletar']			= 'Delete';
@@ -47,6 +48,9 @@ $lang['novo']				= 'NEW';
 $lang['nova']				= 'NEW';
 $lang['nome']				= 'Name';
 $lang['selecione']			='Select';
+$lang['procurar']			='Search';
+$lang['nada_encontrado']			='Nothing found';
+
 
 ////// LOGIN ////// Evandro
 

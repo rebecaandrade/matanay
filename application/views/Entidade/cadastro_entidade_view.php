@@ -9,7 +9,7 @@ $this->load->view('_include/header') ?>
         
         <div class="row">
             <?php 
-            $atributo = array('id' => 'form');
+            $atributo = array('id' => 'form');//colocando um id no form
             echo form_open('/Entidade/cadastrar', $atributo)?>
                 <?php if (isset($variavel)){echo $variavel;}?>
                 <div class="row">
@@ -93,30 +93,27 @@ $this->load->view('_include/header') ?>
                     <div class="row">
                         <div class="input-field col s12 m12 l2 offset-l2">
                             <label><?php echo $this->lang->line('banco'); ?></label>
-                            <input required type="text" value="" name="banco" >
+                            <input  type="text" value="" name="banco" >
                         </div>
                         <div class="input-field col s12 m6 l3">
                             <label><?php echo $this->lang->line('conta'); ?></label>
-                            <input required type="text" value="" name="contacorrente" >
+                            <input  type="text" value="" name="contacorrente" >
                         </div>
                         <div class="input-field col s12 m6 l3">
                             <label><?php echo $this->lang->line('agencia'); ?></label>
-                            <input required type="text" value="" name="agencia" >
+                            <input  type="text" value="" name="agencia" >
                         </div>
                     </div>
                 </div>
                 <div id="nao_favorecido" class="box">
-                    <?php if (($dadofavorecido!=null)&&($dadoentidade!=null)){?>
+                    <?php if (($dadofavorecido!=null)){?>
                         <div class="row">
                             <div class="input-field col s12 m12 l8 offset-l2">
-                                <select name="favorecidorelacionado" >
+                                <select name="favorecido_relacionado" >
                                     <option value="" disabled selected> <?php echo $this->lang->line('favorecido_cadastrado');?> </option>
-                                    <?php foreach ($dadoentidade as $row){//verifica se a entidade ja foi cadastrada como favorecido
-                                        foreach($dadofavorecido as $row1){
-                                            if (($row->idEntidade)==($row1->Entidade_idEntidade)){  ?>
-                                                <option value= _<?php echo $row->idEntidade;?>><?php echo $row->nome;?></option>
-                                            <?php } ?>
-                                        <?php } ?>
+                                    <?php //verifica se a entidade ja foi cadastrada como favorecido
+                                    foreach($dadofavorecido as $row){?>
+                                        <option value="<?php echo $row->idFavorecido;?>"><?php echo $row->nome;?></option>
                                     <?php } ?>
                                 </select>
                                 <label><?php echo $this->lang->line('favorecido_cadastrado'); ?></label>

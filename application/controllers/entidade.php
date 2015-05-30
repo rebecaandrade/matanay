@@ -23,6 +23,21 @@
 
     }
 
+    public function procurar(){
+      //pequeno teste para que na hora da busca ele interprete autor como 2 no banco.
+      if($this->input->post('procurar')=="artista")
+        $busca=1;
+      else if($this->input->post('procurar')=="autor")
+        $busca=2;
+      else if($this->input->post('procurar')=="produtor")
+        $busca=3;
+      else
+        $busca=$this->input->post('procurar');
+        $dados["busca"] = $this->Entidade_model->procurar_entidade($busca);
+      $dados["dadoentidade"]=$this->Entidade_model->buscar_entidades();
+      $this->load->view("Entidade/listar_entidades_view",$dados);
+    }
+
 
     public function validar_cpf($cpf){
       $cpf = str_pad(preg_replace('/[^0-9]/', '', $cpf), 11, '0', STR_PAD_LEFT);
@@ -107,29 +122,62 @@
             } 
         }
 
-        /*$validade_telefone1=$this->validar_telefone($this->input->post('telefone1'));
-        if ($validade_telefone1==false){
-            $erro["message"]="Telefone 1 imválido!!";  
-            $erro["heading"] ="ERRO!!";
-            $this->load->view('errors/html/error_general', $erro);///EU SEI QUE NAO ROLA DE DEIXAR ISSO DESSA FORMA
-        }
-        $validade_telefone2=$this->validar_telefone($this->input->post('telefone2'));
-        if ($validade_telefone2==false){
-            $erro["message"]="Telefone 2 imválido!!";  
-            $erro["heading"] ="ERRO!!";
-            $this->load->view('errors/html/error_general', $erro);///EU SEI QUE NAO ROLA DE DEIXAR ISSO DESSA FORMA
-        }*/
-
-        if ($this->input->post('favorecido')){//se for favorecido coloca no banco o que eh pego no form sobre favorecido
-          $entidade = array(//recebe do form as informacoes da entidade
+        //se for favorecido coloca no banco o que eh pego no form sobre favorecido
+        if ($this->input->post('favorecido')){
+          if($this->input->post('cpf/cnpj')=='cpf'){//testa se for cpf ou cnpj e coloca null no que nao for.
+            $cpf=$this->input->post('cpf_cnpj');
+            $cnpj=null;
+          }else{
+            $cnpj=$this->input->post('cpf_cnpj');
+            $cpf=null;
+          }
+          $favorecido = array(//recebe do form as informacoes da entidade
               'nome' => $this->input->post('nomeentidade') ,
-              'cpf_cnpj' => $this->input->post('cpf_cnpj') ,
+              'cpf' => $cpf ,
+              'cnpj' => $cnpj ,
               'contato' => $this->input->post('contato') ,
               'email' => $this->input->post('email') ,
               'percentual_digital' => $this->input->post('porcentagemganhodigital') ,
               'percentual_fisico' => $this->input->post('porcentagemganhofisico') ,
-              'favorecido' => $this->input->post('favorecido') ,
+              'idTipo_Favorecido' => $this->input->post('identificacao'),
+              'banco'=>$this->input->post('banco'),
+              'agencia'=>$this->input->post('agencia'),
+              'conta'=>$this->input->post('contacorrente')
+          );
+          $id_entidade=$this->Favorecido_model->cadastrar_favorecido($favorecido);//coloca os telefones
+          $telefone = array(
+                'idFavorecido'=>$id_entidade,
+                'numero'=>$this->input->post('telefone1')
+               );
+          $this->Favorecido_model->cadastrar_telefone($telefone);//coloca os telefones
+          $telefone = array(
+                'idFavorecido'=>$id_entidade,
+                'numero'=>$this->input->post('telefone2')
+              );
+          $this->Favorecido_model->cadastrar_telefone($telefone);
+          $this->session->set_flashdata('sucesso', 'cadastro_realizado');
+          redirect('Entidade/mostrar_cadastro');
+        }
+        //se nao for favorecido segue o codigo
+        else{
+          if($this->input->post('cpf/cnpj')=='cpf'){//testa se for cpf ou cnpj e coloca null no que nao for.
+            $cpf=$this->input->post('cpf_cnpj');
+            $cnpj=null;
+          }else{
+            $cnpj=$this->input->post('cpf_cnpj');
+            $cpf=null;
+          }
+          $entidade = array(//recebe do form as informacoes da entidade
+              'nome' => $this->input->post('nomeentidade') ,
+              'cpf' => $cpf ,
+              'cnpj' => $cnpj ,
+              'contato' => $this->input->post('contato') ,
+              //'email' => $this->input->post('email') ,
+              'idFavorecido'=>$this->input->post('favorecido_relacionado'),
+              'percentual_digital' => $this->input->post('porcentagemganhodigital') ,
+              'percentual_fisico' => $this->input->post('porcentagemganhofisico') ,
               'idTipo_Entidade' => $this->input->post('identificacao'),
+
           );
           $id_entidade=$this->Entidade_model->cadastrar_entidade($entidade);//coloca os telefones
           $telefone = array(
@@ -142,20 +190,12 @@
                 'numero'=>$this->input->post('telefone2')
               );
           $this->Entidade_model->cadastrar_telefone($telefone);
-          $favorecido= array(
-              'Entidade_idEntidade'=>$id_entidade,
-              'banco'=>$this->input->post('banco'),
-              'agencia'=>$this->input->post('agencia'),
-              'conta'=>$this->input->post('contacorrente')
-              );
-          $idfavorecidos=$this->Entidade_model->cadastrar_favorecido($favorecido);
           $this->session->set_flashdata('sucesso', 'cadastro_realizado');
           redirect('Entidade/mostrar_cadastro');
-        } 
+        }
     }
     
     public function listar(){
-        $dados["dadofavorecido"]=$this->Favorecido_model->buscar_favorecido();
         $dados["dadoentidade"]=$this->Entidade_model->buscar_entidades();
         $this->load->view("Entidade/listar_entidades_view",$dados);
     }
