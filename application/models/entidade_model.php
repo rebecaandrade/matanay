@@ -22,7 +22,7 @@ class Entidade_model extends CI_Model{
    	}
 	function buscar_telefone_especifico($id, $idtelefone){
     		$this->db->where('idEntidade', $id);
-        	return $this->db->get('telefone')->result()[$idtelefone];
+        	return $this->db->get('telefone_entidade')->result()[$idtelefone];
    	}
    	function buscar_contar_telefones($id, $idtelefone){
     		$this->db->where('idEntidade', $id);
@@ -38,19 +38,16 @@ class Entidade_model extends CI_Model{
 	}
 	public function atualizar_telefone($telefone){
 		$this->db->where('idTelefone',$telefone['idTelefone']);
-		return  $this->db->update('telefone', $telefone);
+		return  $this->db->update('telefone_entidade', $telefone);
 	}
 	public function procurar_entidade($dado){
    		$this->db->like("nome",$dado);
-		$this->db->or_like("conta",$dado);
-		$this->db->or_like("agencia",$dado);
-		$this->db->or_like("banco",$dado);
 		$this->db->or_where("cpf",$dado);
 		$this->db->or_where("cnpj",$dado);
 		$this->db->or_like("contato",$dado);
-		$this->db->or_like("idTipo_Favorecido",$dado);
-		$this->db->or_like("email",$dado);
-		$query = $this->db->get("favorecido");
+		$this->db->or_where("idTipo_Entidade",$dado);
+		$this->db->or_where("email",$dado);
+		$query = $this->db->get("entidade");
 
 		return $query->result();
    	}

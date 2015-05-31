@@ -42,7 +42,7 @@ $this->load->view('_include/header') ?>
                                     <td><?php echo $row1->nome;?></td>
                                     <?php if($row1->cpf!=null){?><td><?php echo $row1->cpf;?></td><?php } ?>
                                     <?php if($row1->cnpj!=null){?><td><?php echo $row1->cnpj;?></td> <?php } ?>
-                                    <td><a href="#"><?php echo $this->lang->line('deletar'); ?> </a> || <a href="<?php echo base_url().'index.php/Favorecido/camposatualizacao?id='.$row1->idFavorecido ?>"><?php echo $this->lang->line('editar'); ?></a></td>
+                                    <td><a href="#"><?php echo $this->lang->line('deletar'); ?> </a> || <a href="<?php echo base_url().'index.php/Entidade/camposatualizacao?id='.$row1->idEntidade ?>"><?php echo $this->lang->line('editar'); ?></a></td>
                                 </tr> 
                         <?php }} ?>                  
                 </tbody>

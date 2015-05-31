@@ -15,8 +15,28 @@ class Favorecido_model extends CI_Model{
 		$query=$this->db->query("SELECT * FROM favorecido");
             return $query->result();
 	}
+	public function atualizar_favorecido($favorecido){
+		$this->db->where('idFavorecido',$favorecido['idFavorecido']);
+		return  $this->db->update('favorecido', $favorecido);
+	}
+
+	public function atualizar_telefone($telefone){
+		$this->db->where('idTelefone_Favorecido',$telefone['idTelefone_Favorecido']);
+		return  $this->db->update('telefone_favorecido', $telefone);
+	}
+
+	function buscar_telefone_especifico($id, $idtelefone){
+    		$this->db->where('idFavorecido', $id);
+        	return $this->db->get('telefone_favorecido')->result()[$idtelefone];
+   	}
+
+   	function buscar_identificacao_especifica($id){
+    		$this->db->where('idTipo_Favorecido', $id);
+        	return $this->db->get('tipo_favorecido')->result()[0];
+   	}
+
 	public function buscar_favorecido_especifica($id){
-    		$this->db->where('Entidade_idEntidade', $id);
+    		$this->db->where('idFavorecido', $id);
         	return $this->db->get('favorecido')->result()[0];
    	}
    	public function procurar_favorecido($dado){
@@ -28,7 +48,7 @@ class Favorecido_model extends CI_Model{
 		$this->db->or_where("cnpj",$dado);
 		$this->db->or_like("contato",$dado);
 		$this->db->or_like("idTipo_Favorecido",$dado);
-		$this->db->or_like("email",$dado);
+		$this->db->or_where("email",$dado);
 		$query = $this->db->get("favorecido");
 
 		return $query->result();

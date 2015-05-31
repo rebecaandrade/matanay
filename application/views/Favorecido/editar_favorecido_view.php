@@ -1,65 +1,67 @@
 <?php /*FEITO POR MIM JADIEL*/
 $this->load->view('_include/header') ?>
     <br>
-    <br>
+
     <div class="container">
         <div class="row">
             <?php echo $this->lang->line('edit_entitys'); ?>
             <?php if (isset($sucesso)){echo $sucesso;}?><br>
-            <?php echo form_open('Entidade/atualizar') ?>
-                <input type="hidden" name='idEntidade' value="<?php echo $dadosentidade->idEntidade; ?>" />
-                <input type="hidden" name='favorecido' value="<?php echo $dadosentidade->favorecido; ?>" />
-                <input type="hidden" name='idtelefone1' value="<?php echo $telefone1->idTelefone; ?>" />
-                <input type="hidden" name='idtelefone2' value="<?php echo $telefone2->idTelefone; ?>" />
+            <?php echo form_open('Favorecido/atualizar') ?>
+                <input type="hidden" name='idFavorecido' value="<?php echo $dadosfavorecido->idFavorecido; ?>" />
+                <input type="hidden" name='idtelefone1' value="<?php echo $telefone1->idTelefone_Favorecido; ?>" />
+                <input type="hidden" name='idtelefone2' value="<?php echo $telefone2->idTelefone_Favorecido; ?>" />
                 <div class="row">
                     <div class="aviso_entidade"><?php if($this->session->flashdata('sucesso')!=null){echo $this->lang->line($this->session->flashdata('sucesso'));} ?></div>
                     <div class="aviso_entidade"><?php if($this->session->flashdata('aviso')!=null){echo $this->lang->line($this->session->flashdata('aviso'));} ?></div>
                     <div class="input-field col s12 m12 l8 offset-l2">
                         <i class="mdi-action-perm-identity prefix"></i>
                         <label><?php echo $this->lang->line('nome_favorecido'); ?></label>
-                        <input value="<?php echo $dadosentidade->nome; ?>" name="nome" required type="text"/>
+                        <input value="<?php echo $dadosfavorecido->nome; ?>" name="nome" required type="text"/>
                     </div>
                 </div>
+                <?php if($dadosfavorecido->cpf==null){?>
                 <div class="row">
                     <div class="input-field col s12 m12 l8 offset-l2">
                         <label><?php echo $this->lang->line('cpf_cnpj'); ?></label>
-                        <input value="<?php echo $dadosentidade->cpf_cnpj; ?>" name="cpf_cnpj" required type="text"/>
+                        <input value="<?php echo $dadosfavorecido->cnpj; ?>" name="cnpj" required type="text"/>
                     </div>
                 </div>
+                <?php }else{ ?>
                 <div class="row">
-                    <div class="input-field col s12 m12 l8 offset-l2"> 
+                    <div class="input-field col s12 m12 l8 offset-l2">
+                        <label><?php echo $this->lang->line('cpf_cnpj'); ?></label>
+                        <input value="<?php echo $dadosfavorecido->cpf; ?>" name="cpf" required type="text"/>
+                    </div>
+                </div>
+                <?php } ?>
+                <div class="row">
+                    <div class="input-field col s12 m6 l4 offset-l2"> 
                         <label><?php echo $this->lang->line('telefone'); ?>:</label>
                         <input id="telefone" maxlength="14" class="telefone" value="<?php echo $telefone1->numero; ?>" name="telefone1" required type="text"/>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12 m12 l8 offset-l2"> 
+                    <div class="input-field col s12 m6 l4"> 
                         <label><?php echo $this->lang->line('telefone_alternativo'); ?>:</label>
                         <input id="telefone1" maxlength="14" id="telefone1" value="<?php echo $telefone2->numero; ?>" name="telefone2" required type="text"/>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12 m12 l8 offset-l2">
+                    <div class="input-field col s12 m6 l4 offset-l2">
                         <label><?php echo $this->lang->line('contato'); ?>:</label>
-                        <input value="<?php echo $dadosentidade->contato; ?>" name="contato" required type="text"/>
+                        <input value="<?php echo $dadosfavorecido->contato; ?>" name="contato" required type="text"/>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12 m12 l8 offset-l2">
+                    <div class="input-field col s12 m6 l4">
                         <label><?php echo $this->lang->line('email'); ?>:</label>
-                        <input value="<?php echo $dadosentidade->email; ?>" name="email" required type="email"/>
+                        <input value="<?php echo $dadosfavorecido->email; ?>" name="email" required type="email"/>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12 m12 l8 offset-l2">
+                    <div class="input-field col s12 m6 l4 offset-l2">
                         <label><?php echo $this->lang->line('percentual_fisico'); ?>:</label>
-                        <input value="<?php echo $dadosentidade->percentual_fisico; ?>" name="percentual_fisico" required type="text"/>
+                        <input value="<?php echo $dadosfavorecido->percentual_fisico; ?>" name="percentual_fisico" required type="text"/>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12 m12 l8 offset-l2">
+                    <div class="input-field col s12 m6 l4">
                         <label><?php echo $this->lang->line('percentual_digital'); ?>:</label>
-                        <input value="<?php echo $dadosentidade->percentual_digital; ?>" name="percentual_digital" required type="text"/>
+                        <input value="<?php echo $dadosfavorecido->percentual_digital; ?>" name="percentual_digital" required type="text"/>
                     </div>
                 </div>
                 <div class="row">

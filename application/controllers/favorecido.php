@@ -24,12 +24,15 @@
     }
 
     public function procurar(){
-      //pequeno teste para que na hora da busca ele interprete autor como 2 no banco.
-      if($this->input->post('procurar')=="artista")
+      //pequeno teste para que na hora da busca ele interprete os identificadores como numeros no banco.
+            $this->session->set_flashdata('redirect_url', current_url());
+      $linguagem_usuario = $this->session->userdata('linguagem');
+      $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+      if($this->input->post('procurar')==$this->lang->line('artista_min'))
         $busca=1;
-      else if($this->input->post('procurar')=="autor")
+      else if($this->input->post('procurar')==$this->lang->line('autor_min'))
         $busca=2;
-      else if($this->input->post('procurar')=="produtor")
+      else if($this->input->post('procurar')==$this->lang->line('produtor_min'))
         $busca=3;
       else
         $busca=$this->input->post('procurar');
@@ -138,7 +141,7 @@
           $cnpj=$this->input->post('cpf_cnpj');
           $cpf=null;
         }
-        $favorecido = array(//recebe do form as informacoes da entidade
+        $favorecido = array(
             'nome' => $this->input->post('nomeentidade') ,
             'cpf' => $cpf ,
             'cnpj' => $cnpj ,
@@ -151,14 +154,14 @@
             'agencia'=>$this->input->post('agencia'),
             'conta'=>$this->input->post('contacorrente')
         );
-        $id_entidade=$this->Favorecido_model->cadastrar_favorecido($favorecido);//coloca os telefones
+        $id_favorecido=$this->Favorecido_model->cadastrar_favorecido($favorecido);//coloca os telefones
         $telefone = array(
-              'idFavorecido'=>$id_entidade,
+              'idFavorecido'=>$id_favorecido,
               'numero'=>$this->input->post('telefone1')
            );
         $this->Favorecido_model->cadastrar_telefone($telefone);//coloca os telefones
         $telefone = array(
-              'idFavorecido'=>$id_entidade,
+              'idFavorecido'=>$id_favorecido,
               'numero'=>$this->input->post('telefone2')
             );
         $this->Favorecido_model->cadastrar_telefone($telefone);
@@ -172,55 +175,80 @@
     }
     
     public function camposatualizacao(){
-      
-        $id=$this->input->get('id');
-        $dados['dadosentidade']= $this->Entidade_model->buscar_entidade_especifica($id);
-        $dados['dadosfavorecido']= $this->Favorecido_model->buscar_favorecido_especifica($id);
+        if($this->session->flashdata('id')!=null){
+            $id=$this->session->flashdata('id');
+        }
+        else
+          $id=$this->input->get('id');
+        if ($id==null)
+          redirect('Favorecido/listar');
+        $dados_auxiliar= $dados['dadosfavorecido']= $this->Favorecido_model->buscar_favorecido_especifica($id);
         $rowtelefone=0;
-        $dados['telefone1']= $this->Entidade_model->buscar_telefone_especifico($id, $rowtelefone);
+        $dados['telefone1']= $this->Favorecido_model->buscar_telefone_especifico($id, $rowtelefone);
         $rowtelefone=1;
-        $dados['telefone2']= $this->Entidade_model->buscar_telefone_especifico($id, $rowtelefone);
-        $dados_auxiliar= $this->Entidade_model->buscar_entidade_especifica($id);//utilizado para passar o idTipo_entidade para a busca de identificacao na tabela tipo_entidade
-        $dados['dadosidentificacao']= $this->Entidade_model->buscar_identificacao_especifica($dados_auxiliar->idTipo_Entidade);
+        $dados['telefone2']= $this->Favorecido_model->buscar_telefone_especifico($id, $rowtelefone);
+        $dados['dadosidentificacao']= $this->Favorecido_model->buscar_identificacao_especifica($dados_auxiliar->idTipo_Favorecido);
         $this->load->view('Favorecido/editar_favorecido_view', $dados);
     }
 
     public function atualizar(){
-        $entidade = array(//recebe do form as informacoes da entidade
-                'idEntidade'=> $this->input->post('idEntidade') ,
+      //TESTE DOS CAMPOS, Sim, estupido para caralho, deve ter outro jeito para fazer isso, mais estou sem tempo
+      if(($this->input->post('nome')==null)||($this->input->post('contato')==null)||($this->input->post('email')==null)||($this->input->post('percentual_digital')==null)||( $this->input->post('percentual_fisico')==null)||($this->input->post('identificacao')==null)||($this->input->post('telefone1')==null)||($this->input->post('telefone2')==null)){
+          $this->session->set_flashdata('aviso','campo_vazio');
+          $this->session->set_flashdata('id', $this->input->post('idFavorecido'));
+          redirect('Favorecido/camposatualizacao');
+      }
+
+        if ($this->input->post('cpf/cnpj')=="cpf"){
+
+            $validade_cpf=$this->validar_cpf($this->input->post('cpf_cnpj'));
+            if($validade_cpf==FALSE){
+              $this->session->set_flashdata('aviso','cpf_invalido');
+              $this->session->set_flashdata('id', $this->input->post('idFavorecido'));
+              redirect('Favorecido/camposatualizacao');
+            }
+        }
+        if ($this->input->post('cpf/cnpj')=="cpnj"){
+            $validade_cnpj=$this->validar_cpnj($this->input->post('cpf_cnpj'));
+            if($validade_cnpj==FALSE){
+              $this->session->set_flashdata('aviso','cnpj_invalido');
+              $this->session->set_flashdata('id', $this->input->post('idFavorecido'));
+              redirect('Favorecido/camposatualizacao');
+
+            } 
+        }
+        $favorecido = array(
+                'idFavorecido'=> $this->input->post('idFavorecido') ,
                 'nome' => $this->input->post('nome') ,
-                'cpf_cnpj' => $this->input->post('cpf_cnpj') ,
+                'cpf' => $this->input->post('cpf') ,
+                'cnpj' =>$this->input->post('cnpj') ,
                 'contato' => $this->input->post('contato') ,
                 'email' => $this->input->post('email') ,
                 'percentual_digital' => $this->input->post('percentual_digital') ,
                 'percentual_fisico' => $this->input->post('percentual_fisico') ,
-                'favorecido' => $this->input->post('favorecido') ,
-                'idTipo_Entidade' => $this->input->post('identificacao'),
+                'idTipo_Favorecido' => $this->input->post('identificacao'),
+                'banco'=>$this->input->post('banco'),
+                'agencia'=>$this->input->post('agencia'),
+                'conta'=>$this->input->post('conta')
          );
-        $id_entidade=$this->input->post('idEntidade');//coloca os telefones
-        $erro[10]=$this->Entidade_model->atualizar_entidade($entidade);
+        $this->Favorecido_model->atualizar_favorecido($favorecido);
+
+        $id_favorecido=$this->input->post('idFavorecido');//coloca os telefones
+        
         $telefone1 = array(
-              'idTelefone'=> $this->input->post('idtelefone1') ,              
-              'idEntidade'=>$id_entidade,
+              'idTelefone_Favorecido'=> $this->input->post('idtelefone1') ,              
+              'idFavorecido'=>$id_favorecido,
               'numero'=>$this->input->post('telefone1')
              );
-        $erro[4]=$this->Entidade_model->atualizar_telefone($telefone1);//coloca os telefones
+        $this->Favorecido_model->atualizar_telefone($telefone1);//coloca os telefones
         $telefone2 = array(
-              'idTelefone'=> $this->input->post('idtelefone2') ,
-              'idEntidade'=>$id_entidade,
+              'idTelefone_Favorecido'=> $this->input->post('idtelefone2') ,
+              'idfavorecido'=>$id_favorecido,
               'numero'=>$this->input->post('telefone2')
              );
-        $erro[0]=$this->Entidade_model->atualizar_telefone($telefone2);
-
-        $favorecido= array(
-            'Entidade_idEntidade'=>$id_entidade,
-            'banco'=>$this->input->post('banco'),
-            'agencia'=>$this->input->post('agencia'),
-            'conta'=>$this->input->post('conta')
-            );
-        $erro[1]=$this->Entidade_model->atualizar_favorecido($favorecido);
-        $sucesso="Atualizacao realizado com sucesso!!";
-        $this->index();
+        $this->Favorecido_model->atualizar_telefone($telefone2);
+        $this->session->set_flashdata('sucesso', 'Atualizacao realizado com sucesso!!');
+        redirect('Favorecido/listar');
 
     }
 
