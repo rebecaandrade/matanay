@@ -16,7 +16,7 @@ $this->load->view('_include/header') ?>
                 <?php if($dadoentidade!=NULL){
                     echo form_open('/Entidade/procurar') ?>
                         <div  class="row">
-                            <div class="input-field col s12 m6 l4 offset-l2">
+                            <div class="input-field col s12 m6 l4 offset-l6">
                                 <i class="mdi-action-search prefix"></i>
                                 <label><?php echo $this->lang->line('procurar'); ?></label>
                                 <input required type="text" value="" name="procurar" >

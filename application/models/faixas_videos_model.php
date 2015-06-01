@@ -35,13 +35,44 @@ class Faixas_Videos_model extends CI_Model {
         return $this->db->get('faixa_video')->row();
     }
 
-    public function cadastrar_faixa($faixa){
+    public function cadastrar_faixa($faixa, $dados, $autores, $produtores){
+        $this->db->trans_start();
 
         if(is_string($faixa['isrc'])){
             $faixa['isrc'] = str_replace ("-", "", $faixa['isrc']);
         }
 
-        if(strlen($faixa['isrc']) != 12){
+        $this->db->insert('faixa_video', $faixa);
+        $faixa_id = $this->db->insert_id();
+
+        foreach($dados['artistas'] as $dados['artista']->idEntidade){
+            $artista_faixa = array(
+                'idFaixa_Video' => $faixa_id,
+                'idEntidade' => $artista->idEntidade
+            );
+            $this->db->insert('entidade_has_faixa_video', $artista_faixa);
+            $percentual_artista[] = $this->db->insert_id();
+        }
+
+        foreach($autores as $autor->idEntidade){
+            $autor_faixa = array(
+                'idFaixa_Video' => $faixa_id,
+                'idEntidade' => $autor->idEntidade
+            );
+            $this->db->insert('entidade_has_faixa_video', $autor_faixa);
+        }
+
+        foreach($produtores as $produtor->idEntidade){
+            $produtor_faixa = array(
+                'idFaixa_Video' => $faixa_id,
+                'idEntidade' => $produtor->idEntidade
+            );
+            $this->db->insert('entidade_has_faixa_video', $produtor_faixa);
+        }
+
+        $this->db->trans_complete();
+
+        /*if(strlen($faixa['isrc']) != 12){
             $this->session->set_userdata('mensagem', 'O código ISRC deve conter 12 caracteres.');
             return FALSE;
         }
@@ -49,9 +80,7 @@ class Faixas_Videos_model extends CI_Model {
         if(($faixa['percentual_artista'] + $faixa['percentual_autor'] + $faixa['percentual_produtor']) != 100){
             $this->session->set_userdata('mensagem', 'A soma das porcentagens não dá 100%');
             return FALSE;
-        }
-
-        return $this->db->insert('faixa_video', $faixa);
+        }*/
     }
 	
 }
