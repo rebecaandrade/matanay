@@ -199,8 +199,22 @@
     }
     
     public function listar(){
-        $dados["dadoentidade"]=$this->Entidade_model->buscar_entidades();
-        $this->load->view("Entidade/listar_entidades_view",$dados);
+        $this->load->library('pagination');
+        $config['base_url'] = base_url('index.php/entidade/listar');
+        $config['total_rows'] = $this->Entidade_model->buscar_entidades()->num_rows();
+        $config['uri_segment'] = 3;
+        $config['per_page'] = 5;
+
+        $qtde = $config['per_page'];
+        ($this->uri->segment(3) != '') ? $inicio = $this->uri->segment(3) : $inicio = 0;
+        $this->pagination->initialize($config);
+
+        $dados = array(
+          'dadoentidade' => $this->Entidade_model->buscar_entidades($qtde, $inicio)->result(),
+          'paginas' => $this->pagination->create_links()
+        );
+
+        $this->load->view("Entidade/listar_entidades_view", $dados);
     }
     
     public function camposatualizacao(){

@@ -2,14 +2,26 @@
 
 <div class="container">
   	<div id="titulo_lista">
-  		<i class="mdi-av-queue-music"></i>
-  		<?php echo $this->lang->line('faixas'); ?>
-  		<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa" 
-  			class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo" 
-			data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('nova'); ?>" id="addButton">
-			<i class="mdi-content-add"></i>
-		</a>
-  	</div>
+        <div class="row">
+            <div class="input-field col s12 m8 l9">
+          		<i class="mdi-av-queue-music"></i>
+          		<?php echo $this->lang->line('faixas'); ?>
+          		<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa" 
+          			class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo" 
+        			data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('nova'); ?>" id="addButton">
+        			<i class="mdi-content-add"></i>
+        		</a>
+            </div>
+            <?php if($faixas!=NULL){
+                echo form_open('/Entidade/procurar') ?>
+                    <div class="input-field col s12 m4 l3">
+                        <i class="mdi-action-search prefix"></i>
+                        <label><?php echo $this->lang->line('procurar'); ?></label>
+                        <input required type="text" value="" name="procurar" >
+                    </div>
+            <?php form_close(); } ?>
+        </div>
+  	</div></br>
     <?php if ($faixas!=NULL){?>
         <table class="hoverable bordered">
             <thead>

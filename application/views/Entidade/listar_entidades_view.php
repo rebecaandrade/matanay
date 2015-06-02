@@ -4,30 +4,29 @@ $this->load->view('_include/header') ?>
 
     <div class="container"> 
         <div id="titulo_lista">
-            <i class="mdi-action-assignment-ind"></i>
-                <?php echo $this->lang->line('entidades'); ?>
-                <a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro" 
-                    class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo" 
-                    data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('nova'); ?>" id="addButton">
-                    <i class="mdi-content-add"></i>
-                </a>
-        </div>     
-        <div>
+            <div class="row">
+                <div class="input-field col s12 m8 l9">
+                    <i class="mdi-action-assignment-ind"></i>
+                    <?php echo $this->lang->line('entidades'); ?>
+                    <a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro" 
+                        class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo" 
+                        data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('nova'); ?>" id="addButton">
+                        <i class="mdi-content-add"></i>
+                    </a>
+                </div>
                 <?php if($dadoentidade!=NULL){
                     echo form_open('/Entidade/procurar') ?>
-                        <div  class="row">
-                            <div class="input-field col s12 m6 l4 offset-l6">
-                                <i class="mdi-action-search prefix"></i>
-                                <label><?php echo $this->lang->line('procurar'); ?></label>
-                                <input required type="text" value="" name="procurar" >
-                            </div>
+                        <div class="input-field col s12 m4 l3">
+                            <i class="mdi-action-search prefix"></i>
+                            <label><?php echo $this->lang->line('procurar'); ?></label>
+                            <input required type="text" value="" name="procurar" >
                         </div>
                 <?php form_close(); } ?>
-        </div>   
-        <br>
+            </div>
+        </div><br>
         <?php echo $this->lang->line('entitys'); ?>
         <?php if (($dadoentidade!=NULL)&&(!isset($busca))){?>
-            <table id="tabela_listagem">
+            <table class="hoverable bordered">
                 <thead>
                     <tr>
                         <th>   <?php echo $this->lang->line('nome_entidade'); ?>  </th>
@@ -42,7 +41,8 @@ $this->load->view('_include/header') ?>
                                     <td><?php echo $row1->nome;?></td>
                                     <?php if($row1->cpf!=null){?><td><?php echo $row1->cpf;?></td><?php } ?>
                                     <?php if($row1->cnpj!=null){?><td><?php echo $row1->cnpj;?></td> <?php } ?>
-                                    <td><a href="#"><?php echo $this->lang->line('deletar'); ?> </a> || <a href="<?php echo base_url().'index.php/Entidade/camposatualizacao?id='.$row1->idEntidade ?>"><?php echo $this->lang->line('editar'); ?></a></td>
+                                    <td><a id="acao" href="<?php echo base_url().'index.php/Entidade/camposatualizacao?id='.$row1->idEntidade ?>"><?php echo $this->lang->line('editar'); ?></a>
+                                     | <a id="acao" href="#"><?php echo $this->lang->line('deletar'); ?> </a></td>
                                 </tr> 
                         <?php }} ?>                  
                 </tbody>
@@ -75,5 +75,10 @@ $this->load->view('_include/header') ?>
                                 <?php } else{ ?>
                                     <span><?php echo $this->lang->line('nada_encontrado');?><span>
                                 <?php } ?>
-        </div>
-        <?php  $this->load->view('_include/footer') ?>
+
+    <div id="paginacao">
+        <?php if($paginas) echo $paginas; ?>
+    </div>
+
+    </div>
+<?php  $this->load->view('_include/footer') ?>
