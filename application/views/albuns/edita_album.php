@@ -15,12 +15,19 @@
             <div class="row">
                 <div class="input-field col s12 m12 l8 offset-l2">
                     <select name="artista">
-                        <option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
                         <?php
                             if(isset($artistas)){
-                                foreach ($artistas as $artista) { ?>
-                                <option value="<?php echo $artista->idEntidade; ?>"> <?php echo $artista->nome; ?>
-                        <?php }}?>
+                                foreach ($artistas as $artista) {
+                                    if ($artista->idEntidade == $artista_album->idEntidade) { ?>
+                                        <option value="<?php echo $artista->idEntidade; ?>"> <?php echo $artista->nome; ?>
+                        <?php } } } ?>
+
+                        <?php
+                            if(isset($artistas)){
+                                foreach ($artistas as $artista) { 
+                                    if ($artista->idEntidade != $artista_album->idEntidade) { ?>
+                                        <option value="<?php echo $artista->idEntidade; ?>"> <?php echo $artista->nome; ?>
+                        <?php } } } ?>
                     </select>
                     <label><?php echo $this->lang->line('artista');?></label>
                 </div>
@@ -51,12 +58,19 @@
             <div class="row">
                 <div class="input-field col s12 m12 l8 offset-l2">
                     <select name="tipo">
-                        <option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
                         <?php
                             if(isset($tipos)){
-                                foreach ($tipos as $tipo) { ?>
-                                <option value="<?php echo $tipo->idTipo_Album; ?>"> <?php echo $tipo->descricao; ?>
-                        <?php }}?>
+                                foreach ($tipos as $tipo) {
+                                    if ($tipo->idTipo_Album == $album->idTipo_Album) { ?>
+                                        <option value="<?php echo $tipo->idTipo_Album; ?>"> <?php echo $tipo->descricao; ?>
+                        <?php } } } ?>
+                        
+                        <?php
+                            if(isset($tipos)){
+                                foreach ($tipos as $tipo) { 
+                                    if ($tipo->idTipo_Album != $album->idTipo_Album) { ?>
+                                        <option value="<?php echo $tipo->idTipo_Album; ?>"> <?php echo $tipo->descricao; ?>
+                        <?php } } } ?>
                     </select>
                     <label><?php echo $this->lang->line('tipo');?></label>
                 </div>

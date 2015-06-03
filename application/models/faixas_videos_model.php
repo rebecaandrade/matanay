@@ -20,8 +20,13 @@ class Faixas_Videos_model extends CI_Model {
         return $this->db->get('entidade')->result();
     }
 
+    public function buscar_entidades(){
+        return $this->db->get('entidade_has_faixa_video')->result();
+    }
+
     public function buscar_faixas($qtde=0, $inicio=0){
         if($qtde > 0) $this->db->limit($qtde, $inicio);
+        $this->db->where('excluido =', NULL);
         return $this->db->get('faixa_video');
     }
 

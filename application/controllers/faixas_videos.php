@@ -57,6 +57,8 @@ class Faixas_Videos extends CI_Controller {
 
         $dados = array(
             'faixas' => $this->faixas_videos_model->buscar_faixas($qtde, $inicio)->result(),
+            'artistas' => $this->faixas_videos_model->buscar_artistas(),
+            'entidades' => $this->faixas_videos_model->buscar_entidades(),
             'paginas' => $this->pagination->create_links()
         );
 

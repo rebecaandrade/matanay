@@ -58,6 +58,8 @@ class Albuns extends CI_Controller {
 
         $dados = array(
             'albuns' => $this->albuns_model->buscar_albuns($qtde, $inicio)->result(),
+            'artistas' => $this->albuns_model->buscar_artistas(),
+            'entidades' => $this->albuns_model->buscar_entidades(),
             'paginas' => $this->pagination->create_links()
         );
 
@@ -91,8 +93,13 @@ class Albuns extends CI_Controller {
             'idTipo_Album' => $this->input->post('tipo')
         );
 
+        $artista = array(
+            'idAlbum' => $this->input->post('idAlbum'),
+            'idEntidade' => $this->input->post('artista')
+        );
+
         if($dados['nome'] != NULL && $dados['ano'] != NULL){
-            $this->albuns_model->atualizar_album($dados);
+            $this->albuns_model->atualizar_album($dados, $artista);
             
             redirect('albuns/listar');       
         }else{
@@ -106,8 +113,20 @@ class Albuns extends CI_Controller {
 
             $this->load->view('albuns/edita_album', $dados);
         }
+    }
 
+    public function deletar(){
+        $id = $this->input->post('idAlbum');
+        $dados = $this->albuns_model->buscar_dados($id);
 
+        if($this->albuns_model->deletar($dados)){
+            $this->session->set_userdata('mensagem', 'Excluído com sucesso.');
+            redirect('albuns/listar');
+        }
+        else{
+            $this->session->set_userdata('mensagem', 'Houve algum problema para deletar.');
+            redirect('albuns/listar');
+        }
     }
 
 }

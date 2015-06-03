@@ -20,6 +20,7 @@ class Albuns_model extends CI_Model {
 
     public function buscar_albuns($qtde=0, $inicio=0){
         if($qtde > 0) $this->db->limit($qtde, $inicio);
+        $this->db->where('excluido =', NULL);
         return $this->db->get('album');
     }
 
@@ -31,6 +32,10 @@ class Albuns_model extends CI_Model {
     public function buscar_artista_album($id){
         $this->db->where('idAlbum', $id);
         return $this->db->get('entidade_has_album')->row();
+    }
+
+    public function buscar_entidades(){
+        return $this->db->get('entidade_has_album')->result();
     }
 
     public function buscar_tracklist($id){
@@ -60,8 +65,36 @@ class Albuns_model extends CI_Model {
 		$this->db->trans_complete();
 	}
 
-    public function atualizar_album($dados){
+    public function atualizar_album($dados, $artista){
+        $this->db->trans_start();
+
         $this->db->where('idAlbum', $dados['idAlbum']);
-        return $this->db->update('album', $dados);
+        $this->db->update('album', $dados);
+
+        $this->db->where('idAlbum', $artista['idAlbum']);
+        $this->db->update('entidade_has_album', $artista);
+
+        $this->db->trans_complete();
+    }
+
+    public function deletar($dados){
+        $this->db->trans_start();
+
+        $novosdados = array(
+            'idAlbum' => $dados['idAlbum'],
+            'nome' => $dados['nome'],
+            'quantidade' => $dados['quantidade'],
+            'upc_ean' => $dados['upc_ean'],
+            'ano' => $dados['ano'],
+            'faixa' => $dados['faixa'],
+            'codigo_catalogo' => $dados['codigo_catalogo'],
+            'idTipo_Album' => $dados['idTipo_Album'],
+            'excluido' => 1
+        );
+
+        $this->db->where('idAlbum', $dados['idAlbum']);
+        $this->db->update('album', $novosdados);
+
+        $this->db->trans_complete();
     }
 }

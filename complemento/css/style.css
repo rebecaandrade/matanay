@@ -126,6 +126,7 @@ html {
 #acao {
 	color: #444;
 	font-weight: 600;
+	cursor: pointer;
 }
 
 #acao:hover {
@@ -252,7 +253,7 @@ html {
 }
 
 #home .card-panel:hover {
-	background-color: #999 !important;
+	background-color: #222 !important;
 	color: #FF0 !important;
 	transition: background-color 0.5s ease !important;
 }
@@ -263,6 +264,15 @@ html {
 
 #home .card-panel i {
 	font-size: 5rem !important;
+}
+
+.detalhes {
+	color: #222;
+	font-size: 1rem;
+}
+
+.detalhes:hover {
+	color: #777;
 }
 
 .circulo {

@@ -19,24 +19,6 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="input-field col s12 m9 l8 offset-l1">
-                    <select>
-                        <option value="" disabled selected><?php echo $this->lang->line("selecione");?></option> 
-                        <?php
-                            if(isset($artistas)){
-                                foreach ($artistas as $artista) { ?>
-                                <option value="<?php echo $artista->idEntidade; ?>"> <?php echo $artista->nome; ?>
-                        <?php }}?>
-                    </select>
-                    <label><?php echo $this->lang->line("artista");?></label>
-                </div>
-                <div class="input-field col s12 m3 l2">
-                    <input name="percentual_artista" type="text">
-                    <label>%</label>
-                </div>
-            </div>
-
             <div id="SelectGroup">
             <div class="row">
                 <div class="input-field col s12 m9 l8 offset-l1" id="Select1">
@@ -51,7 +33,7 @@
                     <label><?php echo $this->lang->line("artista");?></label>
                 </div>
                 <div class="input-field col s12 m2 l2">
-                    <input name="percentual_artista" type="text" value="<?php echo $faixa->percentual_artista; ?>">
+                    <input name="percentual_artista[]" type="text" value="<?php echo $faixa->percentual_artista; ?>">
                     <label>%</label>
                 </div>
                 <a class="btn-floating btn-medium waves-effect waves-light btn tooltipped" 
@@ -72,7 +54,7 @@
                     <label><?php echo $this->lang->line('autor');?></label>
                 </div>
                 <div class="input-field col s12 m3 l2">
-                    <input name="percentual_autor" type="text" value="<?php echo $faixa->percentual_autor; ?>">
+                    <input name="percentual_autor[]" type="text" value="<?php echo $faixa->percentual_autor; ?>">
                     <label>%</label>
                 </div>
             </div>
@@ -91,7 +73,7 @@
                     <label><?php echo $this->lang->line('produtor');?></label>
                 </div>
                 <div class="input-field col s12 m3 l2">
-                    <input name="percentual_produtor" type="text" value="<?php echo $faixa->percentual_produtor; ?>">
+                    <input name="percentual_produtor[]" type="text" value="<?php echo $faixa->percentual_produtor; ?>">
                     <label>%</label>
                 </div>
             </div>

@@ -43,13 +43,15 @@ $lang['ingles']				= 'ENGLISH';
 $lang['portugues']			= 'PORTUGUÊS';
 $lang['deletar']			= 'Delete';
 $lang['editar']				= 'Edit';
+$lang['atualizar']			= 'UPDATE';
 $lang['acao']				= 'Action';
 $lang['novo']				= 'NEW';
 $lang['nova']				= 'NEW';
 $lang['nome']				= 'Name';
-$lang['selecione']			='Select';
-$lang['procurar']			='Search';
-$lang['nada_encontrado']			='Nothing found';
+$lang['selecione']			= 'Select';
+$lang['procurar']			= 'Search';
+$lang['nada_encontrado']	= 'Nothing found';
+$lang['detalhes']			= 'Details';
 
 
 ////// LOGIN ////// Evandro
