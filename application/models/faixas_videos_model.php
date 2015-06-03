@@ -40,7 +40,7 @@ class Faixas_Videos_model extends CI_Model {
         return $this->db->get('faixa_video')->row();
     }
 
-    public function cadastrar_faixa($faixa, $dados, $autores, $produtores){
+    public function cadastrar_faixa($faixa, $artistas, $percentual_artistas){
         $this->db->trans_start();
 
         if(is_string($faixa['isrc'])){
@@ -50,29 +50,13 @@ class Faixas_Videos_model extends CI_Model {
         $this->db->insert('faixa_video', $faixa);
         $faixa_id = $this->db->insert_id();
 
-        foreach($dados['artistas'] as $dados['artista']->idEntidade){
+        foreach($artistas as $artista->idEntidade){
             $artista_faixa = array(
                 'idFaixa_Video' => $faixa_id,
                 'idEntidade' => $artista->idEntidade
             );
             $this->db->insert('entidade_has_faixa_video', $artista_faixa);
             $percentual_artista[] = $this->db->insert_id();
-        }
-
-        foreach($autores as $autor->idEntidade){
-            $autor_faixa = array(
-                'idFaixa_Video' => $faixa_id,
-                'idEntidade' => $autor->idEntidade
-            );
-            $this->db->insert('entidade_has_faixa_video', $autor_faixa);
-        }
-
-        foreach($produtores as $produtor->idEntidade){
-            $produtor_faixa = array(
-                'idFaixa_Video' => $faixa_id,
-                'idEntidade' => $produtor->idEntidade
-            );
-            $this->db->insert('entidade_has_faixa_video', $produtor_faixa);
         }
 
         $this->db->trans_complete();

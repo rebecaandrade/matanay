@@ -4806,7 +4806,7 @@ span.badge {
   .container {
     width: 85%; }
   #wrapper {
-    width: 40%;
+    width: 100%;
     margin-top: 5rem !important; } }
 
 .container .row {

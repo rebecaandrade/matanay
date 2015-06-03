@@ -26,15 +26,12 @@ class Faixas_Videos extends CI_Controller {
             'isrc' => $this->input->post('isrc')
         );
 
-        $dados['artistas'] = $this->input->post('artistas[]');
-        $autores = $this->input->post('autores[]');
-        $produtores = $this->input->post('produtores[]');
-        $dados['percentual_artista'] = $this->input->post('percentual_artista[]');
-        $dados['percentual_autor'] = $this->input->post('percentual_autor[]');
-        $dados['percentual_produtor'] = $this->input->post('percentual_produtor[]');
+        $artistas = $this->input->post('artistas[]');
+        $percentual_artistas = $this->input->post('percentual_artista[]');
+
 
         if($faixa['nome'] != NULL && $faixa['isrc'] != NULL){
-            $this->faixas_videos_model->cadastrar_faixa($faixa, $artistas, $autores, $produtores, $dados);
+            $this->faixas_videos_model->cadastrar_faixa($faixa, $artistas, $percentual_artistas);
             
             redirect('faixas_videos/cadastra_faixa');       
         }else{
