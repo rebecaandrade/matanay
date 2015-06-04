@@ -24,10 +24,25 @@
     }
 
     public function procurar(){
-      //pequeno teste para que na hora da busca ele interprete autor como 2 no banco.
-                  $this->session->set_flashdata('redirect_url', current_url());
+      $this->session->set_flashdata('redirect_url', current_url());
       $linguagem_usuario = $this->session->userdata('linguagem');
       $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+
+      $this->load->library('pagination');
+      $config['base_url'] = base_url('index.php/entidade/listar');
+      $config['total_rows'] = $this->Entidade_model->buscar_entidades()->num_rows();
+      $config['uri_segment'] = 3;
+      $config['per_page'] = 5;
+
+      $qtde = $config['per_page'];
+      ($this->uri->segment(3) != '') ? $inicio = $this->uri->segment(3) : $inicio = 0;
+      $this->pagination->initialize($config);
+      $dados = array(
+        'dadoentidade' => $this->Entidade_model->buscar_entidades($qtde, $inicio)->result(),
+        'paginas' => $this->pagination->create_links()
+      );
+
+      //pequeno teste para que na hora da busca ele interprete autor como 2 no banco.
       if(($this->input->post('procurar')==$this->lang->line('artista_min'))||($this->input->post('procurar')==$this->lang->line('artista')))
         $busca=1;
       else if(($this->input->post('procurar')==$this->lang->line('autor_min'))||($this->input->post('procurar')==$this->lang->line('autor')))

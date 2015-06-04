@@ -1,6 +1,6 @@
 <?php /*FEITO POR MIM JADIEL*/
 $this->load->view('_include/header') ?>
-    
+    <br><br>
     <div class="container"> 
         <div id="titulo_lista">
             <i class="mdi-content-content-paste"></i>

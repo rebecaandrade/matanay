@@ -10,7 +10,12 @@ class Favorecido_model extends CI_Model{
 	public function cadastrar_telefone($telefone){
 		$this->db->insert('telefone_favorecido',$telefone);
 		return  $this->db->insert_id();
-}
+	}
+
+	public function buscar_favorecidos($qtde=0, $inicio=0){
+		if($qtde > 0) $this->db->limit($qtde, $inicio);
+        return $this->db->get('entidade');
+	}
 	public function buscar_favorecido(){
 		$query=$this->db->query("SELECT * FROM favorecido");
             return $query->result();
