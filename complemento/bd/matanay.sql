@@ -7,38 +7,15 @@ CREATE SCHEMA IF NOT EXISTS `matanay` DEFAULT CHARACTER SET utf8 COLLATE utf8_ge
 USE `matanay` ;
 
 -- -----------------------------------------------------
--- Table `matanay`.`Perfis`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `matanay`.`Perfis` ;
-
-CREATE  TABLE IF NOT EXISTS `matanay`.`Perfis` (
-  `idPerfis` INT NOT NULL AUTO_INCREMENT ,
-  `nome` VARCHAR(45) NOT NULL ,
-  `login` VARCHAR(45) NOT NULL ,
-  `senha` VARCHAR(45) NOT NULL ,
-  `excluido` BINARY NULL ,
-  PRIMARY KEY (`idPerfis`) ,
-  UNIQUE INDEX `Login_UNIQUE` (`login` ASC) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `matanay`.`Cliente`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `matanay`.`Cliente` ;
 
 CREATE  TABLE IF NOT EXISTS `matanay`.`Cliente` (
   `idCliente` INT NOT NULL AUTO_INCREMENT ,
-  `idPerfis` INT NOT NULL ,
   `nome` VARCHAR(45) NULL ,
   `excluido` BINARY NULL ,
-  PRIMARY KEY (`idCliente`) ,
-  INDEX `fk_Cliente_Perfis1_idx` (`idPerfis` ASC) ,
-  CONSTRAINT `fk_Cliente_Perfis1`
-    FOREIGN KEY (`idPerfis` )
-    REFERENCES `matanay`.`Perfis` (`idPerfis` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`idCliente`) )
 ENGINE = InnoDB;
 
 
@@ -299,6 +276,29 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Imposto` (
   PRIMARY KEY (`idImposto`) ,
   INDEX `fk_Imposto_Cliente1_idx` (`idCliente` ASC) ,
   CONSTRAINT `fk_Imposto_Cliente1`
+    FOREIGN KEY (`idCliente` )
+    REFERENCES `matanay`.`Cliente` (`idCliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `matanay`.`Perfis`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `matanay`.`Perfis` ;
+
+CREATE  TABLE IF NOT EXISTS `matanay`.`Perfis` (
+  `idPerfis` INT NOT NULL AUTO_INCREMENT ,
+  `nome` VARCHAR(45) NOT NULL ,
+  `login` VARCHAR(45) NOT NULL ,
+  `senha` VARCHAR(45) NOT NULL ,
+  `excluido` BINARY NULL ,
+  `idCliente` INT NOT NULL ,
+  PRIMARY KEY (`idPerfis`) ,
+  UNIQUE INDEX `Login_UNIQUE` (`login` ASC) ,
+  INDEX `fk_Perfis_Cliente1_idx` (`idCliente` ASC) ,
+  CONSTRAINT `fk_Perfis_Cliente1`
     FOREIGN KEY (`idCliente` )
     REFERENCES `matanay`.`Cliente` (`idCliente` )
     ON DELETE NO ACTION
