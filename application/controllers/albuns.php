@@ -60,6 +60,7 @@ class Albuns extends CI_Controller {
             'albuns' => $this->albuns_model->buscar_albuns($qtde, $inicio)->result(),
             'artistas' => $this->albuns_model->buscar_artistas(),
             'entidades' => $this->albuns_model->buscar_entidades(),
+            'tipos' => $this->albuns_model->buscar_tipos(),
             'paginas' => $this->pagination->create_links()
         );
 
@@ -116,8 +117,10 @@ class Albuns extends CI_Controller {
     }
 
     public function deletar(){
-        $id = $this->input->post('idAlbum');
-        $dados = $this->albuns_model->buscar_dados($id);
+        $dados = array(
+            'idAlbum' => $this->input->get('id'),
+            'excluido' => 1
+        );
 
         if($this->albuns_model->deletar($dados)){
             $this->session->set_userdata('mensagem', 'Excluído com sucesso.');

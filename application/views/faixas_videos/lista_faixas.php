@@ -38,16 +38,17 @@
                     foreach($faixas as $faixa){?>
                         <tr>
                             <td><?php echo $faixa->nome;?></td>
-                            <?php foreach ($artistas as $artista) { 
+                            <td><?php $i=0; foreach ($artistas as $artista) { 
                                 foreach ($entidades as $entidade) {
-                                    if($artista->idEntidade == $entidade->idEntidade && $faixa->idFaixa == $entidade->idFaixa_Video){ ?>
-                                        <td><?php echo $artista->nome; ?></td>
+                                    if($artista->idEntidade == $entidade->idEntidade && $faixa->idFaixa == $entidade->idFaixa_Video){ $i++; ?>
+                                        <?php if($i>1) echo ', '; echo $artista->nome; ?>
                                     <?php } ?>  
-                            <?php } } ?>
+                                <?php } } ?>
+                            </td>
                             <td><?php echo $faixa->isrc;?></td> 
                             <td><a id="acao" href="<?php echo base_url(); ?>index.php/faixas_videos/editar/<?php echo $faixa->idFaixa ?>">
                             		<?php echo $this->lang->line('editar'); ?></a> |
-                            	<a id="acao" href="#"><?php echo $this->lang->line('deletar'); ?></a>
+                            	<a id="acao" onclick="if (confirm('Deseja excluir esta faixa?')) window.location.replace('<?php echo base_url().'index.php/faixas_videos/deletar?id='.$faixa->idFaixa ?>')"><?php echo $this->lang->line('deletar'); ?></a>
                             </td>
                             <td><a class="detalhes tooltipped" data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('detalhes'); ?>" href=""><i class="mdi-action-visibility"></i></a></td>
                         </tr> 

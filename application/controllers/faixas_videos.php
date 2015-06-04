@@ -27,11 +27,16 @@ class Faixas_Videos extends CI_Controller {
         );
 
         $artistas = $this->input->post('artistas[]');
-        $percentual_artistas = $this->input->post('percentual_artista[]');
+        $autores = $this->input->post('autores[]');
+        $produtores = $this->input->post('produtores[]');
+
+        $perc_artistas = $this->input->post('percentual_artista[]');
+        $perc_autores = $this->input->post('percentual_autor[]');
+        $perc_produtores = $this->input->post('percentual_produtor[]');
 
 
         if($faixa['nome'] != NULL && $faixa['isrc'] != NULL){
-            $this->faixas_videos_model->cadastrar_faixa($faixa, $artistas, $percentual_artistas);
+            $this->faixas_videos_model->cadastrar_faixa($faixa, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
             
             redirect('faixas_videos/cadastra_faixa');       
         }else{
@@ -68,6 +73,8 @@ class Faixas_Videos extends CI_Controller {
         $dados['autores'] = $this->faixas_videos_model->buscar_autores();
         $dados['produtores'] = $this->faixas_videos_model->buscar_produtores();
 
+        $dados['entidade_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id);
+
         $this->load->view('faixas_videos/edita_faixa', $dados);
     }
 
@@ -75,19 +82,40 @@ class Faixas_Videos extends CI_Controller {
         $dados = array(
             'idFaixa' => $this->input->post('idFaixa'),
             'nome' => $this->input->post('nome'),
-            'isrc' => $this->input->post('isrc'),
-            'percentual_artista' => $this->input->post('percentual_artista'),
-            'percentual_autor' => $this->input->post('percentual_autor'),
-            'percentual_produtor' => $this->input->post('percentual_produtor')
+            'isrc' => $this->input->post('isrc')
         );
 
+        $artistas = $this->input->post('artistas[]');
+        $autores = $this->input->post('autores[]');
+        $produtores = $this->input->post('produtores[]');
+
+        $perc_artistas = $this->input->post('percentual_artista[]');
+        $perc_autores = $this->input->post('percentual_autor[]');
+        $perc_produtores = $this->input->post('percentual_produtor[]');
+
         if($dados['nome'] != NULL && $dados['isrc'] != NULL){
-            $this->faixas_videos_model->atualizar_faixa($dados);
+            $this->faixas_videos_model->atualizar_faixa($dados, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
             
             redirect('faixas_videos/listar');       
         }else{
             $id = $this->input->post('idFaixa');
             redirect('faixas_videos/editar', $id);
+        }
+    }
+
+    public function deletar(){
+        $dados = array(
+            'idFaixa' => $this->input->get('id'),
+            'excluido' => 1
+        );
+
+        if($this->faixas_videos_model->deletar($dados)){
+            $this->session->set_userdata('mensagem', 'Excluído com sucesso.');
+            redirect('faixas_videos/listar');
+        }
+        else{
+            $this->session->set_userdata('mensagem', 'Houve algum problema para deletar.');
+            redirect('faixas_videos/listar');
         }
     }
 

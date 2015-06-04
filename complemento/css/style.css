@@ -138,6 +138,10 @@ html {
 	height: auto;
 }
 
+.opcao-menu:hover {
+	color: #FF0 !important;
+}
+
 #sub_barra {
 	height: 35px;
 	background-color: #777;

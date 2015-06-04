@@ -23,7 +23,7 @@
 
 				<a href="<?php echo base_url(); ?>index.php/acesso/recuperar"><?php echo $this->lang->line('esqueceu_senha'); ?></a>
 
-				<button class="send-login btn waves-effect col s12 m12 l12 " type="submit"><?php echo $this->lang->line('entrar'); ?>
+				<button class="send-login btn waves-effect waves-light col s12 m12 l12 " type="submit"><?php echo $this->lang->line('entrar'); ?>
 		          	
 		        </button>	
 			<?php echo form_close() ?>	

@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Matanay</title>
+	<link href="<?php echo base_url(); ?>complemento/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
 	<link href="<?php echo base_url(); ?>complemento/css/style_log.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>complemento/css/materialize.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>

@@ -76,7 +76,23 @@ $(document).ready(function(){
     $('.modal-trigger').leanModal();
 });
 
+$(document).ready(function () {
+    $("#SelectArtista").on("click","#removeArtista", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
 
+$(document).ready(function () {
+    $("#SelectAutor").on("click","#removeAutor", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+
+$(document).ready(function () {
+    $("#SelectProdutor").on("click","#removeProdutor", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
 
 
     function mascara(o,f){

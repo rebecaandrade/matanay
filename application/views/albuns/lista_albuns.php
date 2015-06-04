@@ -29,6 +29,7 @@
                     <th><?php echo $this->lang->line('titulo'); ?></th>
                     <th><?php echo $this->lang->line('artista'); ?></th>
                     <th>UPC/EAN</th>
+                    <th><?php echo $this->lang->line('tipo'); ?></th>
                     <th><?php echo $this->lang->line('ano'); ?></th>
                     <th><?php echo $this->lang->line('acao'); ?></th>
                     <th></th>
@@ -46,6 +47,12 @@
                                     <?php } ?>  
                             <?php } } ?>
                             <td><?php echo $album->upc_ean;?></td> 
+                            <?php foreach ($tipos as $tipo) { 
+                                foreach ($entidades as $entidade) {
+                                    if($tipo->idTipo_Album == $album->idTipo_Album){ ?>
+                                        <td><?php echo $tipo->descricao; ?></td>
+                                    <?php } ?>  
+                            <?php } } ?>
                             <td><?php echo $album->ano;?></td>
                             <td><a id="acao" href="<?php echo base_url(); ?>index.php/albuns/editar/<?php echo $album->idAlbum ?>">
                             		<?php echo $this->lang->line('editar'); ?></a> |

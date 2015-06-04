@@ -30,9 +30,68 @@ class Faixas_Videos_model extends CI_Model {
         return $this->db->get('faixa_video');
     }
 
-    public function atualizar_faixa($dados){
+    public function buscar_entidade_faixa($id){
+        $this->db->where('idFaixa_Video', $id);
+        $entidades_faixa = $this->db->get('entidade_has_faixa_video')->result();
+
+        $result = array();
+
+        foreach($entidades_faixa as $entidade){
+                $this->db->where('idEntidade', $entidade->idEntidade);
+                $dados = $this->db->get('entidade')->row();
+                $entidade_faixa = array(
+                        'idEntidade' => $entidade->idEntidade,
+                        'idTipo_Entidade' => $dados->idTipo_Entidade,
+                        'percentual' => $entidade->percentual,
+                    );
+                array_push($result, $entidade_faixa);
+        }
+        return $result;
+    }
+
+    public function atualizar_faixa($dados, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores){
+        $this->db->trans_start();
+
         $this->db->where('idFaixa', $dados['idFaixa']);
-        return $this->db->update('faixa_video', $dados);
+        $this->db->update('faixa_video', $dados);
+
+        $this->db->where('idFaixa_Video', $dados['idFaixa']);
+        $this->db->delete('entidade_has_faixa_video');
+
+        $i = 0;
+        foreach($artistas as $artista->idEntidade){
+            $artista_faixa = array(
+                'idFaixa_Video' => $dados['idFaixa'],
+                'idEntidade' => $artista->idEntidade,
+                'percentual' => $perc_artistas[$i]
+            );
+            $this->db->insert('entidade_has_faixa_video', $artista_faixa);
+            $i++;
+        }
+
+        $i = 0;
+        foreach($autores as $autor->idEntidade){
+            $autor_faixa = array(
+                'idFaixa_Video' => $dados['idFaixa'],
+                'idEntidade' => $autor->idEntidade,
+                'percentual' => $perc_autores[$i]
+            );
+            $this->db->insert('entidade_has_faixa_video', $autor_faixa);
+            $i++;
+        }
+
+        $i = 0;
+        foreach($produtores as $produtor->idEntidade){
+            $produtor_faixa = array(
+                'idFaixa_Video' => $dados['idFaixa'],
+                'idEntidade' => $produtor->idEntidade,
+                'percentual' => $perc_produtores[$i]
+            );
+            $this->db->insert('entidade_has_faixa_video', $produtor_faixa);
+            $i++;
+        }
+
+        $this->db->trans_complete();
     }
 
     public function buscar_dados($id){
@@ -40,7 +99,7 @@ class Faixas_Videos_model extends CI_Model {
         return $this->db->get('faixa_video')->row();
     }
 
-    public function cadastrar_faixa($faixa, $artistas, $percentual_artistas){
+    public function cadastrar_faixa($faixa, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores){
         $this->db->trans_start();
 
         if(is_string($faixa['isrc'])){
@@ -50,13 +109,37 @@ class Faixas_Videos_model extends CI_Model {
         $this->db->insert('faixa_video', $faixa);
         $faixa_id = $this->db->insert_id();
 
+        $i = 0;
         foreach($artistas as $artista->idEntidade){
             $artista_faixa = array(
                 'idFaixa_Video' => $faixa_id,
-                'idEntidade' => $artista->idEntidade
+                'idEntidade' => $artista->idEntidade,
+                'percentual' => $perc_artistas[$i]
             );
             $this->db->insert('entidade_has_faixa_video', $artista_faixa);
-            $percentual_artista[] = $this->db->insert_id();
+            $i++;
+        }
+
+        $i = 0;
+        foreach($autores as $autor->idEntidade){
+            $autor_faixa = array(
+                'idFaixa_Video' => $faixa_id,
+                'idEntidade' => $autor->idEntidade,
+                'percentual' => $perc_autores[$i]
+            );
+            $this->db->insert('entidade_has_faixa_video', $autor_faixa);
+            $i++;
+        }
+
+        $i = 0;
+        foreach($produtores as $produtor->idEntidade){
+            $produtor_faixa = array(
+                'idFaixa_Video' => $faixa_id,
+                'idEntidade' => $produtor->idEntidade,
+                'percentual' => $perc_produtores[$i]
+            );
+            $this->db->insert('entidade_has_faixa_video', $produtor_faixa);
+            $i++;
         }
 
         $this->db->trans_complete();
@@ -70,6 +153,15 @@ class Faixas_Videos_model extends CI_Model {
             $this->session->set_userdata('mensagem', 'A soma das porcentagens não dá 100%');
             return FALSE;
         }*/
+    }
+
+    public function deletar($dados){
+        $this->db->trans_start();
+
+        $this->db->where('idFaixa', $dados['idFaixa']);
+        $this->db->update('faixa_video', $dados);
+
+        $this->db->trans_complete();
     }
 	
 }

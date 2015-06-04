@@ -80,20 +80,8 @@ class Albuns_model extends CI_Model {
     public function deletar($dados){
         $this->db->trans_start();
 
-        $novosdados = array(
-            'idAlbum' => $dados['idAlbum'],
-            'nome' => $dados['nome'],
-            'quantidade' => $dados['quantidade'],
-            'upc_ean' => $dados['upc_ean'],
-            'ano' => $dados['ano'],
-            'faixa' => $dados['faixa'],
-            'codigo_catalogo' => $dados['codigo_catalogo'],
-            'idTipo_Album' => $dados['idTipo_Album'],
-            'excluido' => 1
-        );
-
         $this->db->where('idAlbum', $dados['idAlbum']);
-        $this->db->update('album', $novosdados);
+        $this->db->update('album', $dados);
 
         $this->db->trans_complete();
     }
