@@ -16,20 +16,33 @@ class Cliente extends CI_Controller {
 		$this->load->view('cliente/home'); 
 	}
 
-	public function menu_cadastrar(){
-		$this->session->set_userdata('sub_menu', 2);
-		$this->session->set_flashdata('redirect_url', current_url());
-
-		$linguagem_usuario = $this->session->userdata('linguagem');
-		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
-		
-		$this->load->view('cliente/cadastrar');	
+	public function cadastro_cliente(){
+		$this->load->view('cliente/cadastrar_cliente');
+	}
+	public function cadastro_perfil($id_cliente){
+		if(isset($id_cliente)){
+			$dados['id_cliente'] = $id_cliente;
+			$dados['funcionalidades'] = $this->cliente_model->funcionalidades(); 
+			$this->load->view('cliente/cadastrar_perfil',$dados);
+		} else {
+			//mensagem de erro
+			redirect('cliente/cadastro_cliente');
+		}
+	}
+	public function cadastrar_cliente(){
+		$nome = trim($this->input->post('nome'));
+		if( !$this->cliente_model->cliente_existe($nome)){
+			$this->cliente_model->cadastrar_cliente($nome);
+			//mensagem de sucesso
+			redirect('cliente/cadastro_cliente');
+		}
+		else{
+			//mensagem de erro
+			redirect('cliente/cadastro_cliente');
+		}
 	}
 	public function cadastrar_perfil(){
-		$dados['funcionalidades'] = $this->cliente_model->funcionalidades(); 
-		$this->load->view('cliente/cadastra_cliente',$dados);
-	}
-	public function cadastrar(){
+		$id_cliente = $this->input->post('id');
 		$nome  = trim($this->input->post('nome'));
 		$login = trim($this->input->post('login'));
 		$senha = trim($this->input->post('senha'));
@@ -38,31 +51,42 @@ class Cliente extends CI_Controller {
 		if(!$this->cliente_model->login_existe($login)){
 			if($senha == $confirmar_senha ){	
 				if(strlen($nome) != 0 && strlen($login) != 0 && strlen($senha) !=0){
-					$perfil_id = $this->cliente_model->cadastrar_perfil($nome,$login,md5($senha));
-					$this->cliente_model->cadastrar_cliente($perfil_id);
+					$this->db->trans_start();
+					$perfil_id = $this->cliente_model->cadastrar_perfil($nome,$login,md5($senha),$id_cliente);
 					if(isset($funcs)){
 						$this->cliente_model->cadastrar_funcionalidades($funcs,$perfil_id);
 					}
-					// setar 'usuario cadastrado com sucesso'
-					redirect('cliente/cadastrar_perfil');
+					$this->db->trans_complete();
+					if($this->db->trans_status() == TRUE){
+						// setar 'usuario cadastrado com sucesso'
+						redirect('cliente/lista_perfil/'.$id_cliente);
+					}
+					else{
+						// mensagem de erro
+						redirect('cliente/cadastro_perfil/'.$id_cliente);
+					}
 				}
 				else{
 					//setar 'preencha todos os campos'
-					redirect('cliente/cadastrar_perfil');
+					redirect('cliente/cadastro_perfil/'.$id_cliente);
 				}
 			}
 			else{
 				// setar mensagem de senhas não batem
-				redirect('cliente/cadastrar_perfil');
+				redirect('cliente/cadastro_perfil/'.$id_cliente);
 			}
 		}
 		else{
 			// setar 'login já cadastrado'
-			redirect('cliente/cadastrar_perfil');
+			redirect('cliente/cadastro_perfil/'.$id_cliente);
 		}
 	}
-	public function listar(){
-		$dados['perfis'] = $this->cliente_model->perfis();
-		$this->load->view('cliente/listar_perfis',$dados);
+	public function lista_clientes(){
+		$dados['clientes'] = $this->cliente_model->clientes();
+		$this->load->view('cliente/lista_clientes',$dados);
+	}
+	public function lista_perfis($id_cliente){
+		$dados['perfis'] = $this->cliente_model->perfis($id_cliente);
+		$this->load->view('cliente/lista_perfis',$dados);
 	}
 }

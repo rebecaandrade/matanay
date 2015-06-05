@@ -5,16 +5,7 @@
    			parent::__construct();
    			$this->load->model('moeda_model');
 		}
-		public function cadastrar(){
-			if (!($this->session->userdata('linguagem'))) {
-				$this->session->set_userdata('linguagem', 'portugues');
-			}
-			
-			$this->session->set_flashdata('redirect_url', current_url());
-
-			$linguagem_usuario = $this->session->userdata('linguagem');
-			$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
-			
+		public function cadastrar(){		
 			$this->load->view('moeda/cadastro_moeda');
 		}
 		public function cadastrar_moeda(){
@@ -22,8 +13,10 @@
 			$nome = trim($this->input->post('nome'));
 			$sigla = trim($this->input->post('sigla'));
 			$cambio = trim($this->input->post('cambio'));
+			$id = $this->session->userdata('id_usuario'); // consertar
+
 			if(strlen($nome) != 0 && strlen($sigla) != 0 && strlen($cambio) != 0){ //verificando se os campos foram preenchidos
-				$this->moeda_model->cadastrar($nome,$sigla,$cambio);
+				$this->moeda_model->cadastrar($nome,$sigla,$cambio,$id);
 			}
 			else{
 				//setar mensagem de campos vazios

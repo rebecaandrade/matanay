@@ -1,6 +1,6 @@
 <?php
 	class Moeda_model extends CI_Model {
-		public function cadastrar($nome,$sigla,$cambio){
+		public function cadastrar($nome,$sigla,$cambio,$id){
 
 			if(is_string($cambio)){
 				$cambio = str_replace (',','.',$cambio); //substitui virgulas por pontos para fazer o type casting
@@ -18,9 +18,10 @@
 			if(!$moeda){
 				// Array a ser inserido no banco
 				$moeda = array( 
-						'nome'		=> $nome,
-						'sigla'		=> $sigla,
-						'taxa_cambio'	=> $cambio
+						'nome'			=> $nome,
+						'sigla'			=> $sigla,
+						'taxa_cambio'	=> $cambio,
+						'idCliente'	=> $id
 					);
 				$this->db->insert('moeda',$moeda);
 				$this->session->set_userdata('mensagem','Moeda cadastrada com sucesso.');
