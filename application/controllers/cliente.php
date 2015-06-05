@@ -82,18 +82,18 @@ class Cliente extends CI_Controller {
 		}
 	}
 	public function lista_clientes(){
-		$dados['clientes'] = $this->cliente_model->clientes();
+		$dados['clientes'] = $this->cliente_model->clientes(); 
 		$this->load->view('cliente/lista_clientes',$dados);
 	}
 	public function lista_perfis($id_cliente){
-
 		if(isset($id_cliente)){
-			$this->session->set_flashdata('last_url', 'cliente/lista_perfis/'.$id_cliente);
+			$this->session->set_flashdata('id_cliente', $id_cliente);
 			$dados['id'] = $id_cliente;
 			$dados['perfis'] = $this->cliente_model->perfis($id_cliente);
 			$this->load->view('cliente/lista_perfis',$dados);
 		}
 		else{
+
 			redirect('cliente/home');
 		}
 	}
@@ -103,8 +103,7 @@ class Cliente extends CI_Controller {
 	}
 	public function excluir_perfil($id_perfil){ 	
 		$this->cliente_model->excluir_perfil($id_perfil);
-		$url = $this->session->flashdata('last_url');
-		//mensagem de sucesso
-		redirect($url);
+		$this->session->set_userdata('mensagem','excluido com sucesso');
+		redirect('cliente/lista_clientes')
 	}
 }

@@ -3,10 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<title>Matanay</title>
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>complemento/js/sweetalert/lib/sweet-alert.css">
 	<link href="<?php echo base_url(); ?>complemento/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
 	<link href="<?php echo base_url(); ?>complemento/css/style.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>complemento/css/materialize.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+	<script src="<?php echo base_url();?>complemento/js/sweetalert/lib/sweet-alert.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>complemento/js/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>complemento/js/jquery.matanay.js"></script>
