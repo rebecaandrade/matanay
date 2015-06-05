@@ -1,5 +1,5 @@
 <?php
-
+// by: Vitor Pontes
 	class Moeda extends CI_controller {
 		public function __construct() {
    			parent::__construct();

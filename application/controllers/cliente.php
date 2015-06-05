@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+// by : Vitor Pontes
 class Cliente extends CI_Controller {
 	public function __construct() {
    			parent::__construct();
@@ -59,7 +59,7 @@ class Cliente extends CI_Controller {
 					$this->db->trans_complete();
 					if($this->db->trans_status() == TRUE){
 						// setar 'usuario cadastrado com sucesso'
-						redirect('cliente/lista_perfil/'.$id_cliente);
+						redirect('cliente/lista_perfis/'.$id_cliente);
 					}
 					else{
 						// mensagem de erro
@@ -73,12 +73,12 @@ class Cliente extends CI_Controller {
 			}
 			else{
 				// setar mensagem de senhas não batem
-				redirect('cliente/cadastro_perfil/'.$id_cliente);
+				redirect('cliente/cliente/cadastro_perfil/'.$id_cliente);
 			}
 		}
 		else{
 			// setar 'login já cadastrado'
-			redirect('cliente/cadastro_perfil/'.$id_cliente);
+			redirect('cliente/cliente/cadastro_perfil/'.$id_cliente);
 		}
 	}
 	public function lista_clientes(){
@@ -86,7 +86,25 @@ class Cliente extends CI_Controller {
 		$this->load->view('cliente/lista_clientes',$dados);
 	}
 	public function lista_perfis($id_cliente){
-		$dados['perfis'] = $this->cliente_model->perfis($id_cliente);
-		$this->load->view('cliente/lista_perfis',$dados);
+
+		if(isset($id_cliente)){
+			$this->session->set_flashdata('last_url', 'cliente/lista_perfis/'.$id_cliente);
+			$dados['id'] = $id_cliente;
+			$dados['perfis'] = $this->cliente_model->perfis($id_cliente);
+			$this->load->view('cliente/lista_perfis',$dados);
+		}
+		else{
+			redirect('cliente/home');
+		}
+	}
+	public function excluir_cliente($id_cliente){
+		$this->cliente_model->excluir_cliente($id_cliente);
+		redirect('cliente/lista_clientes');
+	}
+	public function excluir_perfil($id_perfil){ 	
+		$this->cliente_model->excluir_perfil($id_perfil);
+		$url = $this->session->flashdata('last_url');
+		//mensagem de sucesso
+		redirect($url);
 	}
 }

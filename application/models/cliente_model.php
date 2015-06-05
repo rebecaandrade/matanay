@@ -53,10 +53,32 @@
 				return FALSE;
 			}
 		}
+		public function clientes(){
+			return $this->db->get_where('cliente', array('excluido' => NULL))->result();
+		}
 		public function perfis($id){
 			$this->db->where('idCliente',$id);
 			$this->db->where('excluido',NULL);
 			return $this->db->get('perfis')->result();
 		}
+		public function excluir_cliente($id_cliente){
+			$this->db->trans_start();
+			$array = array(
+					'excluido' => 1
+				);
+			$this->db->where('idCliente',$id_cliente);
+			$this->db->update('perfis',$array);
 
+			$this->db->where('idCliente',$id_cliente);
+			$this->db->update('cliente',$array);
+			
+			$this->db->trans_complete();
+		}
+		public function excluir_perfil($id){
+			$this->db->where('idPerfis',$id);
+			$array = array(
+					'excluido' => 1
+				);
+			return $this->db->update('perfis',$array);
+		}
 	}
