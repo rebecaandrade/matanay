@@ -6,7 +6,7 @@
             <div class="input-field col s12 m8 l12">
                 <a href="<?php echo base_url(); ?>index.php/faixas_videos/listar" 
                     class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo" 
-                    data-position="top" data-delay="50" data-tooltip="<?php echo $this->lang->line('voltar'); ?>" id="voltar">
+                    data-position="bottom" data-delay="50" data-tooltip="<?php echo $this->lang->line('voltar'); ?>" id="voltar">
                     <i class="mdi-content-reply"></i>
                 </a>
                 <i class="mdi-image-audiotrack"></i>
@@ -17,7 +17,7 @@
             <div id="upc" class="input-field col s10 offset-s2 m5 offset-m1 l5 offset-l1">
                 <h5><?php
                     if(isset($artistas)){
-                        foreach ($entidades_faixa as $entidade) {
+                        foreach ($artista_faixa as $entidade) {
                             foreach ($artistas as $artista) {
                                 if ($artista->idEntidade == $entidade['idEntidade']) { ?>
                                     <?php echo $artista->nome; ?>
@@ -28,7 +28,7 @@
                 <h5>Autores</h5>
                 <h6><?php
                     if(isset($autores)){
-                        foreach ($entidades_faixa as $entidade) {
+                        foreach ($autor_faixa as $entidade) {
                             foreach ($autores as $autor) {
                                 if ($autor->idEntidade == $entidade['idEntidade']) { ?>
                                     <?php echo $autor->nome; ?>
@@ -37,8 +37,8 @@
 
                 <h5>Produtores</h5>
                 <h6><?php
-                    if(isset($autores)){
-                        foreach ($entidades_faixa as $entidade) {
+                    if(isset($produtores)){
+                        foreach ($produtor_faixa as $entidade) {
                             foreach ($produtores as $produtor) {
                                 if ($produtor->idEntidade == $entidade['idEntidade']) { ?>
                                     <?php echo $produtor->nome; ?>

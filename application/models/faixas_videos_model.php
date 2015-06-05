@@ -30,7 +30,7 @@ class Faixas_Videos_model extends CI_Model {
         return $this->db->get('faixa_video');
     }
 
-    public function buscar_entidade_faixa($id){
+    public function buscar_entidade_faixa($id, $tipo){
         $this->db->where('idFaixa_Video', $id);
         $entidades_faixa = $this->db->get('entidade_has_faixa_video')->result();
 
@@ -39,12 +39,15 @@ class Faixas_Videos_model extends CI_Model {
         foreach($entidades_faixa as $entidade){
                 $this->db->where('idEntidade', $entidade->idEntidade);
                 $dados = $this->db->get('entidade')->row();
-                $entidade_faixa = array(
+
+                if($dados->idTipo_Entidade == $tipo) {
+                    $entidade_faixa = array(
                         'idEntidade' => $entidade->idEntidade,
                         'idTipo_Entidade' => $dados->idTipo_Entidade,
                         'percentual' => $entidade->percentual
                     );
-                array_push($result, $entidade_faixa);
+                    array_push($result, $entidade_faixa);
+                }
         }
         return $result;
     }

@@ -73,7 +73,9 @@ class Faixas_Videos extends CI_Controller {
         $dados['autores'] = $this->faixas_videos_model->buscar_autores();
         $dados['produtores'] = $this->faixas_videos_model->buscar_produtores();
 
-        $dados['entidade_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id);
+        $dados['artista_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=1);
+        $dados['autor_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=2);
+        $dados['produtor_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=3);
 
         $this->load->view('faixas_videos/edita_faixa', $dados);
     }
@@ -126,7 +128,9 @@ class Faixas_Videos extends CI_Controller {
         $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 
         $dados['faixa'] = $this->faixas_videos_model->buscar_dados($id);
-        $dados['entidades_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id);
+        $dados['artista_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=1);
+        $dados['autor_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=2);
+        $dados['produtor_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=3);
         $dados['albuns'] = $this->faixas_videos_model->buscar_album_faixa($id);
         $dados['artistas'] = $this->faixas_videos_model->buscar_artistas();
         $dados['autores'] = $this->faixas_videos_model->buscar_autores();

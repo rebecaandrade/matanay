@@ -104,6 +104,6 @@ class Cliente extends CI_Controller {
 	public function excluir_perfil($id_perfil){ 	
 		$this->cliente_model->excluir_perfil($id_perfil);
 		$this->session->set_userdata('mensagem','excluido com sucesso');
-		redirect('cliente/lista_clientes')
+		redirect('cliente/lista_clientes');
 	}
 }
