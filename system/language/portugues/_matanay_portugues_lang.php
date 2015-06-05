@@ -86,7 +86,9 @@ $lang['cadastrar'] 			= 'Cadastrar';
 $lang['video'] 				= 'Vídeo?';
 $lang['artista'] 			= 'Artista';
 $lang['compositor'] 		= 'Compositor';
+$lang['compositores'] 		= 'Compositores';
 $lang['produtor'] 			= 'Produtor';
+$lang['produtores'] 		= 'Produtores';
 $lang['nao_ha_faixas']		= 'Não há faixas cadastradas!';
 
 ////// ALBUMS ////// Evandro

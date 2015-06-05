@@ -25,7 +25,7 @@
                 </h5>
                 <h6>ISRC: <?php echo $faixa->isrc; ?></h6><br>
 
-                <h5>Autores</h5>
+                <h5><?php echo $this->lang->line('compositores'); ?></h5>
                 <h6><?php
                     if(isset($autores)){
                         foreach ($autor_faixa as $entidade) {
@@ -35,7 +35,7 @@
                     <?php } } } } ?> 
                 </h6><br>
 
-                <h5>Produtores</h5>
+                <h5><?php echo $this->lang->line('produtores'); ?></h5>
                 <h6><?php
                     if(isset($produtores)){
                         foreach ($produtor_faixa as $entidade) {
@@ -47,7 +47,7 @@
             </div>
 
             <div id="albuns_part" class="input-field col s10 m10 l5">
-                <h5>Albuns</h5>
+                <h5><?php echo $this->lang->line('albums'); ?></h5>
                 <h6><?php
                     if(isset($albuns)){
                         foreach ($albuns as $album) {
