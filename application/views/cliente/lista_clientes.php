@@ -3,7 +3,7 @@
 	<div id="titulo_lista">
         <div class="row">
             <div class="input-field col s12 m8 l9">
-          		<?php echo $this->lang->line('perfis'); ?>
+          		<?php echo $this->lang->line('clientes'); ?>
           		<a href="<?php echo base_url().'index.php/cliente/cadastro_cliente' ?>" 
           			class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo" 
         			data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('novo');; ?>" id="addButton">

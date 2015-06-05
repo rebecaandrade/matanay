@@ -31,7 +31,7 @@
 					<?php } ?>                
             </tbody>
 		<?php }else{ ?>
-			<span><?php echo $this->lang->line('cliente_erro_listar'); ?></span><br>
+			<span><?php echo $this->lang->line('perfil_erro_listar'); ?></span><br>
 		<?php } ?>
 </div>
 <?php $this->load->view('_include/footer') ?>

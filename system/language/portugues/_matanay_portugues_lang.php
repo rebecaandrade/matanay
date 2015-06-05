@@ -165,7 +165,9 @@ $lang['valor']='Valor';
 
 
 
-//cliente 
+////// CLIENTE ////// Vitor
+
+$lang['clientes'] = 'Clientes';
 $lang['perfis'] = 'Perfis';
 $lang['cliente_nome'] = 'Nome';
 $lang['cliente_login'] = 'Login';
@@ -173,6 +175,7 @@ $lang['cliente_senha'] = 'Senha';
 $lang['cliente_confirmar_senha'] = 'Confirmação de Senha';
 $lang['cliente_funcionalidades'] = 'Funcionalidades';
 $lang['cliente_cadastrar'] = 'Cadastrar';
+$lang['Perfil_erro_listar'] = 'Nenhum perfil cadastrado';
 $lang['cliente_erro_listar'] = 'Nenhum cliente cadastrado';
 
 
