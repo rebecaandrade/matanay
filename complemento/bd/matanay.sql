@@ -272,7 +272,7 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Imposto` (
   `idImposto` INT NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(45) NOT NULL ,
   `valor` INT NOT NULL ,
-  `idCliente` INT NOT NULL ,
+  `idCliente` INT NULL ,
   PRIMARY KEY (`idImposto`) ,
   INDEX `fk_Imposto_Cliente1_idx` (`idCliente` ASC) ,
   CONSTRAINT `fk_Imposto_Cliente1`
@@ -312,7 +312,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `matanay`.`Funcionalidades` ;
 
 CREATE  TABLE IF NOT EXISTS `matanay`.`Funcionalidades` (
-  `idFuncionalidades` INT NOT NULL ,
+  `idFuncionalidades` INT NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`idFuncionalidades`) )
 ENGINE = InnoDB;
