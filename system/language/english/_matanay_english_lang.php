@@ -51,7 +51,8 @@ $lang['nome']				= 'Name';
 $lang['selecione']			= 'Select';
 $lang['procurar']			= 'Search';
 $lang['nada_encontrado']	= 'Nothing found';
-$lang['detalhes']			= 'Details';
+$lang['detalhes']			= 'DETAILS';
+$lang['voltar']				= 'RETURN';
 
 
 ////// LOGIN ////// Evandro

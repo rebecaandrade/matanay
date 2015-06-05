@@ -119,4 +119,20 @@ class Faixas_Videos extends CI_Controller {
         }
     }
 
+    public function detalhar($id){
+        $this->session->set_flashdata('redirect_url', current_url());
+
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+
+        $dados['faixa'] = $this->faixas_videos_model->buscar_dados($id);
+        $dados['entidades_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id);
+        $dados['albuns'] = $this->faixas_videos_model->buscar_album_faixa($id);
+        $dados['artistas'] = $this->faixas_videos_model->buscar_artistas();
+        $dados['autores'] = $this->faixas_videos_model->buscar_autores();
+        $dados['produtores'] = $this->faixas_videos_model->buscar_produtores();
+
+        $this->load->view('faixas_videos/perfil_faixa', $dados);
+    }
+
 }

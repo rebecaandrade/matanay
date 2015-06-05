@@ -50,7 +50,7 @@
                             		<?php echo $this->lang->line('editar'); ?></a> |
                             	<a id="acao" onclick="if (confirm('Deseja excluir esta faixa?')) window.location.replace('<?php echo base_url().'index.php/faixas_videos/deletar?id='.$faixa->idFaixa ?>')"><?php echo $this->lang->line('deletar'); ?></a>
                             </td>
-                            <td><a class="detalhes tooltipped" data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('detalhes'); ?>" href=""><i class="mdi-action-visibility"></i></a></td>
+                            <td><a class="detalhes tooltipped" data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('detalhes'); ?>" href="<?php echo base_url(); ?>index.php/faixas_videos/detalhar/<?php echo $faixa->idFaixa ?>"><i class="mdi-action-visibility"></i></a></td>
                         </tr> 
                 <?php }}?>                  
             </tbody>

@@ -47,18 +47,17 @@
                                     <?php } ?>  
                             <?php } } ?>
                             <td><?php echo $album->upc_ean;?></td> 
-                            <?php foreach ($tipos as $tipo) { 
-                                foreach ($entidades as $entidade) {
+                            <?php foreach ($tipos as $tipo) {
                                     if($tipo->idTipo_Album == $album->idTipo_Album){ ?>
                                         <td><?php echo $tipo->descricao; ?></td>
                                     <?php } ?>  
-                            <?php } } ?>
+                            <?php } ?>
                             <td><?php echo $album->ano;?></td>
                             <td><a id="acao" href="<?php echo base_url(); ?>index.php/albuns/editar/<?php echo $album->idAlbum ?>">
                             		<?php echo $this->lang->line('editar'); ?></a> |
                             	<a id="acao" onclick="if (confirm('Deseja excluir este album?')) window.location.replace('<?php echo base_url().'index.php/albuns/deletar?id='.$album->idAlbum ?>')"><?php echo $this->lang->line('deletar'); ?></a>
                             </td>
-                            <td><a class="detalhes modal-trigger tooltipped" data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('detalhes'); ?>" href="#modal1"><i class="mdi-action-visibility"></i></a></td>
+                            <td><a class="detalhes tooltipped" data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('detalhes'); ?>" href="<?php echo base_url(); ?>index.php/albuns/detalhar/<?php echo $album->idAlbum ?>"><i class="mdi-action-visibility"></i></a></td>
                         </tr> 
                 <?php }}?>                  
             </tbody>
@@ -70,16 +69,6 @@
 	<div id="paginacao">
 		<?php if($paginas) echo $paginas; ?>
 	</div>
-
-    <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Album Title</h4>
-      <p>Tracklist</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Editar</a>
-    </div>
-  </div>
 
 </div>
 

@@ -27,6 +27,10 @@ html {
 	height: 33rem !important;
 }
 
+.card-rec {
+	height: 28rem !important;
+}
+
 .input-field label {
 	font-size: 1.2rem !important;
 }

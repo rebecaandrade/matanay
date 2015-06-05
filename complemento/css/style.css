@@ -95,6 +95,12 @@ html {
 	font-size: 2rem;
 }
 
+#titulo_perfil {
+	font-family: "Roboto", 'sans-serif' !important;
+	font-size: 2.3rem;
+	margin-top: 3.5rem !important;
+}
+
 .novo {
 	margin-top: -0.3rem !important;
 	line-height: 23px !important;
@@ -277,6 +283,31 @@ html {
 
 .detalhes:hover {
 	color: #777;
+}
+
+#table_album {
+	top: -2rem !important;
+}
+
+#table_album th {
+	font-size: 1.5rem !important;
+}
+
+#table_album td {
+	padding: 10px 5px !important;
+}
+
+#upc {
+	top: -2rem !important;
+}
+
+#voltar {
+	top: -0.3rem !important;
+	left: -5%;
+}
+
+#voltar i {
+	top: -3px;
 }
 
 .circulo {

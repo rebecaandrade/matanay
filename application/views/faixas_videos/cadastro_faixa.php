@@ -13,14 +13,18 @@
 	        </div>
 
 	        <div class="row">
-	          	<div class="input-field col s12 m9 l8 offset-l1">
+	        	<div id="n_video" class="input-field col s12 m9 l8 offset-l1">
 	            	<input type="text" name="isrc">
 	            	<label>ISRC</label>
+	          	</div>
+	          	<div id="eh_video" class="input-field col s12 m9 l8 offset-l1">
+	            	<input type="text" name="youtube">
+	            	<label>YouTube</label>
 	          	</div>
 	          	<div class="switch col s6 offset-s6 m3 l2">
 	            	<label>
 	              		<?php echo $this->lang->line('video');?>
-	              		<input type="checkbox">
+	              		<input type="checkbox" value="1">
 	              		<span class="lever"></span>
 	              		<?php echo $this->lang->line('sim');?>
 	            	</label>

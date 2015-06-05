@@ -40,7 +40,7 @@ class Albuns_model extends CI_Model {
 
     public function buscar_tracklist($id){
         $this->db->where('idAlbum', $id);
-        return $this->db->get('album_has_faixa')->row();
+        return $this->db->get('album_has_faixa')->result();
     }
 
     public function cadastrar_album($album, $artista, $faixas){

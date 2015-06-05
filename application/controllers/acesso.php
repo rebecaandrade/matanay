@@ -64,6 +64,11 @@ class Acesso extends CI_Controller {
 	}
 
 	public function recuperar(){
+		$this->session->set_flashdata('redirect_url', current_url());
+
+		$linguagem_usuario = $this->session->userdata('linguagem');
+		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+		
 		$this->load->view('acesso/recuperar_senha');
 	}
 

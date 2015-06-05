@@ -42,9 +42,28 @@ class Faixas_Videos_model extends CI_Model {
                 $entidade_faixa = array(
                         'idEntidade' => $entidade->idEntidade,
                         'idTipo_Entidade' => $dados->idTipo_Entidade,
-                        'percentual' => $entidade->percentual,
+                        'percentual' => $entidade->percentual
                     );
                 array_push($result, $entidade_faixa);
+        }
+        return $result;
+    }
+
+    public function buscar_album_faixa($id){
+        $this->db->where('idFaixa', $id);
+        $albuns = $this->db->get('album_has_faixa')->result();
+
+        $result = array();
+
+        foreach($albuns as $album){
+                $this->db->where('idAlbum', $album->idAlbum);
+                $dados = $this->db->get('album')->row();
+                $album_faixa = array(
+                        'idAlbum' => $album->idAlbum,
+                        'idFaixa' => $album->idFaixa,
+                        'nome' => $dados->nome
+                    );
+                array_push($result, $album_faixa);
         }
         return $result;
     }
