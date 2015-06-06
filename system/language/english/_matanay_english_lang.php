@@ -53,6 +53,7 @@ $lang['procurar']			= 'Search';
 $lang['nada_encontrado']	= 'Nothing found';
 $lang['detalhes']			= 'DETAILS';
 $lang['voltar']				= 'RETURN';
+$lang['atualizado_sucesso']	= 'Update successful';
 
 
 ////// LOGIN ////// Evandro
@@ -173,6 +174,7 @@ $lang['cliente_funcionalidades'] = 'Functionalities';
 $lang['cliente_cadastrar'] = 'Register';
 $lang['Perfil_erro_listar'] = 'No Profiles on record';
 $lang['cliente_erro_listar'] = 'No customer on record';
+$lang['cliente_erro_nome'] = 'Name already taken';
 
 
 

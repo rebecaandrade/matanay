@@ -3,6 +3,10 @@
 		public function funcionalidades(){
 			return $this->db->get('funcionalidades')->result();
 		}
+		public function buscar_cliente($id){
+			$this->db->where('idCliente',$id);
+			return $this->db->get('cliente')->row();
+		}
 		public function cliente_existe($nome){
 			$this->db->where('nome',$nome);
 			$this->db->where('excluido',NULL);
@@ -20,7 +24,13 @@
 				);
 			return $this->db->insert('cliente',$cliente);
 		}
-
+		public function atualizar_cliente($id,$nome){
+			$cliente = array(
+						'nome' => $nome,
+				);
+			$this->db->where('idCliente',$id);
+			return $this->db->update('cliente',$cliente);
+		}
 		public function cadastrar_perfil($nome,$login,$senha,$id_cliente){
 			$perfil = array(
 					'nome' 		=> $nome,

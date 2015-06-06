@@ -53,6 +53,7 @@ $lang['procurar']			= 'Procurar';
 $lang['nada_encontrado']	= 'Nada encontrado';
 $lang['detalhes']			= 'DETALHES';
 $lang['voltar']				= 'VOLTAR';
+$lang['atualizado_sucesso']	= 'Atualizado com sucesso';
 
 
 
@@ -179,6 +180,8 @@ $lang['cliente_funcionalidades'] = 'Funcionalidades';
 $lang['cliente_cadastrar'] = 'Cadastrar';
 $lang['Perfil_erro_listar'] = 'Nenhum perfil cadastrado';
 $lang['cliente_erro_listar'] = 'Nenhum cliente cadastrado';
+$lang['cliente_erro_nome'] = 'Este nome já se encontra cadastrado';
+
 
 
 

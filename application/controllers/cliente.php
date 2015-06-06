@@ -4,6 +4,12 @@ class Cliente extends CI_Controller {
 	public function __construct() {
    			parent::__construct();
    			$this->load->model('cliente_model');
+   			if (!($this->session->userdata('linguagem'))) {
+				$this->session->set_userdata('linguagem', 'portugues');
+			}
+
+			$linguagem_usuario = $this->session->userdata('linguagem');
+			$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 		}
 
 	public function home(){
@@ -81,6 +87,28 @@ class Cliente extends CI_Controller {
 			redirect('cliente/cliente/cadastro_perfil/'.$id_cliente);
 		}
 	}
+	public function atualiza_cliente($id){
+		$dados['cliente'] = $this->cliente_model->buscar_cliente($id);
+		$this->load->view('cliente/atualizar_cliente',$dados);
+	}
+	public function atualizar_cliente($id){
+		$nome = $this->input->post('nome');
+		if( !$this->cliente_model->cliente_existe($nome)){
+			$this->cliente_model->atualizar_cliente($id,$nome);
+			$mensagem = array(
+							'mensagem'		=> $this->lang->line('atualizado_sucesso'),
+							'tipo_mensagem' => 'success'
+						);
+			$this->session->set_userdata($mensagem);
+			redirect('cliente/lista_clientes');
+		}
+		$mensagem = array(
+							'mensagem'		=> $this->lang->line('cliente_erro_nome'),
+							'tipo_mensagem' => 'error'
+						);
+		$this->session->set_userdata($mensagem);
+		redirect('cliente/atualiza_cliente/'.$id);
+	}
 	public function lista_clientes(){
 		$dados['clientes'] = $this->cliente_model->clientes(); 
 		$this->load->view('cliente/lista_clientes',$dados);
@@ -101,9 +129,9 @@ class Cliente extends CI_Controller {
 		$this->cliente_model->excluir_cliente($id_cliente);
 		redirect('cliente/lista_clientes');
 	}
-	public function excluir_perfil($id_perfil){ 	
+	public function excluir_perfil($id_perfil,$id_cliente){ 	
 		$this->cliente_model->excluir_perfil($id_perfil);
 		$this->session->set_userdata('mensagem','excluido com sucesso');
-		redirect('cliente/lista_clientes');
+		redirect('cliente/lista_perfis/'.$id_cliente);
 	}
 }

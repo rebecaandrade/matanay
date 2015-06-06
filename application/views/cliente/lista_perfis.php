@@ -26,7 +26,7 @@
 						<tr>
 							<td><?php echo $perfil->nome;?></td>
 							<td><?php echo $perfil->login;?></td>
-							<td><a href=<?php echo base_url().'index.php/cliente/excluir_perfil/'.$perfil->idPerfis;?>><?php echo $this->lang->line('deletar'); ?></a>||<a href="#"><?php echo $this->lang->line('editar'); ?></a></td>
+							<td><a href=<?php echo base_url().'index.php/cliente/excluir_perfil/'.$perfil->idPerfis.'/'.$perfil->idCliente;?>><?php echo $this->lang->line('deletar'); ?></a>||<a href="#"><?php echo $this->lang->line('editar'); ?></a></td>
 						</tr> 
 					<?php } ?>                
             </tbody>
