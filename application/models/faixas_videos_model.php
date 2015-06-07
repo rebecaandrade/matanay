@@ -190,4 +190,10 @@ class Faixas_Videos_model extends CI_Model {
         return TRUE;
     }
 	
+    public function procurar_faixa($busca){
+        $this->db->like("nome", $busca);
+        $this->db->or_like("isrc", $busca);
+
+        return $this->db->get("faixa_video")->result();
+    }
 }

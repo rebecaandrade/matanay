@@ -145,4 +145,32 @@ class Albuns extends CI_Controller {
         $this->load->view('albuns/perfil_album', $dados);
     }
 
+    public function procurar(){
+        $this->session->set_flashdata('redirect_url', current_url());
+
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
+
+        $this->load->library('pagination');
+        $config['base_url'] = base_url('index.php/albuns/listar');
+        $config['total_rows'] = $this->albuns_model->buscar_albuns()->num_rows();
+        $config['uri_segment'] = 3;
+        $config['per_page'] = 5;
+
+        $qtde = $config['per_page'];
+        ($this->uri->segment(3) != '') ? $inicio = $this->uri->segment(3) : $inicio = 0;
+        $this->pagination->initialize($config);
+
+        $dados = array(
+            'albuns' => $this->albuns_model->buscar_albuns($qtde, $inicio)->result(),
+            'artistas' => $this->albuns_model->buscar_artistas(),
+            'entidades' => $this->albuns_model->buscar_entidades(),
+            'tipos' => $this->albuns_model->buscar_tipos(),
+            'paginas' => $this->pagination->create_links()
+        );
+
+        $busca = $this->input->post('procurar');
+        $dados['busca'] = $this->albuns_model->procurar_album($busca);
+        $this->load->view("albuns/lista_albuns", $dados);
+    }
 }

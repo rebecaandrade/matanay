@@ -88,4 +88,12 @@ class Albuns_model extends CI_Model {
         $this->db->trans_complete();
         return TRUE;
     }
+
+    public function procurar_album($busca){
+        $this->db->like("nome", $busca);
+        $this->db->or_like("upc_ean", $busca);
+        $this->db->or_like("codigo_catalogo", $busca);
+
+        return $this->db->get("album")->result();
+    }
 }
