@@ -60,7 +60,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
 
-$autoload['libraries'] = array('database', 'session', 'xmlrpc');
+$autoload['libraries'] = array('database', 'session', 'xmlrpc', 'form_validation');
 
 
 /*

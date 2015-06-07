@@ -55,7 +55,9 @@ $lang['detalhes']			= 'DETALHES';
 $lang['voltar']				= 'VOLTAR';
 $lang['atualizado_sucesso']	= 'Atualizado com sucesso';
 
+////// FORM VALIDATION
 
+$lang['form_error_nome_disponivel']		= 'Esse nome não está disponivel.';
 
 ////// LOGIN ////// Evandro
 
