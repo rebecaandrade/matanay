@@ -7,6 +7,11 @@
 			$this->db->where('idCliente',$id);
 			return $this->db->get('cliente')->row();
 		}
+		public function buscar_perfil($id_cliente,$id_perfil){
+			$this->db->where('idCliente',$id_cliente);
+			$this->db->where('idPerfis',$id_perfil);
+			return $this->db->get('perfis')->row();
+		}
 		public function cliente_existe($nome){
 			$this->db->where('nome',$nome);
 			$this->db->where('excluido',NULL);
