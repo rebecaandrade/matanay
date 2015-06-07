@@ -38,7 +38,7 @@ class Faixas_Videos extends CI_Controller {
         if($faixa['nome'] != NULL && $faixa['isrc'] != NULL){
             $this->faixas_videos_model->cadastrar_faixa($faixa, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
             
-            redirect('faixas_videos/cadastra_faixa');       
+            redirect('faixas_videos/listar');       
         }else{
             
             redirect('cliente/home');
@@ -114,8 +114,7 @@ class Faixas_Videos extends CI_Controller {
         if($this->faixas_videos_model->deletar($dados)){
             $this->session->set_userdata('mensagem', 'Excluído com sucesso.');
             redirect('faixas_videos/listar');
-        }
-        else{
+        }else{
             $this->session->set_userdata('mensagem', 'Houve algum problema para deletar.');
             redirect('faixas_videos/listar');
         }

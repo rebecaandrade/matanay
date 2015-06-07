@@ -4,18 +4,21 @@ class Faixas_Videos_model extends CI_Model {
 
 	public function buscar_artistas(){
         $this->db->where('idTipo_Entidade', 1);
+        $this->db->where('excluido =', NULL);
         $this->db->order_by('nome', 'asc');
         return $this->db->get('entidade')->result();
     }
 
     public function buscar_autores(){
         $this->db->where('idTipo_Entidade', 2);
+        $this->db->where('excluido =', NULL);
         $this->db->order_by('nome', 'asc');
         return $this->db->get('entidade')->result();
     }
 
     public function buscar_produtores(){
         $this->db->where('idTipo_Entidade', 3);
+        $this->db->where('excluido =', NULL);
         $this->db->order_by('nome', 'asc');
         return $this->db->get('entidade')->result();
     }
@@ -184,6 +187,7 @@ class Faixas_Videos_model extends CI_Model {
         $this->db->update('faixa_video', $dados);
 
         $this->db->trans_complete();
+        return TRUE;
     }
 	
 }

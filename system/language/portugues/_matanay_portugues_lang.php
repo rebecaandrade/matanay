@@ -77,7 +77,7 @@ $lang['sair'] 				= 'SAIR';
 ////// SUB_MENU ////// Evandro
 
 $lang['faixas'] 			= 'FAIXAS';
-$lang['albums'] 			= 'ÁLBUMS';
+$lang['albums'] 			= 'ÁLBUNS';
 $lang['entidades'] 			= 'ENTIDADES';
 $lang['favorecido']			= 'FAVORECIDOS';
 $lang['imposto']			= 'IMPOSTO';

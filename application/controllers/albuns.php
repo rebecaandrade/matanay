@@ -38,7 +38,7 @@ class Albuns extends CI_Controller {
         if($album['nome'] != NULL){
  			$this->albuns_model->cadastrar_album($album, $artista, $faixas);
 
-            redirect('albuns/cadastra_album');       
+            redirect('albuns/listar');       
         }else{
             
             redirect('cliente/home');
@@ -86,10 +86,8 @@ class Albuns extends CI_Controller {
         $dados = array(
             'idAlbum' => $this->input->post('idAlbum'),
             'nome' => $this->input->post('nome'),
-            'quantidade' => $this->input->post('n_faixas'),
             'upc_ean' => $this->input->post('upc_ean'),
             'ano' => $this->input->post('ano'),
-            'faixa' => 100/$this->input->post('n_faixas'),
             'codigo_catalogo' => $this->input->post('catalogo'),
             'idTipo_Album' => $this->input->post('tipo')
         );
@@ -125,8 +123,7 @@ class Albuns extends CI_Controller {
         if($this->albuns_model->deletar($dados)){
             $this->session->set_userdata('mensagem', 'Excluído com sucesso.');
             redirect('albuns/listar');
-        }
-        else{
+        }else{
             $this->session->set_userdata('mensagem', 'Houve algum problema para deletar.');
             redirect('albuns/listar');
         }

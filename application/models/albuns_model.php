@@ -9,11 +9,13 @@ class Albuns_model extends CI_Model {
 
     public function buscar_faixas(){
         $this->db->order_by('nome', 'asc');
+        $this->db->where('excluido =', NULL);
         return $this->db->get('faixa_video')->result();
     }
 
     public function buscar_artistas(){
         $this->db->where('idTipo_Entidade', 1);
+        $this->db->where('excluido =', NULL);
         $this->db->order_by('nome', 'asc');
         return $this->db->get('entidade')->result();
     }
@@ -84,5 +86,6 @@ class Albuns_model extends CI_Model {
         $this->db->update('album', $dados);
 
         $this->db->trans_complete();
+        return TRUE;
     }
 }
