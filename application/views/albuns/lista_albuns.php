@@ -22,7 +22,7 @@
             <?php form_close(); } ?>
         </div>
   	</div></br>
-    <?php if (($albuns!=NULL) && (!isset($busca))) {?>
+    <?php if (($albuns!=NULL) && (!isset($busca))) { ?>
         <table class="hoverable bordered">
             <thead>
                 <tr>
@@ -62,9 +62,9 @@
                 <?php } } ?>                  
             </tbody>
         </table>
-    <?php }elseif(!isset($busca)) { ?>
+    <?php } elseif($albuns == NULL) { ?>
         <span><?php echo $this->lang->line('nao_ha_albums'); ?></span><br>
-    <?php }elseif($busca != null) { ?>
+    <?php } elseif($busca != null) { ?>
         <table class="hoverable bordered">
             <thead>
                 <tr>

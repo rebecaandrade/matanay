@@ -35,13 +35,14 @@ class Albuns extends CI_Controller {
 
 		$faixas = $this->input->post('faixas[]');
 
-        if($album['nome'] != NULL){
+        if($album['nome'] != NULL && $album['quantidade'] != NULL && $album['upc_ean'] != NULL && $album['ano'] != NULL && $album['idTipo_Album'] != NULL){
  			$this->albuns_model->cadastrar_album($album, $artista, $faixas);
-
+            
+            $this->session->set_userdata('mensagem', $this->lang->line('cadastrado_sucesso'));
             redirect('albuns/listar');       
         }else{
-            
-            redirect('cliente/home');
+            $this->session->set_userdata('mensagem', 'Houve algum problema no cadastro');
+            redirect('albuns/cadastra_album');
         }
 	}
 
@@ -99,7 +100,7 @@ class Albuns extends CI_Controller {
 
         if($dados['nome'] != NULL && $dados['ano'] != NULL){
             $this->albuns_model->atualizar_album($dados, $artista);
-            
+            $this->session->set_userdata('mensagem', $this->lang->line('atualizado_sucesso'));
             redirect('albuns/listar');       
         }else{
             $id = $this->input->post('idAlbum');
@@ -110,6 +111,7 @@ class Albuns extends CI_Controller {
             $dados['tracklist'] = $this->albuns_model->buscar_tracklist($id);
             $dados['tipos'] = $this->albuns_model->buscar_tipos();
 
+            $this->session->set_userdata('mensagem', 'Houve algum problema na atualização.');
             $this->load->view('albuns/edita_album', $dados);
         }
     }
@@ -121,7 +123,7 @@ class Albuns extends CI_Controller {
         );
 
         if($this->albuns_model->deletar($dados)){
-            $this->session->set_userdata('mensagem', 'Excluído com sucesso.');
+            $this->session->set_userdata('mensagem', $this->lang->line('excluido_sucesso'));
             redirect('albuns/listar');
         }else{
             $this->session->set_userdata('mensagem', 'Houve algum problema para deletar.');
@@ -171,6 +173,12 @@ class Albuns extends CI_Controller {
 
         $busca = $this->input->post('procurar');
         $dados['busca'] = $this->albuns_model->procurar_album($busca);
-        $this->load->view("albuns/lista_albuns", $dados);
+
+        if($dados['busca'] != NULL){
+            $this->load->view("albuns/lista_albuns", $dados);
+        }else{
+            $this->session->set_userdata('mensagem', $this->lang->line('nada_encontrado'));
+            redirect('albuns/listar');
+        }
     }
 }

@@ -50,16 +50,21 @@ $lang['nova']				= 'NOVA';
 $lang['nome']				= 'Nome';
 $lang['selecione']			= 'Selecione';
 $lang['procurar']			= 'Procurar';
-$lang['nada_encontrado']	= 'Nada encontrado';
 $lang['detalhes']			= 'DETALHES';
 $lang['voltar']				= 'VOLTAR';
-$lang['atualizado_sucesso']	= 'Atualizado com sucesso';
 
 ////// FORM VALIDATION
 
 $lang['form_error_nome_disponivel']		= 'Esse nome não está disponivel.';
 
-////// LOGIN ////// Evandro
+////// ALERTAS SISTEMA
+
+$lang['nada_encontrado']	= 'Nada encontrado.';
+$lang['atualizado_sucesso']	= 'Atualizado com sucesso!';
+$lang['cadastrado_sucesso']	= 'Cadastrado com sucesso!';
+$lang['excluido_sucesso']	= 'Excluído com sucesso!';
+
+////// LOGIN
 
 $lang['login'] 				= 'usuário';
 $lang['senha'] 				= 'senha';

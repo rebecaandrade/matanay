@@ -55,7 +55,7 @@
                 <?php } } ?>                  
             </tbody>
         </table>
-    <?php } elseif(!isset($busca)) { ?>
+    <?php } elseif($faixas == NULL) { ?>
         <span><?php echo $this->lang->line('nao_ha_faixas'); ?></span><br>
     <?php } elseif($busca != null) { ?>
         <table class="hoverable bordered">

@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="input-field col s11 m9 l7 offset-l2">
                     <i class="mdi-image-audiotrack prefix"></i>
-                    <input id="icon-prefix" type="text" name="nome" value="<?php echo $faixa->nome; ?>">
+                    <input required id="icon-prefix" type="text" name="nome" value="<?php echo $faixa->nome; ?>">
                     <label><?php echo $this->lang->line('titulo'); ?></label>
                 </div>
             </div>

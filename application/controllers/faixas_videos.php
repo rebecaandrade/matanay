@@ -34,14 +34,26 @@ class Faixas_Videos extends CI_Controller {
         $perc_autores = $this->input->post('percentual_autor[]');
         $perc_produtores = $this->input->post('percentual_produtor[]');
 
-
-        if($faixa['nome'] != NULL && $faixa['isrc'] != NULL){
+        if($artistas == NULL){
+            $this->session->set_userdata('mensagem', 'Por favor, escolha pelo menos um artista');
+            redirect('faixas_videos/cadastra_faixa');
+        }
+        elseif($autores == NULL){
+            $this->session->set_userdata('mensagem', 'Por favor, escolha pelo menos um autor');
+            redirect('faixas_videos/cadastra_faixa');
+        }
+        elseif($produtores == NULL){
+            $this->session->set_userdata('mensagem', 'Por favor, escolha pelo menos um produtor');
+            redirect('faixas_videos/cadastra_faixa');
+        }
+        elseif($faixa['nome'] != NULL && $faixa['isrc'] != NULL && $artistas != NULL && $autores != NULL && $produtores != NULL){
             $this->faixas_videos_model->cadastrar_faixa($faixa, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
-            
+            $this->session->set_userdata('mensagem', $this->lang->line('cadastrado_sucesso'));
             redirect('faixas_videos/listar');       
-        }else{
-            
-            redirect('cliente/home');
+        }
+        else{
+            $this->session->set_userdata('mensagem', 'Houve algum problema no cadastro.');
+            redirect('faixas_videos/cadastra_faixa');
         }
 
 	}
@@ -97,10 +109,11 @@ class Faixas_Videos extends CI_Controller {
 
         if($dados['nome'] != NULL && $dados['isrc'] != NULL){
             $this->faixas_videos_model->atualizar_faixa($dados, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
-            
+            $this->session->set_userdata('mensagem', $this->lang->line('atualizado_sucesso'));
             redirect('faixas_videos/listar');       
         }else{
             $id = $this->input->post('idFaixa');
+            $this->session->set_userdata('mensagem', 'Houve algum problema na atulização.');
             redirect('faixas_videos/editar', $id);
         }
     }
@@ -112,7 +125,7 @@ class Faixas_Videos extends CI_Controller {
         );
 
         if($this->faixas_videos_model->deletar($dados)){
-            $this->session->set_userdata('mensagem', 'Excluído com sucesso.');
+            $this->session->set_userdata('mensagem', $this->lang->line('excluido_sucesso'));
             redirect('faixas_videos/listar');
         }else{
             $this->session->set_userdata('mensagem', 'Houve algum problema para deletar.');
@@ -163,7 +176,13 @@ class Faixas_Videos extends CI_Controller {
 
         $busca = $this->input->post('procurar');
         $dados['busca'] = $this->faixas_videos_model->procurar_faixa($busca);
-        $this->load->view("faixas_videos/lista_faixas", $dados);
+
+        if($dados['busca'] != NULL){
+            $this->load->view("faixas_videos/lista_faixas", $dados);
+        }else{
+            $this->session->set_userdata('mensagem', $this->lang->line('nada_encontrado'));
+            redirect('faixas_videos/listar');
+        }
     }
 
 }
