@@ -38,7 +38,6 @@ html {
 
 #barra3 {
 	background-color: #FF0 !important;
-	
 }
 
 #barra2 ul li a {
@@ -98,7 +97,7 @@ html {
 #titulo_perfil {
 	font-family: "Roboto", 'sans-serif' !important;
 	font-size: 2.3rem;
-	margin-top: 3.5rem !important;
+	margin-top: 2rem !important;
 }
 
 .novo {
@@ -308,25 +307,6 @@ html {
 
 #voltar i {
 	top: -3px;
-}
-
-.circulo {
-	width: 250px;
-	height: 250px;
-	border-radius: 50%;
-	border-right: 5px solid #999;
-	border-bottom: 3px solid #999;
-	background-color: #DDD;
-	margin-left: 7%;
-	margin-top: 7%;
-	text-align: center;
-}
-
-.circulo img {
-	width: 200px;
-	height: 200px;
-	margin-top: 10%;
-	background-color: transparent;
 }
 
 #dados label{

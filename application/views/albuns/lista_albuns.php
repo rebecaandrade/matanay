@@ -1,6 +1,6 @@
 <?php $this->load->view('_include/header') ?> <!-- Evandro -->
 
-<div class="container">
+<div id="wrapper-body">
   	<div id="titulo_lista">
         <div class="row">
             <div class="input-field col s12 m8 l9">

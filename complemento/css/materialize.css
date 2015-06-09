@@ -4792,30 +4792,33 @@ span.badge {
   width: 90%; }
 
 #wrapper {
-  margin-top: 2rem !important;
-}
+  margin-top: 2rem !important; }
+
+#wrapper-body {
+  margin: 0 auto;
+  margin-top: 1.5rem !important;
+  width: 90%; }
 
 @media only screen and (min-width : 601px) {
-  .container {
+  .container, #wrapper-body{
     width: 85%; }
   #wrapper {
     width: 100%;
-    margin-top: 4rem !important; } }
+    margin-top: 2rem !important; } }
 
 @media only screen and (min-width : 993px) {
-  .container {
+  .container, #wrapper-body {
     width: 85%; }
   #wrapper {
     width: 100%;
-    margin-top: 5rem !important; } }
+    margin-top: 2.5rem !important; } }
 
 .container .row {
   margin-left: -0.75rem;
   margin-right: -0.75rem; }
 
 .container .row form {
-  margin-top: 6%;
-}
+  margin-top: 6%; }
 
 .section {
   padding-top: 1rem;

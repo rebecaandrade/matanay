@@ -114,7 +114,8 @@
 
       		<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     	</div>
-
+  	</nav>
+  	
   		<div id="barra2" class="grey darken-2" role="navigation">
     		<div class="nav-wrapper container">
       			<ul class="right hide-on-med-and-down">
@@ -131,4 +132,3 @@
 
     	<div id="barra3" class="grey darken-1" role="navigation">
     	</div>
-  	</nav>
