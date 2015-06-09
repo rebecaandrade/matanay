@@ -113,6 +113,10 @@
 				redirect('cliente/atualiza_cliente/'.$id);
 			}
 		}
+		public function atualiza_perfil_admin($id_cliente,$id_perfil){
+			$dados['perfil'] = $this->cliente_model->buscar_perfil($id_cliente,$id_perfil);
+			$this->load->view('cliente/atualizar_perfil',$dados);
+		}
 		public function lista_clientes(){
 			$dados['clientes'] = $this->cliente_model->clientes(); 
 			$this->load->view('cliente/lista_clientes',$dados);
