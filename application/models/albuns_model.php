@@ -65,6 +65,7 @@ class Albuns_model extends CI_Model {
 		}
 
 		$this->db->trans_complete();
+        return TRUE;
 	}
 
     public function atualizar_album($dados, $artista){
@@ -77,6 +78,7 @@ class Albuns_model extends CI_Model {
         $this->db->update('entidade_has_album', $artista);
 
         $this->db->trans_complete();
+        return TRUE;
     }
 
     public function deletar($dados){
@@ -90,6 +92,7 @@ class Albuns_model extends CI_Model {
     }
 
     public function procurar_album($busca){
+        $this->db->where('excluido =', NULL);
         $this->db->like("nome", $busca);
         $this->db->or_like("upc_ean", $busca);
         $this->db->or_like("codigo_catalogo", $busca);

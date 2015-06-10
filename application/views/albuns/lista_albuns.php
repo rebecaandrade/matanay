@@ -15,9 +15,16 @@
             <?php if($albuns!=NULL){
                 echo form_open('albuns/procurar') ?>
                     <div class="input-field col s12 m4 l3">
-                        <i class="mdi-action-search prefix"></i>
+                        <i id="lupa" class="mdi-action-search prefix"></i>
                         <label><?php echo $this->lang->line('procurar'); ?></label>
                         <input required type="text" value="" name="procurar" >
+                        <input id="linkLupa" type="submit" style="display: none">
+                        <script>
+                            $('#lupa').css('cursor', 'pointer');
+                            $('#lupa').click(function () {
+                                $('#linkLupa').click();
+                            });
+                        </script>
                     </div>
             <?php form_close(); } ?>
         </div>
