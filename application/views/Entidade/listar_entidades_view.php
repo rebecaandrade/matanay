@@ -1,9 +1,8 @@
 <?php /*FEITO POR MIM JADIEL*/
 $this->load->view('_include/header') ?>
 
-
     <div class="container">
-        <div id="titulo_lista">
+        <div class="row" id="titulo_lista">
             <div class="row">
                 <div class="input-field col s12 m8 l9">
                     <i class="mdi-action-assignment-ind"></i>
@@ -18,15 +17,22 @@ $this->load->view('_include/header') ?>
                 <?php if ($dadoentidade != NULL) {
                     echo form_open('/Entidade/procurar') ?>
                     <div class="input-field col s12 m4 l3">
-                        <i class="mdi-action-search prefix"></i>
+                        <i id="lupa" class="mdi-action-search prefix"></i>
                         <label><?php echo $this->lang->line('procurar'); ?></label>
                         <input required type="text" value="" name="procurar">
+                        <input id="linkLupa" type="submit" style="display: none">
+                        <script>
+                            $('#lupa').css('cursor', 'pointer');
+                            $('#lupa').click(function () {
+                                $('#linkLupa').click();
+                            });
+                        </script>
                     </div>
                     <?php form_close();
                 } ?>
             </div>
         </div>
-        <br>
+        <div class="row"><p></p></div>
         <?php echo $this->lang->line('entitys'); ?>
         <?php if (($dadoentidade != NULL) && (!isset($busca))){ ?>
             <table class="hoverable bordered">
@@ -42,14 +48,17 @@ $this->load->view('_include/header') ?>
                     foreach ($dadoentidade as $row1) {
                         ?>
                         <tr>
-                            <td><?php echo $row1->nome;?></td>
+                            <td><?php echo $row1->nome; ?></td>
                             <?php if ($row1->cpf != null) { ?>
                                 <td><?php echo $row1->cpf; ?></td><?php } ?>
                             <?php if ($row1->cnpj != null) { ?>
                                 <td><?php echo $row1->cnpj; ?></td> <?php } ?>
                             <td><a id="acao"
                                    href="<?php echo base_url() . 'index.php/Entidade/camposatualizacao?id=' . $row1->idEntidade ?>"><?php echo $this->lang->line('editar'); ?></a>
-                                | <a id="acao" href="#"><?php echo $this->lang->line('deletar'); ?> </a></td>
+                                | <a class="deletarLink"
+                                     onclick="excluirEntidade('<?= base_url() . 'index.php/entidade/deletar/' . $row1->idEntidade ?>')"><?php echo $this->lang->line('deletar') ?> </a>
+                            </td>
+
                         </tr>
                     <?php }
                 } ?>
@@ -74,12 +83,12 @@ $this->load->view('_include/header') ?>
                     foreach ($busca as $row1) {
                         ?>
                         <tr>
-                            <td><?php echo $row1->nome;?></td>
+                            <td><?php echo $row1->nome; ?></td>
                             <?php if ($row1->cpf != null) { ?>
                                 <td><?php echo $row1->cpf; ?></td><?php } ?>
                             <?php if ($row1->cnpj != null) { ?>
                                 <td><?php echo $row1->cnpj; ?></td> <?php } ?>
-                            <td><a href="#"><?php echo $this->lang->line('deletar'); ?> </a> || <a
+                            <td><a><?php echo $this->lang->line('deletar'); ?> </a> || <a
                                     href="<?php echo base_url() . 'index.php/Favorecido/camposatualizacao?id=' . $row1->idFavorecido ?>"><?php echo $this->lang->line('editar'); ?></a>
                             </td>
                         </tr>
@@ -96,4 +105,5 @@ $this->load->view('_include/header') ?>
                 </div>
 
     </div>
+
 <?php $this->load->view('_include/footer') ?>

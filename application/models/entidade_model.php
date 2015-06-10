@@ -1,5 +1,5 @@
 <?php
-	
+
 class Entidade_model extends CI_Model{
 
 	public function cadastrar_entidade($entidade){
@@ -14,6 +14,8 @@ class Entidade_model extends CI_Model{
 
 	public function buscar_entidades($qtde=0, $inicio=0){
 		if($qtde > 0) $this->db->limit($qtde, $inicio);
+        $query= array('excluido'=>NULL);
+        $this->db->where($query);
         return $this->db->get('entidade');
 	}
 
@@ -54,8 +56,15 @@ class Entidade_model extends CI_Model{
 		$this->db->or_like("contato",$dado);
 		$this->db->or_where("idTipo_Entidade",$dado);
 		$this->db->or_where("email",$dado);
+        $this->db->where('excluido',NULL);
 		$query = $this->db->get("entidade");
 
 		return $query->result();
    	}
+
+    public function mudar_entidade_pra_excluidos($id){
+        $this->db->where('idEntidade',$id);
+        $dados['excluido'] = 1;
+        $this->db->update('Entidade',$dados);
+    }
 }

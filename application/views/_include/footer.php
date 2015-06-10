@@ -1,4 +1,4 @@
-<div id="footer"><div>		
+<div id="footer"></div>
 	<?php if ($this->session->userdata('mensagem')) {?>
 		<script>
 			var titulo = <?php echo json_encode($this->session->userdata('mensagem'));?> ;
@@ -16,5 +16,6 @@
 		$this->session->unset_userdata('tipo_mensagem');
 
 	} ?>
+
 	</body>
 </html>

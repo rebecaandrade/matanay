@@ -4,9 +4,9 @@ $this->load->view('_include/header') ?>
 
 
 
-<!--<div class="aviso_entidade"><?php if ($this->session->flashdata('sucesso') != null) {
+<!--<div class="aviso_entidade"><?php /*if ($this->session->flashdata('sucesso') != null) {
     echo $this->session->flashdata('sucesso');
-} ?></div class="row">-->
+} */ ?></div class="row">-->
 <div class="container">
 
     <div class="row">
@@ -123,7 +123,7 @@ $this->load->view('_include/header') ?>
                             <?php //verifica se a entidade ja foi cadastrada como favorecido
                             foreach ($dadofavorecido as $row) {
                                 ?>
-                                <option value="<?php echo $row->idFavorecido;?>"><?php echo $row->nome;?></option>
+                                <option value="<?php echo $row->idFavorecido; ?>"><?php echo $row->nome; ?></option>
                             <?php } ?>
                         </select>
                         <label><?php echo $this->lang->line('favorecido_cadastrado'); ?></label>
@@ -137,7 +137,6 @@ $this->load->view('_include/header') ?>
         </button>
         <?php form_close() ?>
     </div>
-</div>
 </div>
 
 <?php $this->load->view('_include/footer') ?>
