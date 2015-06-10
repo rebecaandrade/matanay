@@ -344,7 +344,6 @@ class Entidade extends CI_Controller
         $this->Entidade_model->atualizar_telefone($telefone2);
         $sucesso = "Atualizacao realizado com sucesso!!";
         $this->listar();
-
     }
 
     public function validar_cpf($cpf)

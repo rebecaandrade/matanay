@@ -127,3 +127,44 @@ var excluirEntidade = function (url) {
 $(document).ready(function () {
     $('a').css('cursor', 'pointer')
 });
+$(document).ready(function () {
+    $('#test1').click(function () {
+        $('#cnpjCadastre').hide();
+        $('#cnpjCadastreInput').prop('value', null);
+        $('#cpfCadastre').show();
+        $('#cpfCadastreInput').prop('required', true);
+        $('#cnpjCadastreInput').prop('required', false);
+    })
+});
+$(document).ready(function () {
+    $('#test2').click(function () {
+        $('#cpfCadastre').hide();
+        $('#cpfCadastreInput').prop('value', null);
+        $('#cnpjCadastre').show();
+        $('#cnpjCadastreInput').prop('required', true);
+        $('#cpfCadastreInput').prop('required', false);
+    });
+});
+$(document).ready(function(){
+    $('#myForm').submit(function(){
+        var $cpf = $('#cpfCadastreInput').val();
+        var $cnpj = $('#cnpjCadastreInput').val();
+        var $cpf_cnpj = null;
+        if($cpf.length > 1){
+            $cpf_cnpj = $cpf;
+        }else{
+            $cpf_cnpj = $cnpj;
+        }
+        $('#cpf_cnpj').prop('value',$cpf_cnpj);
+    });
+});
+$(document).ready(function(){
+    $('.cpfCadastreInput').mask("000.000.000-00");
+});
+$(document).ready(function(){
+    $('#cnpjCadastreInput').mask("00.000.000/0000-00");
+});
+
+$(document).ready(function(){
+    $('#cnpjCadastreInput').mask("00.000.000/0000-00");
+});
