@@ -18,8 +18,8 @@
     <script src="<?php echo base_url(); ?>complemento/js/init.js"></script>
     <script src="js/jquery/validate.js"></script>
     <script src="js/singup-form.js"></script>
-    <script src="<?php echo base_url(); ?>complemento/js/jquery.twbsPagination.js"></script>
-    <script src="<?php echo base_url(); ?>complemento/js/jquery.twbsPagination.min.js"></script>
+    <script src="<?php echo base_url(); ?>complemento/js/jquery.mask.min.js"></script>
+    <script src="<?php echo base_url(); ?>complemento/js/jquery.mask.js"></script>
 </head>
 <body>
 <?php
