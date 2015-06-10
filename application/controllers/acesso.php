@@ -63,16 +63,6 @@ class Acesso extends CI_Controller {
    		redirect($url);
 	}
 
-	public function menu($id) {
-		$this->session->set_userdata('sub_menu', $id);
-
-		$linguagem_usuario = $this->session->userdata('linguagem');
-		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
-
-		$url = $this->session->flashdata('redirect_url');
-   		redirect($url);
-	}
-
 	public function recuperar() {
 		$this->session->set_flashdata('redirect_url', current_url());
 
