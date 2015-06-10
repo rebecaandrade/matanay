@@ -44,7 +44,7 @@ if (!($this->session->userdata('id_usuario'))) {
                    href="<?php echo base_url(); ?>index.php/cliente/home"><?php echo $this->lang->line('home'); ?></a>
             </li>
             <li><a class="opcao-menu"
-                   href="<?php echo base_url(); ?>index.php/cliente/menu_cadastrar"><?php echo $this->lang->line('cadastros'); ?></a>
+                   href="#"><?php echo $this->lang->line('cadastros'); ?></a>
             </li>
             <li><a class="opcao-menu" href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
             <li><a class="opcao-menu" href="#"><?php echo $this->lang->line('vendas'); ?></a></li>
@@ -82,23 +82,23 @@ if (!($this->session->userdata('id_usuario'))) {
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
                     <div class="collapsible-header"><a><?php echo $this->lang->line('cadastros'); ?></a></div>
-                    <div class="collapsible-body"><a
-                            href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><?php echo $this->lang->line('faixas'); ?></a>
+                    <div class="collapsible-body">
+                    	<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><?php echo $this->lang->line('faixas'); ?></a>
                     </div>
-                    <div class="collapsible-body"><a
-                            href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><?php echo $this->lang->line('albums'); ?></a>
+                    <div class="collapsible-body">
+                        <a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><?php echo $this->lang->line('albums'); ?></a>
                     </div>
-                    <div class="collapsible-body"><a
-                            href="<?php echo base_url(); ?>index.php/entidade/listar"><?php echo $this->lang->line('entidades'); ?></a>
+                    <div class="collapsible-body">
+                        <a href="<?php echo base_url(); ?>index.php/entidade/listar"><?php echo $this->lang->line('entidades'); ?></a>
                     </div>
-                    <div class="collapsible-body"><a
-                            href="<?php echo base_url(); ?>index.php/favorecido/listar"><?php echo $this->lang->line('favorecido'); ?></a>
+                    <div class="collapsible-body">
+                        <a href="<?php echo base_url(); ?>index.php/favorecido/listar"><?php echo $this->lang->line('favorecido'); ?></a>
                     </div>
-                    <div class="collapsible-body"><a
-                            href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a>
+                    <div class="collapsible-body">
+                        <a href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a>
                     </div>
-                    <div class="collapsible-body"><a
-                            href="<?php echo base_url(); ?>index.php/imposto/listar"><?php echo $this->lang->line('imposto'); ?></a>
+                    <div class="collapsible-body">
+                        <a href="<?php echo base_url(); ?>index.php/imposto/listar"><?php echo $this->lang->line('imposto'); ?></a>
                     </div>
                 </li>
             </ul>

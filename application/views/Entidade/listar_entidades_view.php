@@ -1,7 +1,7 @@
 <?php /*FEITO POR MIM JADIEL*/
 $this->load->view('_include/header') ?>
 
-    <div class="container">
+    <div id="wrapper-body">
         <div class="row" id="titulo_lista">
             <div class="row">
                 <div class="input-field col s12 m8 l9">
@@ -55,7 +55,7 @@ $this->load->view('_include/header') ?>
                                 <td><?php echo $row1->cnpj; ?></td> <?php } ?>
                             <td><a id="acao"
                                    href="<?php echo base_url() . 'index.php/Entidade/camposatualizacao?id=' . $row1->idEntidade ?>"><?php echo $this->lang->line('editar'); ?></a>
-                                | <a class="deletarLink"
+                                | <a id="acao" class="deletarLink"
                                      onclick="excluirEntidade('<?= base_url() . 'index.php/entidade/deletar/' . $row1->idEntidade ?>')"><?php echo $this->lang->line('deletar') ?> </a>
                             </td>
 

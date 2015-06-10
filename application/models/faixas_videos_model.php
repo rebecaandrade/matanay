@@ -191,6 +191,7 @@ class Faixas_Videos_model extends CI_Model {
     }
 	
     public function procurar_faixa($busca){
+        $this->db->where('excluido =', NULL);
         $this->db->like("nome", $busca);
         $this->db->or_like("isrc", $busca);
 
