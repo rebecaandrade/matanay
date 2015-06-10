@@ -33,7 +33,6 @@ html {
 
 #barra2 {
 	background-color: #555 !important;
-	padding-right: 5% !important;
 }
 
 #barra3 {
@@ -46,7 +45,7 @@ html {
 }
 
 #barra2 ul li a:hover {
-	color: #EEE !important;
+	color: #FF0 !important;
 }
 
 #nav-lang {
@@ -60,6 +59,10 @@ html {
 	-ms-appearance: none;
 	appearance: none;
 	background: none;
+}
+
+#nav-lang:hover {
+	background-color: #DDD;
 }
 
 #nav-lang .dropdown-content li > a, #nav-lang .dropdown-content li > span{
@@ -223,8 +226,8 @@ html {
 #sub_menu {
 	font-family: "Titillium Web" !important;
 	display: inline-block;
-	margin-right: 15%;
 	vertical-align: middle;
+	display: none;
 }
 
 #sub_menu ul li {
@@ -234,10 +237,6 @@ html {
 	font-size: 19px;
 	padding-right: 20px;
 	padding-left: 20px;
-}
-
-#sub_menu ul li:hover, #sub_menu li a:hover {
-	color: #EEE;
 }
 
 #sub_menu a {

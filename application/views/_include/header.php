@@ -23,18 +23,18 @@
 </head>
 <body>
 <?php
-if (!($this->session->userdata('linguagem'))) {
-    $this->session->set_userdata('linguagem', 'portugues');
-}
+	if (!($this->session->userdata('linguagem'))) {
+	    $this->session->set_userdata('linguagem', 'portugues');
+	}
 
-$this->session->set_flashdata('redirect_url', current_url());
+	$this->session->set_flashdata('redirect_url', current_url());
 
-$linguagem_usuario = $this->session->userdata('linguagem');
-$this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
+	$linguagem_usuario = $this->session->userdata('linguagem');
+	$this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
 
-if (!($this->session->userdata('id_usuario'))) {
-    redirect('acesso/index');
-}
+	if (!($this->session->userdata('id_usuario'))) {
+    	redirect('acesso/index');
+	}
 ?>
 <nav class="grey darken-3" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="<?php echo base_url(); ?>index.php/cliente/home"
@@ -43,9 +43,7 @@ if (!($this->session->userdata('id_usuario'))) {
             <li><a class="opcao-menu"
                    href="<?php echo base_url(); ?>index.php/cliente/home"><?php echo $this->lang->line('home'); ?></a>
             </li>
-            <li><a class="opcao-menu"
-                   href="#"><?php echo $this->lang->line('cadastros'); ?></a>
-            </li>
+            <li><a class="opcao-menu" id="cadastro" href="#"><?php echo $this->lang->line('cadastros'); ?></a></li>
             <li><a class="opcao-menu" href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
             <li><a class="opcao-menu" href="#"><?php echo $this->lang->line('vendas'); ?></a></li>
             <li><a class="opcao-menu"
@@ -75,9 +73,7 @@ if (!($this->session->userdata('id_usuario'))) {
             </li>
         </ul>
         <ul id="nav-mobile" class="side-nav">
-            <li><a class="opcao-menu"
-                   href="<?php echo base_url(); ?>index.php/cliente/home"><?php echo $this->lang->line('home'); ?></a>
-            </li>
+            <li><a href="<?php echo base_url(); ?>index.php/cliente/home"><?php echo $this->lang->line('home'); ?></a></li>
 
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
@@ -103,11 +99,9 @@ if (!($this->session->userdata('id_usuario'))) {
                 </li>
             </ul>
 
-            <li><a class="opcao-menu" href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
-            <li><a class="opcao-menu" href="#"><?php echo $this->lang->line('vendas'); ?></a></li>
-            <li><a class="opcao-menu"
-                   href="<?php echo base_url(); ?>index.php/acesso/deslogar"><?php echo $this->lang->line('sair'); ?></a>
-            </li>
+            <li><a href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
+            <li><a  href="#"><?php echo $this->lang->line('vendas'); ?></a></li>
+            <li><a href="<?php echo base_url(); ?>index.php/acesso/deslogar"><?php echo $this->lang->line('sair'); ?></a></li>
 
             <ul class="collapsible" data-collapsible="accordion">
                 <li id="nav-lang">
@@ -147,28 +141,27 @@ if (!($this->session->userdata('id_usuario'))) {
 </nav>
 
 <div id="barra2" class="grey darken-2" role="navigation">
-    <div class="nav-wrapper container">
+    <div id="sub_menu" class="nav-wrapper container">
         <ul class="right hide-on-med-and-down">
-            <?php if ($this->session->userdata('sub_menu') == 2) { ?>
-                <li>
-                    <a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><?php echo $this->lang->line('faixas'); ?></a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><?php echo $this->lang->line('albums'); ?></a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url(); ?>index.php/entidade/listar"><?php echo $this->lang->line('entidades'); ?></a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url(); ?>index.php/favorecido/listar"><?php echo $this->lang->line('favorecido'); ?></a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url(); ?>index.php/imposto/listar"><?php echo $this->lang->line('imposto'); ?></a>
-                </li>
-            <?php } ?>
+            <li>
+                <a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><?php echo $this->lang->line('faixas'); ?></a>
+            </li>
+            <li>
+                <a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><?php echo $this->lang->line('albums'); ?></a>
+            </li>
+            <li>
+                <a href="<?php echo base_url(); ?>index.php/entidade/listar"><?php echo $this->lang->line('entidades'); ?></a>
+            </li>
+            <li>
+                <a href="<?php echo base_url(); ?>index.php/favorecido/listar"><?php echo $this->lang->line('favorecido'); ?></a>
+            </li>
+            <li>
+                <a href="<?php echo base_url(); ?>index.php/moeda/listar"><?php echo $this->lang->line('moeda_menu'); ?></a>
+            </li>
+            <li>
+                <a href="<?php echo base_url(); ?>index.php/imposto/listar"><?php echo $this->lang->line('imposto'); ?></a>
+        	</li>
+        </ul>
     </div>
 </div>
 

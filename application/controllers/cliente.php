@@ -15,7 +15,6 @@
 		}
 
 		public function home(){
-			$this->session->set_userdata('sub_menu', 1);
 			$this->session->set_flashdata('redirect_url', current_url());
 
 			$linguagem_usuario = $this->session->userdata('linguagem');

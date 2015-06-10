@@ -16,7 +16,7 @@ class Acesso extends CI_Controller {
 		}
 	}
 
-	public function login(){
+	public function login() {
 		if (!($this->session->userdata('linguagem'))) {
 			$this->session->set_userdata('linguagem', 'portugues');
 		}
@@ -29,7 +29,7 @@ class Acesso extends CI_Controller {
 		$this->load->view('acesso/login');
 	}
 
-	public function logar(){
+	public function logar() {
 		$user = $this->input->post('usuario');
 		$senha = md5($this->input->post('senha'));
 
@@ -63,7 +63,17 @@ class Acesso extends CI_Controller {
    		redirect($url);
 	}
 
-	public function recuperar(){
+	public function menu($id) {
+		$this->session->set_userdata('sub_menu', $id);
+
+		$linguagem_usuario = $this->session->userdata('linguagem');
+		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+
+		$url = $this->session->flashdata('redirect_url');
+   		redirect($url);
+	}
+
+	public function recuperar() {
 		$this->session->set_flashdata('redirect_url', current_url());
 
 		$linguagem_usuario = $this->session->userdata('linguagem');
@@ -72,7 +82,7 @@ class Acesso extends CI_Controller {
 		$this->load->view('acesso/recuperar_senha');
 	}
 
-	public function deslogar(){
+	public function deslogar() {
 		$this->session->sess_destroy();
 		redirect('acesso/login');
 	}

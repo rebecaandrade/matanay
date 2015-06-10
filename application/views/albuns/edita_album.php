@@ -1,6 +1,6 @@
 <?php $this->load->view('_include/header') ?> <!-- Evandro -->
 
-<div class="container">
+<div id="wrapper-body">
     <div class="row">
   	    <?php echo form_open('albuns/atualizar') ?>
             <input type="hidden" name="idAlbum" value="<?php echo $album->idAlbum; ?>">

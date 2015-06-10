@@ -8,6 +8,13 @@
 
 
 $(document).ready(function () {
+    $('#cadastro').click(function () {
+        $("#sub_menu").toggle();
+    });
+});
+
+
+$(document).ready(function () {
     $('select').material_select();
 });
 
