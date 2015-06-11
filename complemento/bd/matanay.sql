@@ -420,31 +420,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `matanay`.`Entidade_has_Faixa_Video`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `matanay`.`Entidade_has_Faixa_Video` ;
-
-CREATE  TABLE IF NOT EXISTS `matanay`.`Entidade_has_Faixa_Video` (
-  `idFaixa_Video` INT NOT NULL ,
-  `idEntidade` INT NOT NULL ,
-  `percentual` FLOAT NULL ,
-  PRIMARY KEY (`idFaixa_Video`, `idEntidade`) ,
-  INDEX `fk_Faixa_Videos_has_Entidade_Entidade1_idx` (`idEntidade` ASC) ,
-  INDEX `fk_Faixa_Videos_has_Entidade_Faixa_Videos1_idx` (`idFaixa_Video` ASC) ,
-  CONSTRAINT `fk_Faixa_Videos_has_Entidade_Faixa_Videos1`
-    FOREIGN KEY (`idFaixa_Video` )
-    REFERENCES `matanay`.`Faixa_Video` (`idFaixa` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Faixa_Videos_has_Entidade_Entidade1`
-    FOREIGN KEY (`idEntidade` )
-    REFERENCES `matanay`.`Entidade` (`idEntidade` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `matanay`.`Favorecido_has_Faixa_Video`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `matanay`.`Favorecido_has_Faixa_Video` ;
@@ -509,6 +484,30 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Album_has_Faixa` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Album_has_Faixa_Faixa1`
+    FOREIGN KEY (`idFaixa` )
+    REFERENCES `matanay`.`Faixa_Video` (`idFaixa` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `matanay`.`Entidade_has_Faixa_Video`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `matanay`.`Entidade_has_Faixa_Video` ;
+
+CREATE  TABLE IF NOT EXISTS `matanay`.`Entidade_has_Faixa_Video` (
+  `idEntidade` INT NOT NULL ,
+  `idFaixa` INT NOT NULL ,
+  PRIMARY KEY (`idEntidade`, `idFaixa`) ,
+  INDEX `fk_Entidade_has_Faixa_Video_Faixa_Video1_idx` (`idFaixa` ASC) ,
+  INDEX `fk_Entidade_has_Faixa_Video_Entidade1_idx` (`idEntidade` ASC) ,
+  CONSTRAINT `fk_Entidade_has_Faixa_Video_Entidade1`
+    FOREIGN KEY (`idEntidade` )
+    REFERENCES `matanay`.`Entidade` (`idEntidade` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Entidade_has_Faixa_Video_Faixa_Video1`
     FOREIGN KEY (`idFaixa` )
     REFERENCES `matanay`.`Faixa_Video` (`idFaixa` )
     ON DELETE NO ACTION
