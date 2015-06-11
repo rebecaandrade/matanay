@@ -338,11 +338,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `matanay`.`Faixa_Videos`
+-- Table `matanay`.`Faixa_Video`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `matanay`.`Faixa_Videos` ;
+DROP TABLE IF EXISTS `matanay`.`Faixa_Video` ;
 
-CREATE  TABLE IF NOT EXISTS `matanay`.`Faixa_Videos` (
+CREATE  TABLE IF NOT EXISTS `matanay`.`Faixa_Video` (
   `idFaixa` INT NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(45) NOT NULL ,
   `isrc` VARCHAR(45) NULL ,
@@ -420,11 +420,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `matanay`.`Faixa_Videos_has_Entidade`
+-- Table `matanay`.`Entidade_has_Faixa_Video`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `matanay`.`Faixa_Videos_has_Entidade` ;
+DROP TABLE IF EXISTS `matanay`.`Entidade_has_Faixa_Video` ;
 
-CREATE  TABLE IF NOT EXISTS `matanay`.`Faixa_Videos_has_Entidade` (
+CREATE  TABLE IF NOT EXISTS `matanay`.`Entidade_has_Faixa_Video` (
   `idFaixa_Video` INT NOT NULL ,
   `idEntidade` INT NOT NULL ,
   `percentual` FLOAT NULL ,
@@ -433,7 +433,7 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Faixa_Videos_has_Entidade` (
   INDEX `fk_Faixa_Videos_has_Entidade_Faixa_Videos1_idx` (`idFaixa_Video` ASC) ,
   CONSTRAINT `fk_Faixa_Videos_has_Entidade_Faixa_Videos1`
     FOREIGN KEY (`idFaixa_Video` )
-    REFERENCES `matanay`.`Faixa_Videos` (`idFaixa` )
+    REFERENCES `matanay`.`Faixa_Video` (`idFaixa` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Faixa_Videos_has_Entidade_Entidade1`
@@ -445,11 +445,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `matanay`.`Favorecido_has_Faixa_Videos`
+-- Table `matanay`.`Favorecido_has_Faixa_Video`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `matanay`.`Favorecido_has_Faixa_Videos` ;
+DROP TABLE IF EXISTS `matanay`.`Favorecido_has_Faixa_Video` ;
 
-CREATE  TABLE IF NOT EXISTS `matanay`.`Favorecido_has_Faixa_Videos` (
+CREATE  TABLE IF NOT EXISTS `matanay`.`Favorecido_has_Faixa_Video` (
   `idFavorecido` INT NOT NULL ,
   `idFaixa` INT NOT NULL ,
   PRIMARY KEY (`idFavorecido`, `idFaixa`) ,
@@ -462,7 +462,7 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Favorecido_has_Faixa_Videos` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Favorecido_has_Faixa_Videos_Faixa_Videos1`
     FOREIGN KEY (`idFaixa` )
-    REFERENCES `matanay`.`Faixa_Videos` (`idFaixa` )
+    REFERENCES `matanay`.`Faixa_Video` (`idFaixa` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -510,7 +510,7 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Album_has_Faixa` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Album_has_Faixa_Faixa1`
     FOREIGN KEY (`idFaixa` )
-    REFERENCES `matanay`.`Faixa_Videos` (`idFaixa` )
+    REFERENCES `matanay`.`Faixa_Video` (`idFaixa` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
