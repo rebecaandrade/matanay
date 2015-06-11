@@ -3,7 +3,7 @@
 <div id="wrapper-body">
   	<div id="titulo_lista">
         <div class="row">
-            <div class="input-field col s12 m8 l9">
+            <div class="input-field col s12 m8 l10">
           		<i class="mdi-av-queue-music"></i>
           		<?php echo $this->lang->line('faixas'); ?>
           		<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa" 
@@ -14,10 +14,17 @@
             </div>
             <?php if($faixas!=NULL){
                 echo form_open('faixas_videos/procurar') ?>
-                    <div class="input-field col s12 m4 l3">
-                        <i class="mdi-action-search prefix"></i>
+                    <div class="input-field col s12 m4 l2">
+                        <input id="linkLupa" type="submit" style="display: none">
                         <label><?php echo $this->lang->line('procurar'); ?></label>
                         <input required type="text" value="" name="procurar" >
+                        <i id="lupa" class="mdi-action-search prefix"></i>
+                        <script>
+                            $('#lupa').css('cursor', 'pointer');
+                            $('#lupa').click(function () {
+                                $('#linkLupa').click();
+                            });
+                        </script>
                     </div>
             <?php form_close(); } ?>
         </div>
