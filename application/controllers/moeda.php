@@ -17,6 +17,7 @@
 
 			if(strlen($nome) != 0 && strlen($sigla) != 0 && strlen($cambio) != 0){ //verificando se os campos foram preenchidos
 				$this->moeda_model->cadastrar($nome,$sigla,$cambio,$id);
+				redirect('moeda/listar');
 			}
 			else{
 				//setar mensagem de campos vazios

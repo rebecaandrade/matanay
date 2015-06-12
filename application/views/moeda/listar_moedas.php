@@ -1,13 +1,20 @@
 <?php $this->load->view('_include/header'); ?>
-
-	<div class="fadein">
-		<div class="circulo"><img src="<?php echo base_url().'complemento/img/moeda.png' ?>"></div>
-
-	</div>
-	<div >
-		<h4><?php echo $this->lang->line('moeda'); ?></h4>
-		<?php if(!empty($moedas)){ ?>
-			<table >
+<div class="container">	
+	<div id="titulo_lista">
+		<div class="row">
+			<div class="input-field col s12 m8 l9">
+				<i class="mdi-editor-attach-money"></i>
+				<?php echo $this->lang->line('moeda'); ?>
+				<a href="<?php echo base_url().'index.php/moeda/cadastrar_moeda' ?>" 
+					class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo" 
+					data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('novo'); ?>" id="addButton">
+					<i class="mdi-content-add"></i>
+				</a>
+			</div>
+		</div>
+	</div></br>
+		<?php if(isset($moedas)){ ?>
+			<table>
 				<thead>
 					<tr>
 						<th>   <?php echo $this->lang->line('moeda_nome'); ?>  </th>
@@ -23,7 +30,12 @@
 							<td><?php echo $moeda->nome;?></td>
 							<td><?php echo $moeda->sigla;?></td>
 							<td><?php echo $moeda->taxa_cambio;?></td> 
-							<td><a href="<?php echo base_url().'index.php/moeda/deletar?param='.$moeda->idMoeda ?>"><?php echo $this->lang->line('deletar'); ?></a>||<a href="<?php echo base_url().'index.php/moeda/editar?param='.$moeda->idMoeda ?>"><?php echo $this->lang->line('editar'); ?></a></td>
+							<td>
+								<a href="<?php echo base_url().'index.php/moeda/editar?param='.$moeda->idMoeda ?>" class="btn-floating waves-effect waves-light tooltipped"
+									data-position="top" data-delay="50" data-tooltip="<?php echo $this->lang->line('editar'); ?>"><i class="small mdi-content-create"></i></a>
+								<a href="<?php echo base_url().'index.php/moeda/deletar?param='.$moeda->idMoeda ?>" class="btn-floating waves-effect waves-light tooltipped"
+									data-position="top" data-delay="50" data-tooltip="<?php echo $this->lang->line('deletar'); ?>"><i class="small mdi-action-highlight-remove"></i></a>
+							</td>
 						</tr> 
 						<?php } ?>
 				</tbody>
@@ -31,6 +43,6 @@
 		<?php }else{ ?>
 			<span><?php echo $this->lang->line('moeda_erro_listar'); ?></span><br>
 		<?php } ?>
-		<a href="<?php echo base_url().'index.php/moeda/cadastrar_moeda' ?>"><?php echo $this->lang->line('novo'); ?></a>
-	</div>
+	
+</div>
 <?php $this->load->view('_include/footer') ?>

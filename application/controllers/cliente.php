@@ -2,11 +2,11 @@
 	// by : Vitor Pontes
 	class Cliente extends CI_Controller {
 		public function __construct() {
-	   		parent::__construct();
-	   		$this->form_validation->set_error_delimiters('',''); // remove tags HTML das mensagem de erro de FORM VALIDATION
-	   	
-	   		$this->load->model('cliente_model');
-	   		if (!($this->session->userdata('linguagem'))) {
+			parent::__construct();
+			$this->form_validation->set_error_delimiters('',''); // remove tags HTML das mensagem de erro de FORM VALIDATION
+		
+			$this->load->model('cliente_model');
+			if (!($this->session->userdata('linguagem'))) {
 				$this->session->set_userdata('linguagem', 'portugues');
 			}
 		
@@ -38,13 +38,18 @@
 		}
 		public function cadastrar_cliente(){
 			$nome = trim($this->input->post('nome'));
-			if( !$this->cliente_model->cliente_existe($nome)){
+			if( $this->form_validation->run('cliente') ){
 				$this->cliente_model->cadastrar_cliente($nome);
-				//mensagem de sucesso
-				redirect('cliente/cadastro_cliente');
+				$this->session->set_userdata('mensagem',$this->lang->line('clientes_cadastrado_sucesso'));
+				$this->session->set_userdata('tipo_mensagem', 'success');
+				redirect('cliente/lista_clientes');
 			}
 			else{
-				//mensagem de erro
+				$mensagem = array(
+									'mensagem'		=> validation_errors() ,
+									'tipo_mensagem' => 'error'
+								);
+				$this->session->set_userdata($mensagem);
 				redirect('cliente/cadastro_cliente');
 			}
 		}
@@ -94,7 +99,7 @@
 		}
 		public function atualizar_cliente($id){
 			$nome = $this->input->post('nome');
-			if( $this->form_validation->run('cliente') == TRUE){
+			if( $this->form_validation->run('cliente') ){
 				$this->cliente_model->atualizar_cliente($id,$nome);
 				$mensagem = array(
 								'mensagem'		=> $this->lang->line('atualizado_sucesso'),
