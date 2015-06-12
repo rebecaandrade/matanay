@@ -8,9 +8,12 @@
     <link href="<?php echo base_url(); ?>complemento/img/favicon.png" rel="shortcut icon" type="image/x-icon"/>
     <link href="<?php echo base_url(); ?>complemento/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>complemento/css/materialize.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>complemento/js/DataTables-1.10.7/media/css/jquery.dataTables.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>complemento/js/DataTables-1.10.7/media/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>complemento/js/DataTables-1.10.7/media/css/jquery.dataTables_themeroller.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
     <script src="<?php echo base_url(); ?>complemento/js/sweetalert/lib/sweet-alert.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquer y/1.11.2/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/jquery.matanay.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -20,6 +23,8 @@
     <script src="js/singup-form.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/jquery.mask.min.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/jquery.mask.js"></script>
+    <script src="<?php echo base_url(); ?>complemento/js/DataTables-1.10.7/media/js/jquery.dataTables.js"></script>
+    <script src="<?php echo base_url(); ?>complemento/js/DataTables-1.10.7/media/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
 <?php

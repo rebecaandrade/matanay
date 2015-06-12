@@ -1,484 +1,484 @@
 * {
-	position: relative;
-	margin: 0;
-	border: 0;
-	padding: 0;
+    position: relative;
+    margin: 0;
+    border: 0;
+    padding: 0;
 }
 
-body{
-	height: 500px;
-	width: 100%;
+body {
+    height: 500px;
+    width: 100%;
 }
 
 html {
-	width: 100%;
-	height: 100%;
-	background-color: #EEE;
+    width: 100%;
+    height: 100%;
+    background-color: #EEE;
 }
 
 #content {
-	transition-duration: 0.3s;
+    transition-duration: 0.3s;
 }
 
 #barra {
-	font-family: "Titillium Web", "sans-serif" !important;
-	height: 70px;
-	background-color: #333;
-	margin-right: 0;
-	margin-left: 0;
-	margin-top: 0;
-	opacity: 0.9;
-	box-shadow: 1px 1px 5px #333;
+    font-family: "Titillium Web", "sans-serif" !important;
+    height: 70px;
+    background-color: #333;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 0;
+    opacity: 0.9;
+    box-shadow: 1px 1px 5px #333;
 }
 
 #barra2 {
-	background-color: #555 !important;
+    background-color: #555 !important;
 }
 
 #barra3 {
-	background-color: #FF0 !important;
+    background-color: #FF0 !important;
 }
 
 #barra2 ul li a {
-	color: #222 !important;
-	font-size: 19px !important;
+    color: #222 !important;
+    font-size: 19px !important;
 }
 
 #barra2 ul li a:hover {
-	color: #FF0 !important;
+    color: #FF0 !important;
 }
 
 #nav-lang {
-	color: #333 !important;
-	font-weight: 600 !important;
-	font-weight: bolder;
-	letter-spacing: 1px;
-	-webkit-appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	-ms-appearance: none;
-	appearance: none;
-	background: none;
+    color: #333 !important;
+    font-weight: 600 !important;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    -webkit-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    background: none;
 }
 
 #nav-lang:hover {
-	background-color: #DDD;
+    background-color: #DDD;
 }
 
-#nav-lang .dropdown-content li > a, #nav-lang .dropdown-content li > span{
-	color: #444 !important;
-	font-family: "Titillium Web";
-	margin-left: 5%;
+#nav-lang .dropdown-content li > a, #nav-lang .dropdown-content li > span {
+    color: #444 !important;
+    font-family: "Titillium Web";
+    margin-left: 5%;
 }
 
 #nav-lang .select-wrapper input.select-dropdown {
-	border-color: -moz-use-text-color -moz-use-text-color #eee;
+    border-color: -moz-use-text-color -moz-use-text-color #eee;
 }
 
-#menu-lang .select-wrapper input.select-dropdown{
-	opacity: 0 !important;
-	border-color: -moz-use-text-color -moz-use-text-color #E91717 !important;
+#menu-lang .select-wrapper input.select-dropdown {
+    opacity: 0 !important;
+    border-color: -moz-use-text-color -moz-use-text-color #E91717 !important;
 }
 
 .flag {
-	width: 20px;
-	height: auto;
-	margin-left: -30px;
-	z-index: 1;
+    width: 20px;
+    height: auto;
+    margin-left: -30px;
+    z-index: 1;
 }
 
 .nav-logo {
-	width: 15rem !important;
-	padding-top: 0.8rem !important;
+    width: 15rem !important;
+    padding-top: 0.8rem !important;
 }
 
 #titulo_lista {
-	font-family: "Roboto", 'sans-serif' !important;
-	font-size: 2rem;
+    font-family: "Roboto", 'sans-serif' !important;
+    font-size: 2rem;
 }
 
 #titulo_perfil {
-	font-family: "Roboto", 'sans-serif' !important;
-	font-size: 2.3rem;
-	margin-top: 2rem !important;
+    font-family: "Roboto", 'sans-serif' !important;
+    font-size: 2.3rem;
+    margin-top: 2rem !important;
 }
 
 .novo {
-	margin-top: -0.3rem !important;
-	line-height: 23px !important;
+    margin-top: -0.3rem !important;
+    line-height: 23px !important;
 }
 
 #paginacao {
-	margin-top: 3% !important;
+    margin-top: 3% !important;
 }
 
 #paginacao strong, #paginacao a {
-	font-size: 1rem;
-	float: left;
-	width: 25px;
-	height: 25px;
-	margin: 0px 10px;
-	border-radius: 2px;
-	text-align: center;
+    font-size: 1rem;
+    float: left;
+    width: 25px;
+    height: 25px;
+    margin: 0px 10px;
+    border-radius: 2px;
+    text-align: center;
 }
 
 #paginacao strong {
-	background-color: #666;
-	color: white;
+    background-color: #666;
+    color: white;
 }
 
 #paginacao a {
-	color: #777;
+    color: #777;
 }
 
 #acao {
-	color: #444;
-	font-weight: 600;
-	cursor: pointer;
+    color: #444;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 #acao:hover {
-	color: #777;
+    color: #777;
 }
 
 .opcao-menu img {
-	width: 20px;
-	height: auto;
+    width: 20px;
+    height: auto;
 }
 
 .opcao-menu:hover {
-	color: #FF0 !important;
+    color: #FF0 !important;
 }
 
 #sub_barra {
-	height: 35px;
-	background-color: #777;
-	margin-right: 0;
-	margin-left: 0;
-	margin-top: 0;
-	opacity: 0.9;
-	box-shadow: 1px 1px 3px #777;
-	text-align: right;
+    height: 35px;
+    background-color: #777;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 0;
+    opacity: 0.9;
+    box-shadow: 1px 1px 3px #777;
+    text-align: right;
 }
 
 #sub_barra2 {
-	height: 7px;
-	background-color: #FFFF00;
-	margin-right: 0;
-	margin-left: 0;
-	margin-top: 0;
-	opacity: 0.9;
+    height: 7px;
+    background-color: #FFFF00;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 0;
+    opacity: 0.9;
 }
 
 #titulo, #titulo label {
-	font-size: 3rem;
+    font-size: 3rem;
 }
 
 .logo {
-	float: left;
-	text-align: left;
-	margin-left: 1%;
-	width: 300px;
+    float: left;
+    text-align: left;
+    margin-left: 1%;
+    width: 300px;
 }
 
 .logo img {
-	width: 216px;
-	height: 90px;
-	margin-top: -3%;
+    width: 216px;
+    height: 90px;
+    margin-top: -3%;
 }
 
 #menu {
-	display: inline-block;
-	margin-top: 1.3%;
-	margin-right: 0.5%;
-	float: right;
-	vertical-align: middle;
+    display: inline-block;
+    margin-top: 1.3%;
+    margin-right: 0.5%;
+    float: right;
+    vertical-align: middle;
 }
 
 #menu ul li {
-	display: inline;
-	color: #EEE;
-	font-weight: bold;
-	font-size: 23px;
-	padding-right: 20px;
-	padding-left: 20px;
+    display: inline;
+    color: #EEE;
+    font-weight: bold;
+    font-size: 23px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 #menu ul li:hover, #menu li a:hover {
-	color: #EEE;
+    color: #EEE;
 }
+
 #trilho {
-	width : 0px;
-	height: 2px;
-	background: #FFFF00;
-	border: none;
-	transition: .3s ease-in-out;
+    width: 0px;
+    height: 2px;
+    background: #FFFF00;
+    border: none;
+    transition: .3s ease-in-out;
 }
+
 #menu a {
-	text-decoration: none;
-	color: #EEE;
+    text-decoration: none;
+    color: #EEE;
 }
 
 #menu li img {
-	width: 22px;
+    width: 22px;
 }
 
 #sub_menu {
-	font-family: "Titillium Web" !important;
-	display: inline-block;
-	vertical-align: middle;
-	display: none;
+    font-family: "Titillium Web" !important;
+    display: inline-block;
+    vertical-align: middle;
+    display: none;
 }
 
 #sub_menu ul li {
-	display: inline;
-	color: #333;
-	font-weight: bold;
-	font-size: 19px;
-	padding-right: 20px;
-	padding-left: 20px;
+    display: inline;
+    color: #333;
+    font-weight: bold;
+    font-size: 19px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 #sub_menu a {
-	text-decoration: none;
-	color: #333;
+    text-decoration: none;
+    color: #333;
 }
 
 #home a {
-	color: #222;
+    color: #222;
 }
 
 #home .input-field {
-	margin-top: 0 !important;
+    margin-top: 0 !important;
 }
 
-#home .card-panel{
-	width: 100% !important;
-	display: inline-block;
-	text-align: center;
-	font-size: 1.3rem;
-	box-shadow: none;
+#home .card-panel {
+    width: 100% !important;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.3rem;
+    box-shadow: none;
 }
 
 #home .card-panel:hover {
-	background-color: #222 !important;
-	color: #FF0 !important;
-	transition: background-color 0.5s ease !important;
+    background-color: #222 !important;
+    color: #FF0 !important;
+    transition: background-color 0.5s ease !important;
 }
 
 #home .card-panel .label {
-	top: -1rem !important;
+    top: -1rem !important;
 }
 
 #home .card-panel i {
-	font-size: 5rem !important;
+    font-size: 5rem !important;
 }
 
 .detalhes {
-	color: #222;
-	font-size: 1rem;
+    color: #222;
+    font-size: 1rem;
 }
 
 .detalhes:hover {
-	color: #777;
+    color: #777;
 }
 
 #table_album {
-	top: -2rem !important;
+    top: -2rem !important;
 }
 
 #table_album th {
-	font-size: 1.5rem !important;
+    font-size: 1.5rem !important;
 }
 
 #table_album td {
-	padding: 10px 5px !important;
+    padding: 10px 5px !important;
 }
 
 #upc {
-	top: -2rem !important;
+    top: -2rem !important;
 }
 
 #voltar {
-	top: -0.3rem !important;
-	left: -5%;
+    top: -0.3rem !important;
+    left: -5%;
 }
 
 #voltar i {
-	top: -3px;
+    top: -3px;
 }
 
-#dados label{
-	display: inline-block;
-	color: #222;
-	font-size: 23px;
+#dados label {
+    display: inline-block;
+    color: #222;
+    font-size: 23px;
 }
 
 #dados {
-	position: absolute;
-	display: inline-block;
-	width: 470px;
-	left: 40%;
-	top: -1%;
-	text-align: right;
+    position: absolute;
+    display: inline-block;
+    width: 470px;
+    left: 40%;
+    top: -1%;
+    text-align: right;
 }
 
 #dados input[type="text"] {
-	width: 250px;
-	height: 35px;
-	border: 1px solid #DDD;
-	margin-bottom: 10px;
-	padding-left: 3px;
-	border-radius: 0;
-	font-size: 20px;
-	color: #5C5C5C;
+    width: 250px;
+    height: 35px;
+    border: 1px solid #DDD;
+    margin-bottom: 10px;
+    padding-left: 3px;
+    border-radius: 0;
+    font-size: 20px;
+    color: #5C5C5C;
 }
 
 #dados input[type="submit"] {
-	background-color: #777;
-	border-bottom: 4px solid #FFFF00;
-	color: white;
-	width: 255px;
-	height: 40px;
-	font-size: 20px;
-	font-weight: bolder;
-	border-radius: 0;
-	float: right;
+    background-color: #777;
+    border-bottom: 4px solid #FFFF00;
+    color: white;
+    width: 255px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bolder;
+    border-radius: 0;
+    float: right;
 }
 
-#dados input[type="submit"]:hover{
-	background-color: #333;
-	border-bottom: 4px solid #000;
-	transition-duration: 0.3s;
-	color: #FF0;
+#dados input[type="submit"]:hover {
+    background-color: #333;
+    border-bottom: 4px solid #000;
+    transition-duration: 0.3s;
+    color: #FF0;
 }
 
 #dados select {
-	width: 255px;
-	height: 37px;
-	border: 1px solid #DDD;
-	margin-bottom: 10px;
-	padding-left: 3px;
-	border-radius: 0;
-	font-size: 20px;
-	color: #5C5C5C;
+    width: 255px;
+    height: 37px;
+    border: 1px solid #DDD;
+    margin-bottom: 10px;
+    padding-left: 3px;
+    border-radius: 0;
+    font-size: 20px;
+    color: #5C5C5C;
 }
 
 #dados h2 {
-	font-size: 22px;
+    font-size: 22px;
 }
 
 label {
-	text-align: right;
+    text-align: right;
 }
 
 .container-faixa {
-	width: 470px;
-	text-align: right;
-	margin-left: 81px;
+    width: 470px;
+    text-align: right;
+    margin-left: 81px;
 }
 
 .entidade-faixa {
-	display: inline !important;
+    display: inline !important;
 }
 
 .percentual {
-	display: inline;
+    display: inline;
 }
 
 .percentual input[type="text"] {
-	width: 55px !important;
-	height: 35px !important;
+    width: 55px !important;
+    height: 35px !important;
 }
 
 .mdi-action-search {
-	padding-top: 7px !important;
+    padding-top: 7px !important;
 }
-
 
 /**************PAGINAS DAS ENTIADADES Jadiel**********************/
-.box{
-	display: none;
+.box {
+    display: none;
 }
 
-.aviso_entidade{
-	text-align: center;
+.aviso_entidade {
+    text-align: center;
 }
-.dados_entidade label{
-	display: inline-block;
-	color: #222;
-	font-size: 23px;
+
+.dados_entidade label {
+    display: inline-block;
+    color: #222;
+    font-size: 23px;
 }
 
 .dados_entidade {
-	position: absolute;
-	display: inline-block;
-	width: 470px;
-	left: 40%;
-	top: -1%;
-	text-align: right;
+    position: absolute;
+    display: inline-block;
+    width: 470px;
+    left: 40%;
+    top: -1%;
+    text-align: right;
 }
 
 .dados_entidade input[type="text"] {
-	width: 250px;
-	height: 35px;
-	border: 1px solid #DDD;
-	margin-bottom: 10px;
-	padding-left: 3px;
-	border-radius: 0;
-	font-size: 20px;
-	color: #5C5C5C;
+    width: 250px;
+    height: 35px;
+    border: 1px solid #DDD;
+    margin-bottom: 10px;
+    padding-left: 3px;
+    border-radius: 0;
+    font-size: 20px;
+    color: #5C5C5C;
 }
 
 .dados_entidade input[type="submit"] {
-	background-color: #777;
-	border-bottom: 4px solid #FFFF00;
-	color: white;
-	width: 255px;
-	height: 40px;
-	font-size: 20px;
-	font-weight: bolder;
-	border-radius: 0;
-	float: right;
+    background-color: #777;
+    border-bottom: 4px solid #FFFF00;
+    color: white;
+    width: 255px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bolder;
+    border-radius: 0;
+    float: right;
 }
 
-.dados_entidade input[type="submit"]:hover{
-	background-color: #333;
-	border-bottom: 4px solid #000;
-	transition-duration: 0.3s;
-	color: #FF0;
+.dados_entidade input[type="submit"]:hover {
+    background-color: #333;
+    border-bottom: 4px solid #000;
+    transition-duration: 0.3s;
+    color: #FF0;
 }
-
-
 
 .dados_entidade select {
-	width: 255px;
-	height: 37px;
-	border: 1px solid #DDD;
-	margin-bottom: 10px;
-	padding-left: 3px;
-	border-radius: 0;
-	font-size: 20px;
-	color: #5C5C5C;
+    width: 255px;
+    height: 37px;
+    border: 1px solid #DDD;
+    margin-bottom: 10px;
+    padding-left: 3px;
+    border-radius: 0;
+    font-size: 20px;
+    color: #5C5C5C;
 }
 
 .dados_entidade h2 {
-	font-size: 22px;
+    font-size: 22px;
 }
 
-.dados_entidade #tabela_listagem{
-	display: inline-block;
-	text-align: center;
+.dados_entidade #tabela_listagem {
+    display: inline-block;
+    text-align: center;
 }
+
 /**************FIM - PAGINAS DAS ENTIADADES**********************/
 
-
-
 /**********************Footer Jadiel****************/
-#footer{
-	height: 5rem;
-	width: 100%;
-	display: inline-block;
+#footer {
+    height: 5rem;
+    width: 100%;
+    display: inline-block;
 }
+
 /**************FIM - FOOTER**********************/
 

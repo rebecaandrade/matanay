@@ -81,7 +81,7 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Entidade` (
   `idEntidade` INT NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(45) NOT NULL ,
   `cpf` VARCHAR(45) NULL ,
-  `cnpj` INT NULL ,
+  `cnpj` VARCHAR(45) NULL ,
   `contato` VARCHAR(45) NULL ,
   `email` VARCHAR(45) NULL ,
   `favorecido` BIT NULL ,

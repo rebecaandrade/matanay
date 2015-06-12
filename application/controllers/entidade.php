@@ -8,13 +8,12 @@ class Entidade extends CI_Controller
         parent:: __construct();
         $this->load->model('Entidade_model');
         $this->load->model('Favorecido_model');
+        $this->load->library('pagination');
     }
 
     public function index()
     {
-
         $this->listar();
-
         //$this->mostrar_cadastro($sucesso);
 
     }
@@ -24,7 +23,6 @@ class Entidade extends CI_Controller
         if (!preg_match('|\(?\d{2}\)? ?\d{4}\-?\d{4}|', $telefone)) {
             return false;
         }
-
     }
 
     public function procurar()
@@ -32,13 +30,10 @@ class Entidade extends CI_Controller
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
-
-        $this->load->library('pagination');
         $config['base_url'] = base_url('index.php/entidade/listar');
         $config['total_rows'] = $this->Entidade_model->buscar_entidades()->num_rows();
         $config['uri_segment'] = 3;
         $config['per_page'] = 5;
-
         $qtde = $config['per_page'];
         ($this->uri->segment(3) != '') ? $inicio = $this->uri->segment(3) : $inicio = 0;
         $this->pagination->initialize($config);
@@ -46,7 +41,6 @@ class Entidade extends CI_Controller
             'dadoentidade' => $this->Entidade_model->buscar_entidades($qtde, $inicio)->result(),
             'paginas' => $this->pagination->create_links()
         );
-
         //pequeno teste para que na hora da busca ele interprete autor como 2 no banco.
         if (($this->input->post('procurar') == $this->lang->line('artista_min')) || ($this->input->post('procurar') == $this->lang->line('artista')))
             $busca = 1;
@@ -241,21 +235,8 @@ class Entidade extends CI_Controller
 
     public function listar()
     {
-        $this->load->library('pagination');
-        $config['base_url'] = base_url('index.php/entidade/listar');
-        $config['total_rows'] = $this->Entidade_model->buscar_entidades()->num_rows();
-        $config['uri_segment'] = 3;
-        $config['per_page'] = 5;
-
-        $qtde = $config['per_page'];
-        ($this->uri->segment(3) != '') ? $inicio = $this->uri->segment(3) : $inicio = 0;
-        $this->pagination->initialize($config);
-
-        $dados = array(
-            'dadoentidade' => $this->Entidade_model->buscar_entidades($qtde, $inicio)->result(),
-            'paginas' => $this->pagination->create_links()
-        );
-
+        $dados['entidades'] = $this->Entidade_model->buscar_entidades()->result();
+        //die(var_dump($dados));
         $this->load->view("Entidade/listar_entidades_view", $dados);
     }
 
@@ -464,9 +445,11 @@ class Entidade extends CI_Controller
         $dados['totalpages'] = ceil(($dados['totalResult'] / $dados['perPage']));
         $dados['entidades'] = $this->Entidade_model->buscar_entidades()->result();
         //die(var_dump($dados));
-        $this->load->view('viewTeste',$dados);
+        $this->load->view('viewTeste', $dados);
     }
-    public function testeEntidadeForm(){
+
+    public function testeEntidadeForm()
+    {
         die(var_dump($this->input->post()));
     }
 }
