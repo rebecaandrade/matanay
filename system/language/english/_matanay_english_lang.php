@@ -50,19 +50,17 @@ $lang['nova']				= 'NEW';
 $lang['nome']				= 'Name';
 $lang['selecione']			= 'Select';
 $lang['procurar']			= 'Search';
+$lang['nada_encontrado']	= 'Nothing found';
 $lang['detalhes']			= 'DETAILS';
 $lang['voltar']				= 'RETURN';
-
+$lang['atualizado_sucesso']	= 'Update successful';
+	
 ////// FORM VALIDATION
 
 $lang['form_error_nome_disponivel']		= 'Name not available';
+$lang['form_error_required']			= 'The field {field} is required';
 
-////// ALERTAS SISTEMA
-
-$lang['nada_encontrado']	= 'Nothing found.';
-$lang['atualizado_sucesso']	= 'Update successful!';
-
-////// LOGIN
+////// LOGIN ////// Evandro
 
 $lang['login'] 				= 'username';
 $lang['senha'] 				= 'password';
@@ -170,7 +168,7 @@ $lang['imposto_nome']='Name of the Tax';
 $lang['valor']='Value';
 
 
-//cliente
+//Cliente
 $lang['clientes'] = 'Customers';
 $lang['perfis'] = 'Profiles';
 $lang['cliente_nome'] = 'Name';
@@ -182,6 +180,7 @@ $lang['cliente_cadastrar'] = 'Register';
 $lang['Perfil_erro_listar'] = 'No Profiles on record';
 $lang['cliente_erro_listar'] = 'No customer on record';
 $lang['cliente_erro_nome'] = 'Name already taken';
+$lang['clientes_cadastrado_sucesso'] = 'Customer registered successfully';
 
 
 

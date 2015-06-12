@@ -4,24 +4,39 @@
 		public function __construct() {
    			parent::__construct();
    			$this->load->model('moeda_model');
+   			$this->form_validation->set_error_delimiters('',''); // remove tags HTML das mensagem de erro de FORM VALIDATION
+		
+			$this->load->model('cliente_model');
+			if (!($this->session->userdata('linguagem'))) {
+				$this->session->set_userdata('linguagem', 'portugues');
+			}
+		
+			$linguagem_usuario = $this->session->userdata('linguagem');
+			$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 		}
 		public function cadastrar(){		
 			$this->load->view('moeda/cadastro_moeda');
 		}
 		public function cadastrar_moeda(){
-			// obtendo valores e removendo espaços em branco indesejaveis
-			$nome = trim($this->input->post('nome'));
-			$sigla = trim($this->input->post('sigla'));
-			$cambio = trim($this->input->post('cambio'));
-			$id = $this->session->userdata('id_usuario'); // consertar
-
-			if(strlen($nome) != 0 && strlen($sigla) != 0 && strlen($cambio) != 0){ //verificando se os campos foram preenchidos
-				$this->moeda_model->cadastrar($nome,$sigla,$cambio,$id);
+			$this->form_validation->set_message('required', $this->lang->line('form_error_required') );
+			if( $this->form_validation->run('moeda')){ //verificando se os campos foram preenchidos
+				// obtendo valores
+				$nome = $this->input->post('nome');
+				$sigla = $this->input->post('sigla');
+				$cambio = $this->input->post('cambio');
+				$id = $this->session->userdata('id_cliente');
+				$this->moeda_model->cadastrar($nome,$sigla,$cambio,$id_cliente);
+				redirect('moeda/listar');
 			}
 			else{
-				//setar mensagem de campos vazios
+				$mensagem = array(
+									'mensagem'				=> 'Campos inválidos :',
+									'subtitulo_mensagem'	=> validation_errors() ,
+									'tipo_mensagem' 		=> 'error'
+								);
+				$this->session->set_userdata($mensagem);
+				redirect('moeda/cadastrar');
 			}
-			redirect('moeda/cadastrar');
 		}
 		public function listar(){
 			$dados['moedas'] = $this->moeda_model->buscar_moedas();
