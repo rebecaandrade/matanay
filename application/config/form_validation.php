@@ -20,7 +20,7 @@
 							 ),
 						array(
 								'field' => 'cambio',
-								'label' => 'lang:moeda_sigla',
+								'label' => 'lang:moeda_cambio',
 								'rules' => 'trim|required|decimal'
 							 )
 						)

@@ -18,7 +18,7 @@
 			$this->load->view('moeda/cadastro_moeda');
 		}
 		public function cadastrar_moeda(){
-			$this->form_validation->set_message('required', 'HEUHEU {field} HEUHEUEHU' );
+			$this->form_validation->set_message('required', $this->lang->line('form_error_required') );
 			if( $this->form_validation->run('moeda')){ //verificando se os campos foram preenchidos
 				// obtendo valores
 				$nome = $this->input->post('nome');

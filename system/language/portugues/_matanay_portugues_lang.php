@@ -56,6 +56,7 @@ $lang['voltar']				= 'VOLTAR';
 ////// FORM VALIDATION
 
 $lang['form_error_nome_disponivel']		= 'Esse nome não está disponivel.';
+$lang['form_error_required']			= 'O campo {field} é obrigatório';
 
 ////// ALERTAS SISTEMA
 
