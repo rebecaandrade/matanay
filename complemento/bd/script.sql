@@ -21,7 +21,7 @@ insert into matanay.tipo_modelo values(DEFAULT, "internacional");
 insert into matanay.cliente values(DEFAULT, "admin",NULL);
 
 /* perfil */
-insert into matanay.perfis values(DEFAULT, "admin","admim","21232f297a57a5a743894a0e4a801fc3",NULL,1);
+insert into matanay.perfis values(DEFAULT, "admin","admin","21232f297a57a5a743894a0e4a801fc3",NULL,1);
 
 /* favorecidos */
 insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","Favorecido1","111.111.111-11","93.826.171/0001-55","contato1","email1",30,30,NULL,1);
@@ -203,7 +203,7 @@ insert into matanay.entidade_has_album values(7,9);
 insert into matanay.entidade_has_album values(8,9);
 insert into matanay.entidade_has_album values(9,9);
 
-/* entidade has faixa com percentual 
+/* entidade has faixa com percentual */
 insert into matanay.entidade_has_faixa_video values(1,1,50);
 insert into matanay.entidade_has_faixa_video values(2,1,30);
 insert into matanay.entidade_has_faixa_video values(3,1,20);
@@ -231,33 +231,3 @@ insert into matanay.entidade_has_faixa_video values(6,8,20);
 insert into matanay.entidade_has_faixa_video values(7,9,50);
 insert into matanay.entidade_has_faixa_video values(8,9,30);
 insert into matanay.entidade_has_faixa_video values(9,9,20);
-*/
-
-/* entidade has faixa */
-insert into matanay.entidade_has_faixa_video values(1,1);
-insert into matanay.entidade_has_faixa_video values(2,1);
-insert into matanay.entidade_has_faixa_video values(3,1);
-insert into matanay.entidade_has_faixa_video values(4,2);
-insert into matanay.entidade_has_faixa_video values(5,2);
-insert into matanay.entidade_has_faixa_video values(6,2);
-insert into matanay.entidade_has_faixa_video values(7,3);
-insert into matanay.entidade_has_faixa_video values(8,3);
-insert into matanay.entidade_has_faixa_video values(9,3);
-insert into matanay.entidade_has_faixa_video values(1,4);
-insert into matanay.entidade_has_faixa_video values(2,4);
-insert into matanay.entidade_has_faixa_video values(3,4);
-insert into matanay.entidade_has_faixa_video values(4,5);
-insert into matanay.entidade_has_faixa_video values(5,5);
-insert into matanay.entidade_has_faixa_video values(6,5);
-insert into matanay.entidade_has_faixa_video values(7,6);
-insert into matanay.entidade_has_faixa_video values(8,6);
-insert into matanay.entidade_has_faixa_video values(9,6);
-insert into matanay.entidade_has_faixa_video values(1,7);
-insert into matanay.entidade_has_faixa_video values(2,7);
-insert into matanay.entidade_has_faixa_video values(3,7);
-insert into matanay.entidade_has_faixa_video values(4,8);
-insert into matanay.entidade_has_faixa_video values(5,8);
-insert into matanay.entidade_has_faixa_video values(6,8);
-insert into matanay.entidade_has_faixa_video values(7,9);
-insert into matanay.entidade_has_faixa_video values(8,9);
-insert into matanay.entidade_has_faixa_video values(9,9);
