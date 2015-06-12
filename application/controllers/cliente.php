@@ -37,8 +37,8 @@
 			}
 		}
 		public function cadastrar_cliente(){
-			$nome = trim($this->input->post('nome'));
 			if( $this->form_validation->run('cliente') ){
+				$nome = $this->input->post('nome');
 				$this->cliente_model->cadastrar_cliente($nome);
 				$this->session->set_userdata('mensagem',$this->lang->line('clientes_cadastrado_sucesso'));
 				$this->session->set_userdata('tipo_mensagem', 'success');

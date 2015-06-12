@@ -16,12 +16,12 @@
 						array(
 								'field' => 'sigla',
 								'label' => 'lang:moeda_sigla',
-								'rules' => 'trim|required|alpha'
+								'rules' => 'trim|required'
 							 ),
 						array(
 								'field' => 'cambio',
 								'label' => 'lang:moeda_sigla',
-								'rules' => 'trim|required'
+								'rules' => 'trim|required|decimal'
 							 )
 						)
 	);
