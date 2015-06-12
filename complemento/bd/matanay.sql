@@ -499,6 +499,7 @@ DROP TABLE IF EXISTS `matanay`.`Entidade_has_Faixa_Video` ;
 CREATE  TABLE IF NOT EXISTS `matanay`.`Entidade_has_Faixa_Video` (
   `idEntidade` INT NOT NULL ,
   `idFaixa` INT NOT NULL ,
+  `percentual` FLOAT NULL ,
   PRIMARY KEY (`idEntidade`, `idFaixa`) ,
   INDEX `fk_Entidade_has_Faixa_Video_Faixa_Video1_idx` (`idFaixa` ASC) ,
   INDEX `fk_Entidade_has_Faixa_Video_Entidade1_idx` (`idEntidade` ASC) ,
