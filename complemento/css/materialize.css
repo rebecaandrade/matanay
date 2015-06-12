@@ -5144,7 +5144,7 @@ nav {
 @media only screen and (min-width : 993px) {    
     #barra2, #barra2 .nav-wrapper i, #barra2 a.button-collapse, #barra2 a.button-collapse i {   
       height: 33px;   
-      line-height: 33px; } } 
+      line-height: 32px; } } 
 
 @media only screen and (max-width : 992px) {    
     #barra2, #barra2 .nav-wrapper i, #barra2 a.button-collapse, #barra2 a.button-collapse i {   

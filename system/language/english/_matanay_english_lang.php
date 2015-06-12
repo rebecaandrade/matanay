@@ -55,7 +55,8 @@ $lang['voltar']				= 'RETURN';
 	
 ////// FORM VALIDATION
 
-	////// VITOR
+////// VITOR
+
 $lang['campos_invalidos']				= 'Invalid fields :';
 $lang['form_error_nome_disponivel']		= 'Name not available';
 $lang['form_error_required']			= 'The {field} field is required';
@@ -72,14 +73,14 @@ $lang['acesso_negado']				= 'Undue access';
 $lang['permissao_insuficiente']		= 'No authorization to execute this action';
 $lang['confirmar_deletar']			= 'Do you wish to delete this?';
 
-////// LOGIN ////// Evandro
+////// LOGIN 
 
 $lang['login'] 				= 'username';
 $lang['senha'] 				= 'password';
 $lang['entrar'] 			= 'Log In';
 $lang['esqueceu_senha'] 	= 'Forgot your password?';
 
-////// MENU ////// Evandro
+////// MENU 
 
 $lang['home'] 				= 'HOME';
 $lang['cadastros'] 			= 'REGISTER';
@@ -87,7 +88,7 @@ $lang['relatorios'] 		= 'REPORTS';
 $lang['vendas'] 			= 'RECEIPTS';
 $lang['sair'] 				= 'LOGOUT';
 
-////// SUB_MENU ////// Evandro
+////// SUB_MENU 
 
 $lang['faixas'] 			= 'TRACKS';
 $lang['videos'] 			= 'VIDEOS';
@@ -96,7 +97,7 @@ $lang['entidades'] 			= 'ENTITYS';
 $lang['favorecido']			= 'FAVORED';
 $lang['imposto']			= 'TAX';
 
-////// FAIXAS ////// Evandro
+////// FAIXAS 
 
 $lang['titulo'] 			= 'Title';
 $lang['cadastrar'] 			= 'Register';
@@ -108,7 +109,7 @@ $lang['produtor'] 			= 'Producer';
 $lang['produtores'] 		= 'Producers';
 $lang['nao_ha_faixas']		= 'There are no tracks registered!';
 
-////// ALBUMS ////// Evandro
+////// ALBUNS 
 
 $lang['n_faixas'] 			= 'Number of Tracks';
 $lang['catalogo'] 			= 'Catalog Code';

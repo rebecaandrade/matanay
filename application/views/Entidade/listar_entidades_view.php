@@ -2,8 +2,8 @@
 
 $this->load->view('_include/header') ?>
 
-    <div class="container">
-        <div class="row" id="titulo_lista">
+    <div id="wrapper-body">
+        <div id="titulo_lista">
             <div class="row">
                 <div class="input-field col s12 m8 l9">
                     <i class="mdi-action-assignment-ind"></i>
@@ -32,9 +32,9 @@ $this->load->view('_include/header') ?>
                             <td><?= $entidade->nome ?></td>
                             <td><?= ($entidade->cpf == NULL ? $entidade->cnpj : $entidade->cpf) ?></td>
                             <td><?= $entidade->descricao ?></td>
-                            <td><a class="acao"
+                            <td><a id="acao"
                                    href="<?= base_url() . 'index.php/Entidade/camposatualizacao?id=' . $entidade->idEntidade ?>"><?php echo $this->lang->line('editar'); ?></a>
-                                | <a class="deletarLink"
+                                | <a id="acao" class="deletarLink"
                                      onclick="excluirEntidade('<?= base_url() . 'index.php/entidade/deletar/' . $entidade->idEntidade ?>')"><?php echo $this->lang->line('deletar') ?> </a>
                             </td>
                         </tr>
