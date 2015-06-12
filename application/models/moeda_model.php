@@ -9,7 +9,7 @@
 						'nome'			=> $nome,
 						'sigla'			=> $sigla,
 						'taxa_cambio'	=> $cambio,
-						'idCliente'	=> $id_cliente
+						'idCliente'		=> $id_cliente
 					);
 				$this->db->insert('moeda',$moeda);
 				return TRUE;
@@ -19,7 +19,8 @@
 				return FALSE;
 			}
 		}
-		public function buscar_moedas(){
+		public function buscar_moedas($id_cliente){
+			$this->db->where('idCliente',$id_cliente);
 			$this->db->where('excluido',NULL);
 			return $this->db->get('moeda')->result();
 			
@@ -36,7 +37,7 @@
 			$this->db->where('idMoeda',$id);
 			return $this->db->update('moeda',$array);
 		}
-		public function editar_moeda($id,$id_cliente,$nome,$sigla,$cambio){
+		public function editar_moeda($nome,$sigla,$cambio,$id_cliente,$id){
 			$moeda = array( 
 					'nome'			=> $nome,
 					'sigla'			=> $sigla,

@@ -118,3 +118,11 @@ insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",5);
 insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",5);
 insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",6);
 insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",6);
+
+/* moedas */
+insert into matanay.moeda values(DEFAULT,"NOME","SIGLA",5.34,NULL,1);
+insert into matanay.moeda values(DEFAULT,"Dollar","USD",3.21,NULL,1);
+insert into matanay.moeda values(DEFAULT,"Real","BRL",1,NULL,1);
+insert into matanay.moeda values(DEFAULT,"Hey","so",515.74,NULL,1);
+insert into matanay.moeda values(DEFAULT,"TESTE","TESTE",13.37,NULL,1);
+insert into matanay.moeda values(DEFAULT,"DELETADO","DELETADO",34.34,1,1);	

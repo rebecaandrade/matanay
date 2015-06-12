@@ -46,7 +46,7 @@
 			}
 		}
 		public function listar(){
-			$dados['moedas'] = $this->moeda_model->buscar_moedas();
+			$dados['moedas'] = $this->moeda_model->buscar_moedas($this->session->userdata('id_cliente'));
 			$this->load->view('moeda/listar_moedas',$dados);
 		}
 		public function deletar(){
@@ -94,7 +94,7 @@
 					$nome = $this->input->post('nome');
 					$sigla = $this->input->post('sigla');
 					$cambio = $this->input->post('cambio');
-					$this->moeda_model->editar_moeda($id,$id_cliente,$nome,$sigla,$cambio);
+					$this->moeda_model->editar_moeda($nome,$sigla,$cambio,$id_cliente,$id);
 					$mensagem = array(
 									'mensagem'				=> $this->lang->line('cadastro_sucesso'),
 									'tipo_mensagem' 		=> 'success'
