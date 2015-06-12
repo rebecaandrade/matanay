@@ -5,20 +5,20 @@
 				<div class="row">
 					<div class="input-field col s12 m9 l8 offset-l1">
 						<i class="mdi-editor-attach-money prefix"></i>	
-						<input type='text' name='nome'>
+						<input type='text' name='nome' value="<?php echo set_value('nome'); ?>">
 						<label><?php echo $this->lang->line('moeda_nome'); ?></label>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="input-field col s12 m9 l8 offset-l1">
-						<input type='text' name='sigla'>
+						<input type='text' name='sigla' value="<?php echo set_value('sigla'); ?>">
 						<label><?php echo $this->lang->line('moeda_sigla'); ?></label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12 m9 l8 offset-l1">
-						<input type='text' name='cambio'>
+						<input type='text' name='cambio' value="<?php echo set_value('cambio'); ?>">
 						<label><?php echo $this->lang->line('moeda_cambio'); ?></label>
 					</div>
 				</div>

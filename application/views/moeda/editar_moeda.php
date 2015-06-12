@@ -1,34 +1,33 @@
 <?php $this->load->view('_include/header'); ?>
+	<div class="container"> 
+		<div class="row">
+			<?php echo form_open('moeda/editar_moeda') ?>
+				<div class="row">
+					<div class="input-field col s12 m9 l8 offset-l1">
+						<i class="mdi-editor-attach-money prefix"></i>	
+						<input type='text' name='nome' value="<?php echo $moeda->nome; ?>">
+						<label><?php echo $this->lang->line('moeda_nome'); ?></label>
+					</div>
+				</div>
 
-	<div class="circulo"><img src="<?php echo base_url().'complemento/img/moeda.png' ?>"></div>
-
-	<div id="dados">
-		<?php echo form_open('moeda/editar_moeda') ?>
-			<div class="row">
-	          	<div class="input-field col s12 m9 l8 offset-l1">
-	          		<i class="mdi-editor-attach-money prefix"></i>	
-	            	<input type='text' name='nome'>
-	            	<label><?php echo $this->lang->line('moeda_nome'); ?></label>
-	          	</div>
-	        </div>
-
-	        <div class="row">
-	          	<div class="input-field col s12 m9 l8 offset-l1">
-	            	<input type='text' name='sigla'>
-	            	<label><?php echo $this->lang->line('moeda_sigla'); ?></label>
-	          	</div>
-	        </div>
-	        <div class="row">
-	          	<div class="input-field col s12 m9 l8 offset-l1">
-	            	<input type='text' name='cambio'>
-	            	<label><?php echo $this->lang->line('moeda_cambio'); ?></label>
-	          	</div>
-	        </div>
-			<input type='hidden' name='id' value="<?php echo $moeda->idMoeda; ?>">
-	        <button class="btn waves-effect waves-light col s12 m12 l8 offset-l1" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
-	          	<i class="mdi-content-send right"></i>
-	        </button>
-		<?php echo form_close() ?>
+				<div class="row">
+					<div class="input-field col s12 m9 l8 offset-l1">
+						<input type='text' name='sigla' value="<?php echo $moeda->sigla; ?>">
+						<label><?php echo $this->lang->line('moeda_sigla'); ?></label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 m9 l8 offset-l1">
+						<input type='text' name='cambio' value="<?php echo $moeda->taxa_cambio; ?>">
+						<label><?php echo $this->lang->line('moeda_cambio'); ?></label>
+					</div>
+				</div>
+				<input type='hidden' name='id' value="<?php echo $moeda->idMoeda; ?>">
+				<input type='hidden' name='id_cliente' value="<?php echo $moeda->idCliente; ?>">
+				<button class="btn waves-effect waves-light col s12 m12 l8 offset-l1" type="submit"><?php echo $this->lang->line('atualizar'); ?>
+					<i class="mdi-content-send right"></i>
+				</button>
+			<?php echo form_close() ?>
+		</div>
 	</div>
-
 <?php $this->load->view('_include/footer') ?>

@@ -55,8 +55,12 @@ $lang['voltar']				= 'VOLTAR';
 
 ////// FORM VALIDATION
 
+///// VITOR
+$lang['campos_invalidos']				= 'Campos inválidos :';
 $lang['form_error_nome_disponivel']		= 'Esse nome não está disponivel.';
 $lang['form_error_required']			= 'O campo {field} é obrigatório';
+$lang['form_error_max_length']			= 'O campo {field} deve possuir menos de {param} characteres';
+$lang['form_error_decimal_num']			= 'O campo {field} deve conter um número';
 
 ////// ALERTAS SISTEMA
 
@@ -64,6 +68,8 @@ $lang['nada_encontrado']	= 'Nada encontrado.';
 $lang['atualizado_sucesso']	= 'Atualizado com sucesso!';
 $lang['cadastrado_sucesso']	= 'Cadastrado com sucesso!';
 $lang['excluido_sucesso']	= 'Excluído com sucesso!';
+$lang['acesso_negado']		= 'Acesso indevido';
+$lang['permissao_insuficiente']	= 'Permissão insuficiente para esta ação';
 
 ////// LOGIN
 
@@ -190,7 +196,6 @@ $lang['cliente_cadastrar'] = 'Cadastrar';
 $lang['Perfil_erro_listar'] = 'Nenhum perfil cadastrado';
 $lang['cliente_erro_listar'] = 'Nenhum cliente cadastrado';
 $lang['cliente_erro_nome'] = 'Este nome já se encontra cadastrado';
-$lang['clientes_cadastrado_sucesso'] = 'Cliente cadastrado com sucesso';
 
 
 

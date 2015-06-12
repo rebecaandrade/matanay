@@ -1,18 +1,6 @@
 <?php
 	class Moeda_model extends CI_Model {
-		public function cadastrar($nome,$sigla,$cambio,$id){
-
-			if(is_string($cambio)){
-				$cambio = str_replace (',','.',$cambio); //substitui virgulas por pontos para fazer o type casting
-				if((string)(float)$cambio == $cambio){ //verifica se é um numero
-					$cambio = (float) $cambio; // type casting de string para número
-				}
-				else{
-					$this->session->set_userdata('mensagem','Insira um número valido para taxa de cambio.');
-					return FALSE;
-				}
-			}
-			$nome = strtolower($nome);
+		public function cadastrar($nome,$sigla,$cambio,$id_cliente){
 			$this->db->where('nome',$nome);
 			$moeda = $this->db->get('moeda')->row();
 			if(!$moeda){
@@ -21,10 +9,9 @@
 						'nome'			=> $nome,
 						'sigla'			=> $sigla,
 						'taxa_cambio'	=> $cambio,
-						'idCliente'	=> $id
+						'idCliente'	=> $id_cliente
 					);
 				$this->db->insert('moeda',$moeda);
-				$this->session->set_userdata('mensagem','Moeda cadastrada com sucesso.');
 				return TRUE;
 			}
 			else{
@@ -33,6 +20,7 @@
 			}
 		}
 		public function buscar_moedas(){
+			$this->db->where('excluido',NULL);
 			return $this->db->get('moeda')->result();
 			
 		}
@@ -42,25 +30,20 @@
 			
 		}
 		public function deletar_moeda($id){
+			$array = array(
+					'excluido' => 1
+				);
 			$this->db->where('idMoeda',$id);
-			return $this->db->delete('moeda');
+			return $this->db->update('moeda',$array);
 		}
-		public function editar_moeda($id,$nome,$sigla,$cambio){
-			$cambio = str_replace (',','.',$cambio); //substitui virgulas por pontos para fazer o type casting
-			if((string)(float)$cambio == $cambio && (string)(int)$id == $id ){ // verifica se o cambio e o id são numeros validos
-				// array de atualização
-				$moeda = array( 
-						'nome'		=> $nome,
-						'sigla'		=> $sigla,
-						'taxa_cambio'	=> $cambio
+		public function editar_moeda($id,$id_cliente,$nome,$sigla,$cambio){
+			$moeda = array( 
+					'nome'			=> $nome,
+					'sigla'			=> $sigla,
+					'idCliente'		=> $id_cliente,
+					'taxa_cambio'	=> $cambio
 					);
-				$this->db->where('idMoeda',$id);
-				$this->db->update('moeda',$moeda);
-				return TRUE;
-			}
-			else{
-				//invalidos
-				return FALSE;
-			}
+			$this->db->where('idMoeda',$id);
+			return $this->db->update('moeda',$moeda);
 		}
 	}

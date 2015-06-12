@@ -14,28 +14,35 @@
 			$linguagem_usuario = $this->session->userdata('linguagem');
 			$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 		}
-		public function cadastrar(){		
+		public function cadastrar(){
 			$this->load->view('moeda/cadastro_moeda');
 		}
 		public function cadastrar_moeda(){
 			$this->form_validation->set_message('required', $this->lang->line('form_error_required') );
-			if( $this->form_validation->run('moeda')){ //verificando se os campos foram preenchidos
+			$this->form_validation->set_message('max_length', $this->lang->line('form_error_max_length'));
+			$this->form_validation->set_message('decimal_num', $this->lang->line('form_error_decimal_num'));
+			if( $this->form_validation->run('moeda')){ //verificando se os campos foram preenchidos corretamente
 				// obtendo valores
 				$nome = $this->input->post('nome');
 				$sigla = $this->input->post('sigla');
 				$cambio = $this->input->post('cambio');
-				$id = $this->session->userdata('id_cliente');
+				$id_cliente = $this->session->userdata('id_cliente');
 				$this->moeda_model->cadastrar($nome,$sigla,$cambio,$id_cliente);
+				$mensagem = array(
+									'mensagem'				=> $this->lang->line('cadastro_sucesso'),
+									'tipo_mensagem' 		=> 'success'
+								);
+				$this->session->set_userdata($mensagem);
 				redirect('moeda/listar');
 			}
 			else{
 				$mensagem = array(
-									'mensagem'				=> 'Campos inválidos :',
+									'mensagem'				=> $this->lang->line('campos_invalidos'),
 									'subtitulo_mensagem'	=> validation_errors() ,
 									'tipo_mensagem' 		=> 'error'
 								);
 				$this->session->set_userdata($mensagem);
-				redirect('moeda/cadastrar');
+				$this->load->view('moeda/cadastro_moeda');
 			}
 		}
 		public function listar(){
@@ -55,40 +62,78 @@
 			if((string)(int)$id == $id){ // verifica se o ID é valido
 				//setar mensagem de sucesso
 				$dados['moeda'] = $this->moeda_model->buscar_moeda($id);
-				$this->load->view('moeda/editar_moeda',$dados);
+				if($dados['moeda']->idCliente == $this->session->userdata('id_cliente')){
+					$this->load->view('moeda/editar_moeda',$dados);
+				}
+				else{
+					$mensagem = array(
+							'mensagem'				=> $this->lang->line('permissao_insuficiente'),
+							'tipo_mensagem' 		=> 'error'
+							);
+					$this->session->set_userdata($mensagem);
+					redirect('moeda/listar');
+				}
 			}
 			else{
-				// seta mensagem de parametro invalido
+				$mensagem = array(
+									'mensagem'				=> $this->lang->line('acesso_negado'),
+									'tipo_mensagem' 		=> 'error'
+								);
+				$this->session->set_userdata($mensagem);
 				redirect('moeda/listar');
 			}
 		}
 		public function editar_moeda(){
-			// obtendo valores e removendo espaços em branco indesejaveis
-			$id = trim($this->input->post('id'));
-			$nome = trim($this->input->post('nome'));
-			$sigla = trim($this->input->post('sigla'));
-			$cambio = trim($this->input->post('cambio'));
-			if(strlen($nome) != 0 && strlen($sigla) != 0 && strlen($cambio) != 0){ //verificando se campos foram preenchidos
-
-				if($this->moeda_model->editar_moeda($id,$nome,$sigla,$cambio)){
-				//seta mensagem de sucesso	
-				redirect('moeda/listar');
+			$id_cliente = $this->input->post('id_cliente');
+			if($id_cliente == $this->session->userdata('id_cliente')){ //checa se o id não foi manipulado
+				$this->form_validation->set_message('required', $this->lang->line('form_error_required') );
+				$this->form_validation->set_message('max_length', $this->lang->line('form_error_max_length'));
+				$this->form_validation->set_message('decimal_num', $this->lang->line('form_error_decimal_num'));
+				$id = $this->input->post('id');
+				if( $this->form_validation->run('moeda') ){ //verificando se campos foram preenchidos
+					$nome = $this->input->post('nome');
+					$sigla = $this->input->post('sigla');
+					$cambio = $this->input->post('cambio');
+					$this->moeda_model->editar_moeda($id,$id_cliente,$nome,$sigla,$cambio);
+					$mensagem = array(
+									'mensagem'				=> $this->lang->line('cadastro_sucesso'),
+									'tipo_mensagem' 		=> 'success'
+								);
+					$this->session->set_userdata($mensagem);	
+					redirect('moeda/listar');
 				}
 				else{
-				//recarrega pagina de carregamento
+				$mensagem = array(
+									'mensagem'				=> $this->lang->line('campos_invalidos'),
+									'subtitulo_mensagem'	=> validation_errors() ,
+									'tipo_mensagem' 		=> 'error'
+								);
+				$this->session->set_userdata($mensagem);
 				$dados['moeda'] = $this->moeda_model->buscar_moeda($id);
-				
-				//setar mensagem de taxa de cambio invalida
 				$this->load->view('moeda/editar_moeda',$dados);
-			}
+				}
 			}
 			else{
-				//recarrega pagina de carregamento
-				$dados['moeda'] = $this->moeda_model->buscar_moeda($id);
-				
-				//setar mensagem de campos não preenchidos
-				$this->load->view('moeda/editar_moeda',$dados);
+				$mensagem = array(
+							'mensagem'				=> $this->lang->line('permissao_insuficiente'),
+							'tipo_mensagem' 		=> 'error'
+							);
+				$this->session->set_userdata($mensagem);
+				redirect('moeda/listar');
 			}
+		}
 
+		/////// FORM VALIDATION
+
+		public function decimal_num($valor){
+			$valor = str_replace (',','.',$valor); //substitui virgulas por pontos para fazer o type casting
+			if((string)(float)$valor == $valor){ //verifica se é um numero
+				$valor = (float) $valor; // type casting de string para número
+				return $valor;
+			}
+			else{
+				return FALSE;
+			}
+			
 		}
 	} 

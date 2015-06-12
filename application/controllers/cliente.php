@@ -40,7 +40,7 @@
 			if( $this->form_validation->run('cliente') ){
 				$nome = $this->input->post('nome');
 				$this->cliente_model->cadastrar_cliente($nome);
-				$this->session->set_userdata('mensagem',$this->lang->line('clientes_cadastrado_sucesso'));
+				$this->session->set_userdata('mensagem',$this->lang->line('cadastrado_sucesso'));
 				$this->session->set_userdata('tipo_mensagem', 'success');
 				redirect('cliente/lista_clientes');
 			}

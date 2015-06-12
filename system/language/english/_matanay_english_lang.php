@@ -57,8 +57,14 @@ $lang['atualizado_sucesso']	= 'Update successful';
 	
 ////// FORM VALIDATION
 
+////// VITOR
+$lang['campos_invalidos']				= 'Invalid fields :';
 $lang['form_error_nome_disponivel']		= 'Name not available';
-$lang['form_error_required']			= 'The field {field} is required';
+$lang['form_error_required']			= 'The {field} field is required';
+$lang['form_error_max_length']			= 'The {field} field cannot exceed {param} characters in length.';
+$lang['form_error_decimal_num']			= 'the {field} field must contain a number';
+$lang['acesso_negado']					= 'Undue access';
+$lang['permissao_insuficiente']			= 'No authorization to execute this action';
 
 ////// LOGIN ////// Evandro
 
@@ -106,7 +112,7 @@ $lang['tipo'] 				= 'Type';
 $lang['faixa'] 				= 'Track';
 $lang['nao_ha_albums']		= 'There are no albums registered!';
 
-////// MOEDA Vitor
+////// MOEDA ////// VITOR
 
 $lang['moeda']				= 'Currency';
 $lang['moeda_menu']			= 'CURRENCY';		
@@ -180,7 +186,6 @@ $lang['cliente_cadastrar'] = 'Register';
 $lang['Perfil_erro_listar'] = 'No Profiles on record';
 $lang['cliente_erro_listar'] = 'No customer on record';
 $lang['cliente_erro_nome'] = 'Name already taken';
-$lang['clientes_cadastrado_sucesso'] = 'Customer registered successfully';
 
 
 
