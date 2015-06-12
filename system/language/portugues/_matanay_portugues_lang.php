@@ -166,6 +166,7 @@ $lang['cadastrar_favorecido']='Cadastrar um novo favorecido';
 $lang['nao_ha_entidades']='Não existem entidades cadastradas!';
 $lang['nao_ha_favorecidos']='Não existem favorecidos cadastrados!';
 $lang['nao_ha_impostos']='Não existem impostos cadastrados!';
+$lang['descricao_entidade'] = "Descrição";
 
 
 

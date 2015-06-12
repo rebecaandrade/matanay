@@ -1,7 +1,8 @@
-<?php /*FEITO POR MIM JADIEL*/
+<?php /*FEITO POR MIM, JADIEL*/
+
 $this->load->view('_include/header') ?>
 
-    <div id="wrapper-body">
+    <div class="container">
         <div class="row" id="titulo_lista">
             <div class="row">
                 <div class="input-field col s12 m8 l9">
@@ -14,95 +15,34 @@ $this->load->view('_include/header') ?>
                         <i class="mdi-content-add"></i>
                     </a>
                 </div>
-                <?php if ($dadoentidade != NULL) {
-                    echo form_open('/Entidade/procurar') ?>
-                    <div class="input-field col s12 m4 l3">
-                        <i id="lupa" class="mdi-action-search prefix"></i>
-                        <label><?php echo $this->lang->line('procurar'); ?></label>
-                        <input required type="text" value="" name="procurar">
-                        <input id="linkLupa" type="submit" style="display: none">
-                        <script>
-                            $('#lupa').css('cursor', 'pointer');
-                            $('#lupa').click(function () {
-                                $('#linkLupa').click();
-                            });
-                        </script>
-                    </div>
-                    <?php form_close();
-                } ?>
             </div>
         </div>
-        <div class="row"><p></p></div>
-        <?php echo $this->lang->line('entitys'); ?>
-        <?php if (($dadoentidade != NULL) && (!isset($busca))){ ?>
-            <table class="hoverable bordered">
+        <div class="row">
+            <table id="fuckingTable" class="hoverable bordered">
                 <thead>
-                <tr>
-                    <th>   <?php echo $this->lang->line('nome_entidade'); ?>  </th>
-                    <th> CPF/CNPJ</th>
-                    <th>      <?php echo $this->lang->line('acao'); ?>      </th>
-                </tr>
+                <th><?= $this->lang->line('nome_entidade'); ?></th>
+                <th>CPF/CNPJ</th>
+                <th><?= $this->lang->line('descricao_entidade'); ?></th>
+                <th><?= $this->lang->line('acao'); ?></th>
                 </thead>
                 <tbody>
-                <?php if (isset($dadoentidade)) {
-                    foreach ($dadoentidade as $row1) {
-                        ?>
+                <?php if (isset($entidades)) { ?>
+                    <?php foreach ($entidades as $entidade) { ?>
                         <tr>
-                            <td><?php echo $row1->nome; ?></td>
-                            <?php if ($row1->cpf != null) { ?>
-                                <td><?php echo $row1->cpf; ?></td><?php } ?>
-                            <?php if ($row1->cnpj != null) { ?>
-                                <td><?php echo $row1->cnpj; ?></td> <?php } ?>
-                            <td><a id="acao"
-                                   href="<?php echo base_url() . 'index.php/Entidade/camposatualizacao?id=' . $row1->idEntidade ?>"><?php echo $this->lang->line('editar'); ?></a>
-                                | <a id="acao" class="deletarLink"
-                                     onclick="excluirEntidade('<?= base_url() . 'index.php/entidade/deletar/' . $row1->idEntidade ?>')"><?php echo $this->lang->line('deletar') ?> </a>
-                            </td>
-
-                        </tr>
-                    <?php }
-                } ?>
-                </tbody>
-            </table>
-        <?php }else //SE OUVER UMA BUSCA OU NAO OUVEREM FAVORECIDOS CADASTRADOS OCORRE O SEGUINTE
-        if (!isset($busca)){
-            ?>
-            <span><?php echo $this->lang->line('nao_ha_entidades'); ?></span><br>
-        <?php } else //PARA O RESULTADO DA BUSCA TEM-SE
-        if ($busca != null){ ?>
-            <table id="tabela_listagem">
-                <thead>
-                <tr>
-                    <th>   <?php echo $this->lang->line('nome_favorecido'); ?>  </th>
-                    <th> CPF/CNPJ</th>
-                    <th>      <?php echo $this->lang->line('acao'); ?>      </th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php if (isset($busca)) {
-                    foreach ($busca as $row1) {
-                        ?>
-                        <tr>
-                            <td><?php echo $row1->nome; ?></td>
-                            <?php if ($row1->cpf != null) { ?>
-                                <td><?php echo $row1->cpf; ?></td><?php } ?>
-                            <?php if ($row1->cnpj != null) { ?>
-                                <td><?php echo $row1->cnpj; ?></td> <?php } ?>
-                            <td><a><?php echo $this->lang->line('deletar'); ?> </a> || <a
-                                    href="<?php echo base_url() . 'index.php/Favorecido/camposatualizacao?id=' . $row1->idFavorecido ?>"><?php echo $this->lang->line('editar'); ?></a>
+                            <td><?= $entidade->nome ?></td>
+                            <td><?= ($entidade->cpf == NULL ? $entidade->cnpj : $entidade->cpf) ?></td>
+                            <td><?= $entidade->descricao ?></td>
+                            <td><a class="acao"
+                                   href="<?= base_url() . 'index.php/Entidade/camposatualizacao?id=' . $entidade->idEntidade ?>"><?php echo $this->lang->line('editar'); ?></a>
+                                | <a class="deletarLink"
+                                     onclick="excluirEntidade('<?= base_url() . 'index.php/entidade/deletar/' . $entidade->idEntidade ?>')"><?php echo $this->lang->line('deletar') ?> </a>
                             </td>
                         </tr>
                     <?php }
                 } ?>
                 </tbody>
             </table>
-        <?php } else{ ?>
-        <span><?php echo $this->lang->line('nada_encontrado'); ?><span>
-                                <?php } ?>
-
-                <div id="paginacao">
-                    <?php if ($paginas) echo $paginas; ?>
-                </div>
+        </div>
 
     </div>
 

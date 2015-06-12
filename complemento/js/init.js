@@ -128,6 +128,12 @@ $(document).ready(function () {
     $('a').css('cursor', 'pointer')
 });
 $(document).ready(function () {
+    $('#lupa').css('cursor', 'pointer');
+    $('#lupa').click(function () {
+        $('#linkLupa').click();
+    });
+});
+$(document).ready(function () {
     $('#test1').click(function () {
         $('#cnpjCadastre').hide();
         $('#cnpjCadastreInput').prop('value', null);
@@ -145,26 +151,35 @@ $(document).ready(function () {
         $('#cpfCadastreInput').prop('required', false);
     });
 });
-$(document).ready(function(){
-    $('#myForm').submit(function(){
+$(document).ready(function () {
+    $('#myForm').submit(function () {
         var $cpf = $('#cpfCadastreInput').val();
         var $cnpj = $('#cnpjCadastreInput').val();
         var $cpf_cnpj = null;
-        if($cpf.length > 1){
+        if ($cpf.length > 1) {
             $cpf_cnpj = $cpf;
-        }else{
+        } else {
             $cpf_cnpj = $cnpj;
         }
-        $('#cpf_cnpj').prop('value',$cpf_cnpj);
+        $('#cpf_cnpj').prop('value', $cpf_cnpj);
     });
 });
-$(document).ready(function(){
+$(document).ready(function () {
     $('.cpfCadastreInput').mask("000.000.000-00");
 });
-$(document).ready(function(){
+$(document).ready(function () {
     $('#cnpjCadastreInput').mask("00.000.000/0000-00");
 });
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('#cnpjCadastreInput').mask("00.000.000/0000-00");
 });
+
+
+/*************************  dataTables   **************************************************/
+$(document).ready(function () {
+    $('#fuckingTable').DataTable();
+});
+/*! DataTables 1.10.7
+ * Â©2008-2015 SpryMedia Ltd - datatables.net/license
+ */
