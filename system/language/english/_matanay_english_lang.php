@@ -50,21 +50,27 @@ $lang['nova']				= 'NEW';
 $lang['nome']				= 'Name';
 $lang['selecione']			= 'Select';
 $lang['procurar']			= 'Search';
-$lang['nada_encontrado']	= 'Nothing found';
 $lang['detalhes']			= 'DETAILS';
 $lang['voltar']				= 'RETURN';
-$lang['atualizado_sucesso']	= 'Update successful';
 	
 ////// FORM VALIDATION
 
-////// VITOR
+	////// VITOR
 $lang['campos_invalidos']				= 'Invalid fields :';
 $lang['form_error_nome_disponivel']		= 'Name not available';
 $lang['form_error_required']			= 'The {field} field is required';
 $lang['form_error_max_length']			= 'The {field} field cannot exceed {param} characters in length.';
 $lang['form_error_decimal_num']			= 'the {field} field must contain a number';
-$lang['acesso_negado']					= 'Undue access';
-$lang['permissao_insuficiente']			= 'No authorization to execute this action';
+
+////// ALERTAS SISTEMA
+
+$lang['nada_encontrado']			= 'Nothing found.';
+$lang['atualizado_sucesso']			= 'Update successful!';
+$lang['cadastrado_sucesso']			= 'Register successful!';
+$lang['excluido_sucesso']			= 'Deletion successful!';
+$lang['acesso_negado']				= 'Undue access';
+$lang['permissao_insuficiente']		= 'No authorization to execute this action';
+$lang['confirmar_deletar']			= 'Do you wish to delete this?';
 
 ////// LOGIN ////// Evandro
 

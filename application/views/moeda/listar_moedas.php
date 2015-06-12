@@ -33,7 +33,7 @@
 							<td>
 								<a href="<?php echo base_url().'index.php/moeda/editar?param='.$moeda->idMoeda ?>" class="btn-floating waves-effect waves-light tooltipped"
 									data-position="top" data-delay="50" data-tooltip="<?php echo $this->lang->line('editar'); ?>"><i class="small mdi-content-create"></i></a>
-								<a href="<?php echo base_url().'index.php/moeda/deletar?param='.$moeda->idMoeda ?>" class="btn-floating waves-effect waves-light tooltipped"
+								<a onclick="confirmar('<?php echo $this->lang->line('confirmar_deletar') ?>','<?php echo base_url().'index.php/moeda/deletar?param='.$moeda->idMoeda ?>','<?php echo $this->lang->line('sim')?>','<?php echo $this->lang->line('nao')?>')" class="btn-floating waves-effect waves-light tooltipped"
 									data-position="top" data-delay="50" data-tooltip="<?php echo $this->lang->line('deletar'); ?>"><i class="small mdi-action-highlight-remove"></i></a>
 							</td>
 						</tr> 

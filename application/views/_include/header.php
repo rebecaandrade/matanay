@@ -19,6 +19,7 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/materialize.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/init.js"></script>
+    <script src="<?php echo base_url(); ?>complemento/js/alert.js"></script>
     <script src="js/jquery/validate.js"></script>
     <script src="js/singup-form.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/jquery.mask.min.js"></script>

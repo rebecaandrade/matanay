@@ -139,11 +139,14 @@
 		}
 		public function excluir_cliente($id_cliente){
 			$this->cliente_model->excluir_cliente($id_cliente);
+			$this->session->set_userdata('mensagem',$this->lang->line('excluido_sucesso'));
+			$this->session->set_userdata('tipo_mensagem','success');
 			redirect('cliente/lista_clientes');
 		}
 		public function excluir_perfil($id_perfil,$id_cliente){ 	
 			$this->cliente_model->excluir_perfil($id_perfil);
-			$this->session->set_userdata('mensagem','excluido com sucesso');
+			$this->session->set_userdata('mensagem',$this->lang->line('excluido_sucesso'));
+			$this->session->set_userdata('tipo_mensagem','success');
 			redirect('cliente/lista_perfis/'.$id_cliente);
 		}
 

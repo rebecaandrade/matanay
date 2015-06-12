@@ -60,7 +60,6 @@
 		public function editar(){
 			$id = $this->input->get('param');
 			if((string)(int)$id == $id){ // verifica se o ID é valido
-				//setar mensagem de sucesso
 				$dados['moeda'] = $this->moeda_model->buscar_moeda($id);
 				if($dados['moeda']->idCliente == $this->session->userdata('id_cliente')){
 					$this->load->view('moeda/editar_moeda',$dados);

@@ -64,12 +64,13 @@ $lang['form_error_decimal_num']			= 'O campo {field} deve conter um número';
 
 ////// ALERTAS SISTEMA
 
-$lang['nada_encontrado']	= 'Nada encontrado.';
-$lang['atualizado_sucesso']	= 'Atualizado com sucesso!';
-$lang['cadastrado_sucesso']	= 'Cadastrado com sucesso!';
-$lang['excluido_sucesso']	= 'Excluído com sucesso!';
-$lang['acesso_negado']		= 'Acesso indevido';
+$lang['nada_encontrado']		= 'Nada encontrado.';
+$lang['atualizado_sucesso']		= 'Atualizado com sucesso!';
+$lang['cadastrado_sucesso']		= 'Cadastrado com sucesso!';
+$lang['excluido_sucesso']		= 'Excluído com sucesso!';
+$lang['acesso_negado']			= 'Acesso indevido';
 $lang['permissao_insuficiente']	= 'Permissão insuficiente para esta ação';
+$lang['confirmar_deletar']		= 'Confirmar deleção?';
 
 ////// LOGIN
 
