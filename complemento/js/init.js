@@ -178,7 +178,35 @@ $(document).ready(function () {
 
 /*************************  dataTables   **************************************************/
 $(document).ready(function () {
-    $('#fuckingTable').DataTable();
+    $('#myTable').dataTable({
+        "language": {
+            "emptyTable": "Nenhum Resultado Encontrado",
+            "info": "Mostrando _START_ à _END_ de _TOTAL_ elementos",
+            "infoEmpty": "mostrando 0 à 0 of 0 elementos",
+            "infoFiltered": "(Filtrado de _MAX_ elementos)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "mostrando _MENU_ linhas",
+            "loadingRecords": "Carregando...",
+            "processing": "Processando...",
+            "search": "Procurar:",
+            "zeroRecords": "Nenhum resultado encontrado",
+            "paginate": {
+                "first": "Primeira",
+                "last": "Última",
+                "next": "PRÓX",
+                "previous": "ANT"
+            },
+            "aria": {
+                "sortAscending": ": activate to sort column ascending",
+                "sortDescending": ": activate to sort column descending"
+            }
+        }
+    });
+});
+$(document).ready(function () {
+    $('.dataTables_length').addClass('col s6');
+    $('fuckingTable_filter').addClass('col s6 align-left');
 });
 /*! DataTables 1.10.7
  * Â©2008-2015 SpryMedia Ltd - datatables.net/license
