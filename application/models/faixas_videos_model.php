@@ -34,7 +34,7 @@ class Faixas_Videos_model extends CI_Model {
     }
 
     public function buscar_entidade_faixa($id, $tipo){
-        $this->db->where('idFaixa_Video', $id);
+        $this->db->where('idFaixa', $id);
         $entidades_faixa = $this->db->get('entidade_has_faixa_video')->result();
 
         $result = array();
@@ -80,13 +80,13 @@ class Faixas_Videos_model extends CI_Model {
         $this->db->where('idFaixa', $dados['idFaixa']);
         $this->db->update('faixa_video', $dados);
 
-        $this->db->where('idFaixa_Video', $dados['idFaixa']);
+        $this->db->where('idFaixa', $dados['idFaixa']);
         $this->db->delete('entidade_has_faixa_video');
 
         $i = 0;
         foreach($artistas as $artista->idEntidade){
             $artista_faixa = array(
-                'idFaixa_Video' => $dados['idFaixa'],
+                'idFaixa' => $dados['idFaixa'],
                 'idEntidade' => $artista->idEntidade,
                 'percentual' => $perc_artistas[$i]
             );
@@ -97,7 +97,7 @@ class Faixas_Videos_model extends CI_Model {
         $i = 0;
         foreach($autores as $autor->idEntidade){
             $autor_faixa = array(
-                'idFaixa_Video' => $dados['idFaixa'],
+                'idFaixa' => $dados['idFaixa'],
                 'idEntidade' => $autor->idEntidade,
                 'percentual' => $perc_autores[$i]
             );
@@ -108,7 +108,7 @@ class Faixas_Videos_model extends CI_Model {
         $i = 0;
         foreach($produtores as $produtor->idEntidade){
             $produtor_faixa = array(
-                'idFaixa_Video' => $dados['idFaixa'],
+                'idFaixa' => $dados['idFaixa'],
                 'idEntidade' => $produtor->idEntidade,
                 'percentual' => $perc_produtores[$i]
             );
@@ -137,7 +137,7 @@ class Faixas_Videos_model extends CI_Model {
         $i = 0;
         foreach($artistas as $artista->idEntidade){
             $artista_faixa = array(
-                'idFaixa_Video' => $faixa_id,
+                'idFaixa' => $faixa_id,
                 'idEntidade' => $artista->idEntidade,
                 'percentual' => $perc_artistas[$i]
             );
@@ -148,7 +148,7 @@ class Faixas_Videos_model extends CI_Model {
         $i = 0;
         foreach($autores as $autor->idEntidade){
             $autor_faixa = array(
-                'idFaixa_Video' => $faixa_id,
+                'idFaixa' => $faixa_id,
                 'idEntidade' => $autor->idEntidade,
                 'percentual' => $perc_autores[$i]
             );
@@ -159,7 +159,7 @@ class Faixas_Videos_model extends CI_Model {
         $i = 0;
         foreach($produtores as $produtor->idEntidade){
             $produtor_faixa = array(
-                'idFaixa_Video' => $faixa_id,
+                'idFaixa' => $faixa_id,
                 'idEntidade' => $produtor->idEntidade,
                 'percentual' => $perc_produtores[$i]
             );

@@ -51,7 +51,7 @@ table.dataTable thead th.ui-state-default:last-child {
   border-right-width: 1px;
 }
 table.dataTable tbody tr {
-  background-color: #ffffff;
+  background-color: transparent;
 }
 table.dataTable tbody tr.selected {
   background-color: #B0BED9;
@@ -59,6 +59,7 @@ table.dataTable tbody tr.selected {
 table.dataTable tbody th,
 table.dataTable tbody td {
   padding: 8px 10px;
+  line-height: 2;
 }
 table.dataTable th.center,
 table.dataTable td.center,

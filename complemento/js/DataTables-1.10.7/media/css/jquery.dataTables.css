@@ -23,7 +23,7 @@ table.dataTable tfoot th {
 table.dataTable thead th,
 table.dataTable thead td {
     padding: 10px 18px;
-    border-bottom: 1px solid #111;
+    border-bottom: 1px solid #999;
 }
 
 table.dataTable thead th:active,
@@ -74,7 +74,7 @@ table.dataTable thead .sorting_desc_disabled {
 }
 
 table.dataTable tbody tr {
-    background-color: #ffffff;
+    background-color: transparent;
 }
 
 table.dataTable tbody tr.selected {
@@ -84,6 +84,7 @@ table.dataTable tbody tr.selected {
 table.dataTable tbody th,
 table.dataTable tbody td {
     padding: 8px 10px;
+    line-height: 2;
 }
 
 table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td {
@@ -216,7 +217,7 @@ table.dataTable.display tbody tr:hover.selected > .sorting_3, table.dataTable.or
 }
 
 table.dataTable.no-footer {
-    border-bottom: 1px solid #111;
+    border-bottom: 1px solid #999;
 }
 
 table.dataTable.nowrap th, table.dataTable.nowrap td {
@@ -499,7 +500,7 @@ table.dataTable td {
 }
 
 .dataTables_wrapper.no-footer .dataTables_scrollBody {
-    border-bottom: 1px solid #111;
+    border-bottom: 1px solid #999;
 }
 
 .dataTables_wrapper.no-footer div.dataTables_scrollHead table,
