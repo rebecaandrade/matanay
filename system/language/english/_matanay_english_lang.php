@@ -174,6 +174,7 @@ $lang['nao_ha_entidades']='There are no entitys registered!';
 $lang['nao_ha_favorecidos']='There are no favoreds registered!';
 $lang['nao_ha_impostos']='There are no taxes registered!';
 $lang['descricao_entidade'] = "Description";
+$lang['classPercent']="percentage";
 
 
 //IMPOSTO JADIEL
