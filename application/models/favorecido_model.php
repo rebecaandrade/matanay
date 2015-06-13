@@ -14,11 +14,14 @@ class Favorecido_model extends CI_Model{
 
 	public function buscar_favorecidos($qtde=0, $inicio=0){
 		if($qtde > 0) $this->db->limit($qtde, $inicio);
-        return $this->db->get('entidade');
+        return $this->db->get('favorecido');
 	}
 	public function buscar_favorecido(){
-		$query=$this->db->query("SELECT * FROM favorecido");
-            return $query->result();
+	$this->db->select("*")->from("favorecido");
+	$this->db->join("tipo_favorecido","tipo_favorecido.idTipo_Favorecido=favorecido.idTipo_Favorecido");
+	$this->db->where("excluido", null);
+	$dados=$this->db->get()->result();
+	return $dados;
 	}
 	public function atualizar_favorecido($favorecido){
 		$this->db->where('idFavorecido',$favorecido['idFavorecido']);

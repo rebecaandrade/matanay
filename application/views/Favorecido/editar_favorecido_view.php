@@ -43,34 +43,34 @@ $this->load->view('_include/header') ?>
         <?php } ?>
         <div class="row">
             <div class="input-field col s12 m6 l4 offset-l2">
-                <label><?php echo $this->lang->line('telefone'); ?>:</label>
+                <label><?php echo $this->lang->line('telefone'); ?></label>
                 <input id="telefone" maxlength="14" class="telefone" value="<?php echo $telefone1->numero; ?>"
                        name="telefone1" required type="text"/>
             </div>
             <div class="input-field col s12 m6 l4">
-                <label><?php echo $this->lang->line('telefone_alternativo'); ?>:</label>
+                <label><?php echo $this->lang->line('telefone_alternativo'); ?></label>
                 <input id="telefone1" maxlength="14" id="telefone1" value="<?php echo $telefone2->numero; ?>"
                        name="telefone2" required type="text"/>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12 m6 l4 offset-l2">
-                <label><?php echo $this->lang->line('contato'); ?>:</label>
+                <label><?php echo $this->lang->line('contato'); ?></label>
                 <input value="<?php echo $dadosfavorecido->contato; ?>" name="contato" required type="text"/>
             </div>
             <div class="input-field col s12 m6 l4">
-                <label><?php echo $this->lang->line('email'); ?>:</label>
+                <label><?php echo $this->lang->line('email'); ?></label>
                 <input value="<?php echo $dadosfavorecido->email; ?>" name="email" required type="email"/>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12 m6 l4 offset-l2">
-                <label><?php echo $this->lang->line('percentual_fisico'); ?>:</label>
+                <label><?php echo $this->lang->line('percentual_fisico'); ?></label>
                 <input value="<?php echo $dadosfavorecido->percentual_fisico; ?>" name="percentual_fisico" required
                        type="text"/>
             </div>
             <div class="input-field col s12 m6 l4">
-                <label><?php echo $this->lang->line('percentual_digital'); ?>:</label>
+                <label><?php echo $this->lang->line('percentual_digital'); ?></label>
                 <input value="<?php echo $dadosfavorecido->percentual_digital; ?>" name="percentual_digital" required
                        type="text"/>
             </div>
@@ -78,9 +78,8 @@ $this->load->view('_include/header') ?>
         <div class="row">
             <div class="input-field col s12 m12 l8 offset-l2">
                 <select name="identificacao">
-                    <option value="" disabled selected> <?php echo $this->lang->line('selecione'); ?>
-                        (<?php echo $this->lang->line('atual'); ?>
-                        : <?php echo $this->lang->line($dadosidentificacao->descricao); ?>)
+                    <option value="" disabled selected> <?php echo $this->lang->line('selecione'), ' ';
+                    echo '(',$this->lang->line('atual'),': '; echo $this->lang->line($dadosidentificacao->descricao),')'; ?>
                     </option>
                     <option value=1><?php echo $this->lang->line('artista'); ?></option>
                     <option value=2><?php echo $this->lang->line('autor'); ?></option>
@@ -92,19 +91,19 @@ $this->load->view('_include/header') ?>
         </div>
         <div class="row">
             <div class="input-field col s12 m12 l8 offset-l2">
-                <label><?php echo $this->lang->line('banco'); ?>:</label>
+                <label><?php echo $this->lang->line('banco'); ?></label>
                 <input value="<?php echo $dadosfavorecido->banco; ?>" name="banco" required type="text"/>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12 m12 l8 offset-l2">
                 <input value="<?php echo $dadosfavorecido->conta; ?>" name="conta" required type="text"/>
-                <label><?php echo $this->lang->line('conta'); ?>:</label>
+                <label><?php echo $this->lang->line('conta'); ?></label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12 m12 l8 offset-l2">
-                <label><?php echo $this->lang->line('agencia'); ?>:</label>
+                <label><?php echo $this->lang->line('agencia'); ?></label>
                 <input value="<?php echo $dadosfavorecido->agencia; ?>" name="agencia" required type="text"/>
             </div>
         </div>

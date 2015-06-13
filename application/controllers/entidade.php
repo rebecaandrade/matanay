@@ -101,20 +101,21 @@ class Entidade extends CI_Controller
     {
         // passa a validacao do formulario, caso esteja tudo OK ele entra no IF
         if (($info = $this->valida_cadastro_entidade()) != NULL) {
+
             //se for favorecido coloca no banco o que eh pego no form sobre favorecido
             if ($info['favorecido']) {
                 $favorecido = $this->gera_facorecido($info);
                 //insere o favorecido no banco
                 $id_entidade = $this->Favorecido_model->cadastrar_favorecido($favorecido);//coloca os telefones
-                $telefone = $this->gera_telefone($id_entidade, $info['telefone1']);
+                $telefone = $this->gera_telefone1($id_entidade, $info['telefone1']);
                 $this->Favorecido_model->cadastrar_telefone($telefone);//coloca os telefones
-                $telefone = $telefone = $this->gera_telefone($id_entidade, $info['telefone2']);
+                $telefone = $telefone = $this->gera_telefone1($id_entidade, $info['telefone2']);
                 $this->Favorecido_model->cadastrar_telefone($telefone);
                 //coloca mensagem de sucesso na session
                 $this->session->set_userdata('mensagem', '=)');
                 $this->session->set_userdata('subtitulo_mensagem', 'Cadastro Realizado com succeso');
                 $this->session->set_userdata('tipo_mensagem', 'success');
-                redirect('Entidade/listar');
+                redirect('Favorecido/listar');
             } //se nao for favorecido segue o codigo
             else {
                 $entidade = $this->gera_entidade($info);
@@ -152,7 +153,7 @@ class Entidade extends CI_Controller
             'idFavorecido' => $info['favorecido_relacionado'],
             'percentual_digital' => $info['porcentagemganhodigital'],
             'percentual_fisico' => $info['porcentagemganhofisico'],
-            'idTipo_Entidade' => $info['identificacao']
+            'idTipo_Favorecido' => $info['identificacao']
         );
     }
 
@@ -168,6 +169,14 @@ class Entidade extends CI_Controller
             'percentual_digital' => $info['porcentagemganhodigital'],
             'percentual_fisico' => $info['porcentagemganhofisico'],
             'idTipo_Entidade' => $info['identificacao']
+        );
+    }
+
+    public function gera_telefone1($id, $telefone)
+    {
+        return array(
+            'idFavorecido' => $id,
+            'numero' => $telefone
         );
     }
 
@@ -192,7 +201,6 @@ class Entidade extends CI_Controller
         $this->form_validation->set_rules('identificacao', 'identificacao', 'required|max_length[45]');
         $this->form_validation->set_rules('telefone1', 'telefone1', 'required|max_length[45]');
         $this->form_validation->set_rules('telefone2', 'telefone2', 'required|max_length[45]');
-
         // passa a validacao dos campos e caso esteja tudo OK ele entra no IF
         if ($this->form_validation->run()) {
             $info = $this->input->post();

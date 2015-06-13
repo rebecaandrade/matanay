@@ -2,45 +2,38 @@
 
 $this->load->view('_include/header') ?>
 
-
-<!--<div class="aviso_entidade"><?php if ($this->session->flashdata('sucesso') != null) {
-    echo $this->session->flashdata('sucesso');
-} ?></div class="row">-->
 <div class="container">
 
     <div class="row">
-        <?php echo form_open('/Favorecido/cadastrar') ?>
+        <form id="myForm" action="<?= base_url() . 'index.php/Favorecido/cadastrar' ?>" method="post">
         <?php if (isset($variavel)) {
             echo $variavel;
         } ?>
         <div class="row">
-            <div class="aviso_entidade"><?php if ($this->session->flashdata('sucesso') != null) {
-                    echo $this->lang->line($this->session->flashdata('sucesso'));
-                } ?></div>
-            <div class="aviso_entidade"><?php if ($this->session->flashdata('aviso') != null) {
-                    echo $this->lang->line($this->session->flashdata('aviso'));
-                } ?></div>
             <div class="input-field col s12 m12 l8 offset-l2">
                 <i class="mdi-action-perm-identity prefix"></i>
-                <input id="icon-prefix" required type="text" value="" name="nomeentidade">
+                <input id="icon-prefix" required type="text" value="" name="nomefavorecido">
                 <label><?php echo $this->lang->line('nome_favorecido'); ?></label>
             </div>
         </div>
         <div class="row"><!--a paradinha de dizer se eh CPF ou CNPJ-->
-            <div class="input-field col s12 m12 l8 offset-l2">
-                <label>CPF/CNPJ</label>
-                <input required type="text" value="" name="cpf_cnpj">
+            <div id="cpfCadastre" class="input-field col s12 m9 l8 offset-l2">
+                <label>CPF</label>
+                <input id="cpfCadastreInput" class="cpfCadastreInput" type="text" name="cpf">
             </div>
+            <div style="display: none" id="cnpjCadastre" class="input-field col s12 m9 l8 offset-l2">
+                <label>CNPJ</label>
+                <input id="cnpjCadastreInput" class="cnpjCadastreInput" type="text" name="cnpj" >
+            </div>
+            <input id="cpf_cnpj" type="hidden" name="cpf_cnpj">
             <div class="switch col s6 offset-s6 m3 l2">
                 <p>
-                    <input type="radio" value="cpf" name="cpf/cnpj" id="test1"/>
+                    <input type="radio" value="cpf" checked name="cpf/cnpj" id="test1"/>
                     <label for="test1">CPF</label>
-
                     <input type="radio" value="cpnj" name="cpf/cnpj" id="test2"/>
                     <label for="test2">CNPJ</label>
                 </p>
             </div>
-
         </div>
         <div class="row">
             <div class="input-field col s12 m6 l4 offset-l2">

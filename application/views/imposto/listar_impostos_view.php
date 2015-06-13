@@ -1,8 +1,8 @@
 <?php /*FEITO POR MIM JADIEL*/
 $this->load->view('_include/header') ?>
-    <br><br>
-    <div class="container">
-        <div id="titulo_lista">
+<br>
+<div class="container">
+        <div class="row" id="titulo_lista">
             <i class="mdi-content-content-paste"></i>
             <?php echo $this->lang->line('imposto'); ?>
             <a href="<?php echo base_url(); ?>index.php/imposto/mostrar_cadastro"
@@ -15,7 +15,7 @@ $this->load->view('_include/header') ?>
         <br>
         <?php echo $this->lang->line('entitys'); ?>
         <?php if ($dadoimposto != NULL) { ?>
-            <table id="tabela_listagem">
+            <table id="myTable" class="hoverable bordered">
                 <thead>
                 <tr>
                     <th>   <?php echo $this->lang->line('imposto_nome'); ?>  </th>

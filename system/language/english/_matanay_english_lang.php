@@ -65,9 +65,9 @@ $lang['form_error_decimal_num']			= 'the {field} field must contain a number';
 ////// ALERTAS SISTEMA
 
 $lang['nada_encontrado']			= 'Nothing found.';
-$lang['atualizado_sucesso']			= 'Update successful!';
-$lang['cadastrado_sucesso']			= 'Register successful!';
-$lang['excluido_sucesso']			= 'Deletion successful!';
+$lang['atualizado_sucesso']			= 'Updated successfully!';
+$lang['cadastrado_sucesso']			= 'Registered successfully!';
+$lang['excluido_sucesso']			= 'Deleted successfully!';
 $lang['acesso_negado']				= 'Undue access';
 $lang['permissao_insuficiente']		= 'No authorization to execute this action';
 $lang['confirmar_deletar']			= 'Do you wish to delete this?';
