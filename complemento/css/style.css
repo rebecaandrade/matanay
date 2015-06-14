@@ -150,6 +150,12 @@ html {
     color: #FF0 !important;
 }
 
+#tracklist label {
+	top: -14px;
+	font-size: 0.8rem;
+	color: #777;
+}
+
 #sub_barra {
     height: 35px;
     background-color: #777;

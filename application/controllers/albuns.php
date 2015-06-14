@@ -47,22 +47,11 @@ class Albuns extends CI_Controller {
 	}
 
 	public function listar(){
-		$this->load->library('pagination');
-        $config['base_url'] = base_url('index.php/albuns/listar');
-        $config['total_rows'] = $this->albuns_model->buscar_albuns()->num_rows();
-        $config['uri_segment'] = 3;
-        $config['per_page'] = 5;
-
-        $qtde = $config['per_page'];
-        ($this->uri->segment(3) != '') ? $inicio = $this->uri->segment(3) : $inicio = 0;
-        $this->pagination->initialize($config);
-
         $dados = array(
-            'albuns' => $this->albuns_model->buscar_albuns($qtde, $inicio)->result(),
+            'albuns' => $this->albuns_model->buscar_albuns()->result(),
             'artistas' => $this->albuns_model->buscar_artistas(),
             'entidades' => $this->albuns_model->buscar_entidades(),
-            'tipos' => $this->albuns_model->buscar_tipos(),
-            'paginas' => $this->pagination->create_links()
+            'tipos' => $this->albuns_model->buscar_tipos()
         );
 
 		$this->load->view('albuns/lista_albuns', $dados);

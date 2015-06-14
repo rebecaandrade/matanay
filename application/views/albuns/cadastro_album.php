@@ -73,4 +73,41 @@
     </div>
 </div>
 
+<script>
+	$(document).ready(function () {
+		$("#n_faixas").change(function() {
+
+		var n_faixas = $('input[name=n_faixas]').val();
+		var faixas = $.parseJSON(<?php print json_encode(json_encode($faixas)); ?>);
+
+		var number = document.getElementById("n_faixas").value;
+	        // Container <div> where dynamic content will be placed
+	    var container = document.getElementById("tracklist");
+	        // Clear previous contents of the container
+	    while (container.hasChildNodes()) {
+	        container.removeChild(container.lastChild);
+	    }
+
+		var counter = 1;
+
+			for(counter = 1; counter <= n_faixas; counter++){
+	    		$('#tracklist').append('<div class="row"><div class="input-field col s12 m12 l8 offset-l2">' +
+	                '<select id="select_faixas' + counter + '" class="autocomplete browser-default" name="faixas[]">' +
+	                '<option value="" disabled selected><?php echo $this->lang->line("selecione");?></option>' +
+	                '</select><label><?php echo $this->lang->line("faixa");?></label></div></div>');
+	    	
+	    		$.each(faixas, function(idFaixa, nome){
+            		$('#select_faixas' + counter).append($("<option>",{
+                  		value: nome.idFaixa,
+                  		text: nome.nome
+            		}));
+      			}); 
+            
+	   
+			$("#select_faixas" + counter).chosen();
+			}
+	    });
+	});
+</script>
+
 <?php $this->load->view('_include/footer') ?>
