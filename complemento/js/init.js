@@ -57,6 +57,7 @@ $(document).ready(function () {
     });
 });
 
+
 $(document).ready(function () {
     $('input[type="checkbox"]').change(function () {
         if ($(this).attr("value") == "1") {
@@ -73,6 +74,25 @@ $(document).ready(function () {
 $(document).ready(function () {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
+});
+
+
+$(document).ready(function () {
+    $("#n_faixas").change(function() {
+        // Number of inputs to create
+        var number = document.getElementById("n_faixas").value;
+        // Container <div> where dynamic content will be placed
+        var container = document.getElementById("tracklist");
+        // Clear previous contents of the container
+        while (container.hasChildNodes()) {
+            container.removeChild(container.lastChild);
+        }
+        for (i=0, j=1;i<number;i++,j++){
+            $('#tracklist').append('<div class="row"><div class="input-field col s12 m12 l8 offset-l2">' +
+                '<input required type="text" id="faixas" name="faixas[]">' +
+                '<label>Faixa ' + j + ' </label></div></div>');
+        }
+    });
 });
 
 

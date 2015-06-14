@@ -109,7 +109,7 @@ $lang['nao_ha_faixas']		= 'Não há faixas cadastradas!';
 
 ////// ALBUMS 
 
-$lang['n_faixas'] 			= 'Nº Faixas';
+$lang['n_faixas'] 			= 'Número de Faixas';
 $lang['catalogo'] 			= 'Cod. Catálogo';
 $lang['lancamento'] 		= 'Ano de Lançamento';
 $lang['ano'] 				= 'Ano';

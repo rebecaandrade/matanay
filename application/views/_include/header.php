@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Matanay</title>
-    <link rel="stylesheet" type="text/css"
-          href="<?php echo base_url(); ?>complemento/js/sweetalert/lib/sweet-alert.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>complemento/js/sweetalert/lib/sweet-alert.css">
     <link href="<?php echo base_url(); ?>complemento/img/favicon.png" rel="shortcut icon" type="image/x-icon"/>
     <link href="<?php echo base_url(); ?>complemento/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>complemento/css/materialize.css" rel="stylesheet">
