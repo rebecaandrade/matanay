@@ -257,13 +257,12 @@ class Entidade extends CI_Controller
         redirect('Entidade/listar');
     }
 
-    public function camposatualizacao()
+    public function camposatualizacao($id = -1)
     {
-        if ($this->session->flashdata('id') != null) {
-            $id = $this->session->flashdata('id');
-        } else
-            $id = $this->input->get('id');
-        if ($id == null)
+        //die(var_dump($this->input->post()));
+        if ($this->input->post('oneInput') != null) {
+            $id = $this->input->post('oneInput');
+        } else if ($id == -1)
             redirect('entidade/listar');
         $dados['dadosentidade'] = $this->Entidade_model->buscar_entidade_especifica($id);
         $dados["dadosfavorecido"] = $this->Favorecido_model->buscar_favorecido();
@@ -273,66 +272,102 @@ class Entidade extends CI_Controller
         $dados['telefone2'] = $this->Entidade_model->buscar_telefone_especifico($id, $rowtelefone);
         $dados_auxiliar = $this->Entidade_model->buscar_entidade_especifica($id);//utilizado para passar o idTipo_entidade para a busca de identificacao na tabela tipo_entidade
         $dados['dadosidentificacao'] = $this->Entidade_model->buscar_identificacao_especifica($dados_auxiliar->idTipo_Entidade);
+        //die(var_dump($dados));
         $this->load->view('Entidade/editar_entidade_view', $dados);
 
     }
 
+    public function valida_atualizacao_entidade()
+    {
+        $this->form_validation->set_rules('nome', 'nome', 'required|max_length[45]');
+        $this->form_validation->set_rules('cpf_cnpj', 'cpf_cnpj', 'required|max_length[18]|min_length[11]');
+        $this->form_validation->set_rules('telefone1', 'telefone1', 'required|max_length[45]');
+        $this->form_validation->set_rules('telefone2', 'telefone2', 'required|max_length[45]');
+        $this->form_validation->set_rules('contato', 'contato', 'required|max_length[45]');
+        $this->form_validation->set_rules('email', 'email', 'required|max_length[45]|valid_email');
+        $this->form_validation->set_rules('percentual_fisico', 'percentual_fisico', 'required|max_length[45]');
+        $this->form_validation->set_rules('percentual_digital', 'percentual_digital', 'required|max_length[45]');
+        $this->form_validation->set_rules('relacao_favorecido', 'relacao_favorecido', 'required|max_length[45]');
+        $this->form_validation->set_rules('identificacao', 'identificacao', 'required|max_length[45]');
+        $info = $this->input->post();
+
+        if ($this->form_validation->run()) {
+            if (isset($info['cpf'])) {
+                // faz a validacao do CPF
+                if ($this->validar_cpf($info['cpf_cnpj']) == FALSE) {
+                    //caso nao seja um cpf valido, é gerada uma mensagem de erro na tela
+                    $this->session->set_userdata('mensagem', 'Problemas no Formulário');
+                    $this->session->set_userdata('subtitulo_mensagem', 'CPF Inválido');
+                    $this->session->set_userdata('tipo_mensagem', 'error');
+                    redirect('Entidade/mostrar_cadastro');
+                } else {
+                    $info['cpf'] = $info['cpf_cnpj'];
+                    $info['cnpj'] = NULL;
+                }
+
+            } else {
+                //faz a validacao do CNPJ
+                if ($this->validar_cpnj($info['cpf_cnpj']) == FALSE) {
+                    $this->session->set_userdata('mensagem', 'Problemas no Formulário');
+                    $this->session->set_userdata('subtitulo_mensagem', 'CNPJ Inválido');
+                    $this->session->set_userdata('tipo_mensagem', 'error');
+                    redirect('Entidade/mostrar_cadastro');
+                } else {
+                    $info['cpf'] = NULL;
+                    $info['cnpj'] = $info['cpf_cnpj'];
+                }
+            }
+            return $info;
+        } else {
+            //caso haja problema com o formulario é mostrada uma mensagem de erro
+            $this->session->set_userdata('mensagem', 'Problemas no Formulário');
+            $this->session->set_userdata('subtitulo_mensagem', 'Alguns campos foram preenchidos incorretaente');
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            //$this->camposatualizacao($info['i'])
+            die;
+        }
+    }
+
     public function atualizar()
     {
-        //TESTE DOS CAMPOS, Sim, estupido para caralho, deve ter outro jeito para fazer isso, mais estou sem tempo
-        if (($this->input->post('nome') == null) || ($this->input->post('contato') == null) || ($this->input->post('email') == null) || ($this->input->post('percentual_digital') == null) || ($this->input->post('percentual_fisico') == null) || ($this->input->post('identificacao') == null) || ($this->input->post('telefone1') == null) || ($this->input->post('telefone2') == null)) {
-            $this->session->set_flashdata('aviso', 'campo_vazio');
-            $this->session->set_flashdata('id', $this->input->post('idEntidade'));
-            redirect('Entidade/listar');
+        if (($info = $this->valida_atualizacao_entidade()) != NULL) {
+
+            $entidade = $this->gera_atualizacao_entidade($info);
+            //die(var_dump($entidade));
+            $this->Entidade_model->atualizar_entidade($entidade);
+            $telefone1 = $this->gera_atualizacao_telefone($info['idtelefone1'], $info['telefone1']);
+            $this->Entidade_model->atualizar_telefone($telefone1);//coloca os telefones
+            $telefone2 = $this->gera_atualizacao_telefone($info['idtelefone2'], $info['telefone2']);
+            $this->Entidade_model->atualizar_telefone($telefone2);
+            $this->session->set_userdata('mensagem', '=)');
+            $this->session->set_userdata('subtitulo_mensagem', 'Entidade atualizada com succeso');
+            $this->session->set_userdata('tipo_mensagem', 'success');
+            $this->listar();
         }
+    }
 
-        if ($this->input->post('cpf/cnpj') == "cpf") {
-
-            $validade_cpf = $this->validar_cpf($this->input->post('cpf_cnpj'));
-            if ($validade_cpf == FALSE) {
-                $this->session->set_flashdata('aviso', 'cpf_invalido');
-                $this->session->set_flashdata('id', $this->input->post('idEntidade'));
-                redirect('Entidade/listar');
-            }
-        }
-        if ($this->input->post('cpf/cnpj') == "cpnj") {
-            $validade_cnpj = $this->validar_cpnj($this->input->post('cpf_cnpj'));
-            if ($validade_cnpj == FALSE) {
-                $this->session->set_flashdata('aviso', 'cnpj_invalido');
-                $this->session->set_flashdata('id', $this->input->post('idEntidade'));
-                redirect('Entidade/listar');
-
-            }
-        }
-
-        $entidade = array(//recebe do form as informacoes da entidade
-            'idEntidade' => $this->input->post('idEntidade'),
-            'nome' => $this->input->post('nome'),
-            'cpf' => $this->input->post('cpf'),
-            'cnpj' => $this->input->post('cnpj'),
-            'contato' => $this->input->post('contato'),
-            'email' => $this->input->post('email'),
-            'percentual_digital' => $this->input->post('percentual_digital'),
-            'percentual_fisico' => $this->input->post('percentual_fisico'),
-            'idTipo_Entidade' => $this->input->post('identificacao'),
-            'idFavorecido' => $this->input->post('relacao_favorecido')
+    public function gera_atualizacao_entidade($info)
+    {
+        return array(
+            'idEntidade' => $info['idEntidade'],
+            'nome' => $info['nome'],
+            'cpf' => $info['cpf'],
+            'cnpj' => $info['cnpj'],
+            'contato' => $info['contato'],
+            'email' => $info['email'],
+            'percentual_digital' => $info['percentual_digital'],
+            'percentual_fisico' => $info['percentual_fisico'],
+            'idTipo_Entidade' => $info['identificacao'],
+            'idFavorecido' => $info['relacao_favorecido']
         );
-        $id_entidade = $this->input->post('idEntidade');//coloca os telefones
-        $this->Entidade_model->atualizar_entidade($entidade);
-        $telefone1 = array(
-            'idTelefone' => $this->input->post('idtelefone1'),
-            'idEntidade' => $id_entidade,
-            'numero' => $this->input->post('telefone1')
+    }
+
+    public function gera_atualizacao_telefone($id,$numero)
+    {
+        return array(
+            'idTelefone' => $id,
+            'numero' => $numero,
         );
-        $this->Entidade_model->atualizar_telefone($telefone1);//coloca os telefones
-        $telefone2 = array(
-            'idTelefone' => $this->input->post('idtelefone2'),
-            'idEntidade' => $id_entidade,
-            'numero' => $this->input->post('telefone2')
-        );
-        $this->Entidade_model->atualizar_telefone($telefone2);
-        $sucesso = "Atualizacao realizado com sucesso!!";
-        $this->listar();
     }
 
     public function validar_cpf($cpf)

@@ -1,7 +1,4 @@
-<?php /*FEITO POR MIM, JADIEL*/
-
-$this->load->view('_include/header') ?>
-
+<?php $this->load->view('_include/header') ?>
     <div id="wrapper-body">
         <div id="titulo_lista">
             <div class="row">
@@ -32,9 +29,9 @@ $this->load->view('_include/header') ?>
                             <td><?= $entidade->nome ?></td>
                             <td><?= ($entidade->cpf == NULL ? $entidade->cnpj : $entidade->cpf) ?></td>
                             <td><?= $entidade->descricao ?></td>
-                            <td><a id="acao"
-                                   href="<?= base_url() . 'index.php/Entidade/camposatualizacao?id=' . $entidade->idEntidade ?>"><?php echo $this->lang->line('editar'); ?></a>
-                                | <a id="acao" class="deletarLink"
+                            <td><a class="acao"
+                                   onclick=" passaParamentro('<?= $entidade->idEntidade ?>','<?=base_url()?>')"><?php echo $this->lang->line('editar'); ?></a>
+                                | <a class="deletarLink"
                                      onclick="excluirEntidade('<?= base_url() . 'index.php/entidade/deletar/' . $entidade->idEntidade ?>')"><?php echo $this->lang->line('deletar') ?> </a>
                             </td>
                         </tr>
@@ -42,8 +39,10 @@ $this->load->view('_include/header') ?>
                 } ?>
                 </tbody>
             </table>
+            <form id="sendUserToEdit" method="post">
+                <input id="editarEntInput" type="hidden" name="oneInput">
+                <input id="submitAcao" type="submit" style="display: none">
+            </form>
         </div>
-
     </div>
-
 <?php $this->load->view('_include/footer') ?>

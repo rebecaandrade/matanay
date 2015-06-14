@@ -194,6 +194,33 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#cnpjCadastreInput').mask("00.000.000/0000-00");
 });
+$(document).ready(function () {
+    $('.percentage').mask("00.00%",{reverse: true});
+});
+$(document).ready(function () {
+    $('.porcentagem').mask("00,00%",{reverse: true});
+})
+
+$(document).ready(function(){
+    $('#updateFormEntidade').submit(function(){
+        var $cpf = $('#cpfUpdate').val();
+        var $cnpj = $('#cnpjUpdate').val();
+        var $cpf_cnpj = null;
+        if($cpf != null){
+            $cpf_cnpj = $cpf;
+        }else{
+            $cpf_cnpj = $cnpj;
+        }
+        $('#cppjUpdate').prop('value',$cpf_cnpj);
+    });
+});
+
+/************ editar entidade submit para nao haver passagem de parametro pela url */
+function passaParamentro(param,url){
+    $('#editarEntInput').prop('value',param);
+    $('#sendUserToEdit').prop('action',url+"index.php/entidade/camposatualizacao");
+    $('#sendUserToEdit').submit();
+}
 
 
 /*************************  dataTables   **************************************************/
