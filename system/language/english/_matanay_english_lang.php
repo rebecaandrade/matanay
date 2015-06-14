@@ -108,6 +108,7 @@ $lang['compositores'] 		= 'Writers';
 $lang['produtor'] 			= 'Producer';
 $lang['produtores'] 		= 'Producers';
 $lang['nao_ha_faixas']		= 'There are no tracks registered!';
+$lang['participacao']		= 'Track Participation';
 
 ////// ALBUNS 
 

@@ -45,8 +45,8 @@
 	            	<label><?php echo $this->lang->line("artista");?></label>
 				</div>
 				<div class="input-field col s12 m2 l2">
-	            	<input name="percentual_artista[]" type="text">
-	            	<label>%</label>
+	            	<input class="<?= $this->lang->line('classPercent') ?>" name="percentual_artista[]" type="text">
+	            	<label><?php echo $this->lang->line('participacao');?></label>
 	          	</div>
 				<a class="btn-floating btn-medium waves-effect waves-light btn tooltipped" 
 					data-position="right" data-delay="50" data-tooltip="Adicionar" id="addArtista"><i class="mdi-content-add"></i></a>
@@ -67,8 +67,8 @@
 	            	<label><?php echo $this->lang->line('autor');?></label>
 	          	</div>
 	          	<div class="input-field col s12 m2 l2">
-	            	<input name="percentual_autor[]" type="text">
-	            	<label>%</label>
+	            	<input class="<?= $this->lang->line('classPercent') ?>" name="percentual_autor[]" type="text">
+	            	<label><?php echo $this->lang->line('participacao');?></label>
 	          	</div>
 	          	<a class="btn-floating btn-medium waves-effect waves-light btn tooltipped" 
 					data-position="right" data-delay="50" data-tooltip="Adicionar" id="addAutor"><i class="mdi-content-add"></i></a>
@@ -89,8 +89,8 @@
 	            	<label><?php echo $this->lang->line('produtor');?></label>
 	          	</div>
 	          	<div class="input-field col s12 m2 l2">
-	            	<input name="percentual_produtor[]" type="text">
-	            	<label>%</label>
+	            	<input class="<?= $this->lang->line('classPercent') ?>" name="percentual_produtor[]" type="text">
+	            	<label><?php echo $this->lang->line('participacao');?></label>
 	          	</div>
 	          	<a class="btn-floating btn-medium waves-effect waves-light btn tooltipped" 
 					data-position="right" data-delay="50" data-tooltip="Adicionar" id="addProdutor"><i class="mdi-content-add"></i></a>

@@ -93,7 +93,7 @@ $lang['faixas'] 			= 'FAIXAS';
 $lang['albums'] 			= 'ÁLBUNS';
 $lang['entidades'] 			= 'ENTIDADES';
 $lang['favorecido']			= 'FAVORECIDOS';
-$lang['imposto']			= 'IMPOSTO';
+$lang['imposto']			= 'IMPOSTOS';
 
 ////// FAIXAS 
 
@@ -106,6 +106,7 @@ $lang['compositores'] 		= 'Compositores';
 $lang['produtor'] 			= 'Produtor';
 $lang['produtores'] 		= 'Produtores';
 $lang['nao_ha_faixas']		= 'Não há faixas cadastradas!';
+$lang['participacao']		= 'Participação na Faixa';
 
 ////// ALBUMS 
 

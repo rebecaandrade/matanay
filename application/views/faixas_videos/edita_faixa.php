@@ -42,9 +42,9 @@
                                 </select>
                                 <label><?php echo $this->lang->line("artista");?></label>
                             </div>
-                            <div class="input-field col s12 m2 l1">
-                                <input name="percentual_artista[]" type="text" value="<?php echo $entidade['percentual']; ?>">
-                                <label>%</label>
+                            <div class="input-field col s12 m2 l2">
+                                <input class="<?= $this->lang->line('classPercent') ?>" name="percentual_artista[]" type="text" value="<?php echo $entidade['percentual']; ?>">
+                                <label><?php echo $this->lang->line('participacao');?></label>
                             </div>
                             <?php if($j==0) { ?>
                                 <a class="btn-floating btn-medium waves-effect waves-light btn tooltipped" 
@@ -74,9 +74,9 @@
                             </select>
                             <label><?php echo $this->lang->line("artista");?></label>
                         </div>
-                        <div class="input-field col s12 m2 l1">
-                            <input name="percentual_artista[]" type="text">
-                            <label>%</label>
+                        <div class="input-field col s12 m2 l2">
+                            <input class="<?= $this->lang->line('classPercent') ?>" name="percentual_artista[]" type="text">
+                            <label><?php echo $this->lang->line('participacao');?></label>
                         </div>
                         <a class="btn-floating btn-medium waves-effect waves-light btn tooltipped" 
                             data-position="right" data-delay="50" data-tooltip="Adicionar" id="addArtista"><i class="mdi-content-add"></i></a>
@@ -107,9 +107,9 @@
                                 </select>
                                 <label><?php echo $this->lang->line('autor');?></label>
                             </div>
-                            <div class="input-field col s12 m3 l1">
-                                <input name="percentual_autor[]" type="text" value="<?php echo $entidade['percentual']; ?>">
-                                <label>%</label>
+                            <div class="input-field col s12 m3 l2">
+                                <input class="<?= $this->lang->line('classPercent') ?>" name="percentual_autor[]" type="text" value="<?php echo $entidade['percentual']; ?>">
+                                <label><?php echo $this->lang->line('participacao');?></label>
                             </div>
                             <?php if($j==0) { ?>
                                 <a class="btn-floating btn-medium waves-effect waves-light btn tooltipped" 
@@ -139,9 +139,9 @@
                             </select>
                             <label><?php echo $this->lang->line('autor');?></label>
                         </div>
-                        <div class="input-field col s12 m3 l1">
-                            <input name="percentual_autor[]" type="text">
-                            <label>%</label>
+                        <div class="input-field col s12 m3 l2">
+                            <input class="<?= $this->lang->line('classPercent') ?>" name="percentual_autor[]" type="text">
+                            <label><?php echo $this->lang->line('participacao');?></label>
                         </div>
                         <a class="btn-floating btn-medium waves-effect waves-light btn tooltipped" 
                             data-position="right" data-delay="50" data-tooltip="Adicionar" id="addAutor"><i class="mdi-content-add"></i></a>
@@ -172,9 +172,9 @@
                                 </select>
                                 <label><?php echo $this->lang->line('produtor');?></label>
                             </div>
-                            <div class="input-field col s12 m3 l1">
-                                <input name="percentual_produtor[]" type="text" value="<?php echo $entidade['percentual']; ?>">
-                                <label>%</label>
+                            <div class="input-field col s12 m3 l2">
+                                <input class="<?= $this->lang->line('classPercent') ?>" name="percentual_produtor[]" type="text" value="<?php echo $entidade['percentual']; ?>">
+                                <label><?php echo $this->lang->line('participacao');?></label>
                             </div>
                             <?php if($j==0) { ?>
                                 <a class="btn-floating btn-medium waves-effect waves-light btn tooltipped" 
@@ -204,9 +204,9 @@
                             </select>
                             <label><?php echo $this->lang->line('produtor');?></label>
                         </div>
-                        <div class="input-field col s12 m3 l1">
-                            <input name="percentual_produtor[]" type="text">
-                            <label>%</label>
+                        <div class="input-field col s12 m3 l2">
+                            <input class="<?= $this->lang->line('classPercent') ?>" name="percentual_produtor[]" type="text">
+                            <label><?php echo $this->lang->line('participacao');?></label>
                         </div>
                         <a class="btn-floating btn-medium waves-effect waves-light btn tooltipped" 
                             data-position="right" data-delay="50" data-tooltip="Adicionar" id="addProdutor"><i class="mdi-content-add"></i></a>
@@ -236,7 +236,7 @@
             newTextBoxDiv.after().html('<div class="row"><div class="input-field col s11 m9 l7 offset-l2">' +
                 '<select id="select_artista' + counter + '" name="artistas[]"><option value="" disabled selected><?php echo $this->lang->line("selecione");?></option>' +
                 '</select><label><?php echo $this->lang->line("artista");?></label></div>' +
-                '<div class="input-field col s12 m3 l1"><input name="percentual_artista[]" type="text"><label>%</label></div>' +
+                '<div class="input-field col s12 m3 l2"><input name="percentual_artista[]" type="text"><label>%</label></div>' +
                 '<a class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
                 'data-position="right" data-delay="50" data-tooltip="Remover" id="removeArtista"><i class="mdi-content-remove"></i></a></div>');
 
