@@ -75,12 +75,12 @@
 
 <script>
 	$(document).ready(function () {
+
 		$("#n_faixas").change(function() {
 
-		var n_faixas = $('input[name=n_faixas]').val();
 		var faixas = $.parseJSON(<?php print json_encode(json_encode($faixas)); ?>);
 
-		var number = document.getElementById("n_faixas").value;
+		var n_faixas = document.getElementById("n_faixas").value;
 	        // Container <div> where dynamic content will be placed
 	    var container = document.getElementById("tracklist");
 	        // Clear previous contents of the container
@@ -103,11 +103,11 @@
             		}));
       			}); 
             
-	   
-			$("#select_faixas" + counter).chosen();
+				$("#select_faixas" + counter).chosen();
 			}
-	    });
+	    });	
 	});
+
 </script>
 
 <?php $this->load->view('_include/footer') ?>
