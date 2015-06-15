@@ -81,9 +81,5 @@ if (isset($tipos)) {
     </div>
 </div>
 
-<script>
-
-
-</script>
 
 <?php $this->load->view('_include/footer') ?>

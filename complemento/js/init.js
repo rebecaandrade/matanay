@@ -230,11 +230,13 @@ function executaSelect(faixas, selecione) {
     }
 
     for (var count = 0; count < numFaixas; count++) {
+        var myId = "mySelectIs"+count;
+        $('.anotherSelect').chosen();
         $('#tracklist').append(
-            "<div class='input-field col s12 m12 l8 offset-l2'><select class='anotherSelect autocomplete browser-default' name='faixas[]'>" + generateOptions(faixas, selecione) + "</select></div>"
+            "<div class='input-field col s12 m12 l8 offset-l2'><select id='"+myId+"' class='anotherSelect autocomplete browser-default' name='faixas[]'>" + generateOptions(faixas, selecione) + "</select></div>"
         );
+        $(myId).chosen();
     }
-
 }
 function generateOptions(faixas, selecione) {
     var opcoes = "<option value='' disabled selected>" + selecione + "</option>";
@@ -283,9 +285,11 @@ $(function () {
                     if ($(this).val() == optValue)
                         return e
                 }).prop('disabled', true);
+                $('.anotherSelect').trigger("chosen:updated");
             }
         });
     }
+
 });
 /************ editar entidade submit para nao haver passagem de parametro pela url */
 function passaParamentro(param, url) {
