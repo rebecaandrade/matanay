@@ -6,7 +6,7 @@
 				<?php echo form_open('moeda/cadastrar_contrato') ?>
 					<div class="row">
 						<div class="input-field col s12 m9 l8 offset-l1">
-							<i class="mdi-editor-attach-money prefix"></i>	
+							<i class="mdi-action-description prefix"></i>	
 							<input type='text' name='nome' value="<?php echo set_value('nome'); ?>" required>
 							<label><?php echo $this->lang->line('nome'); ?></label>
 						</div>
