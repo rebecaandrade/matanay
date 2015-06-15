@@ -43,7 +43,7 @@
     	redirect('acesso/index');
 	}
 ?>
-<nav class="grey darken-3" role="navigation">
+<nav class="grey lighten-5" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="<?php echo base_url(); ?>index.php/cliente/home"
                                           class="brand-logo">MATANAY</a>
         <ul class="right hide-on-med-and-down">

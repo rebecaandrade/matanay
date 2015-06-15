@@ -6,18 +6,15 @@
     });
 })(jQuery);
 
-
 $(document).ready(function () {
     $('#cadastro').click(function () {
         $("#sub_menu").toggle();
     });
 });
 
-
 $(document).ready(function () {
     $('select').material_select();
 });
-
 
 $(document).ready(function () {
     $('.datepicker').pickadate({
@@ -26,23 +23,19 @@ $(document).ready(function () {
     });
 });
 
-
 $(document).ready(function () {
     $(".button-collapse").sideNav();
 });
 
-
 $(document).ready(function () {
     $(".dropdown-button").dropdown();
 });
-
 
 $(document).ready(function () {
     $('.collapsible').collapsible({
         accordion: false
     });
 });
-
 
 $(document).ready(function () {
     $('input[type="radio"]').click(function () {
@@ -57,7 +50,6 @@ $(document).ready(function () {
     });
 });
 
-
 $(document).ready(function () {
     $('input[type="checkbox"]').change(function () {
         if ($(this).attr("value") == "1") {
@@ -70,36 +62,39 @@ $(document).ready(function () {
     });
 });
 
-
 $(document).ready(function () {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
 });
-
 
 function mascara(o, f) {
     v_obj = o
     v_fun = f
     setTimeout("execmascara()", 1)
 }
+
 function execmascara() {
     v_obj.value = v_fun(v_obj.value)
 }
+
 function mtel(v) {
     v = v.replace(/\D/g, "");
     v = v.replace(/^(\d{2})(\d)/g, "($1) $2");
     v = v.replace(/(\d)(\d{4})$/, "$1-$2");
     return v;
 }
+
 function mtel1(v) {
     v = v.replace(/\D/g, "");
     v = v.replace(/^(\d{2})(\d)/g, "($1) $2");
     v = v.replace(/(\d)(\d{4})$/, "$1-$2");
     return v;
 }
+
 function id(el) {
     return document.getElementById(el);
 }
+
 window.onload = function () {
     id('telefone').onkeypress = function () {
         mascara(this, mtel);
@@ -108,6 +103,7 @@ window.onload = function () {
         mascara(this, mtel1);
     }
 }
+
 var excluirEntidade = function (url) {
     swal({
         title: "Tem Certeza?",
@@ -125,15 +121,18 @@ var excluirEntidade = function (url) {
         }
     });
 }
+
 $(document).ready(function () {
     $('a').css('cursor', 'pointer')
 });
+
 $(document).ready(function () {
     $('#lupa').css('cursor', 'pointer');
     $('#lupa').click(function () {
         $('#linkLupa').click();
     });
 });
+
 $(document).ready(function () {
     $('#test1').click(function () {
         $('#cnpjCadastre').hide();
@@ -143,6 +142,7 @@ $(document).ready(function () {
         $('#cnpjCadastreInput').prop('required', false);
     })
 });
+
 $(document).ready(function () {
     $('#test2').click(function () {
         $('#cpfCadastre').hide();
@@ -152,6 +152,7 @@ $(document).ready(function () {
         $('#cpfCadastreInput').prop('required', false);
     });
 });
+
 $(document).ready(function () {
     $('#myForm').submit(function () {
         var $cpf = $('#cpfCadastreInput').val();
@@ -165,9 +166,11 @@ $(document).ready(function () {
         $('#cpf_cnpj').prop('value', $cpf_cnpj);
     });
 });
+
 $(document).ready(function () {
     $('.cpfCadastreInput').mask("000.000.000-00");
 });
+
 $(document).ready(function () {
     $('#cnpjCadastreInput').mask("00.000.000/0000-00");
 });
@@ -175,9 +178,11 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#cnpjCadastreInput').mask("00.000.000/0000-00");
 });
+
 $(document).ready(function () {
     $('.percentage').mask("00.00%", {reverse: true});
 });
+
 $(document).ready(function () {
     $('.porcentagem').mask("00,00%", {reverse: true});
 })
@@ -195,33 +200,10 @@ $(document).ready(function () {
         $('#cppjUpdate').prop('value', $cpf_cnpj);
     });
 });
-/**************************** a parada do iput select  ********/
-$(document).ready(function () {
-    $('.mySelect').change(function (e) {
-        console.log("vai_SeFUdezou");
-        //generateSelectedAreas();
-    });
-    /*function generateSelectedAreas() {
-     var selectedValues = [];
 
-     //enable all options, otherwise they overlap and cause probl
-     $('.mySelect option').each(function () {
-     $(this).prop('disabled', false);
-     });
-     $('.mySelect option:selected').each(function () {
-     var select = $(this).parent(),
-     optValue = $(this).val();
+/********** select faixas com chosen e função que impede selecionar o mesmo valor 2x **********/
 
-     if ($(this).val() != '') {
-     $('.mySelect').not(select).children().filter(function (e) {
-     if ($(this).val() == optValue)
-     return e
-     }).prop('disabled', true);
-     }
-     });
-     }*/
-});
-function executaSelect(faixas, selecione) {
+function geraSelect(faixas, selecione, label) {
     var numFaixas = $('#n_faixas').val();
     var container = document.getElementById("tracklist");
     // Clear previous contents of the container
@@ -230,76 +212,80 @@ function executaSelect(faixas, selecione) {
     }
 
     for (var count = 0; count < numFaixas; count++) {
-        var myId = "mySelectIs"+count;
-        $('.anotherSelect').chosen();
-        $('#tracklist').append(
-            "<div class='input-field col s12 m12 l8 offset-l2'><select id='"+myId+"' class='anotherSelect autocomplete browser-default' name='faixas[]'>" + generateOptions(faixas, selecione) + "</select></div>"
-        );
-        $(myId).chosen();
+        
+        $('#tracklist').append('<div class="row"><div class="input-field col s12 m12 l8 offset-l2">' +
+                    '<select id="select_faixas' + count + '" class="autocomplete browser-default" name="faixas[]">' +
+                    geraOpcoes(faixas, selecione) + '</select>' +
+                    '<label>' + label + '</label></div></div>');
+
+        $('.autocomplete').chosen();
+        
     }
 }
-function generateOptions(faixas, selecione) {
+
+function geraOpcoes(faixas, selecione) {
     var opcoes = "<option value='' disabled selected>" + selecione + "</option>";
     for (var i = 0; i < faixas.length; i++) {
         opcoes += "<option value=" + faixas[i].idFaixa + ">" + faixas[i].nome + "</option>";
     }
     return opcoes;
 }
-/*function mudaSelect() {
-    console.log("cheguei");
-    var $selects = $('.anotherSelect');
-    //console.log($selects);
-    $('.anotherSelect').change(function () {
-        //console.log("torkei\n");
-        $('option:hidden', $selects).each(function () {
-            var self = this,
-                toShow = true;
-            $selects.not($(this).parent()).each(function () {
-                if (self.value == this.value) toShow = false;
-            })
-            if (toShow) $(this).show();
-        });
-        if (this.value != 0) //to keep default option available
-            $selects.not(this).children('option[value=' + this.value + ']').hide();
-    });
-}*/
+
 $(function () {
-    $(document).on('change', '.anotherSelect', function (e) {
-        generateSelectedAreas();
+    $(document).on('change', '.autocomplete', function (e) {
+        geraFaixasSelecionadas();
     });
 
-    function generateSelectedAreas() {
+    function geraFaixasSelecionadas() {
         var selectedValues = [];
 
-        //enable all options, otherwise they overlap and cause probl
-        $('.anotherSelect option').each(function () {
+        $('.autocomplete option').each(function () {
             $(this).prop('disabled', false);
         });
 
-        $('.anotherSelect option:selected').each(function () {
+        $('.autocomplete option:selected').each(function () {
             var select = $(this).parent(),
                 optValue = $(this).val();
 
             if ($(this).val() != '') {
-                $('.anotherSelect').not(select).children().filter(function (e) {
+                $('.autocomplete').not(select).children().filter(function (e) {
                     if ($(this).val() == optValue)
                         return e
                 }).prop('disabled', true);
-                $('.anotherSelect').trigger("chosen:updated");
+                $('.autocomplete').trigger("chosen:updated");
             }
         });
     }
-
 });
-/************ editar entidade submit para nao haver passagem de parametro pela url */
+
+/********** editar sem haver passagem de parametro pela url **********/
+
 function passaParamentro(param, url) {
     $('#editarEntInput').prop('value', param);
     $('#sendUserToEdit').prop('action', url + "index.php/entidade/camposatualizacao");
     $('#sendUserToEdit').submit();
 }
 
+function passaParametroAlbum(param, url) {
+    $('#editarEntInput').prop('value', param);
+    $('#sendUserToEdit').prop('action', url + "index.php/albuns/camposatualizacao");
+    $('#sendUserToEdit').submit();
+}
 
-/*************************  dataTables   **************************************************/
+function passaParametroFaixa(param, url) {
+    $('#editarEntInput').prop('value', param);
+    $('#sendUserToEdit').prop('action', url + "index.php/faixas_videos/camposatualizacao");
+    $('#sendUserToEdit').submit();
+}
+
+function passaParametroMoeda(param, url) {
+    $('#editarEntInput').prop('value', param);
+    $('#sendUserToEdit').prop('action', url + "index.php/moeda/camposatualizacao");
+    $('#sendUserToEdit').submit();
+}
+
+/************************* dataTables *************************/
+
 $(document).ready(function () {
     $('#myTable').dataTable({
         "language": {
@@ -327,10 +313,12 @@ $(document).ready(function () {
         }
     });
 });
+
 $(document).ready(function () {
     $('.dataTables_length').addClass('col s6');
     $('fuckingTable_filter').addClass('col s6 align-left');
 });
+
 /*! DataTables 1.10.7
  * Â©2008-2015 SpryMedia Ltd - datatables.net/license
  */

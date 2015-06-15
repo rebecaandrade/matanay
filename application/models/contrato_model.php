@@ -17,6 +17,17 @@
 		}
 		public function buscar_favorecidos($id_cliente){
 			$this->db->select('*')->from('entidade')->join('favorecido', 'favorecido.idFavorecido = entidade.idFavorecido');
+			$this->db->where('entidade.idCliente', $id_cliente);
+			$this->db->where('entidade.excluido', NULL);
 			return $this->db->get()->result();
+		}
+		public function buscar_entidade($id){
+			return $this->db->get_where('entidade',array('idEntidade' => $id,'excluido' => NULL))->row();
+		}
+		public function buscar_favorecido($id){
+			$this->db->select('*')->from('entidade')->join('favorecido', 'favorecido.idFavorecido = entidade.idFavorecido');
+			$this->db->where('entidade.idFavorecido', $id);
+			$this->db->where('entidade.excluido', NULL);
+			return $this->db->get()->row();
 		}
 	}

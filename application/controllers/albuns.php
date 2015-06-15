@@ -16,7 +16,7 @@ class Albuns extends CI_Controller {
 		$dados['tipos'] = $this->albuns_model->buscar_tipos();
 		$dados['faixas'] = $this->albuns_model->buscar_faixas();
 		$dados['artistas'] = $this->albuns_model->buscar_artistas();
-
+		
 		$this->load->view('albuns/cadastro_album', $dados);
 	}
 
@@ -37,9 +37,9 @@ class Albuns extends CI_Controller {
 
         if($album['nome'] != NULL && $album['quantidade'] != NULL && $album['upc_ean'] != NULL && $album['ano'] != NULL && $album['idTipo_Album'] != NULL){
  			$this->albuns_model->cadastrar_album($album, $artista, $faixas);
-
+            
             $this->session->set_userdata('mensagem', $this->lang->line('cadastrado_sucesso'));
-            redirect('albuns/listar');
+            redirect('albuns/listar');       
         }else{
             $this->session->set_userdata('mensagem', 'Houve algum problema no cadastro');
             redirect('albuns/cadastra_album');
@@ -57,12 +57,15 @@ class Albuns extends CI_Controller {
 		$this->load->view('albuns/lista_albuns', $dados);
 	}
 
-    public function editar($id){
-        $this->session->set_flashdata('redirect_url', current_url());
+    public function camposatualizacao($id = -1){
+        if ($this->input->post('oneInput') != null) {
+            $id = $this->input->post('oneInput');
+        } else if ($id == -1)
+            redirect('albuns/listar');
 
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
-
+        
         $dados['album'] = $this->albuns_model->buscar_dados($id);
         $dados['artista_album'] = $this->albuns_model->buscar_artista_album($id);
         $dados['artistas'] = $this->albuns_model->buscar_artistas();
@@ -90,10 +93,10 @@ class Albuns extends CI_Controller {
         if($dados['nome'] != NULL && $dados['ano'] != NULL){
             $this->albuns_model->atualizar_album($dados, $artista);
             $this->session->set_userdata('mensagem', $this->lang->line('atualizado_sucesso'));
-            redirect('albuns/listar');
+            redirect('albuns/listar');       
         }else{
             $id = $this->input->post('idAlbum');
-
+            
             $dados['album'] = $this->albuns_model->buscar_dados($id);
             $dados['artista_album'] = $this->albuns_model->buscar_artista_album($id);
             $dados['artistas'] = $this->albuns_model->buscar_artistas();

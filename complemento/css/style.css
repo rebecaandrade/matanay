@@ -23,16 +23,14 @@ html {
 #barra {
     font-family: "Titillium Web", "sans-serif" !important;
     height: 70px;
-    background-color: #333;
     margin-right: 0;
     margin-left: 0;
     margin-top: 0;
     opacity: 0.9;
-    box-shadow: 1px 1px 5px #333;
 }
 
 #barra2 {
-    background-color: #555 !important;
+    background-color: #E4E4E4 !important;
 }
 
 #barra3 {
@@ -45,7 +43,7 @@ html {
 }
 
 #barra2 ul li a:hover {
-    color: #FF0 !important;
+    color: #FFF !important;
 }
 
 #nav-lang {
@@ -147,7 +145,7 @@ html {
 }
 
 .opcao-menu:hover {
-    color: #FF0 !important;
+    color: #FFF !important;
 }
 
 #tracklist label {
