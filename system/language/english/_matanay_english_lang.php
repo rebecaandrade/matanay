@@ -133,12 +133,14 @@ $lang['moeda_erro_listar']	= 'No currency registered';
 
 ////// CONTRATO
 
-$lang['data_inicio']		= 'Start date';		
-$lang['data_fim']			= 'End date';
-$lang['alerta']				= 'Alert';
-$lang['mes']				= 'month';
-$lang['meses']				= 'months';
-$lang['contrato_cadastrar']	= 'Register';
+$lang['data_inicio']			= 'Start date';		
+$lang['data_fim']				= 'End date';
+$lang['alerta']					= 'Alert';
+$lang['mes']					= 'month';
+$lang['meses']					= 'months';
+$lang['contrato_cadastrar']		= 'Register';
+$lang['contrato_entidade']		= 'Choose the entity';
+$lang['contrato_favorecido']	= 'Choose the favored';
 
 
 /////ENTIDADES/FAVORECIDO  Jadiel
@@ -184,17 +186,17 @@ $lang['valor']='Value';
 
 
 //Cliente
-$lang['clientes'] = 'Customers';
-$lang['perfis'] = 'Profiles';
-$lang['cliente_nome'] = 'Name';
-$lang['cliente_login'] = 'Login';
-$lang['cliente_senha'] = 'Password';
-$lang['cliente_confirmar_senha'] = 'Confirm Password';
-$lang['cliente_funcionalidades'] = 'Functionalities';
-$lang['cliente_cadastrar'] = 'Register';
-$lang['Perfil_erro_listar'] = 'No Profiles on record';
-$lang['cliente_erro_listar'] = 'No customer on record';
-$lang['cliente_erro_nome'] = 'Name already taken';
+$lang['clientes'] 					= 'Customers';
+$lang['perfis'] 					= 'Profiles';
+$lang['cliente_nome'] 				= 'Name';
+$lang['cliente_login'] 				= 'Login';
+$lang['cliente_senha'] 				= 'Password';
+$lang['cliente_confirmar_senha']	= 'Confirm Password';
+$lang['cliente_funcionalidades']	= 'Functionalities';
+$lang['cliente_cadastrar']			= 'Register';
+$lang['Perfil_erro_listar']			= 'No Profiles on record';
+$lang['cliente_erro_listar']		= 'No customer on record';
+$lang['cliente_erro_nome']			= 'Name already taken';
 
 
 
