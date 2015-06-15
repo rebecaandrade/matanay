@@ -12,4 +12,11 @@
 			);
 			return	$this->db->insert('contrato',$contrato);
 		}
+		public function buscar_entidades($id_cliente){
+			return $this->db->get_where('entidade',array('idCliente' => $id_cliente,'excluido' => NULL))->result();
+		}
+		public function buscar_favorecidos($id_cliente){
+			$this->db->select('*')->from('entidade')->join('favorecido', 'favorecido.idFavorecido = entidade.idFavorecido');
+			return $this->db->get()->result();
+		}
 	}
