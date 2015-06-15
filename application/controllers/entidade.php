@@ -8,6 +8,7 @@ class Entidade extends CI_Controller
         parent:: __construct();
         $this->load->model('Entidade_model');
         $this->load->model('Favorecido_model');
+        $this->load->model('albuns_model');
         $this->load->library('pagination');
     }
 
@@ -483,11 +484,14 @@ class Entidade extends CI_Controller
     /******************** fucao de teste ************/
     public function testeEntidade()
     {
-        $dados['totalResult'] = $this->Entidade_model->buscar_entidades()->num_rows();
-        $dados['perPage'] = 5;
-        $dados['totalpages'] = ceil(($dados['totalResult'] / $dados['perPage']));
-        $dados['entidades'] = $this->Entidade_model->buscar_entidades()->result();
-        //die(var_dump($dados));
+        $this->session->set_flashdata('redirect_url', current_url());
+
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+
+        $dados['tipos'] = $this->albuns_model->buscar_tipos();
+        $dados['faixas'] = $this->albuns_model->buscar_faixas();
+        $dados['artistas'] = $this->albuns_model->buscar_artistas();
         $this->load->view('viewTeste', $dados);
     }
 

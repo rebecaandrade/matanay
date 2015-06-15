@@ -176,30 +176,121 @@ $(document).ready(function () {
     $('#cnpjCadastreInput').mask("00.000.000/0000-00");
 });
 $(document).ready(function () {
-    $('.percentage').mask("00.00%",{reverse: true});
+    $('.percentage').mask("00.00%", {reverse: true});
 });
 $(document).ready(function () {
-    $('.porcentagem').mask("00,00%",{reverse: true});
+    $('.porcentagem').mask("00,00%", {reverse: true});
 })
 
-$(document).ready(function(){
-    $('#updateFormEntidade').submit(function(){
+$(document).ready(function () {
+    $('#updateFormEntidade').submit(function () {
         var $cpf = $('#cpfUpdate').val();
         var $cnpj = $('#cnpjUpdate').val();
         var $cpf_cnpj = null;
-        if($cpf != null){
+        if ($cpf != null) {
             $cpf_cnpj = $cpf;
-        }else{
+        } else {
             $cpf_cnpj = $cnpj;
         }
-        $('#cppjUpdate').prop('value',$cpf_cnpj);
+        $('#cppjUpdate').prop('value', $cpf_cnpj);
     });
 });
+/**************************** a parada do iput select  ********/
+$(document).ready(function () {
+    $('.mySelect').change(function (e) {
+        console.log("vai_SeFUdezou");
+        //generateSelectedAreas();
+    });
+    /*function generateSelectedAreas() {
+     var selectedValues = [];
 
+     //enable all options, otherwise they overlap and cause probl
+     $('.mySelect option').each(function () {
+     $(this).prop('disabled', false);
+     });
+     $('.mySelect option:selected').each(function () {
+     var select = $(this).parent(),
+     optValue = $(this).val();
+
+     if ($(this).val() != '') {
+     $('.mySelect').not(select).children().filter(function (e) {
+     if ($(this).val() == optValue)
+     return e
+     }).prop('disabled', true);
+     }
+     });
+     }*/
+});
+function executaSelect(faixas, selecione) {
+    var numFaixas = $('#n_faixas').val();
+    var container = document.getElementById("tracklist");
+    // Clear previous contents of the container
+    while (container.hasChildNodes()) {
+        container.removeChild(container.lastChild);
+    }
+
+    for (var count = 0; count < numFaixas; count++) {
+        $('#tracklist').append(
+            "<div class='input-field col s12 m12 l8 offset-l2'><select class='anotherSelect autocomplete browser-default' name='faixas[]'>" + generateOptions(faixas, selecione) + "</select></div>"
+        );
+    }
+
+}
+function generateOptions(faixas, selecione) {
+    var opcoes = "<option value='' disabled selected>" + selecione + "</option>";
+    for (var i = 0; i < faixas.length; i++) {
+        opcoes += "<option value=" + faixas[i].idFaixa + ">" + faixas[i].nome + "</option>";
+    }
+    return opcoes;
+}
+/*function mudaSelect() {
+    console.log("cheguei");
+    var $selects = $('.anotherSelect');
+    //console.log($selects);
+    $('.anotherSelect').change(function () {
+        //console.log("torkei\n");
+        $('option:hidden', $selects).each(function () {
+            var self = this,
+                toShow = true;
+            $selects.not($(this).parent()).each(function () {
+                if (self.value == this.value) toShow = false;
+            })
+            if (toShow) $(this).show();
+        });
+        if (this.value != 0) //to keep default option available
+            $selects.not(this).children('option[value=' + this.value + ']').hide();
+    });
+}*/
+$(function () {
+    $(document).on('change', '.anotherSelect', function (e) {
+        generateSelectedAreas();
+    });
+
+    function generateSelectedAreas() {
+        var selectedValues = [];
+
+        //enable all options, otherwise they overlap and cause probl
+        $('.anotherSelect option').each(function () {
+            $(this).prop('disabled', false);
+        });
+
+        $('.anotherSelect option:selected').each(function () {
+            var select = $(this).parent(),
+                optValue = $(this).val();
+
+            if ($(this).val() != '') {
+                $('.anotherSelect').not(select).children().filter(function (e) {
+                    if ($(this).val() == optValue)
+                        return e
+                }).prop('disabled', true);
+            }
+        });
+    }
+});
 /************ editar entidade submit para nao haver passagem de parametro pela url */
-function passaParamentro(param,url){
-    $('#editarEntInput').prop('value',param);
-    $('#sendUserToEdit').prop('action',url+"index.php/entidade/camposatualizacao");
+function passaParamentro(param, url) {
+    $('#editarEntInput').prop('value', param);
+    $('#sendUserToEdit').prop('action', url + "index.php/entidade/camposatualizacao");
     $('#sendUserToEdit').submit();
 }
 
