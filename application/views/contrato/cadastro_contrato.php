@@ -14,7 +14,7 @@
 					<div class="row">
 						<div class="input-field col s12 m9 l8 offset-l1">
 							<select name="entidade" required>
-								<option value="" disabled selected><?php echo $this->lang->line('contrato_entidade'); ?></option>
+								<option value="" disabled selected><?php echo $this->lang->line('contrato_select_entidade'); ?></option>
 								<?php foreach ($entidades as $entidade) { ?>
 									<option value="<?php echo $entidade->idEntidade ?>"><?php echo $entidade->nome ?></option>
 								<?php } ?>
@@ -24,7 +24,7 @@
 					<div class="row">
 						<div class="input-field col s12 m9 l8 offset-l1">
 							<select name="favorecido" required>
-								<option value="" disabled selected><?php echo $this->lang->line('contrato_favorecido'); ?></option>
+								<option value="" disabled selected><?php echo $this->lang->line('contrato_select_favorecido'); ?></option>
 								<?php foreach ($favorecidos as $favorecido) { ?>
 									<option value="<?php echo $favorecido->idFavorecido ?>"><?php echo $favorecido->nome ?></option>
 								<?php } ?>

@@ -23,5 +23,37 @@
 								'label' => 'lang:moeda_cambio',
 								'rules' => 'trim|required|max_length[45]|callback_decimal_num'
 							 )
+						),
+		'contrato' => array(
+						array(
+								'field' => 'nome',
+								'label' => 'lang:nome',
+								'rules' => 'trim|required|max_length[45]'
+							),
+						array(
+								'field' => 'entidade',
+								'label' => 'lang:contrato_entidade',
+								'rules' => 'trim|required|is_int|callback_permissao_entidade'
+							),
+						array(
+								'field' => 'favorecido',
+								'label' => 'lang:contrato_favorecido',
+								'rules' => 'trim|required|is_int|callback_permissao_favorecido'
+							),
+						array(
+								'field' => 'data_inicio',
+								'label' => 'lang:data_inicio',
+								'rules' => 'trim|required|callback_data_valida'
+							),
+						array(
+								'field' => 'data_fim',
+								'label' => 'lang:data_fim',
+								'rules' => 'trim|required|callback_data_valida|callback_depois_data_inicio'
+							),
+						array(
+								'field' => 'alerta',
+								'label' => 'lang:alerta',
+								'rules' => 'trim|required|is_int'
+							)
 						)
 	);
