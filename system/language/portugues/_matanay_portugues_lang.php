@@ -131,12 +131,14 @@ $lang['moeda_erro_listar']	= 'Nenhuma moeda cadastrada';
 
 ////// CONTRATO ////// Vitor
 
-$lang['data_inicio']		= 'Data de inicio';		
-$lang['data_fim']			= 'Data de término';
-$lang['alerta']				= 'Alerta';
-$lang['mes']				= 'mês';
-$lang['meses']				= 'meses';
-$lang['contrato_cadastrar']	= 'Cadastrar';
+$lang['data_inicio']			= 'Data de inicio';		
+$lang['data_fim']				= 'Data de término';
+$lang['alerta']					= 'Alerta';
+$lang['mes']					= 'mês';
+$lang['meses']					= 'meses';
+$lang['contrato_cadastrar']		= 'Cadastrar';
+$lang['contrato_entidade']		= 'Escolha a entidade';
+$lang['contrato_favorecido']	= 'Escolha o favorecido';
 
 /////ENTIDADES/FAVORECIDO /*FEITO POR MIM JADIEL*/
 $lang['nome_entidade']='Nome da entidade';		
@@ -188,17 +190,17 @@ $lang['valor']='Valor';
 
 ////// CLIENTE ////// Vitor
 
-$lang['clientes'] = 'Clientes';
-$lang['perfis'] = 'Perfis';
-$lang['cliente_nome'] = 'Nome';
-$lang['cliente_login'] = 'Login';
-$lang['cliente_senha'] = 'Senha';
-$lang['cliente_confirmar_senha'] = 'Confirmação de Senha';
-$lang['cliente_funcionalidades'] = 'Funcionalidades';
-$lang['cliente_cadastrar'] = 'Cadastrar';
-$lang['Perfil_erro_listar'] = 'Nenhum perfil cadastrado';
-$lang['cliente_erro_listar'] = 'Nenhum cliente cadastrado';
-$lang['cliente_erro_nome'] = 'Este nome já se encontra cadastrado';
+$lang['clientes'] 					= 'Clientes';
+$lang['perfis']						= 'Perfis';
+$lang['cliente_nome'] 				= 'Nome';
+$lang['cliente_login'] 				= 'Login';
+$lang['cliente_senha']				= 'Senha';
+$lang['cliente_confirmar_senha']	= 'Confirmação de Senha';
+$lang['cliente_funcionalidades'] 	= 'Funcionalidades';
+$lang['cliente_cadastrar'] 			= 'Cadastrar';
+$lang['Perfil_erro_listar']			= 'Nenhum perfil cadastrado';
+$lang['cliente_erro_listar'] 		= 'Nenhum cliente cadastrado';
+$lang['cliente_erro_nome'] 			= 'Este nome já se encontra cadastrado';
 
 
 
