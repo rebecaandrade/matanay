@@ -57,12 +57,12 @@ class Albuns extends CI_Controller {
 		$this->load->view('albuns/lista_albuns', $dados);
 	}
 
-    public function editar($id){
-        $this->session->set_flashdata('redirect_url', current_url());
+    public function camposatualizacao($id = -1){
+        if ($this->input->post('oneInput') != null) {
+            $id = $this->input->post('oneInput');
+        } else if ($id == -1)
+            redirect('albuns/listar');
 
-        $linguagem_usuario = $this->session->userdata('linguagem');
-        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
-        
         $dados['album'] = $this->albuns_model->buscar_dados($id);
         $dados['artista_album'] = $this->albuns_model->buscar_artista_album($id);
         $dados['artistas'] = $this->albuns_model->buscar_artistas();

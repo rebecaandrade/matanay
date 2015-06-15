@@ -1,21 +1,21 @@
 /* tipo_favorecido */
-insert into matanay.tipo_favorecido values(DEFAULT, "artista");
-insert into matanay.tipo_favorecido values(DEFAULT, "autor");
-insert into matanay.tipo_favorecido values(DEFAULT, "produtor");
+insert into matanay.tipo_favorecido values(DEFAULT, "Artista");
+insert into matanay.tipo_favorecido values(DEFAULT, "Autor");
+insert into matanay.tipo_favorecido values(DEFAULT, "Produtor");
 
 /* tipo_entidade */
-insert into matanay.tipo_entidade values(DEFAULT, "artista");
-insert into matanay.tipo_entidade values(DEFAULT, "autor");
-insert into matanay.tipo_entidade values(DEFAULT, "produtor");
+insert into matanay.tipo_entidade values(DEFAULT, "Artista");
+insert into matanay.tipo_entidade values(DEFAULT, "Autor");
+insert into matanay.tipo_entidade values(DEFAULT, "Produtor");
 
 /* tipo_album */
-insert into matanay.tipo_album values(DEFAULT, "estudio");
-insert into matanay.tipo_album values(DEFAULT, "ao vivo");
-insert into matanay.tipo_album values(DEFAULT, "coletanea");
+insert into matanay.tipo_album values(DEFAULT, "Estúdio");
+insert into matanay.tipo_album values(DEFAULT, "Ao Vivo");
+insert into matanay.tipo_album values(DEFAULT, "Coletânea");
 
 /* tipo_modelo */
-insert into matanay.tipo_modelo values(DEFAULT, "nacional");
-insert into matanay.tipo_modelo values(DEFAULT, "internacional");
+insert into matanay.tipo_modelo values(DEFAULT, "Nacional");
+insert into matanay.tipo_modelo values(DEFAULT, "Internacional");
 
 /* cliente */
 insert into matanay.cliente values(DEFAULT, "admin",NULL);

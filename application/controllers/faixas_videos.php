@@ -68,7 +68,12 @@ class Faixas_Videos extends CI_Controller {
 		$this->load->view('faixas_videos/lista_faixas', $dados);
 	}
 
-    public function editar($id){
+    public function camposatualizacao($id = -1){
+        if ($this->input->post('oneInput') != null) {
+            $id = $this->input->post('oneInput');
+        } else if ($id == -1)
+            redirect('albuns/listar');
+
         $dados['faixa'] = $this->faixas_videos_model->buscar_dados($id);
         $dados['artistas'] = $this->faixas_videos_model->buscar_artistas();
         $dados['autores'] = $this->faixas_videos_model->buscar_autores();

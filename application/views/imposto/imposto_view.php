@@ -1,6 +1,5 @@
 <?php $this->load->view('_include/header') ?> <!-- Jadiel -->
-    <div class="container">
-
+    <div id="wrapper-body">
         <div class="row">
 
             <?php echo form_open('imposto/cadastrar') ?>
