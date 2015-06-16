@@ -22,7 +22,7 @@
                         		<option value="<?php echo $artista->idEntidade; ?>"> <?php echo $artista->nome; ?>
                 		<?php }}?>
 	            	</select>
-	            	<label><?php echo $this->lang->line('artista'); ?></label>
+	            	<label><?php echo $this->lang->line('artista');?></label>
 	          	</div>
 	        </div>
 
@@ -33,11 +33,7 @@
 	          	</div>
 	          	<div class="input-field col s12 m6 l4">
 	          		<label><?php echo $this->lang->line('n_faixas'); ?></label>
-	            	<input required onkeyup="geraSelect(getFaixas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('faixa'); ?>')" id="n_faixas" name="n_faixas" type="text"/>
-	            	<script>
-	            		function getFaixas(){
-	            	    	return <?php echo(json_encode($faixas)); ?>; }
-                    </script>
+	            	<input required id="n_faixas" name="n_faixas" type="text"/>
 	          	</div>
 	        </div>
 
@@ -76,5 +72,42 @@
 
     </div>
 </div>
+
+<script>
+	$(document).ready(function () {
+
+		$("#n_faixas").change(function() {
+
+		var faixas = $.parseJSON(<?php print json_encode(json_encode($faixas)); ?>);
+
+		var n_faixas = document.getElementById("n_faixas").value;
+	        // Container <div> where dynamic content will be placed
+	    var container = document.getElementById("tracklist");
+	        // Clear previous contents of the container
+	    while (container.hasChildNodes()) {
+	        container.removeChild(container.lastChild);
+	    }
+
+		var counter = 1;
+
+			for(counter = 1; counter <= n_faixas; counter++){
+	    		$('#tracklist').append('<div class="row"><div class="input-field col s12 m12 l8 offset-l2">' +
+	                '<select id="select_faixas' + counter + '" class="autocomplete browser-default" name="faixas[]">' +
+	                '<option value="" disabled selected><?php echo $this->lang->line("selecione");?></option>' +
+	                '</select><label><?php echo $this->lang->line("faixa");?></label></div></div>');
+	    	
+	    		$.each(faixas, function(idFaixa, nome){
+            		$('#select_faixas' + counter).append($("<option>",{
+                  		value: nome.idFaixa,
+                  		text: nome.nome
+            		}));
+      			}); 
+            
+				$("#select_faixas" + counter).chosen();
+			}
+	    });	
+	});
+
+</script>
 
 <?php $this->load->view('_include/footer') ?>

@@ -228,6 +228,7 @@ class Favorecido extends CI_Controller
 
     public function valida_atualizacao_favorecido()
     {
+        die(var_dump($this->input->post()));
         //define as regras de validacao do formulario
         $this->form_validation->set_rules('nome', 'nome', 'required|max_length[45]');
         $this->form_validation->set_rules('cpf', 'cpf', 'required|max_length[18]|min_length[11]');
@@ -306,10 +307,10 @@ class Favorecido extends CI_Controller
 
     public function atualizar()
     {
+        //TODO verificar erros
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
-        //TESTE DOS CAMPOS, Sim, estupido para caralho, deve ter outro jeito para fazer isso, mais estou sem tempo
         if (($info = $this->valida_atualizacao_favorecido()) != NULL) {
             $favorecido = $this->gera_favorecido_atualizacao($info);
             //atualiza o favorecido no banco
