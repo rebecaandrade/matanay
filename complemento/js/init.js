@@ -359,7 +359,7 @@ $(document).ready(function () {
             "infoFiltered": "(Filtrado de _MAX_ elementos)",
             "infoPostFix": "",
             "thousands": ",",
-            "lengthMenu": "mostrando _MENU_ linhas",
+            "lengthMenu": "",
             "loadingRecords": "Carregando...",
             "processing": "Processando...",
             "search": "Procurar:",

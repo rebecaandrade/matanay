@@ -46,7 +46,7 @@
 				</div>
 				<div class="input-field col s10 m3 l2">
 					<label><?php echo $this->lang->line('participacao');?></label>
-	            	<input class="<?= $this->lang->line('classPercent') ?>" name="percentualArtista[]" type="text">
+	            	<input required class="<?= $this->lang->line('classPercent') ?>" name="percentualArtista[]" type="text">
 	          	</div>
 				<a onclick="addSelectEntidade(getArtistas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('artista'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
 					class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
@@ -73,7 +73,7 @@
 	          	</div>
 	          	<div class="input-field col s10 m3 l2">
 	          		<label><?php echo $this->lang->line('participacao');?></label>
-	            	<input class="<?= $this->lang->line('classPercent') ?>" name="percentualAutor[]" type="text">
+	            	<input required class="<?= $this->lang->line('classPercent') ?>" name="percentualAutor[]" type="text">
 	          	</div>
 	          	<a onclick="addSelectEntidade(getAutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('autor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
 					class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
@@ -100,7 +100,7 @@
 	          	</div>
 	          	<div class="input-field col s10 m3 l2">
 	          		<label><?php echo $this->lang->line('participacao');?></label>
-	            	<input class="<?= $this->lang->line('classPercent') ?>" name="percentualProdutor[]" type="text">
+	            	<input required class="<?= $this->lang->line('classPercent') ?>" name="percentualProdutor[]" type="text">
 	          	</div>
 	          	<a onclick="addSelectEntidade(getProdutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('produtor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
 					class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>

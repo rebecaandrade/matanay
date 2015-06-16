@@ -127,10 +127,6 @@ class Faixas_Videos_model extends CI_Model {
     public function cadastrar_faixa($faixa, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores){
         $this->db->trans_start();
 
-        if(is_string($faixa['isrc'])){
-            $faixa['isrc'] = str_replace ("-", "", $faixa['isrc']);
-        }
-
         $this->db->insert('faixa_video', $faixa);
         $faixa_id = $this->db->insert_id();
 
@@ -168,7 +164,7 @@ class Faixas_Videos_model extends CI_Model {
         }
 
         $this->db->trans_complete();
-
+        return TRUE;
         /*if(strlen($faixa['isrc']) != 12){
             $this->session->set_userdata('mensagem', 'O código ISRC deve conter 12 caracteres.');
             return FALSE;

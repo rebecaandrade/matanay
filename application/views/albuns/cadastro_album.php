@@ -33,8 +33,13 @@
 	          	</div>
 	          	<div class="input-field col s12 m6 l4">
 	          		<label><?php echo $this->lang->line('n_faixas'); ?></label>
-	            	<input required id="n_faixas" name="n_faixas" type="text"/>
-	          	</div>
+					<input required onkeyup="geraSelect(getFaixas(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('faixa'); ?>')" id="n_faixas" name="n_faixas" type="text"/>
+	            	<script>
+	            	function getFaixas(){
+	            	    return <?php echo(json_encode($faixas)); ?>;
+	            	}
+                    </script>	          	
+                </div>
 	        </div>
 
 	        <div class="row">
