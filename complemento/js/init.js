@@ -51,11 +51,11 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('input[type="checkbox"]').change(function () {
+    $('input[type="checkbox"]').click(function () {
         if ($(this).attr("value") == "1") {
             $("#n_video").hide();
             $("#eh_video").show();
-        } else {
+        } if ($(this).attr("value") == "0") {
             $("#eh_video").hide();
             $("#n_video").show();
         }
@@ -201,6 +201,76 @@ $(document).ready(function () {
     });
 });
 
+/********** select entidades com chosen e função que impede selecionar o mesmo valor 2x **********/
+
+function addSelectEntidade(entidades, selecione, label, participacao) {
+    var nameLower = label;
+    var nameLower = nameLower.toLowerCase();
+
+        $('#Select' + label).append('<div class="row"><div class="input-field col s11 m8 l8 offset-l1">' +
+            '<select id="select' + label + '" class="addEntidade browser-default" name="' + nameLower + 's[]">' +
+            geraOpcoesEntidade(entidades, selecione) + '</select><label id="selectLabel">' + label + '</label></div>' +
+            '<div class="input-field col s12 m3 l2"><label>' + participacao + '</label>' +
+            '<input name="percentual' + label + '[]" type="text"></div>' +
+            '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
+            'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
+            '<i class="mdi-content-remove"></i></a></div>');
+
+    $('.addEntidade').chosen({search_contains: true});
+}
+
+function geraOpcoesEntidade(entidades, selecione) {
+    var opcoes = "<option value='' disabled selected>" + selecione + "</option>";
+    for (var i = 0; i < entidades.length; i++) {
+        opcoes += "<option value=" + entidades[i].idEntidade + ">" + entidades[i].nome + "</option>";
+    }
+    return opcoes;
+}
+
+$(function () {
+    $(document).on('change', '.addEntidade', function (e) {
+        geraEntidadesSelecionadas();
+    });
+
+    function geraEntidadesSelecionadas() {
+        var selectedValues = [];
+
+        $('.addEntidade option').each(function () {
+            $(this).prop('disabled', false);
+        });
+
+        $('.addEntidade option:selected').each(function () {
+            var select = $(this).parent(),
+                optValue = $(this).val();
+
+            if ($(this).val() != '') {
+                $('.addEntidade').not(select).children().filter(function (e) {
+                    if ($(this).val() == optValue)
+                        return e
+                }).prop('disabled', true);
+                $('.addEntidade').trigger("chosen:updated");
+            }
+        });
+    }
+});
+
+$(function () {
+    $("#SelectArtista").on("click", "#removeArtista", function (e) { 
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+        geraEntidadesSelecionadas();
+    });
+
+    $("#SelectAutor").on("click", "#removeAutor", function (e) { 
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+        geraEntidadesSelecionadas();
+    });
+
+    $("#SelectProdutor").on("click", "#removeProdutor", function (e) { 
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+        geraEntidadesSelecionadas();
+    });
+});
+
 /********** select faixas com chosen e função que impede selecionar o mesmo valor 2x **********/
 
 function geraSelect(faixas, selecione, label) {
@@ -218,7 +288,7 @@ function geraSelect(faixas, selecione, label) {
                     geraOpcoes(faixas, selecione) + '</select>' +
                     '<label>' + label + '</label></div></div>');
 
-        $('.autocomplete').chosen();
+        $('.autocomplete').chosen({search_contains: true});
         
     }
 }
@@ -275,12 +345,6 @@ function passaParametroAlbum(param, url) {
 function passaParametroFaixa(param, url) {
     $('#editarEntInput').prop('value', param);
     $('#sendUserToEdit').prop('action', url + "index.php/faixas_videos/camposatualizacao");
-    $('#sendUserToEdit').submit();
-}
-
-function passaParametroMoeda(param, url) {
-    $('#editarEntInput').prop('value', param);
-    $('#sendUserToEdit').prop('action', url + "index.php/moeda/camposatualizacao");
     $('#sendUserToEdit').submit();
 }
 

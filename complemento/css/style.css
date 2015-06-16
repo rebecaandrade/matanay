@@ -148,12 +148,6 @@ html {
     color: #FFF !important;
 }
 
-#tracklist label {
-	top: -14px;
-	font-size: 0.8rem;
-	color: #777;
-}
-
 #sub_barra {
     height: 35px;
     background-color: #777;
@@ -285,6 +279,10 @@ html {
     font-size: 1rem;
 }
 
+#eh_video {
+	display: none;
+}
+
 .detalhes:hover {
     color: #777;
 }
@@ -399,6 +397,12 @@ label {
 
 .mdi-action-search {
     padding-top: 7px !important;
+}
+
+#tracklist label, #selectLabel {
+	top: -14px;
+	font-size: 0.8rem;
+	color: #777;
 }
 
 /**************PAGINAS DAS ENTIADADES Jadiel**********************/
