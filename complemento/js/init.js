@@ -55,7 +55,8 @@ $(document).ready(function () {
         if ($(this).attr("value") == "1") {
             $("#n_video").hide();
             $("#eh_video").show();
-        } if ($(this).attr("value") == "0") {
+        }
+        if ($(this).attr("value") == "0") {
             $("#eh_video").hide();
             $("#n_video").show();
         }
@@ -207,14 +208,14 @@ function addSelectEntidade(entidades, selecione, label, participacao) {
     var nameLower = label;
     var nameLower = nameLower.toLowerCase();
 
-        $('#Select' + label).append('<div class="row"><div class="input-field col s11 m8 l8 offset-l1">' +
-            '<select id="select' + label + '" class="addEntidade browser-default" name="' + nameLower + 's[]">' +
-            geraOpcoesEntidade(entidades, selecione) + '</select><label id="selectLabel">' + label + '</label></div>' +
-            '<div class="input-field col s12 m3 l2"><label>' + participacao + '</label>' +
-            '<input name="percentual' + label + '[]" type="text"></div>' +
-            '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
-            'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
-            '<i class="mdi-content-remove"></i></a></div>');
+    $('#Select' + label).append('<div class="row"><div class="input-field col s11 m8 l8 offset-l1">' +
+    '<select id="select' + label + '" class="addEntidade browser-default" name="' + nameLower + 's[]">' +
+    geraOpcoesEntidade(entidades, selecione) + '</select><label id="selectLabel">' + label + '</label></div>' +
+    '<div class="input-field col s12 m3 l2"><label>' + participacao + '</label>' +
+    '<input name="percentual' + label + '[]" type="text"></div>' +
+    '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
+    'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
+    '<i class="mdi-content-remove"></i></a></div>');
 
     $('.addEntidade').chosen({search_contains: true});
 }
@@ -255,18 +256,24 @@ $(function () {
 });
 
 $(function () {
-    $("#SelectArtista").on("click", "#removeArtista", function (e) { 
-        e.preventDefault(); $(this).parent('div').remove(); x--;
+    $("#SelectArtista").on("click", "#removeArtista", function (e) {
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
         geraEntidadesSelecionadas();
     });
 
-    $("#SelectAutor").on("click", "#removeAutor", function (e) { 
-        e.preventDefault(); $(this).parent('div').remove(); x--;
+    $("#SelectAutor").on("click", "#removeAutor", function (e) {
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
         geraEntidadesSelecionadas();
     });
 
-    $("#SelectProdutor").on("click", "#removeProdutor", function (e) { 
-        e.preventDefault(); $(this).parent('div').remove(); x--;
+    $("#SelectProdutor").on("click", "#removeProdutor", function (e) {
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
         geraEntidadesSelecionadas();
     });
 });
@@ -282,14 +289,14 @@ function geraSelect(faixas, selecione, label) {
     }
 
     for (var count = 0; count < numFaixas; count++) {
-        
+
         $('#tracklist').append('<div class="row"><div class="input-field col s12 m12 l8 offset-l2">' +
-                    '<select id="select_faixas' + count + '" class="autocomplete browser-default" name="faixas[]">' +
-                    geraOpcoes(faixas, selecione) + '</select>' +
-                    '<label>' + label + '</label></div></div>');
+        '<select id="select_faixas' + count + '" class="autocomplete browser-default" name="faixas[]">' +
+        geraOpcoes(faixas, selecione) + '</select>' +
+        '<label>' + label + '</label></div></div>');
 
         $('.autocomplete').chosen({search_contains: true});
-        
+
     }
 }
 
@@ -352,6 +359,8 @@ function passaParametroFaixa(param, url) {
 
 $(document).ready(function () {
     $('#myTable').dataTable({
+        //"LengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
+        "pageLength": 25,
         "language": {
             "emptyTable": "Nenhum Resultado Encontrado",
             "info": "Mostrando _START_ à _END_ de _TOTAL_ elementos",
@@ -377,11 +386,17 @@ $(document).ready(function () {
         }
     });
 });
-
 $(document).ready(function () {
-    $('.dataTables_length').addClass('col s6');
-    $('fuckingTable_filter').addClass('col s6 align-left');
+    var newTable = null;
+    $('.tableSelect').change(function () {
+        var length = $('.tableSelect option:selected').val();
+        var Settings = newTable.fnSettings();
+        Settings._iDisplayLength = length;
+        newTable.fnDraw();
+    });
+    newTable = $('#myTable').dataTable();
 });
+
 
 /*! DataTables 1.10.7
  * Â©2008-2015 SpryMedia Ltd - datatables.net/license

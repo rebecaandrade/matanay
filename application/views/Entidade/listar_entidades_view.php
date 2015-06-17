@@ -15,6 +15,19 @@
             </div>
         </div>
         <div class="row">
+            <div class="col s1"> <p style="font-size: 125%">Mostrando</p></div>
+            <div class="col s1">
+                <select class="tableSelect">
+                    <option value="10"> 10 </option>
+                    <option selected value="25"> 25 </option>
+                    <option value="50"> 50 </option>
+                    <option value="75"> 75 </option>
+                    <option value="100"> 100 </option>
+                </select>
+            </div>
+            <div class="col s1"><p style="font-size: 125%"> Resultados </p></div>
+        </div>
+        <div class="row">
             <table id="myTable" class="hoverable bordered">
                 <thead>
                 <th><?= $this->lang->line('nome_entidade'); ?></th>
