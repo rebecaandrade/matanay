@@ -482,16 +482,18 @@ class Entidade extends CI_Controller
      */
 
     /******************** fucao de teste ************/
-    public function testeEntidade()
+    public function testeEntidad()
     {
         $this->session->set_flashdata('redirect_url', current_url());
 
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+        $dados['entidades'] = $this->Entidade_model->buscar_entidades()->result();
 
-        $dados['tipos'] = $this->albuns_model->buscar_tipos();
+        /*$dados['tipos'] = $this->albuns_model->buscar_tipos();
         $dados['faixas'] = $this->albuns_model->buscar_faixas();
-        $dados['artistas'] = $this->albuns_model->buscar_artistas();
+        $dados['artistas'] = $this->albuns_model->buscar_artistas();*/
+        //die(var_dump($dados));
         $this->load->view('viewTeste', $dados);
     }
 

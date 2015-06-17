@@ -1,85 +1,61 @@
-<?php $this->load->view('_include/header') ?> <!-- Evandro -->
-
-
-<div id="wrapper-body">
-    <div class="row">
-      	
-      	<?php echo form_open('albuns/cadastrar') ?>
-	        <div class="row">
-	          	<div class="input-field col s12 m12 l8 offset-l2">
-	          		<i class="mdi-av-album prefix"></i>
-	          		<label><?php echo $this->lang->line('titulo'); ?></label>
-	            	<input required id="icon-prefix" type="text" name="nome"/>
-	          	</div>
-	        </div>
-
-	        <div class="row">
-	          	<div class="input-field col s12 m12 l8 offset-l2">
-	            	<select name="artista">
-	              		<option value="" disabled selected><?php echo $this->lang->line('selecione'); ?></option>
-	              		<?php
-if (isset($artistas)) {
-    foreach ($artistas as $artista) { ?>
-        <option value="<?php echo $artista->idEntidade; ?>"> <?php echo $artista->nome; ?>
-    <?php }
-} ?>
-	            	</select>
-	            	<label><?php echo $this->lang->line('artista'); ?></label>
-	          	</div>
-	        </div>
-
-	        <div class="row">
-	          	<div class="input-field col s12 m6 l4 offset-l2">
-	          		<label>UPC/EAN</label>
-	            	<input required type="text" name="upc_ean"/>
-	          	</div>
-	          	<div class="input-field col s12 m6 l4">
-	          		<label><?php echo $this->lang->line('n_faixas'); ?></label>
-	            	<input required onkeyup="executaSelect(getFaixas(),'<?php echo $this->lang->line('selecione'); ?>')" id="n_faixas" name="n_faixas" type="text"/>
-	            	<script>
-	            	function getFaixas(){
-	            	    return <?php echo(json_encode($faixas)); ?>;
-	            	}
-                    </script>
-	          	</div>
-	        </div>
-
-	        <div class="row">
-	          	<div class="input-field col s12 m6 l4 offset-l2">
-	            	<label><?php echo $this->lang->line('catalogo'); ?></label>
-	            	<input type="text" name="catalogo"/>
-	          	</div>
-	          	<div class="input-field col s12 m6 l4"/>
-	          		<label><?php echo $this->lang->line('lancamento'); ?></label>
-	            	<input required type="text" name="ano"/>
-	          	</div>
-	        </div>
-
-	        <div class="row">
-	          	<div class="input-field col s12 m12 l8 offset-l2">
-	            	<select name="tipo">
-	              		<option value="" disabled selected><?php echo $this->lang->line('selecione'); ?></option>
-	              		<?php
-if (isset($tipos)) {
-    foreach ($tipos as $tipo) { ?>
-        <option value="<?php echo $tipo->idTipo_Album; ?>"> <?php echo $tipo->descricao; ?>
-    <?php }
-} ?>
-	            	</select>
-	            	<label><?php echo $this->lang->line('tipo'); ?></label>
-	          	</div>
-	        </div>
-
-	        <div id="tracklist" class="row">
-	        </div>
-
-	        <button class="btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
-	          	<i class="mdi-content-send right"></i>
-	        </button>
-	    <?php echo form_close() ?>
-
+<?php $this->load->view('_include/header') ?>
+    <div id="wrapper-body">
+        <div id="titulo_lista">
+            <div class="row">
+                <div class="input-field col s12 m8 l9">
+                    <i class="mdi-action-assignment-ind"></i>
+                    <?php echo $this->lang->line('entidades'); ?>
+                    <a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"
+                       class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo"
+                       data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('nova'); ?>"
+                       id="addButton">
+                        <i class="mdi-content-add"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s1"> <p style="font-size: 125%">Mostrando</p></div>
+            <div class="col s1">
+                <select class="tableSelect">
+                    <option value="10"> 10 </option>
+                    <option selected value="25"> 25 </option>
+                    <option value="50"> 50 </option>
+                    <option value="75"> 75 </option>
+                    <option value="100"> 100 </option>
+                </select>
+            </div>
+            <div class="col s1"><p style="font-size: 125%"> Resultados </p></div>
+        </div>
+        <div class="row">
+            <table id="myTable" class="hoverable bordered">
+                <thead>
+                <th><?= $this->lang->line('nome_entidade'); ?></th>
+                <th>CPF/CNPJ</th>
+                <th><?= $this->lang->line('descricao_entidade'); ?></th>
+                <th><?= $this->lang->line('acao'); ?></th>
+                </thead>
+                <tbody>
+                <?php if (isset($entidades)) { ?>
+                    <?php foreach ($entidades as $entidade) { ?>
+                        <tr>
+                            <td><?= $entidade->nome ?></td>
+                            <td><?= ($entidade->cpf == NULL ? $entidade->cnpj : $entidade->cpf) ?></td>
+                            <td><?= $entidade->descricao ?></td>
+                            <td><a class="acao"
+                                   onclick=" passaParamentro('<?= $entidade->idEntidade ?>','<?= base_url() ?>')"><?php echo $this->lang->line('editar'); ?></a>
+                                | <a class="deletarLink"
+                                     onclick="excluirEntidade('<?= base_url() . 'index.php/entidade/deletar/' . $entidade->idEntidade ?>')"><?php echo $this->lang->line('deletar') ?> </a>
+                            </td>
+                        </tr>
+                    <?php }
+                } ?>
+                </tbody>
+            </table>
+            <form id="sendUserToEdit" method="post">
+                <input id="editarEntInput" type="hidden" name="oneInput">
+                <input id="submitAcao" type="submit" style="display: none">
+            </form>
+        </div>
     </div>
-</div>
-
-
 <?php $this->load->view('_include/footer') ?>
