@@ -190,8 +190,9 @@ $lang['valor']='Valor';
 
 ////// CLIENTE ////// Vitor
 
-$lang['clientes'] 					= 'Clientes';
-$lang['perfis']						= 'Perfis';
+$lang['clientes'] 					= 'CLIENTES';
+$lang['perfis']						= 'PERFIS';
+$lang['perfis_row']					= 'Perfis';
 $lang['cliente_nome'] 				= 'Nome';
 $lang['cliente_login'] 				= 'Login';
 $lang['cliente_senha']				= 'Senha';

@@ -1,13 +1,12 @@
 <?php /*FEITO POR MIM JADIEL*/
 $this->load->view('_include/header') ?>
-<br>
 
-<div class="container">
+<div id="wrapper-body">
     <div class="row">
         <?php echo $this->lang->line('edit_entitys'); ?>
         <?php if (isset($sucesso)) {
             echo $sucesso;
-        } ?><br>
+        } ?>
         <?php echo form_open('Favorecido/atualizar') ?>
         <input type="hidden" name='idFavorecido' value="<?php echo $dadosfavorecido->idFavorecido; ?>"/>
         <input type="hidden" name='idtelefone1' value="<?php echo $telefone1->idTelefone_Favorecido; ?>"/>
@@ -90,25 +89,21 @@ $this->load->view('_include/header') ?>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12 m12 l8 offset-l2">
+            <div class="input-field col s12 m12 l2 offset-l2">
                 <label><?php echo $this->lang->line('banco'); ?></label>
                 <input value="<?php echo $dadosfavorecido->banco; ?>" name="banco" required type="text"/>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12 m12 l8 offset-l2">
+            <div class="input-field col s12 m6 l3">
                 <input value="<?php echo $dadosfavorecido->conta; ?>" name="conta" required type="text"/>
                 <label><?php echo $this->lang->line('conta'); ?></label>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12 m12 l8 offset-l2">
+            <div class="input-field col s12 m6 l3">
                 <label><?php echo $this->lang->line('agencia'); ?></label>
                 <input value="<?php echo $dadosfavorecido->agencia; ?>" name="agencia" required type="text"/>
             </div>
         </div>
         <button class="btn waves-effect waves-light col s12 m12 l8 offset-l2"
-                type="submit"><?php echo $this->lang->line('editar'); ?>
+                type="submit"><?php echo $this->lang->line('atualizar'); ?>
             <i class="mdi-content-send right"></i>
         </button>
         <?php form_close() ?>

@@ -186,8 +186,9 @@ $lang['valor']='Value';
 
 
 //Cliente
-$lang['clientes'] 					= 'Customers';
-$lang['perfis'] 					= 'Profiles';
+$lang['clientes'] 					= 'CUSTOMERS';
+$lang['perfis'] 					= 'PROFILES';
+$lang['perfis_row']					= 'Profiles';
 $lang['cliente_nome'] 				= 'Name';
 $lang['cliente_login'] 				= 'Login';
 $lang['cliente_senha'] 				= 'Password';

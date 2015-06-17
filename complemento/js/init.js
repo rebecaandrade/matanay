@@ -1,14 +1,20 @@
 (function ($) {
     $(function () {
-
         $('.button-collapse').sideNav();
-
     });
 })(jQuery);
 
 $(document).ready(function () {
     $('#cadastro').click(function () {
+        $("#sub_menu2").hide();
         $("#sub_menu").toggle();
+    });
+});
+
+$(document).ready(function () {
+    $('#relatorio').click(function () {
+        $("#sub_menu").hide();
+        $("#sub_menu2").toggle();
     });
 });
 

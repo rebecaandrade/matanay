@@ -33,8 +33,8 @@
 	        <div class="input-field col s5 m3 l3">
 		        <a href="#">
 			        <div class="card-panel grey lighten-1">
-			          	<i class="mdi-action-settings"></i>
-			          	<div class="label">CONFIGURAÇÕES</div>
+			          	<i class="mdi-social-person"></i>
+			          	<div class="label"><?php echo $this->lang->line('perfis'); ?></div>
 			        </div> 
 		        </a> 
 	        </div>

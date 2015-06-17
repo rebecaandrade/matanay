@@ -223,14 +223,14 @@ html {
     width: 22px;
 }
 
-#sub_menu {
+#sub_menu, #sub_menu2 {
     font-family: "Titillium Web" !important;
     display: inline-block;
     vertical-align: middle;
     display: none;
 }
 
-#sub_menu ul li {
+#sub_menu ul li, #sub_menu2 ul li {
     display: inline;
     color: #333;
     font-weight: bold;
@@ -239,9 +239,13 @@ html {
     padding-left: 20px;
 }
 
-#sub_menu a {
+#sub_menu a, #sub_menu2 a {
     text-decoration: none;
     color: #333;
+}
+
+#sub_menu2 {
+	right: 10%;
 }
 
 #home a {

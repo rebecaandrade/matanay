@@ -51,7 +51,7 @@
                    href="<?php echo base_url(); ?>index.php/cliente/home"><?php echo $this->lang->line('home'); ?></a>
             </li>
             <li><a class="opcao-menu" id="cadastro" href="#"><?php echo $this->lang->line('cadastros'); ?></a></li>
-            <li><a class="opcao-menu" href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
+            <li><a class="opcao-menu" id="relatorio" href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
             <li><a class="opcao-menu" href="#"><?php echo $this->lang->line('vendas'); ?></a></li>
             <li><a class="opcao-menu"
                    href="<?php echo base_url(); ?>index.php/acesso/deslogar"><?php echo $this->lang->line('sair'); ?></a>
@@ -168,6 +168,20 @@
             <li>
                 <a href="<?php echo base_url(); ?>index.php/imposto/listar"><?php echo $this->lang->line('imposto'); ?></a>
         	</li>
+        </ul>
+    </div>
+
+    <div id="sub_menu2" class="nav-wrapper container">
+        <ul class="right hide-on-med-and-down">
+            <li>
+                <a href="#">MODELOS</a>
+            </li>
+            <li>
+                <a href="#">IMPORTAR</a>
+            </li>
+            <li>
+                <a href="#">EXPORTAR</a>
+            </li>
         </ul>
     </div>
 </div>
