@@ -148,7 +148,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#test3').click(function () {
+    $('#n_video').click(function () {
         $('#youtubeCadastre').hide();
         $('#youtubeCadastreInput').prop('value', null);
         $('#isrcCadastre').show();
@@ -158,7 +158,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#test4').click(function () {
+    $('#eh_video').click(function () {
         $('#isrcCadastre').hide();
         $('#isrcCadastreInput').prop('value', null);
         $('#youtubeCadastre').show();

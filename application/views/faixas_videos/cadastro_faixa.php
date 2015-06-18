@@ -27,11 +27,11 @@
                 <div class="switch col s6 offset-s6 m3 l2">
                 	<?php echo $this->lang->line('video'); ?>
                     <p>
-                    	<input type="radio" value="isrc" checked name="isrc/youtube" id="test3"/>
-                        <label for="test3"><?php echo $this->lang->line('nao'); ?></label>
-                        
-                    	<input type="radio" value="youtube" name="isrc/youtube" id="test4"/>
-                        <label for="test4"><?php echo $this->lang->line('sim'); ?></label>
+                    	<input type="radio" value="isrc" checked name="isrc/youtube" id="n_video"/>
+                        <label for="n_video"><?php echo $this->lang->line('nao'); ?></label>
+
+                    	<input type="radio" value="youtube" name="isrc/youtube" id="eh_video"/>
+                        <label for="eh_video"><?php echo $this->lang->line('sim'); ?></label>
                     </p>
                 </div>
             </div>
