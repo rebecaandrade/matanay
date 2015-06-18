@@ -29,7 +29,7 @@
 	        <div class="row">
 	          	<div class="input-field col s12 m6 l4 offset-l2">
 	          		<label>UPC/EAN</label>
-	            	<input required type="text" name="upc_ean"/>
+	            	<input required type="text" name="upc_ean" length="12" length="13"/>
 	          	</div>
 	          	<div class="input-field col s12 m6 l4">
 	          		<label><?php echo $this->lang->line('n_faixas'); ?></label>

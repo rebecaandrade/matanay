@@ -13,23 +13,28 @@
 	        </div>
 
 	        <div class="row">
-	        	<div id="n_video" class="input-field col s8 m8 l8 offset-l1">
-	        		<label>ISRC</label>
-	            	<input type="text" name="isrc">
-	          	</div>
-	          	<div id="eh_video" class="input-field col s8 m8 l8 offset-l1">
-	          		<label>YouTube</label>
-	            	<input type="text" name="youtube">
-	          	</div>
-	          	<div class="switch col s4 m3 l2">
-	            	<label>
-	              		<?php echo $this->lang->line('video');?>
-	              		<input type="checkbox" value="1">
-	              		<span class="lever"></span>
-	              		
-	            	</label>
-	          	</div>
-	        </div>
+                <div id="isrcCadastre" class="input-field col s12 m9 l8 offset-l1">
+                    <label>ISRC</label>
+                    <input id="isrcCadastreInput" class="isrcCadastreInput" type="text" name="isrc">
+                </div>
+
+                <div style="display: none" id="youtubeCadastre" class="input-field col s12 m9 l8 offset-l1">
+                    <label>YouTube</label>
+                    <input id="youtubeCadastreInput" class="youtubeCadastreInput" type="text" name="youtube">
+                </div>
+                <input id="isrc_youtube" type="hidden" name="isrc_youtube">
+
+                <div class="switch col s6 offset-s6 m3 l2">
+                	<?php echo $this->lang->line('video'); ?>
+                    <p>
+                    	<input type="radio" value="isrc" checked name="isrc/youtube" id="test3"/>
+                        <label for="test3"><?php echo $this->lang->line('nao'); ?></label>
+                        
+                    	<input type="radio" value="youtube" name="isrc/youtube" id="test4"/>
+                        <label for="test4"><?php echo $this->lang->line('sim'); ?></label>
+                    </p>
+                </div>
+            </div>
 
 	        <div id="SelectArtista">
 	        <div class="row">

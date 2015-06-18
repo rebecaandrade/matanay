@@ -12,8 +12,8 @@ $this->load->view('_include/header') ?>
         <div class="row">
             <div class="input-field col s12 m12 l8 offset-l2">
                 <i class="mdi-action-perm-identity prefix"></i>
-                <input id="icon-prefix" required type="text" value="" name="nomefavorecido">
                 <label><?php echo $this->lang->line('nome_favorecido'); ?></label>
+                <input id="icon-prefix" required type="text" value="" name="nomefavorecido">
             </div>
         </div>
         <div class="row"><!--a paradinha de dizer se eh CPF ou CNPJ-->

@@ -57,19 +57,6 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('input[type="checkbox"]').click(function () {
-        if ($(this).attr("value") == "1") {
-            $("#n_video").hide();
-            $("#eh_video").show();
-        }
-        if ($(this).attr("value") == "0") {
-            $("#eh_video").hide();
-            $("#n_video").show();
-        }
-    });
-});
-
-$(document).ready(function () {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
 });
@@ -157,6 +144,26 @@ $(document).ready(function () {
         $('#cnpjCadastre').show();
         $('#cnpjCadastreInput').prop('required', true);
         $('#cpfCadastreInput').prop('required', false);
+    });
+});
+
+$(document).ready(function () {
+    $('#test3').click(function () {
+        $('#youtubeCadastre').hide();
+        $('#youtubeCadastreInput').prop('value', null);
+        $('#isrcCadastre').show();
+        $('#isrcCadastreInput').prop('required', true);
+        $('#youtubeCadastreInput').prop('required', false);
+    })
+});
+
+$(document).ready(function () {
+    $('#test4').click(function () {
+        $('#isrcCadastre').hide();
+        $('#isrcCadastreInput').prop('value', null);
+        $('#youtubeCadastre').show();
+        $('#youtubeCadastreInput').prop('required', true);
+        $('#isrcCadastreInput').prop('required', false);
     });
 });
 

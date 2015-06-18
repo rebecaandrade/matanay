@@ -248,6 +248,10 @@ html {
 	right: 10%;
 }
 
+#myTable_filter label {
+	float: right;
+}
+
 #home a {
     color: #222;
 }

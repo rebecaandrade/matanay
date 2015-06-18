@@ -1,36 +1,36 @@
 <?php $this->load->view('_include/header') ?>
-	<div class="container"> 
+	<div id="wrapper-body"> 
 		<?php if(isset($id_cliente)){ ?>
 			<div class="row">
 				<?php echo form_open('cliente/cadastrar_perfil') ?>
 					<div class="row">
-						<div class="input-field col s12 m9 l8 offset-l1">
+						<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 							<i class="mdi-action-account-circle prefix"></i>	
-							<input type='text' name='nome'>
 							<label><?php echo $this->lang->line('cliente_nome'); ?></label>
+							<input type='text' name='nome'>
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="input-field col s12 m9 l8 offset-l1">
-							<input type='text' name='login'>
+						<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 							<label><?php echo $this->lang->line('cliente_login'); ?></label>
+							<input type='text' name='login'>
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col s12 m9 l8 offset-l1">
-							<input type='password' name='senha'>
+						<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 							<label><?php echo $this->lang->line('cliente_senha'); ?></label>
+							<input type='password' name='senha'>
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col s12 m9 l8 offset-l1">
-							<input type='password' name='confirmar_senha'>
+						<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 							<label><?php echo $this->lang->line('cliente_confirmar_senha'); ?></label>
+							<input type='password' name='confirmar_senha'>
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col s12 m9 l8 offset-l1">
+						<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 							<select name="func[]" >
 								<option  value='' disabled selected> </option>
 								<?php foreach ($funcionalidades as $func) { ?>
@@ -41,7 +41,7 @@
 						</div>
 					</div>
 					<input type='hidden' name='id' value=<?php echo $id_cliente?> />
-					<button class="btn waves-effect waves-light col s12 m12 l8 offset-l1" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
+					<button class="btn waves-effect waves-light col s12 m10 offset-m1 l8 offset-l2" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
 						<i class="mdi-content-send right"></i>
 					</button>
 				<?php echo form_close() ?>

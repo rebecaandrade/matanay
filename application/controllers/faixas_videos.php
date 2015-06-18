@@ -23,7 +23,8 @@ class Faixas_Videos extends CI_Controller {
 	public function cadastrar_faixa(){
 		$faixa = array(
             'nome' => $this->input->post('nome'),
-            'isrc' => str_replace("-", "", $this->input->post('isrc'))
+            'isrc' => str_replace("-", "", $this->input->post('isrc')),
+            'codigo_video' => $this->input->post('youtube')
         );
 
         $artistas = $this->input->post('artistas[]');
@@ -34,12 +35,12 @@ class Faixas_Videos extends CI_Controller {
         $perc_autores = $this->input->post('percentualAutor[]');
         $perc_produtores = $this->input->post('percentualProdutor[]');
 
-        if(strlen($faixa['isrc']) != 12){
+        if(strlen($faixa['isrc']) != 12 && $faixa['isrc'] != NULL){
             $this->session->set_userdata('mensagem', 'O código ISRC deve conter 12 caracteres.');
             redirect('faixas_videos/cadastra_faixa');
             return FALSE;
         }
-        if(!preg_match("/[A-Z]{2}[A-Z0-9]{3}[0-9]{7}/", $faixa['isrc'])) {
+        if(!preg_match("/[A-Z]{2}[A-Z0-9]{3}[0-9]{7}/", $faixa['isrc']) && $faixa['isrc'] != NULL) {
             $this->session->set_userdata('mensagem', 'Código ISRC inválido!');
             redirect('faixas_videos/cadastra_faixa');
             return FALSE;
@@ -56,7 +57,7 @@ class Faixas_Videos extends CI_Controller {
             $this->session->set_userdata('mensagem', 'Por favor, escolha pelo menos um produtor');
             redirect('faixas_videos/cadastra_faixa');
         }
-        elseif($faixa['nome'] != NULL && $faixa['isrc'] != NULL && $artistas != NULL && $autores != NULL && $produtores != NULL){
+        elseif($faixa['nome'] != NULL && $artistas != NULL && $autores != NULL && $produtores != NULL){
             $this->faixas_videos_model->cadastrar_faixa($faixa, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
             $this->session->set_userdata('mensagem', $this->lang->line('cadastrado_sucesso'));
             redirect('faixas_videos/listar');       

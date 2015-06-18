@@ -31,7 +31,7 @@
 	        </div>
 
 	        <div class="input-field col s5 m3 l3">
-		        <a href="#">
+		        <a href="<?php echo base_url(); ?>index.php/cliente/lista_clientes">
 			        <div class="card-panel grey lighten-1">
 			          	<i class="mdi-social-person"></i>
 			          	<div class="label"><?php echo $this->lang->line('perfis'); ?></div>

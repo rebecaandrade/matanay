@@ -12,16 +12,16 @@
                     } ?></div>
                 <div class="input-field col s12 m10 offset-m1 l8 offset-l2">
                     <i class="mdi-content-content-paste prefix"></i>
-                    <input required id="icon-prefix" type="text" name="nome">
                     <label><?php echo $this->lang->line('imposto_nome'); ?></label>
+                    <input required id="icon-prefix" type="text" name="nome">
                 </div>
             </div>
 
 
             <div class="row">
                 <div class="input-field col s12 m10 offset-m1 l8 offset-l2">
-                    <input required name="valor" type="text">
                     <label><?php echo $this->lang->line('valor'); ?></label>
+                    <input required name="valor" type="text">
                 </div>
             </div>
             <br>
