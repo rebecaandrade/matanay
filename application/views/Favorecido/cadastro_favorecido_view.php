@@ -19,7 +19,7 @@ $this->load->view('_include/header') ?>
         <div class="row"><!--a paradinha de dizer se eh CPF ou CNPJ-->
             <div id="cpfCadastre" class="input-field col s12 m9 l8 offset-l2">
                 <label>CPF</label>
-                <input id="cpfCadastreInput" class="cpfCadastreInput" type="text" name="cpf">
+                <input required id="cpfCadastreInput" class="cpfCadastreInput" type="text" name="cpf">
             </div>
             <div style="display: none" id="cnpjCadastre" class="input-field col s12 m9 l8 offset-l2">
                 <label>CNPJ</label>

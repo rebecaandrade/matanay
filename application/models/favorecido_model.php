@@ -61,6 +61,12 @@ class Favorecido_model extends CI_Model{
 
 		return $query->result();
    	}
+    public function mudar_favorecido_para_excluidos($id)
+    {
+        $this->db->where('idFavorecido', $id);
+        $dados['excluido'] = 1;
+        $this->db->update('Favorecido', $dados);
+    }
 
 
 

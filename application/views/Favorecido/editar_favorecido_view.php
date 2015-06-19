@@ -3,11 +3,7 @@ $this->load->view('_include/header') ?>
 
 <div id="wrapper-body">
     <div class="row">
-        <?php echo $this->lang->line('edit_entitys'); ?>
-        <?php if (isset($sucesso)) {
-            echo $sucesso;
-        } ?>
-        <?php echo form_open('Favorecido/atualizar') ?>
+        <form id="updateFormFavorecido" action="<?=base_url().'index.php/Favorecido/atualizar'?>" method="post" >
         <input type="hidden" name='idFavorecido' value="<?php echo $dadosfavorecido->idFavorecido; ?>"/>
         <input type="hidden" name='idtelefone1' value="<?php echo $telefone1->idTelefone_Favorecido; ?>"/>
         <input type="hidden" name='idtelefone2' value="<?php echo $telefone2->idTelefone_Favorecido; ?>"/>
@@ -28,18 +24,19 @@ $this->load->view('_include/header') ?>
         <?php if ($dadosfavorecido->cpf == null) { ?>
             <div class="row">
                 <div class="input-field col s12 m12 l8 offset-l2">
-                    <label><?php echo $this->lang->line('cpf_cnpj'); ?></label>
-                    <input value="<?php echo $dadosfavorecido->cnpj; ?>" name="cnpj" required type="text"/>
+                    <label>CNPJ ?></label>
+                    <input id="cnpjUpdate" value="<?php echo $dadosfavorecido->cnpj; ?>" name="cnpj" required type="text"/>
                 </div>
             </div>
         <?php } else { ?>
             <div class="row">
                 <div class="input-field col s12 m12 l8 offset-l2">
-                    <label><?php echo $this->lang->line('cpf_cnpj'); ?></label>
-                    <input value="<?php echo $dadosfavorecido->cpf; ?>" name="cpf" required type="text"/>
+                    <label>CPF</label>
+                    <input id="cpfUpdate" value="<?php echo $dadosfavorecido->cpf; ?>" name="cpf" required type="text"/>
                 </div>
             </div>
         <?php } ?>
+            <input id="cppjUpdate" type="hidden" name="cpf_cnpj">
         <div class="row">
             <div class="input-field col s12 m6 l4 offset-l2">
                 <label><?php echo $this->lang->line('telefone'); ?></label>
@@ -65,19 +62,19 @@ $this->load->view('_include/header') ?>
         <div class="row">
             <div class="input-field col s12 m6 l4 offset-l2">
                 <label><?php echo $this->lang->line('percentual_fisico'); ?></label>
-                <input value="<?php echo $dadosfavorecido->percentual_fisico; ?>" name="percentual_fisico" required
+                <input class="<?= $this->lang->line('classPercent') ?>" value="<?php echo $dadosfavorecido->percentual_fisico; ?>" name="percentual_fisico" required
                        type="text"/>
             </div>
             <div class="input-field col s12 m6 l4">
                 <label><?php echo $this->lang->line('percentual_digital'); ?></label>
-                <input value="<?php echo $dadosfavorecido->percentual_digital; ?>" name="percentual_digital" required
+                <input class="<?= $this->lang->line('classPercent') ?>" value="<?php echo $dadosfavorecido->percentual_digital; ?>" name="percentual_digital" required
                        type="text"/>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12 m12 l8 offset-l2">
                 <select name="identificacao">
-                    <option value="" disabled selected> <?php echo $this->lang->line('selecione'), ' ';
+                    <option value="<?=$dadosfavorecido->idTipo_Favorecido?>" selected> <?php echo $this->lang->line('selecione'), ' ';
                     echo '(',$this->lang->line('atual'),': '; echo $this->lang->line($dadosidentificacao->descricao),')'; ?>
                     </option>
                     <option value=1><?php echo $this->lang->line('artista'); ?></option>
@@ -106,7 +103,7 @@ $this->load->view('_include/header') ?>
                 type="submit"><?php echo $this->lang->line('atualizar'); ?>
             <i class="mdi-content-send right"></i>
         </button>
-        <?php form_close() ?>
+        </form>
     </div>
 </div>
 <?php $this->load->view('_include/footer') ?>
