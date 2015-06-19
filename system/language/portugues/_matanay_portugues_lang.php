@@ -56,11 +56,16 @@ $lang['voltar']				= 'VOLTAR';
 ////// FORM VALIDATION
 
 ///// VITOR
-$lang['campos_invalidos']				= 'Campos inválidos :';
-$lang['form_error_nome_disponivel']		= 'Esse nome não está disponivel.';
-$lang['form_error_required']			= 'O campo {field} é obrigatório';
-$lang['form_error_max_length']			= 'O campo {field} deve possuir menos de {param} characteres';
-$lang['form_error_decimal_num']			= 'O campo {field} deve conter um número';
+$lang['campos_invalidos']					= 'Campos inválidos :';
+$lang['form_error_nome_disponivel']			= 'Esse nome não está disponivel';
+$lang['form_error_required']				= 'O campo {field} é obrigatório';
+$lang['form_error_max_length']				= 'O campo {field} deve possuir menos de {param} characteres';
+$lang['form_error_is_int']					= 'O campo {field} deve ser um inteiro';
+$lang['form_error_decimal_num']				= 'O campo {field} deve conter um número';
+$lang['form_error_permissao_entidade']		= 'Permissão insuficiente para manipular a entidade selecionada';
+$lang['form_error_permissao_favorecido']	= 'Permissão insuficiente para manipular o favorecido selecionado';
+$lang['form_error_data_valida']				= "O campo {field} não contém uma data valida";
+$lang['form_error_depois_data_inicio']		= "A data de término deve ser após a data de inicio";
 
 ////// ALERTAS SISTEMA
 
