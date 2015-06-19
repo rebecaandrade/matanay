@@ -14,7 +14,7 @@
 
 	        <div class="row">
 	          	<div class="input-field col s12 m12 l8 offset-l2">
-	            	<select name="artista">
+	            	<select class="addEntidade browser-default" name="artista">
 	              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
 	              		<?php
                 			if(isset($artistas)){
@@ -22,8 +22,13 @@
                         		<option value="<?php echo $artista->idEntidade; ?>"> <?php echo $artista->nome; ?>
                 		<?php }}?>
 	            	</select>
-	            	<label><?php echo $this->lang->line('artista');?></label>
+	            	<label id="selectLabel"><?php echo $this->lang->line('artista');?></label>
 	          	</div>
+	          	<script>
+	        		$('.addEntidade').chosen({search_contains: true});
+	            	function getArtistas(){
+	            	    return <?php echo(json_encode($artistas)); ?>; }
+                </script>
 	        </div>
 
 	        <div class="row">

@@ -75,6 +75,24 @@ class Albuns extends CI_Controller {
         $this->load->view('albuns/edita_album', $dados);
     }
 
+    public function faixas_atualizacao($id = -1){
+        if ($this->input->post('oneInput') != null) {
+            $id = $this->input->post('oneInput');
+        } else if ($id == -1)
+            redirect('albuns/listar');
+
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+        
+        $dados['album'] = $this->albuns_model->buscar_dados($id);
+        $dados['artista_album'] = $this->albuns_model->buscar_artista_album($id);
+        $dados['artistas'] = $this->albuns_model->buscar_artistas();
+        $dados['tracklist'] = $this->albuns_model->buscar_tracklist($id);
+        $dados['tipos'] = $this->albuns_model->buscar_tipos();
+
+        $this->load->view('albuns/edita_faixas', $dados);
+    }
+
     public function atualizar(){
         $dados = array(
             'idAlbum' => $this->input->post('idAlbum'),

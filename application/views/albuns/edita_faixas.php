@@ -17,7 +17,7 @@
                 </div>
                 <div class="input-field col s3 m2 l2">
                     <a id="acao" onclick="editaTrack('<?= $album->idAlbum ?>','<?=base_url()?>')">
-                        Editar Faixas
+                        <p>Editar Faixas</p>
                     </a>
                 </div>
             </div>
@@ -84,8 +84,12 @@
             <button class="btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('atualizar'); ?>
                 <i class="mdi-content-send right"></i>
             </button>
+            <form id="sendUserToEdit" method="post">
+                <input id="editarEntInput" type="hidden" name="oneInput">
+                <input id="submitAcao" type="submit" style="display: none">
+            </form>
         <?php echo form_close() ?>
-
+        
     </div>
 </div>
 
