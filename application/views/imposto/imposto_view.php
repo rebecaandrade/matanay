@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="input-field col s12 m10 offset-m1 l8 offset-l2">
                     <label><?php echo $this->lang->line('valor'); ?></label>
-                    <input required name="valor" type="text">
+                    <input required class="<?=$this->lang->line('classPercent')?>" name="valor" type="text">
                 </div>
             </div>
             <br>

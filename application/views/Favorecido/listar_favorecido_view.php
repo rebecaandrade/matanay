@@ -33,7 +33,7 @@ $this->load->view('_include/header') ?>
                             <td><?= ($favorecido->cpf == NULL ? $favorecido->cnpj : $favorecido->cpf) ?></td>
                             <td><?= $this->lang->line($favorecido->descricao); ?></td>
                             <td><a class="acao"
-                                   href="<?= base_url() . 'index.php/Favorecido/camposatualizacao?id=' . $favorecido->idFavorecido ?>"><?php echo $this->lang->line('editar'); ?></a>
+                                   onclick=" passaParamentroFavorecido('<?= $favorecido->idFavorecido ?>','<?=base_url()?>')"><?php echo $this->lang->line('editar'); ?></a>
                                 | <a class="deletarLink"
                                      onclick="excluirFavorecido('<?= base_url() . 'index.php/favorecido/deletar/' . $favorecido->idFavorecido ?>')"><?php echo $this->lang->line('deletar') ?> </a>
                             </td>
@@ -43,6 +43,10 @@ $this->load->view('_include/header') ?>
                 </tbody>
             </table>
         </div>
+        <form id="sendUserToEdit" method="post">
+            <input id="editarEntInput" type="hidden" name="oneInput">
+            <input id="submitAcao" type="submit" style="display: none">
+        </form>
 
     </div>
 

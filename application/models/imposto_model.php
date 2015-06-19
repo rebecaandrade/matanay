@@ -4,7 +4,7 @@ class Imposto_model extends CI_Model{
 
 	public function buscar_imposto(){
 		$query=$this->db->query("SELECT * FROM imposto");
-            return $query->result();
+        return $query->result();
 	}
 
 	public function cadastrar_imposto($imposto){

@@ -19,7 +19,7 @@ $this->load->view('_include/header') ?>
         <div class="row"><!--a paradinha de dizer se eh CPF ou CNPJ-->
             <div id="cpfCadastre" class="input-field col s12 m9 l8 offset-l2">
                 <label>CPF</label>
-                <input id="cpfCadastreInput" class="cpfCadastreInput" type="text" name="cpf">
+                <input required id="cpfCadastreInput" class="cpfCadastreInput" type="text" name="cpf">
             </div>
             <div style="display: none" id="cnpjCadastre" class="input-field col s12 m9 l8 offset-l2">
                 <label>CNPJ</label>
@@ -58,11 +58,11 @@ $this->load->view('_include/header') ?>
         <div class="row">
             <div class="input-field col s12 m6 l4 offset-l2">
                 <label><?php echo $this->lang->line('percentual_fisico'); ?></label>
-                <input required type="text" value="" name="porcentagemganhofisico">
+                <input required class="<?=$this->lang->line('classPercent')?>" type="text" value="" name="porcentagemganhofisico">
             </div>
             <div class="input-field col s12 m6 l4">
                 <label><?php echo $this->lang->line('percentual_digital'); ?></label>
-                <input required type="text" value="" name="porcentagemganhodigital">
+                <input required class="<?=$this->lang->line('classPercent')?>" type="text" value="" name="porcentagemganhodigital">
             </div>
         </div>
         <div class="row">

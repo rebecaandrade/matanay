@@ -116,6 +116,23 @@ var excluirEntidade = function (url) {
     });
 }
 
+var excluirFavorecido = function (url) {
+    swal({
+        title: "Tem Certeza?",
+        text: "O favorecido selecionado será excluido",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Sim, pode excluir!",
+        cancelButtonText: "Não, cancele!",
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            window.location.href = url;
+        }
+    });
+}
 $(document).ready(function () {
     $('a').css('cursor', 'pointer')
 });
@@ -199,10 +216,23 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('.porcentagem').mask("00,00%", {reverse: true});
-})
+});
 
 $(document).ready(function () {
     $('#updateFormEntidade').submit(function () {
+        var $cpf = $('#cpfUpdate').val();
+        var $cnpj = $('#cnpjUpdate').val();
+        var $cpf_cnpj = null;
+        if ($cpf != null) {
+            $cpf_cnpj = $cpf;
+        } else {
+            $cpf_cnpj = $cnpj;
+        }
+        $('#cppjUpdate').prop('value', $cpf_cnpj);
+    });
+});
+$(document).ready(function () {
+    $('#updateFormFavorecido').submit(function () {
         var $cpf = $('#cpfUpdate').val();
         var $cnpj = $('#cnpjUpdate').val();
         var $cpf_cnpj = null;
@@ -350,7 +380,7 @@ $(function () {
 
 /********** editar sem haver passagem de parametro pela url **********/
 
-function passaParamentro(param, url) {
+function passaParamentroEntidade(param, url) {
     $('#editarEntInput').prop('value', param);
     $('#sendUserToEdit').prop('action', url + "index.php/entidade/camposatualizacao");
     $('#sendUserToEdit').submit();
@@ -365,6 +395,11 @@ function passaParametroAlbum(param, url) {
 function passaParametroFaixa(param, url) {
     $('#editarEntInput').prop('value', param);
     $('#sendUserToEdit').prop('action', url + "index.php/faixas_videos/camposatualizacao");
+    $('#sendUserToEdit').submit();
+}
+function passaParamentroFavorecido(param, url) {
+    $('#editarEntInput').prop('value', param);
+    $('#sendUserToEdit').prop('action', url + "index.php/favorecido/camposatualizacao");
     $('#sendUserToEdit').submit();
 }
 

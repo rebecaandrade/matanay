@@ -20,6 +20,8 @@
 			$this->load->view('contrato/cadastro_contrato',$dados);
 		}
 		public function cadastrar_contrato(){
+			var_dump($this->input->post());
+			die();
 			$this->form_validation->set_message('required', $this->lang->line('form_error_required') );
 			$this->form_validation->set_message('max_length', $this->lang->line('form_error_max_length'));
 			$this->form_validation->set_message('is_int', $this->lang->line('form_error_is_int'));
@@ -42,7 +44,8 @@
 				redirect('contrato/listar');
 			} else {
 				$mensagem = array(
-									'mensagem'		=> validation_errors() ,
+									'mensagem'				=> $this->lang->line('campos_invalidos'),
+									'subtitulo_mensagem'	=> validation_errors() ,
 									'tipo_mensagem' => 'error'
 								);
 				$this->session->set_userdata($mensagem);
@@ -76,5 +79,29 @@
 			else{
 				return FALSE;
 			}
+		}
+		public function depois_data_inicio($fim){
+			$inicio = $this->input->post('data_inicio');
+			$fim = explode("-",$fim);
+			$fim_jd = GregorianToJD($fim[1], $fim[2], $fim[0]);
+			$inicio = explode("-",$inicio);
+			$inicio_jd = GregorianToJD($inicio[1], $inicio[2], $inicio[0]);
+			if($inicio_jd > fim_jd){
+				return FALSE;
+			}
+			else{
+				return TRUE;
+			}
+		}
+		public function decimal_num($valor){
+			$valor = str_replace (',','.',$valor); //substitui virgulas por pontos para fazer o type casting
+			if((string)(float)$valor == $valor){ //verifica se é um numero
+				$valor = (float) $valor; // type casting de string para número
+				return $valor;
+			}
+			else{
+				return FALSE;
+			}
+			
 		}
 	}

@@ -33,12 +33,12 @@
 						array(
 								'field' => 'entidade',
 								'label' => 'lang:contrato_entidade',
-								'rules' => 'trim|required|is_int|callback_permissao_entidade'
+								'rules' => 'trim|required|callback_permissao_entidade'
 							),
 						array(
 								'field' => 'favorecido',
 								'label' => 'lang:contrato_favorecido',
-								'rules' => 'trim|required|is_int|callback_permissao_favorecido'
+								'rules' => 'trim|required|callback_permissao_favorecido'
 							),
 						array(
 								'field' => 'data_inicio',
@@ -53,7 +53,7 @@
 						array(
 								'field' => 'alerta',
 								'label' => 'lang:alerta',
-								'rules' => 'trim|required|is_int'
+								'rules' => 'trim|required|callback_decimal_num'
 							)
 						)
 	);

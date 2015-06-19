@@ -157,7 +157,7 @@
                 <a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><?php echo $this->lang->line('albums'); ?></a>
             </li>
             <li>
-                <a href="<?php echo base_url(); ?>index.php/entidade/listar"><?php echo $this->lang->line('entidades'); ?></a>
+                <a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"><?php echo $this->lang->line('entidades'); ?></a>
             </li>
             <li>
                 <a href="<?php echo base_url(); ?>index.php/favorecido/listar"><?php echo $this->lang->line('favorecido'); ?></a>
