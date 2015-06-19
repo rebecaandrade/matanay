@@ -3,7 +3,7 @@
 	<?php if(isset($entidades) && isset($favorecidos)){ ?>
 		<div id="wrapper-body"> 
 			<div class="row">
-				<?php echo form_open('moeda/cadastrar_contrato') ?>
+				<?php echo form_open('contrato/cadastrar_contrato') ?>
 					<div class="row">
 						<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 							<i class="mdi-action-description prefix"></i>	
@@ -48,7 +48,7 @@
 								<option  value='' disabled selected> </option>
 								<option value='1'> 1 <?php echo $this->lang->line('mes'); ?></option>
 								<?php for ($i=2; $i <= 12; $i++) { ?>
-									<option value="<?php echo $i ?>"> <?php echo $i.' '.$this->lang->line('meses'); ?></option>
+									<option value=<?php echo $i ?>> <?php echo $i.' '.$this->lang->line('meses'); ?></option>
 								<?php } ?>
 							</select>
 							<label ><?php echo $this->lang->line('alerta'); ?></label>

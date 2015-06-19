@@ -7,8 +7,6 @@
 						'data_fim'		=> $data_fim,
 						'alerta'		=> $alerta,
 						'idEntidade'	=> $id,
-						'idLoja'		=> 1,// apagar no novo banco
-						'idSub_loja'	=> 2 // apagar no novo banco
 			);
 			return	$this->db->insert('contrato',$contrato);
 		}
@@ -16,8 +14,8 @@
 			return $this->db->get_where('entidade',array('idCliente' => $id_cliente,'excluido' => NULL))->result();
 		}
 		public function buscar_favorecidos($id_cliente){
-			$this->db->select('*')->from('entidade')->join('favorecido', 'favorecido.idFavorecido = entidade.idFavorecido');
 			$this->db->where('entidade.idCliente', $id_cliente);
+			$this->db->select('*')->from('entidade')->join('favorecido', 'favorecido.idFavorecido = entidade.idFavorecido')->group_by('favorecido.nome');
 			$this->db->where('entidade.excluido', NULL);
 			return $this->db->get()->result();
 		}
@@ -25,7 +23,8 @@
 			return $this->db->get_where('entidade',array('idEntidade' => $id,'excluido' => NULL))->row();
 		}
 		public function buscar_favorecido($id){
-			$this->db->select('*')->from('entidade')->join('favorecido', 'favorecido.idFavorecido = entidade.idFavorecido');
+			$this->db->where('entidade.idCliente', $this->session->userdata('id_cliente'));
+			$this->db->select('*')->from('favorecido')->join('entidade', 'entidade.idFavorecido = favorecido.idFavorecido');
 			$this->db->where('entidade.idFavorecido', $id);
 			$this->db->where('entidade.excluido', NULL);
 			return $this->db->get()->row();
