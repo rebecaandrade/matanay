@@ -7,7 +7,7 @@ class Albuns extends CI_Controller {
    		$this->load->model('albuns_model');
 	}
 
-	public function cadastra_album(){
+	public function cadastra_album() {
 		$this->session->set_flashdata('redirect_url', current_url());
 
 		$linguagem_usuario = $this->session->userdata('linguagem');
@@ -20,7 +20,7 @@ class Albuns extends CI_Controller {
 		$this->load->view('albuns/cadastro_album', $dados);
 	}
 
-	public function cadastrar(){
+	public function cadastrar() {
 		$album = array(
             'nome' => $this->input->post('nome'),
             'quantidade' => $this->input->post('n_faixas'),
@@ -46,7 +46,7 @@ class Albuns extends CI_Controller {
         }
 	}
 
-	public function listar(){
+	public function listar() {
         $dados = array(
             'albuns' => $this->albuns_model->buscar_albuns()->result(),
             'artistas' => $this->albuns_model->buscar_artistas(),
@@ -57,7 +57,7 @@ class Albuns extends CI_Controller {
 		$this->load->view('albuns/lista_albuns', $dados);
 	}
 
-    public function camposatualizacao($id = -1){
+    public function camposatualizacao($id = -1) {
         if ($this->input->post('oneInput') != null) {
             $id = $this->input->post('oneInput');
         } else if ($id == -1)
@@ -75,25 +75,26 @@ class Albuns extends CI_Controller {
         $this->load->view('albuns/edita_album', $dados);
     }
 
-    public function faixas_atualizacao($id = -1){
-        if ($this->input->post('oneInput') != null) {
-            $id = $this->input->post('oneInput');
-        } else if ($id == -1)
-            redirect('albuns/listar');
+    public function faixas_atualizacao($id) {
+        $this->session->set_flashdata('redirect_url', current_url());
 
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
-        
+
         $dados['album'] = $this->albuns_model->buscar_dados($id);
         $dados['artista_album'] = $this->albuns_model->buscar_artista_album($id);
         $dados['artistas'] = $this->albuns_model->buscar_artistas();
+        $dados['faixas'] = $this->albuns_model->buscar_faixas();
         $dados['tracklist'] = $this->albuns_model->buscar_tracklist($id);
-        $dados['tipos'] = $this->albuns_model->buscar_tipos();
 
         $this->load->view('albuns/edita_faixas', $dados);
     }
 
-    public function atualizar(){
+    public function atualizar_faixas() {
+        redirect('albuns/listar'); 
+    }
+
+    public function atualizar() {
         $dados = array(
             'idAlbum' => $this->input->post('idAlbum'),
             'nome' => $this->input->post('nome'),
@@ -126,7 +127,7 @@ class Albuns extends CI_Controller {
         }
     }
 
-    public function deletar(){
+    public function deletar() {
         $dados = array(
             'idAlbum' => $this->input->get('id'),
             'excluido' => 1
@@ -141,7 +142,7 @@ class Albuns extends CI_Controller {
         }
     }
 
-    public function detalhar($id){
+    public function detalhar($id) {
         $this->session->set_flashdata('redirect_url', current_url());
 
         $linguagem_usuario = $this->session->userdata('linguagem');

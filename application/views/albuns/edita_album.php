@@ -16,9 +16,7 @@
                     <input class="n_faixas" id="disabled" name="n_faixas" type="text" disabled value="<?php echo $album->quantidade; ?>"/>
                 </div>
                 <div class="input-field col s3 m2 l2">
-                    <a id="acao" onclick="editaTrack('<?= $album->idAlbum ?>','<?=base_url()?>')">
-                        Editar Faixas
-                    </a>
+                    <a id="acao" href="<?php echo base_url(); ?>index.php/albuns/faixas_atualizacao/<?php echo $album->idAlbum ?>">Editar Faixas</a>
                 </div>
             </div>
 

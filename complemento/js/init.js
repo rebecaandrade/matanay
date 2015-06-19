@@ -165,26 +165,6 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#n_video').click(function () {
-        $('#youtubeCadastre').hide();
-        $('#youtubeCadastreInput').prop('value', null);
-        $('#isrcCadastre').show();
-        $('#isrcCadastreInput').prop('required', true);
-        $('#youtubeCadastreInput').prop('required', false);
-    })
-});
-
-$(document).ready(function () {
-    $('#eh_video').click(function () {
-        $('#isrcCadastre').hide();
-        $('#isrcCadastreInput').prop('value', null);
-        $('#youtubeCadastre').show();
-        $('#youtubeCadastreInput').prop('required', true);
-        $('#isrcCadastreInput').prop('required', false);
-    });
-});
-
-$(document).ready(function () {
     $('#myForm').submit(function () {
         var $cpf = $('#cpfCadastreInput').val();
         var $cnpj = $('#cnpjCadastreInput').val();
@@ -242,6 +222,28 @@ $(document).ready(function () {
             $cpf_cnpj = $cnpj;
         }
         $('#cppjUpdate').prop('value', $cpf_cnpj);
+    });
+});
+
+/********** radio button pra dizer se vai cadastrar faixa ou video **********/
+
+$(document).ready(function () {
+    $('#n_video').click(function () {
+        $('#youtubeCadastre').hide();
+        $('#youtubeCadastreInput').prop('value', null);
+        $('#isrcCadastre').show();
+        $('#isrcCadastreInput').prop('required', true);
+        $('#youtubeCadastreInput').prop('required', false);
+    })
+});
+
+$(document).ready(function () {
+    $('#eh_video').click(function () {
+        $('#isrcCadastre').hide();
+        $('#isrcCadastreInput').prop('value', null);
+        $('#youtubeCadastre').show();
+        $('#youtubeCadastreInput').prop('required', true);
+        $('#isrcCadastreInput').prop('required', false);
     });
 });
 
@@ -397,6 +399,7 @@ function passaParametroFaixa(param, url) {
     $('#sendUserToEdit').prop('action', url + "index.php/faixas_videos/camposatualizacao");
     $('#sendUserToEdit').submit();
 }
+
 function passaParamentroFavorecido(param, url) {
     $('#editarEntInput').prop('value', param);
     $('#sendUserToEdit').prop('action', url + "index.php/favorecido/camposatualizacao");
