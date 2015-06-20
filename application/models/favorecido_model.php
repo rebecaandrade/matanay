@@ -33,9 +33,10 @@ class Favorecido_model extends CI_Model{
 		return  $this->db->update('telefone_favorecido', $telefone);
 	}
 
-	function buscar_telefone_especifico($id, $idtelefone){
+	function buscar_telefone_especifico($id, $indicetelefone){
     		$this->db->where('idFavorecido', $id);
-        	return $this->db->get('telefone_favorecido')->result()[$idtelefone];
+    		$query=$this->db->get('telefone_favorecido')->result();
+        	return $query[$indicetelefone];
    	}
 
    	function buscar_identificacao_especifica($id){

@@ -8,6 +8,14 @@ class Favorecido extends CI_Controller
         parent:: __construct();
         $this->load->model('Entidade_model');
         $this->load->model('Favorecido_model');
+        $this->form_validation->set_error_delimiters('',''); // remove tags HTML das mensagem de erro de FORM VALIDATION
+        
+        if (!($this->session->userdata('linguagem'))) {
+            $this->session->set_userdata('linguagem', 'portugues');
+        }
+        
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
     }
 
     public function index()
@@ -115,7 +123,7 @@ class Favorecido extends CI_Controller
             $this->Favorecido_model->cadastrar_telefone($telefone);
             //coloca mensagem de sucesso na session
             $this->session->set_userdata('mensagem', '=)');
-            $this->session->set_userdata('subtitulo_mensagem', 'Cadastro Realizado com succeso');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
             redirect('favorecido/listar');
         } else {
@@ -179,19 +187,23 @@ class Favorecido extends CI_Controller
 
     public function valida_cadastro_favorecido()
     {
+        $this->form_validation->set_message('required', $this->lang->line('form_error_required') );
+        $this->form_validation->set_message('max_length', $this->lang->line('form_error_max_length'));
+        $this->form_validation->set_message('decimal_num', $this->lang->line('form_error_decimal_num'));
+
         //define as regras de validacao do formulario
         $this->form_validation->set_rules('nomefavorecido', 'nomefavorecido', 'required|max_length[45]');
-        $this->form_validation->set_rules('cpf_cnpj', 'cpf_cnpj', 'required|max_length[18]|min_length[11]');
-        $this->form_validation->set_rules('contato', 'contato', 'required|max_length[45]');
-        $this->form_validation->set_rules('banco', 'banco', 'required|max_length[45]');
-        $this->form_validation->set_rules('agencia', 'agencia', 'required|max_length[45]');
-        $this->form_validation->set_rules('contacorrente', 'contacorrente', 'required|max_length[45]');
-        $this->form_validation->set_rules('identificacao', 'identificacao', 'required|max_length[45]');
-        $this->form_validation->set_rules('email', 'email', 'required|max_length[45]|valid_email');
-        $this->form_validation->set_rules('porcentagemganhodigital', 'porcentagemganhodigital', 'required|max_length[45]');
-        $this->form_validation->set_rules('porcentagemganhofisico', 'porcentagemganhofisico', 'required|max_length[45]');
-        $this->form_validation->set_rules('telefone1', 'telefone1', 'required|max_length[45]');
-        $this->form_validation->set_rules('telefone2', 'telefone2', 'required|max_length[45]');
+        $this->form_validation->set_rules('cpf_cnpj', $this->lang->line('cpf_cnpj'), 'required');
+        $this->form_validation->set_rules('contato', $this->lang->line('contato'), 'required|max_length[45]');
+        $this->form_validation->set_rules('banco', $this->lang->line('banco'), 'required|max_length[45]');
+        $this->form_validation->set_rules('agencia', $this->lang->line('agencia'), 'required|max_length[45]');
+        $this->form_validation->set_rules('contacorrente', $this->lang->line('contacorrente'), 'required|max_length[45]');
+        $this->form_validation->set_rules('identificacao', $this->lang->line('identificacao'), 'required|max_length[45]');
+        $this->form_validation->set_rules('email', $this->lang->line('email'), 'required|max_length[45]|valid_email');
+        $this->form_validation->set_rules('porcentagemganhodigital', $this->lang->line('porcentagemganhodigital'), 'required|max_length[45]');
+        $this->form_validation->set_rules('porcentagemganhofisico', $this->lang->line('porcentagemganhofisico'), 'required|max_length[45]');
+        $this->form_validation->set_rules('telefone1', $this->lang->line('telefone1'), 'required|max_length[45]');
+        $this->form_validation->set_rules('telefone2', $this->lang->line('telefone2'), 'required|max_length[45]');
         // passa a validacao dos campos e caso esteja tudo OK ele entra no IF
         if ($this->form_validation->run()) {
             $info = $this->input->post();
@@ -225,9 +237,12 @@ class Favorecido extends CI_Controller
             return $info;
         } else {
             //caso haja problema com o formulario é mostrada uma mensagem de erro
-            $this->session->set_userdata('mensagem', 'Problemas no Formulário');
-            $this->session->set_userdata('subtitulo_mensagem', 'Alguns campos foram preenchidos incorretaente');
-            $this->session->set_userdata('tipo_mensagem', 'error');
+            $mensagem = array(
+                'mensagem'              => $this->lang->line('campos_invalidos'),
+                'subtitulo_mensagem'    => validation_errors() ,
+                'tipo_mensagem'         => 'error'
+            );
+            $this->session->set_userdata($mensagem);
             redirect('Favorecido/mostrar_cadastro');
         }
     }

@@ -72,9 +72,9 @@ $lang['form_error_depois_data_inicio']		= "The end date must occur after the sta
 ////// ALERTAS SISTEMA
 
 $lang['nada_encontrado']			= 'Nothing found.';
-$lang['atualizado_sucesso']			= 'Updated successfully!';
-$lang['cadastrado_sucesso']			= 'Registered successfully!';
-$lang['excluido_sucesso']			= 'Deleted successfully!';
+$lang['atualizado_sucesso']			= 'Successfully Updated!';
+$lang['cadastrado_sucesso']			= 'Successfully Registered!';
+$lang['excluido_sucesso']			= 'Successfully Deleted!';
 $lang['acesso_negado']				= 'Undue access';
 $lang['permissao_insuficiente']		= 'No authorization to execute this action';
 $lang['confirmar_deletar']			= 'Do you wish to delete this?';

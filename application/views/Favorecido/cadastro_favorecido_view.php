@@ -58,11 +58,11 @@ $this->load->view('_include/header') ?>
         <div class="row">
             <div class="input-field col s12 m6 l4 offset-l2">
                 <label><?php echo $this->lang->line('percentual_fisico'); ?></label>
-                <input required type="text" value="" name="porcentagemganhofisico">
+                <input required class="<?=$this->lang->line('classPercent')?>" type="text" value="" name="porcentagemganhofisico">
             </div>
             <div class="input-field col s12 m6 l4">
                 <label><?php echo $this->lang->line('percentual_digital'); ?></label>
-                <input required type="text" value="" name="porcentagemganhodigital">
+                <input required class="<?=$this->lang->line('classPercent')?>" type="text" value="" name="porcentagemganhodigital">
             </div>
         </div>
         <div class="row">
