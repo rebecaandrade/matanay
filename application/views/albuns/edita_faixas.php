@@ -22,7 +22,6 @@
         </div>
     </div>
      
-    
     <?php echo form_open('albuns/atualizar_faixas') ?>
         <div class="row">
             <div id="SelectFaixas">
@@ -46,12 +45,12 @@
                                     <?php } } ?>
                                 </select>
                                 <label id="selectLabel"><?php echo $this->lang->line("faixa");?></label>
+                            </div>
                                 <script>
                                     $('.addFaixa').chosen({search_contains: true});
                                     function getFaixas(){
                                         return <?php echo(json_encode($faixas)); ?>; }
                                 </script>
-                            </div>
                             <?php if($j==0) { ?>
                                 <a onclick="addSelectFaixa(getFaixas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('faixa'); ?>')" 
                                     class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
@@ -67,7 +66,6 @@
                     </button>
                 </div>
             </div>
-            
         </div>
     <?php echo form_close() ?>   
     

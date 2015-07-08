@@ -86,10 +86,10 @@
                 <li>
                     <div class="collapsible-header"><a><?php echo $this->lang->line('cadastros'); ?></a></div>
                     <div class="collapsible-body">
-                    	<a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><?php echo $this->lang->line('faixas'); ?></a>
+                    	<a href="<?php echo base_url(); ?>index.php/faixas_videos/listar"><?php echo $this->lang->line('faixas'); ?></a>
                     </div>
                     <div class="collapsible-body">
-                        <a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><?php echo $this->lang->line('albums'); ?></a>
+                        <a href="<?php echo base_url(); ?>index.php/albuns/listar"><?php echo $this->lang->line('albums'); ?></a>
                     </div>
                     <div class="collapsible-body">
                         <a href="<?php echo base_url(); ?>index.php/entidade/listar"><?php echo $this->lang->line('entidades'); ?></a>
@@ -151,13 +151,13 @@
     <div id="sub_menu" class="nav-wrapper container">
         <ul class="right hide-on-med-and-down">
             <li>
-                <a href="<?php echo base_url(); ?>index.php/faixas_videos/cadastra_faixa"><?php echo $this->lang->line('faixas'); ?></a>
+                <a href="<?php echo base_url(); ?>index.php/faixas_videos/listar"><?php echo $this->lang->line('faixas'); ?></a>
             </li>
             <li>
-                <a href="<?php echo base_url(); ?>index.php/albuns/cadastra_album"><?php echo $this->lang->line('albums'); ?></a>
+                <a href="<?php echo base_url(); ?>index.php/albuns/listar"><?php echo $this->lang->line('albums'); ?></a>
             </li>
             <li>
-                <a href="<?php echo base_url(); ?>index.php/entidade/mostrar_cadastro"><?php echo $this->lang->line('entidades'); ?></a>
+                <a href="<?php echo base_url(); ?>index.php/entidade/listar"><?php echo $this->lang->line('entidades'); ?></a>
             </li>
             <li>
                 <a href="<?php echo base_url(); ?>index.php/favorecido/listar"><?php echo $this->lang->line('favorecido'); ?></a>

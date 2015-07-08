@@ -66,7 +66,7 @@
 	        <div id="SelectAutor">
 	        <div class="row">
 	          	<div class="input-field col s10 m8 l8 offset-l1">
-	            	<select class="addEntidade browser-default" name="autores[]">
+	            	<select class="addEntidade browser-default" name="autors[]">
 	              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
 	              		<?php
                 			if(isset($autores)){
@@ -93,7 +93,7 @@
 	        <div id="SelectProdutor">
 	        <div class="row">
 	          	<div class="input-field col s10 m8 l8 offset-l1">
-	            	<select class="addEntidade browser-default" name="produtores[]">
+	            	<select class="addEntidade browser-default" name="produtors[]">
 	              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
 	              		<?php
                 			if(isset($produtores)){
@@ -105,7 +105,7 @@
 	          	</div>
 	          	<div class="input-field col s10 m3 l2">
 	          		<label><?php echo $this->lang->line('participacao');?></label>
-	            	<input required class="<?= $this->lang->line('classPercent') ?>" name="percentualProdutor[]" type="text">
+	            	<input class="<?= $this->lang->line('classPercent') ?>" name="percentualProdutor[]" type="text">
 	          	</div>
 	          	<a onclick="addSelectEntidade(getProdutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('produtor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
 					class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>

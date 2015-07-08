@@ -154,26 +154,18 @@ class Faixas_Videos_model extends CI_Model {
 
         $i = 0;
         foreach($produtores as $produtor->idEntidade){
-            $produtor_faixa = array(
-                'idFaixa' => $faixa_id,
-                'idEntidade' => $produtor->idEntidade,
-                'percentual' => $perc_produtores[$i]
-            );
-            $this->db->insert('entidade_has_faixa_video', $produtor_faixa);
-            $i++;
+            if($produtor->idEntidade != NULL){
+                $produtor_faixa = array(
+                    'idFaixa' => $faixa_id,
+                    'idEntidade' => $produtor->idEntidade,
+                    'percentual' => $perc_produtores[$i]
+                );
+                $this->db->insert('entidade_has_faixa_video', $produtor_faixa);
+                $i++;
+            }
         }
 
         $this->db->trans_complete();
-        return TRUE;
-        /*if(strlen($faixa['isrc']) != 12){
-            $this->session->set_userdata('mensagem', 'O código ISRC deve conter 12 caracteres.');
-            return FALSE;
-        }
-
-        if(($faixa['percentual_artista'] + $faixa['percentual_autor'] + $faixa['percentual_produtor']) != 100){
-            $this->session->set_userdata('mensagem', 'A soma das porcentagens não dá 100%');
-            return FALSE;
-        }*/
     }
 
     public function deletar($dados){

@@ -28,8 +28,8 @@ class Faixas_Videos extends CI_Controller {
         );
 
         $artistas = $this->input->post('artistas[]');
-        $autores = $this->input->post('autores[]');
-        $produtores = $this->input->post('produtores[]');
+        $autores = $this->input->post('autors[]');
+        $produtores = $this->input->post('produtors[]');
 
         $perc_artistas = $this->input->post('percentualArtista[]');
         $perc_autores = $this->input->post('percentualAutor[]');
@@ -53,11 +53,7 @@ class Faixas_Videos extends CI_Controller {
             $this->session->set_userdata('mensagem', 'Por favor, escolha pelo menos um autor');
             redirect('faixas_videos/cadastra_faixa');
         }
-        elseif($produtores == NULL){
-            $this->session->set_userdata('mensagem', 'Por favor, escolha pelo menos um produtor');
-            redirect('faixas_videos/cadastra_faixa');
-        }
-        elseif($faixa['nome'] != NULL && $artistas != NULL && $autores != NULL && $produtores != NULL){
+        elseif($faixa['nome'] != NULL && $artistas != NULL && $autores != NULL){
             $this->faixas_videos_model->cadastrar_faixa($faixa, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
             $this->session->set_userdata('mensagem', $this->lang->line('cadastrado_sucesso'));
             redirect('faixas_videos/listar');       
@@ -139,10 +135,14 @@ class Faixas_Videos extends CI_Controller {
         );
 
         if($this->faixas_videos_model->deletar($dados)){
-            $this->session->set_userdata('mensagem', $this->lang->line('excluido_sucesso'));
+            $this->session->set_userdata('mensagem', 'Faixa excluida com succeso!');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'success');
             redirect('faixas_videos/listar');
         }else{
-            $this->session->set_userdata('mensagem', 'Houve algum problema para deletar.');
+            $this->session->set_userdata('mensagem', 'Problemas para excluir.');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'error');
             redirect('faixas_videos/listar');
         }
     }

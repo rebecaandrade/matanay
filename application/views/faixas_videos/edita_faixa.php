@@ -47,7 +47,7 @@
                                 <input class="<?= $this->lang->line('classPercent') ?>" name="percentualArtista[]" type="text" value="<?php echo $entidade['percentual']; ?>">
                             </div>
                             <?php if($j==0) { ?>
-                                <a onclick="addSelectEntidade(getArtistas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('artista'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
+                                <a onclick="addSelectEntidade(getArtistas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('artista'); ?>', '<?php echo $this->lang->line('participacao'); ?>', '<?php echo $this->lang->line('classPercent') ?>')" 
                                     class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
                                 <script>
                                     $('.addEntidade').chosen({search_contains: true});

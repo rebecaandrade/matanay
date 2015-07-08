@@ -134,10 +134,14 @@ class Albuns extends CI_Controller {
         );
 
         if($this->albuns_model->deletar($dados)){
-            $this->session->set_userdata('mensagem', $this->lang->line('excluido_sucesso'));
+            $this->session->set_userdata('mensagem', 'Album excluido com succeso');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'success');
             redirect('albuns/listar');
         }else{
-            $this->session->set_userdata('mensagem', 'Houve algum problema para deletar.');
+            $this->session->set_userdata('mensagem', 'Problemas para excluir.');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'error');
             redirect('albuns/listar');
         }
     }
