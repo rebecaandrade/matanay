@@ -513,3 +513,16 @@ $(document).ready(function () {
 /*! DataTables 1.10.7
  * Â©2008-2015 SpryMedia Ltd - datatables.net/license
  */
+$(document).ready(function () {
+    $('#test4').click(function () {
+        $("#favorecido").hide();
+        $("#nao_favorecido").show();
+        $('#favorecido_relacionado').prop('required', true);
+    });
+});
+$(document).ready(function () {
+    $('#test3').click(function () {
+        $("#nao_favorecido").hide();
+        $("#favorecido").show();
+    });
+});

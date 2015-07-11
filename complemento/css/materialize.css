@@ -6620,8 +6620,8 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     font-size: 0.8rem; 
     color: #777; }
 
-select {
-  display: none; }
+/*select {
+  display: none; }*/
 
 select.browser-default {
   display: block; }

@@ -184,6 +184,7 @@ $lang['nao_ha_favorecidos']='Não existem favorecidos cadastrados!';
 $lang['nao_ha_impostos']='Não existem impostos cadastrados!';
 $lang['descricao_entidade'] = "Descrição";
 $lang['classPercent']="porcentagem";
+$lang['cadastro_entidade_view'] = 'Cadastro de Entidade';
 
 
 

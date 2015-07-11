@@ -46,7 +46,7 @@ class Acesso extends CI_Controller {
 		}
 		else{	
 			$newdata = array(
-				'id_usuario' => $usuario->idPerfis,
+				'id_usuario' => $usuario->idUsuario,
 				'nome' => $usuario->nome,
 				'login' => $usuario->login,
 				'id_cliente' => $usuario->idCliente
