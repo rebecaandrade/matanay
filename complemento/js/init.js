@@ -471,8 +471,8 @@ function passaParamentroFavorecido(param, url) {
 
 $(document).ready(function () {
     $('#myTable').dataTable({
-        //"LengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
-        "pageLength": 25,
+        "LengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
+        "pageLength": 100,
         "language": {
             "emptyTable": "Nenhum Resultado Encontrado",
             "info": "Mostrando _START_ à _END_ de _TOTAL_ elementos",
@@ -480,7 +480,7 @@ $(document).ready(function () {
             "infoFiltered": "(Filtrado de _MAX_ elementos)",
             "infoPostFix": "",
             "thousands": ",",
-            "lengthMenu": "",
+            "lengthMenu": "mostrando _MENU_ resultados por pagina",
             "loadingRecords": "Carregando...",
             "processing": "Processando...",
             "search": "Procurar:",
@@ -498,17 +498,36 @@ $(document).ready(function () {
         }
     });
 });
-$(document).ready(function () {
-    var newTable = null;
-    $('.tableSelect').change(function () {
-        var length = $('.tableSelect option:selected').val();
-        var Settings = newTable.fnSettings();
-        Settings._iDisplayLength = length;
-        newTable.fnDraw();
-    });
-    newTable = $('#myTable').dataTable();
-});
 
+$(document).ready(function () {
+    $('#usTable').dataTable({
+        "LengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
+        "pageLength": 100,
+        "language": {
+            "emptyTable":     "No data available in table",
+            "info":           "Showing _START_ to _END_ of _TOTAL_ entries",
+            "infoEmpty":      "Showing 0 to 0 of 0 entries",
+            "infoFiltered":   "(filtered from _MAX_ total entries)",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "lengthMenu":     "Show _MENU_ entries",
+            "loadingRecords": "Loading...",
+            "processing":     "Processing...",
+            "search":         "Search:",
+            "zeroRecords":    "No matching records found",
+            "paginate": {
+                "first":      "First",
+                "last":       "Last",
+                "next":       "Next",
+                "previous":   "Previous"
+            },
+            "aria": {
+                "sortAscending":  ": activate to sort column ascending",
+                "sortDescending": ": activate to sort column descending"
+            }
+        }
+    });
+});
 
 /*! DataTables 1.10.7
  * Â©2008-2015 SpryMedia Ltd - datatables.net/license

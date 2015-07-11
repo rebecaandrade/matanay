@@ -78,6 +78,7 @@ $lang['excluido_sucesso']			= 'Successfully Deleted!';
 $lang['acesso_negado']				= 'Undue access';
 $lang['permissao_insuficiente']		= 'No authorization to execute this action';
 $lang['confirmar_deletar']			= 'Do you wish to delete this?';
+$lang['problemas_formulario']       = 'Problems with the form';
 
 ////// LOGIN 
 
@@ -185,6 +186,8 @@ $lang['nao_ha_impostos']='There are no taxes registered!';
 $lang['descricao_entidade'] = "Description";
 $lang['classPercent']="percentage";
 $lang['cadastro_entidade_view'] = 'Entity Cadastre';
+$lang['listar_entidade_view'] = 'Show Entities';
+$lang['myTable'] = 'usTable';
 
 
 //IMPOSTO JADIEL
@@ -213,6 +216,12 @@ $lang['cliente_erro_nome']			= 'Name already taken';
 $lang['sim']	='Yes';
 $lang['nao']	='No';
 
+
+
+//SODRE   //FORMVALIDATION
+$lang['cpf/cnpj_invalido']       = 'Invalid CPF/CNPJ';
+$lang['campos_incorretos']       = 'Some fields were filled incorrectly';
+$lang['cpf/cnpj_invalido']       = 'Invalid CPF/CNPJ';
 
 
 

@@ -76,6 +76,7 @@ $lang['excluido_sucesso']		= 'Excluído com sucesso!';
 $lang['acesso_negado']			= 'Acesso indevido';
 $lang['permissao_insuficiente']	= 'Permissão insuficiente para esta ação';
 $lang['confirmar_deletar']		= 'Confirmar deleção?';
+$lang['problemas_formulario']       = 'Problemas com o formulario';
 
 ////// LOGIN
 
@@ -185,6 +186,8 @@ $lang['nao_ha_impostos']='Não existem impostos cadastrados!';
 $lang['descricao_entidade'] = "Descrição";
 $lang['classPercent']="porcentagem";
 $lang['cadastro_entidade_view'] = 'Cadastro de Entidade';
+$lang['listar_entidade_view'] = 'Mostar Entidades';
+$lang['myTable'] = 'myTable';
 
 
 
@@ -216,3 +219,10 @@ $lang['cliente_erro_nome'] 			= 'Este nome já se encontra cadastrado';
 ///////SIM OU NAO /*FEITO POR MIM JADIEL*/
 $lang['sim']	='Sim';
 $lang['nao']	='Não';
+
+
+
+
+//SODRE   //FORMVALIDATION
+$lang['cpf/cnpf_invalido']       = 'CPF/CNPJ Inválido';
+$lang['campos_incorretos']       = 'Alguns campos foram preenchidos incorretamente';

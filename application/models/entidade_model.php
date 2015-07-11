@@ -18,10 +18,13 @@ class Entidade_model extends CI_Model
     public function buscar_entidades($qtde = 0, $inicio = 0)
     {
         if ($qtde > 0) $this->db->limit($qtde, $inicio);
-        $this->db->select('*')->from('entidade');
-        $this->db->join('tipo_entidade', 'tipo_entidade.idTipo_Entidade = entidade.idTipo_Entidade ');
+        $this->db->select('*')->from('Entidade ent');
+        $this->db->join('Entidade_has_Tipo_Entidade eht', 'eht.idEntidade = ent.idEntidade');
+        $this->db->join('Tipo_Entidade te','te.idTipo_Entidade = eht.idTipo_Entidade');
         $this->db->where(array('excluido' => NULL));
-        return $this->db->get();
+        $dados = $this->db->get()->result();
+        //die(var_dump($dados));
+        return $dados;
     }
 
     function buscar_entidade_especifica($id)

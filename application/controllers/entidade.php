@@ -114,7 +114,7 @@ class Entidade extends CI_Controller
                 $this->Favorecido_model->cadastrar_telefone($telefone);
                 //coloca mensagem de sucesso na session
                 $this->session->set_userdata('mensagem', '=)');
-                $this->session->set_userdata('subtitulo_mensagem', 'Cadastro Realizado com succeso');
+                $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
                 $this->session->set_userdata('tipo_mensagem', 'success');
                 redirect('Favorecido/listar');
             } //se nao for favorecido segue o codigo
@@ -130,14 +130,14 @@ class Entidade extends CI_Controller
                 $this->Entidade_model->cadastrar_telefone($telefone);
                 //coloca mensagem de sucesso na session
                 $this->session->set_userdata('mensagem', '=)');
-                $this->session->set_userdata('subtitulo_mensagem', 'Cadastro Realizado com succeso');
+                $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
                 $this->session->set_userdata('tipo_mensagem', 'success');
                 redirect('Entidade/listar');
             }
         } else {
             // caso haja algum problema inesperado, é mostrada uma mensagem de erro
             $this->session->set_userdata('mensagem', '=`(');
-            $this->session->set_userdata('subtitulo_mensagem', 'Problemas inesperados com o formulario');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
             $this->session->set_userdata('tipo_mensagem', 'error');
             redirect('Entidade/mostrar_cadastro');
         }
@@ -210,8 +210,8 @@ class Entidade extends CI_Controller
                     // faz a validacao do CPF
                     if ($this->validar_cpf($info['cpf_cnpj']) == FALSE) {
                         //caso nao seja um cpf valido, é gerada uma mensagem de erro na tela
-                        $this->session->set_userdata('mensagem', 'Problemas no Formulário');
-                        $this->session->set_userdata('subtitulo_mensagem', 'CPF Inválido');
+                        $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
+                        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf/cnpj_invalido'));
                         $this->session->set_userdata('tipo_mensagem', 'error');
                         redirect('Entidade/mostrar_cadastro');
                     } else {
@@ -222,8 +222,8 @@ class Entidade extends CI_Controller
                 case 'cpnj':
                     //faz a validacao do CNPJ
                     if ($this->validar_cpnj($info['cpf_cnpj']) == FALSE) {
-                        $this->session->set_userdata('mensagem', 'Problemas no Formulário');
-                        $this->session->set_userdata('subtitulo_mensagem', 'CNPJ Inválido');
+                        $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
+                        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf/cnpj_invalido'));
                         $this->session->set_userdata('tipo_mensagem', 'error');
                         redirect('Entidade/mostrar_cadastro');
                     } else {
@@ -235,8 +235,8 @@ class Entidade extends CI_Controller
             return $info;
         } else {
             //caso haja problema com o formulario é mostrada uma mensagem de erro
-            $this->session->set_userdata('mensagem', 'Problemas no Formulário');
-            $this->session->set_userdata('subtitulo_mensagem', 'Alguns campos foram preenchidos incorretaente');
+            $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('campos_incorretos'));
             $this->session->set_userdata('tipo_mensagem', 'error');
             redirect('Entidade/mostrar_cadastro');
         }
@@ -244,7 +244,10 @@ class Entidade extends CI_Controller
 
     public function listar()
     {
-        $dados['entidades'] = $this->Entidade_model->buscar_entidades()->result();
+        $this->session->set_flashdata('redirect_url', current_url());
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+        $dados['entidades'] = $this->Entidade_model->buscar_entidades();
         //die(var_dump($dados));
         $this->load->view("Entidade/listar_entidades_view", $dados);
     }
@@ -253,13 +256,16 @@ class Entidade extends CI_Controller
     {
         $this->Entidade_model->mudar_entidade_pra_excluidos($idEntidade);
         $this->session->set_userdata('mensagem', '=)');
-        $this->session->set_userdata('subtitulo_mensagem', 'Entidade excluida com succeso');
+        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('excluido_sucesso'));
         $this->session->set_userdata('tipo_mensagem', 'success');
         redirect('Entidade/listar');
     }
 
     public function camposatualizacao($id = -1)
     {
+        $this->session->set_flashdata('redirect_url', current_url());
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
         //die(var_dump($this->input->post()));
         if ($this->input->post('oneInput') != null) {
             $id = $this->input->post('oneInput');
@@ -297,8 +303,8 @@ class Entidade extends CI_Controller
                 // faz a validacao do CPF
                 if ($this->validar_cpf($info['cpf_cnpj']) == FALSE) {
                     //caso nao seja um cpf valido, é gerada uma mensagem de erro na tela
-                    $this->session->set_userdata('mensagem', 'Problemas no Formulário');
-                    $this->session->set_userdata('subtitulo_mensagem', 'CPF Inválido');
+                    $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
+                    $this->session->set_userdata('subtitulo_mensagem',  $this->lang->line('cpf/cnpj_invalido'));
                     $this->session->set_userdata('tipo_mensagem', 'error');
                     redirect('Entidade/mostrar_cadastro');
                 } else {
@@ -309,8 +315,8 @@ class Entidade extends CI_Controller
             } else {
                 //faz a validacao do CNPJ
                 if ($this->validar_cpnj($info['cpf_cnpj']) == FALSE) {
-                    $this->session->set_userdata('mensagem', 'Problemas no Formulário');
-                    $this->session->set_userdata('subtitulo_mensagem', 'CNPJ Inválido');
+                    $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
+                    $this->session->set_userdata('subtitulo_mensagem',  $this->lang->line('cpf/cnpj_invalido'));
                     $this->session->set_userdata('tipo_mensagem', 'error');
                     redirect('Entidade/mostrar_cadastro');
                 } else {
@@ -321,8 +327,8 @@ class Entidade extends CI_Controller
             return $info;
         } else {
             //caso haja problema com o formulario é mostrada uma mensagem de erro
-            $this->session->set_userdata('mensagem', 'Problemas no Formulário');
-            $this->session->set_userdata('subtitulo_mensagem', 'Alguns campos foram preenchidos incorretaente');
+            $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('campos_incorretos'));
             $this->session->set_userdata('tipo_mensagem', 'error');
             //$this->camposatualizacao($info['i'])
             die;
@@ -331,6 +337,9 @@ class Entidade extends CI_Controller
 
     public function atualizar()
     {
+        $this->session->set_flashdata('redirect_url', current_url());
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
         if (($info = $this->valida_atualizacao_entidade()) != NULL) {
 
             $entidade = $this->gera_atualizacao_entidade($info);
@@ -341,7 +350,7 @@ class Entidade extends CI_Controller
             $telefone2 = $this->gera_atualizacao_telefone($info['idtelefone2'], $info['telefone2']);
             $this->Entidade_model->atualizar_telefone($telefone2);
             $this->session->set_userdata('mensagem', '=)');
-            $this->session->set_userdata('subtitulo_mensagem', 'Entidade atualizada com succeso');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
             $this->listar();
         }
@@ -485,15 +494,17 @@ class Entidade extends CI_Controller
     public function testeEntidad()
     {
         $this->session->set_flashdata('redirect_url', current_url());
-
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
-        $dados['entidades'] = $this->Entidade_model->buscar_entidades()->result();
-
-        /*$dados['tipos'] = $this->albuns_model->buscar_tipos();
+        /*$dados['entidades'] = $this->Entidade_model->buscar_entidades()->result();
+        $dados['tipos'] = $this->albuns_model->buscar_tipos();
         $dados['faixas'] = $this->albuns_model->buscar_faixas();
         $dados['artistas'] = $this->albuns_model->buscar_artistas();*/
-        //die(var_dump($dados));
+
+        $dados["dadofavorecido"] = $this->Favorecido_model->buscar_favorecido();
+        $dados["entidades"] = $this->Entidade_model->buscar_entidades();
+        //esse envio ocorre para que se saiba os favorecidos cadastrados dentro da view de cadastro de entidades alem de saber o idioma
+        //$this->load->view("Entidade/cadastro_entidade_view", $dados);
         $this->load->view('viewTeste', $dados);
     }
 

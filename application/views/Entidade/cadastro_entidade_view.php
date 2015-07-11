@@ -1,9 +1,7 @@
-<?php /*FEITO POR MIM, JADIEL*/
-
+<?php
 $this->load->view('_include/header') ?>
-
 <div class="container">
-
+    <div class="row"> <h2><?=$this->lang->line('cadastro_entidade_view')?></h2></div>
     <div class="row">
         <form id="myForm" action="<?= base_url() . 'index.php/Entidade/cadastrar' ?>" method="post">
             <?php if (isset($variavel)) {
@@ -18,7 +16,7 @@ $this->load->view('_include/header') ?>
                     } ?></div>
                 <div class="input-field col s12 m9 l8 offset-l2">
                     <i class="mdi-action-assignment-ind prefix"></i>
-                    <input id="nome" id="icon-prefix" type="text" value="" name="nomeentidade">
+                    <input required id="nome" id="icon-prefix" type="text" value="" name="nomeentidade">
                     <label><?php echo $this->lang->line('nome_entidade'); ?></label>
                 </div>
                 <!--a paradinha de dizer se eh favorecido-->
@@ -27,8 +25,7 @@ $this->load->view('_include/header') ?>
                     <p>
                         <input type="radio" value="1" name="favorecido" id="test3"/>
                         <label for="test3"><?php echo $this->lang->line('sim'); ?></label>
-
-                        <input type="radio" value="0" name="favorecido" id="test4"/>
+                        <input required checked type="radio" value="0" name="favorecido" id="test4"/>
                         <label for="test4"><?php echo $this->lang->line('nao'); ?></label>
                     </p>
                 </div>
@@ -36,19 +33,18 @@ $this->load->view('_include/header') ?>
             <div class="row"><!--a paradinha de dizer se eh CPF ou CNPJ-->
                 <div id="cpfCadastre" class="input-field col s12 m9 l8 offset-l2">
                     <label>CPF</label>
-                    <input required id="cpfCadastreInput" class="cpfCadastreInput" type="text" name="cpf">
+                    <input pattern=".{14,}" required id="cpfCadastreInput" class="cpfCadastreInput" type="text"
+                           name="cpf">
                 </div>
                 <div style="display: none" id="cnpjCadastre" class="input-field col s12 m9 l8 offset-l2">
                     <label>CNPJ</label>
-                    <input id="cnpjCadastreInput" class="cnpjCadastreInput" type="text" name="cnpj">
+                    <input pattern=".{18,}" id="cnpjCadastreInput" class="cnpjCadastreInput" type="text" name="cnpj">
                 </div>
                 <input id="cpf_cnpj" type="hidden" name="cpf_cnpj">
-
                 <div class="switch col s6 offset-s6 m3 l2">
                     <p>
                         <input type="radio" value="cpf" checked name="cpf/cnpj" id="test1"/>
                         <label for="test1">CPF</label>
-
                         <input type="radio" value="cpnj" name="cpf/cnpj" id="test2"/>
                         <label for="test2">CNPJ</label>
                     </p>
@@ -78,11 +74,13 @@ $this->load->view('_include/header') ?>
             <div class="row">
                 <div class="input-field col s12 m6 l4 offset-l2">
                     <label><?php echo $this->lang->line('percentual_fisico'); ?></label>
-                    <input required class="<?=$this->lang->line('classPercent')?>" type="text" value="" name="porcentagemganhofisico">
+                    <input required class="<?= $this->lang->line('classPercent') ?>" type="text" value=""
+                           name="porcentagemganhofisico">
                 </div>
                 <div class="input-field col s12 m6 l4">
                     <label><?php echo $this->lang->line('percentual_digital'); ?></label>
-                    <input required class="<?=$this->lang->line('classPercent')?>" type="text" value="" name="porcentagemganhodigital">
+                    <input required class="<?= $this->lang->line('classPercent') ?>" type="text" value=""
+                           name="porcentagemganhodigital">
                 </div>
             </div>
             <div class="row">
@@ -116,7 +114,7 @@ $this->load->view('_include/header') ?>
                 <?php if (($dadofavorecido != null)) { ?>
                     <div class="row">
                         <div class="input-field col s12 m12 l8 offset-l2">
-                            <select name="favorecido_relacionado">
+                            <select id="favorecido_relacionado" name="favorecido_relacionado">
                                 <option value="" disabled
                                         selected> <?php echo $this->lang->line('favorecido_cadastrado'); ?> </option>
                                 <?php //verifica se a entidade ja foi cadastrada como favorecido
@@ -137,6 +135,5 @@ $this->load->view('_include/header') ?>
         </form>
     </div>
 </div>
-
 <?php $this->load->view('_include/footer') ?>
 
