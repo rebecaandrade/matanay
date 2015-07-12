@@ -34,8 +34,6 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Favorecido` (
   `cnpj` VARCHAR(45) NULL ,
   `contato` VARCHAR(45) NULL ,
   `email` VARCHAR(45) NULL ,
-  `percentual_digital` INT NULL ,
-  `percentual_fisico` INT NULL ,
   `excluido` BIT NULL ,
   PRIMARY KEY (`idFavorecido`) )
 ENGINE = InnoDB;
@@ -517,6 +515,8 @@ DROP TABLE IF EXISTS `matanay`.`Favorecido_has_Tipo_Favorecido` ;
 CREATE  TABLE IF NOT EXISTS `matanay`.`Favorecido_has_Tipo_Favorecido` (
   `idFavorecido` INT NOT NULL ,
   `idTipo_Favorecido` INT NOT NULL ,
+  `percentual_fisico` INT NULL ,
+  `percentual_digital` INT NULL ,
   PRIMARY KEY (`idFavorecido`, `idTipo_Favorecido`) ,
   INDEX `fk_Favorecido_has_Tipo_Favorecido_Tipo_Favorecido1_idx` (`idTipo_Favorecido` ASC) ,
   INDEX `fk_Favorecido_has_Tipo_Favorecido_Favorecido1_idx` (`idFavorecido` ASC) ,
