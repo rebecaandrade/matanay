@@ -16,7 +16,7 @@ $this->load->view('_include/header') ?>
                     } ?></div>
                 <div class="input-field col s12 m9 l8 offset-l2">
                     <i class="mdi-action-assignment-ind prefix"></i>
-                    <input required id="nome" id="icon-prefix" type="text" value="" name="nomeentidade">
+                    <input pattern=".{3,45}" required id="nome" id="icon-prefix" type="text" value="" name="nomeentidade">
                     <label><?php echo $this->lang->line('nome_entidade'); ?></label>
                 </div>
                 <!--a paradinha de dizer se eh favorecido-->
@@ -54,38 +54,38 @@ $this->load->view('_include/header') ?>
             <div class="row">
                 <div class="input-field col s12 m6 l4 offset-l2">
                     <label><?php echo $this->lang->line('telefone'); ?></label>
-                    <input id="telefone" maxlength="15" required type="text" value="" name="telefone1">
+                    <input pattern=".{11,}" id="telefone" maxlength="15" required type="text" value="" name="telefone1">
                 </div>
                 <div class="input-field col s12 m6 l4">
                     <label><?php echo $this->lang->line('telefone_alternativo'); ?></label>
-                    <input id="telefone1" maxlength="15" required type="text" value="" name="telefone2">
+                    <input pattern=".{11,}" id="telefone1" maxlength="15" required type="text" value="" name="telefone2">
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12 m6 l4 offset-l2">
                     <label><?php echo $this->lang->line('contato'); ?></label>
-                    <input required type="text" value="" name="contato">
+                    <input required type="text" value="" name="contato" id="contato">
                 </div>
                 <div class="input-field col s12 m6 l4">
                     <label><?php echo $this->lang->line('email'); ?></label>
-                    <input required type="email" value="" name="email">
+                    <input pattern=".{4,60}" required type="email" value="" name="email" id="email">
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12 m6 l4 offset-l2">
                     <label><?php echo $this->lang->line('percentual_fisico'); ?></label>
-                    <input required class="<?= $this->lang->line('classPercent') ?>" type="text" value=""
+                    <input pattern=".{2,}" required class="<?= $this->lang->line('classPercent') ?>" type="text" value=""
                            name="porcentagemganhofisico">
                 </div>
                 <div class="input-field col s12 m6 l4">
                     <label><?php echo $this->lang->line('percentual_digital'); ?></label>
-                    <input required class="<?= $this->lang->line('classPercent') ?>" type="text" value=""
+                    <input pattern=".{2,}" required class="<?= $this->lang->line('classPercent') ?>" type="text" value=""
                            name="porcentagemganhodigital">
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12 m12 l8 offset-l2">
-                    <select name="identificacao">
+                    <select name="identificacao" class="myHidenSelect">
                         <option value="" disabled selected><?php echo $this->lang->line('selecione'); ?></option>
                         <option value=1><?php echo $this->lang->line('artista'); ?></option>
                         <option value=2><?php echo $this->lang->line('autor'); ?></option>
@@ -114,7 +114,7 @@ $this->load->view('_include/header') ?>
                 <?php if (($dadofavorecido != null)) { ?>
                     <div class="row">
                         <div class="input-field col s12 m12 l8 offset-l2">
-                            <select id="favorecido_relacionado" name="favorecido_relacionado">
+                            <select id="favorecido_relacionado" class="myHidenSelect" name="favorecido_relacionado">
                                 <option value="" disabled
                                         selected> <?php echo $this->lang->line('favorecido_cadastrado'); ?> </option>
                                 <?php //verifica se a entidade ja foi cadastrada como favorecido

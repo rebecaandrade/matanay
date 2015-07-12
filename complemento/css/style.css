@@ -245,11 +245,11 @@ html {
 }
 
 #sub_menu2 {
-	right: 10%;
+    right: 10%;
 }
 
 #myTable_filter label {
-	float: right;
+    float: right;
 }
 
 #home a {
@@ -288,7 +288,7 @@ html {
 }
 
 #eh_video {
-	display: none;
+    display: none;
 }
 
 .detalhes:hover {
@@ -408,14 +408,18 @@ label {
 }
 
 #tracklist label, #selectLabel {
-	top: -14px;
-	font-size: 0.8rem;
-	color: #777;
+    top: -14px;
+    font-size: 0.8rem;
+    color: #777;
 }
 
 /**************PAGINAS DAS ENTIADADES Jadiel**********************/
 .box {
     display: none;
+}
+
+.initialized {
+    display: none !important;
 }
 
 .aviso_entidade {

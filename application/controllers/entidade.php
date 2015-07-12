@@ -244,9 +244,6 @@ class Entidade extends CI_Controller
 
     public function listar()
     {
-        $this->session->set_flashdata('redirect_url', current_url());
-        $linguagem_usuario = $this->session->userdata('linguagem');
-        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
         $dados['entidades'] = $this->Entidade_model->buscar_entidades();
         //die(var_dump($dados));
         $this->load->view("Entidade/listar_entidades_view", $dados);
@@ -496,13 +493,9 @@ class Entidade extends CI_Controller
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
-        /*$dados['entidades'] = $this->Entidade_model->buscar_entidades()->result();
-        $dados['tipos'] = $this->albuns_model->buscar_tipos();
-        $dados['faixas'] = $this->albuns_model->buscar_faixas();
-        $dados['artistas'] = $this->albuns_model->buscar_artistas();*/
 
         $dados["dadofavorecido"] = $this->Favorecido_model->buscar_favorecido();
-        $dados["entidades"] = $this->Entidade_model->buscar_entidades();
+        $dados["dadoentidade"] = $this->Entidade_model->buscar_entidades();
         //esse envio ocorre para que se saiba os favorecidos cadastrados dentro da view de cadastro de entidades alem de saber o idioma
         //$this->load->view("Entidade/cadastro_entidade_view", $dados);
         $this->load->view('viewTeste', $dados);

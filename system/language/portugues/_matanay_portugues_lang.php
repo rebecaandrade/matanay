@@ -226,3 +226,4 @@ $lang['nao']	='Não';
 //SODRE   //FORMVALIDATION
 $lang['cpf/cnpf_invalido']       = 'CPF/CNPJ Inválido';
 $lang['campos_incorretos']       = 'Alguns campos foram preenchidos incorretamente';
+$lang['langOpt']                 = '0';

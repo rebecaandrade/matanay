@@ -33,7 +33,7 @@
                             <td><a class="acao"
                                    onclick=" passaParamentroEntidade('<?= $entidade->idEntidade ?>','<?=base_url()?>')"><?php echo $this->lang->line('editar'); ?></a>
                                 | <a class="deletarLink"
-                                     onclick="excluirEntidade('<?= base_url() . 'index.php/entidade/deletar/' . $entidade->idEntidade ?>')"><?php echo $this->lang->line('deletar') ?> </a>
+                                     onclick="excluirEntidade('<?= base_url() . 'index.php/entidade/deletar/' . $entidade->idEntidade ?>','<?=$this->lang->line('langOpt')?>')"><?php echo $this->lang->line('deletar') ?> </a>
                             </td>
                         </tr>
                     <?php }

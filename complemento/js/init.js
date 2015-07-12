@@ -98,15 +98,19 @@ window.onload = function () {
     }
 }
 
-var excluirEntidade = function (url) {
+var excluirEntidade = function (url, langOpt) {
+    var thisTitle = ["Tem Certeza?", "Are you sure?"];
+    var thisText = ["A entidade selecionada será excluida", "The Selected Entity Will be deleted"];
+    var confirmation = ["Sim, pode excluir!", "Yes, You may delete it"];
+    var canceltext = ["Não, cancele!", "No, cancel it!"];
     swal({
-        title: "Tem Certeza?",
-        text: "A entidade selecionada será excluida",
+        title: thisTitle[langOpt],
+        text: thisText[langOpt],
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Sim, pode excluir!",
-        cancelButtonText: "Não, cancele!",
+        confirmButtonText: confirmation[langOpt],
+        cancelButtonText: canceltext[langOpt],
         closeOnConfirm: false,
         closeOnCancel: true
     }, function (isConfirm) {
@@ -138,13 +142,6 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#lupa').css('cursor', 'pointer');
-    $('#lupa').click(function () {
-        $('#linkLupa').click();
-    });
-});
-
-$(document).ready(function () {
     $('#test1').click(function () {
         $('#cnpjCadastre').hide();
         $('#cnpjCadastreInput').prop('value', null);
@@ -165,7 +162,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#myForm').submit(function () {
+    $('#myForm').on("submit",function () {
         var $cpf = $('#cpfCadastreInput').val();
         var $cnpj = $('#cnpjCadastreInput').val();
         var $cpf_cnpj = null;
@@ -175,6 +172,7 @@ $(document).ready(function () {
             $cpf_cnpj = $cnpj;
         }
         $('#cpf_cnpj').prop('value', $cpf_cnpj);
+        var isFavorecido = $('input[name=favorecido]:checked', '#myForm').val();
     });
 });
 
@@ -254,13 +252,13 @@ function addSelectEntidade(entidades, selecione, label, participacao, mask) {
     var nameLower = nameLower.toLowerCase();
 
     $('#Select' + label).append('<div class="row"><div class="input-field col s11 m8 l8 offset-l1">' +
-    '<select id="select' + label + '" class="addEntidade browser-default" name="' + nameLower + 's[]">' +
-    geraOpcoesEntidade(entidades, selecione) + '</select><label id="selectLabel">' + label + '</label></div>' +
-    '<div class="input-field col s12 m3 l2"><label>' + participacao + '</label>' +
-    '<input class="porcentagem" name="percentual' + label + '[]" type="text"></div>' +
-    '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
-    'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
-    '<i class="mdi-content-remove"></i></a></div>');
+        '<select id="select' + label + '" class="addEntidade browser-default" name="' + nameLower + 's[]">' +
+        geraOpcoesEntidade(entidades, selecione) + '</select><label id="selectLabel">' + label + '</label></div>' +
+        '<div class="input-field col s12 m3 l2"><label>' + participacao + '</label>' +
+        '<input class="porcentagem" name="percentual' + label + '[]" type="text"></div>' +
+        '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
+        'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
+        '<i class="mdi-content-remove"></i></a></div>');
 
     $('.addEntidade').chosen({search_contains: true});
     $('.porcentagem').mask("00,00%", {reverse: true});
@@ -331,11 +329,11 @@ function addSelectFaixa(faixas, selecione, label) {
     var nameLower = nameLower.toLowerCase();
 
     $('#SelectFaixas').append('<div class="row"><div class="input-field col s11 m8 l8 offset-l2">' +
-    '<select id="select' + label + '" class="addFaixa browser-default" name="' + nameLower + 's[]">' +
-    geraOpcoesFaixa(faixas, selecione) + '</select><label id="selectLabel">' + label + '</label></div>' +
-    '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
-    'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
-    '<i class="mdi-content-remove"></i></a></div>');
+        '<select id="select' + label + '" class="addFaixa browser-default" name="' + nameLower + 's[]">' +
+        geraOpcoesFaixa(faixas, selecione) + '</select><label id="selectLabel">' + label + '</label></div>' +
+        '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
+        'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
+        '<i class="mdi-content-remove"></i></a></div>');
 
     $('.addFaixa').chosen({search_contains: true});
 }
@@ -397,9 +395,9 @@ function geraSelect(faixas, selecione, label) {
     for (var count = 0; count < numFaixas; count++) {
 
         $('#tracklist').append('<div class="row"><div class="input-field col s12 m12 l8 offset-l2">' +
-        '<select id="select_faixas' + count + '" class="autocomplete browser-default" name="faixas[]">' +
-        geraOpcoes(faixas, selecione) + '</select>' +
-        '<label>' + label + '</label></div></div>');
+            '<select id="select_faixas' + count + '" class="autocomplete browser-default" name="faixas[]">' +
+            geraOpcoes(faixas, selecione) + '</select>' +
+            '<label>' + label + '</label></div></div>');
 
         $('.autocomplete').chosen({search_contains: true});
 
@@ -504,34 +502,31 @@ $(document).ready(function () {
         "LengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
         "pageLength": 100,
         "language": {
-            "emptyTable":     "No data available in table",
-            "info":           "Showing _START_ to _END_ of _TOTAL_ entries",
-            "infoEmpty":      "Showing 0 to 0 of 0 entries",
-            "infoFiltered":   "(filtered from _MAX_ total entries)",
-            "infoPostFix":    "",
-            "thousands":      ",",
-            "lengthMenu":     "Show _MENU_ entries",
+            "emptyTable": "No data available in table",
+            "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+            "infoEmpty": "Showing 0 to 0 of 0 entries",
+            "infoFiltered": "(filtered from _MAX_ total entries)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Show _MENU_ entries",
             "loadingRecords": "Loading...",
-            "processing":     "Processing...",
-            "search":         "Search:",
-            "zeroRecords":    "No matching records found",
+            "processing": "Processing...",
+            "search": "Search:",
+            "zeroRecords": "No matching records found",
             "paginate": {
-                "first":      "First",
-                "last":       "Last",
-                "next":       "Next",
-                "previous":   "Previous"
+                "first": "First",
+                "last": "Last",
+                "next": "Next",
+                "previous": "Previous"
             },
             "aria": {
-                "sortAscending":  ": activate to sort column ascending",
+                "sortAscending": ": activate to sort column ascending",
                 "sortDescending": ": activate to sort column descending"
             }
         }
     });
 });
 
-/*! DataTables 1.10.7
- * Â©2008-2015 SpryMedia Ltd - datatables.net/license
- */
 $(document).ready(function () {
     $('#test4').click(function () {
         $("#favorecido").hide();
@@ -543,5 +538,43 @@ $(document).ready(function () {
     $('#test3').click(function () {
         $("#nao_favorecido").hide();
         $("#favorecido").show();
+    });
+});
+$(document).ready(function () {
+    $('#nome').on("change", function () {
+        var myName = $('#nome').val().split(" ");
+        var newName ="";
+        for (var i = 0; i < myName.length; i++) {
+            if (myName[i].length > 0) {
+                newName += myName[i];
+                newName +=" ";
+            }
+        }
+        $('#nome').prop('value', newName);
+    });
+});
+$(document).ready(function () {
+    $('#contato').on("change", function () {
+        var myName = $('#contato').val().split(" ");
+        var newName ="";
+        for (var i = 0; i < myName.length; i++) {
+            if (myName[i].length > 0) {
+                newName += myName[i];
+                newName +=" ";
+            }
+        }
+        $('#contato').prop('value', newName);
+    });
+});
+$(document).ready(function () {
+    $('#email').on("change", function () {
+        var myName = $('#email').val().split(" ");
+        var newName ="";
+        for (var i = 0; i < myName.length; i++) {
+            if (myName[i].length > 0) {
+                newName += myName[i];
+            }
+        }
+        $('#email').prop('value', newName);
     });
 });

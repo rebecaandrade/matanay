@@ -17,8 +17,9 @@ class Favorecido_model extends CI_Model{
         return $this->db->get('favorecido');
 	}
 	public function buscar_favorecido(){
-	$this->db->select("*")->from("favorecido");
-	$this->db->join("tipo_favorecido","tipo_favorecido.idTipo_Favorecido=favorecido.idTipo_Favorecido");
+	$this->db->select("*")->from("favorecido fav");
+	$this->db->join("favorecido_has_tipo_favorecido fhtv","fhtv.idFavorecido=fav.idFavorecido");
+	$this->db->join("Tipo_Favorecido tf","tf.idTipo_Favorecido=fhtv.idTipo_Favorecido");
 	$this->db->where("excluido", null);
 	$dados=$this->db->get()->result();
 	return $dados;
