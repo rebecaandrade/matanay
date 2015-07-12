@@ -1,8 +1,15 @@
 <?php $this->load->view('_include/header') ?> <!-- Evandro -->
 
 <div id="wrapper-body">
+	<div id="titulo_lista">
+        <div class="row">
+            <div class="input-field col s12 m8 l10">
+                <i class="mdi-av-my-library-music"></i>
+                <?php echo $this->lang->line('albums_cadastro'); ?>
+            </div>
+        </div>
+  	</div><br>
     <div class="row">
-      	
       	<?php echo form_open('albuns/cadastrar') ?>
 	        <div class="row">
 	          	<div class="input-field col s12 m12 l8 offset-l2">

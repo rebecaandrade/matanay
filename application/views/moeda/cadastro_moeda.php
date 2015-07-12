@@ -1,10 +1,17 @@
 <?php $this->load->view('_include/header'); ?>
-	<div class="container">
+	<div id="wrapper-body">
+		<div id="titulo_lista">
+			<div class="row">
+				<div class="input-field col s12 m8 l9">
+					<i class="mdi-editor-attach-money"></i>
+					<?php echo $this->lang->line('moeda_cadastro'); ?>
+				</div>
+			</div>
+		</div><br>
     	<div class="row">
 			<?php echo form_open('moeda/cadastrar_moeda') ?>
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
-						<i class="mdi-editor-attach-money prefix"></i>	
 						<label><?php echo $this->lang->line('moeda_nome'); ?></label>
 						<input type='text' name='nome' value="<?php echo set_value('nome'); ?>">
 					</div>

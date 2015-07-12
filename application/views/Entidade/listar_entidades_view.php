@@ -1,6 +1,5 @@
 <?php $this->load->view('_include/header') ?>
     <div id="wrapper-body">
-        <div class="row"> <h2><?=$this->lang->line('listar_entidade_view')?></h2></div>
         <div id="titulo_lista">
             <div class="row">
                 <div class="input-field col s12 m8 l9">

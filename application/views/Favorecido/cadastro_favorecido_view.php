@@ -2,8 +2,15 @@
 
 $this->load->view('_include/header') ?>
 
-<div class="container">
-
+<div id="wrapper-body">
+    <div id="titulo_lista">
+        <div class="row">
+            <div class="input-field col s12 m8 l9">
+                <i class="mdi-action-assignment-ind"></i>
+                <?php echo $this->lang->line('favorecido_cadastro'); ?>
+            </div>
+        </div>
+    </div><br>
     <div class="row">
         <form id="myForm" action="<?= base_url() . 'index.php/Favorecido/cadastrar' ?>" method="post">
         <?php if (isset($variavel)) {

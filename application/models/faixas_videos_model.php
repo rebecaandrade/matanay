@@ -3,24 +3,30 @@
 class Faixas_Videos_model extends CI_Model {
 
 	public function buscar_artistas(){
-        $this->db->where('idTipo_Entidade', 1);
-        $this->db->where('excluido =', NULL);
-        $this->db->order_by('nome', 'asc');
-        return $this->db->get('entidade')->result();
+        $this->db->select('*')->from('Entidade ent');
+        $this->db->join('Entidade_has_Tipo_Entidade eht', 'eht.idEntidade = ent.idEntidade');
+        $this->db->join('Tipo_Entidade te','te.idTipo_Entidade = eht.idTipo_Entidade AND te.idTipo_Entidade = 1');
+        $this->db->where(array('excluido' => NULL));
+        $dados = $this->db->get()->result();
+        return $dados;
     }
 
     public function buscar_autores(){
-        $this->db->where('idTipo_Entidade', 2);
-        $this->db->where('excluido =', NULL);
-        $this->db->order_by('nome', 'asc');
-        return $this->db->get('entidade')->result();
+        $this->db->select('*')->from('Entidade ent');
+        $this->db->join('Entidade_has_Tipo_Entidade eht', 'eht.idEntidade = ent.idEntidade');
+        $this->db->join('Tipo_Entidade te','te.idTipo_Entidade = eht.idTipo_Entidade AND te.idTipo_Entidade = 2');
+        $this->db->where(array('excluido' => NULL));
+        $dados = $this->db->get()->result();
+        return $dados;
     }
 
     public function buscar_produtores(){
-        $this->db->where('idTipo_Entidade', 3);
-        $this->db->where('excluido =', NULL);
-        $this->db->order_by('nome', 'asc');
-        return $this->db->get('entidade')->result();
+        $this->db->select('*')->from('Entidade ent');
+        $this->db->join('Entidade_has_Tipo_Entidade eht', 'eht.idEntidade = ent.idEntidade');
+        $this->db->join('Tipo_Entidade te','te.idTipo_Entidade = eht.idTipo_Entidade AND te.idTipo_Entidade = 3');
+        $this->db->where(array('excluido' => NULL));
+        $dados = $this->db->get()->result();
+        return $dados;
     }
 
     public function buscar_entidades(){

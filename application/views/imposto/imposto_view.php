@@ -1,5 +1,13 @@
 <?php $this->load->view('_include/header') ?> <!-- Jadiel -->
     <div id="wrapper-body">
+        <div id="titulo_lista">
+            <div class="row">
+                <div class="input-field col s12 m8 l9">
+                    <i class="mdi-content-content-paste"></i>
+                    <?php echo $this->lang->line('imposto_cadastro'); ?>
+                </div>
+            </div>
+        </div><br>
         <div class="row">
 
             <?php echo form_open('imposto/cadastrar') ?>
@@ -11,7 +19,6 @@
                         echo $this->lang->line($this->session->flashdata('aviso'));
                     } ?></div>
                 <div class="input-field col s12 m10 offset-m1 l8 offset-l2">
-                    <i class="mdi-content-content-paste prefix"></i>
                     <label><?php echo $this->lang->line('imposto_nome'); ?></label>
                     <input required id="icon-prefix" type="text" name="nome">
                 </div>
