@@ -222,6 +222,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `matanay`.`Tipo_Imposto`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `matanay`.`Tipo_Imposto` ;
+
+CREATE  TABLE IF NOT EXISTS `matanay`.`Tipo_Imposto` (
+  `idTipo_Imposto` INT NOT NULL AUTO_INCREMENT ,
+  `descricao` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`idTipo_Imposto`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `matanay`.`Imposto`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `matanay`.`Imposto` ;
@@ -231,11 +243,19 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Imposto` (
   `nome` VARCHAR(45) NOT NULL ,
   `valor` INT NOT NULL ,
   `idCliente` INT NULL ,
+  `idTipo_Imposto` INT NOT NULL ,
+  `excluido` BIT NULL ,
   PRIMARY KEY (`idImposto`) ,
   INDEX `fk_Imposto_Cliente1_idx` (`idCliente` ASC) ,
+  INDEX `fk_Imposto_Tipo_Imposto1_idx` (`idTipo_Imposto` ASC) ,
   CONSTRAINT `fk_Imposto_Cliente1`
     FOREIGN KEY (`idCliente` )
     REFERENCES `matanay`.`Cliente` (`idCliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Imposto_Tipo_Imposto1`
+    FOREIGN KEY (`idTipo_Imposto` )
+    REFERENCES `matanay`.`Tipo_Imposto` (`idTipo_Imposto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -272,6 +292,7 @@ DROP TABLE IF EXISTS `matanay`.`Funcionalidades` ;
 CREATE  TABLE IF NOT EXISTS `matanay`.`Funcionalidades` (
   `idFuncionalidades` INT NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(45) NOT NULL ,
+  `excluido` BIT NULL ,
   PRIMARY KEY (`idFuncionalidades`) )
 ENGINE = InnoDB;
 
@@ -318,11 +339,11 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Faixa_Video` (
   `isrc` VARCHAR(45) NULL ,
   `codigo_video` VARCHAR(45) NULL ,
   `excluido` BIT NULL ,
-  `Imposto_idImposto` INT NOT NULL ,
+  `idImposto` INT NOT NULL ,
   PRIMARY KEY (`idFaixa`) ,
-  INDEX `fk_Faixa_Video_Imposto1_idx` (`Imposto_idImposto` ASC) ,
+  INDEX `fk_Faixa_Video_Imposto1_idx` (`idImposto` ASC) ,
   CONSTRAINT `fk_Faixa_Video_Imposto1`
-    FOREIGN KEY (`Imposto_idImposto` )
+    FOREIGN KEY (`idImposto` )
     REFERENCES `matanay`.`Imposto` (`idImposto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -360,6 +381,7 @@ DROP TABLE IF EXISTS `matanay`.`Telefone_Favorecido` ;
 
 CREATE  TABLE IF NOT EXISTS `matanay`.`Telefone_Favorecido` (
   `idTelefone_Favorecido` INT NOT NULL AUTO_INCREMENT ,
+  `excluido` BIT NULL ,
   `numero` VARCHAR(45) NULL ,
   `idFavorecido` INT NOT NULL ,
   PRIMARY KEY (`idTelefone_Favorecido`) ,
@@ -491,6 +513,7 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Entidade_has_Tipo_Entidade` (
   `idTipo_Entidade` INT NOT NULL ,
   `percentual_fisico` FLOAT NOT NULL ,
   `percentual_digital` FLOAT NOT NULL ,
+  `excluido` BIT NULL ,
   PRIMARY KEY (`idEntidade`, `idTipo_Entidade`) ,
   INDEX `fk_Entidade_has_Tipo_Entidade_Tipo_Entidade1_idx` (`idTipo_Entidade` ASC) ,
   INDEX `fk_Entidade_has_Tipo_Entidade_Entidade1_idx` (`idEntidade` ASC) ,
@@ -517,6 +540,7 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Favorecido_has_Tipo_Favorecido` (
   `idTipo_Favorecido` INT NOT NULL ,
   `percentual_fisico` INT NULL ,
   `percentual_digital` INT NULL ,
+  `excluido` BIT NULL ,
   PRIMARY KEY (`idFavorecido`, `idTipo_Favorecido`) ,
   INDEX `fk_Favorecido_has_Tipo_Favorecido_Tipo_Favorecido1_idx` (`idTipo_Favorecido` ASC) ,
   INDEX `fk_Favorecido_has_Tipo_Favorecido_Favorecido1_idx` (`idFavorecido` ASC) ,
