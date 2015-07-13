@@ -46,10 +46,19 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('input[type="radio"]').click(function () {
         if ($(this).attr("value") == "0") {
+            $('input[name=banco]').prop("required", false);
+            $('input[name=contacorrente]').prop("required", false);
+            $('input[name=agencia]').prop("required", false);
             $("#favorecido").hide();
             $("#nao_favorecido").show();
         }
         if ($(this).attr("value") == "1") {
+            $('input[name=banco]').prop("required", true);
+            $('input[name=contacorrente]').prop("required", true);
+            $('input[name=agencia]').prop("required", true);
+            $('input[name=banco]').prop("pattern", ".{2,25}");
+            $('input[name=contacorrente]').prop("pattern", ".{4,15}");
+            $('input[name=agencia]').prop("pattern", ".{2,15}");
             $("#nao_favorecido").hide();
             $("#favorecido").show();
         }
@@ -160,22 +169,136 @@ $(document).ready(function () {
         $('#cpfCadastreInput').prop('required', false);
     });
 });
-
+/* validacao do cadasto de entidades */
 $(document).ready(function () {
-    $('#myForm').on("submit",function () {
+    $('#myForm').on("submit", function () {
         var $cpf = $('#cpfCadastreInput').val();
         var $cnpj = $('#cnpjCadastreInput').val();
         var $cpf_cnpj = null;
+        var mensagem = "";
+
+        var regx = /^[A-Za-z0-9\s]+$/;
+        var testeNome = $('input[name=nomeentidade]').val();
+        if(!regx.test(testeNome)){
+            mensagem += "*" + $('input[name=nomeMessageDisplay]').val() + "\n";
+        }
+
         if ($cpf.length > 1) {
             $cpf_cnpj = $cpf;
+            if (!validaCpf($cpf_cnpj)) {
+                mensagem += "*" + $('input[name=cpfMessageDisplay]').val() + "\n";
+            }
         } else {
             $cpf_cnpj = $cnpj;
+            if (!validarCNPJ($cpf_cnpj)) {
+                mensagem += "*" + $('input[name=cpfMessageDisplay]').val() + "\n";
+            }
         }
         $('#cpf_cnpj').prop('value', $cpf_cnpj);
+
+        var identificacao = [];
+        $('.IdEntity :checked').each(function () {
+            identificacao.push($(this).val());
+        });
+        if (identificacao.length < 1) {
+            mensagem += "*" + $('input[name=IdMessageDisplay]').val() + "\n";
+        }
+
         var isFavorecido = $('input[name=favorecido]:checked', '#myForm').val();
+        console.log("cheguei aqui no eh favorecido" + isFavorecido + "...");
+        if (isFavorecido < 1) {
+            var favorecido = $('#favorecido_relacionado option:selected').val();
+            if (favorecido < 0) {
+                console.log("cheguei no favorecido -1");
+                mensagem += "*" + $('input[name=favoredMessageDisplay]').val();
+            }
+        }
+
+        if (mensagem.length > 3) {
+            swal(mensagem, "", "error");
+            return false;
+        }
+
     });
 });
+/* validacao do cpf */
+function validaCpf(strCPF) {
+    var Soma;
+    var Resto;
+    Soma = 0;
+    strCPF = strCPF.match(/\d/g).join("");
+    //console.log(strCPF);
 
+    if (strCPF == "00000000000") return false;
+
+    for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
+    Resto = (Soma * 10) % 11;
+
+    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+    if (Resto != parseInt(strCPF.substring(9, 10))) return false;
+
+    Soma = 0;
+    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+    Resto = (Soma * 10) % 11;
+
+    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+    if (Resto != parseInt(strCPF.substring(10, 11))) return false;
+    return true;
+}
+/* validacao cnpj */
+function validarCNPJ(cnpj) {
+
+    cnpj = cnpj.match(/\d/g).join("");
+
+    if (cnpj == '') return false;
+
+    if (cnpj.length != 14)
+        return false;
+
+    // Elimina CNPJs invalidos conhecidos
+    if (cnpj == "00000000000000" ||
+        cnpj == "11111111111111" ||
+        cnpj == "22222222222222" ||
+        cnpj == "33333333333333" ||
+        cnpj == "44444444444444" ||
+        cnpj == "55555555555555" ||
+        cnpj == "66666666666666" ||
+        cnpj == "77777777777777" ||
+        cnpj == "88888888888888" ||
+        cnpj == "99999999999999")
+        return false;
+
+    // Valida DVs
+    tamanho = cnpj.length - 2
+    numeros = cnpj.substring(0, tamanho);
+    digitos = cnpj.substring(tamanho);
+    soma = 0;
+    pos = tamanho - 7;
+    for (i = tamanho; i >= 1; i--) {
+        soma += numeros.charAt(tamanho - i) * pos--;
+        if (pos < 2)
+            pos = 9;
+    }
+    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+    if (resultado != digitos.charAt(0))
+        return false;
+
+    tamanho = tamanho + 1;
+    numeros = cnpj.substring(0, tamanho);
+    soma = 0;
+    pos = tamanho - 7;
+    for (i = tamanho; i >= 1; i--) {
+        soma += numeros.charAt(tamanho - i) * pos--;
+        if (pos < 2)
+            pos = 9;
+    }
+    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+    if (resultado != digitos.charAt(1))
+        return false;
+
+    return true;
+
+}
 $(document).ready(function () {
     $('.cpfCadastreInput').mask("000.000.000-00");
 });
@@ -528,26 +651,13 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#test4').click(function () {
-        $("#favorecido").hide();
-        $("#nao_favorecido").show();
-        $('#favorecido_relacionado').prop('required', true);
-    });
-});
-$(document).ready(function () {
-    $('#test3').click(function () {
-        $("#nao_favorecido").hide();
-        $("#favorecido").show();
-    });
-});
-$(document).ready(function () {
     $('#nome').on("change", function () {
         var myName = $('#nome').val().split(" ");
-        var newName ="";
+        var newName = "";
         for (var i = 0; i < myName.length; i++) {
             if (myName[i].length > 0) {
                 newName += myName[i];
-                newName +=" ";
+                newName += " ";
             }
         }
         $('#nome').prop('value', newName);
@@ -556,11 +666,11 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#contato').on("change", function () {
         var myName = $('#contato').val().split(" ");
-        var newName ="";
+        var newName = "";
         for (var i = 0; i < myName.length; i++) {
             if (myName[i].length > 0) {
                 newName += myName[i];
-                newName +=" ";
+                newName += " ";
             }
         }
         $('#contato').prop('value', newName);
@@ -569,7 +679,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#email').on("change", function () {
         var myName = $('#email').val().split(" ");
-        var newName ="";
+        var newName = "";
         for (var i = 0; i < myName.length; i++) {
             if (myName[i].length > 0) {
                 newName += myName[i];

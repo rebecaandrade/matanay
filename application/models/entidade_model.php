@@ -15,14 +15,27 @@ class Entidade_model extends CI_Model
         return $this->db->insert_id();
     }
 
+    public function cadastra_ent_has_tipo_ent($ent_has_tipo_ent)
+    {
+        foreach ($ent_has_tipo_ent as $ent) {
+            $this->db->insert('entidade_has_tipo_entidade', $ent);
+        }
+    }
+
     public function buscar_entidades($qtde = 0, $inicio = 0)
     {
+        //$this->db->select('idFavorecido,nome AS Fnome')->from('Favorecido fav');
         if ($qtde > 0) $this->db->limit($qtde, $inicio);
-        $this->db->select('*')->from('Entidade ent');
+        $this->db->select('ent.*,eht.*,te.*,fav.nome AS Fnome')->from('Entidade ent');
         $this->db->join('Entidade_has_Tipo_Entidade eht', 'eht.idEntidade = ent.idEntidade');
-        $this->db->join('Tipo_Entidade te','te.idTipo_Entidade = eht.idTipo_Entidade');
-        $this->db->where(array('excluido' => NULL));
+        $this->db->join('Tipo_Entidade te', 'te.idTipo_Entidade = eht.idTipo_Entidade');
+        //$this->db->select('Favorecido.nome AS Fnome')->from('Favorecido');
+        $this->db->join('Favorecido fav', 'fav.idFavorecido = ent.idFavorecido');
+        $this->db->where(array('ent.excluido' => NULL));
         $dados = $this->db->get()->result();
+        /*foreach ($dados as $key => $dado) {
+            $dados[$key]->Fnome = $this->db->where('idFavorecido', $dado->idFavorecido)->get('Favorecido')->row()->nome;
+        }*/
         //die(var_dump($dados));
         return $dados;
     }

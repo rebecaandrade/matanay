@@ -52,7 +52,7 @@ $lang['selecione']			= 'Select';
 $lang['procurar']			= 'Search';
 $lang['detalhes']			= 'DETAILS';
 $lang['voltar']				= 'RETURN';
-	
+
 ////// FORM VALIDATION
 
 ////// VITOR
@@ -100,7 +100,7 @@ $lang['sair'] 				= 'LOGOUT';
 $lang['faixas'] 			= 'TRACKS';
 $lang['videos'] 			= 'VIDEOS';
 $lang['albums'] 			= 'ALBUMS';
-$lang['entidades'] 			= 'ENTITYS';
+$lang['entidades'] 			= 'ENTITIES';
 $lang['favorecido']			= 'FAVORED';
 $lang['imposto']			= 'TAX';
 
@@ -116,7 +116,6 @@ $lang['produtor'] 			= 'Producer';
 $lang['produtores'] 		= 'Producers';
 $lang['nao_ha_faixas']		= 'There are no tracks registered!';
 $lang['participacao']		= 'Track Participation';
-$lang['faixas_cadastro']	= 'Track Registry';
 
 ////// ALBUNS 
 
@@ -127,23 +126,21 @@ $lang['ano'] 				= 'Year';
 $lang['tipo'] 				= 'Type';
 $lang['faixa'] 				= 'Track';
 $lang['nao_ha_albums']		= 'There are no albums registered!';
-$lang['albums_cadastro']	= 'Album Registry';
 
 ////// MOEDA ////// VITOR
 
 $lang['moeda']				= 'Currency';
-$lang['moeda_menu']			= 'CURRENCY';		
+$lang['moeda_menu']			= 'CURRENCY';
 $lang['moeda_nome']			= 'Name';
 $lang['moeda_sigla']		= 'Acronym';
 $lang['moeda_cambio']		= 'Exchange rate';
 $lang['moeda_editar']		= 'Update';
 $lang['moeda_cadastrar']	= 'Register';
 $lang['moeda_erro_listar']	= 'No currency registered';
-$lang['moeda_cadastro']		= 'Currency Registry';
 
 ////// CONTRATO
 
-$lang['data_inicio']			= 'Start date';		
+$lang['data_inicio']			= 'Start date';
 $lang['data_fim']				= 'End date';
 $lang['alerta']					= 'Alert';
 $lang['mes']					= 'month';
@@ -154,50 +151,48 @@ $lang['contrato_favorecido']	= 'Choose the favored';
 
 
 /////ENTIDADES/FAVORECIDO  Jadiel
-$lang['entidade'] 				= 'Entity';
-$lang['nome_favorecido']		= 'Name of favored';
-$lang['nome_entidade']			= 'Name of the Entity';		
-$lang['cpf_cnpj']				= 'ID';
-$lang['telefone']				= 'Telephone number';
-$lang['telefone_alternativo']	= 'Alternative telephone number';
-$lang['contato']				= 'One to be contacted';
-$lang['email']					= 'One\'s email';
-$lang['percentual_fisico']		= 'Percentage of gain with phisical media';
-$lang['percentual_digital']		= 'Percentage of gain with digital media';
-$lang['identificacao']			= 'Identification';		
-$lang['banco']					= 'Bank';
-$lang['conta']					= 'Checking account';
-$lang['agencia']				= 'Bank Branch';
-$lang['atual']					= 'Actual';
-$lang['artista']				= 'Artist';
-$lang['autor']					= 'Author';
-$lang['produtor']				= 'Producer';
-$lang['artista_min']			= 'artist';
-$lang['autor_min']				= 'author';
-$lang['produtor_min']			= 'producer';
-$lang['eh_favorecido']			= 'Is it a favored?';
-$lang['favorecido_cadastrado']	= 'Registed favoreds';
-$lang['cadastro_realizado']		= 'The Entity was successfully registered!';
-$lang['campo_vazio']			= 'One shall not leave an empty field!';
-$lang['cnpj_invalido']			= 'Invalid CNPJ';
-$lang['cpf_invalido']			= 'Invalid CPF';
-$lang['cadastrar_entidade']		= 'Register a new Entity!';
-$lang['cadastrar_favorecido']	= 'Register a new Favored!';
-$lang['nao_ha_entidades']		= 'There are no entitys registered!';
-$lang['nao_ha_favorecidos']		=  'There are no favoreds registered!';
-$lang['nao_ha_impostos']		= 'There are no taxes registered!';
-$lang['descricao_entidade'] 	= 'Description';
-$lang['classPercent']			= 'percentage';
+$lang['entidade'] = 'Entity';
+$lang['nome_favorecido']='Name of favored';
+$lang['nome_entidade']				= 'Name of the Entity';
+$lang['cpf_cnpj']			= 'ID';
+$lang['telefone']		= 'Telephone number';
+$lang['telefone_alternativo']		= 'Alternative telephone number';
+$lang['contato']		= 'One to be contacted';
+$lang['email']	= 'One\'s email';
+$lang['percentual_fisico']	= 'Percentage of gain with phisical media';
+$lang['percentual_digital']	= 'Percentage of gain with digital media';
+$lang['identificacao']				= 'Identification';
+$lang['banco']			= 'Bank';
+$lang['conta']		= 'Checking account';
+$lang['agencia']		= 'Bank Branch';
+$lang['atual']	='Actual';
+$lang['artista']	='Artist';
+$lang['autor']	='Author';
+$lang['produtor']	='Producer';
+$lang['artista_min']	='artist';
+$lang['autor_min']	='author';
+$lang['produtor_min']	='producer';
+$lang['eh_favorecido']	='Is it a favored?';
+$lang['favorecido_cadastrado']	='Registed favoreds';
+$lang['cadastro_realizado']='The Entity was successfully registered!';
+$lang['campo_vazio']='One shall not leave an empty field!';
+$lang['cnpj_invalido']='Invalid CNPJ';
+$lang['cpf_invalido']='Invalid CPF';
+$lang['cadastrar_entidade']='Register a new Entity!';
+$lang['cadastrar_favorecido']='Register a new Favored!';
+$lang['nao_ha_entidades']='There are no entities registered!';
+$lang['nao_ha_favorecidos']='There are no favoreds registered!';
+$lang['nao_ha_impostos']='There are no taxes registered!';
+$lang['descricao_entidade'] = "Description";
+$lang['classPercent']="percentage";
 $lang['cadastro_entidade_view'] = 'Entity Cadastre';
-$lang['listar_entidade_view'] 	= 'Show Entities';
-$lang['myTable'] 				= 'usTable';
-$lang['favorecido_cadastro']	= 'Favored Registry';
+$lang['listar_entidade_view'] = 'Show Entities';
+$lang['myTable'] = 'usTable';
 
 
 //IMPOSTO JADIEL
-$lang['imposto_nome']				= 'Name of the Tax';
-$lang['valor']						= 'Value';
-$lang['imposto_cadastro']			= 'Tax Registry';
+$lang['imposto_nome']='Name of the Tax';
+$lang['valor']='Value';
 
 
 //Cliente
@@ -213,7 +208,7 @@ $lang['cliente_cadastrar']			= 'Register';
 $lang['Perfil_erro_listar']			= 'No Profiles on record';
 $lang['cliente_erro_listar']		= 'No customer on record';
 $lang['cliente_erro_nome']			= 'Name already taken';
-$lang['cliente_cadastro'] 			= 'Customer Registry';
+
 
 
 
@@ -227,6 +222,8 @@ $lang['nao']	='No';
 $lang['cpf/cnpj_invalido']       = 'Invalid CPF/CNPJ';
 $lang['campos_incorretos']       = 'Some fields were filled incorrectly';
 $lang['langOpt']                 = '1';
-
+$lang['erro_favorecido']         = 'Choose a favored';
+$lang['erro_identificacao']      = 'Choose an ID';
+$lang['nome_invalido']           = 'Invalid Name';
 
 

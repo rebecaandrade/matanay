@@ -24,26 +24,26 @@ insert into matanay.cliente values(DEFAULT, "admin",NULL);
 insert into matanay.usuario values(DEFAULT, "admin","admin","21232f297a57a5a743894a0e4a801fc3",NULL,1);
 
 /* favorecidos */
-insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","Caue Moura","170.252.797-22","49.116.743/0001-10","contato1","caue@coisa.com",30,30,NULL);
-insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","Dercy Goncalves","170.252.797-22","49.116.743/0001-10","contato2","velha@coisa.com",30,30,NULL);
-insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","Bilbo o Lindo","170.252.797-22","49.116.743/0001-10","contato3","lindao@coisa.com",30,30,NULL);
-insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","Chapolin","170.252.797-22","49.116.743/0001-10","contato4","polegar@coisa.com",30,30,NULL);
-insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","XUXA","170.252.797-22","49.116.743/0001-10","contato5","baixinhos@coisa.com",30,30,NULL);
-insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","Balao Magico","170.252.797-22","49.116.743/0001-10","contato6","balMa@coisa.com",30,30,NULL);
-insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","TheStrokes","170.252.797-22","49.116.743/0001-10","contato6","Strok@coisa.com",30,30,NULL);
-insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","TheKillers","170.252.797-22","49.116.743/0001-10","contato6","Kill@coisa.com",30,30,NULL);
-insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","EuRobo","170.252.797-22","49.116.743/0001-10","contato6","IRobot@coisa.com",30,30,NULL);
+insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","Caue Moura","170.252.797-22","49.116.743/0001-10","contato1","caue@coisa.com",NULL);
+insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","Dercy Goncalves","170.252.797-22","49.116.743/0001-10","contato2","velha@coisa.com",NULL);
+insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","Bilbo o Lindo","170.252.797-22","49.116.743/0001-10","contato3","lindao@coisa.com",NULL);
+insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","Chapolin","170.252.797-22","49.116.743/0001-10","contato4","polegar@coisa.com",NULL);
+insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","XUXA","170.252.797-22","49.116.743/0001-10","contato5","baixinhos@coisa.com",NULL);
+insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","Balao Magico","170.252.797-22","49.116.743/0001-10","contato6","balMa@coisa.com",NULL);
+insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","TheStrokes","170.252.797-22","49.116.743/0001-10","contato6","Strok@coisa.com",NULL);
+insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","TheKillers","170.252.797-22","49.116.743/0001-10","contato6","Kill@coisa.com",NULL);
+insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","EuRobo","170.252.797-22","49.116.743/0001-10","contato6","IRobot@coisa.com",NULL);
 
 /*favorecido_has_tipo_favorecido*/
-insert into matanay.favorecido_has_tipo_favorecido values(1,1);
-insert into matanay.favorecido_has_tipo_favorecido values(2,2);
-insert into matanay.favorecido_has_tipo_favorecido values(3,3);
-insert into matanay.favorecido_has_tipo_favorecido values(3,1);
-insert into matanay.favorecido_has_tipo_favorecido values(5,2);
-insert into matanay.favorecido_has_tipo_favorecido values(6,3);
-insert into matanay.favorecido_has_tipo_favorecido values(7,1);
-insert into matanay.favorecido_has_tipo_favorecido values(8,2);
-insert into matanay.favorecido_has_tipo_favorecido values(9,3);
+insert into matanay.favorecido_has_tipo_favorecido values(1,1,56,79);
+insert into matanay.favorecido_has_tipo_favorecido values(2,2,3,74);
+insert into matanay.favorecido_has_tipo_favorecido values(3,3,63,12);
+insert into matanay.favorecido_has_tipo_favorecido values(3,1,87,5);
+insert into matanay.favorecido_has_tipo_favorecido values(5,2,98,6);
+insert into matanay.favorecido_has_tipo_favorecido values(6,3,32,71);
+insert into matanay.favorecido_has_tipo_favorecido values(7,1,68,3);
+insert into matanay.favorecido_has_tipo_favorecido values(8,2,87,4);
+insert into matanay.favorecido_has_tipo_favorecido values(9,3,98,63);
 
 /* entidades */
 insert into matanay.entidade values(DEFAULT,"Entidade1",NULL,"49.116.743/0001-10","contato1","email1@coisa.com",NULL,1,NULL,1);

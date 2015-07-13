@@ -102,9 +102,9 @@ class Entidade extends CI_Controller
     {
         // passa a validacao do formulario, caso esteja tudo OK ele entra no IF
         if (($info = $this->valida_cadastro_entidade()) != NULL) {
-
             //se for favorecido coloca no banco o que eh pego no form sobre favorecido
             if ($info['favorecido']) {
+                die(var_dump($info));
                 $favorecido = $this->gera_facorecido($info);
                 //insere o favorecido no banco
                 $id_entidade = $this->Favorecido_model->cadastrar_favorecido($favorecido);//coloca os telefones
@@ -129,6 +129,8 @@ class Entidade extends CI_Controller
                 $telefone = $telefone = $telefone = $this->gera_telefone($id_entidade, $info['telefone2']);
                 $this->Entidade_model->cadastrar_telefone($telefone);
                 //coloca mensagem de sucesso na session
+                $has_tipo_entidade = $this->gera_entidade_has_tipo_entidade($info,$id_entidade);
+                $this->Entidade_model->cadastra_ent_has_tipo_ent($has_tipo_entidade);
                 $this->session->set_userdata('mensagem', '=)');
                 $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
                 $this->session->set_userdata('tipo_mensagem', 'success');
@@ -167,10 +169,23 @@ class Entidade extends CI_Controller
             'contato' => $info['contato'],
             'email' => $info['email'],
             'idFavorecido' => $info['favorecido_relacionado'],
-            'percentual_digital' => $info['porcentagemganhodigital'],
-            'percentual_fisico' => $info['porcentagemganhofisico'],
-            'idTipo_Entidade' => $info['identificacao']
+            'idCliente' => $this->session->userdata('id_cliente')
         );
+    }
+
+    public function gera_entidade_has_tipo_entidade($info, $id_ent)
+    {
+        $arr = NULL;
+        foreach ($info['identificacao'] as $id) {
+            $arr[] = array(
+                'idEntidade' => $id_ent,
+                'idTipo_Entidade' => $id,
+                'percentual_fisico' => $info['porcentagemganhofisico'],
+                'percentual_digital' => $info['porcentagemganhodigital']
+            );
+        }
+        //die(var_dump($arr));
+        return $arr;
     }
 
     public function gera_telefone1($id, $telefone)
@@ -199,7 +214,7 @@ class Entidade extends CI_Controller
         $this->form_validation->set_rules('porcentagemganhodigital', 'porcentagemganhodigital', 'required|max_length[45]');
         $this->form_validation->set_rules('porcentagemganhofisico', 'porcentagemganhofisico', 'required|max_length[45]');
         $this->form_validation->set_rules('favorecido', 'favorecido', 'required|max_length[45]');
-        $this->form_validation->set_rules('identificacao', 'identificacao', 'required|max_length[45]');
+        //$this->form_validation->set_rules('identificacao', 'identificacao', 'required|max_length[45]');
         $this->form_validation->set_rules('telefone1', 'telefone1', 'required|max_length[45]');
         $this->form_validation->set_rules('telefone2', 'telefone2', 'required|max_length[45]');
         // passa a validacao dos campos e caso esteja tudo OK ele entra no IF
@@ -262,7 +277,7 @@ class Entidade extends CI_Controller
     {
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
-        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+        $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
         //die(var_dump($this->input->post()));
         if ($this->input->post('oneInput') != null) {
             $id = $this->input->post('oneInput');
@@ -301,7 +316,7 @@ class Entidade extends CI_Controller
                 if ($this->validar_cpf($info['cpf_cnpj']) == FALSE) {
                     //caso nao seja um cpf valido, é gerada uma mensagem de erro na tela
                     $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
-                    $this->session->set_userdata('subtitulo_mensagem',  $this->lang->line('cpf/cnpj_invalido'));
+                    $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf/cnpj_invalido'));
                     $this->session->set_userdata('tipo_mensagem', 'error');
                     redirect('Entidade/mostrar_cadastro');
                 } else {
@@ -313,7 +328,7 @@ class Entidade extends CI_Controller
                 //faz a validacao do CNPJ
                 if ($this->validar_cpnj($info['cpf_cnpj']) == FALSE) {
                     $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
-                    $this->session->set_userdata('subtitulo_mensagem',  $this->lang->line('cpf/cnpj_invalido'));
+                    $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf/cnpj_invalido'));
                     $this->session->set_userdata('tipo_mensagem', 'error');
                     redirect('Entidade/mostrar_cadastro');
                 } else {
@@ -336,7 +351,7 @@ class Entidade extends CI_Controller
     {
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
-        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+        $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
         if (($info = $this->valida_atualizacao_entidade()) != NULL) {
 
             $entidade = $this->gera_atualizacao_entidade($info);
@@ -369,7 +384,7 @@ class Entidade extends CI_Controller
         );
     }
 
-    public function gera_atualizacao_telefone($id,$numero)
+    public function gera_atualizacao_telefone($id, $numero)
     {
         return array(
             'idTelefone' => $id,
@@ -492,7 +507,7 @@ class Entidade extends CI_Controller
     {
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
-        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+        $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
 
         $dados["dadofavorecido"] = $this->Favorecido_model->buscar_favorecido();
         $dados["dadoentidade"] = $this->Entidade_model->buscar_entidades();

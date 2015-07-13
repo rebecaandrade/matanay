@@ -18,8 +18,9 @@
             <table id="<?=$this->lang->line('myTable')?>" class="hoverable bordered">
                 <thead>
                 <th><?= $this->lang->line('nome_entidade'); ?></th>
-                <th>CPF/CNPJ</th>
+                <th><?= $this->lang->line('cpf_cnpj')?></th>
                 <th><?= $this->lang->line('descricao_entidade'); ?></th>
+                <th><?=$this->lang->line('favorecido')?></th>
                 <th><?= $this->lang->line('acao'); ?></th>
                 </thead>
                 <tbody>
@@ -29,6 +30,7 @@
                             <td><?= $entidade->nome ?></td>
                             <td><?= ($entidade->cpf == NULL ? $entidade->cnpj : $entidade->cpf) ?></td>
                             <td><?= $entidade->descricao ?></td>
+                            <td><?= $entidade->Fnome?></td>
                             <td><a class="acao"
                                    onclick=" passaParamentroEntidade('<?= $entidade->idEntidade ?>','<?=base_url()?>')"><?php echo $this->lang->line('editar'); ?></a>
                                 | <a class="deletarLink"

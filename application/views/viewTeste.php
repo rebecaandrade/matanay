@@ -1,8 +1,17 @@
 <?php $this->load->view('_include/header') ?>
-<div class="container">
-    <div class="row"><h2><?= $this->lang->line('cadastro_entidade_view') ?></h2></div>
+<div id="wrapper-body">
+    <div id="titulo_lista">
+        <div class="row">
+            <div class="input-field col s12 m8 l9">
+                <i class="mdi-action-assignment-ind"></i>
+                <?php echo $this->lang->line('cadastro_entidade_view'); ?>
+            </div>
+        </div>
+    </div>
+    <br>
+
     <div class="row">
-        <form id="myForm" action="<?= base_url() . 'index.php/Entidade/testeEntidadeForm' ?>" method="post">
+        <form id="myForm" action="<?= base_url() . 'index.php/Entidade/cadastrar' ?>" method="post">
             <?php if (isset($variavel)) {
                 echo $variavel;
             } ?>
@@ -15,7 +24,7 @@
                     } ?></div>
                 <div class="input-field col s12 m9 l8 offset-l2">
                     <i class="mdi-action-assignment-ind prefix"></i>
-                    <input pattern=".{3,45}" required id="nome" id="icon-prefix" type="text" value=""
+                    <input pattern=".{4,45}" required id="nome" id="icon-prefix" type="text" value=""
                            name="nomeentidade">
                     <label><?php echo $this->lang->line('nome_entidade'); ?></label>
                 </div>
@@ -88,16 +97,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s12 m12 l8 offset-l2">
+                <div class="col s12 m12 l8 offset-l2 IdEntity">
                     <h5><?php echo $this->lang->line('identificacao'); ?></label></h5>
+
                     <p>
                         <input type="checkbox" class="filled-in" id="checkArtist" name="identificacao[]" value=1>
                         <label for="checkArtist"><?php echo $this->lang->line('artista'); ?></label>
                     </p>
+
                     <p>
                         <input type="checkbox" class="filled-in" id="checkAutor" name="identificacao[]" value=2>
                         <label for="checkAutor"><?php echo $this->lang->line('autor'); ?></label>
                     </p>
+
                     <p>
                         <input type="checkbox" class="filled-in" id="checkProd" name="identificacao[]" value=3>
                         <label for="checkProd"><?php echo $this->lang->line('produtor'); ?></label>
@@ -120,12 +132,14 @@
                     </div>
                 </div>
             </div>
-            <div id="nao_favorecido" class="box">
+            <div id="nao_favorecido">
                 <?php if (($dadofavorecido != null)) { ?>
                     <div class="row">
                         <div class="input-field col s12 m12 l8 offset-l2">
-                            <select id="favorecido_relacionado" class="myHidenSelect" name="favorecido_relacionado">
-                                <option value="" disabled
+                            <h5><?php echo $this->lang->line('favorecido_cadastrado'); ?></h5>
+                            <select id="favorecido_relacionado" class="myHidenSelect shit"
+                                    name="favorecido_relacionado">
+                                <option value="-1"
                                         selected> <?php echo $this->lang->line('favorecido_cadastrado'); ?> </option>
                                 <?php //verifica se a entidade ja foi cadastrada como favorecido
                                 foreach ($dadofavorecido as $row) {
@@ -133,11 +147,14 @@
                                     <option value="<?php echo $row->idFavorecido; ?>"><?php echo $row->nome; ?></option>
                                 <?php } ?>
                             </select>
-                            <label><?php echo $this->lang->line('favorecido_cadastrado'); ?></label>
                         </div>
                     </div>
                 <?php } ?>
             </div>
+            <input type="hidden" name="favoredMessageDisplay" value="<?= $this->lang->line('erro_favorecido') ?>">
+            <input type="hidden" name="IdMessageDisplay" value="<?= $this->lang->line('erro_identificacao') ?>">
+            <input type="hidden" name="cpfMessageDisplay" value="<?= $this->lang->line('cpf/cnpf_invalido') ?>">
+            <input type="hidden" name="nomeMessageDisplay" value="<?= $this->lang->line('nome_invalido') ?>">
             <button name="botao" class="btn waves-effect waves-light col s12 m12 l8 offset-l2"
                     type="submit"><?php echo $this->lang->line('cadastrar'); ?>
                 <i class="mdi-content-send right"></i>
