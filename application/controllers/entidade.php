@@ -14,9 +14,8 @@ class Entidade extends CI_Controller
         if (!($this->session->userdata('linguagem'))) {
             $this->session->set_userdata('linguagem', 'portugues');
         }
-        
         $linguagem_usuario = $this->session->userdata('linguagem');
-        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+        $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
     }
 
     public function index()
@@ -96,9 +95,6 @@ class Entidade extends CI_Controller
 
     public function mostrar_cadastro()
     {
-        $this->session->set_flashdata('redirect_url', current_url());
-        $linguagem_usuario = $this->session->userdata('linguagem');
-        $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
         $dados["dadofavorecido"] = $this->Favorecido_model->buscar_favorecido();
         $dados["dadoentidade"] = $this->Entidade_model->buscar_entidades();
         //esse envio ocorre para que se saiba os favorecidos cadastrados dentro da view de cadastro de entidades alem de saber o idioma
@@ -107,18 +103,38 @@ class Entidade extends CI_Controller
 
     public function cadastrar()
     {
+        $this->session->set_flashdata('redirect_url', current_url());
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
         // passa a validacao do formulario, caso esteja tudo OK ele entra no IF
         if (($info = $this->valida_cadastro_entidade()) != NULL) {
             //se for favorecido coloca no banco o que eh pego no form sobre favorecido
             if ($info['favorecido']) {
-                die(var_dump($info));
-                $favorecido = $this->gera_facorecido($info);
+                //die(var_dump($info));
+                $favorecido = $this->gera_favorecido($info);
                 //insere o favorecido no banco
-                $id_entidade = $this->Favorecido_model->cadastrar_favorecido($favorecido);//coloca os telefones
-                $telefone = $this->gera_telefone1($id_entidade, $info['telefone1']);
+                $id_favorecido = $this->Favorecido_model->cadastrar_favorecido($favorecido);//coloca os telefones
+                $telefone = $this->gera_telefone1($id_favorecido, $info['telefone1']);
                 $this->Favorecido_model->cadastrar_telefone($telefone);//coloca os telefones
-                $telefone = $telefone = $this->gera_telefone1($id_entidade, $info['telefone2']);
+                $telefone = $telefone = $this->gera_telefone1($id_favorecido, $info['telefone2']);
                 $this->Favorecido_model->cadastrar_telefone($telefone);
+                $has_tipo_favorecido = $this->gera_favorecido_has_tipo_favorecido($info,$id_favorecido);
+                $this->Favorecido_model->cadastra_fav_has_tipo_fav($has_tipo_favorecido);
+
+                $info['favorecido_relacionado'] = $id_favorecido;
+
+                $entidade = $this->gera_entidade($info);
+                //insere a entidade no banco
+                $id_entidade = $this->Entidade_model->cadastrar_entidade($entidade);
+                //coloca os telefones
+                $telefone = $telefone = $telefone = $this->gera_telefone($id_entidade, $info['telefone1']);
+                $this->Entidade_model->cadastrar_telefone($telefone);
+                //coloca os telefones
+                $telefone = $telefone = $telefone = $this->gera_telefone($id_entidade, $info['telefone2']);
+                $this->Entidade_model->cadastrar_telefone($telefone);
+                //coloca mensagem de sucesso na session
+                $has_tipo_entidade = $this->gera_entidade_has_tipo_entidade($info, $id_entidade);
+                $this->Entidade_model->cadastra_ent_has_tipo_ent($has_tipo_entidade);
                 //coloca mensagem de sucesso na session
                 $this->session->set_userdata('mensagem', '=)');
                 $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
@@ -136,7 +152,7 @@ class Entidade extends CI_Controller
                 $telefone = $telefone = $telefone = $this->gera_telefone($id_entidade, $info['telefone2']);
                 $this->Entidade_model->cadastrar_telefone($telefone);
                 //coloca mensagem de sucesso na session
-                $has_tipo_entidade = $this->gera_entidade_has_tipo_entidade($info,$id_entidade);
+                $has_tipo_entidade = $this->gera_entidade_has_tipo_entidade($info, $id_entidade);
                 $this->Entidade_model->cadastra_ent_has_tipo_ent($has_tipo_entidade);
                 $this->session->set_userdata('mensagem', '=)');
                 $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
@@ -152,7 +168,7 @@ class Entidade extends CI_Controller
         }
     }
 
-    public function gera_facorecido($info)
+    public function gera_favorecido($info)
     {
         return array(
             'nome' => $info['nomeentidade'],
@@ -160,10 +176,9 @@ class Entidade extends CI_Controller
             'cnpj' => $info['cnpj'],
             'contato' => $info['contato'],
             'email' => $info['email'],
-            'idFavorecido' => $info['favorecido_relacionado'],
-            'percentual_digital' => $info['porcentagemganhodigital'],
-            'percentual_fisico' => $info['porcentagemganhofisico'],
-            'idTipo_Favorecido' => $info['identificacao']
+            'banco' => $info['banco'],
+            'agencia' => $info['agencia'],
+            'conta' => $info['contacorrente']
         );
     }
 
@@ -182,15 +197,31 @@ class Entidade extends CI_Controller
 
     public function gera_entidade_has_tipo_entidade($info, $id_ent)
     {
-        $porcFis = str_replace(",",".",$info['porcentagemganhofisico']);
-        $porDig = str_replace(",",".",$info['porcentagemganhodigital']);
+        $porcFis = str_replace(",", ".", $info['porcentagemganhofisico']);
+        $porDig = str_replace(",", ".", $info['porcentagemganhodigital']);
         $arr = NULL;
         foreach ($info['identificacao'] as $id) {
             $arr[] = array(
                 'idEntidade' => $id_ent,
                 'idTipo_Entidade' => $id,
-                'percentual_fisico' => floatval(preg_replace("/[^-0-9\.]/","",$porcFis)),
-                'percentual_digital' => floatval(preg_replace("/[^-0-9\.]/","",$porDig))
+                'percentual_fisico' => floatval(preg_replace("/[^-0-9\.]/", "", $porcFis)),
+                'percentual_digital' => floatval(preg_replace("/[^-0-9\.]/", "", $porDig))
+            );
+        }
+        //die(var_dump($arr));
+        return $arr;
+    }
+    public function gera_favorecido_has_tipo_favorecido($info, $id_fav)
+    {
+        $porcFis = str_replace(",", ".", $info['porcentagemganhofisico']);
+        $porDig = str_replace(",", ".", $info['porcentagemganhodigital']);
+        $arr = NULL;
+        foreach ($info['identificacao'] as $id) {
+            $arr[] = array(
+                'idFavorecido' => $id_fav,
+                'idTipo_Favorecido' => $id,
+                'percentual_fisico' => floatval(preg_replace("/[^-0-9\.]/", "", $porcFis)),
+                'percentual_digital' => floatval(preg_replace("/[^-0-9\.]/", "", $porDig))
             );
         }
         //die(var_dump($arr));
@@ -257,13 +288,7 @@ class Entidade extends CI_Controller
                     break;
             }
             return $info;
-        } else {
-            //caso haja problema com o formulario é mostrada uma mensagem de erro
-            $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
-            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('campos_incorretos'));
-            $this->session->set_userdata('tipo_mensagem', 'error');
-            redirect('Entidade/mostrar_cadastro');
-        }
+        } else return NULL;
     }
 
     public function listar()
