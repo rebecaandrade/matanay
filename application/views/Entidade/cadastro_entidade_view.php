@@ -4,7 +4,7 @@
         <div class="row">
             <div class="input-field col s12 m8 l9">
                 <i class="mdi-action-assignment-ind"></i>
-                <?php echo $this->lang->line('cadastro_entidade_view'); ?>
+                <?php echo $this->lang->line('cadastro_entidade'); ?>
             </div>
         </div>
     </div>

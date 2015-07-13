@@ -16,20 +16,9 @@ $this->load->view('_include/header') ?>
         </div>
     </div>
     <div class="row">
-            <div class="col s1"> <p style="font-size: 125%">Mostrando</p></div>
-            <div class="col s1">
-                <select class="tableSelect">
-                    <option value="10"> 10 </option>
-                    <option selected value="25"> 25 </option>
-                    <option value="50"> 50 </option>
-                    <option value="75"> 75 </option>
-                    <option value="100"> 100 </option>
-                </select>
-            </div>
-            <div class="col s1"><p style="font-size: 125%"> Resultados </p></div>
         </div>
     <div class="row">
-        <table id="myTable" class="hoverable bordered">
+        <table id="<?=$this->lang->line('myTable')?>" class="hoverable bordered">
             <thead>
                 <tr>
                     <th>   <?php echo $this->lang->line('imposto_nome'); ?>  </th>
@@ -41,7 +30,7 @@ $this->load->view('_include/header') ?>
                 <?php foreach ($dadoimposto as $row1) { ?>
                     <tr>
                         <td><?php echo $row1->nome; ?></td>
-                        <td><?php echo $row1->valor; ?></td>
+                        <td><?php echo $row1->valor; ?>%</td>
                         <td>
                             <a href="<?php echo base_url() . 'index.php/Imposto/deletar?id=' . $row1->idImposto ?>"><?php echo $this->lang->line('deletar'); ?> </a>
                         </td>

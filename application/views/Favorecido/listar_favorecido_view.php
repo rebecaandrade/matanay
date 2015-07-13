@@ -18,7 +18,7 @@ $this->load->view('_include/header') ?>
             </div>
         </div>
         <div class="row">
-            <table id="myTable" class="hoverable bordered">
+            <table id="<?=$this->lang->line('myTable')?>" class="hoverable bordered">
                 <thead>
                 <th><?= $this->lang->line('nome_favorecido'); ?></th>
                 <th>CPF/CNPJ</th>

@@ -146,7 +146,6 @@ class Favorecido extends CI_Controller
             'idFavorecido' => $info['favorecido_relacionado'],
             'percentual_digital' => $info['porcentagemganhodigital'],
             'percentual_fisico' => $info['porcentagemganhofisico'],
-            'idTipo_favorecido' => $info['identificacao'],
             'banco' => $info['banco'],
             'agencia' => $info['agencia'],
             'conta' => $info['contacorrente']
@@ -290,7 +289,7 @@ class Favorecido extends CI_Controller
         } else {
             //caso haja problema com o formulario é mostrada uma mensagem de erro
             $this->session->set_userdata('mensagem', 'Problemas no Formulário');
-            $this->session->set_userdata('subtitulo_mensagem', 'Alguns campos foram preenchidos incorretaente');
+            $this->session->set_userdata('subtitulo_mensagem', 'Alguns campos foram preenchidos incorretamente');
             $this->session->set_userdata('tipo_mensagem', 'error');
             //$this->camposatualizacao($info['i'])
             die;

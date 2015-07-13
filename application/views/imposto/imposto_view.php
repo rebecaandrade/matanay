@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="input-field col s12 m8 l9">
                     <i class="mdi-content-content-paste"></i>
-                    <?php echo $this->lang->line('imposto_cadastro'); ?>
+                    <?php echo $this->lang->line('cadastro_imposto'); ?>
                 </div>
             </div>
         </div><br>

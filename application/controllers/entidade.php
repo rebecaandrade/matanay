@@ -10,6 +10,13 @@ class Entidade extends CI_Controller
         $this->load->model('Favorecido_model');
         $this->load->model('albuns_model');
         $this->load->library('pagination');
+
+        if (!($this->session->userdata('linguagem'))) {
+            $this->session->set_userdata('linguagem', 'portugues');
+        }
+        
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
     }
 
     public function index()
@@ -293,7 +300,7 @@ class Entidade extends CI_Controller
         $dados['telefone2'] = $this->Entidade_model->buscar_telefone_especifico($id, $rowtelefone);
         $dados_auxiliar = $this->Entidade_model->buscar_entidade_especifica($id);//utilizado para passar o idTipo_entidade para a busca de identificacao na tabela tipo_entidade
         $dados['dadosidentificacao'] = $this->Entidade_model->buscar_identificacao_especifica($dados_auxiliar->idTipo_Entidade);
-        //die(var_dump($dados));
+        die(var_dump($dados_auxiliar));
         $this->load->view('Entidade/editar_entidade_view', $dados);
 
     }

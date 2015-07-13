@@ -185,7 +185,8 @@ $lang['nao_ha_favorecidos']='There are no favoreds registered!';
 $lang['nao_ha_impostos']='There are no taxes registered!';
 $lang['descricao_entidade'] = "Description";
 $lang['classPercent']="percentage";
-$lang['cadastro_entidade_view'] = 'Entity Cadastre';
+$lang['cadastro_entidade'] = 'Entity Cadastre';
+$lang['cadastro_favorecido'] = 'Favored Cadastre';
 $lang['listar_entidade_view'] = 'Show Entities';
 $lang['myTable'] = 'usTable';
 
@@ -193,6 +194,8 @@ $lang['myTable'] = 'usTable';
 //IMPOSTO JADIEL
 $lang['imposto_nome']='Name of the Tax';
 $lang['valor']='Value';
+$lang['cadastro_imposto'] = 'Taxes Cadastre';
+
 
 
 //Cliente
