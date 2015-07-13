@@ -1,14 +1,15 @@
-<?php
-$this->load->view('_include/header') ?>
+<?php $this->load->view('_include/header') ?>
 <div id="wrapper-body">
-        <div id="titulo_lista">
-            <div class="row">
-                <div class="input-field col s12 m8 l9">
-                    <i class="mdi-action-assignment-ind"></i>
-                    <?php echo $this->lang->line('cadastro_entidade_view'); ?>
-                </div>
+    <div id="titulo_lista">
+        <div class="row">
+            <div class="input-field col s12 m8 l9">
+                <i class="mdi-action-assignment-ind"></i>
+                <?php echo $this->lang->line('cadastro_entidade_view'); ?>
             </div>
-        </div><br>
+        </div>
+    </div>
+    <br>
+
     <div class="row">
         <form id="myForm" action="<?= base_url() . 'index.php/Entidade/cadastrar' ?>" method="post">
             <?php if (isset($variavel)) {
@@ -22,8 +23,9 @@ $this->load->view('_include/header') ?>
                         echo $this->lang->line($this->session->flashdata('aviso'));
                     } ?></div>
                 <div class="input-field col s12 m9 l8 offset-l2">
-                    <i class="mdi-action-perm-identity prefix"></i>
-                    <input pattern=".{3,45}" required id="nome" id="icon-prefix" type="text" value="" name="nomeentidade">
+                    <i class="mdi-action-assignment-ind prefix"></i>
+                    <input pattern=".{4,45}" required id="nome" id="icon-prefix" type="text" value=""
+                           name="nomeentidade">
                     <label><?php echo $this->lang->line('nome_entidade'); ?></label>
                 </div>
                 <!--a paradinha de dizer se eh favorecido-->
@@ -48,6 +50,7 @@ $this->load->view('_include/header') ?>
                     <input pattern=".{18,}" id="cnpjCadastreInput" class="cnpjCadastreInput" type="text" name="cnpj">
                 </div>
                 <input id="cpf_cnpj" type="hidden" name="cpf_cnpj">
+
                 <div class="switch col s6 offset-s6 m3 l2">
                     <p>
                         <input type="radio" value="cpf" checked name="cpf/cnpj" id="test1"/>
@@ -65,7 +68,8 @@ $this->load->view('_include/header') ?>
                 </div>
                 <div class="input-field col s12 m6 l4">
                     <label><?php echo $this->lang->line('telefone_alternativo'); ?></label>
-                    <input pattern=".{11,}" id="telefone1" maxlength="15" required type="text" value="" name="telefone2">
+                    <input pattern=".{11,}" id="telefone1" maxlength="15" required type="text" value=""
+                           name="telefone2">
                 </div>
             </div>
             <div class="row">
@@ -81,24 +85,35 @@ $this->load->view('_include/header') ?>
             <div class="row">
                 <div class="input-field col s12 m6 l4 offset-l2">
                     <label><?php echo $this->lang->line('percentual_fisico'); ?></label>
-                    <input pattern=".{2,}" required class="<?= $this->lang->line('classPercent') ?>" type="text" value=""
+                    <input pattern=".{2,}" required class="<?= $this->lang->line('classPercent') ?>" type="text"
+                           value=""
                            name="porcentagemganhofisico">
                 </div>
                 <div class="input-field col s12 m6 l4">
                     <label><?php echo $this->lang->line('percentual_digital'); ?></label>
-                    <input pattern=".{2,}" required class="<?= $this->lang->line('classPercent') ?>" type="text" value=""
+                    <input pattern=".{2,}" required class="<?= $this->lang->line('classPercent') ?>" type="text"
+                           value=""
                            name="porcentagemganhodigital">
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12 m12 l8 offset-l2">
-                    <select name="identificacao" class="myHidenSelect">
-                        <option value="" disabled selected><?php echo $this->lang->line('selecione'); ?></option>
-                        <option value=1><?php echo $this->lang->line('artista'); ?></option>
-                        <option value=2><?php echo $this->lang->line('autor'); ?></option>
-                        <option value=3><?php echo $this->lang->line('produtor'); ?></option>
-                    </select>
-                    <label><?php echo $this->lang->line('identificacao'); ?></label>
+                <div class="col s12 m12 l8 offset-l2 IdEntity">
+                    <h5><?php echo $this->lang->line('identificacao'); ?></label></h5>
+
+                    <p>
+                        <input type="checkbox" class="filled-in" id="checkArtist" name="identificacao[]" value=1>
+                        <label for="checkArtist"><?php echo $this->lang->line('artista'); ?></label>
+                    </p>
+
+                    <p>
+                        <input type="checkbox" class="filled-in" id="checkAutor" name="identificacao[]" value=2>
+                        <label for="checkAutor"><?php echo $this->lang->line('autor'); ?></label>
+                    </p>
+
+                    <p>
+                        <input type="checkbox" class="filled-in" id="checkProd" name="identificacao[]" value=3>
+                        <label for="checkProd"><?php echo $this->lang->line('produtor'); ?></label>
+                    </p>
                 </div>
             </div>
             <div id="favorecido" class="box">
@@ -117,12 +132,14 @@ $this->load->view('_include/header') ?>
                     </div>
                 </div>
             </div>
-            <div id="nao_favorecido" class="box">
+            <div id="nao_favorecido">
                 <?php if (($dadofavorecido != null)) { ?>
                     <div class="row">
                         <div class="input-field col s12 m12 l8 offset-l2">
-                            <select id="favorecido_relacionado" class="myHidenSelect" name="favorecido_relacionado">
-                                <option value="" disabled
+                            <h5><?php echo $this->lang->line('favorecido_cadastrado'); ?></h5>
+                            <select id="favorecido_relacionado" class="myHidenSelect shit"
+                                    name="favorecido_relacionado">
+                                <option value="-1"
                                         selected> <?php echo $this->lang->line('favorecido_cadastrado'); ?> </option>
                                 <?php //verifica se a entidade ja foi cadastrada como favorecido
                                 foreach ($dadofavorecido as $row) {
@@ -130,11 +147,14 @@ $this->load->view('_include/header') ?>
                                     <option value="<?php echo $row->idFavorecido; ?>"><?php echo $row->nome; ?></option>
                                 <?php } ?>
                             </select>
-                            <label><?php echo $this->lang->line('favorecido_cadastrado'); ?></label>
                         </div>
                     </div>
                 <?php } ?>
             </div>
+            <input type="hidden" name="favoredMessageDisplay" value="<?= $this->lang->line('erro_favorecido') ?>">
+            <input type="hidden" name="IdMessageDisplay" value="<?= $this->lang->line('erro_identificacao') ?>">
+            <input type="hidden" name="cpfMessageDisplay" value="<?= $this->lang->line('cpf/cnpf_invalido') ?>">
+            <input type="hidden" name="nomeMessageDisplay" value="<?= $this->lang->line('nome_invalido') ?>">
             <button name="botao" class="btn waves-effect waves-light col s12 m12 l8 offset-l2"
                     type="submit"><?php echo $this->lang->line('cadastrar'); ?>
                 <i class="mdi-content-send right"></i>
