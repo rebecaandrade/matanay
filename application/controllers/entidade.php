@@ -175,13 +175,15 @@ class Entidade extends CI_Controller
 
     public function gera_entidade_has_tipo_entidade($info, $id_ent)
     {
+        $porcFis = str_replace(",",".",$info['porcentagemganhofisico']);
+        $porDig = str_replace(",",".",$info['porcentagemganhodigital']);
         $arr = NULL;
         foreach ($info['identificacao'] as $id) {
             $arr[] = array(
                 'idEntidade' => $id_ent,
                 'idTipo_Entidade' => $id,
-                'percentual_fisico' => $info['porcentagemganhofisico'],
-                'percentual_digital' => $info['porcentagemganhodigital']
+                'percentual_fisico' => floatval(preg_replace("/[^-0-9\.]/","",$porcFis)),
+                'percentual_digital' => floatval(preg_replace("/[^-0-9\.]/","",$porDig))
             );
         }
         //die(var_dump($arr));
