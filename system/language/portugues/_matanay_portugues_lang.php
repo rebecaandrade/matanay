@@ -210,6 +210,8 @@ $lang['favorecido'] 				= 'Favorecido';
 $lang['imposto_nome']		='Nome do Imposto';
 $lang['valor']				='Valor';
 $lang['cadastro_imposto'] 	= 'Cadastro de Imposto';
+$lang['fisico'] 			= 'Fisico';
+$lang['digital'] 			= 'Digital';
 
 ////// CLIENTE ////// Vitor
 

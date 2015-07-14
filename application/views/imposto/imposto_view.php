@@ -31,6 +31,22 @@
                     <input required class="<?=$this->lang->line('classPercent')?>" name="valor" type="text">
                 </div>
             </div>
+            <div class="row">
+                <div class="col s12 m12 l8 offset-l2 IdEntity">
+                    <h5><?php echo $this->lang->line('tipo'); ?></label></h5>
+
+                    <p>
+                        <input type="radio" class="filled-in" id="checkArtist" name="tipoImposto" value=1>
+                        <label for="checkArtist"><?php echo $this->lang->line('fisico'); ?> fisico</label>
+                    </p>
+
+                    <p>
+                        <input type="radio" class="filled-in" id="checkAutor" name="tipoImposto" value=2>
+                        <label for="checkAutor"><?php echo $this->lang->line('digital'); ?> digital</label>
+                    </p>
+                </div>
+            </div>
+
             <br>
             <button class="btn waves-effect waves-light col s12 m10 offset-m1 l8 offset-l2"
                     type="submit"><?php echo $this->lang->line('cadastrar'); ?>

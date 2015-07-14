@@ -1,4 +1,4 @@
-<?php /*FEITO POR MIM JADIEL*/
+<?php /*FEITO POR JADIEL*/
 $this->load->view('_include/header') ?>
 
 <div id="wrapper-body">
@@ -23,14 +23,20 @@ $this->load->view('_include/header') ?>
                 <tr>
                     <th>   <?php echo $this->lang->line('imposto_nome'); ?>  </th>
                     <th>   <?php echo $this->lang->line('valor'); ?>   </th>
+                    <th>   <?php echo $this->lang->line('tipo'); ?>   </th>
                     <th>      <?php echo $this->lang->line('acao'); ?>      </th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($dadoimposto as $row1) { ?>
+                <?php foreach ($dadoimposto as $row1) { 
+                    $tipo=$row1->idTipo_Imposto;?>
                     <tr>
                         <td><?php echo $row1->nome; ?></td>
                         <td><?php echo $row1->valor; ?>%</td>
+                        <td>
+                            <?php if ($tipo==1) echo $this->lang->line('fisico'); ?>
+                            <?php if ($tipo==2) echo $this->lang->line('digital'); ?>
+                        </td>
                         <td>
                             <a href="<?php echo base_url() . 'index.php/Imposto/deletar?id=' . $row1->idImposto ?>"><?php echo $this->lang->line('deletar'); ?> </a>
                         </td>

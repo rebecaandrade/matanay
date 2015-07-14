@@ -207,6 +207,10 @@ $lang['favorecido'] 				= 'Favored';
 $lang['imposto_nome']		='Name of the Tax';
 $lang['valor']				='Value';
 $lang['cadastro_imposto'] 	= 'Taxes Cadastre';
+$lang['fisico'] 			= 'Phisical';
+$lang['digital'] 			= 'Digital';
+
+
 
 ////// CLIENTE ////// Vitor
 

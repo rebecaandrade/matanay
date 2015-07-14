@@ -11,6 +11,8 @@ class Imposto_model extends CI_Model{
 		$this->db->insert('imposto',$imposto);
 		return  $this->db->insert_id();
 	}
+	
+
 	function deletar($id){
             $this->db->where('idImposto', $id);
             return $this->db->delete('imposto');

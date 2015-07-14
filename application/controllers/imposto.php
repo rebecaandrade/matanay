@@ -48,7 +48,8 @@ class Imposto extends CI_Controller
         if ($this->form_validation->run()) {
             $dados = array(
                 'nome' => $this->input->post('nome'),
-                'valor' => $this->input->post('valor')
+                'valor' => $this->input->post('valor'),
+                'idTipo_Imposto' => $this->input->post('tipoImposto')
             );
             $this->Imposto_model->cadastrar_imposto($dados);
             $this->session->set_userdata('mensagem', '=)');

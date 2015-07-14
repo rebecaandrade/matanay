@@ -7,11 +7,13 @@ class Favorecido_model extends CI_Model{
 		$this->db->insert('favorecido',$favorecido);
 		return  $this->db->insert_id();
 	}
+	
 	public function cadastra_fav_has_tipo_fav($fav_has_tipo_fav){
 		foreach ($fav_has_tipo_fav as $fav) {
 			$this->db->insert('favorecido_has_tipo_favorecido', $fav);
 		}
 	}
+	
 	public function cadastrar_telefone($telefone){
 		$this->db->insert('telefone_favorecido',$telefone);
 		return  $this->db->insert_id();
@@ -21,14 +23,22 @@ class Favorecido_model extends CI_Model{
 		if($qtde > 0) $this->db->limit($qtde, $inicio);
         return $this->db->get('favorecido');
 	}
-	public function buscar_favorecido(){
-	$this->db->select("*")->from("favorecido fav");
-	$this->db->join("favorecido_has_tipo_favorecido fhtv","fhtv.idFavorecido=fav.idFavorecido");
-	$this->db->join("Tipo_Favorecido tf","tf.idTipo_Favorecido=fhtv.idTipo_Favorecido");
-	$this->db->where("excluido", null);
-	$dados=$this->db->get()->result();
-	return $dados;
+
+	public function buscar_favorecido($qtde = 0, $inicio = 0){
+		//$this->db->select('idFavorecido,nome AS Fnome')->from('Favorecido fav');
+        if ($qtde > 0) $this->db->limit($qtde, $inicio);
+        $this->db->select('fav.*,eht.*,te.*')->from('Favorecido fav');
+        $this->db->join('Favorecido_has_Tipo_Favorecido eht', 'eht.idFavorecido = fav.idFavorecido');
+        $this->db->join('Tipo_Favorecido te', 'te.idTipo_Favorecido = eht.idTipo_Favorecido');
+        $this->db->where(array('fav.excluido' => NULL));
+        $dados = $this->db->get()->result();
+        /*foreach ($dados as $key => $dado) {
+            $dados[$key]->Fnome = $this->db->where('idFavorecido', $dado->idFavorecido)->get('Favorecido')->row()->nome;
+        }*/
+        //die(var_dump($dados));
+        return $dados;
 	}
+
 	public function atualizar_favorecido($favorecido){
 		$this->db->where('idFavorecido',$favorecido['idFavorecido']);
 		return  $this->db->update('favorecido', $favorecido);
@@ -54,6 +64,7 @@ class Favorecido_model extends CI_Model{
     		$this->db->where('idFavorecido', $id);
         	return $this->db->get('favorecido')->result()[0];
    	}
+   	
    	public function procurar_favorecido($dado){
    		$this->db->like("nome",$dado);
 		$this->db->or_like("conta",$dado);
@@ -68,6 +79,7 @@ class Favorecido_model extends CI_Model{
 
 		return $query->result();
    	}
+    
     public function mudar_favorecido_para_excluidos($id)
     {
         $this->db->where('idFavorecido', $id);
