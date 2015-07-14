@@ -1,8 +1,4 @@
 /* tipo_favorecido */
-insert into matanay.tipo_favorecido values(DEFAULT, "fisico");
-insert into matanay.tipo_favorecido values(DEFAULT, "digital");
-
-/* tipo_favorecido */
 insert into matanay.tipo_favorecido values(DEFAULT, "Artista");
 insert into matanay.tipo_favorecido values(DEFAULT, "Autor");
 insert into matanay.tipo_favorecido values(DEFAULT, "Produtor");
@@ -39,15 +35,15 @@ insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","TheKil
 insert into matanay.favorecido values(DEFAULT,"padrao","padrao","padrao","EuRobo","170.252.797-22","49.116.743/0001-10","contato6","IRobot@coisa.com",NULL);
 
 /*favorecido_has_tipo_favorecido*/
-insert into matanay.favorecido_has_tipo_favorecido values(1,1,56,79);
-insert into matanay.favorecido_has_tipo_favorecido values(2,2,3,74);
-insert into matanay.favorecido_has_tipo_favorecido values(3,3,63,12);
-insert into matanay.favorecido_has_tipo_favorecido values(3,1,87,5);
-insert into matanay.favorecido_has_tipo_favorecido values(5,2,98,6);
-insert into matanay.favorecido_has_tipo_favorecido values(6,3,32,71);
-insert into matanay.favorecido_has_tipo_favorecido values(7,1,68,3);
-insert into matanay.favorecido_has_tipo_favorecido values(8,2,87,4);
-insert into matanay.favorecido_has_tipo_favorecido values(9,3,98,63);
+insert into matanay.favorecido_has_tipo_favorecido values(1,1,56,79,NULL);
+insert into matanay.favorecido_has_tipo_favorecido values(2,2,3,74,NULL);
+insert into matanay.favorecido_has_tipo_favorecido values(3,3,63,12,NULL);
+insert into matanay.favorecido_has_tipo_favorecido values(3,1,87,5,NULL);
+insert into matanay.favorecido_has_tipo_favorecido values(5,2,98,6,NULL);
+insert into matanay.favorecido_has_tipo_favorecido values(6,3,32,71,NULL);
+insert into matanay.favorecido_has_tipo_favorecido values(7,1,68,3,NULL);
+insert into matanay.favorecido_has_tipo_favorecido values(8,2,87,4,NULL);
+insert into matanay.favorecido_has_tipo_favorecido values(9,3,98,63,NULL);
 
 /* entidades */
 insert into matanay.entidade values(DEFAULT,"Entidade1",NULL,"49.116.743/0001-10","contato1","email1@coisa.com",NULL,1,NULL,1);
@@ -79,33 +75,33 @@ insert into matanay.entidade values(DEFAULT,"Arlinda","170.252.797-22",NULL,"con
 insert into matanay.entidade values(DEFAULT,"Amelia","170.252.797-22",NULL,"contato25","email25@coisa.com",NULL,9,NULL,1);
 
 /*entidade_has_tipo_entidade*/
-insert into matanay.entidade_has_tipo_entidade values(1,1,20,20);
-insert into matanay.entidade_has_tipo_entidade values(2,2,20,20);
-insert into matanay.entidade_has_tipo_entidade values(3,3,20,20);
-insert into matanay.entidade_has_tipo_entidade values(4,1,20,20);
-insert into matanay.entidade_has_tipo_entidade values(5,2,20,20);
-insert into matanay.entidade_has_tipo_entidade values(6,3,20,20);
-insert into matanay.entidade_has_tipo_entidade values(7,1,20,20);
-insert into matanay.entidade_has_tipo_entidade values(8,2,20,20);
-insert into matanay.entidade_has_tipo_entidade values(9,3,20,20);
-insert into matanay.entidade_has_tipo_entidade values(10,1,20,20);
-insert into matanay.entidade_has_tipo_entidade values(11,2,20,20);
-insert into matanay.entidade_has_tipo_entidade values(12,3,20,20);
-insert into matanay.entidade_has_tipo_entidade values(13,1,20,20);
-insert into matanay.entidade_has_tipo_entidade values(14,2,20,20);
-insert into matanay.entidade_has_tipo_entidade values(15,3,20,20);
-insert into matanay.entidade_has_tipo_entidade values(16,1,20,20);
-insert into matanay.entidade_has_tipo_entidade values(17,2,20,20);
-insert into matanay.entidade_has_tipo_entidade values(18,3,20,20);
-insert into matanay.entidade_has_tipo_entidade values(19,1,20,20);
-insert into matanay.entidade_has_tipo_entidade values(20,2,20,20);
-insert into matanay.entidade_has_tipo_entidade values(21,3,20,20);
-insert into matanay.entidade_has_tipo_entidade values(22,1,20,20);
-insert into matanay.entidade_has_tipo_entidade values(23,2,20,20);
-insert into matanay.entidade_has_tipo_entidade values(24,3,20,20);
-insert into matanay.entidade_has_tipo_entidade values(25,1,20,20);
-insert into matanay.entidade_has_tipo_entidade values(26,2,20,20);
-insert into matanay.entidade_has_tipo_entidade values(27,3,20,20);
+insert into matanay.entidade_has_tipo_entidade values(1,1,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(2,2,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(3,3,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(4,1,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(5,2,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(6,3,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(7,1,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(8,2,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(9,3,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(10,1,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(11,2,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(12,3,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(13,1,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(14,2,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(15,3,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(16,1,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(17,2,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(18,3,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(19,1,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(20,2,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(21,3,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(22,1,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(23,2,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(24,3,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(25,1,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(26,2,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(27,3,20,20,NULL);
 
 /* telefone entidade */
 insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",1);
@@ -191,12 +187,16 @@ insert into matanay.moeda values(DEFAULT,"Hey","so",515.74,NULL,1);
 insert into matanay.moeda values(DEFAULT,"TESTE","TESTE",13.37,NULL,1);
 insert into matanay.moeda values(DEFAULT,"DELETADO","DELETADO",34.34,1,1);	
 
+/* tipo_imposto */
+insert into matanay.tipo_imposto values(DEFAULT, "Fisico");
+insert into matanay.tipo_imposto values(DEFAULT, "Digital");
+
 /* imposto */
-insert into matanay.imposto values(DEFAULT,"Imposto 1","100",1);
-insert into matanay.imposto values(DEFAULT,"Imposto 2","200",1);
-insert into matanay.imposto values(DEFAULT,"Imposto 3","300",1);
-insert into matanay.imposto values(DEFAULT,"Imposto 4","400",1);
-insert into matanay.imposto values(DEFAULT,"Imposto 5","500",1);
+insert into matanay.imposto values(DEFAULT,"Imposto 1","100",1,1,NULL);
+insert into matanay.imposto values(DEFAULT,"Imposto 2","200",1,2,NULL);
+insert into matanay.imposto values(DEFAULT,"Imposto 3","300",1,1,NULL);
+insert into matanay.imposto values(DEFAULT,"Imposto 4","400",1,2,NULL);
+insert into matanay.imposto values(DEFAULT,"Imposto 5","500",1,1,NULL);
 
 /* faixas */
 insert into matanay.faixa_video values(DEFAULT,"Faixa 1","1111111111",NULL,NULL,1);

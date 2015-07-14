@@ -30,7 +30,7 @@ html {
 }
 
 #barra2 {
-    background-color: #E4E4E4 !important;
+    background-color: #CCC !important;
 }
 
 #barra3 {
@@ -411,6 +411,10 @@ label {
     top: -14px;
     font-size: 0.8rem;
     color: #777;
+}
+
+.IdEntity {
+	top: -4.5rem;
 }
 
 /**************PAGINAS DAS ENTIADADES Jadiel**********************/
