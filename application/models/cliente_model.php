@@ -43,7 +43,7 @@
 					'senha' 	=> $senha,
 					'idCliente'	=> $id_cliente
 				);
-			$this->db->insert('perfis',$perfil);
+			$this->db->insert('usuario',$perfil);
 			return $this->db->insert_id();
 		}
 		public function cadastrar_funcionalidades($funcs,$id){
@@ -51,22 +51,16 @@
 			foreach ($funcs as $func) {
 				$array = array(
 						'idFuncionalidades' => $func,
-						'idPerfis'			=> $id,
+						'idUsuario'			=> $id,
 					);
-				$this->db->insert('funcionalidades_has_perfis',$array);
+				$this->db->insert('usuario_has_funcionalidades',$array);
 			}
 			
 		}
-		public function login_existe($login){
+		public function buscar_login($login){
 			$this->db->where('login',$login);
 			$this->db->where('excluido',NULL);
-			$perfil = $this->db->get('perfis')->row();
-			if(!is_null($perfil)){
-				return TRUE;
-			}
-			else{
-				return FALSE;
-			}
+			return $this->db->get('usuario')->row();
 		}
 		public function clientes(){
 			return $this->db->get_where('cliente', array('excluido' => NULL))->result();

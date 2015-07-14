@@ -27,7 +27,7 @@
 					</div>
 				</div>
 				<input type='hidden' name='id_cliente' value=<?php echo $perfil->idCliente?> />
-				<input type='hidden' name='id_perfil' value=<?php echo $perfil->idUsuario?> />
+				<input type='hidden' name='id_usuario' value=<?php echo $perfil->idUsuario?> />
 				<button class="btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('atualizar'); ?>
 					<i class="mdi-content-send right"></i>
 				</button>

@@ -55,5 +55,27 @@
 								'label' => 'lang:alerta',
 								'rules' => 'trim|required|callback_decimal_num'
 							)
-						)
+						),
+		'usuario' => array(
+						array(
+								'field' => 'nome',
+								'label' => 'lang:cliente_nome',
+								'rules' => 'trim|required|max_length[45]'
+							),
+						array(
+								'field' => 'login',
+								'label' => 'lang:cliente_login',
+								'rules' => 'trim|required|min_length[6]|max_length[45]|callback_login_disponivel'
+							),
+						array(
+								'field' => 'senha',
+								'label' => 'lang:cliente_senha',
+								'rules' => 'trim|required|min_length[6]'
+							),
+						array(
+								'field' => 'confirmar_senha',
+								'label' => 'lang:cliente_confirmar_senha',
+								'rules' => 'trim|required|matches[senha]'
+							),
+						),
 	);

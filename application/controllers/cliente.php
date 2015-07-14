@@ -33,7 +33,7 @@
 				$this->load->view('cliente/cadastrar_perfil',$dados);
 			} else {
 				//mensagem de erro
-				redirect('cliente/cadastro_cliente');
+				redirect('cliente/lista_perfis');
 			}
 		}
 		public function cadastrar_cliente(){
@@ -54,43 +54,45 @@
 			}
 		}
 		public function cadastrar_perfil(){
-			$id_cliente = $this->input->post('id');
-			$nome  = trim($this->input->post('nome'));
-			$login = trim($this->input->post('login'));
-			$senha = trim($this->input->post('senha'));
-			$confirmar_senha = trim($this->input->post('confirmar_senha'));
-			$funcs = $this->input->post('func');
-			if(!$this->cliente_model->login_existe($login)){
-				if($senha == $confirmar_senha ){	
-					if(strlen($nome) != 0 && strlen($login) != 0 && strlen($senha) !=0){
-						$this->db->trans_start();
-						$perfil_id = $this->cliente_model->cadastrar_perfil($nome,$login,md5($senha),$id_cliente);
-						if(isset($funcs)){
-							$this->cliente_model->cadastrar_funcionalidades($funcs,$perfil_id);
-						}
-						$this->db->trans_complete();
-						if($this->db->trans_status() == TRUE){
-							// setar 'usuario cadastrado com sucesso'
-							redirect('cliente/lista_perfis/'.$id_cliente);
-						}
-						else{
-							// mensagem de erro
-							redirect('cliente/cadastro_perfil/'.$id_cliente);
-						}
-					}
-					else{
-						//setar 'preencha todos os campos'
-						redirect('cliente/cadastro_perfil/'.$id_cliente);
-					}
+			$this->form_validation->set_message('required', $this->lang->line('form_error_required') );
+			$this->form_validation->set_message('max_length', $this->lang->line('form_error_max_length'));
+			$this->form_validation->set_message('min_length', $this->lang->line('form_error_min_length'));
+			$this->form_validation->set_message('login_disponivel', $this->lang->line('form_error_login_disponivel'));
+			$this->form_validation->set_message('matches', $this->lang->line('form_error_confirmar_senha'));
+			$id_cliente 		= $this->input->post('id');
+			if( $this->form_validation->run('usuario') ){
+				$nome  				= $this->input->post('nome');
+				$login 				= $this->input->post('login');
+				$senha 				= $this->input->post('senha');
+				$confirmar_senha 	= $this->input->post('confirmar_senha');
+				$funcs 				= $this->input->post('func');
+				$this->db->trans_start();
+				$perfil_id = $this->cliente_model->cadastrar_perfil($nome,$login,md5($senha),$id_cliente);
+				if(isset($funcs)){
+					$this->cliente_model->cadastrar_funcionalidades($funcs,$perfil_id);
+				}
+				$this->db->trans_complete();
+				if($this->db->trans_status() == TRUE){
+					$mensagem 			= array(
+											'mensagem'		=> $this->lang->line('cadastro_sucesso'),
+											'tipo_mensagem' => 'success'
+										);
+					$this->session->set_userdata($mensagem);
+					redirect('cliente/lista_perfis/'.$id_cliente);
 				}
 				else{
-					// setar mensagem de senhas não batem
-					redirect('cliente/cliente/cadastro_perfil/'.$id_cliente);
+					// mensagem de erro
+					redirect('cliente/cadastro_perfil/'.$id_cliente);
 				}
 			}
 			else{
-				// setar 'login já cadastrado'
-				redirect('cliente/cliente/cadastro_perfil/'.$id_cliente);
+				$mensagem = array(
+									'mensagem'				=> $this->lang->line('campos_invalidos'),
+									'subtitulo_mensagem'	=> validation_errors() ,
+									'tipo_mensagem' 		=> 'error'
+								);
+				$this->session->set_userdata($mensagem);
+				redirect('cliente/cadastro_perfil/'.$id_cliente);
 			}
 		}
 		public function atualiza_cliente($id){
@@ -110,8 +112,9 @@
 			}
 			else{
 				$mensagem = array(
-									'mensagem'		=> validation_errors() ,
-									'tipo_mensagem' => 'error'
+									'mensagem'				=> $this->lang->line('campos_invalidos'),
+									'subtitulo_mensagem'	=> validation_errors() ,
+									'tipo_mensagem' 		=> 'error'
 								);
 				$this->session->set_userdata($mensagem);
 				redirect('cliente/atualiza_cliente/'.$id);
@@ -160,6 +163,15 @@
 			}
 			else{
 				return TRUE;
+			}
+		}
+		public function login_disponivel($login){
+			$usuario = $this->cliente_model->buscar_login($login);
+			$id_usuario = $this->input->post('id_usuario');
+			if(!$usuario || (isset($id_usuario)) && $usuario->idUsuario == $this->input->post('id_usuario') ){
+				return TRUE;
+			}else{
+				return FALSE;
 			}
 		}
 	}

@@ -60,12 +60,15 @@ $lang['campos_invalidos']					= 'Campos inválidos :';
 $lang['form_error_nome_disponivel']			= 'Esse nome não está disponivel';
 $lang['form_error_required']				= 'O campo {field} é obrigatório';
 $lang['form_error_max_length']				= 'O campo {field} deve possuir menos de {param} characteres';
+$lang['form_error_min_length']				= 'O campo {field} deve possuir mais de {param} characteres';
 $lang['form_error_is_int']					= 'O campo {field} deve ser um inteiro';
 $lang['form_error_decimal_num']				= 'O campo {field} deve conter um número';
 $lang['form_error_permissao_entidade']		= 'Permissão insuficiente para manipular a entidade selecionada';
 $lang['form_error_permissao_favorecido']	= 'Permissão insuficiente para manipular o favorecido selecionado';
 $lang['form_error_data_valida']				= "O campo {field} não contém uma data valida";
 $lang['form_error_depois_data_inicio']		= "A data de término deve ser após a data de inicio";
+$lang['form_error_login_disponivel']		= "Este login já se encontra cadastrado";
+$lang['form_error_confirmar_senha']			= "Senha e confirmação de senha diferem";
 
 ////// ALERTAS SISTEMA
 
@@ -76,7 +79,7 @@ $lang['excluido_sucesso']		= 'Excluído com sucesso!';
 $lang['acesso_negado']			= 'Acesso indevido';
 $lang['permissao_insuficiente']	= 'Permissão insuficiente para esta ação';
 $lang['confirmar_deletar']		= 'Confirmar deleção?';
-$lang['problemas_formulario']       = 'Problemas com o formulario';
+$lang['problemas_formulario']	= 'Problemas com o formulario';
 
 ////// LOGIN
 
@@ -147,55 +150,55 @@ $lang['contrato_entidade']		= 'Escolha a entidade';
 $lang['contrato_favorecido']	= 'Escolha o favorecido';
 
 /////ENTIDADES/FAVORECIDO /*FEITO POR MIM JADIEL*/
-$lang['nome_entidade']='Nome da entidade';
-$lang['nome_favorecido']='Nome do favorecido';
-$lang['cpf_cnpj']='CPF/CNPJ';
-$lang['telefone']	= 'Telefone';
-$lang['telefone_alternativo']	= 'Telefone Alternativo';
-$lang['contato'] = 'Contato';
-$lang['email']	= 'Email do Contato';
-$lang['percentual_fisico']	= 'Porcentagem de ganho mídia física';
-$lang['percentual_digital']	= 'Porcentagem de ganho mídia digital';
+$lang['nome_entidade']				='Nome da entidade';
+$lang['nome_favorecido']			='Nome do favorecido';
+$lang['cpf_cnpj']					='CPF/CNPJ';
+$lang['telefone']					= 'Telefone';
+$lang['telefone_alternativo']		= 'Telefone Alternativo';
+$lang['contato'] 					= 'Contato';
+$lang['email']						= 'Email do Contato';
+$lang['percentual_fisico']			= 'Porcentagem de ganho mídia física';
+$lang['percentual_digital']			= 'Porcentagem de ganho mídia digital';
 $lang['identificacao']				= 'Identificação';
-$lang['banco']			= 'Banco';
-$lang['conta']		= 'Conta corrente';
-$lang['agencia']		= 'Agencia Bancária';
-$lang['atual']	='Atual';
-$lang['artista']	='Artista';
-$lang['autor']	='Autor';
-$lang['produtor']	='Produtor';
-$lang['artista_min']	='artista';
-$lang['autor_min']	='autor';
-$lang['produtor_min']	='produtor';
-$lang['eh_favorecido']	='É um favorecido?';
-$lang['favorecido_cadastrado']	='Favorecidos Registrados';
-$lang['acao']='Ação';
-$lang['delear']='Deletar';
-$lang['editar']='Editar';
-$lang['nao_ha_entidades']='Não há entidades cadastradas!';
-$lang['selecione']='Selecione';
-$lang['cadastro_realizado']='Cadastro Realizado!';
-$lang['campo_vazio']='Todos os campos devem ser preenchidos!';
-$lang['cnpj_invalido']='CNPJ inválido';
-$lang['cpf_invalido']='CPF inválido';
-$lang['cadastrar_entidade']='Cadastrar uma nova entidade!';
-$lang['cadastrar_favorecido']='Cadastrar um novo favorecido';
-$lang['nao_ha_entidades']='Não existem entidades cadastradas!';
-$lang['nao_ha_favorecidos']='Não existem favorecidos cadastrados!';
-$lang['nao_ha_impostos']='Não existem impostos cadastrados!';
-$lang['descricao_entidade'] = "Descrição";
-$lang['classPercent']="porcentagem";
-$lang['cadastro_entidade'] = 'Cadastro de Entidade';
-$lang['cadastro_favorecido'] = 'Cadastro de Favorecido';
-$lang['listar_entidade_view'] = 'Mostrar Entidades';
-$lang['myTable'] = 'myTable';
+$lang['banco']						= 'Banco';
+$lang['conta']						= 'Conta corrente';
+$lang['agencia']					= 'Agencia Bancária';
+$lang['atual']						='Atual';
+$lang['artista']					='Artista';
+$lang['autor']						='Autor';
+$lang['produtor']					='Produtor';
+$lang['artista_min']				='artista';
+$lang['autor_min']					='autor';
+$lang['produtor_min']				='produtor';
+$lang['eh_favorecido']				='É um favorecido?';
+$lang['favorecido_cadastrado']		='Favorecidos Registrados';
+$lang['acao']						='Ação';
+$lang['delear']						='Deletar';
+$lang['editar']						='Editar';
+$lang['nao_ha_entidades']			='Não há entidades cadastradas!';
+$lang['selecione']					='Selecione';
+$lang['cadastro_realizado']			='Cadastro Realizado!';
+$lang['campo_vazio']				='Todos os campos devem ser preenchidos!';
+$lang['cnpj_invalido']				='CNPJ inválido';
+$lang['cpf_invalido']				='CPF inválido';
+$lang['cadastrar_entidade']			='Cadastrar uma nova entidade!';
+$lang['cadastrar_favorecido']		='Cadastrar um novo favorecido';
+$lang['nao_ha_entidades']			='Não existem entidades cadastradas!';
+$lang['nao_ha_favorecidos']			='Não existem favorecidos cadastrados!';
+$lang['nao_ha_impostos']			='Não existem impostos cadastrados!';
+$lang['descricao_entidade']			= "Descrição";
+$lang['classPercent']				="porcentagem";
+$lang['cadastro_entidade']			= 'Cadastro de Entidade';
+$lang['cadastro_favorecido']		= 'Cadastro de Favorecido';
+$lang['listar_entidade_view']		= 'Mostrar Entidades';
+$lang['myTable'] 					= 'myTable';
 
 
 
 //IMPOSTO JADIEL
-$lang['imposto_nome']='Nome do Imposto';
-$lang['valor']='Valor';
-$lang['cadastro_imposto'] = 'Cadastro de Imposto';
+$lang['imposto_nome']		='Nome do Imposto';
+$lang['valor']				='Valor';
+$lang['cadastro_imposto'] 	= 'Cadastro de Imposto';
 
 
 
@@ -213,7 +216,6 @@ $lang['cliente_funcionalidades'] 	= 'Funcionalidades';
 $lang['cliente_cadastrar'] 			= 'Cadastrar';
 $lang['Perfil_erro_listar']			= 'Nenhum perfil cadastrado';
 $lang['cliente_erro_listar'] 		= 'Nenhum cliente cadastrado';
-$lang['cliente_erro_nome'] 			= 'Este nome já se encontra cadastrado';
 
 
 

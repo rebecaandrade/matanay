@@ -61,13 +61,15 @@ $lang['campos_invalidos']					= 'Invalid fields :';
 $lang['form_error_nome_disponivel']			= 'Name not available';
 $lang['form_error_required']				= 'The {field} field is required';
 $lang['form_error_max_length']				= 'The {field} field cannot exceed {param} characters in length.';
+$lang['form_error_min_length']				= 'The {field} field must be at least {param} characters in length.';
 $lang['form_error_is_int']					= 'The {field} must contain an integer';
 $lang['form_error_decimal_num']				= 'The {field} field must contain a number';
 $lang['form_error_permissao_entidade']		= 'Insufficient permission to manipulate the selected entity';
 $lang['form_error_permissao_favorecido']	= 'Insufficient permission to manipulate the selected favored';
 $lang['form_error_data_valida']				= "The {field} field doesn't contain a valid date";
 $lang['form_error_depois_data_inicio']		= "The end date must occur after the start date";
-
+$lang['form_error_login_disponivel']		= 'Login already taken';
+$lang['form_error_confirmar_senha']			= "Password and confirmation don't match";
 
 ////// ALERTAS SISTEMA
 
@@ -151,50 +153,50 @@ $lang['contrato_favorecido']	= 'Choose the favored';
 
 
 /////ENTIDADES/FAVORECIDO  Jadiel
-$lang['entidade'] = 'Entity';
-$lang['nome_favorecido']='Name of favored';
+$lang['entidade'] 					= 'Entity';
+$lang['nome_favorecido']			='Name of favored';
 $lang['nome_entidade']				= 'Name of the Entity';
-$lang['cpf_cnpj']			= 'ID';
-$lang['telefone']		= 'Telephone number';
+$lang['cpf_cnpj']					= 'ID';
+$lang['telefone']					= 'Telephone number';
 $lang['telefone_alternativo']		= 'Alternative telephone number';
-$lang['contato']		= 'One to be contacted';
-$lang['email']	= 'One\'s email';
-$lang['percentual_fisico']	= 'Percentage of gain with phisical media';
-$lang['percentual_digital']	= 'Percentage of gain with digital media';
+$lang['contato']					= 'One to be contacted';
+$lang['email']						= 'One\'s email';
+$lang['percentual_fisico']			= 'Percentage of gain with phisical media';
+$lang['percentual_digital']			= 'Percentage of gain with digital media';
 $lang['identificacao']				= 'Identification';
-$lang['banco']			= 'Bank';
-$lang['conta']		= 'Checking account';
-$lang['agencia']		= 'Bank Branch';
-$lang['atual']	='Actual';
-$lang['artista']	='Artist';
-$lang['autor']	='Author';
-$lang['produtor']	='Producer';
-$lang['artista_min']	='artist';
-$lang['autor_min']	='author';
-$lang['produtor_min']	='producer';
-$lang['eh_favorecido']	='Is it a favored?';
-$lang['favorecido_cadastrado']	='Registed favoreds';
-$lang['cadastro_realizado']='The Entity was successfully registered!';
-$lang['campo_vazio']='One shall not leave an empty field!';
-$lang['cnpj_invalido']='Invalid CNPJ';
-$lang['cpf_invalido']='Invalid CPF';
-$lang['cadastrar_entidade']='Register a new Entity!';
-$lang['cadastrar_favorecido']='Register a new Favored!';
-$lang['nao_ha_entidades']='There are no entities registered!';
-$lang['nao_ha_favorecidos']='There are no favoreds registered!';
-$lang['nao_ha_impostos']='There are no taxes registered!';
-$lang['descricao_entidade'] = "Description";
-$lang['classPercent']="percentage";
-$lang['cadastro_entidade'] = 'Entity Cadastre';
-$lang['cadastro_favorecido'] = 'Favored Cadastre';
-$lang['listar_entidade_view'] = 'Show Entities';
-$lang['myTable'] = 'usTable';
+$lang['banco']						= 'Bank';
+$lang['conta']						= 'Checking account';
+$lang['agencia']					= 'Bank Branch';
+$lang['atual']						='Actual';
+$lang['artista']					='Artist';
+$lang['autor']						='Author';
+$lang['produtor']					='Producer';
+$lang['artista_min']				='artist';
+$lang['autor_min']					='author';
+$lang['produtor_min']				='producer';
+$lang['eh_favorecido']				='Is it a favored?';
+$lang['favorecido_cadastrado']		='Registed favoreds';
+$lang['cadastro_realizado']			='The Entity was successfully registered!';
+$lang['campo_vazio']				='One shall not leave an empty field!';
+$lang['cnpj_invalido']				='Invalid CNPJ';
+$lang['cpf_invalido']				='Invalid CPF';
+$lang['cadastrar_entidade']			='Register a new Entity!';
+$lang['cadastrar_favorecido']		='Register a new Favored!';
+$lang['nao_ha_entidades']			='There are no entities registered!';
+$lang['nao_ha_favorecidos']			='There are no favoreds registered!';
+$lang['nao_ha_impostos']			='There are no taxes registered!';
+$lang['descricao_entidade'] 		= "Description";
+$lang['classPercent']				="percentage";
+$lang['cadastro_entidade'] 			= 'Entity Cadastre';
+$lang['cadastro_favorecido']		= 'Favored Cadastre';
+$lang['listar_entidade_view'] 		= 'Show Entities';
+$lang['myTable'] 					= 'usTable';
 
 
 //IMPOSTO JADIEL
-$lang['imposto_nome']='Name of the Tax';
-$lang['valor']='Value';
-$lang['cadastro_imposto'] = 'Taxes Cadastre';
+$lang['imposto_nome']		='Name of the Tax';
+$lang['valor']				='Value';
+$lang['cadastro_imposto'] 	= 'Taxes Cadastre';
 
 
 
@@ -210,7 +212,6 @@ $lang['cliente_funcionalidades']	= 'Functionalities';
 $lang['cliente_cadastrar']			= 'Register';
 $lang['Perfil_erro_listar']			= 'No Profiles on record';
 $lang['cliente_erro_listar']		= 'No customer on record';
-$lang['cliente_erro_nome']			= 'Name already taken';
 
 
 
