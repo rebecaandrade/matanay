@@ -17,18 +17,18 @@
 				</div>
 				<div class="row">
 					<div class="input-field col s12 m9 l8 offset-l2">
-						<select name="func[]" >
-							<option  value='' disabled selected> </option>
-							<?php foreach ($funcionalidades as $func) { ?>
-								<option value="<?php echo $func->idFuncionalidades ?>"> <?php echo $func->nome; ?></option>
-							<?php } ?>
-						</select>
-						<label><?php echo $this->lang->line('cliente_funcionalidades'); ?></label>
+						<h5 ><?php echo $this->lang->line('cliente_funcionalidades'); ?></h5>
+						<?php foreach ($funcionalidades as $func) { ?>
+							<p>
+								<input type='checkbox' id="<?php echo $func->idFuncionalidades ?>" name='func[]' value="<?php echo $func->idFuncionalidades ?>"/> 
+								<label for="<?php echo $func->idFuncionalidades ?>"> <?php echo $func->nome; ?></label>
+							</p>
+						<?php } ?>
 					</div>
 				</div>
 				<input type='hidden' name='id_cliente' value=<?php echo $perfil->idCliente?> />
-				<input type='hidden' name='id_perfil' value=<?php echo $perfil->idPerfis?> />
-				<button class="btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
+				<input type='hidden' name='id_perfil' value=<?php echo $perfil->idUsuario?> />
+				<button class="btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('atualizar'); ?>
 					<i class="mdi-content-send right"></i>
 				</button>
 			<?php echo form_close() ?>

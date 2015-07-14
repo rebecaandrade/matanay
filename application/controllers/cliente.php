@@ -119,6 +119,7 @@
 		}
 		public function atualiza_perfil_admin($id_cliente,$id_perfil){
 			$dados['perfil'] = $this->cliente_model->buscar_perfil($id_cliente,$id_perfil);
+			$dados['funcionalidades'] = $this->cliente_model->funcionalidades();
 			$this->load->view('cliente/atualizar_perfil',$dados);
 		}
 		public function lista_clientes(){

@@ -30,14 +30,14 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
-							<select name="func[]" >
-								<option  value='' disabled selected> </option>
-								<?php foreach ($funcionalidades as $func) { ?>
-									<option value="<?php echo $func->idFuncionalidades ?>"> <?php echo $func->nome; ?></option>
-								<?php } ?>
-							</select>
-							<label><?php echo $this->lang->line('cliente_funcionalidades'); ?></label>
+						<div class="input-field col s12 m9 l8 offset-l2">
+							<h5 ><?php echo $this->lang->line('cliente_funcionalidades'); ?></h5>
+							<?php foreach ($funcionalidades as $func) { ?>
+								<p>
+									<input type='checkbox' id="<?php echo $func->idFuncionalidades ?>" name='func[]' value="<?php echo $func->idFuncionalidades ?>"/> 
+									<label for="<?php echo $func->idFuncionalidades ?>"> <?php echo $func->nome; ?></label>
+								</p>
+							<?php } ?>
 						</div>
 					</div>
 					<input type='hidden' name='id' value=<?php echo $id_cliente?> />
