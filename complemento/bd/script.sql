@@ -1,4 +1,8 @@
 /* tipo_favorecido */
+insert into matanay.tipo_favorecido values(DEFAULT, "fisico");
+insert into matanay.tipo_favorecido values(DEFAULT, "digital");
+
+/* tipo_favorecido */
 insert into matanay.tipo_favorecido values(DEFAULT, "Artista");
 insert into matanay.tipo_favorecido values(DEFAULT, "Autor");
 insert into matanay.tipo_favorecido values(DEFAULT, "Produtor");

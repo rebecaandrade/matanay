@@ -36,13 +36,13 @@
                     <h5><?php echo $this->lang->line('tipo'); ?></label></h5>
 
                     <p>
-                        <input type="radio" class="filled-in" id="checkArtist" name="tipoImposto" value=1>
-                        <label for="checkArtist"><?php echo $this->lang->line('fisico'); ?> fisico</label>
+                        <input type="radio" required class="filled-in" id="checkArtist" name="tipoImposto" value=1>
+                        <label for="checkArtist"><?php echo $this->lang->line('fisico'); ?> </label>
                     </p>
 
                     <p>
-                        <input type="radio" class="filled-in" id="checkAutor" name="tipoImposto" value=2>
-                        <label for="checkAutor"><?php echo $this->lang->line('digital'); ?> digital</label>
+                        <input type="radio" required class="filled-in" id="checkAutor" name="tipoImposto" value=2>
+                        <label for="checkAutor"><?php echo $this->lang->line('digital'); ?> </label>
                     </p>
                 </div>
             </div>
