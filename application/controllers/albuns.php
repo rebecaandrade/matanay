@@ -21,11 +21,14 @@ class Albuns extends CI_Controller {
 	}
 
 	public function cadastrar() {
+        $data = $this->input->post('ano');
+        $ano = substr($data, -4);
+
 		$album = array(
             'nome' => $this->input->post('nome'),
             'quantidade' => $this->input->post('n_faixas'),
             'upc_ean' => $this->input->post('upc_ean'),
-            'ano' => $this->input->post('ano'),
+            'ano' => $ano,
             'faixa' => 100/$this->input->post('n_faixas'),
             'codigo_catalogo' => $this->input->post('catalogo'),
             'idTipo_Album' => $this->input->post('tipo')

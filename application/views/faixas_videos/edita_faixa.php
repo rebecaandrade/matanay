@@ -1,6 +1,14 @@
 <?php $this->load->view('_include/header') ?> <!-- Evandro -->
 
 <div id="wrapper-body">
+    <div id="titulo_lista">
+        <div class="row">
+            <div class="input-field col s12 m8 l10">
+                <i class="mdi-av-queue-music"></i>
+                <?php echo $this->lang->line('faixas_edicao'); ?>
+            </div>
+        </div>
+    </div><br>
     <div class="row">
   	<?php echo form_open('faixas_videos/atualizar') ?>
             <input type="hidden" name="idFaixa" value="<?php echo $faixa->idFaixa; ?>">

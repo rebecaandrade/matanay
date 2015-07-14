@@ -1,6 +1,14 @@
 <?php $this->load->view('_include/header') ?> <!-- Evandro -->
 
-<div class="container">
+<div id="wrapper-body">
+    <div id="titulo_lista">
+        <div class="row">
+            <div class="input-field col s12 m8 l10">
+                <i class="mdi-av-queue-music"></i>
+                <?php echo $this->lang->line('albuns_edicao_faixas'); ?>
+            </div>
+        </div>
+    </div>
     <div id="titulo_perfil">
         <div class="row">
             <div class="input-field col s12 m8 l11 offset-l2">

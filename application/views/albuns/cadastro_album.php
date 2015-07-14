@@ -5,7 +5,7 @@
         <div class="row">
             <div class="input-field col s12 m8 l10">
                 <i class="mdi-av-my-library-music"></i>
-                <?php echo $this->lang->line('albums_cadastro'); ?>
+                <?php echo $this->lang->line('albuns_cadastro'); ?>
             </div>
         </div>
   	</div><br>
@@ -41,7 +41,7 @@
 	        <div class="row">
 	          	<div class="input-field col s12 m6 l4 offset-l2">
 	          		<label>UPC/EAN</label>
-	            	<input required type="text" name="upc_ean"/>
+	            	<input pattern="[a-zA-Z0-9]{12,13}" title="12 ou 13 caracteres alfanumericos" maxlength="13" required type="text" name="upc_ean"/>
 	          	</div>
 	          	<div class="input-field col s12 m6 l4">
 	          		<label><?php echo $this->lang->line('n_faixas'); ?></label>
@@ -57,11 +57,11 @@
 	        <div class="row">
 	          	<div class="input-field col s12 m6 l4 offset-l2">
 	            	<label><?php echo $this->lang->line('catalogo'); ?></label>
-	            	<input type="text" name="catalogo"/>
+	            	<input pattern="[a-zA-Z0-9]+{0,10}" maxlength="10" title="Até 10 caracteres alfanumericos" type="text" name="catalogo"/>
 	          	</div>
 	          	<div class="input-field col s12 m6 l4"/>
-	          		<label><?php echo $this->lang->line('lancamento'); ?></label>
-	            	<input required type="text" name="ano"/>
+	          		<label id="selectLabel"><?php echo $this->lang->line('lancamento');?></label>
+	            	<input required type="date" class="datepicker" name="ano"/>
 	          	</div>
 	        </div>
 

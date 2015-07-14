@@ -7,7 +7,7 @@
 					<?php echo $this->lang->line('cliente_cadastro'); ?>
 				</div>
 			</div>
-		</div>
+		</div><br>
 		<div class="row">
 			<?php echo form_open('cliente/cadastrar_cliente') ?>
 				<div class="row">

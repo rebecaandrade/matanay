@@ -1,8 +1,15 @@
 <?php $this->load->view('_include/header') ?> <!-- Evandro -->
 
 <div id="wrapper-body">
+    <div id="titulo_lista">
+        <div class="row">
+            <div class="input-field col s12 m8 l10">
+                <i class="mdi-av-my-library-music"></i>
+                <?php echo $this->lang->line('albuns_edicao'); ?>
+            </div>
+        </div>
+    </div><br>
     <div class="row">
-
   	    <?php echo form_open('albuns/atualizar') ?>
             <input type="hidden" name="idAlbum" value="<?php echo $album->idAlbum; ?>">
             <div class="row">
@@ -66,16 +73,16 @@
 
             <div class="row">
                 <div class="input-field col s12 m4 l2 offset-l2"/>
-                    <label><?php echo $this->lang->line('lancamento'); ?></label>
-                    <input required type="text" name="ano" value="<?php echo $album->ano; ?>"/>
+                    <label id="selectLabel"><?php echo $this->lang->line('lancamento'); ?></label>
+                    <input required type="date" class="datepicker" name="ano" value="<?php echo $album->ano; ?>"/>
                 </div>
                 <div class="input-field col s12 m4 l3">
                     <label>UPC/EAN</label>
-                    <input required type="text" name="upc_ean" value="<?php echo $album->upc_ean; ?>"/>
+                    <input pattern="[a-zA-Z0-9]{12,13}" title="12 ou 13 caracteres alfanumericos" maxlength="13" required type="text" name="upc_ean" value="<?php echo $album->upc_ean; ?>"/>
                 </div>
                 <div class="input-field col s12 m4 l3">
                     <label><?php echo $this->lang->line('catalogo'); ?></label>
-                    <input type="text" name="catalogo" value="<?php echo $album->codigo_catalogo; ?>"/>
+                    <input pattern="[a-zA-Z0-9]+{0,10}" maxlength="10" title="Até 10 caracteres alfanumericos" type="text" name="catalogo" value="<?php echo $album->codigo_catalogo; ?>"/>
                 </div>
             </div>
 

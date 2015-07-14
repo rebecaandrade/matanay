@@ -1,10 +1,18 @@
 <?php $this->load->view('_include/header');?>
-	<div class="container"> 
+	<div id="wrapper-body"> 
+		<div id="titulo_lista">
+			<div class="row">
+				<div class="input-field col s12 m8 l9">
+					<i class="mdi-action-account-box"></i>
+					<?php echo $this->lang->line('cliente_edicao'); ?>
+				</div>
+			</div>
+		</div><br>
 		<div class="row">
 			<?php echo form_open('cliente/atualizar_cliente/'.$cliente->idCliente) ?>
 				<div class="row">
 					<div class="input-field col s12 m9 l8 offset-l2">	
-						<i class="mdi-action-account-box prefix"></i>
+						<i class="mdi-action-perm-identity prefix"></i>
 						<input type='text' name='nome' value="<?php echo $cliente->nome?>">
 						<label><?php echo $this->lang->line('cliente_nome'); ?></label>
 					</div>

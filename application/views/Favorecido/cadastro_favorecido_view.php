@@ -7,7 +7,7 @@ $this->load->view('_include/header') ?>
         <div class="row">
             <div class="input-field col s12 m8 l9">
                 <i class="mdi-action-assignment-ind"></i>
-                <?php echo $this->lang->line('favorecido_cadastro'); ?>
+                <?php echo $this->lang->line('cadastro_favorecido'); ?>
             </div>
         </div>
     </div><br>

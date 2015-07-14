@@ -22,7 +22,7 @@
 	        <div class="row">
                 <div id="isrcCadastre" class="input-field col s12 m9 l8 offset-l1">
                     <label>ISRC</label>
-                    <input id="isrcCadastreInput" class="isrcCadastreInput" type="text" name="isrc">
+                    <input pattern="[A-Z]{2}[A-Z0-9]{3}[0-9]{7}" id="isrcCadastreInput" class="isrcCadastreInput" type="text" name="isrc">
                 </div>
 
                 <div style="display: none" id="youtubeCadastre" class="input-field col s12 m9 l8 offset-l1">

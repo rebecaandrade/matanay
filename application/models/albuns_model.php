@@ -53,8 +53,8 @@ class Albuns_model extends CI_Model {
 		$album_id = $this->db->insert_id();
 
 		$artista_album = array(
-			'idAlbum' => $album_id,
-			'idEntidade' => $artista
+			'idEntidade' => $artista,
+            'idAlbum' => $album_id
 		);
 		$this->db->insert('entidade_has_album', $artista_album);
 

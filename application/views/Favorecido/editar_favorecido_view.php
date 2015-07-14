@@ -2,6 +2,14 @@
 $this->load->view('_include/header') ?>
 
 <div id="wrapper-body">
+    <div id="titulo_lista">
+        <div class="row">
+            <div class="input-field col s12 m8 l9">
+                <i class="mdi-action-assignment-ind"></i>
+                <?php echo $this->lang->line('edicao_favorecido'); ?>
+            </div>
+        </div>
+    </div><br>
     <div class="row">
         <form id="updateFormFavorecido" action="<?=base_url().'index.php/Favorecido/atualizar'?>" method="post" >
         <input type="hidden" name='idFavorecido' value="<?php echo $dadosfavorecido->idFavorecido; ?>"/>

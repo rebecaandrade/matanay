@@ -101,7 +101,7 @@ $lang['sair'] 				= 'SAIR';
 $lang['faixas'] 			= 'FAIXAS';
 $lang['albums'] 			= 'ÁLBUNS';
 $lang['entidades'] 			= 'ENTIDADES';
-$lang['favorecido']			= 'FAVORECIDOS';
+$lang['favorecidos']		= 'FAVORECIDOS';
 $lang['imposto']			= 'IMPOSTOS';
 
 ////// FAIXAS 
@@ -116,16 +116,21 @@ $lang['produtor'] 			= 'Produtor';
 $lang['produtores'] 		= 'Produtores';
 $lang['nao_ha_faixas']		= 'Não há faixas cadastradas!';
 $lang['participacao']		= 'Participação na Faixa';
+$lang['faixas_cadastro']	= 'Cadastro de Faixa';
+$lang['faixas_edicao']		= 'Edição de Faixa';
 
 ////// ALBUMS 
 
-$lang['n_faixas'] 			= 'Número de Faixas';
-$lang['catalogo'] 			= 'Cod. Catálogo';
-$lang['lancamento'] 		= 'Ano de Lançamento';
-$lang['ano'] 				= 'Ano';
-$lang['tipo'] 				= 'Tipo';
-$lang['faixa'] 				= 'Faixa';
-$lang['nao_ha_albums']		= 'Não há álbuns cadastrados!';
+$lang['n_faixas'] 				= 'Número de Faixas';
+$lang['catalogo'] 				= 'Cod. Catálogo';
+$lang['lancamento'] 			= 'Ano de Lançamento';
+$lang['ano'] 					= 'Ano';
+$lang['tipo'] 					= 'Tipo';
+$lang['faixa'] 					= 'Faixa';
+$lang['nao_ha_albums']			= 'Não há álbuns cadastrados!';
+$lang['albuns_cadastro']		= 'Cadastro de Álbum';
+$lang['albuns_edicao']			= 'Edição de Álbum';
+$lang['albuns_edicao_faixas'] 	= 'Edição de Faixas';
 
 ////// MOEDA ////// Vitor
 
@@ -137,6 +142,8 @@ $lang['moeda_cambio']		= 'Taxa de câmbio';
 $lang['moeda_editar']		= 'Atualizar';
 $lang['moeda_cadastrar']	= 'Cadastrar';
 $lang['moeda_erro_listar']	= 'Nenhuma moeda cadastrada';
+$lang['moeda_cadastro']		= 'Cadastro de Moeda';
+$lang['moeda_edicao']		= 'Edição de Moeda';
 
 ////// CONTRATO ////// Vitor
 
@@ -148,6 +155,7 @@ $lang['meses']					= 'meses';
 $lang['contrato_cadastrar']		= 'Cadastrar';
 $lang['contrato_entidade']		= 'Escolha a entidade';
 $lang['contrato_favorecido']	= 'Escolha o favorecido';
+$lang['contrato_cadastro']		= 'Cadastro de Contrato';
 
 /////ENTIDADES/FAVORECIDO /*FEITO POR MIM JADIEL*/
 $lang['nome_entidade']				='Nome da entidade';
@@ -189,9 +197,12 @@ $lang['nao_ha_impostos']			='Não existem impostos cadastrados!';
 $lang['descricao_entidade']			= "Descrição";
 $lang['classPercent']				="porcentagem";
 $lang['cadastro_entidade']			= 'Cadastro de Entidade';
+$lang['edicao_entidade']			= 'Edição de Entidade';
 $lang['cadastro_favorecido']		= 'Cadastro de Favorecido';
+$lang['edicao_favorecido']			= 'Edição de Favorecido';
 $lang['listar_entidade_view']		= 'Mostrar Entidades';
 $lang['myTable'] 					= 'myTable';
+$lang['favorecido'] 				= 'Favorecido';
 
 
 
@@ -199,9 +210,6 @@ $lang['myTable'] 					= 'myTable';
 $lang['imposto_nome']		='Nome do Imposto';
 $lang['valor']				='Valor';
 $lang['cadastro_imposto'] 	= 'Cadastro de Imposto';
-
-
-
 
 ////// CLIENTE ////// Vitor
 
@@ -216,9 +224,10 @@ $lang['cliente_funcionalidades'] 	= 'Funcionalidades';
 $lang['cliente_cadastrar'] 			= 'Cadastrar';
 $lang['Perfil_erro_listar']			= 'Nenhum perfil cadastrado';
 $lang['cliente_erro_listar'] 		= 'Nenhum cliente cadastrado';
-
-
-
+$lang['cliente_cadastro']			= 'Cadastro de Cliente';
+$lang['cliente_edicao']				= 'Edição de Cliente';
+$lang['perfil_cadastro']			= 'Cadastro de Perfil';
+$lang['perfil_edicao']				= 'Edição de Perfil';
 
 
 ///////SIM OU NAO /*FEITO POR MIM JADIEL*/

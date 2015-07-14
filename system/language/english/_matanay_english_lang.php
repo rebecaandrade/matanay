@@ -103,7 +103,7 @@ $lang['faixas'] 			= 'TRACKS';
 $lang['videos'] 			= 'VIDEOS';
 $lang['albums'] 			= 'ALBUMS';
 $lang['entidades'] 			= 'ENTITIES';
-$lang['favorecido']			= 'FAVORED';
+$lang['favorecidos']		= 'FAVOREDS';
 $lang['imposto']			= 'TAX';
 
 ////// FAIXAS 
@@ -118,16 +118,21 @@ $lang['produtor'] 			= 'Producer';
 $lang['produtores'] 		= 'Producers';
 $lang['nao_ha_faixas']		= 'There are no tracks registered!';
 $lang['participacao']		= 'Track Participation';
+$lang['faixas_cadastro']	= 'Track Registry';
+$lang['faixas_edicao']		= 'Track Update';
 
 ////// ALBUNS 
 
-$lang['n_faixas'] 			= 'Number of Tracks';
-$lang['catalogo'] 			= 'Catalog Code';
-$lang['lancamento'] 		= 'Release Year';
-$lang['ano'] 				= 'Year';
-$lang['tipo'] 				= 'Type';
-$lang['faixa'] 				= 'Track';
-$lang['nao_ha_albums']		= 'There are no albums registered!';
+$lang['n_faixas'] 				= 'Number of Tracks';
+$lang['catalogo'] 				= 'Catalog Code';
+$lang['lancamento'] 			= 'Release Year';
+$lang['ano'] 					= 'Year';
+$lang['tipo'] 					= 'Type';
+$lang['faixa'] 					= 'Track';
+$lang['nao_ha_albums']			= 'There are no albums registered!';
+$lang['albuns_cadastro']		= 'Album Registry';
+$lang['albuns_edicao']			= 'Album Update';
+$lang['albuns_edicao_faixas'] 	= 'Tracklist Update';
 
 ////// MOEDA ////// VITOR
 
@@ -139,6 +144,8 @@ $lang['moeda_cambio']		= 'Exchange rate';
 $lang['moeda_editar']		= 'Update';
 $lang['moeda_cadastrar']	= 'Register';
 $lang['moeda_erro_listar']	= 'No currency registered';
+$lang['moeda_cadastro']		= 'Currency Registry';
+$lang['moeda_edicao']		= 'Currency Update';
 
 ////// CONTRATO
 
@@ -150,7 +157,7 @@ $lang['meses']					= 'months';
 $lang['contrato_cadastrar']		= 'Register';
 $lang['contrato_entidade']		= 'Choose the entity';
 $lang['contrato_favorecido']	= 'Choose the favored';
-
+$lang['contrato_cadastro']		= 'Contract Registry';
 
 /////ENTIDADES/FAVORECIDO  Jadiel
 $lang['entidade'] 					= 'Entity';
@@ -188,19 +195,21 @@ $lang['nao_ha_impostos']			='There are no taxes registered!';
 $lang['descricao_entidade'] 		= "Description";
 $lang['classPercent']				="percentage";
 $lang['cadastro_entidade'] 			= 'Entity Cadastre';
+$lang['edicao_entidade'] 			= 'Entity Update';
 $lang['cadastro_favorecido']		= 'Favored Cadastre';
+$lang['edicao_favorecido'] 			= 'Favored Update';
 $lang['listar_entidade_view'] 		= 'Show Entities';
 $lang['myTable'] 					= 'usTable';
-
+$lang['favorecido'] 				= 'Favored';
 
 //IMPOSTO JADIEL
+
 $lang['imposto_nome']		='Name of the Tax';
 $lang['valor']				='Value';
 $lang['cadastro_imposto'] 	= 'Taxes Cadastre';
 
+////// CLIENTE ////// Vitor
 
-
-//Cliente
 $lang['clientes'] 					= 'CUSTOMERS';
 $lang['perfis'] 					= 'PROFILES';
 $lang['perfis_row']					= 'Profiles';
@@ -212,17 +221,18 @@ $lang['cliente_funcionalidades']	= 'Functionalities';
 $lang['cliente_cadastrar']			= 'Register';
 $lang['Perfil_erro_listar']			= 'No Profiles on record';
 $lang['cliente_erro_listar']		= 'No customer on record';
+$lang['cliente_cadastro']			= 'Customer Registry';
+$lang['cliente_edicao']				= 'Customer Update';
+$lang['perfil_cadastro']			= 'Profile Registry';
+$lang['perfil_edicao']				= 'Profile Update';
 
+////// SIM OU NAO
 
-
-
-///////SIM OU NAO
-$lang['sim']	='Yes';
-$lang['nao']	='No';
-
-
+$lang['sim'] = 'Yes';
+$lang['nao'] = 'No';
 
 //SODRE   //FORMVALIDATION
+
 $lang['cpf/cnpj_invalido']       = 'Invalid CPF/CNPJ';
 $lang['campos_incorretos']       = 'Some fields were filled incorrectly';
 $lang['langOpt']                 = '1';

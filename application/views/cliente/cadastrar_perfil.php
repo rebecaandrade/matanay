@@ -1,11 +1,19 @@
 <?php $this->load->view('_include/header') ?>
 	<div id="wrapper-body"> 
+		<div id="titulo_lista">
+			<div class="row">
+				<div class="input-field col s12 m8 l9">
+					<i class="mdi-action-account-circle"></i>
+					<?php echo $this->lang->line('perfil_cadastro'); ?>
+				</div>
+			</div>
+		</div><br>
 		<?php if(isset($id_cliente)){ ?>
 			<div class="row">
 				<?php echo form_open('cliente/cadastrar_perfil') ?>
 					<div class="row">
 						<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
-							<i class="mdi-action-account-circle prefix"></i>	
+							<i class="mdi-action-perm-identity prefix"></i>	
 							<label><?php echo $this->lang->line('cliente_nome'); ?></label>
 							<input type='text' name='nome'>
 						</div>

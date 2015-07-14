@@ -2,6 +2,14 @@
 <?php $this->load->view('_include/header') ?>
 	<?php if(isset($entidades) && isset($favorecidos)){ ?>
 		<div id="wrapper-body"> 
+			<div id="titulo_lista">
+				<div class="row">
+					<div class="input-field col s12 m8 l9">
+						<i class="mdi-action-account-circle"></i>
+						<?php echo $this->lang->line('contrato_cadastro'); ?>
+					</div>
+				</div>
+			</div><br>
 			<div class="row">
 				<?php echo form_open('contrato/cadastrar_contrato') ?>
 					<div class="row">

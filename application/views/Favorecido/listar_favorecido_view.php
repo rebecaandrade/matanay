@@ -7,7 +7,7 @@ $this->load->view('_include/header') ?>
             <div class="row">
                 <div class="input-field col s12 m8 l9">
                     <i class="mdi-action-assignment-ind"></i>
-                    <?php echo $this->lang->line('favorecido'); ?>
+                    <?php echo $this->lang->line('favorecidos'); ?>
                     <a href="<?php echo base_url(); ?>index.php/favorecido/mostrar_cadastro"
                        class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo"
                        data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('novo'); ?>"
