@@ -94,6 +94,9 @@ class Albuns extends CI_Controller {
     }
 
     public function atualizar_faixas() {
+        $album = $this->input->post('idAlbum');
+        $faixas = $this->input->post('faixas[]');
+
         redirect('albuns/listar'); 
     }
 

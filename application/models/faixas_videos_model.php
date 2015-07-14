@@ -47,7 +47,7 @@ class Faixas_Videos_model extends CI_Model {
 
         foreach($entidades_faixa as $entidade){
                 $this->db->where('idEntidade', $entidade->idEntidade);
-                $dados = $this->db->get('entidade')->row();
+                $dados = $this->db->get('entidade_has_tipo_entidade')->row();
 
                 if($dados->idTipo_Entidade == $tipo) {
                     $entidade_faixa = array(

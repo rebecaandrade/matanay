@@ -22,7 +22,7 @@
 
             <div class="row">
                 <div class="input-field col s11 m8 l8 offset-l1">
-                    <input type="text" name="isrc" value="<?php echo $faixa->isrc; ?>">
+                    <input pattern="[A-Z]{2}[A-Z0-9]{3}[0-9]{7}" required type="text" name="isrc" value="<?php echo $faixa->isrc; ?>">
                     <label>ISRC</label>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                             </div>
                             <div class="input-field col s12 m3 l2">
                                 <label><?php echo $this->lang->line('participacao');?></label>
-                                <input class="<?= $this->lang->line('classPercent') ?>" name="percentualArtista[]" type="text" value="<?php echo $entidade['percentual']; ?>">
+                                <input required class="<?= $this->lang->line('classPercent') ?>" name="percentualArtista[]" type="text" value="<?php echo $entidade['percentual']; ?>">
                             </div>
                             <?php if($j==0) { ?>
                                 <a onclick="addSelectEntidade(getArtistas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('artista'); ?>', '<?php echo $this->lang->line('participacao'); ?>', '<?php echo $this->lang->line('classPercent') ?>')" 
@@ -89,7 +89,7 @@
                         </div>
                         <div class="input-field col s12 m2 l2">
                             <label><?php echo $this->lang->line('participacao');?></label>
-                            <input class="<?= $this->lang->line('classPercent') ?>" name="percentualArtista[]" type="text">
+                            <input required class="<?= $this->lang->line('classPercent') ?>" name="percentualArtista[]" type="text">
                         </div>
                         <a onclick="addSelectEntidade(getArtistas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('artista'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
                             class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
@@ -127,7 +127,7 @@
                             </div>
                             <div class="input-field col s12 m3 l2">
                                 <label><?php echo $this->lang->line('participacao');?></label>
-                                <input class="<?= $this->lang->line('classPercent') ?>" name="percentualAutor[]" type="text" value="<?php echo $entidade['percentual']; ?>">
+                                <input required class="<?= $this->lang->line('classPercent') ?>" name="percentualAutor[]" type="text" value="<?php echo $entidade['percentual']; ?>">
                             </div>
                             <?php if($j==0) { ?>
                                 <a onclick="addSelectEntidade(getAutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('autor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
@@ -164,7 +164,7 @@
                         </div>
                         <div class="input-field col s12 m3 l2">
                             <label><?php echo $this->lang->line('participacao');?></label>
-                            <input class="<?= $this->lang->line('classPercent') ?>" name="percentualAutor[]" type="text">
+                            <input required class="<?= $this->lang->line('classPercent') ?>" name="percentualAutor[]" type="text">
                         </div>
                         <a onclick="addSelectEntidade(getAutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('autor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
                             class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>

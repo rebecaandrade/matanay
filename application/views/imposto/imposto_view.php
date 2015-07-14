@@ -31,7 +31,7 @@
                     <input required class="<?=$this->lang->line('classPercent')?>" name="valor" type="text">
                 </div>
 
-                <div class="col s12 m12 l2 IdEntity">
+                <div class="col s12 m12 l2 tipoImposto">
                     <h5><?php echo $this->lang->line('tipo'); ?></label></h5>
 
                     <p>
@@ -45,7 +45,7 @@
                     </p>
                 </div>
             </div>
-            
+
             <button class="btn waves-effect waves-light col s12 m10 offset-m1 l8 offset-l2"
                     type="submit"><?php echo $this->lang->line('cadastrar'); ?>
                 <i class="mdi-content-send right"></i>

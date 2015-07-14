@@ -31,11 +31,13 @@
     </div>
      
     <?php echo form_open('albuns/atualizar_faixas') ?>
+        <input type="hidden" name="idAlbum" value="<?php echo $album->idAlbum; ?>">
         <div class="row">
             <div id="SelectFaixas">
                 <?php $j=0;
                     if(isset($tracklist, $faixas)){
                         foreach ($tracklist as $track) { ?>
+                        <div class="row">
                             <div class="input-field col s11 m8 l8 offset-l2">
                                 <select class="addFaixa browser-default" name="faixas[]">
                                     <?php $i=0;
@@ -63,9 +65,11 @@
                                 <a onclick="addSelectFaixa(getFaixas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('faixa'); ?>')" 
                                     class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
                             <?php $j++; } else { ?>
-                                <a class="btn-floating btn-medium waves-effect waves-light btn"
+                                <a onclick="removeFaixa()" class="btn-floating btn-medium waves-effect waves-light btn"
                                     data-position="right" data-delay="50" id="removeFaixa"><i class="mdi-content-remove"></i></a>
                             <?php } ?>
+                            
+                            </div>
                         </div>
                 <?php } } ?> 
                 <div class="row">
