@@ -175,9 +175,9 @@ $lang['banco']						= 'Bank';
 $lang['conta']						= 'Checking account';
 $lang['agencia']					= 'Bank Branch';
 $lang['atual']						='Actual';
-$lang['artista']					='Artist';
-$lang['autor']						='Author';
-$lang['produtor']					='Producer';
+$lang['Artista']					='Artist';
+$lang['Autor']						='Author';
+$lang['Produtor']					='Producer';
 $lang['artista_min']				='artist';
 $lang['autor_min']					='author';
 $lang['produtor_min']				='producer';
@@ -201,6 +201,8 @@ $lang['edicao_favorecido'] 			= 'Favored Update';
 $lang['listar_entidade_view'] 		= 'Show Entities';
 $lang['myTable'] 					= 'usTable';
 $lang['favorecido'] 				= 'Favored';
+$lang['favorecido_nao_cadastrado']	= 'It is required a registered favored to register a Entity.';
+
 
 //IMPOSTO JADIEL
 

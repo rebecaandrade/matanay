@@ -67,10 +67,12 @@ class Imposto extends CI_Controller
         }
     }
 
-    function deletar()
+    function deletar($idImposto)
     {
-        $id = $this->input->get('id');
-        $this->Imposto_model->deletar($id);
+        $this->Imposto_model->deletar($idImposto);
+        $this->session->set_userdata('mensagem', '=)');
+        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('excluido_sucesso'));
+        $this->session->set_userdata('tipo_mensagem', 'success');
         $this->listar();
     }
 }

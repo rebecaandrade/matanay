@@ -73,14 +73,22 @@ $this->load->view('_include/header') ?>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12 m12 l8 offset-l2">
-                <select name="identificacao">
-                    <option value="" disabled selected><?php echo $this->lang->line('selecione'); ?></option>
-                    <option value=1><?php echo $this->lang->line('artista'); ?></option>
-                    <option value=2><?php echo $this->lang->line('autor'); ?></option>
-                    <option value=3><?php echo $this->lang->line('produtor'); ?></option>
-                </select>
-                <label><?php echo $this->lang->line('identificacao'); ?></label>
+            <div class="col s12 m12 l8 offset-l2 IdEntity">
+                <h5><?php echo $this->lang->line('identificacao'); ?></label></h5>
+                <p>
+                    <input type="checkbox" class="filled-in" id="checkArtist" name="identificacao[]" value=1>
+                    <label for="checkArtist"><?php echo $this->lang->line('Artista'); ?></label>
+                </p>
+
+                <p>
+                    <input type="checkbox" class="filled-in" id="checkAutor" name="identificacao[]" value=2>
+                    <label for="checkAutor"><?php echo $this->lang->line('Autor'); ?></label>
+                </p>
+
+                <p>
+                    <input type="checkbox" class="filled-in" id="checkProd" name="identificacao[]" value=3>
+                    <label for="checkProd"><?php echo $this->lang->line('Produtor'); ?></label>
+                </p>
             </div>
         </div>
         <div class="row">
@@ -97,6 +105,10 @@ $this->load->view('_include/header') ?>
                 <input required type="text" value="" name="agencia">
             </div>
         </div>
+        <input type="hidden" name="favoredMessageDisplay" value="<?= $this->lang->line('erro_favorecido') ?>">
+        <input type="hidden" name="IdMessageDisplay" value="<?= $this->lang->line('erro_identificacao') ?>">
+        <input type="hidden" name="cpfMessageDisplay" value="<?= $this->lang->line('cpf/cnpf_invalido') ?>">
+        <input type="hidden" name="nomeMessageDisplay" value="<?= $this->lang->line('nome_invalido') ?>">
         <button class="btn waves-effect waves-light col s12 m12 l8 offset-l2"
                 type="submit"><?php echo $this->lang->line('cadastrar'); ?>
             <i class="mdi-content-send right"></i>

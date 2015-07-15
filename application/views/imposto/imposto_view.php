@@ -35,7 +35,7 @@
                     <h5><?php echo $this->lang->line('tipo'); ?></label></h5>
 
                     <p>
-                        <input type="radio" required class="filled-in" id="checkArtist" name="tipoImposto" value=1>
+                        <input type="radio" checked required class="filled-in" id="checkArtist" name="tipoImposto" value=1>
                         <label for="checkArtist"><?php echo $this->lang->line('fisico'); ?> </label>
                     </p>
 

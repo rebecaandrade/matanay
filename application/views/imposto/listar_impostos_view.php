@@ -38,7 +38,8 @@ $this->load->view('_include/header') ?>
                             <?php if ($tipo==2) echo $this->lang->line('digital'); ?>
                         </td>
                         <td>
-                            <a href="<?php echo base_url() . 'index.php/Imposto/deletar?id=' . $row1->idImposto ?>"><?php echo $this->lang->line('deletar'); ?> </a>
+                            <a class="deletarLink" onclick="excluirEntidade('<?= base_url() . 'index.php/Imposto/deletar/' . $row1->idImposto ?>','<?=$this->lang->line('langOpt')?>')"><?php echo $this->lang->line('deletar') ?> </a>
+                        
                         </td>
                     </tr>
                 <?php } ?>

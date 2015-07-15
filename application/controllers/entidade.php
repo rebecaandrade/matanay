@@ -324,8 +324,7 @@ class Entidade extends CI_Controller
         $rowtelefone = 1;
         $dados['telefone2'] = $this->Entidade_model->buscar_telefone_especifico($id, $rowtelefone);
         $dados_auxiliar = $this->Entidade_model->buscar_entidade_especifica($id);//utilizado para passar o idTipo_entidade para a busca de identificacao na tabela tipo_entidade
-        $dados['dadosidentificacao'] = $this->Entidade_model->buscar_identificacao_especifica($dados_auxiliar->idTipo_Entidade);
-        die(var_dump($dados_auxiliar));
+        $dados['dadosidentificacao'] = $this->Entidade_model->buscar_identificacao_especifica($id);
         $this->load->view('Entidade/editar_entidade_view', $dados);
 
     }

@@ -172,9 +172,9 @@ $lang['banco']						= 'Banco';
 $lang['conta']						= 'Conta corrente';
 $lang['agencia']					= 'Agencia Bancária';
 $lang['atual']						='Atual';
-$lang['artista']					='Artista';
-$lang['autor']						='Autor';
-$lang['produtor']					='Produtor';
+$lang['Artista']					='Artista';
+$lang['Autor']						='Autor';
+$lang['Produtor']					='Produtor';
 $lang['artista_min']				='artista';
 $lang['autor_min']					='autor';
 $lang['produtor_min']				='produtor';
@@ -203,6 +203,8 @@ $lang['edicao_favorecido']			= 'Edição de Favorecido';
 $lang['listar_entidade_view']		= 'Mostrar Entidades';
 $lang['myTable'] 					= 'myTable';
 $lang['favorecido'] 				= 'Favorecido';
+$lang['favorecido_nao_cadastrado']	= 'É nessesário ter um favorecido cadastrado para cadastrar uma entidade.';
+
 
 
 

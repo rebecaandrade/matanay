@@ -59,8 +59,11 @@ class Entidade_model extends CI_Model
 
     function buscar_identificacao_especifica($id)
     {
-        $this->db->where('idTipo_Entidade', $id);
-        return $this->db->get('tipo_entidade')->result()[0];
+        $this->db->where('idEntidade', $id);
+        $dados=$this->db->get('Entidade_has_Tipo_Entidade')->result();
+        $this->db->where('idTipo_Entidade', $dados[0]->idTipo_Entidade);
+        return $this->db->get('tipo_entidade')->result();
+
     }
 
     public function atualizar_entidade($entidade)
