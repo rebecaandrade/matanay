@@ -160,24 +160,24 @@ insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",27);
 insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",27);
 
 /* telefone favorecidos */
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",1);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",1);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",2);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",2);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",3);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",3);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",4);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",4);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",5);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",5);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",6);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",6);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",7);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",7);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",8);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",8);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",9);
-insert into matanay.telefone_favorecido values(DEFAULT,"(99)9999-9999",9);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",1);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",1);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",2);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",2);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",3);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",3);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",4);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",4);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",5);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",5);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",6);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",6);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",7);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",7);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",8);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",8);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",9);
+insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",9);
 
 /* moedas */
 insert into matanay.moeda values(DEFAULT,"NOME","SIGLA",5.34,NULL,1);
