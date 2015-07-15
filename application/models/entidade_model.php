@@ -29,7 +29,6 @@ class Entidade_model extends CI_Model
         $this->db->select('ent.*,eht.*,te.*,fav.nome AS Fnome')->from('Entidade ent');
         $this->db->join('Entidade_has_Tipo_Entidade eht', 'eht.idEntidade = ent.idEntidade');
         $this->db->join('Tipo_Entidade te', 'te.idTipo_Entidade = eht.idTipo_Entidade');
-        //$this->db->select('Favorecido.nome AS Fnome')->from('Favorecido');
         $this->db->join('Favorecido fav', 'fav.idFavorecido = ent.idFavorecido');
         $this->db->where(array('ent.excluido' => NULL));
         $dados = $this->db->get()->result();

@@ -539,15 +539,16 @@ class Entidade extends CI_Controller
     /******************** fucao de teste ************/
     public function testeEntidad()
     {
-        $this->session->set_flashdata('redirect_url', current_url());
+        /*$this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
 
         $dados["dadofavorecido"] = $this->Favorecido_model->buscar_favorecido();
         $dados["dadoentidade"] = $this->Entidade_model->buscar_entidades();
         //esse envio ocorre para que se saiba os favorecidos cadastrados dentro da view de cadastro de entidades alem de saber o idioma
-        //$this->load->view("Entidade/cadastro_entidade_view", $dados);
-        $this->load->view('viewTeste', $dados);
+        //$this->load->view("Entidade/cadastro_entidade_view", $dados);*/
+        //$this->load->view('cliente/cadastrar_perfil');
+        redirect('cliente/cadastro_perfil/1');
     }
 
     public function testeEntidadeForm()

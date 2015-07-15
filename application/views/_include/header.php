@@ -103,6 +103,9 @@
                     <div class="collapsible-body">
                         <a href="<?php echo base_url(); ?>index.php/imposto/listar"><?php echo $this->lang->line('imposto'); ?></a>
                     </div>
+                    <div class="collapsible-body">
+                        <a href="<?php echo base_url().'index.php/cliente/cadastro_perfil/'.$this->session->userdata('id_cliente'); ?>"><?php echo "cliente"; ?></a>
+                    </div>
                 </li>
             </ul>
 
@@ -168,6 +171,9 @@
             <li>
                 <a href="<?php echo base_url(); ?>index.php/imposto/listar"><?php echo $this->lang->line('imposto'); ?></a>
         	</li>
+            <li>
+                <a href="<?php echo base_url().'index.php/cliente/cadastro_perfil/'.$this->session->userdata('id_cliente'); ?>"><?php echo $this->lang->line("clientes"); ?></a>
+            </li>
         </ul>
     </div>
 
