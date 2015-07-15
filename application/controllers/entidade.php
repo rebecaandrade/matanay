@@ -537,7 +537,7 @@ class Entidade extends CI_Controller
      */
 
     /******************** fucao de teste ************/
-    public function testeEntidad()
+    public function testeEntidad( $id_cliente = 0)
     {
         /*$this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
@@ -548,7 +548,15 @@ class Entidade extends CI_Controller
         //esse envio ocorre para que se saiba os favorecidos cadastrados dentro da view de cadastro de entidades alem de saber o idioma
         //$this->load->view("Entidade/cadastro_entidade_view", $dados);*/
         //$this->load->view('cliente/cadastrar_perfil');
-        redirect('cliente/cadastro_perfil/1');
+        $this->load->model('cliente_model');
+        if($id_cliente){
+            $dados['id_cliente'] = $id_cliente;
+            $dados['funcionalidades'] = $this->cliente_model->funcionalidades();
+            $this->load->view('viewTeste',$dados);
+        } else {
+            //mensagem de erro
+            redirect('cliente/lista_perfis');
+        }
     }
 
     public function testeEntidadeForm()
