@@ -252,6 +252,25 @@
                 <?php } ?>
             </div>
 
+            <div class="row" id="SelectImposto">
+                <div class="col s12 m12 l8 offset-l1">
+                    <h5><?php echo $this->lang->line('impostos'); ?></h5><br>
+                    <?php if (isset($impostos)) { ?>
+                        <?php foreach ($impostos as $imposto) { ?>
+                            <div class="col s4 m3 l3">
+                                <?php if($imposto->idImposto == $faixa->idImposto) { ?>
+                                    <input type='radio' name="imposto" checked value="<?php echo $imposto->idImposto ?>" id="<?php echo $imposto->idImposto ?>"/>
+                                    <label for="<?php echo $imposto->idImposto ?>"><?php echo $imposto->nome; ?></label>  
+                                <?php } else { ?>
+                                    <input type='radio' name="imposto" value="<?php echo $imposto->idImposto ?>" id="<?php echo $imposto->idImposto ?>"/>
+                                    <label for="<?php echo $imposto->idImposto ?>"><?php echo $imposto->nome; ?></label>
+                                <?php } ?>
+                            </div>
+                        <?php }
+                    } ?>
+                </div>
+            </div>
+
             <button class="btn waves-effect waves-light col s12 m12 l8 offset-l1" type="submit"><?php echo $this->lang->line('atualizar'); ?>
                 <i class="mdi-content-send right"></i>
             </button>

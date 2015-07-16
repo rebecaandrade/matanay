@@ -28,13 +28,11 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
+						<div class="input-field col s12 m5 offset-m1 l4 offset-l2">
 							<label><?php echo $this->lang->line('cliente_senha'); ?></label>
 							<input required pattern=".{6,35}" class="cutAllSpace" type='password' name='senha'>
 						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
+						<div class="input-field col s12 m5 l4">
 							<label><?php echo $this->lang->line('cliente_confirmar_senha'); ?></label>
 							<input required pattern=".{6,35}" type='password' class="cutAllSpace"
 								   name='confirmar_senha'>

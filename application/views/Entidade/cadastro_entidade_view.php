@@ -23,7 +23,7 @@
                         echo $this->lang->line($this->session->flashdata('aviso'));
                     } ?></div>
                 <div class="input-field col s12 m9 l8 offset-l2">
-                    <i class="mdi-action-assignment-ind prefix"></i>
+                    <i class="mdi-action-perm-identity prefix"></i>
                     <input pattern=".{4,45}" required id="nome" id="icon-prefix" type="text" value=""
                            name="nomeentidade">
                     <label><?php echo $this->lang->line('nome_entidade'); ?></label>

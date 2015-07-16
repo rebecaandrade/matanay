@@ -196,18 +196,17 @@ insert into matanay.imposto values(DEFAULT,"Imposto 1","100",1,1,NULL);
 insert into matanay.imposto values(DEFAULT,"Imposto 2","200",1,2,NULL);
 insert into matanay.imposto values(DEFAULT,"Imposto 3","300",1,1,NULL);
 insert into matanay.imposto values(DEFAULT,"Imposto 4","400",1,2,NULL);
-insert into matanay.imposto values(DEFAULT,"Imposto 5","500",1,1,NULL);
 
 /* faixas */
 insert into matanay.faixa_video values(DEFAULT,"Faixa 1","1111111111",NULL,NULL,1);
 insert into matanay.faixa_video values(DEFAULT,"Faixa 2","2222222222",NULL,NULL,2);
 insert into matanay.faixa_video values(DEFAULT,"Faixa 3","3333333333",NULL,NULL,3);
 insert into matanay.faixa_video values(DEFAULT,"Faixa 4","4444444444",NULL,NULL,4);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 5","5555555555",NULL,NULL,5);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 6","6666666666",NULL,NULL,1);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 7","7777777777",NULL,NULL,2);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 8","8888888888",NULL,NULL,3);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 9","9999999999",NULL,NULL,4);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 5","5555555555",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 6","6666666666",NULL,NULL,2);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 7","7777777777",NULL,NULL,3);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 8","8888888888",NULL,NULL,4);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 9","9999999999",NULL,NULL,1);
 
 /* albuns */
 insert into matanay.album values(DEFAULT,"Album 1",2,"11111",50,"2001","11111",1,NULL);

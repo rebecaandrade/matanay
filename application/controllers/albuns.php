@@ -94,10 +94,27 @@ class Albuns extends CI_Controller {
     }
 
     public function atualizar_faixas() {
-        $album = $this->input->post('idAlbum');
         $faixas = $this->input->post('faixas[]');
 
-        redirect('albuns/listar'); 
+        $n_faixas = sizeof($faixas);
+
+        $album = array(
+            'idAlbum' => $this->input->post('idAlbum'),
+            'quantidade' => $n_faixas,
+            'faixa' => 100/$n_faixas
+        );
+
+        if($this->albuns_model->atualizar_faixas($album, $faixas)){
+            $this->session->set_userdata('mensagem', 'Faixas atualizadas com succeso!');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'success');
+            redirect('albuns/listar');       
+        }else{
+            $this->session->set_userdata('mensagem', 'Problemas na atualização.');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            redirect('albuns/faixas_atualizacao', $album); 
+        }
     }
 
     public function atualizar() {

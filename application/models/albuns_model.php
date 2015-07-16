@@ -86,6 +86,27 @@ class Albuns_model extends CI_Model {
         return TRUE;
     }
 
+    public function atualizar_faixas($album, $faixas){
+        $this->db->trans_start();
+
+        $this->db->where('idAlbum', $album['idAlbum']);
+        $this->db->update('album', $album);
+
+        $this->db->where('idAlbum', $album['idAlbum']);
+        $this->db->delete('album_has_faixa');
+
+        foreach($faixas as $faixa->idFaixa){
+            $tracklist = array(
+                'idAlbum' => $album['idAlbum'],
+                'idFaixa' => $faixa->idFaixa
+            );
+            $this->db->insert('album_has_faixa', $tracklist);
+        }
+
+        $this->db->trans_complete();
+        return TRUE;
+    }
+
     public function deletar($dados){
         $this->db->trans_start();
 

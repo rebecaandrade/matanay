@@ -16,6 +16,7 @@ class Faixas_Videos extends CI_Controller {
 		$dados['artistas'] = $this->faixas_videos_model->buscar_artistas();
 		$dados['autores'] = $this->faixas_videos_model->buscar_autores();
 		$dados['produtores'] = $this->faixas_videos_model->buscar_produtores();
+        $dados['impostos'] = $this->faixas_videos_model->buscar_impostos();
 		
 		$this->load->view('faixas_videos/cadastro_faixa', $dados);
 	}
@@ -24,7 +25,8 @@ class Faixas_Videos extends CI_Controller {
 		$faixa = array(
             'nome' => $this->input->post('nome'),
             'isrc' => str_replace("-", "", $this->input->post('isrc')),
-            'codigo_video' => $this->input->post('youtube')
+            'codigo_video' => $this->input->post('youtube'),
+            'idImposto' => $this->input->post('imposto')
         );
 
         $artistas = $this->input->post('artistas[]');
@@ -35,16 +37,6 @@ class Faixas_Videos extends CI_Controller {
         $perc_autores = $this->input->post('percentualAutor[]');
         $perc_produtores = $this->input->post('percentualProdutor[]');
 
-        if(strlen($faixa['isrc']) != 12 && $faixa['isrc'] != NULL){
-            $this->session->set_userdata('mensagem', 'O código ISRC deve conter 12 caracteres.');
-            redirect('faixas_videos/cadastra_faixa');
-            return FALSE;
-        }
-        if(!preg_match("/[A-Z]{2}[A-Z0-9]{3}[0-9]{7}/", $faixa['isrc']) && $faixa['isrc'] != NULL) {
-            $this->session->set_userdata('mensagem', 'Código ISRC inválido!');
-            redirect('faixas_videos/cadastra_faixa');
-            return FALSE;
-        }
         if($artistas == NULL){
             $this->session->set_userdata('mensagem', 'Por favor, escolha pelo menos um artista');
             redirect('faixas_videos/cadastra_faixa');
@@ -85,6 +77,7 @@ class Faixas_Videos extends CI_Controller {
         $dados['artistas'] = $this->faixas_videos_model->buscar_artistas();
         $dados['autores'] = $this->faixas_videos_model->buscar_autores();
         $dados['produtores'] = $this->faixas_videos_model->buscar_produtores();
+        $dados['impostos'] = $this->faixas_videos_model->buscar_impostos();
 
         $dados['artista_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=1);
         $dados['autor_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=2);
@@ -97,7 +90,8 @@ class Faixas_Videos extends CI_Controller {
         $dados = array(
             'idFaixa' => $this->input->post('idFaixa'),
             'nome' => $this->input->post('nome'),
-            'isrc' => str_replace("-", "", $this->input->post('isrc'))
+            'isrc' => str_replace("-", "", $this->input->post('isrc')),
+            'idImposto' => $this->input->post('imposto')
         );
 
         $artistas = $this->input->post('artistas[]');
@@ -108,16 +102,7 @@ class Faixas_Videos extends CI_Controller {
         $perc_autores = $this->input->post('percentualAutor[]');
         $perc_produtores = $this->input->post('percentualProdutor[]');
 
-
-        if(strlen($dados['isrc']) != 12){
-            $this->session->set_userdata('mensagem', 'O código ISRC deve conter 12 caracteres.');
-            redirect('faixas_videos/listar');
-        }
-        elseif(!preg_match("/[A-Z]{2}[A-Z0-9]{3}[0-9]{7}/", $dados['isrc'])) {
-            $this->session->set_userdata('mensagem', 'Código ISRC inválido!');
-            redirect('faixas_videos/listar');
-        }
-        elseif($dados['nome'] != NULL && $dados['isrc'] != NULL){
+        if($dados['nome'] != NULL && $dados['isrc'] != NULL){
             $this->faixas_videos_model->atualizar_faixa($dados, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
             $this->session->set_userdata('mensagem', $this->lang->line('atualizado_sucesso'));
             redirect('faixas_videos/listar');       

@@ -417,6 +417,10 @@ label {
 	top: -4.5rem;
 }
 
+#SelectImposto {
+	margin-bottom: 2rem;
+}
+
 /**************PAGINAS DAS ENTIADADES Jadiel**********************/
 .box {
     display: none;
