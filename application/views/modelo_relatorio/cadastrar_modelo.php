@@ -16,22 +16,28 @@
 						<label><?php echo $this->lang->line('nome'); ?></label>
 					</div>
 				</div>
-
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='tipo'>
-						<option disabled selected ><?php echo $this->lang->line('escolha_opcao'); ?></option>
+						<option disabled select ><?php echo $this->lang->line('escolha_opcao'); ?></option>
 						<?php foreach ($tipos as $tipo) { ?>
-							<option value="<?php echo $tipo->idTipo_Modelo ?>" ><?php echo $tipo->descricao ?></option>
+							<option value="<?php echo $tipo->idTipo_Modelo ?>" 
+							<?php if (set_value('tipo',0) == $tipo->idTipo_Modelo) {
+								echo 'selected';
+							} ?>
+							><?php echo $tipo->descricao ?></option>
 						<?php } ?>
 						</select>
 						<label><?php echo $this->lang->line('tipo'); ?></label>
 					</div>
 				</div>
+  				<div class="row col s12 m10 offset-m1 l8 offset-l2">
+  					<h5><?php echo $this->lang->line('selecione_coluna'); ?></h5>
+  				</div>
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='isrc'>
-						<option disabled selected ><?php echo $this->lang->line('coluna'); ?></option>
+						<option value="<?php echo set_value('isrc', ""); ?>" ><?php echo set_value('isrc', ""); ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -42,7 +48,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='upc'>
-						<option disabled selected ><?php echo $this->lang->line('coluna'); ?></option>
+						<option value="<?php echo set_value('upc', ""); ?>" ><?php echo set_value('upc', ""); ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -53,7 +59,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='qnt_vendida'>
-						<option disabled selected ><?php echo $this->lang->line('coluna'); ?></option>
+						<option value="<?php echo set_value('qnt_vendida', ""); ?>" ><?php echo set_value('qnt_vendida', ""); ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -64,7 +70,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='valor_recebido'>
-						<option disabled selected ><?php echo $this->lang->line('coluna'); ?></option>
+						<option value="<?php echo set_value('valor_recebido', ""); ?>" ><?php echo set_value('valor_recebido', ""); ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -75,7 +81,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='loja'>
-						<option disabled selected ><?php echo $this->lang->line('coluna'); ?></option>
+						<option value="<?php echo set_value('loja', ""); ?>" ><?php echo set_value('loja', ""); ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -86,7 +92,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='subloja'>
-						<option disabled selected ><?php echo $this->lang->line('coluna'); ?></option>
+						<option value="<?php echo set_value('subloja', ""); ?>" ><?php echo set_value('subloja', ""); ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -97,7 +103,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='territorio'>
-						<option disabled selected ><?php echo $this->lang->line('coluna'); ?></option>
+						<option value="<?php echo set_value('territorio', ""); ?>" ><?php echo set_value('territorio', ""); ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -108,7 +114,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='moeda'>
-						<option disabled selected ><?php echo $this->lang->line('coluna'); ?></option>
+						<option value="<?php echo set_value('moeda', ""); ?>" ><?php echo set_value('moeda', ""); ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>

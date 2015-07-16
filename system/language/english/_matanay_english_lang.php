@@ -54,6 +54,7 @@ $lang['detalhes']			= 'DETAILS';
 $lang['voltar']				= 'RETURN';
 $lang['coluna']				= 'Column';
 $lang['escolha_opcao']		= 'Choose an option';
+$lang['erro']				= 'An error happened';
 
 ////// FORM VALIDATION
 
@@ -72,6 +73,8 @@ $lang['form_error_data_valida']				= "The {field} field doesn't contain a valid 
 $lang['form_error_depois_data_inicio']		= "The end date must occur after the start date";
 $lang['form_error_login_disponivel']		= 'Login already taken';
 $lang['form_error_confirmar_senha']			= "Password and confirmation don't match";
+$lang['form_error_tipo_modelo_valido']		= "The {field} field doesn't contain a valid type";
+$lang['form_error_modelo_relatorio_alpha']	= "The {field} field doesn't contain a valid column";
 
 ////// ALERTAS SISTEMA
 
@@ -226,6 +229,7 @@ $lang['loja'] 						= 'Store';
 $lang['subloja']					= 'sub-store';
 $lang['territorio']					= 'Territory';
 $lang['identificador_moeda']		= 'Currency identificator';
+$lang['selecione_coluna']			= 'Select the corresponding column for the following attributes:';
 
 ////// CLIENTE ////// Vitor
 
