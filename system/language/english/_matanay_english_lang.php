@@ -55,6 +55,7 @@ $lang['voltar']				= 'RETURN';
 $lang['coluna']				= 'Column';
 $lang['escolha_opcao']		= 'Choose an option';
 $lang['erro']				= 'An error happened';
+$lang['indisponivel']       = 'Unavailable';
 
 ////// FORM VALIDATION
 
@@ -98,7 +99,7 @@ $lang['esqueceu_senha'] 	= 'Forgot your password?';
 
 $lang['home'] 				= 'HOME';
 $lang['cadastros'] 			= 'REGISTER';
-$lang['relatorios'] 		= 'REPORTS';
+$lang['relatorios'] 		= 'IMPORT REPORTS';
 $lang['vendas'] 			= 'RECEIPTS';
 $lang['sair'] 				= 'LOGOUT';
 

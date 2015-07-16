@@ -55,6 +55,7 @@ $lang['voltar']				= 'VOLTAR';
 $lang['coluna']				= 'Coluna';
 $lang['escolha_opcao']		= 'Escolha uma opção';
 $lang['erro']				= 'Houve um erro';
+$lang['indisponivel']       = 'Indisponivel';
 
 ////// FORM VALIDATION
 
@@ -97,7 +98,7 @@ $lang['esqueceu_senha'] 	= 'Esqueceu sua senha?';
 
 $lang['home'] 				= 'INÍCIO';
 $lang['cadastros'] 			= 'CADASTROS';
-$lang['relatorios'] 		= 'RELATÓRIOS';
+$lang['relatorios'] 		= 'IMPORTAR RELATÓRIOS';
 $lang['vendas'] 			= 'VENDAS';
 $lang['sair'] 				= 'SAIR';
 

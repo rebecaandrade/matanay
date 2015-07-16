@@ -850,3 +850,30 @@ $(document).ready(function () {
         $(this).prop('value', newName);
     });
 });
+
+function validaformupdateentidade(){
+    var cpf= $('#cpf/cnpjUpdate').val();
+    //var cnpj= $('input[name=cnpj]').val();
+    console.log(cpf);
+    return false;
+    var mensagem="";
+    if(cpf.length>3){
+        if (!validaCpf(cpf))
+            mensagem+="*"+$('input[name=cpfMessageDisplay]').val()+"\n";
+    }else{
+        if(!validarCNPJ(cnpj))
+            mensagem+="*"+$('input[name=cpfMessageDisplay]').val()+"\n";
+    }
+    var identificacao = [];
+        $('.IdEntityCheckBox :checked').each(function () {
+            identificacao.push($(this).val());
+        });
+        if (identificacao.length < 1) {
+            mensagem += "*" + $('input[name=IdMessageDisplay]').val() + "\n";
+        }
+    console.log(identificacao);
+    if(mensagem.length>2){
+        swal(mensagem, "","error");
+        return false;
+    }
+}

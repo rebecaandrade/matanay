@@ -15,7 +15,7 @@
 	      	<div class="input-field col s12 m10 offset-m1 l6 offset-l3">
 		      	<a href="<?php echo base_url(); ?>index.php/favorecido/listar">
 			        <div class="card-panel grey lighten-2">
-			          	<i class="mdi-action-account-child"></i>
+			          	<i class="mdi-action-perm-identity"></i>
 			          	<div class="label"><?php echo $this->lang->line('favorecidos'); ?></div>
 			        </div>
 		        </a>

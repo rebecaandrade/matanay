@@ -39,10 +39,32 @@ class Favorecido_model extends CI_Model{
         return $dados;
 	}
 
+    function buscar_identificacao_especifica($id)
+    {
+        $this->db->where('idFavorecido', $id);
+        $dados=$this->db->get('Favorecido_has_Tipo_Favorecido')->result();
+        $this->db->where('idTipo_Favorecido', $dados[0]->idTipo_Favorecido);
+        return $this->db->get('tipo_favorecido')->result()[0];
+    }
+
 	public function atualizar_favorecido($favorecido){
 		$this->db->where('idFavorecido',$favorecido['idFavorecido']);
 		return  $this->db->update('favorecido', $favorecido);
 	}
+
+	function buscar_favorecido_has_tipo_especifico($id)
+    {
+        $this->db->where('idEntidade', $id);
+        return $this->db->get('entidade_has_tipo_entidade')->result()[0];
+    }
+
+
+	public function atualizar_favorecido_has_tipo($tipofavorecido, $idTipo_FavorecidoAntigo)
+    {
+        $this->db->where('idFavorecido', $tipofavorecido['idFavorecido']);
+        $this->db->where('idTipo_Favorecido', $idTipo_FavorecidoAntigo);
+        return $this->db->update('favorecido_has_tipo_favorecido', $tipofavorecido);
+    }
 
 	public function atualizar_telefone($telefone){
 		$this->db->where('idTelefone_Favorecido',$telefone['idTelefone_Favorecido']);
@@ -55,12 +77,12 @@ class Favorecido_model extends CI_Model{
         	return $query[$indicetelefone];
    	}
 
-   	function buscar_identificacao_especifica($id){
+   	function buscar_identificacao_especifica1($id){
     		$this->db->where('idTipo_Favorecido', $id);
         	return $this->db->get('tipo_favorecido')->result()[0];
    	}
 
-	public function buscar_favorecido_especifica($id){
+	public function buscar_favorecido_especifico($id){
     		$this->db->where('idFavorecido', $id);
         	return $this->db->get('favorecido')->result()[0];
    	}
