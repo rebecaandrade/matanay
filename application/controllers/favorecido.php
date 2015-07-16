@@ -340,8 +340,9 @@ class Favorecido extends CI_Controller
     public function gera_atualizacao_telefone($id, $numero)
     {
         return array(
-            'idTelefone' => $id,
-            'numero' => $numero,
+            'idTelefone_Favorecido' => $id,
+            'excluido'              => null,             
+            'numero'                => $numero,
         );
     }
     public function validar_cpf($cpf)

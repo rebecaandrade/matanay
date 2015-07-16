@@ -370,7 +370,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#cnpjCadastreInput').mask("00.000.000/0000-00");
+    $('.cnpjCadastreInput').mask("00.000.000/0000-00");
 });
 
 $(document).ready(function () {
