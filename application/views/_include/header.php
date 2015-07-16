@@ -104,7 +104,7 @@
                         <a href="<?php echo base_url(); ?>index.php/imposto/listar"><?php echo $this->lang->line('imposto'); ?></a>
                     </div>
                     <div class="collapsible-body">
-                        <a href="<?php echo base_url().'index.php/cliente/cadastro_perfil/'.$this->session->userdata('id_cliente'); ?>"><?php echo "cliente"; ?></a>
+                        <a href="<?php echo base_url().'index.php/cliente/cadastro_perfil/'.$this->session->userdata('id_cliente'); ?>"><?php echo $this->lang->line('clientes'); ?></a>
                     </div>
                 </li>
             </ul>

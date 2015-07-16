@@ -276,7 +276,7 @@
             </button>
     
         </div>
-
+    <?php echo form_close() ?>
 </div>
 
 <?php $this->load->view('_include/footer') ?>

@@ -57,6 +57,34 @@ class Faixas_Videos extends CI_Controller {
 
 	}
 
+    public function cadastrar_modal(){
+        $faixa = array(
+            'nome' => $this->input->post('nome'),
+            'isrc' => str_replace("-", "", $this->input->post('isrc')),
+            'codigo_video' => $this->input->post('youtube'),
+            'idImposto' => $this->input->post('imposto')
+        );
+
+        $artistas = $this->input->post('artistas[]');
+        $autores = $this->input->post('autors[]');
+        $produtores = $this->input->post('produtors[]');
+
+        $perc_artistas = $this->input->post('percentualArtista[]');
+        $perc_autores = $this->input->post('percentualAutor[]');
+        $perc_produtores = $this->input->post('percentualProdutor[]');
+
+        if($faixa['nome'] != NULL && $artistas != NULL && $autores != NULL){
+            $this->faixas_videos_model->cadastrar_faixa($faixa, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
+            $this->session->set_userdata('mensagem', $this->lang->line('cadastrado_sucesso'));
+            return TRUE;       
+        }
+        else{
+            $this->session->set_userdata('mensagem', 'Houve algum problema no cadastro.');
+            return FALSE;
+        }
+
+    }
+
 	public function listar(){
         $dados = array(
             'faixas' => $this->faixas_videos_model->buscar_faixas()->result(),
