@@ -242,32 +242,15 @@ insert into matanay.album_has_faixa values(9,9);
 
 /* entidade has album */
 insert into matanay.entidade_has_album values(1,1);
-insert into matanay.entidade_has_album values(2,1);
-insert into matanay.entidade_has_album values(3,1);
 insert into matanay.entidade_has_album values(4,2);
-insert into matanay.entidade_has_album values(5,2);
-insert into matanay.entidade_has_album values(6,2);
 insert into matanay.entidade_has_album values(7,3);
-insert into matanay.entidade_has_album values(8,3);
-insert into matanay.entidade_has_album values(9,3);
-insert into matanay.entidade_has_album values(1,4);
-insert into matanay.entidade_has_album values(2,4);
-insert into matanay.entidade_has_album values(3,4);
-insert into matanay.entidade_has_album values(4,5);
-insert into matanay.entidade_has_album values(5,5);
-insert into matanay.entidade_has_album values(6,5);
-insert into matanay.entidade_has_album values(7,6);
-insert into matanay.entidade_has_album values(8,6);
-insert into matanay.entidade_has_album values(9,6);
-insert into matanay.entidade_has_album values(1,7);
-insert into matanay.entidade_has_album values(2,7);
-insert into matanay.entidade_has_album values(3,7);
-insert into matanay.entidade_has_album values(4,8);
-insert into matanay.entidade_has_album values(5,8);
-insert into matanay.entidade_has_album values(6,8);
-insert into matanay.entidade_has_album values(7,9);
-insert into matanay.entidade_has_album values(8,9);
-insert into matanay.entidade_has_album values(9,9);
+insert into matanay.entidade_has_album values(10,4);
+insert into matanay.entidade_has_album values(13,5);
+insert into matanay.entidade_has_album values(16,6);
+insert into matanay.entidade_has_album values(19,7);
+insert into matanay.entidade_has_album values(22,8);
+insert into matanay.entidade_has_album values(25,9);
+
 
 /* entidade has faixa com percentual */
 insert into matanay.entidade_has_faixa_video values(1,1,50);

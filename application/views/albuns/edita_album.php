@@ -12,6 +12,7 @@
     <div class="row">
   	    <?php echo form_open('albuns/atualizar') ?>
             <input type="hidden" name="idAlbum" value="<?php echo $album->idAlbum; ?>">
+            <input type="hidden" name="artista_album" value="<?php echo $artista_album->idEntidade; ?>">
             <div class="row">
                 <div class="input-field col s12 m8 l6 offset-l2">
                     <i class="mdi-av-album prefix"></i>

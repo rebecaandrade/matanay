@@ -70,14 +70,17 @@ class Albuns_model extends CI_Model {
         return TRUE;
 	}
 
-    public function atualizar_album($dados, $artista){
+    public function atualizar_album($dados, $novo_artista, $prev_artista){
         $this->db->trans_start();
 
         $this->db->where('idAlbum', $dados['idAlbum']);
         $this->db->update('album', $dados);
 
-        $this->db->where('idAlbum', $artista['idAlbum']);
-        $this->db->update('entidade_has_album', $artista);
+        $this->db->where('idAlbum', $dados['idAlbum']);
+        $this->db->where('idEntidade', $prev_artista);
+        $this->db->delete('entidade_has_album');
+
+        $this->db->insert('entidade_has_album', $novo_artista);
 
         $this->db->trans_complete();
         return TRUE;

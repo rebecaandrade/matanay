@@ -101,22 +101,27 @@ class Albuns extends CI_Controller {
     }
 
     public function atualizar() {
+        $data = $this->input->post('ano');
+        $ano = substr($data, -4);
+
         $dados = array(
             'idAlbum' => $this->input->post('idAlbum'),
             'nome' => $this->input->post('nome'),
             'upc_ean' => $this->input->post('upc_ean'),
-            'ano' => $this->input->post('ano'),
+            'ano' => $ano,
             'codigo_catalogo' => $this->input->post('catalogo'),
             'idTipo_Album' => $this->input->post('tipo')
         );
 
-        $artista = array(
+        $prev_artista = $this->input->post('artista_album');
+
+        $novo_artista = array(
             'idAlbum' => $this->input->post('idAlbum'),
             'idEntidade' => $this->input->post('artista')
         );
 
         if($dados['nome'] != NULL && $dados['ano'] != NULL){
-            $this->albuns_model->atualizar_album($dados, $artista);
+            $this->albuns_model->atualizar_album($dados, $novo_artista, $prev_artista);
             $this->session->set_userdata('mensagem', $this->lang->line('atualizado_sucesso'));
             redirect('albuns/listar');       
         }else{

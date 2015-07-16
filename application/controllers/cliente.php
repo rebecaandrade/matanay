@@ -23,6 +23,10 @@
 			$this->load->view('cliente/home'); 
 		}
 
+		public function cadastros(){
+			$this->load->view('cliente/home_cadastros');
+		}
+
 		public function cadastro_cliente(){
 			$this->load->view('cliente/cadastrar_cliente');
 		}
