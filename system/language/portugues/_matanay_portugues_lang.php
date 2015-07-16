@@ -233,6 +233,7 @@ $lang['subloja']					= 'sub-loja';
 $lang['territorio']					= 'Território';
 $lang['identificador_moeda']		= 'identificador de moeda';
 $lang['selecione_coluna']			= 'Selecione a coluna dos atributos abaixo:';
+$lang['modelos']					= 'Modelos';
 
 ////// CLIENTE ////// Vitor
 

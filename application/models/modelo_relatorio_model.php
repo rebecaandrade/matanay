@@ -12,4 +12,18 @@ class Modelo_relatorio_model extends CI_Model {
 	public function cadastrar_modelo($post){
 		return $this->db->insert('modelo',$post);
 	}
+	public function deletar_modelo($id){
+		$array = array(
+					'excluido' => 1
+				);
+		$this->db->where('idModelo',$id);
+		return $this->db->update('modelo',$array);
+	}
+	public function buscar_modelos(){
+		$this->db->select("*");
+		$this->db->from('modelo');
+		$this->db->where('excluido',NULL);
+		$this->db->join('tipo_modelo', 'tipo_modelo.idTipo_Modelo = modelo.idTipo_Modelo');
+		return $this->db->get()->result();
+	}
 }

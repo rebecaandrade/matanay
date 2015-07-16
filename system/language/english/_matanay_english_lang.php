@@ -230,6 +230,7 @@ $lang['subloja']					= 'sub-store';
 $lang['territorio']					= 'Territory';
 $lang['identificador_moeda']		= 'Currency identificator';
 $lang['selecione_coluna']			= 'Select the corresponding column for the following attributes:';
+$lang['modelos']					= 'Models';
 
 ////// CLIENTE ////// Vitor
 

@@ -11,6 +11,18 @@
 			$linguagem_usuario = $this->session->userdata('linguagem');
 			$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 		}
+		public function listar_modelos(){
+			$dados['modelos'] = $this->modelo_relatorio_model->buscar_modelos();
+			$this->load->view('modelo_relatorio/listar_modelos',$dados);
+		}
+		public function deletar_modelo(){
+			$id = $this->input->get("param");
+			if((string)(int)$id == $id){ //verifica se o ID é valido
+				$id = (int) $id;
+				$this->modelo_relatorio_model->deletar_modelo($id);
+			}
+			redirect('modelo_relatorio/listar_modelos');
+		}
 		public function cadastro_modelo(){
 			$dados['tipos'] = $this->modelo_relatorio_model->buscar_tipos_modelo();
 			$dados['colunas'] = $this->colunas(100);
@@ -59,6 +71,7 @@
 		///// helper
 		// by: Vitor Pontes
 		public function colunas($quant){
+			//Função recebe um int representando a quantidade de colunas desejadas a partir de 'a' e retorna um array com todas elas
 			$colunas 	= array();
 			$coluna 	='a';
 			array_push($colunas, $coluna);
@@ -71,6 +84,7 @@
 		////// FORM VALIDATION
 		// by: Vitor Pontes
 		public function tipo_modelo_valido($id_tipo){
+			// Recebe um id de tipo de modelo e retorna TRUE caso exista esse tipo no banco, caso contrário retorna FALSE
 			$query = $this->modelo_relatorio_model->buscar_tipo_modelo($id_tipo);
 			if($query->num_rows() > 0){
 				return TRUE;
