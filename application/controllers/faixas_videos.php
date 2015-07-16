@@ -95,8 +95,8 @@ class Faixas_Videos extends CI_Controller {
         );
 
         $artistas = $this->input->post('artistas[]');
-        $autores = $this->input->post('autores[]');
-        $produtores = $this->input->post('produtores[]');
+        $autores = $this->input->post('autors[]');
+        $produtores = $this->input->post('produtors[]');
 
         $perc_artistas = $this->input->post('percentualArtista[]');
         $perc_autores = $this->input->post('percentualAutor[]');

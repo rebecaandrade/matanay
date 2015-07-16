@@ -10,7 +10,7 @@
         </div>
   	</div><br>
     <div class="row">
-      	<?php echo form_open('albuns/cadastrar') ?>
+      	<form id="cadastro_album" action="<?= base_url() . 'index.php/albuns/cadastrar' ?>" method="post">
 	        <div class="row">
 	          	<div class="input-field col s12 m12 l8 offset-l2">
 	          		<i class="mdi-av-album prefix"></i>
@@ -21,8 +21,8 @@
 
 	        <div class="row">
 	          	<div class="input-field col s12 m12 l8 offset-l2">
-	            	<select class="addEntidade browser-default" name="artista">
-	              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
+	            	<select class="addEntidade browser-default" name="artista" id="artista">
+	              		<option value="-1" disabled selected><?php echo $this->lang->line('selecione');?></option>
 	              		<?php
                 			if(isset($artistas)){
                     			foreach ($artistas as $artista) { ?>
@@ -45,7 +45,7 @@
 	          	</div>
 	          	<div class="input-field col s12 m6 l4">
 	          		<label><?php echo $this->lang->line('n_faixas'); ?></label>
-					<input required onkeyup="geraSelect(getFaixas(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('faixa'); ?>')" id="n_faixas" name="n_faixas" type="text"/>
+					<input required pattern="[0-9]" title="apenas números" onkeyup="geraSelect(getFaixas(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('faixa'); ?>')" id="n_faixas" name="n_faixas" type="text"/>
 	            	<script>
 	            	function getFaixas(){
 	            	    return <?php echo(json_encode($faixas)); ?>;
@@ -61,14 +61,14 @@
 	          	</div>
 	          	<div class="input-field col s12 m6 l4"/>
 	          		<label id="selectLabel"><?php echo $this->lang->line('lancamento');?></label>
-	            	<input required type="date" class="datepicker" name="ano"/>
+	            	<input required type="date" class="datepicker" name="ano" id="ano"/>
 	          	</div>
 	        </div>
 
 	        <div class="row">
 	          	<div class="input-field col s12 m12 l8 offset-l2">
-	            	<select name="tipo">
-	              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
+	            	<select name="tipo" id="tipo">
+	              		<option value="-1" disabled selected><?php echo $this->lang->line('selecione');?></option>
 	              		<?php
                 			if(isset($tipos)){
                     			foreach ($tipos as $tipo) { ?>
@@ -82,10 +82,14 @@
 	        <div id="tracklist">
 	        </div>
 
+	        <input type="hidden" name="msg_erro_tipo" value="<?= $this->lang->line('erro_tipo') ?>">
+	        <input type="hidden" name="msg_erro_artista" value="<?= $this->lang->line('erro_artista') ?>">
+	        <input type="hidden" name="msg_erro_ano" value="<?= $this->lang->line('erro_ano') ?>">
+
 	        <button class="btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
 	          	<i class="mdi-content-send right"></i>
 	        </button>
-	    <?php echo form_close() ?>
+	    </form>
 
     </div>
 </div>

@@ -276,11 +276,14 @@ $lang['func_atualizar_relatorio']       = 'Atualizar Relatório';
 $lang['cpf/cnpf_invalido']       = 'CPF/CNPJ Inválido';
 $lang['campos_incorretos']       = 'Alguns campos foram preenchidos incorretamente';
 $lang['langOpt']                 = '0';
+$lang['nome_invalido']           = 'Nome inválido';
 $lang['erro_favorecido']         = 'Selecione Um favorecido';
 $lang['erro_identificacao']      = 'Selecione Uma identificação';
-$lang['nome_invalido']           = 'Nome inválido';
-
-
+$lang['erro_artista']    	     = 'Selecione um Artista ';
+$lang['erro_tipo']        		 = 'Selecione o Tipo ';
+$lang['erro_ano']        		 = 'Selecione a Data ';
+$lang['erro_artistas']    	     = 'Selecione pelo menos um Artista ';
+$lang['erro_autores']    	     = 'Selecione pelo menos um Autor ';
 
 // mensagens validacao form cadastro de perfil
 $lang['password_error']                        = "Senhas não são iguais";

@@ -207,8 +207,8 @@ $lang['favorecido_nao_cadastrado']	= 'It is required a registered favored to reg
 
 //IMPOSTO JADIEL
 
-$lang['imposto_nome']		='Name of the Tax';
-$lang['valor']				='Value';
+$lang['imposto_nome']		= 'Name of the Tax';
+$lang['valor']				= 'Value';
 $lang['cadastro_imposto'] 	= 'Taxes Cadastre';
 $lang['fisico'] 			= 'Phisical';
 $lang['digital'] 			= 'Digital';
@@ -275,11 +275,14 @@ $lang['func_atualizar_relatorio']       = 'Report Update';
 $lang['cpf/cnpj_invalido']       = 'Invalid CPF/CNPJ';
 $lang['campos_incorretos']       = 'Some fields were filled incorrectly';
 $lang['langOpt']                 = '1';
+$lang['nome_invalido']           = 'Invalid Name';
 $lang['erro_favorecido']         = 'Choose a favored';
 $lang['erro_identificacao']      = 'Choose an ID';
-$lang['nome_invalido']           = 'Invalid Name';
-
-
+$lang['erro_artista']    	     = 'Select an Artist ';
+$lang['erro_tipo']        		 = 'Select a Type ';
+$lang['erro_ano']        		 = 'Select a Date ';
+$lang['erro_artistas']    	     = 'Select at least an Artist ';
+$lang['erro_autores']    	     = 'Select at least an Author ';
 
 // mensagens validacao form cadastro de perfil
 $lang['password_error']                        = "Passwords are not the same";

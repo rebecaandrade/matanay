@@ -10,7 +10,7 @@
         </div>
   	</div><br>
     <div class="row">
-      	<?php echo form_open('faixas_videos/cadastrar_faixa') ?>
+      	<form id="cadastro_faixa" action="<?= base_url() . 'index.php/faixas_videos/cadastrar' ?>" method="post">
 	        <div class="row">
 	          	<div class="input-field col s11 m8 l8 offset-l1">
 	          		<i class="mdi-image-audiotrack prefix"></i>
@@ -46,8 +46,8 @@
 	        <div id="SelectArtista">
 		        <div class="row">
 					<div class="input-field col s10 m8 l8 offset-l1">
-					    <select class="addEntidade browser-default" name="artistas[]">
-		              		<option value="" disabled selected><?php echo $this->lang->line("selecione");?></option> 
+					    <select class="addArtista browser-default" name="artistas[]" id="artista">
+		              		<option value="-1" disabled selected><?php echo $this->lang->line("selecione");?></option> 
 		              		<?php
 	                			if(isset($artistas)){
 	                    			foreach ($artistas as $artista) { ?>
@@ -73,8 +73,8 @@
 	        <div id="SelectAutor">
 		        <div class="row">
 		          	<div class="input-field col s10 m8 l8 offset-l1">
-		            	<select class="addEntidade browser-default" name="autors[]">
-		              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
+		            	<select class="addAutor browser-default" name="autors[]" id="autor">
+		              		<option value="-1" disabled selected><?php echo $this->lang->line('selecione');?></option>
 		              		<?php
 	                			if(isset($autores)){
 	                    			foreach ($autores as $autor) { ?>
@@ -100,7 +100,7 @@
 	        <div id="SelectProdutor">
 		        <div class="row">
 		          	<div class="input-field col s10 m8 l8 offset-l1">
-		            	<select class="addEntidade browser-default" name="produtors[]">
+		            	<select class="addProdutor browser-default" name="produtors[]">
 		              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
 		              		<?php
 	                			if(isset($produtores)){
@@ -138,10 +138,13 @@
 				</div>
 			</div>
 
+			<input type="hidden" name="msg_erro_artistas" value="<?= $this->lang->line('erro_artistas') ?>">
+	        <input type="hidden" name="msg_erro_autores" value="<?= $this->lang->line('erro_autores') ?>">
+
 	        <button class="btn waves-effect waves-light col s11 m12 l8 offset-l1" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
 	          	<i class="mdi-content-send right"></i>
 	        </button>
-	    <?php echo form_close() ?>
+	    </form>
 
     </div>
 </div>

@@ -108,7 +108,7 @@
                     foreach ($autor_faixa as $entidade) { ?>
                         <div class="row">
                             <div class="input-field col s11 m8 l8 offset-l1">
-                                <select class="addEntidade browser-default" name="autores[]">
+                                <select class="addEntidade browser-default" name="autors[]">
                                     <?php $i=0;
                                         foreach ($autores as $autor) {
                                             if ($autor->idEntidade == $entidade['idEntidade'] && $autor->idTipo_Entidade == 2) { ?>
@@ -145,7 +145,7 @@
                 <?php } } if(empty($autor_faixa)) { ?>
                     <div class="row">
                         <div class="input-field col s11 m8 l8 offset-l1">
-                            <select class="addEntidade browser-default" name="autores[]">
+                            <select class="addEntidade browser-default" name="autors[]">
                                 <?php $i=0;
                                     foreach ($autores as $autor) {
                                         if ($autor->idEntidade == $entidade['idEntidade'] && $autor->idTipo_Entidade == 2) { ?>
@@ -183,7 +183,7 @@
                     foreach ($produtor_faixa as $entidade) { ?>
                         <div class="row">
                             <div class="input-field col s11 m8 l8 offset-l1">
-                                <select class="addEntidade browser-default" name="produtores[]">
+                                <select class="addEntidade browser-default" name="produtors[]">
                                     <?php $i=0;
                                         foreach ($produtores as $produtor) {
                                             if ($produtor->idEntidade == $entidade['idEntidade'] && $produtor->idTipo_Entidade == 3) { ?>
@@ -220,7 +220,7 @@
                 <?php } } if(empty($produtor_faixa)) { ?>
                     <div class="row">
                         <div class="input-field col s11 m8 l8 offset-l1">
-                            <select class="addEntidade browser-default" name="produtores[]">
+                            <select class="addEntidade browser-default" name="produtors[]">
                                 <?php $i=0;
                                     foreach ($produtores as $produtor) {
                                         if ($produtor->idEntidade == $entidade['idEntidade'] && $produtor->idTipo_Entidade == 3) { ?>
@@ -274,7 +274,7 @@
             <button class="btn waves-effect waves-light col s12 m12 l8 offset-l1" type="submit"><?php echo $this->lang->line('atualizar'); ?>
                 <i class="mdi-content-send right"></i>
             </button>
-        <?php echo form_close() ?>
+    
         </div>
 
 </div>
