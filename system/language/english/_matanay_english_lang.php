@@ -283,5 +283,6 @@ $lang['nome_invalido']           = 'Invalid Name';
 // mensagens validacao form cadastro de perfil
 $lang['password_error']                        = "Passwords are not the same";
 $lang['marcar_todas']                          = "Check All";
+$lang['login_existente']                       = "Login already exists";
 
 

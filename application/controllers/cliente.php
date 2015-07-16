@@ -111,6 +111,9 @@ class Cliente extends CI_Controller {
 	public function cadastrar_perfil(){
 		$info = $this->input->post();
 		if(!$this->verifica_login($info['login'])){
+			$this->session->set_userdata('mensagem','=(');
+			$this->session->set_userdata('subtitulo_mensagem',$this->lang->line('login_existente'));
+			$this->session->set_userdata('tipo_mensagem', 'error');
 			$this->cadastro_perfil($this->session->userdata('id_cliente'));
 			return;
 		}else{
