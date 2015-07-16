@@ -242,15 +242,32 @@ insert into matanay.album_has_faixa values(9,9);
 
 /* entidade has album */
 insert into matanay.entidade_has_album values(1,1);
+insert into matanay.entidade_has_album values(2,1);
+insert into matanay.entidade_has_album values(3,1);
 insert into matanay.entidade_has_album values(4,2);
+insert into matanay.entidade_has_album values(5,2);
+insert into matanay.entidade_has_album values(6,2);
 insert into matanay.entidade_has_album values(7,3);
-insert into matanay.entidade_has_album values(10,4);
-insert into matanay.entidade_has_album values(13,5);
-insert into matanay.entidade_has_album values(16,6);
-insert into matanay.entidade_has_album values(19,7);
-insert into matanay.entidade_has_album values(22,8);
-insert into matanay.entidade_has_album values(25,9);
-
+insert into matanay.entidade_has_album values(8,3);
+insert into matanay.entidade_has_album values(9,3);
+insert into matanay.entidade_has_album values(1,4);
+insert into matanay.entidade_has_album values(2,4);
+insert into matanay.entidade_has_album values(3,4);
+insert into matanay.entidade_has_album values(4,5);
+insert into matanay.entidade_has_album values(5,5);
+insert into matanay.entidade_has_album values(6,5);
+insert into matanay.entidade_has_album values(7,6);
+insert into matanay.entidade_has_album values(8,6);
+insert into matanay.entidade_has_album values(9,6);
+insert into matanay.entidade_has_album values(1,7);
+insert into matanay.entidade_has_album values(2,7);
+insert into matanay.entidade_has_album values(3,7);
+insert into matanay.entidade_has_album values(4,8);
+insert into matanay.entidade_has_album values(5,8);
+insert into matanay.entidade_has_album values(6,8);
+insert into matanay.entidade_has_album values(7,9);
+insert into matanay.entidade_has_album values(8,9);
+insert into matanay.entidade_has_album values(9,9);
 
 /* entidade has faixa com percentual */
 insert into matanay.entidade_has_faixa_video values(1,1,50);
@@ -291,43 +308,43 @@ insert into matanay.funcionalidades values(DEFAULT,"func_manter_perfil",NULL);
 
 #Entidade
 insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_entidade",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_editar_entidade",NULL);
+insert into matanay.funcionalidades values(DEFAULT,"func_listar_entidade",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_excluir_entidade",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_entidade",NULL);
 
 #favorecido
 insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_favorecido",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_editar_favorecido",NULL);
+insert into matanay.funcionalidades values(DEFAULT,"func_listar_favorecido",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_excluir_favorecido",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_favorecido",NULL);
 
 #faixas
 insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_faixas",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_editar_faixas",NULL);
+insert into matanay.funcionalidades values(DEFAULT,"func_listar_faixas",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_excluir_faixas",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_faixas",NULL);
 
 #albuns
 insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_albuns",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_editar_albuns",NULL);
+insert into matanay.funcionalidades values(DEFAULT,"func_listar_albuns",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_excluir_albuns",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_albuns",NULL);
 
 #imposto
 insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_imposto",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_editar_imposto",NULL);
+insert into matanay.funcionalidades values(DEFAULT,"func_listar_imposto",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_excluir_imposto",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_imposto",NULL);
 
 #moeda
 insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_moeda",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_editar_moeda",NULL);
+insert into matanay.funcionalidades values(DEFAULT,"func_listar_moeda",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_excluir_moeda",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"atualizar_moeda",NULL);
+insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_moeda",NULL);
 
 #relatorio
 insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_relatorio",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_editar_moeda",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_excluir_moeda",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_moeda",NULL);
+insert into matanay.funcionalidades values(DEFAULT,"func_listar_relatorio",NULL);
+insert into matanay.funcionalidades values(DEFAULT,"func_excluir_relatorio",NULL);
+insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_relatorio",NULL);
 

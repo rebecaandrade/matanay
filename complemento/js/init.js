@@ -179,7 +179,7 @@ $(document).ready(function () {
 
         var regx = /^[A-Za-z0-9\s]+$/;
         var testeNome = $('input[name=nomeentidade]').val();
-        if(!regx.test(testeNome)){
+        if (!regx.test(testeNome)) {
             mensagem += "*" + $('input[name=nomeMessageDisplay]').val() + "\n";
         }
 
@@ -203,7 +203,6 @@ $(document).ready(function () {
         if (identificacao.length < 1) {
             mensagem += "*" + $('input[name=IdMessageDisplay]').val() + "\n";
         }
-
         var isFavorecido = $('input[name=favorecido]:checked', '#myForm').val();
         console.log("cheguei aqui no eh favorecido" + isFavorecido + "...");
         if (isFavorecido < 1) {
@@ -213,12 +212,10 @@ $(document).ready(function () {
                 mensagem += "*" + $('input[name=favoredMessageDisplay]').val();
             }
         }
-
         if (mensagem.length > 3) {
             swal(mensagem, "", "error");
             return false;
         }
-
     });
 });
 /* validacao do cpf */
@@ -299,6 +296,34 @@ function validarCNPJ(cnpj) {
     return true;
 
 }
+/* validacao form cadastro perfil */
+$(document).ready(function () {
+    $('#createPerfil').on("submit", function () {
+        var mensagem = "";
+        var senha = $('input[name=senha]').val();
+        var confirmaSenha = $('input[name=confirmar_senha]').val();
+        if (senha !== confirmaSenha) {
+            mensagem += "*" + $('input[name=passMessageDisplay]').val() + "\n";
+        }
+        //return false;
+        if (mensagem.length > 3) {
+            console.log("cheguei no swal\n" + mensagem + "numero");
+            swal(mensagem, "", "error");
+            return false;
+        } else {
+            console.log("cheguei no true" + mensagem + "numero");
+            return true;
+        }
+        //return false;
+    });
+    $('#markAllFunc').on("click", function () {
+        $('.minhasFuncionalidades :input[type=checkbox]').each(function () {
+            $(this).prop("checked", true);
+        });
+    });
+});
+
+
 $(document).ready(function () {
     $('.cpfCadastreInput').mask("000.000.000-00");
 });
@@ -660,6 +685,7 @@ $(document).ready(function () {
                 newName += " ";
             }
         }
+        newName = newName.slice(0, newName.length - 1);
         $('#nome').prop('value', newName);
     });
 });
@@ -667,12 +693,14 @@ $(document).ready(function () {
     $('#contato').on("change", function () {
         var myName = $('#contato').val().split(" ");
         var newName = "";
-        for (var i = 0; i < myName.length; i++) {
+        var i;
+        for (i = 0; i < myName.length; i++) {
             if (myName[i].length > 0) {
                 newName += myName[i];
                 newName += " ";
             }
         }
+        newName = newName.slice(0, newName.length - 1);
         $('#contato').prop('value', newName);
     });
 });
@@ -686,5 +714,32 @@ $(document).ready(function () {
             }
         }
         $('#email').prop('value', newName);
+    });
+});
+
+$(document).ready(function () {
+    $('.cutSpace').on("change", function () {
+        var myName = $(this).val().split(" ");
+        var newName = "";
+        for (var i = 0; i < myName.length; i++) {
+            if (myName[i].length > 0) {
+                newName += myName[i];
+                newName += " ";
+            }
+        }
+        newName = newName.slice(0, newName.length - 1);
+        $(this).prop('value', newName);
+    });
+});
+$(document).ready(function () {
+    $('.cutAllSpace').on("change", function () {
+        var myName = $(this).val().split(" ");
+        var newName = "";
+        for (var i = 0; i < myName.length; i++) {
+            if (myName[i].length > 0) {
+                newName += myName[i];
+            }
+        }
+        $(this).prop('value', newName);
     });
 });

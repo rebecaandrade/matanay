@@ -36,18 +36,11 @@
 			$this->db->where('idCliente',$id);
 			return $this->db->update('cliente',$cliente);
 		}
-		public function cadastrar_perfil($nome,$login,$senha,$id_cliente){
-			$perfil = array(
-					'nome' 		=> $nome,
-					'login' 	=> $login,	
-					'senha' 	=> $senha,
-					'idCliente'	=> $id_cliente
-				);
+		public function cadastrar_perfil($perfil){
 			$this->db->insert('usuario',$perfil);
 			return $this->db->insert_id();
 		}
 		public function cadastrar_funcionalidades($funcs,$id){
-			
 			foreach ($funcs as $func) {
 				$array = array(
 						'idFuncionalidades' => $func,

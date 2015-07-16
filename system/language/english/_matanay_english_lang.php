@@ -237,6 +237,38 @@ $lang['perfil_edicao']				= 'Profile Update';
 $lang['sim'] = 'Yes';
 $lang['nao'] = 'No';
 
+// FUNCIONALIDADES
+$lang['func_manter_cliente']            = 'CRUD Customers';
+$lang['func_manter_perfil']             = 'CRUD Profiles';
+$lang['func_cadastrar_entidade']        = 'Entity Cadastre';
+$lang['func_listar_entidade']           = 'Display Entity';
+$lang['func_excluir_entidade']          = 'Entity Exclusion';
+$lang['func_atualizar_entidade']        = 'Entity Update';
+$lang['func_cadastrar_favorecido']      = 'Favored Cadastre';
+$lang['func_listar_favorecido']         = 'Display Favored';
+$lang['func_excluir_favorecido']        = 'Favored Exclusion';
+$lang['func_atualizar_favorecido']      = 'Favored Update';
+$lang['func_cadastrar_faixas']          = 'Tracks Cadastre';
+$lang['func_listar_faixas']             = 'Display Tracks';
+$lang['func_excluir_faixas']            = 'Tracks Exclusion';
+$lang['func_atualizar_faixas']          = 'Tracks Update';
+$lang['func_cadastrar_albuns']          = 'Album Cadastre';
+$lang['func_listar_albuns']             = 'Display Albuns';
+$lang['func_excluir_albuns']            = 'Album Exclusion';
+$lang['func_atualizar_albuns']          = 'Album Update';
+$lang['func_cadastrar_imposto']         = 'Tax Cadastre';
+$lang['func_listar_imposto']            = 'Display Taxes';
+$lang['func_excluir_imposto']           = 'Tax Exclusion';
+$lang['func_atualizar_imposto']         = 'Tax Update';
+$lang['func_cadastrar_moeda']           = 'Currency Cadastre';
+$lang['func_listar_moeda']              = 'Display Currencies';
+$lang['func_excluir_moeda']             = 'Currency Exclusion';
+$lang['func_atualizar_moeda']           = 'Currency Update';
+$lang['func_cadastrar_relatorio']       = 'Report Cadastre';
+$lang['func_listar_relatorio']          = 'Display Reports';
+$lang['func_excluir_relatorio']         = 'Report Exclusion';
+$lang['func_atualizar_relatorio']       = 'Report Update';
+
 //SODRE   //FORMVALIDATION
 
 $lang['cpf/cnpj_invalido']       = 'Invalid CPF/CNPJ';
@@ -245,5 +277,11 @@ $lang['langOpt']                 = '1';
 $lang['erro_favorecido']         = 'Choose a favored';
 $lang['erro_identificacao']      = 'Choose an ID';
 $lang['nome_invalido']           = 'Invalid Name';
+
+
+
+// mensagens validacao form cadastro de perfil
+$lang['password_error']                        = "Passwords are not the same";
+$lang['marcar_todas']                          = "Check All";
 
 

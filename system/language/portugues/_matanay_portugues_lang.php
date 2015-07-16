@@ -238,7 +238,37 @@ $lang['perfil_edicao']				= 'Edição de Perfil';
 $lang['sim']	='Sim';
 $lang['nao']	='Não';
 
-
+// FUNCIONALIDADES
+$lang['func_manter_cliente']            = 'Manter Cliente';
+$lang['func_manter_perfil']             = 'Manter Perfil';
+$lang['func_cadastrar_entidade']        = 'Cadastro de Entidade';
+$lang['func_listar_entidade']           = 'Listar Entidade';
+$lang['func_excluir_entidade']          = 'Excluir Entidade';
+$lang['func_atualizar_entidade']        = 'Atualizar Entidade';
+$lang['func_cadastrar_favorecido']      = 'Cadastro de Favorecido';
+$lang['func_listar_favorecido']         = 'Listar Favorecido';
+$lang['func_excluir_favorecido']        = 'Excluir Favorecido';
+$lang['func_atualizar_favorecido']      = 'Atualizar Favorecido';
+$lang['func_cadastrar_faixas']          = 'Cadastro de Faixas';
+$lang['func_listar_faixas']             = 'Listar Faixas';
+$lang['func_excluir_faixas']            = 'Excluir faixas';
+$lang['func_atualizar_faixas']          = 'Atualizar Faixas';
+$lang['func_cadastrar_albuns']          = 'Cadastro de Albuns';
+$lang['func_listar_albuns']             = 'Listar Albuns';
+$lang['func_excluir_albuns']            = 'Excluir Albuns';
+$lang['func_atualizar_albuns']          = 'Atualizar Albuns';
+$lang['func_cadastrar_imposto']         = 'Cadastro de Imposto';
+$lang['func_listar_imposto']            = 'Listar imposto';
+$lang['func_excluir_imposto']           = 'Excluir Imposto';
+$lang['func_atualizar_imposto']         = 'Atualizar Imposto';
+$lang['func_cadastrar_moeda']           = 'Cadastro de Moeda';
+$lang['func_listar_moeda']              = 'Listar Moeda';
+$lang['func_excluir_moeda']             = 'Excluir Moeda';
+$lang['func_atualizar_moeda']           = 'Atualizar Moeda';
+$lang['func_cadastrar_relatorio']       = 'Cadastro de Relatório';
+$lang['func_listar_relatorio']          = 'Listar Relatório';
+$lang['func_excluir_relatorio']         = 'Excluir Relatório';
+$lang['func_atualizar_relatorio']       = 'Atualizar Relatório';
 
 
 //SODRE   //FORMVALIDATION
@@ -248,3 +278,9 @@ $lang['langOpt']                 = '0';
 $lang['erro_favorecido']         = 'Selecione Um favorecido';
 $lang['erro_identificacao']      = 'Selecione Uma identificação';
 $lang['nome_invalido']           = 'Nome inválido';
+
+
+
+// mensagens validacao form cadastro de perfil
+$lang['password_error']                        = "Senhas não são iguais";
+$lang['marcar_todas']                          = "Marcar todas";

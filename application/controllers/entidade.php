@@ -9,6 +9,7 @@ class Entidade extends CI_Controller
         $this->load->model('Entidade_model');
         $this->load->model('Favorecido_model');
         $this->load->model('albuns_model');
+        $this->load->model('cliente_model');
         $this->load->library('pagination');
 
         if (!($this->session->userdata('linguagem'))) {
@@ -547,10 +548,10 @@ class Entidade extends CI_Controller
         //esse envio ocorre para que se saiba os favorecidos cadastrados dentro da view de cadastro de entidades alem de saber o idioma
         //$this->load->view("Entidade/cadastro_entidade_view", $dados);*/
         //$this->load->view('cliente/cadastrar_perfil');
-        $this->load->model('cliente_model');
         if($id_cliente){
             $dados['id_cliente'] = $id_cliente;
             $dados['funcionalidades'] = $this->cliente_model->funcionalidades();
+            $dados['antigos'] = $this->gera_form_perfil_antigo();
             $this->load->view('viewTeste',$dados);
         } else {
             //mensagem de erro
@@ -560,6 +561,22 @@ class Entidade extends CI_Controller
 
     public function testeEntidadeForm()
     {
-        die(var_dump($this->input->post()));
+        $info = $this->input->post();
+        if(!$this->verifica_login($info['login'])){
+            $this->testeEntidad(1);
+            return;
+        }else{
+            //$id_usuario =
+        }
+    }
+    public function verifica_login($login){
+        return sizeof($this->cliente_model->buscar_login($login)) == 0;
+    }
+    public function gera_form_perfil_antigo(){
+        $arr =  array(
+            'nome' => $this->input->post('nome'),
+            'func' => $this->input->post('func')
+        );
+        return $arr;
     }
 }
