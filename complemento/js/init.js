@@ -305,10 +305,15 @@ $(document).ready(function () {
         if (senha !== confirmaSenha) {
             mensagem += "*" + $('input[name=passMessageDisplay]').val() + "\n";
         }
-        var isChecked = $("input[name='func[]']:checked").length > 0;
-        if (!isChecked) {
+
+        var isChecked = 0;
+        $('.minhasFuncionalidades :checked').each(function(){
+            isChecked++
+        });
+        if(!isChecked){
             mensagem += "*" + $('input[name=checkBoxMessageDisplay]').val() + "\n";
         }
+
         var regx = /^[A-Za-z0-9\s]+$/;
         var testeNome = $('input[name=nome]').val();
         if (!regx.test(testeNome)) {
