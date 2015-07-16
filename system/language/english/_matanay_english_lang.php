@@ -52,6 +52,8 @@ $lang['selecione']			= 'Select';
 $lang['procurar']			= 'Search';
 $lang['detalhes']			= 'DETAILS';
 $lang['voltar']				= 'RETURN';
+$lang['coluna']				= 'Column';
+$lang['escolha_opcao']		= 'Choose an option';
 
 ////// FORM VALIDATION
 
@@ -213,7 +215,17 @@ $lang['cadastro_imposto'] 	= 'Taxes Cadastre';
 $lang['fisico'] 			= 'Phisical';
 $lang['digital'] 			= 'Digital';
 
+////// MODELO DE RELATORIO ////// Vitor
 
+$lang['modelo_cadastro']			= 'Report Model registry';
+$lang['isrc'] 						= 'ISRC';
+$lang['upc'] 						= 'UPC';
+$lang['qnt_vendida']				= 'Amount Sold';
+$lang['valor_recebido']				= 'Amount Earned';
+$lang['loja'] 						= 'Store';
+$lang['subloja']					= 'sub-store';
+$lang['territorio']					= 'Territory';
+$lang['identificador_moeda']		= 'Currency identificator';
 
 ////// CLIENTE ////// Vitor
 
