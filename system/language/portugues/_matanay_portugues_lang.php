@@ -309,3 +309,4 @@ $lang['erro_autores']    	     = 'Selecione pelo menos um Autor ';
 $lang['password_error']                        = "Senhas não são iguais";
 $lang['marcar_todas']                          = "Marcar todas";
 $lang['login_existente']                       = "Login já existe";
+$lang['checkbox_erro']                         = "Seleciona uma funcionalidade";

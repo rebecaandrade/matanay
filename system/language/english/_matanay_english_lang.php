@@ -306,5 +306,5 @@ $lang['erro_autores']    	     = 'Select at least an Author ';
 $lang['password_error']                        = "Passwords are not the same";
 $lang['marcar_todas']                          = "Check All";
 $lang['login_existente']                       = "Login already exists";
-
+$lang['checkbox_erro']                         = "Choose a functionality";
 
