@@ -16,6 +16,11 @@ class Albuns extends CI_Controller {
 		$dados['tipos'] = $this->albuns_model->buscar_tipos();
 		$dados['faixas'] = $this->albuns_model->buscar_faixas();
 		$dados['artistas'] = $this->albuns_model->buscar_artistas();
+
+        $this->load->model('faixas_videos_model');
+        $dados['autores'] = $this->faixas_videos_model->buscar_autores();
+        $dados['produtores'] = $this->faixas_videos_model->buscar_produtores();
+        $dados['impostos'] = $this->faixas_videos_model->buscar_impostos();
 		
 		$this->load->view('albuns/cadastro_album', $dados);
 	}

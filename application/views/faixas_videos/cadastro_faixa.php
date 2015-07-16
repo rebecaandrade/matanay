@@ -10,7 +10,7 @@
         </div>
   	</div><br>
     <div class="row">
-      	<form id="cadastro_faixa" action="<?= base_url() . 'index.php/faixas_videos/cadastrar' ?>" method="post">
+      	<form id="cadastro_faixa" action="<?= base_url() . 'index.php/faixas_videos/cadastrar_faixa' ?>" method="post">
 	        <div class="row">
 	          	<div class="input-field col s11 m8 l8 offset-l1">
 	          		<i class="mdi-image-audiotrack prefix"></i>
