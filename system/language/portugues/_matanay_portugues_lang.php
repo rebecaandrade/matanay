@@ -52,6 +52,9 @@ $lang['selecione']			= 'Selecione';
 $lang['procurar']			= 'Procurar';
 $lang['detalhes']			= 'DETALHES';
 $lang['voltar']				= 'VOLTAR';
+$lang['coluna']				= 'Coluna';
+$lang['escolha_opcao']		= 'Escolha uma opção';
+$lang['erro']				= 'Houve um erro';
 
 ////// FORM VALIDATION
 
@@ -69,6 +72,8 @@ $lang['form_error_data_valida']				= "O campo {field} não contém uma data vali
 $lang['form_error_depois_data_inicio']		= "A data de término deve ser após a data de inicio";
 $lang['form_error_login_disponivel']		= "Este login já se encontra cadastrado";
 $lang['form_error_confirmar_senha']			= "Senha e confirmação de senha diferem";
+$lang['form_error_tipo_modelo_valido']		= "O campo {field} deve conter um tipo valido";
+$lang['form_error_modelo_relatorio_alpha']	= "O campo {field} deve conter uma coluna valida";
 
 ////// ALERTAS SISTEMA
 
@@ -215,6 +220,20 @@ $lang['valor']				='Valor';
 $lang['cadastro_imposto'] 	= 'Cadastro de Imposto';
 $lang['fisico'] 			= 'Fisico';
 $lang['digital'] 			= 'Digital';
+
+////// MODELO DE RELATORIO ////// Vitor
+
+$lang['modelo_cadastro']			= 'Cadastro de modelo de relatório';
+$lang['isrc'] 						= 'ISRC';
+$lang['upc'] 						= 'UPC';
+$lang['qnt_vendida']				= 'Quantidade vendida';
+$lang['valor_recebido']				= 'Valor recebido';
+$lang['loja'] 						= 'loja';
+$lang['subloja']					= 'sub-loja';
+$lang['territorio']					= 'Território';
+$lang['identificador_moeda']		= 'identificador de moeda';
+$lang['selecione_coluna']			= 'Selecione a coluna dos atributos abaixo:';
+$lang['modelos']					= 'Modelos';
 
 ////// CLIENTE ////// Vitor
 

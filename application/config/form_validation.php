@@ -78,4 +78,56 @@
 								'rules' => 'trim|required|matches[senha]'
 							),
 						),
+		'modelo_relatorio' => array(
+						array(
+								'field' => 'nome',
+								'label' => 'lang:nome',
+								'rules' => 'trim|required|max_length[45]'
+							),
+						array(
+								'field' => 'tipo',
+								'label' => 'lang:tipo',
+								'rules' => 'trim|required|callback_tipo_modelo_valido'
+							),
+						array(
+								'field' => 'isrc',
+								'label' => 'lang:isrc',
+								'rules' => 'trim|required|alpha'
+							),
+						array(
+								'field' => 'upc',
+								'label' => 'lang:upc',
+								'rules' => 'trim|required|alpha'
+							),
+						array(
+								'field' => 'qnt_vendida',
+								'label' => 'lang:qnt_vendida',
+								'rules' => 'trim|required|alpha'
+							),
+						array(
+								'field' => 'valor_recebido',
+								'label' => 'lang:valor_recebido',
+								'rules' => 'trim|required|alpha'
+							),
+						array(
+								'field' => 'loja',
+								'label' => 'lang:loja',
+								'rules' => 'trim|required|alpha'
+							),
+						array(
+								'field' => 'subloja',
+								'label' => 'lang:subloja',
+								'rules' => 'trim|required|alpha'
+							),
+						array(
+								'field' => 'territorio',
+								'label' => 'lang:territorio|alpha',
+								'rules' => 'trim|required|alpha'
+							),
+						array(
+								'field' => 'moeda',
+								'label' => 'lang:identificador_moeda',
+								'rules' => 'trim|required|alpha'
+							),
+						),
 	);
