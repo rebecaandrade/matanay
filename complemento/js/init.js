@@ -305,13 +305,21 @@ $(document).ready(function () {
         if (senha !== confirmaSenha) {
             mensagem += "*" + $('input[name=passMessageDisplay]').val() + "\n";
         }
-        //return false;
+        var isChecked = $("input[name='func[]']:checked").length > 0;
+        if (!isChecked) {
+            mensagem += "*" + $('input[name=checkBoxMessageDisplay]').val() + "\n";
+        }
+        var regx = /^[A-Za-z0-9\s]+$/;
+        var testeNome = $('input[name=nome]').val();
+        if (!regx.test(testeNome)) {
+            mensagem += "*" + $('input[name=nomeMessageDisplay]').val() + "\n";
+        }
+
         if (mensagem.length > 3) {
-            console.log("cheguei no swal\n" + mensagem + "numero");
+            //console.log("cheguei no swal\n" + mensagem + "numero");
             swal(mensagem, "", "error");
             return false;
         } else {
-            console.log("cheguei no true" + mensagem + "numero");
             return true;
         }
         //return false;
@@ -322,7 +330,31 @@ $(document).ready(function () {
         });
     });
 });
-
+$(document).ready(function () {
+    $('#formUpdatePerfil').on("submit", function () {
+        var mensagem = "";
+        var isChecked = $("input[name='func[]']:checked").length > 0;
+        if (!isChecked) {
+            mensagem += "*" + $('input[name=checkBoxMessageDisplay]').val() + "\n";
+        }
+        var regx = /^[A-Za-z0-9\s]+$/;
+        var testeNome = $('input[name=nome]').val();
+        if (!regx.test(testeNome)) {
+            mensagem += "*" + $('input[name=nomeMessageDisplay]').val() + "\n";
+        }
+        if (mensagem.length > 3) {
+            swal(mensagem, "", "error");
+            return false;
+        } else {
+            return true;
+        }
+    });
+    $('#updateMarkAllFunc').on("click", function () {
+        $('.checkFunc :input[type=checkbox]').each(function () {
+            $(this).prop("checked",true);
+        });
+    });
+});
 
 $(document).ready(function () {
     $('.cpfCadastreInput').mask("000.000.000-00");
@@ -371,52 +403,6 @@ $(document).ready(function () {
     });
 });
 
-/********** validar cadastro de album **********/
-
-$(document).ready(function () {
-    $('#cadastro_album').on("submit", function () {
-        var mensagem = "";
-
-        var tipo = $('#tipo option:selected').val();
-        if (tipo < 0) {
-            mensagem += "*" + $('input[name=msg_erro_tipo]').val();
-        }
-
-        var artista = $('#artista option:selected').val();
-        if (artista < 0) {
-            mensagem += "*" + $('input[name=msg_erro_artista]').val();
-        }
-        
-        if (mensagem.length > 3) {
-            swal(mensagem, "", "error");
-            return false;
-        }
-    });
-});
-
-/********** validar cadastro de faixa **********/
-
-$(document).ready(function () {
-    $('#cadastro_faixa').on("submit", function () {
-        var mensagem = "";
-
-        var artista = $('#artista option:selected').val();
-        if (artista < 0) {
-            mensagem += "*" + $('input[name=msg_erro_artistas]').val();
-        }
-
-        var autor = $('#autor option:selected').val();
-        if (autor < 0) {
-            mensagem += "*" + $('input[name=msg_erro_autores]').val();
-        }
-        
-        if (mensagem.length > 3) {
-            swal(mensagem, "", "error");
-            return false;
-        }
-    });
-});
-
 /********** radio button pra dizer se vai cadastrar faixa ou video **********/
 
 $(document).ready(function () {
@@ -439,14 +425,6 @@ $(document).ready(function () {
     });
 });
 
-/********** iniciando selects com chosen no cadastro de faixa **********/
-
-$(document).ready(function () {
-    $('.addArtista').chosen({search_contains: true});
-    $('.addAutor').chosen({search_contains: true});
-    $('.addProdutor').chosen({search_contains: true});
-});
-
 /********** select entidades com chosen e função que impede selecionar o mesmo valor 2x **********/
 
 function addSelectEntidade(entidades, selecione, label, participacao, mask) {
@@ -454,7 +432,7 @@ function addSelectEntidade(entidades, selecione, label, participacao, mask) {
     var nameLower = nameLower.toLowerCase();
 
     $('#Select' + label).append('<div class="row"><div class="input-field col s11 m8 l8 offset-l1">' +
-        '<select id="select' + label + '" class="add' + label + ' browser-default" name="' + nameLower + 's[]">' +
+        '<select id="select' + label + '" class="addEntidade browser-default" name="' + nameLower + 's[]">' +
         geraOpcoesEntidade(entidades, selecione) + '</select><label id="selectLabel">' + label + '</label></div>' +
         '<div class="input-field col s12 m3 l2"><label>' + participacao + '</label>' +
         '<input class="porcentagem" name="percentual' + label + '[]" type="text"></div>' +
@@ -462,7 +440,7 @@ function addSelectEntidade(entidades, selecione, label, participacao, mask) {
         'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
         '<i class="mdi-content-remove"></i></a></div>');
 
-    $('.add' + label).chosen({search_contains: true});
+    $('.addEntidade').chosen({search_contains: true});
     $('.porcentagem').mask("00,00%", {reverse: true});
 }
 
@@ -475,81 +453,27 @@ function geraOpcoesEntidade(entidades, selecione) {
 }
 
 $(function () {
-    $(document).on('change', '.addArtista', function (e) {
-        geraArtistasSelecionados();
+    $(document).on('change', '.addEntidade', function (e) {
+        geraEntidadesSelecionadas();
     });
 
-    function geraArtistasSelecionados() {
+    function geraEntidadesSelecionadas() {
         var selectedValues = [];
 
-        $('.addArtista option').each(function () {
+        $('.addEntidade option').each(function () {
             $(this).prop('disabled', false);
         });
 
-        $('.addArtista option:selected').each(function () {
+        $('.addEntidade option:selected').each(function () {
             var select = $(this).parent(),
                 optValue = $(this).val();
 
             if ($(this).val() != '') {
-                $('.addArtista').not(select).children().filter(function (e) {
+                $('.addEntidade').not(select).children().filter(function (e) {
                     if ($(this).val() == optValue)
                         return e
                 }).prop('disabled', true);
-                $('.addArtista').trigger("chosen:updated");
-            }
-        });
-    }
-});
-
-$(function () {
-    $(document).on('change', '.addAutor', function (e) {
-        geraAutoresSelecionados();
-    });
-
-    function geraAutoresSelecionados() {
-        var selectedValues = [];
-
-        $('.addAutor option').each(function () {
-            $(this).prop('disabled', false);
-        });
-
-        $('.addAutor option:selected').each(function () {
-            var select = $(this).parent(),
-                optValue = $(this).val();
-
-            if ($(this).val() != '') {
-                $('.addAutor').not(select).children().filter(function (e) {
-                    if ($(this).val() == optValue)
-                        return e
-                }).prop('disabled', true);
-                $('.addAutor').trigger("chosen:updated");
-            }
-        });
-    }
-});
-
-$(function () {
-    $(document).on('change', '.addProdutor', function (e) {
-        geraProdutoresSelecionados();
-    });
-
-    function geraProdutoresSelecionados() {
-        var selectedValues = [];
-
-        $('.addProdutor option').each(function () {
-            $(this).prop('disabled', false);
-        });
-
-        $('.addProdutor option:selected').each(function () {
-            var select = $(this).parent(),
-                optValue = $(this).val();
-
-            if ($(this).val() != '') {
-                $('.addProdutor').not(select).children().filter(function (e) {
-                    if ($(this).val() == optValue)
-                        return e
-                }).prop('disabled', true);
-                $('.addProdutor').trigger("chosen:updated");
+                $('.addEntidade').trigger("chosen:updated");
             }
         });
     }
@@ -587,8 +511,9 @@ function addSelectFaixa(faixas, selecione, label) {
     $('#SelectFaixas').append('<div class="row"><div class="input-field col s11 m8 l8 offset-l2">' +
         '<select id="select' + label + '" class="addFaixa browser-default" name="' + nameLower + 's[]">' +
         geraOpcoesFaixa(faixas, selecione) + '</select><label id="selectLabel">' + label + '</label></div>' +
-        '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn"' +
-        'id="remove' + label + '"><i class="mdi-content-remove"></i></a></div>');
+        '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
+        'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
+        '<i class="mdi-content-remove"></i></a></div>');
 
     $('.addFaixa').chosen({search_contains: true});
 }
