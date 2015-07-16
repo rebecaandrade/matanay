@@ -6,7 +6,7 @@ $this->load->view('_include/header') ?>
         <div class="row" id="titulo_lista">
             <div class="row">
                 <div class="input-field col s12 m8 l9">
-                    <i class="mdi-action-assignment-ind"></i>
+                    <i class="mdi-action-perm-identity"></i>
                     <?php echo $this->lang->line('favorecidos'); ?>
                     <a href="<?php echo base_url(); ?>index.php/favorecido/mostrar_cadastro"
                        class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo"
@@ -27,15 +27,22 @@ $this->load->view('_include/header') ?>
                 </thead>
                 <tbody>
                 <?php if (isset($favorecidos)) { ?>
-                    <?php foreach ($favorecidos as $favorecido) { ?>
+                    <?php foreach ($favorecidos as $row) { ?>
                         <tr>
-                            <td><?= $favorecido->nome ?></td>
-                            <td><?= ($favorecido->cpf == NULL ? $favorecido->cnpj : $favorecido->cpf) ?></td>
-                            <td><?= $this->lang->line($favorecido->descricao); ?></td>
-                            <td><a class="acao"
-                                   onclick=" passaParamentroFavorecido('<?= $favorecido->idFavorecido ?>','<?=base_url()?>')"><?php echo $this->lang->line('editar'); ?></a>
-                                | <a class="deletarLink"
-                                     onclick="excluirFavorecido('<?= base_url() . 'index.php/favorecido/deletar/' . $favorecido->idFavorecido ?>')"><?php echo $this->lang->line('deletar') ?> </a>
+                            <td>    <?= $row->nome ?>                                                    </td>
+                            <td>    <?= ($row->cpf == NULL ? $row->cnpj : $row->cpf) ?>    </td>
+                            <td>    <?= $this->lang->line($row->descricao); ?>                           </td>
+                            <td>    <a class="acao"
+                                    onclick=" passaParamentroFavorecido('<?= $row->idFavorecido ?>','<?=base_url()?>')"><?php echo $this->lang->line('editar'); ?></a>
+                                <?php $flag=0;
+                                foreach ($entidades as $key) { // verificacao de relacionamentos com alguma entidade que impeca a deleção
+                                    if($key->idFavorecido==$row->idFavorecido)
+                                        $flag=1;
+                                }
+                                if($flag==0){ ?>
+                                |   <a class="deletarLink"
+                                    onclick="excluirFavorecido('<?= base_url() . 'index.php/favorecido/deletar/' . $row->idFavorecido ?>')"><?php echo $this->lang->line('deletar') ?> </a>
+                                <?php } else echo "| ",$this->lang->line('indisponivel');?>
                             </td>
                         </tr>
                     <?php }

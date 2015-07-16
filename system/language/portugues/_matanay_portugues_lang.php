@@ -55,6 +55,7 @@ $lang['voltar']				= 'VOLTAR';
 $lang['coluna']				= 'Coluna';
 $lang['escolha_opcao']		= 'Escolha uma opção';
 $lang['erro']				= 'Houve um erro';
+$lang['indisponivel']       = 'Indisponivel';
 
 ////// FORM VALIDATION
 
@@ -97,7 +98,7 @@ $lang['esqueceu_senha'] 	= 'Esqueceu sua senha?';
 
 $lang['home'] 				= 'INÍCIO';
 $lang['cadastros'] 			= 'CADASTROS';
-$lang['relatorios'] 		= 'RELATÓRIOS';
+$lang['relatorios'] 		= 'IMPORTAR RELATÓRIOS';
 $lang['vendas'] 			= 'VENDAS';
 $lang['sair'] 				= 'SAIR';
 
@@ -308,3 +309,4 @@ $lang['erro_autores']    	     = 'Selecione pelo menos um Autor ';
 $lang['password_error']                        = "Senhas não são iguais";
 $lang['marcar_todas']                          = "Marcar todas";
 $lang['login_existente']                       = "Login já existe";
+$lang['checkbox_erro']                         = "Seleciona uma funcionalidade";

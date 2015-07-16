@@ -16,12 +16,6 @@
                 echo $variavel;
             } ?>
             <div class="row">
-                <div class="aviso_entidade"><?php if ($this->session->flashdata('sucesso') != null) {
-                        echo $this->lang->line($this->session->flashdata('sucesso'));
-                    } ?></div>
-                <div class="aviso_entidade"><?php if ($this->session->flashdata('aviso') != null) {
-                        echo $this->lang->line($this->session->flashdata('aviso'));
-                    } ?></div>
                 <div class="input-field col s12 m9 l8 offset-l2">
                     <i class="mdi-action-perm-identity prefix"></i>
                     <input pattern=".{4,45}" required id="nome" id="icon-prefix" type="text" value=""

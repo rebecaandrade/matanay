@@ -8,6 +8,7 @@ class Imposto extends CI_Controller
     {
         parent:: __construct();
         $this->load->model('Imposto_model');
+        $this->load->model('faixas_videos_model');
 
         $this->form_validation->set_error_delimiters('',''); // remove tags HTML das mensagem de erro de FORM VALIDATION
 
@@ -27,7 +28,9 @@ class Imposto extends CI_Controller
 
     public function listar()
     {
-        $dados["dadoimposto"] = $this->Imposto_model->buscar_imposto();
+        $dados["dadoimposto"]   = $this->Imposto_model->buscar_imposto();
+        //Eh necessario as faixas para se saber quais impostos se pode apagar.
+        $dados["faixas"]        = $this->faixas_videos_model->buscar_faixas()->result();
         $this->load->view("Imposto/listar_impostos_view", $dados);
     }
 

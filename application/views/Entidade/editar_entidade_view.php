@@ -2,12 +2,25 @@
 $this->load->view('_include/header') ?>
 
 <div id="wrapper-body">
+    <div id="titulo_lista">
+        <div class="row">
+            <div class="input-field col s12 m8 l9">
+                <i class="mdi-action-assignment-ind"></i>
+                <?php echo $this->lang->line('edicao_entidade'); ?>
+            </div>
+        </div>
+    </div>
     <div class="row">
-        <?php echo $this->lang->line('edit_entitys'); ?>
 
-        <form id="updateFormEntidade" action="<?= base_url() . 'index.php/entidade/atualizar' ?>" method="post">
+        <form id="myFormUpdate" onsubmit="validaformupdateentidade()" action="<?= base_url() . 'index.php/entidade/atualizar' ?>" method="post">
             <input type="hidden" name='idEntidade' value="<?= $dadosentidade->idEntidade; ?>"/>
-
+            <input type="hidden" name='idTipo_Entidade' value="<?= $dadosidentificacao->idTipo_Entidade; ?>"/>
+            <input type="hidden" name='idCliente' value="<?= $dadosentidade->idCliente; ?>"/>
+            <?php if($dadosentidade->cpf==null) { ?> <!--informacao que nos diz se o proprietario tem cpf ou cnpj-->
+                <input type="hidden" name='cpf/cnpj' value="cnpj"/>
+            <?php }if($dadosentidade->cnpj==null) { ?>
+                <input type="hidden" name='cpf/cnpj' value="cpf"/>    
+            <?php } ?>        
             <input type="hidden" name='idtelefone1' value="<?= $telefone1->idTelefone; ?>"/>
             <input type="hidden" name='idtelefone2' value="<?= $telefone2->idTelefone; ?>"/>
 
@@ -15,25 +28,19 @@ $this->load->view('_include/header') ?>
                 <div class="input-field col s12 m12 l8 offset-l2">
                     <i class="mdi-action-assignment-ind prefix"></i>
                     <label><?= $this->lang->line('nome_entidade'); ?></label>
-                    <input value="<?= $dadosentidade->nome; ?>" name="nome" required type="text"/>
+                    <input class="cutSpace" value="<?= $dadosentidade->nome; ?>" name="nome" required type="text"/>
                 </div>
             </div>
-            <?php if ($dadosentidade->cpf == null) { ?>
+
                 <div class="row">
                     <div class="input-field col s12 m12 l8 offset-l2">
                         <label><?= $this->lang->line('cpf_cnpj'); ?></label>
-                        <input id="cpfUpdate" value="<?= $dadosentidade->cnpj; ?>" name="cnpj" required type="text"/>
+                        <input  id="cpf/cnpjUpdate" <?php if($dadosentidade->cpf==null){ echo "value='".$dadosentidade->cnpj."' name='cnpj' pattern='.{18,}' ";}else{echo "value='".$dadosentidade->cpf."' name='cpf' pattern='.{14,}' ";} ?> required type="text"/>
                     </div>
                 </div>
-            <?php } else { ?>
-                <div class="row">
-                    <div class="input-field col s12 m12 l8 offset-l2">
-                        <label><?php echo $this->lang->line('cpf_cnpj'); ?></label>
-                        <input id="cnpjUpdate" value="<?= $dadosentidade->cpf; ?>" name="cpf" required type="text"/>
-                    </div>
-                </div>
-            <?php } ?>
-            <input id="cppjUpdate" type="hidden" name="cpf_cnpj">
+
+
+            <input id="cnpjUpdate" type="hidden" name="cpf_cnpj">
 
             <div class="row">
                 <div class="input-field col s12 m6 l4 offset-l2">
@@ -56,44 +63,46 @@ $this->load->view('_include/header') ?>
                 </div>
                 <div class="input-field col s12 m6 l4">
                     <label><?php echo $this->lang->line('email'); ?>:</label>
-                    <input value="<?php echo $dadosentidade->email; ?>" name="email" required type="email"/>
+                    <input class="cutAllSpace" value="<?php echo $dadosentidade->email; ?>" name="email" required type="email"/>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12 m6 l4 offset-l2">
                     <label><?php echo $this->lang->line('percentual_fisico'); ?>:</label>
                     <input class="<?= $this->lang->line('classPercent') ?>"
-                           value="<?php echo $dadosentidade->percentual_fisico; ?>" name="percentual_fisico" required
+                           value="<?php echo $dadospercentual->percentual_fisico; ?>" name="percentual_fisico" required
                            type="text"/>
                 </div>
                 <div class="input-field col s12 m6 l4">
                     <label><?php echo $this->lang->line('percentual_digital'); ?>:</label>
                     <input class="<?= $this->lang->line('classPercent') ?>"
-                           value="<?php echo $dadosentidade->percentual_digital; ?>" name="percentual_digital" required
+                           value="<?php echo $dadospercentual->percentual_digital; ?>" name="percentual_digital" required
                            type="text"/>
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12 m12 l8 offset-l2">
-                    <select name="identificacao">
-                        <option value="<?= $dadosentidade->idTipo_Entidade ?>"
-                                selected> <?= $this->lang->line('selecione') ?> (<?= ($this->lang->line('atual') . ":" . $this->lang->line($dadosidentificacao->descricao)) ?>)
-                        </option>
-                        <option value="1"><?= $this->lang->line('artista'); ?></option>
-                        <option value="2"><?= $this->lang->line('autor'); ?></option>
-                        <option value="3"><?= $this->lang->line('produtor'); ?></option>
-                        <br>
-                    </select>
-                    <label><?= $this->lang->line('identificacao'); ?></label>
+                <div class="col s12 m12 l8 offset-l2 IdEntityCheckBox">
+                    <label><?php echo $this->lang->line('identificacao'); ?></label></label>
+                    <p>
+                        <input type="checkbox" <?php if($dadosidentificacao->idTipo_Entidade==1) echo "checked"?> class="filled-in" id="checkArtist" name="identificacao[]" value=1>
+                        <label for="checkArtist"><?php echo $this->lang->line('artista'); ?></label>
+                       
+                        <input type="checkbox" <?php if($dadosidentificacao->idTipo_Entidade==2) echo "checked"?> class="filled-in" id="checkAutor" name="identificacao[]" value=2>
+                        <label for="checkAutor"><?php echo $this->lang->line('autor'); ?></label>
+                       
+                        <input type="checkbox" <?php if($dadosidentificacao->idTipo_Entidade==3) echo "checked"?> class="filled-in" id="checkProd" name="identificacao[]" value=3>
+                        <label for="checkProd"><?php echo $this->lang->line('produtor'); ?></label>
+                    </p>
                 </div>
             </div>
-            <div class="row">
+            <br>
+            <div id="nao_favorecido" class="row">
                 <div class="input-field col s12 m12 l8 offset-l2">
                     <select name="relacao_favorecido">
                         <?php foreach ($dadosfavorecido as $row) {
                             if ($dadosentidade->idFavorecido == $row->idFavorecido) { ?>
                                 <option value="<?= $row->idFavorecido ?>"
-                                        selected> <?php echo $this->lang->line('selecione'); ?> (<?php echo $this->lang->line('atual'); ?>: <?php echo $row->nome; ?>)
+                                        selected> <?php echo $row->nome; ?>
                                 </option>
                             <?php } else { ?>
                                 <option value="<?php echo $row->idFavorecido; ?>"><?php echo $row->nome; ?></option>
@@ -121,6 +130,10 @@ $this->load->view('_include/header') ?>
                         <input value="<?php echo $dadosfavorecido->agencia; ?>" name="agencia" required type="text"/>
                     </div>
                 </div>-->
+            <input type="hidden" name="favoredMessageDisplay" value="<?= $this->lang->line('erro_favorecido') ?>">
+            <input type="hidden" name="IdMessageDisplay" value="<?= $this->lang->line('erro_identificacao') ?>">
+            <input type="hidden" name="cpfMessageDisplay" value="<?= $this->lang->line('cpf/cnpf_invalido') ?>">
+            <input type="hidden" name="nomeMessageDisplay" value="<?= $this->lang->line('nome_invalido') ?>">
             <button class="btn waves-effect waves-light col s12 m12 l8 offset-l2"
                     type="submit"><?php echo $this->lang->line('atualizar'); ?>
                 <i class="mdi-content-send right"></i>

@@ -23,10 +23,6 @@ class Cliente extends CI_Controller {
 		$this->load->view('cliente/home');
 	}
 
-	public function cadastros(){
-		$this->load->view('cliente/home_cadastros');
-	}
-
 	public function cadastro_cliente(){
 		$this->load->view('cliente/cadastrar_cliente');
 	}
@@ -114,12 +110,13 @@ class Cliente extends CI_Controller {
 	}
 	public function cadastrar_perfil(){
 		$info = $this->input->post();
+		//die(var_dump($info));
 		if(!$this->verifica_login($info['login'])){
 			$this->session->set_userdata('mensagem','=(');
 			$this->session->set_userdata('subtitulo_mensagem',$this->lang->line('login_existente'));
 			$this->session->set_userdata('tipo_mensagem', 'error');
 			$this->cadastro_perfil($this->session->userdata('id_cliente'));
-			return;
+			redirect('cliente/lista_perfis');
 		}else{
 			$perfil = $this->gera_perfil($info);
 			$id_perfil = $this->cliente_model->cadastrar_perfil($perfil);
@@ -135,7 +132,7 @@ class Cliente extends CI_Controller {
 			'nome' => $info['nome'],
 			'login' => $info['login'],
 			'senha' => md5($info['senha']),
-			'idCliente' => $this->session->userdata('id_cliente')
+			'idCliente' => $info['id']
 		);
 	}
 	public function verifica_login($login){
@@ -144,7 +141,45 @@ class Cliente extends CI_Controller {
 	public function atualiza_perfil_admin($id_cliente,$id_perfil){
 		$dados['perfil'] = $this->cliente_model->buscar_perfil($id_cliente,$id_perfil);
 		$dados['funcionalidades'] = $this->cliente_model->funcionalidades();
+		$minhasfuncionalidades = $this->cliente_model->minhas_funcionalidades($id_perfil);
+		$myresult = NULL;
+		foreach($dados['funcionalidades'] as $key => $func){
+			if(in_array($func,$minhasfuncionalidades)){
+				$myresult[] = $func;
+				$dados['funcionalidades'][$key]->checked = TRUE;
+			}
+			else{
+				$dados['funcionalidades'][$key]->checked = FALSE;
+			}
+		}
+		//die(var_dump($myresult,$dados['funcionalidades']));
 		$this->load->view('cliente/atualizar_perfil',$dados);
+	}
+	public function atualizar_perfil_admin(){
+		//die(var_dump("falhou o teste"));
+		$info = $this->input->post();
+		$myfunc = $this->cliente_model->minhas_funcionalidades($info['id_usuario']);
+		foreach($myfunc as $key => $dado){
+			$myfunc[$key] = $dado->idFuncionalidades;
+		}
+		$newfunc = $info['func'];
+		$intersect = array_intersect($myfunc,$newfunc);
+		$deletefunc = array_diff($myfunc,$intersect);
+		$createfunc = array_diff($newfunc,$intersect);
+		$perfil = $this->gera_perfil_atualizacao($info);
+		$this->cliente_model->atualizar_peril($perfil,$createfunc,$deletefunc);
+
+		$this->session->set_userdata('mensagem', '=)');
+		$this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
+		$this->session->set_userdata('tipo_mensagem', 'success');
+		redirect('cliente/lista_perfis');
+	}
+	public function gera_perfil_atualizacao($info){
+		return array(
+			'nome' => $info['nome'],
+			'login' => $info['login'],
+			'idUsuario' => $info['id_usuario']
+		);
 	}
 	public function excluir_perfil($id_perfil,$id_cliente){
 		$this->cliente_model->excluir_perfil($id_perfil);

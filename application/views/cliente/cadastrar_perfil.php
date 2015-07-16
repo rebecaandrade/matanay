@@ -60,8 +60,10 @@
 							} ?>
 						</div>
 					</div>
-					<input type='hidden' name='id' value=<?php echo $id_cliente ?>/>
+					<input type='hidden' name='id' value="<?= $id_cliente ?>"/>
 					<input type="hidden" name="passMessageDisplay" value="<?= $this->lang->line('password_error') ?>">
+					<input type="hidden" name="checkBoxMessageDisplay" value="<?=$this->lang->line('checkbox_erro')?>">
+					<input type="hidden" name="nomeMessageDisplay" value="<?= $this->lang->line('nome_invalido') ?>">
 					<button class="btn waves-effect waves-light col s12 m10 offset-m1 l8 offset-l2"
 							type="submit"><?php echo $this->lang->line('cadastrar'); ?>
 						<i class="mdi-content-send right"></i>

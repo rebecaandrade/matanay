@@ -154,6 +154,9 @@ class Favorecido extends CI_Controller
         //$this->form_validation->set_rules('identificacao', 'identificacao', 'required|max_length[45]');
         $this->form_validation->set_rules('telefone1', 'telefone1', 'required|max_length[45]');
         $this->form_validation->set_rules('telefone2', 'telefone2', 'required|max_length[45]');
+        $this->form_validation->set_rules('banco', 'banco', 'required|max_length[45]');
+        $this->form_validation->set_rules('contacorrente', 'conta', 'required|max_length[45]');
+        $this->form_validation->set_rules('agencia', 'agencia', 'required|max_length[45]');
         // passa a validacao dos campos e caso esteja tudo OK ele entra no IF
         if ($this->form_validation->run()) {
             $info = $this->input->post();
@@ -163,7 +166,7 @@ class Favorecido extends CI_Controller
                     if ($this->validar_cpf($info['cpf_cnpj']) == FALSE) {
                         //caso nao seja um cpf valido, é gerada uma mensagem de erro na tela
                         $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
-                        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf/cnpj_invalido'));
+                        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf_invalido'));
                         $this->session->set_userdata('tipo_mensagem', 'error');
                         redirect('Favorecido/mostrar_cadastro');
                     } else {
@@ -175,7 +178,7 @@ class Favorecido extends CI_Controller
                     //faz a validacao do CNPJ
                     if ($this->validar_cpnj($info['cpf_cnpj']) == FALSE) {
                         $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
-                        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf/cnpj_invalido'));
+                        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cnpj_invalido'));
                         $this->session->set_userdata('tipo_mensagem', 'error');
                         redirect('Favorecido/mostrar_cadastro');
                     } else {
@@ -191,6 +194,7 @@ class Favorecido extends CI_Controller
     public function listar()
     {
         $dados["favorecidos"] = $this->Favorecido_model->buscar_favorecido();
+        $dados["entidades"] = $this->Entidade_model->buscar_entidades();
         $this->load->view("Favorecido/listar_favorecido_view", $dados);
     }
 
@@ -212,69 +216,68 @@ class Favorecido extends CI_Controller
         if ($this->input->post('oneInput') != null) {
             $id = $this->input->post('oneInput');
         } else if ($id == -1)
-            redirect('favorecidos/listar');
-        $dados['dadosentidade'] = $this->Entidade_model->buscar_entidade_especifica($id);
-        $dados["dadosfavorecido"] = $this->Favorecido_model->buscar_favorecido();
+            redirect('favorecido/listar');
+        $dados["dadosfavorecido"] = $this->Favorecido_model->buscar_favorecido_especifico($id);
+        $dados["dadospercentual"] = $this->Favorecido_model->buscar_favorecido_has_tipo_especifico($id);
         $rowtelefone = 0;
-        $dados['telefone1'] = $this->Entidade_model->buscar_telefone_especifico($id, $rowtelefone);
+        $dados['telefone1'] = $this->Favorecido_model->buscar_telefone_especifico($id, $rowtelefone);
         $rowtelefone = 1;
-        $dados['telefone2'] = $this->Entidade_model->buscar_telefone_especifico($id, $rowtelefone);
-        $dados_auxiliar = $this->Entidade_model->buscar_entidade_especifica($id);//utilizado para passar o idTipo_entidade para a busca de identificacao na tabela tipo_entidade
-        $dados['dadosidentificacao'] = $this->Entidade_model->buscar_identificacao_especifica($dados_auxiliar->idTipo_Entidade);
-        die(var_dump($dados_auxiliar));
+        $dados['telefone2'] = $this->Favorecido_model->buscar_telefone_especifico($id, $rowtelefone);
+        $dados['dadosidentificacao'] = $this->Favorecido_model->buscar_identificacao_especifica($id);
+        //die(var_dump($dados));
         $this->load->view('Favorecido/editar_favorecido_view', $dados);
 
     }
 
     public function valida_atualizacao_favorecido()
     {
-        $this->form_validation->set_rules('nome', 'nome', 'required|max_length[45]');
-        $this->form_validation->set_rules('cpf_cnpj', 'cpf_cnpj', 'required|max_length[18]|min_length[11]');
-        $this->form_validation->set_rules('telefone1', 'telefone1', 'required|max_length[45]');
-        $this->form_validation->set_rules('telefone2', 'telefone2', 'required|max_length[45]');
+        //define as regras de validacao do formulario
+        $this->form_validation->set_rules('nome', 'nomeentidade', 'required|max_length[45]');
+        $aux=$this->input->post();
+        if($aux["cpf/cnpj"]=="cpf")
+            $this->form_validation->set_rules('cpf', 'cpf', 'required|max_length[18]|min_length[11]');
+        else
+            $this->form_validation->set_rules('cnpj', 'cnpj', 'required|max_length[18]|min_length[11]');
         $this->form_validation->set_rules('contato', 'contato', 'required|max_length[45]');
         $this->form_validation->set_rules('email', 'email', 'required|max_length[45]|valid_email');
-        $this->form_validation->set_rules('percentual_fisico', 'percentual_fisico', 'required|max_length[45]');
-        $this->form_validation->set_rules('percentual_digital', 'percentual_digital', 'required|max_length[45]');
-        $this->form_validation->set_rules('relacao_favorecido', 'relacao_favorecido', 'required|max_length[45]');
-        $this->form_validation->set_rules('identificacao', 'identificacao', 'required|max_length[45]');
-        $info = $this->input->post();
-
+        $this->form_validation->set_rules('banco', 'banco', 'required|max_length[45]');
+        $this->form_validation->set_rules('conta', 'conta', 'required|max_length[45]');
+        $this->form_validation->set_rules('agencia', 'agencia', 'required|max_length[45]');
+        $this->form_validation->set_rules('percentual_digital', 'porcentagemganhodigital', 'required|max_length[45]');
+        $this->form_validation->set_rules('percentual_fisico', 'porcentagemganhofisico', 'required|max_length[45]');
+        //$this->form_validation->set_rules('identificacao', 'identificacao', 'required|max_length[45]');
+        $this->form_validation->set_rules('telefone1', 'telefone1', 'required|max_length[45]');
+        $this->form_validation->set_rules('telefone2', 'telefone2', 'required|max_length[45]');
+        // passa a validacao dos campos e caso esteja tudo OK ele entra no IF
         if ($this->form_validation->run()) {
-            if (isset($info['cpf'])) {
-                // faz a validacao do CPF
-                if ($this->validar_cpf($info['cpf_cnpj']) == FALSE) {
-                    //caso nao seja um cpf valido, é gerada uma mensagem de erro na tela
-                    $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
-                    $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf/cnpj_invalido'));
-                    $this->session->set_userdata('tipo_mensagem', 'error');
-                    redirect('Favorecido/mostrar_cadastro');
-                } else {
-                    $info['cpf'] = $info['cpf_cnpj'];
-                    $info['cnpj'] = NULL;
-                }
-
-            } else {
-                //faz a validacao do CNPJ
-                if ($this->validar_cpnj($info['cpf_cnpj']) == FALSE) {
-                    $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
-                    $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf/cnpj_invalido'));
-                    $this->session->set_userdata('tipo_mensagem', 'error');
-                    redirect('Favorecido/mostrar_cadastro');
-                } else {
-                    $info['cpf'] = NULL;
-                    $info['cnpj'] = $info['cpf_cnpj'];
-                }
+            $info = $this->input->post();
+            switch ($info['cpf/cnpj']) {
+                case 'cpf':
+                    // faz a validacao do CPF
+                    if ($this->validar_cpf($info['cpf']) == FALSE) {
+                        //caso nao seja um cpf valido, é gerada uma mensagem de erro na tela
+                        $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
+                        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf_invalido'));
+                        $this->session->set_userdata('tipo_mensagem', 'error');
+                        redirect('Favorecido/listar');
+                    } else {
+                        $info['cnpj'] = NULL;
+                    }
+                    break;
+                case 'cpnj':
+                    //faz a validacao do CNPJ
+                    if ($this->validar_cpnj($info['cnpj']) == FALSE) {
+                        $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
+                        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cnpj_invalido'));
+                        $this->session->set_userdata('tipo_mensagem', 'error');
+                        redirect('Favorecido/listar');
+                    } else {
+                        $info['cpf'] = NULL;
+                    }
+                    break;
             }
             return $info;
-        } else {
-            //caso haja problema com o formulario é mostrada uma mensagem de erro
-            $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
-            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('campos_incorretos'));
-            $this->session->set_userdata('tipo_mensagem', 'error');
-            //$this->camposatualizacao($info['i'])
-            die;
-        }
+        } else return NULL;
     }
 
     public function atualizar()
@@ -283,18 +286,25 @@ class Favorecido extends CI_Controller
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
         if (($info = $this->valida_atualizacao_favorecido()) != NULL) {
-
-            $entidade = $this->gera_atualizacao_favorecido($info);
-            //die(var_dump($entidade));
-            $this->Entidade_model->atualizar_entidade($entidade);
+            $favorecido = $this->gera_atualizacao_favorecido($info);
+            $tipofavorecido = $this->gera_atualizacao_favorecido_has_tipo($info);
+            $idTipo_FavorecidoAntigo = $info["idTipo_Favorecido"];
+            $this->Favorecido_model->atualizar_favorecido($favorecido);
+            $this->Favorecido_model->atualizar_favorecido_has_tipo($tipofavorecido, $idTipo_FavorecidoAntigo);
             $telefone1 = $this->gera_atualizacao_telefone($info['idtelefone1'], $info['telefone1']);
-            $this->Entidade_model->atualizar_telefone($telefone1);//coloca os telefones
+            $this->Favorecido_model->atualizar_telefone($telefone1);//coloca os telefones
             $telefone2 = $this->gera_atualizacao_telefone($info['idtelefone2'], $info['telefone2']);
-            $this->Entidade_model->atualizar_telefone($telefone2);
+            $this->Favorecido_model->atualizar_telefone($telefone2);
             $this->session->set_userdata('mensagem', '=)');
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
             $this->listar();
+        }else{
+            // caso haja algum problema inesperado, é mostrada uma mensagem de erro
+            $this->session->set_userdata('mensagem', '=`(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            redirect('Favorecido/listar');        
         }
     }
 
@@ -302,15 +312,28 @@ class Favorecido extends CI_Controller
     {
         return array(
             'idFavorecido' => $info['idFavorecido'],
-            'nome' => $info['nome'],
-            'cpf' => $info['cpf'],
-            'cnpj' => $info['cnpj'],
-            'contato' => $info['contato'],
-            'email' => $info['email'],
-            'percentual_digital' => $info['percentual_digital'],
+            'nome'     => $info['nome'],
+            'banco'    => $info['banco'],
+            'agencia'  => $info['agencia'],
+            'conta'    => $info['conta'],
+            'cpf'      => $info['cpf'],
+            'cnpj'     => $info['cnpj'],
+            'contato'  => $info['contato'],
+            'email'    => $info['email'],
+            'excluido' => null,
+        );
+    }
+
+
+
+    public function gera_atualizacao_favorecido_has_tipo($info)
+    {
+        return array(
+            'idFavorecido' => $info['idFavorecido'],
+            'idTipo_Favorecido' => $info['identificacao'][0],
             'percentual_fisico' => $info['percentual_fisico'],
-            'idTipo_Favorecido' => $info['identificacao'],
-            'idFavorecido' => $info['relacao_favorecido']
+            'percentual_digital' => $info['percentual_digital'],
+            'excluido' => null, 
         );
     }
 
@@ -321,7 +344,6 @@ class Favorecido extends CI_Controller
             'numero' => $numero,
         );
     }
-
     public function validar_cpf($cpf)
     {
         // Verifiva se o número digitado contém todos os digitos
