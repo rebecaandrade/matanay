@@ -180,7 +180,7 @@
     <div id="sub_menu2" class="nav-wrapper container">
         <ul class="right hide-on-med-and-down">
             <li>
-                <a href="#">MODELOS</a>
+                <a href="<?php echo base_url(); ?>index.php/modelo_relatorio/listar_modelos">MODELOS</a>
             </li>
             <li>
                 <a href="#">IMPORTAR</a>
