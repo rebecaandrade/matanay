@@ -18,7 +18,7 @@ $this->load->view('_include/header') ?>
             <input type="hidden" name='idTipo_Entidade' value="<?= $dadosidentificacao->idTipo_Entidade; ?>"/>
             <input type="hidden" name='idCliente' value="<?= $dadosentidade->idCliente; ?>"/>
             <?php if ($dadosentidade->cpf == null) {
-                $nome = "cnjp";
+                $nome = "cnpj";
                 $value = $dadosentidade->cnpj;
                 $class = "cnpjCadastreInput";
                 $pattern = ".{18,}"; ?> <!--informacao que nos diz se o proprietario tem cpf ou cnpj-->

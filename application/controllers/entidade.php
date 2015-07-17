@@ -351,8 +351,7 @@ class Entidade extends CI_Controller
         // passa a validacao dos campos e caso esteja tudo OK ele entra no IF
         if ($this->form_validation->run()) {
             $info = $this->input->post();
-            var_dump($info);
-            die;
+
             switch ($info['isCpf']) {
                 case '1':
                     // faz a validacao do CPF
@@ -363,7 +362,6 @@ class Entidade extends CI_Controller
                         $this->session->set_userdata('tipo_mensagem', 'error');
                         redirect('Entidade/listar');
                     } else {
-                        var_dump("passei na validadacao do cpf");
                         $info['cnpj'] = NULL;
                     }
                     $info['cnpj'] = NULL;
@@ -376,16 +374,15 @@ class Entidade extends CI_Controller
                         $this->session->set_userdata('tipo_mensagem', 'error');
                         redirect('Entidade/listar');
                     } else {
-                        var_dump("passei na validadacao do cpf");
                         $info['cpf'] = NULL;
                     }
                     $info['cpf'] = NULL;
                     break;
                 default:
                     var_dump("nao entrei em validacoes");
+                    return NULL;
                     break;
             }
-            die(var_dump($info));
             return $info;
         } else {
             return NULL;
