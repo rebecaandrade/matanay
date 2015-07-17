@@ -11,14 +11,28 @@ $this->load->view('_include/header') ?>
         </div>
     </div><br>
     <div class="row">
-        <form id="myForm" action="<?=base_url().'index.php/Favorecido/atualizar'?>" method="post" >
-            <input type="hidden" name='idFavorecido' value="<?php echo $dadosfavorecido->idFavorecido; ?>"/>
+        <?php $nome = $value = $class = $pattern = NULL; ?>
+        <form id="myFormUpdate" onsubmit="return validaformupdateentidade()"
+              action="<?= base_url() . 'index.php/favorecido/atualizar' ?>" method="post">
+            <input type="hidden" name='idFavorecido' value="<?= $dadosfavorecido->idFavorecido; ?>"/>
             <input type="hidden" name='idTipo_Favorecido' value="<?= $dadosidentificacao->idTipo_Favorecido; ?>"/>
-            <?php if($dadosfavorecido->cpf==null) { ?> <!--informacao que nos diz se o proprietario tem cpf ou cnpj-->
-                <input id="cnpjCadastre" type="hidden" name='cpf/cnpj' value="cnpj"/>
-            <?php }if($dadosfavorecido->cnpj==null) { ?>
-                <input type="hidden" name='cpf/cnpj' value="cpf"/>    
-            <?php } ?>        
+            <?php if ($dadosfavorecido->cpf == null) {
+                $nome = "cnpj";
+                $value = $dadosfavorecido->cnpj;
+                $class = "cnpjCadastreInput";
+                $pattern = ".{18,}"; ?> <!--informacao que nos diz se o proprietario tem cpf ou cnpj-->
+                <input type="hidden" name='cpf/cnpj' value="cnpj"/>
+                <input type="hidden" name='isCpf' value="0"/>
+            <?php }
+
+            if ($dadosfavorecido->cnpj == null) {
+                $nome = "cpf";
+                $value = $dadosfavorecido->cpf;
+                $class = "cpfCadastreInput";
+                $pattern = ".{14,}"; ?>
+                <input type="hidden" name='cpf/cnpj' value="cpf"/>
+                <input type="hidden" name='isCpf' value="1"/>
+            <?php } ?>
             <input type="hidden" name='idtelefone1' value="<?= $telefone1->idTelefone_Favorecido; ?>"/>
             <input type="hidden" name='idtelefone2' value="<?= $telefone2->idTelefone_Favorecido; ?>"/>
 
@@ -32,9 +46,10 @@ $this->load->view('_include/header') ?>
             <div class="row">
                 <div class="input-field col s12 m12 l8 offset-l2">
                     <label><?= $this->lang->line('cpf_cnpj'); ?></label>
-                    <input  id="cpf/cnpjUpdate" <?php if($dadosfavorecido->cpf==null){ echo "value='".$dadosfavorecido->cnpj."' class='cnpjCadastreInput' name='cnpj' pattern='.{18,}' ";}else{echo "value='".$dadosfavorecido->cpf."' class='cpfCadastreInput' 'name='cpf' pattern='.{14,}' ";} ?> required type="text"/>
-                    </div>
+                    <input id="cpf_cnpjUpdate" name="<?= $nome ?>" value="<?= $value ?>" class="<?= $class ?>"
+                           pattern="<?= $pattern ?>" required type="text"/>
                 </div>
+            </div>
             <div class="row">
                 <div class="input-field col s12 m6 l4 offset-l2">
                     <label><?php echo $this->lang->line('telefone'); ?></label>
