@@ -9,10 +9,10 @@
 			</div>
 		</div><br>
 		<div class="row">
-			<?php echo form_open('modelo_relatorio/cadastrar_modelo') ?>
+			<?php echo form_open('modelo_relatorio/editar_modelo/'.$modelo->idModelo) ?>
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
-						<input type='text' name='nome' value="<?php echo set_value('nome'); ?>">
+						<input type='text' name='nome' value="<?php echo $modelo->nome; ?>">
 						<label><?php echo $this->lang->line('nome'); ?></label>
 					</div>
 				</div>
@@ -22,7 +22,7 @@
 						<option disabled select ><?php echo $this->lang->line('escolha_opcao'); ?></option>
 						<?php foreach ($tipos as $tipo) { ?>
 							<option value="<?php echo $tipo->idTipo_Modelo ?>" 
-							<?php if (set_value('tipo',0) == $tipo->idTipo_Modelo) {
+							<?php if ($modelo->idTipo_Modelo == $tipo->idTipo_Modelo) {
 								echo 'selected';
 							} ?>
 							><?php echo $tipo->descricao ?></option>
@@ -37,7 +37,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='isrc'>
-						<option value="<?php echo set_value('isrc', ""); ?>" ><?php echo set_value('isrc', ""); ?></option>
+						<option value="<?php echo $modelo->isrc; ?>" ><?php echo $modelo->isrc; ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -48,7 +48,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='upc'>
-						<option value="<?php echo set_value('upc', ""); ?>" ><?php echo set_value('upc', ""); ?></option>
+						<option value="<?php echo $modelo->upc; ?>" ><?php echo $modelo->upc; ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -59,7 +59,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='qnt_vendida'>
-						<option value="<?php echo set_value('qnt_vendida', ""); ?>" ><?php echo set_value('qnt_vendida', ""); ?></option>
+						<option value="<?php echo $modelo->qnt_vendida; ?>" ><?php echo $modelo->qnt_vendida; ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -70,7 +70,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='valor_recebido'>
-						<option value="<?php echo set_value('valor_recebido', ""); ?>" ><?php echo set_value('valor_recebido', ""); ?></option>
+						<option value="<?php echo $modelo->valor_recebido; ?>" ><?php echo $modelo->valor_recebido; ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -81,7 +81,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='loja'>
-						<option value="<?php echo set_value('loja', ""); ?>" ><?php echo set_value('loja', ""); ?></option>
+						<option value="<?php echo $modelo->loja; ?>" ><?php echo $modelo->loja; ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -92,7 +92,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='subloja'>
-						<option value="<?php echo set_value('subloja', ""); ?>" ><?php echo set_value('subloja', ""); ?></option>
+						<option value="<?php echo $modelo->subloja; ?>" ><?php echo $modelo->subloja; ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -103,7 +103,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='territorio'>
-						<option value="<?php echo set_value('territorio', ""); ?>" ><?php echo set_value('territorio', ""); ?></option>
+						<option value="<?php echo $modelo->territorio; ?>" ><?php echo $modelo->territorio; ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -114,7 +114,7 @@
 				<div class="row">
 					<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
 						<select name='moeda'>
-						<option value="<?php echo set_value('moeda', ""); ?>" ><?php echo set_value('moeda', ""); ?></option>
+						<option value="<?php echo $modelo->moeda; ?>" ><?php echo $modelo->moeda; ?></option>
 						<?php foreach ($colunas as $coluna) { ?>
 							<option value="<?php echo $coluna ?>" ><?php echo $coluna ?></option>
 						<?php } ?>
@@ -122,7 +122,7 @@
 						<label><?php echo $this->lang->line('identificador_moeda'); ?></label>
 					</div>
 				</div>
-				<button class="btn waves-effect waves-light col s12 m10 offset-m1 l8 offset-l2" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
+				<button class="btn waves-effect waves-light col s12 m10 offset-m1 l8 offset-l2" type="submit"><?php echo $this->lang->line('editar'); ?>
 					<i class="mdi-content-send right"></i>
 				</button>
 			<?php echo form_close() ?>

@@ -26,4 +26,16 @@ class Modelo_relatorio_model extends CI_Model {
 		$this->db->join('tipo_modelo', 'tipo_modelo.idTipo_Modelo = modelo.idTipo_Modelo');
 		return $this->db->get()->result();
 	}
+	public function buscar_modelo($id){
+		$this->db->select("*");
+		$this->db->from('modelo');
+		$this->db->where('excluido',NULL);
+		$this->db->where('idModelo',$id);
+		$this->db->join('tipo_modelo', 'tipo_modelo.idTipo_Modelo = modelo.idTipo_Modelo');
+		return $this->db->get()->row();
+	}
+	public function editar_modelo($post,$id){
+		$this->db->where('idModelo',$id);
+		return $this->db->update('modelo',$post);
+	}
 }

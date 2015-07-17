@@ -29,7 +29,7 @@
 						<td><?php echo $modelo->nome;?></td>
 						<td><?php echo $modelo->descricao;?></td>
 						<td>
-							<a href="<?php echo base_url().'index.php/modelo_relatorio/editar_modelo?param='.$modelo->idModelo ?>"><?php echo $this->lang->line('editar'); ?></a> |
+							<a href="<?php echo base_url().'index.php/modelo_relatorio/edita_modelo?param='.$modelo->idModelo ?>"><?php echo $this->lang->line('editar'); ?></a> |
 							<a onclick="confirmar('<?php echo $this->lang->line('confirmar_deletar') ?>','<?php echo base_url().'index.php/modelo_relatorio/deletar_modelo?param='.$modelo->idModelo ?>','<?php echo $this->lang->line('sim')?>','<?php echo $this->lang->line('nao')?>')"><?php echo $this->lang->line('deletar'); ?></a>
 						</td>
 					</tr> 

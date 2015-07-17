@@ -68,6 +68,41 @@
 			}
 
 		}
+		public function edita_modelo(){
+			$id = $this->input->get('param');
+			$dados['tipos'] = $this->modelo_relatorio_model->buscar_tipos_modelo();
+			$dados['colunas'] = $this->colunas(100);
+			$dados['modelo'] = $this->modelo_relatorio_model->buscar_modelo($id);
+			$this->load->view('modelo_relatorio/editar_modelo',$dados);
+		}
+		public function editar_modelo($id){
+			$this->form_validation->set_message('required', $this->lang->line('form_error_required') );
+			$this->form_validation->set_message('max_length', $this->lang->line('form_error_max_length'));
+			$this->form_validation->set_message('tipo_modelo_valido', $this->lang->line('form_error_tipo_modelo_valido'));
+			$this->form_validation->set_message('alpha', $this->lang->line('form_error_modelo_relatorio_alpha'));
+			if($this->form_validation->run('modelo_relatorio')){
+				$post = $this->input->post();
+				$id_tipo = $post['tipo'];
+				unset($post['tipo']);
+				$post['idTipo_Modelo'] = $id_tipo;
+				$this->modelo_relatorio_model->editar_modelo($post,$id);
+				$mensagem = array(
+									'mensagem'				=> $this->lang->line('cadastro_sucesso'),
+									'tipo_mensagem' 		=> 'success'
+								);
+				$this->session->set_userdata($mensagem);
+				redirect('modelo_relatorio/listar_modelos');
+			}
+			else{
+				$mensagem = array(
+									'mensagem'				=> $this->lang->line('campos_invalidos'),
+									'subtitulo_mensagem'	=> validation_errors() ,
+									'tipo_mensagem' 		=> 'error'
+								);
+				$this->session->set_userdata($mensagem);
+				redirect('modelo_relatorio/edita_modelo?param='.$id);
+			}
+		}
 		///// helper
 		// by: Vitor Pontes
 		public function colunas($quant){
