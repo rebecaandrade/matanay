@@ -11,16 +11,29 @@ $this->load->view('_include/header') ?>
         </div>
     </div>
     <div class="row">
-
-        <form id="myFormUpdate" onsubmit="validaformupdateentidade()" action="<?= base_url() . 'index.php/entidade/atualizar' ?>" method="post">
+        <?php $nome = $value = $class = $pattern = NULL; ?>
+        <form id="myFormUpdate" onsubmit="return validaformupdateentidade()"
+              action="<?= base_url() . 'index.php/entidade/atualizar' ?>" method="post">
             <input type="hidden" name='idEntidade' value="<?= $dadosentidade->idEntidade; ?>"/>
             <input type="hidden" name='idTipo_Entidade' value="<?= $dadosidentificacao->idTipo_Entidade; ?>"/>
             <input type="hidden" name='idCliente' value="<?= $dadosentidade->idCliente; ?>"/>
-            <?php if($dadosentidade->cpf==null) { ?> <!--informacao que nos diz se o proprietario tem cpf ou cnpj-->
+            <?php if ($dadosentidade->cpf == null) {
+                $nome = "cnjp";
+                $value = $dadosentidade->cnpj;
+                $class = "cnpjCadastreInput";
+                $pattern = ".{18,}"; ?> <!--informacao que nos diz se o proprietario tem cpf ou cnpj-->
                 <input type="hidden" name='cpf/cnpj' value="cnpj"/>
-            <?php }if($dadosentidade->cnpj==null) { ?>
-                <input type="hidden" name='cpf/cnpj' value="cpf"/>    
-            <?php } ?>        
+                <input type="hidden" name='isCpf' value="0"/>
+            <?php }
+
+            if ($dadosentidade->cnpj == null) {
+                $nome = "cpf";
+                $value = $dadosentidade->cpf;
+                $class = "cpfCadastreInput";
+                $pattern = ".{14,}"; ?>
+                <input type="hidden" name='cpf/cnpj' value="cpf"/>
+                <input type="hidden" name='isCpf' value="1"/>
+            <?php } ?>
             <input type="hidden" name='idtelefone1' value="<?= $telefone1->idTelefone; ?>"/>
             <input type="hidden" name='idtelefone2' value="<?= $telefone2->idTelefone; ?>"/>
 
@@ -34,8 +47,9 @@ $this->load->view('_include/header') ?>
             <div class="row">
                 <div class="input-field col s12 m12 l8 offset-l2">
                     <label><?= $this->lang->line('cpf_cnpj'); ?></label>
-                    <input  id="cpf/cnpjUpdate" <?php if($dadosentidade->cpf==null){ echo "value='".$dadosentidade->cnpj."' class='cnpjCadastreInput' name='cnpj' pattern='.{18,}' ";}else{echo "value='".$dadosentidade->cpf."' class='cpfCadastreInput' 'name='cpf' pattern='.{14,}' ";} ?> required type="text"/>
-                    </div>
+                    <input id="cpf_cnpjUpdate" name="<?= $nome ?>" value="<?= $value ?>" class="<?= $class ?>"
+                           pattern="<?= $pattern ?>" required type="text"/>
+                </div>
             </div>
 
             <div class="row">
@@ -59,7 +73,8 @@ $this->load->view('_include/header') ?>
                 </div>
                 <div class="input-field col s12 m6 l4">
                     <label><?php echo $this->lang->line('email'); ?>:</label>
-                    <input class="cutAllSpace" value="<?php echo $dadosentidade->email; ?>" name="email" required type="email"/>
+                    <input class="cutAllSpace" value="<?php echo $dadosentidade->email; ?>" name="email" required
+                           type="email"/>
                 </div>
             </div>
             <div class="row">
@@ -72,7 +87,8 @@ $this->load->view('_include/header') ?>
                 <div class="input-field col s12 m6 l4">
                     <label><?php echo $this->lang->line('percentual_digital'); ?>:</label>
                     <input class="<?= $this->lang->line('classPercent') ?>"
-                           value="<?php echo $dadospercentual->percentual_digital; ?>" name="percentual_digital" required
+                           value="<?php echo $dadospercentual->percentual_digital; ?>" name="percentual_digital"
+                           required
                            type="text"/>
                 </div>
             </div>
@@ -80,18 +96,22 @@ $this->load->view('_include/header') ?>
                 <div class="col s12 m12 l8 offset-l2 IdEntityCheckBox">
                     <label><?php echo $this->lang->line('identificacao'); ?></label></label>
                     <p>
-                        <input type="checkbox" <?php if($dadosidentificacao->idTipo_Entidade==1) echo "checked"?> class="filled-in" id="checkArtist" name="identificacao[]" value=1>
+                        <input type="checkbox" <?php if ($dadosidentificacao->idTipo_Entidade == 1) echo "checked" ?>
+                               class="filled-in" id="checkArtist" name="identificacao[]" value=1>
                         <label for="checkArtist"><?php echo $this->lang->line('artista'); ?></label>
-                       
-                        <input type="checkbox" <?php if($dadosidentificacao->idTipo_Entidade==2) echo "checked"?> class="filled-in" id="checkAutor" name="identificacao[]" value=2>
+
+                        <input type="checkbox" <?php if ($dadosidentificacao->idTipo_Entidade == 2) echo "checked" ?>
+                               class="filled-in" id="checkAutor" name="identificacao[]" value=2>
                         <label for="checkAutor"><?php echo $this->lang->line('autor'); ?></label>
-                       
-                        <input type="checkbox" <?php if($dadosidentificacao->idTipo_Entidade==3) echo "checked"?> class="filled-in" id="checkProd" name="identificacao[]" value=3>
+
+                        <input type="checkbox" <?php if ($dadosidentificacao->idTipo_Entidade == 3) echo "checked" ?>
+                               class="filled-in" id="checkProd" name="identificacao[]" value=3>
                         <label for="checkProd"><?php echo $this->lang->line('produtor'); ?></label>
                     </p>
                 </div>
             </div>
             <br>
+
             <div id="nao_favorecido" class="row">
                 <div class="input-field col s12 m12 l8 offset-l2">
                     <select name="relacao_favorecido">

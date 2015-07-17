@@ -79,13 +79,13 @@
             <div class="row">
                 <div class="input-field col s12 m6 l4 offset-l2">
                     <label><?php echo $this->lang->line('percentual_fisico'); ?></label>
-                    <input pattern=".{2,}" required class="<?= $this->lang->line('classPercent') ?>" type="text"
+                    <input pattern=".{2,}" class="<?= $this->lang->line('classPercent') ?>" type="text"
                            value=""
                            name="porcentagemganhofisico">
                 </div>
                 <div class="input-field col s12 m6 l4">
                     <label><?php echo $this->lang->line('percentual_digital'); ?></label>
-                    <input pattern=".{2,}" required class="<?= $this->lang->line('classPercent') ?>" type="text"
+                    <input pattern=".{2,}" class="<?= $this->lang->line('classPercent') ?>" type="text"
                            value=""
                            name="porcentagemganhodigital">
                 </div>

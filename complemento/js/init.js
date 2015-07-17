@@ -49,6 +49,8 @@ $(document).ready(function () {
             $('input[name=banco]').prop("required", false);
             $('input[name=contacorrente]').prop("required", false);
             $('input[name=agencia]').prop("required", false);
+            $('input[name=porcentagemganhofisico]').prop("required", false);
+            $('input[name=porcentagemganhodigital]').prop("required", false);
             $("#favorecido").hide();
             $("#nao_favorecido").show();
         }
@@ -59,6 +61,8 @@ $(document).ready(function () {
             $('input[name=banco]').prop("pattern", ".{2,25}");
             $('input[name=contacorrente]').prop("pattern", ".{4,15}");
             $('input[name=agencia]').prop("pattern", ".{2,15}");
+            $('input[name=porcentagemganhofisico]').prop("required", true);
+            $('input[name=porcentagemganhodigital]').prop("required", true);
             $("#nao_favorecido").hide();
             $("#favorecido").show();
         }
@@ -269,15 +273,15 @@ function validaCpf(strCPF) {
     strCPF = strCPF.match(/\d/g).join("");
     //console.log(strCPF);
 
-    if ((strCPF == "00000000000")||
-        (strCPF == "11111111111")||
-        (strCPF == "22222222222")||
-        (strCPF == "33333333333")||
-        (strCPF == "44444444444")||
-        (strCPF == "55555555555")||
-        (strCPF == "66666666666")||
-        (strCPF == "77777777777")||
-        (strCPF == "88888888888")||
+    if ((strCPF == "00000000000") ||
+        (strCPF == "11111111111") ||
+        (strCPF == "22222222222") ||
+        (strCPF == "33333333333") ||
+        (strCPF == "44444444444") ||
+        (strCPF == "55555555555") ||
+        (strCPF == "66666666666") ||
+        (strCPF == "77777777777") ||
+        (strCPF == "88888888888") ||
         (strCPF == "99999999999")) return false;
 
     for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
@@ -297,10 +301,8 @@ function validaCpf(strCPF) {
 /* validacao cnpj */
 function validarCNPJ(cnpj) {
 
-    cnpj = cnpj.match(/\d/g).join("");
-
+    cnpj = cnpj.replace(/[^\d]+/g,'');
     if (cnpj == '') return false;
-
     if (cnpj.length != 14)
         return false;
 
@@ -314,9 +316,9 @@ function validarCNPJ(cnpj) {
         cnpj == "66666666666666" ||
         cnpj == "77777777777777" ||
         cnpj == "88888888888888" ||
-        cnpj == "99999999999999")
+        cnpj == "99999999999999") {
         return false;
-
+    }
     // Valida DVs
     tamanho = cnpj.length - 2
     numeros = cnpj.substring(0, tamanho);
@@ -346,7 +348,6 @@ function validarCNPJ(cnpj) {
         return false;
 
     return true;
-
 }
 /* validacao form cadastro perfil */
 $(document).ready(function () {
@@ -359,10 +360,10 @@ $(document).ready(function () {
         }
 
         var isChecked = 0;
-        $('.minhasFuncionalidades :checked').each(function(){
+        $('.minhasFuncionalidades :checked').each(function () {
             isChecked++
         });
-        if(!isChecked){
+        if (!isChecked) {
             mensagem += "*" + $('input[name=checkBoxMessageDisplay]').val() + "\n";
         }
 
@@ -408,7 +409,7 @@ $(document).ready(function () {
     });
     $('#updateMarkAllFunc').on("click", function () {
         $('.checkFunc :input[type=checkbox]').each(function () {
-            $(this).prop("checked",true);
+            $(this).prop("checked", true);
         });
     });
 });
@@ -475,7 +476,7 @@ $(document).ready(function () {
         if (artista < 0) {
             mensagem += "*" + $('input[name=msg_erro_artista]').val();
         }
-        
+
         if (mensagem.length > 3) {
             swal(mensagem, "", "error");
             return false;
@@ -498,7 +499,7 @@ $(document).ready(function () {
         if (autor < 0) {
             mensagem += "*" + $('input[name=msg_erro_autores]').val();
         }
-        
+
         if (mensagem.length > 3) {
             swal(mensagem, "", "error");
             return false;
@@ -940,29 +941,38 @@ $(document).ready(function () {
     });
 });
 
-function validaformupdateentidade(){
-    var cpf= $('#cpf/cnpjUpdate').val();
+function validaformupdateentidade() {
+    var cpf_cnpj = $('#cpf_cnpjUpdate').val();
+
     //var cnpj= $('input[name=cnpj]').val();
-    console.log(cpf);
-    return false;
-    var mensagem="";
-    if(cpf.length>3){
-        if (!validaCpf(cpf))
-            mensagem+="*"+$('input[name=cpfMessageDisplay]').val()+"\n";
-    }else{
-        if(!validarCNPJ(cnpj))
-            mensagem+="*"+$('input[name=cpfMessageDisplay]').val()+"\n";
+    var isCpf = $('input[name=isCpf]').val();
+    /*swal(cpf_cnpj+"\n"+isCpf);
+    return false;*/
+
+    var mensagem = "";
+    if (isCpf==1) {
+        $('input[name=cpf]').prop("value",cpf_cnpj);
+        if (!validaCpf(cpf_cnpj)) {
+            mensagem += "*" + $('input[name=cpfMessageDisplay]').val() + "\n";
+        }
+    } else {
+        $('input[name=cnpj]').prop("value",cpf_cnpj);
+        if (!validarCNPJ(cpf_cnpj)) {
+            mensagem += "*" + $('input[name=cpfMessageDisplay]').val() + "\n";
+        }
     }
     var identificacao = [];
-        $('.IdEntityCheckBox :checked').each(function () {
-            identificacao.push($(this).val());
-        });
-        if (identificacao.length < 1) {
-            mensagem += "*" + $('input[name=IdMessageDisplay]').val() + "\n";
-        }
+    $('.IdEntityCheckBox :checked').each(function () {
+        identificacao.push($(this).val());
+    });
+    if (identificacao.length < 1) {
+        mensagem += "*" + $('input[name=IdMessageDisplay]').val() + "\n";
+    }
     console.log(identificacao);
-    if(mensagem.length>2){
-        swal(mensagem, "","error");
+    if (mensagem.length > 3) {
+        swal(mensagem, "", "error");
         return false;
+    } else {
+        return true;
     }
 }

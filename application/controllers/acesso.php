@@ -49,7 +49,8 @@ class Acesso extends CI_Controller {
 				'id_usuario' => $usuario->idUsuario,
 				'nome' => $usuario->nome,
 				'login' => $usuario->login,
-				'id_cliente' => $usuario->idCliente
+				'id_cliente' => $usuario->idCliente,
+				'cliente_id' => $usuario->idCliente
 			);
 			$this->session->set_userdata($newdata);
 

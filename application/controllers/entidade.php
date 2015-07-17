@@ -119,7 +119,7 @@ class Entidade extends CI_Controller
                 $this->Favorecido_model->cadastrar_telefone($telefone);//coloca os telefones
                 $telefone = $telefone = $this->gera_telefone1($id_favorecido, $info['telefone2']);
                 $this->Favorecido_model->cadastrar_telefone($telefone);
-                $has_tipo_favorecido = $this->gera_favorecido_has_tipo_favorecido($info,$id_favorecido);
+                $has_tipo_favorecido = $this->gera_favorecido_has_tipo_favorecido($info, $id_favorecido);
                 $this->Favorecido_model->cadastra_fav_has_tipo_fav($has_tipo_favorecido);
 
                 $info['favorecido_relacionado'] = $id_favorecido;
@@ -198,8 +198,14 @@ class Entidade extends CI_Controller
 
     public function gera_entidade_has_tipo_entidade($info, $id_ent)
     {
-        $porcFis = str_replace(",", ".", $info['porcentagemganhofisico']);
-        $porDig = str_replace(",", ".", $info['porcentagemganhodigital']);
+        if (isset($info['porcentagemganhodigital'])) {
+            $porDig = str_replace(",", ".", $info['porcentagemganhodigital']);
+        } else {
+            $porDig = 0;
+        }
+        if (isset($info['porcentagemganhofisico'])) {
+            $porcFis = str_replace(",", ".", $info['porcentagemganhofisico']);
+        }
         $arr = NULL;
         foreach ($info['identificacao'] as $id) {
             $arr[] = array(
@@ -212,6 +218,7 @@ class Entidade extends CI_Controller
         //die(var_dump($arr));
         return $arr;
     }
+
     public function gera_favorecido_has_tipo_favorecido($info, $id_fav)
     {
         $porcFis = str_replace(",", ".", $info['porcentagemganhofisico']);
@@ -252,8 +259,6 @@ class Entidade extends CI_Controller
         $this->form_validation->set_rules('cpf_cnpj', 'cpf_cnpj', 'required|max_length[18]|min_length[11]');
         $this->form_validation->set_rules('contato', 'contato', 'required|max_length[45]');
         $this->form_validation->set_rules('email', 'email', 'required|max_length[45]|valid_email');
-        $this->form_validation->set_rules('porcentagemganhodigital', 'porcentagemganhodigital', 'required|max_length[45]');
-        $this->form_validation->set_rules('porcentagemganhofisico', 'porcentagemganhofisico', 'required|max_length[45]');
         $this->form_validation->set_rules('favorecido', 'favorecido', 'required|max_length[45]');
         //$this->form_validation->set_rules('identificacao', 'identificacao', 'required|max_length[45]');
         $this->form_validation->set_rules('telefone1', 'telefone1', 'required|max_length[45]');
@@ -336,11 +341,6 @@ class Entidade extends CI_Controller
     {
         //define as regras de validacao do formulario
         $this->form_validation->set_rules('nome', 'nomeentidade', 'required|max_length[45]');
-        $aux=$this->input->post();
-        if($aux["cpf/cnpj"]=="cpf")
-            $this->form_validation->set_rules('cpf', 'cpf', 'required|max_length[18]|min_length[11]');
-        else
-            $this->form_validation->set_rules('cnpj', 'cnpj', 'required|max_length[18]|min_length[11]');
         $this->form_validation->set_rules('contato', 'contato', 'required|max_length[45]');
         $this->form_validation->set_rules('email', 'email', 'required|max_length[45]|valid_email');
         $this->form_validation->set_rules('percentual_digital', 'porcentagemganhodigital', 'required|max_length[45]');
@@ -351,8 +351,10 @@ class Entidade extends CI_Controller
         // passa a validacao dos campos e caso esteja tudo OK ele entra no IF
         if ($this->form_validation->run()) {
             $info = $this->input->post();
-            switch ($info['cpf/cnpj']) {
-                case 'cpf':
+            var_dump($info);
+            die;
+            switch ($info['isCpf']) {
+                case '1':
                     // faz a validacao do CPF
                     if ($this->validar_cpf($info['cpf']) == FALSE) {
                         //caso nao seja um cpf valido, é gerada uma mensagem de erro na tela
@@ -361,10 +363,12 @@ class Entidade extends CI_Controller
                         $this->session->set_userdata('tipo_mensagem', 'error');
                         redirect('Entidade/listar');
                     } else {
+                        var_dump("passei na validadacao do cpf");
                         $info['cnpj'] = NULL;
                     }
+                    $info['cnpj'] = NULL;
                     break;
-                case 'cpnj':
+                case '0':
                     //faz a validacao do CNPJ
                     if ($this->validar_cpnj($info['cnpj']) == FALSE) {
                         $this->session->set_userdata('mensagem', $this->lang->line('problemas_formulario'));
@@ -372,27 +376,35 @@ class Entidade extends CI_Controller
                         $this->session->set_userdata('tipo_mensagem', 'error');
                         redirect('Entidade/listar');
                     } else {
+                        var_dump("passei na validadacao do cpf");
                         $info['cpf'] = NULL;
                     }
+                    $info['cpf'] = NULL;
+                    break;
+                default:
+                    var_dump("nao entrei em validacoes");
                     break;
             }
+            die(var_dump($info));
             return $info;
-        } else return NULL;
+        } else {
+            return NULL;
+        }
     }
 
     public function atualizar()
     {
-
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
+        //die(var_dump($this->input->post()));
         if (($info = $this->valida_atualizacao_entidade()) != NULL) {
-            if($info['idCliente']=="")
-                $info['idCliente']=null;
+            if ($info['idCliente'] == "") {
+                $info['idCliente'] = null;
+            }
             $entidade = $this->gera_atualizacao_entidade($info);
             $tipoentidade = $this->gera_atualizacao_entidade_has_tipo($info);
             $idTipo_EntidadeAntigo = $info["idTipo_Entidade"];
-            //die(var_dump($entidade));
             $this->Entidade_model->atualizar_entidade($entidade);
             $this->Entidade_model->atualizar_entidade_has_tipo($tipoentidade, $idTipo_EntidadeAntigo);
             $telefone1 = $this->gera_atualizacao_telefone($info['idtelefone1'], $info['telefone1']);
@@ -403,12 +415,12 @@ class Entidade extends CI_Controller
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
             redirect("Entidade/listar");
-        }else{
+        } else {
             // caso haja algum problema inesperado, é mostrada uma mensagem de erro
             $this->session->set_userdata('mensagem', '=`(');
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
             $this->session->set_userdata('tipo_mensagem', 'error');
-            redirect('Entidade/listar');        
+            redirect('Entidade/listar');
         }
     }
 
@@ -423,7 +435,7 @@ class Entidade extends CI_Controller
             'email' => $info['email'],
             'idFavorecido' => $info['relacao_favorecido'],
             'excluido' => null,
-            'idCliente' => $info['idCliente'],
+            'idCliente' => $info['idCliente']
         );
     }
 
@@ -434,7 +446,7 @@ class Entidade extends CI_Controller
             'idTipo_Entidade' => $info['identificacao'][0],
             'percentual_fisico' => $info['percentual_fisico'],
             'percentual_digital' => $info['percentual_digital'],
-            'excluido' => null, 
+            'excluido' => null,
         );
     }
 
@@ -557,7 +569,7 @@ class Entidade extends CI_Controller
      */
 
     /******************** fucao de teste ************/
-    public function testeEntidad( $id_cliente = 0)
+    public function testeEntidad($id_cliente = 0)
     {
         /*$this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
@@ -568,11 +580,11 @@ class Entidade extends CI_Controller
         //esse envio ocorre para que se saiba os favorecidos cadastrados dentro da view de cadastro de entidades alem de saber o idioma
         //$this->load->view("Entidade/cadastro_entidade_view", $dados);*/
         //$this->load->view('cliente/cadastrar_perfil');
-        if($id_cliente){
+        if ($id_cliente) {
             $dados['id_cliente'] = $id_cliente;
             $dados['funcionalidades'] = $this->cliente_model->funcionalidades();
             $dados['antigos'] = $this->gera_form_perfil_antigo();
-            $this->load->view('viewTeste',$dados);
+            $this->load->view('viewTeste', $dados);
         } else {
             //mensagem de erro
             redirect('cliente/lista_perfis');
@@ -582,18 +594,22 @@ class Entidade extends CI_Controller
     public function testeEntidadeForm()
     {
         $info = $this->input->post();
-        if(!$this->verifica_login($info['login'])){
+        if (!$this->verifica_login($info['login'])) {
             $this->testeEntidad(1);
             return;
-        }else{
+        } else {
             //$id_usuario =
         }
     }
-    public function verifica_login($login){
+
+    public function verifica_login($login)
+    {
         return sizeof($this->cliente_model->buscar_login($login)) == 0;
     }
-    public function gera_form_perfil_antigo(){
-        $arr =  array(
+
+    public function gera_form_perfil_antigo()
+    {
+        $arr = array(
             'nome' => $this->input->post('nome'),
             'func' => $this->input->post('func')
         );
