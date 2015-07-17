@@ -301,6 +301,8 @@ $lang['erro_tipo']        		 = 'Select a Type ';
 $lang['erro_ano']        		 = 'Select a Date ';
 $lang['erro_artistas']    	     = 'Select at least an Artist ';
 $lang['erro_autores']    	     = 'Select at least an Author ';
+$lang['erro_perc_artista']    	 = 'The Artist percentage field(s) must sum to 100% ';
+$lang['erro_perc_autor']    	 = 'The Author percentage field(s) must sum to 100% ';
 
 // mensagens validacao form cadastro de perfil
 $lang['password_error']                        = "Passwords are not the same";

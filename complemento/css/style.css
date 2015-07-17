@@ -413,6 +413,14 @@ label {
     color: #777;
 }
 
+#markAllFunc {
+	margin-bottom: 1.5rem;
+}
+
+.funcionalidades {
+	margin-bottom: 1.5rem;
+}
+
 .tipoImposto {
 	top: -4.5rem;
 }

@@ -500,6 +500,26 @@ $(document).ready(function () {
             mensagem += "*" + $('input[name=msg_erro_autores]').val();
         }
 
+        var perc_artista = new Array();
+        $("input[name*=percentualArtista]").each(function() {
+            perc_artista.push($(this).val());
+        });
+        var perc_total = 0;
+        $.each(perc_artista,function(){perc_total+=parseFloat(this) || 0;});
+        if (perc_total != 100) {
+            mensagem += "*" + $('input[name=msg_perc_artista]').val();
+        }
+
+        var perc_autor = new Array();
+        $("input[name*=percentualAutor]").each(function() {
+            perc_autor.push($(this).val());
+        });
+        var perc_total = 0;
+        $.each(perc_autor,function(){perc_total+=parseFloat(this) || 0;});
+        if (perc_total != 100) {
+            mensagem += "*" + $('input[name=msg_perc_autor]').val();
+        }
+
         if (mensagem.length > 3) {
             swal(mensagem, "", "error");
             return false;

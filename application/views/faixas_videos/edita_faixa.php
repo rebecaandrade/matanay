@@ -10,7 +10,7 @@
         </div>
     </div><br>
     <div class="row">
-  	<?php echo form_open('faixas_videos/atualizar') ?>
+  	<form id="cadastro_faixa" action="<?= base_url() . 'index.php/faixas_videos/atualizar' ?>" method="post">
             <input type="hidden" name="idFaixa" value="<?php echo $faixa->idFaixa; ?>">
             <div class="row">
                 <div class="input-field col s11 m8 l8 offset-l1">
@@ -271,12 +271,15 @@
                 </div>
             </div>
 
+            <input type="hidden" name="msg_perc_artista" value="<?= $this->lang->line('erro_perc_artista') ?>">
+            <input type="hidden" name="msg_perc_autor" value="<?= $this->lang->line('erro_perc_autor') ?>">
+
             <button class="btn waves-effect waves-light col s12 m12 l8 offset-l1" type="submit"><?php echo $this->lang->line('atualizar'); ?>
                 <i class="mdi-content-send right"></i>
             </button>
     
         </div>
-    <?php echo form_close() ?>
+    </form>
 </div>
 
 <?php $this->load->view('_include/footer') ?>
