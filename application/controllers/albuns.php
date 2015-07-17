@@ -46,10 +46,14 @@ class Albuns extends CI_Controller {
         if($album['nome'] != NULL && $album['quantidade'] != NULL && $album['upc_ean'] != NULL && $album['ano'] != NULL && $album['idTipo_Album'] != NULL){
  			$this->albuns_model->cadastrar_album($album, $artista, $faixas);
             
-            $this->session->set_userdata('mensagem', $this->lang->line('cadastrado_sucesso'));
+            $this->session->set_userdata('mensagem', 'Album cadastrado com sucesso!');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'success');
             redirect('albuns/listar');       
         }else{
-            $this->session->set_userdata('mensagem', 'Houve algum problema no cadastro');
+            $this->session->set_userdata('mensagem', 'Problemas no cadastro');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'error');
             redirect('albuns/cadastra_album');
         }
 	}
@@ -144,7 +148,9 @@ class Albuns extends CI_Controller {
 
         if($dados['nome'] != NULL && $dados['ano'] != NULL){
             $this->albuns_model->atualizar_album($dados, $novo_artista, $prev_artista);
-            $this->session->set_userdata('mensagem', $this->lang->line('atualizado_sucesso'));
+            $this->session->set_userdata('mensagem', 'Album atualizado com sucesso!');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'success');
             redirect('albuns/listar');       
         }else{
             $id = $this->input->post('idAlbum');
@@ -155,7 +161,9 @@ class Albuns extends CI_Controller {
             $dados['tracklist'] = $this->albuns_model->buscar_tracklist($id);
             $dados['tipos'] = $this->albuns_model->buscar_tipos();
 
-            $this->session->set_userdata('mensagem', 'Houve algum problema na atualização.');
+            $this->session->set_userdata('mensagem', 'Problemas na atualização');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'error');
             $this->load->view('albuns/edita_album', $dados);
         }
     }

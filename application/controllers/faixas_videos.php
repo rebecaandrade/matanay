@@ -47,11 +47,15 @@ class Faixas_Videos extends CI_Controller {
         }
         elseif($faixa['nome'] != NULL && $artistas != NULL && $autores != NULL){
             $this->faixas_videos_model->cadastrar_faixa($faixa, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
-            $this->session->set_userdata('mensagem', $this->lang->line('cadastrado_sucesso'));
+            $this->session->set_userdata('mensagem', 'Faixa cadastrada com sucesso!');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'success');
             redirect('faixas_videos/listar');       
         }
         else{
-            $this->session->set_userdata('mensagem', 'Houve algum problema no cadastro.');
+            $this->session->set_userdata('mensagem', 'Problemas no cadastro.');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'error');
             redirect('faixas_videos/cadastra_faixa');
         }
 
@@ -132,11 +136,15 @@ class Faixas_Videos extends CI_Controller {
 
         if($dados['nome'] != NULL && $dados['isrc'] != NULL){
             $this->faixas_videos_model->atualizar_faixa($dados, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
-            $this->session->set_userdata('mensagem', $this->lang->line('atualizado_sucesso'));
+            $this->session->set_userdata('mensagem', 'Faixa atualizada com sucesso!');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'success');
             redirect('faixas_videos/listar');       
         }else{
             $id = $this->input->post('idFaixa');
-            $this->session->set_userdata('mensagem', 'Houve algum problema na atulização.');
+            $this->session->set_userdata('mensagem', 'Problemas na atualização');
+            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('tipo_mensagem', 'error');
             redirect('faixas_videos/listar');
         }
     }
