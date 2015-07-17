@@ -233,23 +233,35 @@ class Favorecido extends CI_Controller
     {
         //define as regras de validacao do formulario
         $this->form_validation->set_rules('nome', 'nomeentidade', 'required|max_length[45]');
+        var_dump($this->form_validation->run());
         $aux=$this->input->post();
-        if($aux["cpf/cnpj"]=="cpf")
+        if($aux["cpf/cnpj"]=="cpf"){
+            var_dump($aux);
             $this->form_validation->set_rules('cpf', 'cpf', 'required|max_length[18]|min_length[11]');
-        else
+        }else
             $this->form_validation->set_rules('cnpj', 'cnpj', 'required|max_length[18]|min_length[11]');
+        var_dump($this->form_validation->run());
         $this->form_validation->set_rules('contato', 'contato', 'required|max_length[45]');
+        var_dump($this->form_validation->run());
         $this->form_validation->set_rules('email', 'email', 'required|max_length[45]|valid_email');
+        var_dump($this->form_validation->run());
         $this->form_validation->set_rules('banco', 'banco', 'required|max_length[45]');
+        var_dump($this->form_validation->run());
         $this->form_validation->set_rules('conta', 'conta', 'required|max_length[45]');
+        var_dump($this->form_validation->run());
         $this->form_validation->set_rules('agencia', 'agencia', 'required|max_length[45]');
+        var_dump($this->form_validation->run());
         $this->form_validation->set_rules('percentual_digital', 'porcentagemganhodigital', 'required|max_length[45]');
+        var_dump($this->form_validation->run());
         $this->form_validation->set_rules('percentual_fisico', 'porcentagemganhofisico', 'required|max_length[45]');
+        var_dump($this->form_validation->run());
         //$this->form_validation->set_rules('identificacao', 'identificacao', 'required|max_length[45]');
         $this->form_validation->set_rules('telefone1', 'telefone1', 'required|max_length[45]');
+        var_dump($this->form_validation->run());
         $this->form_validation->set_rules('telefone2', 'telefone2', 'required|max_length[45]');
+        var_dump($this->form_validation->run());
         // passa a validacao dos campos e caso esteja tudo OK ele entra no IF
-        if ($this->form_validation->run()) {
+        die;if ($this->form_validation->run()) {
             $info = $this->input->post();
             switch ($info['cpf/cnpj']) {
                 case 'cpf':
@@ -298,7 +310,7 @@ class Favorecido extends CI_Controller
             $this->session->set_userdata('mensagem', '=)');
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
-            $this->listar();
+            redirect("Favorecido/listar");
         }else{
             // caso haja algum problema inesperado, é mostrada uma mensagem de erro
             $this->session->set_userdata('mensagem', '=`(');

@@ -402,7 +402,7 @@ class Entidade extends CI_Controller
             $this->session->set_userdata('mensagem', '=)');
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
-            $this->listar();
+            redirect("Entidade/listar");
         }else{
             // caso haja algum problema inesperado, é mostrada uma mensagem de erro
             $this->session->set_userdata('mensagem', '=`(');

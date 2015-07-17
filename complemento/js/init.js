@@ -218,6 +218,49 @@ $(document).ready(function () {
         }
     });
 });
+
+$(document).ready(function () {
+    $('#myForm1').on("submit", function () {
+        var $cpf = $('#cpfCadastreInput1').val();
+        var $cnpj = $('#cnpjCadastreInput1').val();
+        var $cpf_cnpj = null;
+        var mensagem = "";
+
+        var regx = /^[A-Za-z0-9\s]+$/;
+        var testeNome = $('input[name=nomeentidade]').val();
+        if (!regx.test(testeNome)) {
+            mensagem += "*" + $('input[name=nomeMessageDisplay]').val() + "\n";
+        }
+
+
+        if ($cpf.length > 1) {
+
+            $cpf_cnpj = $cpf;
+            if (!validaCpf($cpf_cnpj)) {
+                mensagem += "*" + $('input[name=cpfMessageDisplay]').val() + "\n";
+            }
+        } else {
+            $cpf_cnpj = $cnpj;
+            if (!validarCNPJ($cpf_cnpj)) {
+                mensagem += "*" + $('input[name=cpfMessageDisplay]').val() + "\n";
+            }
+        }
+        $('#cpf_cnpj').prop('value', $cpf_cnpj);
+
+        var identificacao = [];
+        $('.IdEntity :checked').each(function () {
+            identificacao.push($(this).val());
+        });
+        if (identificacao.length < 1) {
+            mensagem += "*" + $('input[name=IdMessageDisplay]').val() + "\n";
+        }
+        if (mensagem.length > 3) {
+            swal(mensagem, "", "error");
+            return false;
+        }
+    });
+});
+
 /* validacao do cpf */
 function validaCpf(strCPF) {
     var Soma;
@@ -226,7 +269,16 @@ function validaCpf(strCPF) {
     strCPF = strCPF.match(/\d/g).join("");
     //console.log(strCPF);
 
-    if (strCPF == "00000000000") return false;
+    if ((strCPF == "00000000000")||
+        (strCPF == "11111111111")||
+        (strCPF == "22222222222")||
+        (strCPF == "33333333333")||
+        (strCPF == "44444444444")||
+        (strCPF == "55555555555")||
+        (strCPF == "66666666666")||
+        (strCPF == "77777777777")||
+        (strCPF == "88888888888")||
+        (strCPF == "99999999999")) return false;
 
     for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
     Resto = (Soma * 10) % 11;
