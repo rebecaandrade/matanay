@@ -31,16 +31,12 @@ $this->load->view('_include/header') ?>
                     <input class="cutSpace" value="<?= $dadosentidade->nome; ?>" name="nome" required type="text"/>
                 </div>
             </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m12 l8 offset-l2">
-                        <label><?= $this->lang->line('cpf_cnpj'); ?></label>
-                        <input  id="cpf/cnpjUpdate" <?php if($dadosentidade->cpf==null){ echo "value='".$dadosentidade->cnpj."' name='cnpj' pattern='.{18,}' ";}else{echo "value='".$dadosentidade->cpf."' name='cpf' pattern='.{14,}' ";} ?> required type="text"/>
+            <div class="row">
+                <div class="input-field col s12 m12 l8 offset-l2">
+                    <label><?= $this->lang->line('cpf_cnpj'); ?></label>
+                    <input  id="cpf/cnpjUpdate" <?php if($dadosentidade->cpf==null){ echo "value='".$dadosentidade->cnpj."' class='cnpjCadastreInput' name='cnpj' pattern='.{18,}' ";}else{echo "value='".$dadosentidade->cpf."' class='cpfCadastreInput' 'name='cpf' pattern='.{14,}' ";} ?> required type="text"/>
                     </div>
-                </div>
-
-
-            <input id="cnpjUpdate" type="hidden" name="cpf_cnpj">
+            </div>
 
             <div class="row">
                 <div class="input-field col s12 m6 l4 offset-l2">
@@ -112,24 +108,6 @@ $this->load->view('_include/header') ?>
                     <label><?php echo $this->lang->line('favorecido_cadastrado'); ?></label>
                 </div>
             </div>
-            <!--<div class="row">
-                    <div class="input-field col s12 m12 l8 offset-l2">
-                        <label><?php echo $this->lang->line('banco'); ?>:</label>
-                        <input value="<?php echo $dadosfavorecido->banco; ?>" name="banco" required type="text"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12 m12 l8 offset-l2">
-                        <input value="<?php echo $dadosfavorecido->conta; ?>" name="conta" required type="text"/>
-                        <label><?php echo $this->lang->line('conta'); ?>:</label>
-                    </div>
-                </div>
-                <div class="row">
-                   <div class="input-field col s12 m12 l8 offset-l2">
-                        <label><?php echo $this->lang->line('agencia'); ?>:</label>
-                        <input value="<?php echo $dadosfavorecido->agencia; ?>" name="agencia" required type="text"/>
-                    </div>
-                </div>-->
             <input type="hidden" name="favoredMessageDisplay" value="<?= $this->lang->line('erro_favorecido') ?>">
             <input type="hidden" name="IdMessageDisplay" value="<?= $this->lang->line('erro_identificacao') ?>">
             <input type="hidden" name="cpfMessageDisplay" value="<?= $this->lang->line('cpf/cnpf_invalido') ?>">
