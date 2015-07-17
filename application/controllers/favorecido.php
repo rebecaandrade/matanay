@@ -286,9 +286,9 @@ class Favorecido extends CI_Controller
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
         if (($info = $this->valida_atualizacao_favorecido()) != NULL) {
-            if(!isset($info['cpf']))
+            if(isset($info['cpf']))
                 $info['cnpj']=null;
-            if(!isset($info['cnpj']))
+            if(isset($info['cnpj']))
                 $info['cpf']=null;
             $favorecido = $this->gera_atualizacao_favorecido($info);
             $tipofavorecido = $this->gera_atualizacao_favorecido_has_tipo($info);
