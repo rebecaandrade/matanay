@@ -35,7 +35,14 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Favorecido` (
   `contato` VARCHAR(45) NULL ,
   `email` VARCHAR(45) NULL ,
   `excluido` BIT NULL ,
-  PRIMARY KEY (`idFavorecido`) )
+  `idCliente` INT NOT NULL ,
+  PRIMARY KEY (`idFavorecido`) ,
+  INDEX `fk_Favorecido_Cliente1_idx` (`idCliente` ASC) ,
+  CONSTRAINT `fk_Favorecido_Cliente1`
+    FOREIGN KEY (`idCliente` )
+    REFERENCES `matanay`.`Cliente` (`idCliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -54,7 +61,7 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Entidade` (
   `favorecido` BIT NULL ,
   `idFavorecido` INT NOT NULL ,
   `excluido` BIT NULL ,
-  `idCliente` INT NULL ,
+  `idCliente` INT NOT NULL ,
   PRIMARY KEY (`idEntidade`) ,
   INDEX `fk_Entidade_Favorecido1_idx` (`idFavorecido` ASC) ,
   INDEX `fk_Entidade_Cliente1_idx` (`idCliente` ASC) ,
@@ -98,11 +105,18 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Album` (
   `codigo_catalogo` VARCHAR(45) NULL ,
   `idTipo_Album` INT NOT NULL ,
   `excluido` BIT NULL ,
+  `idCliente` INT NOT NULL ,
   PRIMARY KEY (`idAlbum`) ,
   INDEX `fk_Album_Tipo_Album1_idx` (`idTipo_Album` ASC) ,
+  INDEX `fk_Album_Cliente1_idx` (`idCliente` ASC) ,
   CONSTRAINT `fk_Album_Tipo_Album`
     FOREIGN KEY (`idTipo_Album` )
     REFERENCES `matanay`.`Tipo_Album` (`idTipo_Album` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Album_Cliente1`
+    FOREIGN KEY (`idCliente` )
+    REFERENCES `matanay`.`Cliente` (`idCliente` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -157,22 +171,29 @@ DROP TABLE IF EXISTS `matanay`.`Modelo` ;
 
 CREATE  TABLE IF NOT EXISTS `matanay`.`Modelo` (
   `idModelo` INT NOT NULL AUTO_INCREMENT ,
-  `nome` INT NOT NULL ,
-  `isrc` INT NOT NULL ,
-  `upc` INT NOT NULL ,
-  `qnt_vendida` INT NOT NULL ,
-  `valor_recebido` INT NOT NULL ,
-  `loja` INT NOT NULL ,
-  `subloja` INT NOT NULL ,
-  `territorio` INT NOT NULL ,
-  `moeda` INT NOT NULL ,
+  `nome` VARCHAR(3) NOT NULL ,
+  `isrc` VARCHAR(3) NOT NULL ,
+  `upc` VARCHAR(3) NOT NULL ,
+  `qnt_vendida` VARCHAR(3) NOT NULL ,
+  `valor_recebido` VARCHAR(3) NOT NULL ,
+  `loja` VARCHAR(3) NOT NULL ,
+  `subloja` VARCHAR(3) NOT NULL ,
+  `territorio` VARCHAR(3) NOT NULL ,
+  `moeda` VARCHAR(3) NOT NULL ,
   `idTipo_Modelo` INT NOT NULL ,
   `excluido` BIT NULL ,
+  `idCliente` INT NOT NULL ,
   PRIMARY KEY (`idModelo`) ,
   INDEX `fk_Modelo_Tipo_Modelo1_idx` (`idTipo_Modelo` ASC) ,
+  INDEX `fk_Modelo_Cliente1_idx` (`idCliente` ASC) ,
   CONSTRAINT `fk_Modelo_Tipo_Modelo1`
     FOREIGN KEY (`idTipo_Modelo` )
     REFERENCES `matanay`.`Tipo_Modelo` (`idTipo_Modelo` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Modelo_Cliente1`
+    FOREIGN KEY (`idCliente` )
+    REFERENCES `matanay`.`Cliente` (`idCliente` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -189,11 +210,18 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Relatorio` (
   `periodo_apuracao` VARCHAR(45) NOT NULL ,
   `data_importacao` DATE NOT NULL ,
   `idModelo` INT NOT NULL ,
+  `idCliente` INT NOT NULL ,
   PRIMARY KEY (`idRelatorio`) ,
   INDEX `fk_Relatorio_Modelo1_idx` (`idModelo` ASC) ,
+  INDEX `fk_Relatorio_Cliente1_idx` (`idCliente` ASC) ,
   CONSTRAINT `fk_Relatorio_Modelo1`
     FOREIGN KEY (`idModelo` )
     REFERENCES `matanay`.`Modelo` (`idModelo` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Relatorio_Cliente1`
+    FOREIGN KEY (`idCliente` )
+    REFERENCES `matanay`.`Cliente` (`idCliente` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -340,11 +368,18 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Faixa_Video` (
   `codigo_video` VARCHAR(45) NULL ,
   `excluido` BIT NULL ,
   `idImposto` INT NOT NULL ,
+  `idCliente` INT NOT NULL ,
   PRIMARY KEY (`idFaixa`) ,
   INDEX `fk_Faixa_Video_Imposto1_idx` (`idImposto` ASC) ,
+  INDEX `fk_Faixa_Video_Cliente1_idx` (`idCliente` ASC) ,
   CONSTRAINT `fk_Faixa_Video_Imposto1`
     FOREIGN KEY (`idImposto` )
     REFERENCES `matanay`.`Imposto` (`idImposto` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Faixa_Video_Cliente1`
+    FOREIGN KEY (`idCliente` )
+    REFERENCES `matanay`.`Cliente` (`idCliente` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -487,7 +522,8 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Entidade_has_Faixa_Video` (
   `idEntidade` INT NOT NULL ,
   `idFaixa` INT NOT NULL ,
   `percentual` FLOAT NULL ,
-  PRIMARY KEY (`idEntidade`, `idFaixa`) ,
+  `tipoEntidade` INT NOT NULL ,
+  PRIMARY KEY (`idEntidade`, `idFaixa`, `tipoEntidade`) ,
   INDEX `fk_Entidade_has_Faixa_Video_Faixa_Video1_idx` (`idFaixa` ASC) ,
   INDEX `fk_Entidade_has_Faixa_Video_Entidade1_idx` (`idEntidade` ASC) ,
   CONSTRAINT `fk_Entidade_has_Faixa_Video_Entidade1`
