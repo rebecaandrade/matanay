@@ -2,8 +2,8 @@
 
 class Faixas_Videos_model extends CI_Model {
 
-	public function buscar_artistas(){
-        $this->db->select('*')->from('Entidade ent');
+	public function buscar_artistas($idCliente){
+        $this->db->select('*')->where('idCliente', $idCliente)->from('Entidade ent');
         $this->db->join('Entidade_has_Tipo_Entidade eht', 'eht.idEntidade = ent.idEntidade');
         $this->db->join('Tipo_Entidade te','te.idTipo_Entidade = eht.idTipo_Entidade AND te.idTipo_Entidade = 1');
         $this->db->where(array('ent.excluido' => NULL));
@@ -11,8 +11,8 @@ class Faixas_Videos_model extends CI_Model {
         return $dados;
     }
 
-    public function buscar_autores(){
-        $this->db->select('*')->from('Entidade ent');
+    public function buscar_autores($idCliente){
+        $this->db->select('*')->where('idCliente', $idCliente)->from('Entidade ent');
         $this->db->join('Entidade_has_Tipo_Entidade eht', 'eht.idEntidade = ent.idEntidade');
         $this->db->join('Tipo_Entidade te','te.idTipo_Entidade = eht.idTipo_Entidade AND te.idTipo_Entidade = 2');
         $this->db->where(array('ent.excluido' => NULL));
@@ -20,8 +20,8 @@ class Faixas_Videos_model extends CI_Model {
         return $dados;
     }
 
-    public function buscar_produtores(){
-        $this->db->select('*')->from('Entidade ent');
+    public function buscar_produtores($idCliente){
+        $this->db->select('*')->where('idCliente', $idCliente)->from('Entidade ent');
         $this->db->join('Entidade_has_Tipo_Entidade eht', 'eht.idEntidade = ent.idEntidade');
         $this->db->join('Tipo_Entidade te','te.idTipo_Entidade = eht.idTipo_Entidade AND te.idTipo_Entidade = 3');
         $this->db->where(array('ent.excluido' => NULL));
@@ -29,14 +29,15 @@ class Faixas_Videos_model extends CI_Model {
         return $dados;
     }
 
-    public function buscar_entidades(){
+    public function buscar_entidades($tipo){
+        $this->db->where('tipoEntidade', $tipo);
         return $this->db->get('entidade_has_faixa_video')->result();
     }
 
-    public function buscar_faixas($qtde=0, $inicio=0){
-        if($qtde > 0) $this->db->limit($qtde, $inicio);
+    public function buscar_faixas($idCliente){
+        $this->db->where('idCliente', $idCliente);
         $this->db->where('excluido =', NULL);
-        return $this->db->get('faixa_video');
+        return $this->db->get('faixa_video')->result();
     }
 
     public function buscar_entidade_faixa($id, $tipo){
@@ -130,7 +131,8 @@ class Faixas_Videos_model extends CI_Model {
         return $this->db->get('faixa_video')->row();
     }
 
-    public function buscar_impostos(){
+    public function buscar_impostos($idCliente){
+            $this->db->where('idCliente', $idCliente);
             return $this->db->get('imposto')->result();
         }
 

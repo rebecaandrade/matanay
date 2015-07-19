@@ -14,13 +14,13 @@ class Albuns extends CI_Controller {
 		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 
 		$dados['tipos'] = $this->albuns_model->buscar_tipos();
-		$dados['faixas'] = $this->albuns_model->buscar_faixas();
-		$dados['artistas'] = $this->albuns_model->buscar_artistas();
+		$dados['faixas'] = $this->albuns_model->buscar_faixas($this->session->userdata('id_cliente'));
+		$dados['artistas'] = $this->albuns_model->buscar_artistas($this->session->userdata('id_cliente'));
 
         $this->load->model('faixas_videos_model');
-        $dados['autores'] = $this->faixas_videos_model->buscar_autores();
-        $dados['produtores'] = $this->faixas_videos_model->buscar_produtores();
-        $dados['impostos'] = $this->faixas_videos_model->buscar_impostos();
+        $dados['autores'] = $this->faixas_videos_model->buscar_autores($this->session->userdata('id_cliente'));
+        $dados['produtores'] = $this->faixas_videos_model->buscar_produtores($this->session->userdata('id_cliente'));
+        $dados['impostos'] = $this->faixas_videos_model->buscar_impostos($this->session->userdata('id_cliente'));
 		
 		$this->load->view('albuns/cadastro_album', $dados);
 	}
@@ -60,8 +60,8 @@ class Albuns extends CI_Controller {
 
 	public function listar() {
         $dados = array(
-            'albuns' => $this->albuns_model->buscar_albuns()->result(),
-            'artistas' => $this->albuns_model->buscar_artistas(),
+            'albuns' => $this->albuns_model->buscar_albuns($this->session->userdata('id_cliente')),
+            'artistas' => $this->albuns_model->buscar_artistas($this->session->userdata('id_cliente')),
             'entidades' => $this->albuns_model->buscar_entidades(),
             'tipos' => $this->albuns_model->buscar_tipos()
         );
@@ -80,7 +80,7 @@ class Albuns extends CI_Controller {
         
         $dados['album'] = $this->albuns_model->buscar_dados($id);
         $dados['artista_album'] = $this->albuns_model->buscar_artista_album($id);
-        $dados['artistas'] = $this->albuns_model->buscar_artistas();
+        $dados['artistas'] = $this->albuns_model->buscar_artistas($this->session->userdata('id_cliente'));
         $dados['tracklist'] = $this->albuns_model->buscar_tracklist($id);
         $dados['tipos'] = $this->albuns_model->buscar_tipos();
 
@@ -95,8 +95,8 @@ class Albuns extends CI_Controller {
 
         $dados['album'] = $this->albuns_model->buscar_dados($id);
         $dados['artista_album'] = $this->albuns_model->buscar_artista_album($id);
-        $dados['artistas'] = $this->albuns_model->buscar_artistas();
-        $dados['faixas'] = $this->albuns_model->buscar_faixas();
+        $dados['artistas'] = $this->albuns_model->buscar_artistas($this->session->userdata('id_cliente'));
+        $dados['faixas'] = $this->albuns_model->buscar_faixas($this->session->userdata('id_cliente'));
         $dados['tracklist'] = $this->albuns_model->buscar_tracklist($id);
 
         $this->load->view('albuns/edita_faixas', $dados);
@@ -196,7 +196,7 @@ class Albuns extends CI_Controller {
         $dados['album'] = $this->albuns_model->buscar_dados($id);
         $dados['artista_album'] = $this->albuns_model->buscar_artista_album($id);
         $dados['artistas'] = $this->albuns_model->buscar_artistas();
-        $dados['faixas'] = $this->albuns_model->buscar_faixas();
+        $dados['faixas'] = $this->albuns_model->buscar_faixas($this->session->userdata('id_cliente'));
         $dados['tracklist'] = $this->albuns_model->buscar_tracklist($id);
         $dados['tipos'] = $this->albuns_model->buscar_tipos();
 

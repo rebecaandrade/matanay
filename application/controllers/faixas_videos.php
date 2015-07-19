@@ -13,10 +13,10 @@ class Faixas_Videos extends CI_Controller {
 		$linguagem_usuario = $this->session->userdata('linguagem');
 		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 
-		$dados['artistas'] = $this->faixas_videos_model->buscar_artistas();
-		$dados['autores'] = $this->faixas_videos_model->buscar_autores();
-		$dados['produtores'] = $this->faixas_videos_model->buscar_produtores();
-        $dados['impostos'] = $this->faixas_videos_model->buscar_impostos();
+		$dados['artistas'] = $this->faixas_videos_model->buscar_artistas($this->session->userdata('id_cliente'));
+		$dados['autores'] = $this->faixas_videos_model->buscar_autores($this->session->userdata('id_cliente'));
+		$dados['produtores'] = $this->faixas_videos_model->buscar_produtores($this->session->userdata('id_cliente'));
+        $dados['impostos'] = $this->faixas_videos_model->buscar_impostos($this->session->userdata('id_cliente'));
 		
 		$this->load->view('faixas_videos/cadastro_faixa', $dados);
 	}
@@ -91,9 +91,9 @@ class Faixas_Videos extends CI_Controller {
 
 	public function listar(){
         $dados = array(
-            'faixas' => $this->faixas_videos_model->buscar_faixas()->result(),
-            'artistas' => $this->faixas_videos_model->buscar_artistas(),
-            'entidades' => $this->faixas_videos_model->buscar_entidades()
+            'faixas' => $this->faixas_videos_model->buscar_faixas($this->session->userdata('id_cliente')),
+            'artistas' => $this->faixas_videos_model->buscar_artistas($this->session->userdata('id_cliente')),
+            'entidades' => $this->faixas_videos_model->buscar_entidades($tipo=1)
         );
 
 		$this->load->view('faixas_videos/lista_faixas', $dados);
@@ -106,10 +106,10 @@ class Faixas_Videos extends CI_Controller {
             redirect('albuns/listar');
 
         $dados['faixa'] = $this->faixas_videos_model->buscar_dados($id);
-        $dados['artistas'] = $this->faixas_videos_model->buscar_artistas();
-        $dados['autores'] = $this->faixas_videos_model->buscar_autores();
-        $dados['produtores'] = $this->faixas_videos_model->buscar_produtores();
-        $dados['impostos'] = $this->faixas_videos_model->buscar_impostos();
+        $dados['artistas'] = $this->faixas_videos_model->buscar_artistas($this->session->userdata('id_cliente'));
+        $dados['autores'] = $this->faixas_videos_model->buscar_autores($this->session->userdata('id_cliente'));
+        $dados['produtores'] = $this->faixas_videos_model->buscar_produtores($this->session->userdata('id_cliente'));
+        $dados['impostos'] = $this->faixas_videos_model->buscar_impostos($this->session->userdata('id_cliente'));
 
         $dados['artista_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=1);
         $dados['autor_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=2);
@@ -179,9 +179,9 @@ class Faixas_Videos extends CI_Controller {
         $dados['autor_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=2);
         $dados['produtor_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=3);
         $dados['albuns'] = $this->faixas_videos_model->buscar_album_faixa($id);
-        $dados['artistas'] = $this->faixas_videos_model->buscar_artistas();
-        $dados['autores'] = $this->faixas_videos_model->buscar_autores();
-        $dados['produtores'] = $this->faixas_videos_model->buscar_produtores();
+        $dados['artistas'] = $this->faixas_videos_model->buscar_artistas($this->session->userdata('id_cliente'));
+        $dados['autores'] = $this->faixas_videos_model->buscar_autores($this->session->userdata('id_cliente'));
+        $dados['produtores'] = $this->faixas_videos_model->buscar_produtores($this->session->userdata('id_cliente'));
 
         $this->load->view('faixas_videos/perfil_faixa', $dados);
     }

@@ -41,7 +41,7 @@
 	        <div class="row">
 	          	<div class="input-field col s12 m6 l4 offset-l2">
 	          		<label>UPC/EAN</label>
-	            	<input pattern="[a-zA-Z0-9]{12,13}" title="12 ou 13 caracteres alfanumericos" maxlength="13" required type="text" name="upc_ean"/>
+	            	<input pattern="[0-9]{12,13}" title="12 ou 13 caracteres numericos" maxlength="13" required type="text" name="upc_ean"/>
 	          	</div>
 	          	<div class="input-field col s12 m6 l4">
 	          		<label><?php echo $this->lang->line('n_faixas'); ?></label>
