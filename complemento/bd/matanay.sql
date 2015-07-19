@@ -171,7 +171,7 @@ DROP TABLE IF EXISTS `matanay`.`Modelo` ;
 
 CREATE  TABLE IF NOT EXISTS `matanay`.`Modelo` (
   `idModelo` INT NOT NULL AUTO_INCREMENT ,
-  `nome` VARCHAR(3) NOT NULL ,
+  `nome` VARCHAR(45) NOT NULL ,
   `isrc` VARCHAR(3) NOT NULL ,
   `upc` VARCHAR(3) NOT NULL ,
   `qnt_vendida` VARCHAR(3) NOT NULL ,

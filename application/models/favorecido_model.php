@@ -19,18 +19,20 @@ class Favorecido_model extends CI_Model{
 		return  $this->db->insert_id();
 	}
 
-	public function buscar_favorecidos($qtde=0, $inicio=0){
-		if($qtde > 0) $this->db->limit($qtde, $inicio);
+	public function buscar_favorecidos($id_cliente = 0){
+		//if($qtde > 0) $this->db->limit($qtde, $inicio);
+		$this->db->where('favorecido.idCliente',$id_cliente);
         return $this->db->get('favorecido');
 	}
 
-	public function buscar_favorecido($qtde = 0, $inicio = 0){
+	public function buscar_favorecido($id_cliente = 0){
 		//$this->db->select('idFavorecido,nome AS Fnome')->from('Favorecido fav');
-        if ($qtde > 0) $this->db->limit($qtde, $inicio);
+        //if ($qtde > 0) $this->db->limit($qtde, $inicio);
         $this->db->select('fav.*,eht.*,te.*')->from('Favorecido fav');
         $this->db->join('Favorecido_has_Tipo_Favorecido eht', 'eht.idFavorecido = fav.idFavorecido');
         $this->db->join('Tipo_Favorecido te', 'te.idTipo_Favorecido = eht.idTipo_Favorecido');
         $this->db->where(array('fav.excluido' => NULL));
+		$this->db->where(array('fav.idCliente' => $id_cliente));
         $dados = $this->db->get()->result();
         /*foreach ($dados as $key => $dado) {
             $dados[$key]->Fnome = $this->db->where('idFavorecido', $dado->idFavorecido)->get('Favorecido')->row()->nome;

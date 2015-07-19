@@ -310,3 +310,6 @@ $lang['marcar_todas']                          = "Check All";
 $lang['login_existente']                       = "Login already exists";
 $lang['checkbox_erro']                         = "Choose a functionality";
 
+// relatoriios
+$lang['ralatorio_opcoes']                      = "Report Options";
+
