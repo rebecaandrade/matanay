@@ -122,6 +122,7 @@
 						<label><?php echo $this->lang->line('identificador_moeda'); ?></label>
 					</div>
 				</div>
+				<input type='hidden' name='param' value="<?php echo $modelo->idCliente; ?>">
 				<button class="btn waves-effect waves-light col s12 m10 offset-m1 l8 offset-l2" type="submit"><?php echo $this->lang->line('editar'); ?>
 					<i class="mdi-content-send right"></i>
 				</button>

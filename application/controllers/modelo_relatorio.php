@@ -12,14 +12,21 @@
 			$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 		}
 		public function listar_modelos(){
-			$dados['modelos'] = $this->modelo_relatorio_model->buscar_modelos();
+			$dados['modelos'] = $this->modelo_relatorio_model->buscar_modelos($this->session->userdata('id_cliente'));
 			$this->load->view('modelo_relatorio/listar_modelos',$dados);
 		}
 		public function deletar_modelo(){
 			$id = $this->input->get("param");
 			if((string)(int)$id == $id){ //verifica se o ID é valido
 				$id = (int) $id;
-				$this->modelo_relatorio_model->deletar_modelo($id);
+				$linhas = $this->modelo_relatorio_model->deletar_modelo($id,$this->session->userdata('id_cliente'));
+				if($linhas == 0 ){
+					$mensagem = array(
+									'mensagem'				=> $this->lang->line('permissao_insuficiente'),
+									'tipo_mensagem' 		=> 'error'
+								);
+					$this->session->set_userdata($mensagem);
+				}
 			}
 			redirect('modelo_relatorio/listar_modelos');
 		}
@@ -37,7 +44,8 @@
 				$post = $this->input->post();
 				$id_tipo = $post['tipo'];
 				unset($post['tipo']);
-				$post['idTipo_Modelo'] = $id_tipo;
+				$post['idTipo_Modelo'] 	= $id_tipo;
+				$post['idCliente']		= $this->session->userdata('id_cliente');
 				$query = $this->modelo_relatorio_model->cadastrar_modelo($post);
 				if($query){
 					$mensagem = array(
@@ -73,7 +81,18 @@
 			$dados['tipos'] = $this->modelo_relatorio_model->buscar_tipos_modelo();
 			$dados['colunas'] = $this->colunas(100);
 			$dados['modelo'] = $this->modelo_relatorio_model->buscar_modelo($id);
-			$this->load->view('modelo_relatorio/editar_modelo',$dados);
+			if($dados['modelo']->idCliente == $this->session->userdata('id_cliente')){
+				$this->load->view('modelo_relatorio/editar_modelo',$dados);
+			}
+			else{
+				$mensagem = array(
+									'mensagem'				=> $this->lang->line('permissao_insuficiente'),
+									'tipo_mensagem' 		=> 'error'
+								);
+				$this->session->set_userdata($mensagem);
+				redirect('modelo_relatorio/listar_modelos');
+			}
+
 		}
 		public function editar_modelo($id){
 			$this->form_validation->set_message('required', $this->lang->line('form_error_required') );
@@ -81,17 +100,29 @@
 			$this->form_validation->set_message('tipo_modelo_valido', $this->lang->line('form_error_tipo_modelo_valido'));
 			$this->form_validation->set_message('alpha', $this->lang->line('form_error_modelo_relatorio_alpha'));
 			if($this->form_validation->run('modelo_relatorio')){
-				$post = $this->input->post();
-				$id_tipo = $post['tipo'];
-				unset($post['tipo']);
-				$post['idTipo_Modelo'] = $id_tipo;
-				$this->modelo_relatorio_model->editar_modelo($post,$id);
-				$mensagem = array(
-									'mensagem'				=> $this->lang->line('cadastro_sucesso'),
-									'tipo_mensagem' 		=> 'success'
-								);
-				$this->session->set_userdata($mensagem);
-				redirect('modelo_relatorio/listar_modelos');
+				if($this->input->post('param') == $this->session->userdata('id_cliente')){	
+					$post = $this->input->post();
+					$id_tipo = $post['tipo'];
+					unset($post['tipo']);
+					unset($post['param']);
+					$post['idTipo_Modelo'] 	= $id_tipo;
+					$post['idCliente']		= $this->session->userdata('id_cliente');
+					$this->modelo_relatorio_model->editar_modelo($post,$id);
+					$mensagem = array(
+										'mensagem'				=> $this->lang->line('cadastro_sucesso'),
+										'tipo_mensagem' 		=> 'success'
+									);
+					$this->session->set_userdata($mensagem);
+					redirect('modelo_relatorio/listar_modelos');
+				}
+				else{
+					$mensagem = array(
+										'mensagem'				=> $this->lang->line('permissao_insuficiente'),
+										'tipo_mensagem' 		=> 'error'
+									);
+					$this->session->set_userdata($mensagem);
+					redirect('modelo_relatorio/listar_modelos');
+				}
 			}
 			else{
 				$mensagem = array(
