@@ -113,7 +113,8 @@ class Favorecido extends CI_Controller
             'email' => $info['email'],
             'banco' => $info['banco'],
             'agencia' => $info['agencia'],
-            'conta' => $info['contacorrente']
+            'conta' => $info['contacorrente'],
+            'idCliente' => $this->session->userdata('cliente_id')
         );
     }
 
@@ -193,7 +194,8 @@ class Favorecido extends CI_Controller
 
     public function listar()
     {
-        $dados["favorecidos"] = $this->Favorecido_model->buscar_favorecido();
+        $id_cliente = $this->session->userdata('cliente_id');
+        $dados["favorecidos"] = $this->Favorecido_model->buscar_favorecido($id_cliente);
         $dados["entidades"] = $this->Entidade_model->buscar_entidades();
         $this->load->view("Favorecido/listar_favorecido_view", $dados);
     }
