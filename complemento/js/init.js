@@ -301,7 +301,7 @@ function validaCpf(strCPF) {
 /* validacao cnpj */
 function validarCNPJ(cnpj) {
 
-    cnpj = cnpj.replace(/[^\d]+/g,'');
+    cnpj = cnpj.replace(/[^\d]+/g, '');
     if (cnpj == '') return false;
     if (cnpj.length != 14)
         return false;
@@ -427,13 +427,46 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('.percentage').mask("00.00%", {reverse: true});
+    $('.percentage').mask("000.00%", maskUsOptions);
 });
 
 $(document).ready(function () {
-    $('.porcentagem').mask("00,00%", {reverse: true});
+    $('.porcentagem').mask("000,00%", maskBrOptions);
 });
-
+var maskBrOptions = {
+    translation: {
+        'Z': {
+            pattern: /[0]/, optional: true
+        },
+        'S': {
+            pattern: /[0 - 1]/, optional: true
+        }
+    },
+    reverse: true,
+    onChange: function (porc, e, field, maskBrOptions) {
+        maskOne = "000,00%";
+        maskTwo = "SZZ,ZZ%";
+        var mask = (porc.length <= 6) ? maskOne : maskTwo;
+        $('.porcentagem').mask(mask, maskBrOptions);
+    }
+};
+var maskUsOptions = {
+    translation: {
+        'Z': {
+            pattern: /[0]/, optional: true
+        },
+        'S': {
+            pattern: /[0 - 1]/, optional: true
+        }
+    },
+    reverse: true,
+    onChange: function (porc, e, field, maskBrOptions) {
+        maskOne = "000.00%";
+        maskTwo = "SZZ.ZZ%";
+        var mask = (porc.length <= 6) ? maskOne : maskTwo;
+        $('.percentage').mask(mask, maskBrOptions);
+    }
+};
 $(document).ready(function () {
     $('#updateFormEntidade').submit(function () {
         var $cpf = $('#cpfUpdate').val();
@@ -501,21 +534,25 @@ $(document).ready(function () {
         }
 
         var perc_artista = new Array();
-        $("input[name*=percentualArtista]").each(function() {
+        $("input[name*=percentualArtista]").each(function () {
             perc_artista.push($(this).val());
         });
         var perc_total = 0;
-        $.each(perc_artista,function(){perc_total+=parseFloat(this) || 0;});
+        $.each(perc_artista, function () {
+            perc_total += parseFloat(this) || 0;
+        });
         if (perc_total != 100) {
             mensagem += "*" + $('input[name=msg_perc_artista]').val();
         }
 
         var perc_autor = new Array();
-        $("input[name*=percentualAutor]").each(function() {
+        $("input[name*=percentualAutor]").each(function () {
             perc_autor.push($(this).val());
         });
         var perc_total = 0;
-        $.each(perc_autor,function(){perc_total+=parseFloat(this) || 0;});
+        $.each(perc_autor, function () {
+            perc_total += parseFloat(this) || 0;
+        });
         if (perc_total != 100) {
             mensagem += "*" + $('input[name=msg_perc_autor]').val();
         }
@@ -967,16 +1004,16 @@ function validaformupdateentidade() {
     //var cnpj= $('input[name=cnpj]').val();
     var isCpf = $('input[name=isCpf]').val();
     /*swal(cpf_cnpj+"\n"+isCpf);
-    return false;*/
+     return false;*/
 
     var mensagem = "";
-    if (isCpf==1) {
-        $('input[name=cpf]').prop("value",cpf_cnpj);
+    if (isCpf == 1) {
+        $('input[name=cpf]').prop("value", cpf_cnpj);
         if (!validaCpf(cpf_cnpj)) {
             mensagem += "*" + $('input[name=cpfMessageDisplay]').val() + "\n";
         }
     } else {
-        $('input[name=cnpj]').prop("value",cpf_cnpj);
+        $('input[name=cnpj]').prop("value", cpf_cnpj);
         if (!validarCNPJ(cpf_cnpj)) {
             mensagem += "*" + $('input[name=cpfMessageDisplay]').val() + "\n";
         }
