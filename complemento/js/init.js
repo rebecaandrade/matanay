@@ -427,11 +427,11 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('.percentage').mask("000.00%", maskUsOptions);
+    $('.percentage').mask("000.00%", {reverse:true});
 });
 
 $(document).ready(function () {
-    $('.porcentagem').mask("000,00%", maskBrOptions);
+    $('.porcentagem').mask("000,00%", {reverse:true});
 });
 var maskBrOptions = {
     translation: {
