@@ -96,7 +96,8 @@ class Entidade extends CI_Controller
 
     public function mostrar_cadastro()
     {
-        $dados["dadofavorecido"] = $this->Favorecido_model->buscar_favorecido();
+        $id_cliente = $this->session->userdata('cliente_id');
+        $dados["dadofavorecido"] = $this->Favorecido_model->buscar_favorecido($id_cliente);
         $dados["dadoentidade"] = $this->Entidade_model->buscar_entidades();
         //esse envio ocorre para que se saiba os favorecidos cadastrados dentro da view de cadastro de entidades alem de saber o idioma
         $this->load->view("Entidade/cadastro_entidade_view", $dados);

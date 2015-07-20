@@ -315,3 +315,9 @@ $lang['checkbox_erro']                         = "Seleciona uma funcionalidade";
 
 // relatoriios
 $lang['ralatorio_opcoes']                      = "Opções do Relatório";
+$lang['data_inicio']                           = "Data de Início";
+$lang['data_fim']                              = "Data Final";
+$lang['data_inicio_maior_que_data_fim']        = "Data de Início Maior que Data Fim";
+$lang['datas_invalidas']                       = "Escolha Datas Válidas";
+$lang['tipo_relatorio']                        = "Tipo De Relatório";
+$lang['tipo_relatorio_erro']                   = "Selecione Um Tipo de Relatório";

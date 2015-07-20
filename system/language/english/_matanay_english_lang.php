@@ -312,4 +312,9 @@ $lang['checkbox_erro']                         = "Choose a functionality";
 
 // relatoriios
 $lang['ralatorio_opcoes']                      = "Report Options";
-
+$lang['data_inicio']                           = "Start Date";
+$lang['data_fim']                              = "End Date";
+$lang['data_inicio_maior_que_data_fim']        = "Start Date is Greater Than End Date";
+$lang['datas_invalidas']                       = "Choose Valid Dates";
+$lang['tipo_relatorio']                        = "Report Type";
+$lang['tipo_relatorio_erro']                   = "Choose A Report Type";
