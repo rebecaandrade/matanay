@@ -317,6 +317,7 @@ class Entidade extends CI_Controller
 
     public function camposatualizacao($id = -1)
     {
+        $id_cliente = $this->session->userdata('cliente_id');
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
@@ -327,7 +328,7 @@ class Entidade extends CI_Controller
             redirect('entidade/listar');
         $dados["dadosentidade"] = $this->Entidade_model->buscar_entidade_especifica($id);
         $dados["dadospercentual"] = $this->Entidade_model->buscar_entidade_has_tipo_especifico($id);
-        $dados["dadosfavorecido"] = $this->Favorecido_model->buscar_favorecido();
+        $dados["dadosfavorecido"] = $this->Favorecido_model->buscar_favorecido($id_cliente);
         $rowtelefone = 0;
         $dados['telefone1'] = $this->Entidade_model->buscar_telefone_especifico($id, $rowtelefone);
         $rowtelefone = 1;
