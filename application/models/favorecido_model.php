@@ -56,8 +56,8 @@ class Favorecido_model extends CI_Model{
 
 	function buscar_favorecido_has_tipo_especifico($id)
     {
-        $this->db->where('idEntidade', $id);
-        return $this->db->get('entidade_has_tipo_entidade')->result()[0];
+        $this->db->where('idFavorecido', $id);
+        return $this->db->get('favorecido_has_tipo_favorecido')->result()[0];
     }
 
 

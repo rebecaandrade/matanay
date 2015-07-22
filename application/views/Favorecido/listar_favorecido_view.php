@@ -36,8 +36,9 @@ $this->load->view('_include/header') ?>
                                     onclick=" passaParamentroFavorecido('<?= $row->idFavorecido ?>','<?=base_url()?>')"><?php echo $this->lang->line('editar'); ?></a>
                                 <?php $flag=0;
                                 foreach ($entidades as $key) { // verificacao de relacionamentos com alguma entidade que impeca a deleção
-                                    if($key->idFavorecido==$row->idFavorecido)
+                                    if($key->idFavorecido==$row->idFavorecido){
                                         $flag=1;
+                                    }
                                 }
                                 if($flag==0){ ?>
                                 |   <a class="deletarLink"
