@@ -16,6 +16,7 @@ $this->load->view('_include/header') ?>
               action="<?= base_url() . 'index.php/favorecido/atualizar' ?>" method="post">
             <input type="hidden" name='idFavorecido' value="<?= $dadosfavorecido->idFavorecido; ?>"/>
             <input type="hidden" name='idTipo_Favorecido' value="<?= $dadosidentificacao->idTipo_Favorecido; ?>"/>
+            <input type="hidden" name='idCliente' value="<?= $dadosfavorecido->idCliente; ?>"/>
             <?php if ($dadosfavorecido->cpf == null) {
                 $nome = "cnpj";
                 $value = $dadosfavorecido->cnpj;

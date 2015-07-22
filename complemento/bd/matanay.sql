@@ -91,6 +91,46 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `matanay`.`Tipo_Imposto`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `matanay`.`Tipo_Imposto` ;
+
+CREATE  TABLE IF NOT EXISTS `matanay`.`Tipo_Imposto` (
+  `idTipo_Imposto` INT NOT NULL AUTO_INCREMENT ,
+  `descricao` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`idTipo_Imposto`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `matanay`.`Imposto`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `matanay`.`Imposto` ;
+
+CREATE  TABLE IF NOT EXISTS `matanay`.`Imposto` (
+  `idImposto` INT NOT NULL AUTO_INCREMENT ,
+  `nome` VARCHAR(45) NOT NULL ,
+  `valor` INT NOT NULL ,
+  `idCliente` INT NULL ,
+  `idTipo_Imposto` INT NOT NULL ,
+  `excluido` BIT NULL ,
+  PRIMARY KEY (`idImposto`) ,
+  INDEX `fk_Imposto_Cliente1_idx` (`idCliente` ASC) ,
+  INDEX `fk_Imposto_Tipo_Imposto1_idx` (`idTipo_Imposto` ASC) ,
+  CONSTRAINT `fk_Imposto_Cliente1`
+    FOREIGN KEY (`idCliente` )
+    REFERENCES `matanay`.`Cliente` (`idCliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Imposto_Tipo_Imposto1`
+    FOREIGN KEY (`idTipo_Imposto` )
+    REFERENCES `matanay`.`Tipo_Imposto` (`idTipo_Imposto` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `matanay`.`Album`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `matanay`.`Album` ;
@@ -106,9 +146,11 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Album` (
   `idTipo_Album` INT NOT NULL ,
   `excluido` BIT NULL ,
   `idCliente` INT NOT NULL ,
+  `idImposto` INT NOT NULL ,
   PRIMARY KEY (`idAlbum`) ,
   INDEX `fk_Album_Tipo_Album1_idx` (`idTipo_Album` ASC) ,
   INDEX `fk_Album_Cliente1_idx` (`idCliente` ASC) ,
+  INDEX `fk_Album_Imposto1_idx` (`idImposto` ASC) ,
   CONSTRAINT `fk_Album_Tipo_Album`
     FOREIGN KEY (`idTipo_Album` )
     REFERENCES `matanay`.`Tipo_Album` (`idTipo_Album` )
@@ -117,6 +159,11 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Album` (
   CONSTRAINT `fk_Album_Cliente1`
     FOREIGN KEY (`idCliente` )
     REFERENCES `matanay`.`Cliente` (`idCliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Album_Imposto1`
+    FOREIGN KEY (`idImposto` )
+    REFERENCES `matanay`.`Imposto` (`idImposto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -136,9 +183,11 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Contrato` (
   `idEntidade` INT NOT NULL ,
   `idFavorecido` INT NOT NULL ,
   `excluido` BIT NULL ,
+  `idCliente` INT NOT NULL ,
   PRIMARY KEY (`idContrato`) ,
   INDEX `fk_Contrato_Entidade1_idx` (`idEntidade` ASC) ,
   INDEX `fk_Contrato_Favorecido1_idx` (`idFavorecido` ASC) ,
+  INDEX `fk_Contrato_Cliente1_idx` (`idCliente` ASC) ,
   CONSTRAINT `fk_Contrato_Entidade1`
     FOREIGN KEY (`idEntidade` )
     REFERENCES `matanay`.`Entidade` (`idEntidade` )
@@ -147,6 +196,11 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Contrato` (
   CONSTRAINT `fk_Contrato_Favorecido1`
     FOREIGN KEY (`idFavorecido` )
     REFERENCES `matanay`.`Favorecido` (`idFavorecido` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Contrato_Cliente1`
+    FOREIGN KEY (`idCliente` )
+    REFERENCES `matanay`.`Cliente` (`idCliente` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -244,46 +298,6 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Moeda` (
   CONSTRAINT `fk_Moeda_Cliente1`
     FOREIGN KEY (`idCliente` )
     REFERENCES `matanay`.`Cliente` (`idCliente` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `matanay`.`Tipo_Imposto`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `matanay`.`Tipo_Imposto` ;
-
-CREATE  TABLE IF NOT EXISTS `matanay`.`Tipo_Imposto` (
-  `idTipo_Imposto` INT NOT NULL AUTO_INCREMENT ,
-  `descricao` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`idTipo_Imposto`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `matanay`.`Imposto`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `matanay`.`Imposto` ;
-
-CREATE  TABLE IF NOT EXISTS `matanay`.`Imposto` (
-  `idImposto` INT NOT NULL AUTO_INCREMENT ,
-  `nome` VARCHAR(45) NOT NULL ,
-  `valor` INT NOT NULL ,
-  `idCliente` INT NULL ,
-  `idTipo_Imposto` INT NOT NULL ,
-  `excluido` BIT NULL ,
-  PRIMARY KEY (`idImposto`) ,
-  INDEX `fk_Imposto_Cliente1_idx` (`idCliente` ASC) ,
-  INDEX `fk_Imposto_Tipo_Imposto1_idx` (`idTipo_Imposto` ASC) ,
-  CONSTRAINT `fk_Imposto_Cliente1`
-    FOREIGN KEY (`idCliente` )
-    REFERENCES `matanay`.`Cliente` (`idCliente` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Imposto_Tipo_Imposto1`
-    FOREIGN KEY (`idTipo_Imposto` )
-    REFERENCES `matanay`.`Tipo_Imposto` (`idTipo_Imposto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

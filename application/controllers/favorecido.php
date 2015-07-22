@@ -196,7 +196,7 @@ class Favorecido extends CI_Controller
     {
         $id_cliente = $this->session->userdata('cliente_id');
         $dados["favorecidos"] = $this->Favorecido_model->buscar_favorecido($id_cliente);
-        $dados["entidades"] = $this->Entidade_model->buscar_entidades();
+        $dados["entidades"] = $this->Entidade_model->buscar_entidades($id_cliente);
         $this->load->view("Favorecido/listar_favorecido_view", $dados);
     }
 
