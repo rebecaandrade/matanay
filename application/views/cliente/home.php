@@ -4,7 +4,7 @@
 	<div id="wrapper">
 	    <div id="home" class="row">
 	    	<div class="input-field col s5 m4 l3">
-		    	<a href="#">
+		    	<a href="<?=base_url().'index.php/relatorio/opcoes_relatorio'?>">
 			        <div class="card-panel grey">
 			          	<i class="mdi-content-content-paste"></i>
 			          	<div class="label"><?php echo $this->lang->line('relatorios'); ?></div>

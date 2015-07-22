@@ -1,4 +1,12 @@
 $(document).ready(function () {
+    $('#relLojas').chosen();
+    $('#relSubLojas').chosen();
+    $('#relTerritorio').chosen();
+    $('#relArtista').chosen();
+    $('#relAutor').chosen();
+    $('#relProdutor').chosen();
+    $('#relAlbum').chosen();
+    $('#relFaixa').chosen();
     $('#relOpt').on("submit", function () {
         var mensagem = "";
         var dataInicio = ($('input[name=datainicio]').val());

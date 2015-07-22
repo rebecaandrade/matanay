@@ -1,4 +1,72 @@
 <?php
-class Relatorio_model extends CI_Model{
 
+class Relatorio_model extends CI_Model
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function buscar_modelos($id_cliente = 0)
+    {
+        $this->db->select('mod.loja,mod.subloja,mod.territorio')->from('Modelo mod');
+        $this->db->where('mod.idCliente', $id_cliente);
+        $dados = $this->db->get()->result();
+        die(var_dump($dados));
+        return $dados;
+    }
+
+    public function busca_artistas($id_cliente = 0)
+    {
+        $this->db->select('ent.*,ehte.*,te.*')->from('Entidade ent');
+        $this->db->join('Entidade_has_Tipo_Entidade ehte', ' ehte.idEntidade = ent.idEntidade');
+        $this->db->join('Tipo_Entidade te', ' te.idTipo_Entidade = ehte.idTipo_Entidade');
+        $this->db->where('ent.excluido', NULL);
+        $this->db->where('ent.idCliente', $id_cliente);
+        $this->db->where('ehte.idTipo_Entidade', 1);
+        $dados = $this->db->get()->result();
+        return $dados;
+    }
+
+    public function busca_produtores($id_cliente)
+    {
+        $this->db->select('ent.*,ehte.*,te.*')->from('Entidade ent');
+        $this->db->join('Entidade_has_Tipo_Entidade ehte', ' ehte.idEntidade = ent.idEntidade');
+        $this->db->join('Tipo_Entidade te', ' te.idTipo_Entidade = ehte.idTipo_Entidade');
+        $this->db->where('ent.excluido', NULL);
+        $this->db->where('ent.idCliente', $id_cliente);
+        $this->db->where('ehte.idTipo_Entidade', 3);
+        $dados = $this->db->get()->result();
+        return $dados;
+    }
+
+    public function busca_autores($id_cliente)
+    {
+        $this->db->select('ent.*,ehte.*,te.*')->from('Entidade ent');
+        $this->db->join('Entidade_has_Tipo_Entidade ehte', ' ehte.idEntidade = ent.idEntidade');
+        $this->db->join('Tipo_Entidade te', ' te.idTipo_Entidade = ehte.idTipo_Entidade');
+        $this->db->where('ent.excluido', NULL);
+        $this->db->where('ent.idCliente', $id_cliente);
+        $this->db->where('ehte.idTipo_Entidade', 2);
+        $dados = $this->db->get()->result();
+        return $dados;
+    }
+
+    public function busca_faixas($id_cliente = 0)
+    {
+        $this->db->select('fai.*')->from('faixa_video fai');
+        $this->db->where('fai.idCliente', $id_cliente);
+        $dados = $this->db->get()->result();
+        //die(var_dump($dados));
+        return $dados;
+    }
+
+    public function busca_albuns($id_cliente = 0)
+    {
+        $this->db->select('alb.*')->from('album alb');
+        $this->db->where('alb.idCliente',$id_cliente);
+        $dados = $this->db->get()->result();
+        //die(var_dump($dados));
+        return $dados;
+    }
 }
