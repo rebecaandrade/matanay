@@ -36,7 +36,9 @@ class Albuns extends CI_Controller {
             'ano' => $ano,
             'faixa' => 100/$this->input->post('n_faixas'),
             'codigo_catalogo' => $this->input->post('catalogo'),
-            'idTipo_Album' => $this->input->post('tipo')
+            'idTipo_Album' => $this->input->post('tipo'),
+            'idCliente' => $this->session->userdata('id_cliente'),
+            'idImposto' => $this->input->post('imposto_album')
         );
 
         $artista = $this->input->post('artista');
@@ -83,6 +85,8 @@ class Albuns extends CI_Controller {
         $dados['artistas'] = $this->albuns_model->buscar_artistas($this->session->userdata('id_cliente'));
         $dados['tracklist'] = $this->albuns_model->buscar_tracklist($id);
         $dados['tipos'] = $this->albuns_model->buscar_tipos();
+        $this->load->model('faixas_videos_model');
+        $dados['impostos'] = $this->faixas_videos_model->buscar_impostos($this->session->userdata('id_cliente'));
 
         $this->load->view('albuns/edita_album', $dados);
     }
@@ -136,7 +140,8 @@ class Albuns extends CI_Controller {
             'upc_ean' => $this->input->post('upc_ean'),
             'ano' => $ano,
             'codigo_catalogo' => $this->input->post('catalogo'),
-            'idTipo_Album' => $this->input->post('tipo')
+            'idTipo_Album' => $this->input->post('tipo'),
+            'idImposto' => $this->input->post('imposto_album')
         );
 
         $prev_artista = $this->input->post('artista_album');

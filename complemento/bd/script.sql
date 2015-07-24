@@ -253,26 +253,26 @@ insert into matanay.faixa_video values(DEFAULT,"Faixa 19","BRRGE1500608",NULL,NU
 insert into matanay.faixa_video values(DEFAULT,"Faixa 20","BRRGE1500601",NULL,NULL,7,2);
 
 /* albuns */
-insert into matanay.album values(DEFAULT,"Album 1",2,"7891430144791",50,"2001","11111",1,NULL,1);
-insert into matanay.album values(DEFAULT,"Album 2",2,"7891430144791",50,"2002","22222",2,NULL,1);
-insert into matanay.album values(DEFAULT,"Album 3",2,"7891430144791",50,"2003","33333",3,NULL,1);
-insert into matanay.album values(DEFAULT,"Album 4",2,"7891430144791",50,"2004","44444",1,NULL,1);
-insert into matanay.album values(DEFAULT,"Album 5",2,"7891430144791",50,"2005","55555",2,NULL,1);
-insert into matanay.album values(DEFAULT,"Album 6",2,"7891430144791",50,"2006","66666",3,NULL,1);
-insert into matanay.album values(DEFAULT,"Album 7",2,"7891430144791",50,"2007","77777",1,NULL,1);
-insert into matanay.album values(DEFAULT,"Album 8",2,"7891430144791",50,"2008","88888",2,NULL,1);
-insert into matanay.album values(DEFAULT,"Album 9",2,"7891430144791",50,"2009","99999",3,NULL,1);
-insert into matanay.album values(DEFAULT,"Album 10",2,"7891430144791",50,"2001","11111",1,NULL,1);
-insert into matanay.album values(DEFAULT,"Album 11",2,"7891430144791",50,"2001","11111",1,NULL,2);
-insert into matanay.album values(DEFAULT,"Album 12",2,"7891430144791",50,"2002","22222",2,NULL,2);
-insert into matanay.album values(DEFAULT,"Album 13",2,"7891430144791",50,"2003","33333",3,NULL,2);
-insert into matanay.album values(DEFAULT,"Album 14",2,"7891430144791",50,"2004","44444",1,NULL,2);
-insert into matanay.album values(DEFAULT,"Album 15",2,"7891430144791",50,"2005","55555",2,NULL,2);
-insert into matanay.album values(DEFAULT,"Album 16",2,"7891430144791",50,"2006","66666",3,NULL,2);
-insert into matanay.album values(DEFAULT,"Album 17",2,"7891430144791",50,"2007","77777",1,NULL,2);
-insert into matanay.album values(DEFAULT,"Album 18",2,"7891430144791",50,"2008","88888",2,NULL,2);
-insert into matanay.album values(DEFAULT,"Album 19",2,"7891430144791",50,"2009","99999",3,NULL,2);
-insert into matanay.album values(DEFAULT,"Album 20",2,"7891430144791",50,"2001","11111",1,NULL,2);
+insert into matanay.album values(DEFAULT,"Album 1",2,"7891430144791",50,"2001","11111",1,NULL,1,4);
+insert into matanay.album values(DEFAULT,"Album 2",2,"7891430144791",50,"2002","22222",2,NULL,1,3);
+insert into matanay.album values(DEFAULT,"Album 3",2,"7891430144791",50,"2003","33333",3,NULL,1,2);
+insert into matanay.album values(DEFAULT,"Album 4",2,"7891430144791",50,"2004","44444",1,NULL,1,1);
+insert into matanay.album values(DEFAULT,"Album 5",2,"7891430144791",50,"2005","55555",2,NULL,1,2);
+insert into matanay.album values(DEFAULT,"Album 6",2,"7891430144791",50,"2006","66666",3,NULL,1,3);
+insert into matanay.album values(DEFAULT,"Album 7",2,"7891430144791",50,"2007","77777",1,NULL,1,4);
+insert into matanay.album values(DEFAULT,"Album 8",2,"7891430144791",50,"2008","88888",2,NULL,1,3);
+insert into matanay.album values(DEFAULT,"Album 9",2,"7891430144791",50,"2009","99999",3,NULL,1,2);
+insert into matanay.album values(DEFAULT,"Album 10",2,"7891430144791",50,"2001","11111",1,NULL,1,1);
+insert into matanay.album values(DEFAULT,"Album 11",2,"7891430144791",50,"2001","11111",1,NULL,2,5);
+insert into matanay.album values(DEFAULT,"Album 12",2,"7891430144791",50,"2002","22222",2,NULL,2,6);
+insert into matanay.album values(DEFAULT,"Album 13",2,"7891430144791",50,"2003","33333",3,NULL,2,7);
+insert into matanay.album values(DEFAULT,"Album 14",2,"7891430144791",50,"2004","44444",1,NULL,2,8);
+insert into matanay.album values(DEFAULT,"Album 15",2,"7891430144791",50,"2005","55555",2,NULL,2,7);
+insert into matanay.album values(DEFAULT,"Album 16",2,"7891430144791",50,"2006","66666",3,NULL,2,6);
+insert into matanay.album values(DEFAULT,"Album 17",2,"7891430144791",50,"2007","77777",1,NULL,2,5);
+insert into matanay.album values(DEFAULT,"Album 18",2,"7891430144791",50,"2008","88888",2,NULL,2,6);
+insert into matanay.album values(DEFAULT,"Album 19",2,"7891430144791",50,"2009","99999",3,NULL,2,7);
+insert into matanay.album values(DEFAULT,"Album 20",2,"7891430144791",50,"2001","11111",1,NULL,2,8);
 
 /* album has faixa */
 insert into matanay.album_has_faixa values(1,1);

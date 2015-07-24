@@ -83,6 +83,20 @@
 	        <div id="tracklist">
 	        </div>
 
+	        <div class="row" id="SelectImposto">
+				<div class="col s12 m12 l8 offset-l2">
+					<h5><?php echo $this->lang->line('impostos'); ?></h5><br>
+					<?php if (isset($impostos)) { ?>
+						<?php foreach ($impostos as $imposto) { ?>
+							<div class="col s4 m3 l3">
+								<input type='radio' name="imposto_album" checked value="<?php echo $imposto->idImposto ?>" id="<?php echo $imposto->idImposto ?>"/>
+								<label for="<?php echo $imposto->idImposto ?>"><?php echo $imposto->nome; ?></label>	
+							</div>
+						<?php }
+					} ?>
+				</div>
+			</div>
+
 	        <input type="hidden" name="msg_erro_tipo" value="<?= $this->lang->line('erro_tipo') ?>">
 	        <input type="hidden" name="msg_erro_artista" value="<?= $this->lang->line('erro_artista') ?>">
 	        <input type="hidden" name="msg_erro_ano" value="<?= $this->lang->line('erro_ano') ?>">

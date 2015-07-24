@@ -26,7 +26,8 @@ class Faixas_Videos extends CI_Controller {
             'nome' => $this->input->post('nome'),
             'isrc' => str_replace("-", "", $this->input->post('isrc')),
             'codigo_video' => $this->input->post('youtube'),
-            'idImposto' => $this->input->post('imposto')
+            'idImposto' => $this->input->post('imposto'),
+            'idCliente' => $this->session->userdata('id_cliente')
         );
 
         $artistas = $this->input->post('artistas[]');
