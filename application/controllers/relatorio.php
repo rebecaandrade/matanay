@@ -7,13 +7,14 @@ class Relatorio extends CI_Controller
         parent::__construct();
         $this->load->model('relatorio_model');
         $this->load->library('excel');
+        $this->load->helper('myDirectory');
+        $this->session->set_flashdata('redirect_url', current_url());
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
     }
 
     public function opcoes_relatorio()
     {
-        $this->session->set_flashdata('redirect_url', current_url());
-        $linguagem_usuario = $this->session->userdata('linguagem');
-        $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
         $id_cliente = $this->session->userdata('cliente_id');
         //$dados['modelos'] = $this->relatorio_model->buscar_modelos($id_cliente);
         $dados['artistas'] = $this->relatorio_model->busca_artistas($id_cliente);
@@ -199,4 +200,60 @@ class Relatorio extends CI_Controller
         $objWriter->save('php://output');
         die(var_dump("cheguei aqui nessa porra"));
     }
+
+    public function importa_relatorio()
+    {
+        $id_cliente = $this->session->userdata('cliente_id');
+        $dados['modelos'] = $this->relatorio_model->modelos($id_cliente);
+        $this->load->view('relatorio/importa_relatorio', $dados);
+    }
+
+    public function importar()
+    {
+        $fileName = $this->gera_nome_arquivo();
+        $fileConfig = getExcelUploadConfig($fileName);
+        $this->load->library('upload', $fileConfig);
+        $ok = $this->upload->do_upload('excelFile');
+        $fileData = $this->upload->data();
+        die(var_dump($_FILES, $fileName, $fileConfig, $ok, $fileData, $this->upload->display_errors()));
+        if ($ok) {
+            $id_cliente = $this->session->userdata('cliente_id');
+        } else {
+            $this->session->set_userdata('mensagem', '=`(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('tipo_arquivo_invalido'));
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            redirect('relatorio/importa_relatorio');
+        }
+    }
+
+    public function gera_array_relatorio($arquivo)
+    {
+        $modelo = $this->input->post('relModel');
+        $filePath = getExcelDirectory() . $arquivo;
+        return array(
+            'idCliente' => $this->session->userdata('cliente_id'),
+            'arquivo' => $filePath,
+            'data_importacao' => date('y-m-d'),
+            'idModelo' => $modelo
+        );
+    }
+
+    public function gera_nome_arquivo()
+    {
+        $surname = md5(microtime());
+        $surname = substr($surname, 0, 6) . "_";
+        $fileName = $surname . $_FILES['excelFile']['name'];
+        return $fileName;
+    }
+
+    public function testeDisplayDirs()
+    {
+        $this->load->view('_include/header');
+        $current = getcwd();
+        $myDirectory = getExcelDirectory();
+        $teste = scandir(getcwd() . "/application");
+        var_dump($current, $myDirectory, $teste);
+        die();
+    }
+
 }

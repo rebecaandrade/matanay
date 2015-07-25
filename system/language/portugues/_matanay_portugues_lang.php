@@ -321,3 +321,6 @@ $lang['data_inicio_maior_que_data_fim']        = "Data de Início Maior que Data
 $lang['datas_invalidas']                       = "Escolha Datas Válidas";
 $lang['tipo_relatorio']                        = "Tipo De Relatório";
 $lang['tipo_relatorio_erro']                   = "Selecione Um Tipo de Relatório";
+$lang['selecione_modelo']                      = "Selecione Um Modelo";
+$lang['rel_file']                              = "Selecione Um Arquivo";
+$lang['tipo_arquivo_invalido']                 = "Tipo De arquivo Inválido";
