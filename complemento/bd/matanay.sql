@@ -260,7 +260,7 @@ DROP TABLE IF EXISTS `matanay`.`Relatorio` ;
 
 CREATE  TABLE IF NOT EXISTS `matanay`.`Relatorio` (
   `idRelatorio` INT NOT NULL AUTO_INCREMENT ,
-  `arquivo` VARCHAR(45) NOT NULL ,
+  `arquivo` VARCHAR(80) NOT NULL ,
   `periodo_apuracao` VARCHAR(45) NOT NULL ,
   `data_importacao` DATE NOT NULL ,
   `idModelo` INT NOT NULL ,
