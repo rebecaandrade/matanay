@@ -500,6 +500,13 @@ $(document).ready(function () {
     $('#cadastro_album').on("submit", function () {
         var mensagem = "";
 
+        var ano = $('input[name=ano]').val();
+        if (ano < 1950) {
+            mensagem += "*" + $('input[name=msg_erro_ano]').val();
+        } else if (ano > 2050) {
+            mensagem += "*" + $('input[name=msg_erro_ano]').val();
+        }
+
         var tipo = $('#tipo option:selected').val();
         if (tipo < 0) {
             mensagem += "*" + $('input[name=msg_erro_tipo]').val();
@@ -508,6 +515,37 @@ $(document).ready(function () {
         var artista = $('#artista option:selected').val();
         if (artista < 0) {
             mensagem += "*" + $('input[name=msg_erro_artista]').val();
+        }
+
+        var faixas = new Array();
+        $("input[name*=faixas] option:selected").each(function () {
+            //fazer um if pra só colocar no array se o valor nao for -1
+            faixas.push($(this).val());
+        });
+
+        var n = $('#n_faixas').val();
+        if (faixas.length > n) {
+            mensagem += "*" + $('input[name=msg_erro_faixas]').val();
+        }
+
+        if (mensagem.length > 3) {
+            swal(mensagem, "", "error");
+            return false;
+        }
+    });
+});
+
+/********** validar edição de album **********/
+
+$(document).ready(function () {
+    $('#edicao_album').on("submit", function () {
+        var mensagem = "";
+
+        var ano = $('input[name=ano]').val();
+        if (ano < 1950) {
+            mensagem += "*" + $('input[name=msg_erro_ano]').val();
+        } else if (ano > 2050) {
+            mensagem += "*" + $('input[name=msg_erro_ano]').val();
         }
 
         if (mensagem.length > 3) {
@@ -807,7 +845,7 @@ function geraSelect(faixas, selecione, label) {
 }
 
 function geraOpcoes(faixas, selecione) {
-    var opcoes = "<option value='' disabled selected>" + selecione + "</option>";
+    var opcoes = "<option value='-1' disabled selected>" + selecione + "</option>";
     for (var i = 0; i < faixas.length; i++) {
         opcoes += "<option value=" + faixas[i].idFaixa + ">" + faixas[i].nome + "</option>";
     }

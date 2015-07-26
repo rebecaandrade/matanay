@@ -26,14 +26,11 @@ class Albuns extends CI_Controller {
 	}
 
 	public function cadastrar() {
-        $data = $this->input->post('ano');
-        $ano = substr($data, -4);
-
 		$album = array(
             'nome' => $this->input->post('nome'),
             'quantidade' => $this->input->post('n_faixas'),
             'upc_ean' => $this->input->post('upc_ean'),
-            'ano' => $ano,
+            'ano' => $this->input->post('ano'),
             'faixa' => 100/$this->input->post('n_faixas'),
             'codigo_catalogo' => $this->input->post('catalogo'),
             'idTipo_Album' => $this->input->post('tipo'),
@@ -131,14 +128,11 @@ class Albuns extends CI_Controller {
     }
 
     public function atualizar() {
-        $data = $this->input->post('ano');
-        $ano = substr($data, -4);
-
         $dados = array(
             'idAlbum' => $this->input->post('idAlbum'),
             'nome' => $this->input->post('nome'),
             'upc_ean' => $this->input->post('upc_ean'),
-            'ano' => $ano,
+            'ano' => $this->input->post('ano'),
             'codigo_catalogo' => $this->input->post('catalogo'),
             'idTipo_Album' => $this->input->post('tipo'),
             'idImposto' => $this->input->post('imposto_album')

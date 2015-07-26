@@ -15,7 +15,7 @@
 	          	<div class="input-field col s12 m12 l8 offset-l2">
 	          		<i class="mdi-av-album prefix"></i>
 	          		<label><?php echo $this->lang->line('titulo'); ?></label>
-	            	<input required id="icon-prefix" type="text" name="nome"/>
+	            	<input required pattern="[a-zA-Z0-9][\\sa-zA-Z0-9]{0,40}" title="nao coloque espaços no começo ou final do titulo" id="icon-prefix" type="text" name="nome"/>
 	          	</div>
 	        </div>
 
@@ -61,8 +61,8 @@
 	            	<input pattern="[a-zA-Z0-9]+{0,10}" maxlength="10" title="Até 10 caracteres alfanumericos" type="text" name="catalogo"/>
 	          	</div>
 	          	<div class="input-field col s12 m6 l4"/>
-	          		<label id="selectLabel"><?php echo $this->lang->line('lancamento');?></label>
-	            	<input required type="date" class="datepicker" name="ano" id="ano"/>
+	          		<label><?php echo $this->lang->line('lancamento');?></label>
+	            	<input pattern="[0-9]{4,4}" maxlength="4" required type="text" name="ano" id="ano"/>
 	          	</div>
 	        </div>
 
@@ -100,6 +100,7 @@
 	        <input type="hidden" name="msg_erro_tipo" value="<?= $this->lang->line('erro_tipo') ?>">
 	        <input type="hidden" name="msg_erro_artista" value="<?= $this->lang->line('erro_artista') ?>">
 	        <input type="hidden" name="msg_erro_ano" value="<?= $this->lang->line('erro_ano') ?>">
+	        <input type="hidden" name="msg_erro_faixas" value="<?= $this->lang->line('erro_faixas') ?>">
 
 	        <button class="btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
 	          	<i class="mdi-content-send right"></i>

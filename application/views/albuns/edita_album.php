@@ -10,7 +10,7 @@
         </div>
     </div><br>
     <div class="row">
-  	    <?php echo form_open('albuns/atualizar') ?>
+        <form id="edicao_album" action="<?= base_url() . 'index.php/albuns/atualizar' ?>" method="post">
             <input type="hidden" name="idAlbum" value="<?php echo $album->idAlbum; ?>">
             <input type="hidden" name="artista_album" value="<?php echo $artista_album->idEntidade; ?>">
             <div class="row">
@@ -74,8 +74,8 @@
 
             <div class="row">
                 <div class="input-field col s12 m4 l2 offset-l2"/>
-                    <label id="selectLabel"><?php echo $this->lang->line('lancamento'); ?></label>
-                    <input required type="date" class="datepicker" name="ano" value="<?php echo $album->ano; ?>"/>
+                    <label><?php echo $this->lang->line('lancamento');?></label>
+                    <input pattern="[0-9]{4,4}" maxlength="4" required type="text" name="ano" value="<?php echo $album->ano; ?>"/>
                 </div>
                 <div class="input-field col s12 m4 l3">
                     <label>UPC/EAN</label>
@@ -106,10 +106,12 @@
                 </div>
             </div>
 
+            <input type="hidden" name="msg_erro_ano" value="<?= $this->lang->line('erro_ano') ?>">
+
             <button class="btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('atualizar'); ?>
                 <i class="mdi-content-send right"></i>
             </button>
-        <?php echo form_close() ?>
+        </form>
 
     </div>
 </div>
