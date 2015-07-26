@@ -43,7 +43,7 @@
 	          		<label>UPC/EAN</label>
 	            	<input pattern="[0-9]{12,13}" title="12 ou 13 caracteres numericos" maxlength="13" required type="text" name="upc_ean"/>
 	          	</div>
-	          	<div class="input-field col s12 m6 l4">
+	          	<div class="input-field col s10 m5 l4">
 	          		<label><?php echo $this->lang->line('n_faixas'); ?></label>
 					<input required pattern="[0-9]" title="apenas números" onkeyup="geraSelect(getFaixas(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('faixa'); ?>')" id="n_faixas" name="n_faixas" type="text"/>
 	            	<script>

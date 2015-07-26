@@ -3,8 +3,8 @@
 <div class="container">
 	<div id="wrapper">
 	    <div id="home" class="row">
-	    	<div class="input-field col s5 m4 l3">
-		    	<a href="<?=base_url().'index.php/relatorio/opcoes_relatorio'?>">
+	    	<div class="input-field col s12 m7 l4">
+		    	<a href="<?=base_url().'index.php/relatorio/listar_relatorios'?>">
 			        <div class="card-panel grey">
 			          	<i class="mdi-content-content-paste"></i>
 			          	<div class="label"><?php echo $this->lang->line('relatorios'); ?></div>
@@ -12,7 +12,7 @@
 		        </a>
 	      	</div>
 
-	      	<div class="input-field col s7 m3 l2">
+	      	<div class="input-field col s7 m5 l3">
 		      	<a href="<?php echo base_url(); ?>index.php/cliente/cadastros">
 			        <div class="card-panel grey lighten-1">
 			          	<i class="mdi-action-account-child"></i>
@@ -21,7 +21,7 @@
 		        </a>
 	        </div>
 
-	        <div class="input-field col s7 m5 l4">
+	        <div class="input-field col s5 m4 l3">
 		        <a href="#">
 			        <div class="card-panel grey lighten-2">
 			          	<i class="mdi-action-trending-up"></i>
@@ -30,7 +30,7 @@
 		        </a> 
 	        </div>
 
-	        <div class="input-field col s5 m3 l3">
+	        <div class="input-field col s12 m8 l2">
 		        <a href="<?php echo base_url(); ?>index.php/cliente/lista_clientes">
 			        <div class="card-panel grey lighten-3">
 			          	<i class="mdi-social-person"></i>
@@ -39,7 +39,7 @@
 		        </a> 
 	        </div>
 
-	    	<div class="input-field col s5 m5 l2">
+	    	<div class="input-field col s5 m6 l2">
 		        <a href="<?php echo base_url(); ?>index.php/albuns/listar">
 			        <div class="card-panel grey">
 			          	<i class="mdi-av-album"></i>
@@ -48,7 +48,7 @@
 		        </a> 
 	        </div>
 	        
-	        <div class="input-field col s7 m4 l4">
+	        <div class="input-field col s7 m6 l4">
 	        	<a href="<?php echo base_url(); ?>index.php/faixas_videos/listar">
 			        <div class="card-panel grey lighten-1">
 			          	<i class="mdi-av-queue-music"></i>

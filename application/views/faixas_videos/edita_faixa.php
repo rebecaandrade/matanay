@@ -50,7 +50,7 @@
                                 </select>
                                 <label id="selectLabel"><?php echo $this->lang->line("artista");?></label>
                             </div>
-                            <div class="input-field col s12 m3 l2">
+                            <div class="input-field col s11 m3 l2">
                                 <label><?php echo $this->lang->line('participacao');?></label>
                                 <input required class="porcentagem" name="percentualArtista[]" type="text" value="<?php echo $entidade['percentual']; ?>">
                             </div>
@@ -87,7 +87,7 @@
                             </select>
                             <label id="selectLabel"><?php echo $this->lang->line("artista");?></label>
                         </div>
-                        <div class="input-field col s12 m2 l2">
+                        <div class="input-field col s11 m2 l2">
                             <label><?php echo $this->lang->line('participacao');?></label>
                             <input required class="porcentagem" name="percentualArtista[]" type="text">
                         </div>
@@ -125,7 +125,7 @@
                                 </select>
                                 <label id="selectLabel"><?php echo $this->lang->line('autor');?></label>
                             </div>
-                            <div class="input-field col s12 m3 l2">
+                            <div class="input-field col s11 m3 l2">
                                 <label><?php echo $this->lang->line('participacao');?></label>
                                 <input required class="porcentagem" name="percentualAutor[]" type="text" value="<?php echo $entidade['percentual']; ?>">
                             </div>
@@ -162,7 +162,7 @@
                             </select>
                             <label id="selectLabel"><?php echo $this->lang->line('autor');?></label>
                         </div>
-                        <div class="input-field col s12 m3 l2">
+                        <div class="input-field col s11 m3 l2">
                             <label><?php echo $this->lang->line('participacao');?></label>
                             <input required class="porcentagem" name="percentualAutor[]" type="text">
                         </div>
@@ -200,7 +200,7 @@
                                 </select>
                                 <label id="selectLabel"><?php echo $this->lang->line('produtor');?></label>
                             </div>
-                            <div class="input-field col s12 m3 l2">
+                            <div class="input-field col s11 m3 l2">
                                 <label><?php echo $this->lang->line('participacao');?></label>
                                 <input class="porcentagem" name="percentualProdutor[]" type="text" value="<?php echo $entidade['percentual']; ?>">
                             </div>
@@ -237,7 +237,7 @@
                             </select>
                             <label id="selectLabel"><?php echo $this->lang->line('produtor');?></label>
                         </div>
-                        <div class="input-field col s12 m3 l2">
+                        <div class="input-field col s11 m3 l2">
                             <label><?php echo $this->lang->line('participacao');?></label>
                             <input class="porcentagem" name="percentualProdutor[]" type="text">
                         </div>
