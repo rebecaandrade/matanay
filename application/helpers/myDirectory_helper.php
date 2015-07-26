@@ -3,7 +3,7 @@
 if (!function_exists('getExcelDirectory')) {
     function getExcelDirectory()
     {
-        return "./complemento/Excel_Files";
+        return "./complemento/Excel_Files/";
     }
 }
 

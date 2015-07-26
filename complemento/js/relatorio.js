@@ -1,13 +1,6 @@
 $(document).ready(function () {
     //opcoes relatorio view
-    $('#relLojas').chosen();
-    $('#relSubLojas').chosen();
-    $('#relTerritorio').chosen();
-    $('#relArtista').chosen();
-    $('#relAutor').chosen();
-    $('#relProdutor').chosen();
-    $('#relAlbum').chosen();
-    $('#relFaixa').chosen();
+    $('#relLojas #relSubLojas #relTerritorio #relArtista #relAutor #relProdutor #relAlbum #relFaixa').chosen();
     $('#relOpt').on("submit", function () {
         var mensagem = "";
         var dataInicio = ($('input[name=datainicio]').val());
@@ -38,6 +31,7 @@ $(document).ready(function () {
     $('#activeExcelFile').on("click", function () {
         $('input[name=excelFile]').click();
     });
+    $('input[name=apuracao]').mask("00/0000");
     $('#formRelImport').on("submit", function () {
         var mensagem = "";
         var tipoModelo = $('#relModel').val();
@@ -48,6 +42,11 @@ $(document).ready(function () {
         }
         if (myFile.length < 2) {
             mensagem += "*" + $('input[name=fileMessegeDisplay]').val() + "\n";
+        }
+        var apuracao = $('input[name=apuracao]').val().split('/');
+        var currentYear = new String(new Date().getFullYear());
+        if (apuracao[0] > 13 || apuracao[0] < 1 || 1960 > apuracao[1] || currentYear < apuracao[0]) {
+            mensagem += "*" + $('input[name=apuracaoMessegeDisplay]').val() + "\n";
         }
         if (mensagem.length > 3) {
             swal(mensagem, "", "error");
