@@ -41,9 +41,9 @@
                             <?php $nada = "" ?>
                             <h5><?php echo $this->lang->line('cliente_funcionalidades'); ?></h5>
                             <?php if (isset($funcionalidades)) { ?>
-                                <div class="row">
-                                    <div class="btn" id="markAllFunc"><p><?= $this->lang->line('marcar_todas') ?></p>
-                                    </div>
+                                <div class="checkAll">
+                                    <input type="checkbox" class="filled-in" id="markAllFunc"/>
+                                    <label for="markAllFunc"><?= $this->lang->line('marcar_todas') ?></label>
                                 </div>
                                 <?php foreach ($funcionalidades as $func) { ?>
                                     <div class="col s4 m4 l3 minhasFuncionalidades">

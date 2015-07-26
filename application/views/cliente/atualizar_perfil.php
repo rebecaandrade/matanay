@@ -29,12 +29,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s12 m9 l8 offset-l2">
+                    <div class="col s12 m9 l8 offset-l2 funcionalidades">
                         <h5><?php echo $this->lang->line('cliente_funcionalidades'); ?></h5>
                         <?php if (isset($funcionalidades)) { ?>
-                            <div class="row">
-                                <div class="btn" id="updateMarkAllFunc"><p><?= $this->lang->line('marcar_todas') ?></p>
-                                </div>
+                            <div class="checkAll">
+                                <input type="checkbox" class="filled-in" id="updateMarkAllFunc"/>
+                                <label for="updateMarkAllFunc"><?= $this->lang->line('marcar_todas') ?></label>
                             </div>
                             <?php foreach ($funcionalidades as $func) { ?>
                                 <div class="col s4 m4 checkFunc">

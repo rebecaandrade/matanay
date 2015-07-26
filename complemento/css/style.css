@@ -413,8 +413,10 @@ label {
     color: #777;
 }
 
-#markAllFunc {
-	margin-bottom: 1.5rem;
+.checkAll {
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+	margin-left: 0.7rem;
 }
 
 .funcionalidades {

@@ -382,10 +382,8 @@ $(document).ready(function () {
         }
         //return false;
     });
-    $('#markAllFunc').on("click", function () {
-        $('.minhasFuncionalidades :input[type=checkbox]').each(function () {
-            $(this).prop("checked", true);
-        });
+    $("#markAllFunc").change(function () {
+        $(".minhasFuncionalidades :input[type=checkbox]").prop('checked', $(this).prop("checked"));
     });
 });
 $(document).ready(function () {
@@ -407,10 +405,8 @@ $(document).ready(function () {
             return true;
         }
     });
-    $('#updateMarkAllFunc').on("click", function () {
-        $('.checkFunc :input[type=checkbox]').each(function () {
-            $(this).prop("checked", true);
-        });
+    $("#updateMarkAllFunc").change(function () {
+        $(".checkFunc :input[type=checkbox]").prop('checked', $(this).prop("checked"));
     });
 });
 
