@@ -186,7 +186,7 @@
                 <a href="#">IMPORTAR</a>
             </li>
             <li>
-                <a href="#">EXPORTAR</a>
+                <a href="<?=base_url().'index.php/relatorio/opcoes_relatorio'?>">EXPORTAR</a>
             </li>
         </ul>
     </div>

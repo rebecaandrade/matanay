@@ -314,6 +314,7 @@ $lang['login_existente']                       = "Login já existe";
 $lang['checkbox_erro']                         = "Seleciona uma funcionalidade";
 
 // relatoriios
+$lang['listar_relatorios']                     = "Relatórios";
 $lang['ralatorio_opcoes']                      = "Opções do Relatório";
 $lang['data_inicio']                           = "Data de Início";
 $lang['data_fim']                              = "Data Final";
@@ -321,3 +322,11 @@ $lang['data_inicio_maior_que_data_fim']        = "Data de Início Maior que Data
 $lang['datas_invalidas']                       = "Escolha Datas Válidas";
 $lang['tipo_relatorio']                        = "Tipo De Relatório";
 $lang['tipo_relatorio_erro']                   = "Selecione Um Tipo de Relatório";
+$lang['selecione_modelo']                      = "Selecione Um Modelo";
+$lang['rel_file']                              = "Selecione Um Arquivo";
+$lang['tipo_arquivo_invalido']                 = "Tipo De arquivo Inválido";
+$lang['periodo_apuracao']                      = "Selecione um Perído de Apuração";
+$lang['periodo_de_apuracao']                   = "Período de Apuração";
+$lang['apuracao_invalida']                     = "Período de Apuração Inválido";
+$lang['data_importacao']                       = "Data de importação";
+$lang['modelo_relatorio']                      = "Modelo";

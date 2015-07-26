@@ -15,12 +15,12 @@
             </div>
         </div>
         <div class="row">
-            <table id="<?=$this->lang->line('myTable')?>" class="hoverable bordered">
+            <table id="<?= $this->lang->line('myTable') ?>" class="hoverable bordered">
                 <thead>
                 <th><?= $this->lang->line('nome_entidade'); ?></th>
-                <th><?= $this->lang->line('cpf_cnpj')?></th>
+                <th><?= $this->lang->line('cpf_cnpj') ?></th>
                 <th><?= $this->lang->line('descricao_entidade'); ?></th>
-                <th><?=$this->lang->line('favorecido')?></th>
+                <th><?= $this->lang->line('favorecido') ?></th>
                 <th><?= $this->lang->line('acao'); ?></th>
                 </thead>
                 <tbody>
@@ -30,11 +30,11 @@
                             <td><?= $entidade->nome ?></td>
                             <td><?= ($entidade->cpf == NULL ? $entidade->cnpj : $entidade->cpf) ?></td>
                             <td><?= $entidade->descricao ?></td>
-                            <td><?= $entidade->Fnome?></td>
+                            <td><?= $entidade->Fnome ?></td>
                             <td><a class="acao"
-                                   onclick=" passaParamentroEntidade('<?= $entidade->idEntidade ?>','<?=base_url()?>')"><?php echo $this->lang->line('editar'); ?></a>
+                                   onclick=" passaParamentroEntidade('<?= $entidade->idEntidade ?>','<?= base_url() ?>')"><?php echo $this->lang->line('editar'); ?></a>
                                 | <a class="deletarLink"
-                                     onclick="excluirEntidade('<?= base_url() . 'index.php/entidade/deletar/' . $entidade->idEntidade ?>','<?=$this->lang->line('langOpt')?>')"><?php echo $this->lang->line('deletar') ?> </a>
+                                     onclick="excluirEntidade('<?= base_url() . 'index.php/entidade/deletar/' . $entidade->idEntidade ?>','<?= $this->lang->line('langOpt') ?>')"><?php echo $this->lang->line('deletar') ?> </a>
                             </td>
                         </tr>
                     <?php }

@@ -7,13 +7,23 @@ class Relatorio extends CI_Controller
         parent::__construct();
         $this->load->model('relatorio_model');
         $this->load->library('excel');
+        $this->load->helper('myDirectory');
+        $this->session->set_flashdata('redirect_url', current_url());
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
+    }
+
+    public function listar_relatorios()
+    {
+        $id_cliente = $this->session->userdata('cliente_id');
+        $dados['relatorios'] = $this->relatorio_model->busca_relatorios($id_cliente);
+        /*var_dump(end(end($dados))->arquivo);
+        die;*/
+        $this->load->view('relatorio/lista_relatorios',$dados);
     }
 
     public function opcoes_relatorio()
     {
-        $this->session->set_flashdata('redirect_url', current_url());
-        $linguagem_usuario = $this->session->userdata('linguagem');
-        $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
         $id_cliente = $this->session->userdata('cliente_id');
         //$dados['modelos'] = $this->relatorio_model->buscar_modelos($id_cliente);
         $dados['artistas'] = $this->relatorio_model->busca_artistas($id_cliente);
@@ -172,31 +182,81 @@ class Relatorio extends CI_Controller
         return $modelos;
     }
 
-    public function testaCriarExcel()
+    public function importa_relatorio()
     {
-        $this->excel->setActiveSheetIndex(0);
-//name the worksheet
-        $this->excel->getActiveSheet()->setTitle('test worksheet');
-//set cell A1 content with some text
-        $this->excel->getActiveSheet()->setCellValue('A1', 'This is just some text value');
-//change the font size
-        $this->excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(20);
-//make the font become bold
-        $this->excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
-//merge cell A1 until D1
-        $this->excel->getActiveSheet()->mergeCells('A1:D1');
-//set aligment to center for that merged cell (A1 to D1)
-        $this->excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-        $filename = 'just_some_random_name.xls'; //save our workbook as this file name
-        header('Content-Type: application/vnd.ms-excel'); //mime type
-        header('Content-Disposition: attachment;filename="' . $filename . '"'); //tell browser what's the file name
-        header('Cache-Control: max-age=0'); //no cache
-
-//save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
-//if you want to save it as .XLSX Excel 2007 format
-        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
-//force user to download the Excel file without writing it to server's HD
-        $objWriter->save('php://output');
-        die(var_dump("cheguei aqui nessa porra"));
+        $id_cliente = $this->session->userdata('cliente_id');
+        $dados['modelos'] = $this->relatorio_model->modelos($id_cliente);
+        $this->load->view('relatorio/importa_relatorio', $dados);
     }
+
+    public function importar()
+    {
+        $fileName = $this->gera_nome_arquivo();
+        $fileConfig = getExcelUploadConfig($fileName);
+        $this->load->library('upload', $fileConfig);
+        $ok = $this->upload->do_upload('excelFile');
+        //die(var_dump($_FILES, $fileName, $fileConfig, $ok, $fileData, $this->upload->display_errors()));
+        if ($ok) {
+            $relatorio = $this->gera_array_relatorio($fileName);
+            $this->relatorio_model->cadastrar_relatorio_importado($relatorio);
+            $this->session->set_userdata('mensagem', '=)');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastro_sucesso'));
+            $this->session->set_userdata('tipo_mensagem', 'success');
+            redirect('relatorio/opcoes_relatorio');
+
+        } else {
+            $this->session->set_userdata('mensagem', '=`(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('tipo_arquivo_invalido'));
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            redirect('relatorio/importa_relatorio');
+        }
+    }
+
+    public function gera_array_relatorio($arquivo)
+    {
+        $modelo = $this->input->post('relModel');
+        $filePath = getExcelDirectory() . $arquivo;
+        return array(
+            'idCliente' => $this->session->userdata('cliente_id'),
+            'arquivo' => $filePath,
+            'data_importacao' => date('y-m-d'),
+            'idModelo' => $modelo,
+            'periodo_apuracao' => $this->input->post('apuracao')
+        );
+    }
+
+    public function gera_nome_arquivo()
+    {
+        $surname = md5(microtime());
+        $surname = substr($surname, 0, 6) . "_";
+        $fileName = $surname . $_FILES['excelFile']['name'];
+        return $fileName;
+    }
+
+    public function testeDisplayDirs()
+    {
+        $this->load->view('_include/header');
+        $current = getcwd();
+        $myDirectory = getExcelDirectory();
+        $teste = scandir(getcwd() . "/application");
+        var_dump($current, $myDirectory, $teste);
+        die();
+    }
+
+    public function testaExcel()
+    {
+        $myRelName = NULL;
+        $id_cliente = $this->session->userdata('cliente_id');
+        $dados = $this->relatorio_model->busca_relatorios($id_cliente);
+        if ($dados != NULL) {
+            $myRelName = $dados[1]->arquivo;
+        }
+        //$coisa = unlink($myRelName);
+        /*$myRel = PHPExcel_IOFactory::load($myRelName);
+        $sheetData = $myRel->getActiveSheet()->toArray(null,true,true,true);*/
+
+        var_dump($myRelName);
+        die();
+    }
+
 }

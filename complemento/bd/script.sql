@@ -407,6 +407,15 @@ insert into matanay.entidade_has_faixa_video values(13,20,100,1);
 insert into matanay.entidade_has_faixa_video values(14,20,100,2);
 insert into matanay.entidade_has_faixa_video values(18,20,100,3);
 
+insert into matanay.modelo values(DEFAULT ,"queridaEsqueciAsKids","A","C","E","G","I","K","M","O",1,NULL,1);
+insert into matanay.modelo values(DEFAULT ,"aPoupancaDosAneis","O","M","K","I","G","E","C","A",1,NULL,1);
+insert into matanay.modelo values(DEFAULT ,"oInfernoDaPoupanca","E","G","I","K","M","O","A","C",1,NULL,1);
+insert into matanay.modelo values(DEFAULT ,"entreTapasEPoupancas","K","M","O","A","C","E","G","I",1,NULL,1);
+insert into matanay.modelo values(DEFAULT ,"aPoderosaPoupanca","A","C","E","N","P","R","T","X",2,NULL,2);
+insert into matanay.modelo values(DEFAULT ,"poupancaDeMatar","X","T","R","P","N","E","C","A",2,NULL,2);
+insert into matanay.modelo values(DEFAULT ,"eAPoupancaLevou","R","P","N","E","C","A","X","T",2,NULL,2);
+insert into matanay.modelo values(DEFAULT ,"poupancaEvil","A","R","F","X","N","U","D","I",2,NULL,2);
+
 #Funcionalidades
 
 #cliente
@@ -451,7 +460,7 @@ insert into matanay.funcionalidades values(DEFAULT,"func_listar_moeda",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_excluir_moeda",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_moeda",NULL);
 
-#relatorio
+#rio
 insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_relatorio",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_listar_relatorio",NULL);
 insert into matanay.funcionalidades values(DEFAULT,"func_excluir_relatorio",NULL);
