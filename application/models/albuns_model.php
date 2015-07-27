@@ -108,14 +108,10 @@ class Albuns_model extends CI_Model {
         return TRUE;
     }
 
-    public function deletar($dados){
-        $this->db->trans_start();
-
-        $this->db->where('idAlbum', $dados['idAlbum']);
+    public function deletar($id){
+        $this->db->where('idAlbum', $id);
+        $dados['excluido'] = 1;
         $this->db->update('album', $dados);
-
-        $this->db->trans_complete();
-        return TRUE;
     }
 
     public function procurar_album($busca){

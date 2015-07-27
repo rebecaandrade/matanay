@@ -45,8 +45,8 @@ class Albuns extends CI_Controller {
         if($album['nome'] != NULL && $album['quantidade'] != NULL && $album['upc_ean'] != NULL && $album['ano'] != NULL && $album['idTipo_Album'] != NULL){
  			$this->albuns_model->cadastrar_album($album, $artista, $faixas);
             
-            $this->session->set_userdata('mensagem', 'Album cadastrado com sucesso!');
-            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('mensagem', '=)');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
             redirect('albuns/listar');       
         }else{
@@ -167,23 +167,12 @@ class Albuns extends CI_Controller {
         }
     }
 
-    public function deletar() {
-        $dados = array(
-            'idAlbum' => $this->input->get('id'),
-            'excluido' => 1
-        );
-
-        if($this->albuns_model->deletar($dados)){
-            $this->session->set_userdata('mensagem', 'Album excluido com succeso');
-            $this->session->set_userdata('subtitulo_mensagem', '');
-            $this->session->set_userdata('tipo_mensagem', 'success');
-            redirect('albuns/listar');
-        }else{
-            $this->session->set_userdata('mensagem', 'Problemas para excluir.');
-            $this->session->set_userdata('subtitulo_mensagem', '');
-            $this->session->set_userdata('tipo_mensagem', 'error');
-            redirect('albuns/listar');
-        }
+    public function deletar($id) {
+        $this->albuns_model->deletar($id);
+        $this->session->set_userdata('mensagem', '=)');
+        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('excluido_sucesso'));
+        $this->session->set_userdata('tipo_mensagem', 'success');
+        redirect('albuns/listar');
     }
 
     public function detalhar($id) {

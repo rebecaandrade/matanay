@@ -180,14 +180,10 @@ class Faixas_Videos_model extends CI_Model {
         $this->db->trans_complete();
     }
 
-    public function deletar($dados){
-        $this->db->trans_start();
-
-        $this->db->where('idFaixa', $dados['idFaixa']);
+    public function deletar($id){
+        $this->db->where('idFaixa', $id);
+        $dados['excluido'] = 1;
         $this->db->update('faixa_video', $dados);
-
-        $this->db->trans_complete();
-        return TRUE;
     }
 	
     public function procurar_faixa($busca){

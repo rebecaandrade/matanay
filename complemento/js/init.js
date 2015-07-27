@@ -121,7 +121,6 @@ var excluirEntidade = function (url, langOpt) {
         text: thisText[langOpt],
         type: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
         confirmButtonText: confirmation[langOpt],
         cancelButtonText: canceltext[langOpt],
         closeOnConfirm: false,
@@ -150,6 +149,49 @@ var excluirFavorecido = function (url) {
         }
     });
 }
+
+var excluirAlbum = function (url, langOpt) {
+    var thisTitle = ["Tem Certeza?", "Are you sure?"];
+    var thisText = ["O Álbum selecionado será excluido.", "The selected Album will be deleted."];
+    var confirmation = ["Sim, pode excluir.", "Yes, You may delete it."];
+    var canceltext = ["Não, cancele!", "No, cancel it!"];
+    swal({
+        title: thisTitle[langOpt],
+        text: thisText[langOpt],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: confirmation[langOpt],
+        cancelButtonText: canceltext[langOpt],
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            window.location.href = url;
+        }
+    });
+}
+
+var excluirFaixa = function (url, langOpt) {
+    var thisTitle = ["Tem Certeza?", "Are you sure?"];
+    var thisText = ["A Faixa selecionada será excluida.", "The selected Track will be deleted."];
+    var confirmation = ["Sim, pode excluir.", "Yes, You may delete it."];
+    var canceltext = ["Não, cancele!", "No, cancel it!"];
+    swal({
+        title: thisTitle[langOpt],
+        text: thisText[langOpt],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: confirmation[langOpt],
+        cancelButtonText: canceltext[langOpt],
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            window.location.href = url;
+        }
+    });
+}
+
 $(document).ready(function () {
     $('a').css('cursor', 'pointer')
 });
@@ -513,14 +555,12 @@ $(document).ready(function () {
             mensagem += "*" + $('input[name=msg_erro_artista]').val();
         }
 
-        var faixas = new Array();
-        $("input[name*=faixas] option:selected").each(function () {
-            //fazer um if pra só colocar no array se o valor nao for -1
-            faixas.push($(this).val());
-        });
+        var faixas = $('select[name="faixas[]"]').map(function(){
+        if ($(this).val())
+            return $(this).val();
+        }).get();
 
-        var n = $('#n_faixas').val();
-        if (faixas.length > n) {
+        if (faixas.indexOf("-1") != -1) {
             mensagem += "*" + $('input[name=msg_erro_faixas]').val();
         }
 

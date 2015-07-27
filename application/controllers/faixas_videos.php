@@ -150,23 +150,12 @@ class Faixas_Videos extends CI_Controller {
         }
     }
 
-    public function deletar(){
-        $dados = array(
-            'idFaixa' => $this->input->get('id'),
-            'excluido' => 1
-        );
-
-        if($this->faixas_videos_model->deletar($dados)){
-            $this->session->set_userdata('mensagem', 'Faixa excluida com succeso!');
-            $this->session->set_userdata('subtitulo_mensagem', '');
-            $this->session->set_userdata('tipo_mensagem', 'success');
-            redirect('faixas_videos/listar');
-        }else{
-            $this->session->set_userdata('mensagem', 'Problemas para excluir.');
-            $this->session->set_userdata('subtitulo_mensagem', '');
-            $this->session->set_userdata('tipo_mensagem', 'error');
-            redirect('faixas_videos/listar');
-        }
+    public function deletar($id) {
+        $this->faixas_videos_model->deletar($id);
+        $this->session->set_userdata('mensagem', '=)');
+        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('excluido_sucesso'));
+        $this->session->set_userdata('tipo_mensagem', 'success');
+        redirect('faixas_videos/listar');
     }
 
     public function detalhar($id){
