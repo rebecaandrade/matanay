@@ -16,7 +16,7 @@
                 <div class="input-field col s11 m8 l8 offset-l1">
                     <i class="mdi-image-audiotrack prefix"></i>
                     <input required id="icon-prefix" type="text" name="nome" value="<?php echo $faixa->nome; ?>">
-                    <label><?php echo $this->lang->line('titulo'); ?></label>
+                    <label><?php echo $this->lang->line('titulo');?></label>
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                                 <select class="addEntidade browser-default" name="artistas[]">
                                     <?php $i=0;
                                         foreach ($artistas as $artista) {
-                                            if ($artista->idEntidade == $entidade['idEntidade'] && $artista->idTipo_Entidade == 1) { ?>
+                                            if ($artista->idEntidade == $entidade['idEntidade']) { ?>
                                                 <option value="<?php echo $artista->idEntidade; ?>"> <?php echo $artista->nome; $i++; ?>
                                     <?php } } ?>
 
@@ -73,7 +73,7 @@
                             <select class="addEntidade browser-default" name="artistas[]">
                                 <?php $i=0;
                                     foreach ($artistas as $artista) {
-                                        if ($artista->idEntidade == $entidade['idEntidade'] && $artista->idTipo_Entidade == 1) { ?>
+                                        if ($artista->idEntidade == $entidade['idEntidade']) { ?>
                                             <option value="<?php echo $artista->idEntidade; ?>"> <?php echo $artista->nome; $i++; ?>
                                 <?php } } ?>
 
@@ -111,7 +111,7 @@
                                 <select class="addEntidade browser-default" name="autors[]">
                                     <?php $i=0;
                                         foreach ($autores as $autor) {
-                                            if ($autor->idEntidade == $entidade['idEntidade'] && $autor->idTipo_Entidade == 2) { ?>
+                                            if ($autor->idEntidade == $entidade['idEntidade']) { ?>
                                                 <option value="<?php echo $autor->idEntidade; ?>"> <?php echo $autor->nome; $i++; ?>
                                     <?php } } ?>
 
@@ -148,7 +148,7 @@
                             <select class="addEntidade browser-default" name="autors[]">
                                 <?php $i=0;
                                     foreach ($autores as $autor) {
-                                        if ($autor->idEntidade == $entidade['idEntidade'] && $autor->idTipo_Entidade == 2) { ?>
+                                        if ($autor->idEntidade == $entidade['idEntidade']) { ?>
                                             <option value="<?php echo $autor->idEntidade; ?>"> <?php echo $autor->nome; $i++; ?>
                                 <?php } } ?>
 
@@ -186,7 +186,7 @@
                                 <select class="addEntidade browser-default" name="produtors[]">
                                     <?php $i=0;
                                         foreach ($produtores as $produtor) {
-                                            if ($produtor->idEntidade == $entidade['idEntidade'] && $produtor->idTipo_Entidade == 3) { ?>
+                                            if ($produtor->idEntidade == $entidade['idEntidade']) { ?>
                                                 <option value="<?php echo $produtor->idEntidade; ?>"> <?php echo $produtor->nome; $i++; ?>
                                     <?php } } ?>
 
@@ -223,7 +223,7 @@
                             <select class="addEntidade browser-default" name="produtors[]">
                                 <?php $i=0;
                                     foreach ($produtores as $produtor) {
-                                        if ($produtor->idEntidade == $entidade['idEntidade'] && $produtor->idTipo_Entidade == 3) { ?>
+                                        if ($produtor->idEntidade == $entidade['idEntidade']) { ?>
                                             <option value="<?php echo $produtor->idEntidade; ?>"> <?php echo $produtor->nome; $i++; ?>
                                 <?php } } ?>
 
@@ -273,6 +273,7 @@
 
             <input type="hidden" name="msg_perc_artista" value="<?= $this->lang->line('erro_perc_artista') ?>">
             <input type="hidden" name="msg_perc_autor" value="<?= $this->lang->line('erro_perc_autor') ?>">
+            <input type="hidden" name="msg_perc_produtor" value="<?= $this->lang->line('erro_perc_produtor') ?>">
 
             <button class="btn waves-effect waves-light col s12 m12 l8 offset-l1" type="submit"><?php echo $this->lang->line('atualizar'); ?>
                 <i class="mdi-content-send right"></i>

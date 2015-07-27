@@ -25,7 +25,7 @@
                 </h5>
                 <h6>ISRC: <?php echo $faixa->isrc; ?></h6><br>
 
-                <h5><?php echo $this->lang->line('compositores'); ?></h5>
+                <h5><?php echo $this->lang->line('autores'); ?></h5>
                 <h6><?php
                     if(isset($autores)){
                         foreach ($autor_faixa as $entidade) {

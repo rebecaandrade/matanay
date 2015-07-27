@@ -307,6 +307,7 @@ $lang['erro_artistas']    	     = 'Selecione pelo menos um Artista ';
 $lang['erro_autores']    	     = 'Selecione pelo menos um Autor ';
 $lang['erro_perc_artista']    	 = 'A soma dos percentuais de Artista deve ser 100% ';
 $lang['erro_perc_autor']    	 = 'A soma dos percentuais de Autor deve ser 100% ';
+$lang['erro_perc_produtor']    	 = 'A soma dos percentuais de Produtor deve ser 100% ';
 
 // mensagens validacao form cadastro de perfil
 $lang['password_error']                        = "Senhas não são iguais";

@@ -100,8 +100,8 @@
 	        <div id="SelectProdutor">
 		        <div class="row">
 		          	<div class="input-field col s10 m8 l8 offset-l1">
-		            	<select class="addProdutor browser-default" name="produtors[]">
-		              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
+		            	<select class="addProdutor browser-default" name="produtors[]" id="produtor">
+		              		<option value="-1" disabled selected><?php echo $this->lang->line('selecione');?></option>
 		              		<?php
 	                			if(isset($produtores)){
 	                    			foreach ($produtores as $produtor) { ?>
@@ -142,6 +142,7 @@
 	        <input type="hidden" name="msg_erro_autores" value="<?= $this->lang->line('erro_autores') ?>">
 	        <input type="hidden" name="msg_perc_artista" value="<?= $this->lang->line('erro_perc_artista') ?>">
 	        <input type="hidden" name="msg_perc_autor" value="<?= $this->lang->line('erro_perc_autor') ?>">
+	        <input type="hidden" name="msg_perc_produtor" value="<?= $this->lang->line('erro_perc_produtor') ?>">
 
 	        <button class="btn waves-effect waves-light col s11 m12 l8 offset-l1" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
 	          	<i class="mdi-content-send right"></i>
