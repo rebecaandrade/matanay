@@ -5,6 +5,12 @@ class Albuns extends CI_Controller {
 	public function __construct() {
    		parent::__construct();
    		$this->load->model('albuns_model');
+        if (!($this->session->userdata('linguagem'))) {
+            $this->session->set_userdata('linguagem', 'portugues');
+        }
+        
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 	}
 
 	public function cadastra_album() {

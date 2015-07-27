@@ -45,7 +45,7 @@ $this->load->view('_include/header') ?>
                                     $flag=1;
                             }
                             if ($flag==0){ ?>
-                                <a class="deletarLink" onclick="excluirEntidade('<?= base_url() . 'index.php/Imposto/deletar/' . $row1->idImposto ?>','<?=$this->lang->line('langOpt')?>')"><?php echo $this->lang->line('deletar') ?> </a>
+                                <a class="deletarLink" onclick="excluirImposto('<?= base_url() . 'index.php/Imposto/deletar/' . $row1->idImposto ?>','<?=$this->lang->line('langOpt')?>')"><?php echo $this->lang->line('deletar') ?> </a>
                             <?php }
                             else 
                                 echo $this->lang->line('indisponivel');

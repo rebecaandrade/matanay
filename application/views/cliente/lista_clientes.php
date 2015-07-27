@@ -28,8 +28,7 @@
 						<td>
 							<a href="<?php echo base_url().'index.php/cliente/lista_perfis/'.$cliente->idCliente;?>"><?php echo $this->lang->line('perfis_row'); ?></a> |
 							<a href="<?php echo base_url().'index.php/cliente/atualiza_cliente/'.$cliente->idCliente;?>"><?php echo $this->lang->line('editar'); ?></a> |
-							<a onclick="confirmar('<?php echo $this->lang->line('confirmar_deletar') ?>','<?php echo base_url().'index.php/cliente/excluir_cliente/'.$cliente->idCliente;?>',
-								'<?php echo $this->lang->line('sim')?>','<?php echo $this->lang->line('nao')?>')"><?php echo $this->lang->line('deletar'); ?></a>
+							<a onclick="excluirImposto('<?= base_url() . 'index.php/cliente/excluir_cliente/' . $cliente->idCliente ?>','<?=$this->lang->line('langOpt')?>')"><?php echo $this->lang->line('deletar'); ?></a>
 						</td>
 					</tr> 
 				<?php } ?>

@@ -42,7 +42,7 @@ $this->load->view('_include/header') ?>
                                 }
                                 if($flag==0){ ?>
                                 |   <a class="deletarLink"
-                                    onclick="excluirFavorecido('<?= base_url() . 'index.php/favorecido/deletar/' . $row->idFavorecido ?>')"><?php echo $this->lang->line('deletar') ?> </a>
+                                    onclick="excluirFavorecido('<?= base_url() . 'index.php/favorecido/deletar/' . $row->idFavorecido ?>' , '<?= $this->lang->line('langOpt') ?>')"><?php echo $this->lang->line('deletar') ?> </a>
                                 <?php } else echo "| ",$this->lang->line('indisponivel');?>
                             </td>
                         </tr>

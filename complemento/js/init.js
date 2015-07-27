@@ -132,15 +132,39 @@ var excluirEntidade = function (url, langOpt) {
     });
 }
 
-var excluirFavorecido = function (url) {
+var excluirFavorecido = function (url, langOpt) {
+    var thisTitle = ["Tem Certeza?", "Are you sure?"];
+    var thisText = ["O Favorecido selecionada será excluido", "The Selected Favored Will be deleted"];
+    var confirmation = ["Sim, pode excluir!", "Yes, You may delete it"];
+    var canceltext = ["Não, cancele!", "No, cancel it!"];
     swal({
-        title: "Tem Certeza?",
-        text: "O favorecido selecionado será excluido",
+        title: thisTitle[langOpt],
+        text: thisText[langOpt],
         type: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Sim, pode excluir!",
-        cancelButtonText: "Não, cancele!",
+        confirmButtonText: confirmation[langOpt],
+        cancelButtonText: canceltext[langOpt],
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            window.location.href = url;
+        }
+    });
+}
+
+var excluirImposto = function (url, langOpt) {
+    var thisTitle = ["Tem Certeza?", "Are you sure?"];
+    var thisText = ["O Imposto selecionada será excluido", "The Selected Tax Will be deleted"];
+    var confirmation = ["Sim, pode excluir!", "Yes, You may delete it"];
+    var canceltext = ["Não, cancele!", "No, cancel it!"];
+    swal({
+        title: thisTitle[langOpt],
+        text: thisText[langOpt],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: confirmation[langOpt],
+        cancelButtonText: canceltext[langOpt],
         closeOnConfirm: false,
         closeOnCancel: true
     }, function (isConfirm) {

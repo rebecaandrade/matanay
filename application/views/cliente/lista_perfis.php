@@ -30,8 +30,7 @@
 						<td><?php echo $perfil->login;?></td>
 						<td>
 							<a href=<?php echo base_url().'index.php/cliente/atualiza_perfil_admin/'.$perfil->idCliente.'/'.$perfil->idUsuario;?> ><?php echo $this->lang->line('editar'); ?></a> |
-							<a onclick="confirmar('<?php echo $this->lang->line('confirmar_deletar') ?>','<?php echo base_url().'index.php/cliente/excluir_perfil/'.$perfil->idUsuario.'/'.$perfil->idCliente;?>',
-								'<?php echo $this->lang->line('sim')?>','<?php echo $this->lang->line('nao')?>')"><?php echo $this->lang->line('deletar'); ?></a>
+							<a onclick="excluirImposto('<?= base_url() . 'index.php/cliente/excluir_perfil/' . $perfil->idUsuario ?>','<?=$this->lang->line('langOpt')?>')"><?php echo $this->lang->line('deletar'); ?></a>
 						</td>
 					</tr> 
 				<?php } ?>
