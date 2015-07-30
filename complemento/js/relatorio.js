@@ -1,6 +1,13 @@
 $(document).ready(function () {
     //opcoes relatorio view
-    $('#relLojas #relSubLojas #relTerritorio #relArtista #relAutor #relProdutor #relAlbum #relFaixa').chosen();
+    $('#relLojas').chosen();
+    $('#relFaixa').chosen();
+    $('#relAlbum').chosen();
+    $('#relProdutor').chosen();
+    $('#relAutor').chosen();
+    $('#relArtista').chosen();
+    $('#relTerritorio').chosen();
+    $('#relSubLojas').chosen();
     $('#relOpt').on("submit", function () {
         var mensagem = "";
         var dataInicio = ($('input[name=datainicio]').val());
