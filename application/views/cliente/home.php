@@ -58,10 +58,10 @@
 	        </div>
 
 	        <div class="input-field col s12 m12 l6">
-	        	<a href="#">
+	        	<a href="<?php echo base_url(); ?>index.php/notificacao/listar">
 			        <div class="card-panel grey lighten-2">
 			          	<i class="mdi-alert-warning"></i>
-			          	<div class="label">NOTIFICAÇÕES</div>
+			          	<div class="label"><?php echo $this->lang->line('notificacao'); ?></div>
 			      	</div>
 		      	</a>
 	        </div>

@@ -140,6 +140,7 @@ $lang['nao_ha_albums']			= 'There are no albums registered!';
 $lang['albuns_cadastro']		= 'Album Registry';
 $lang['albuns_edicao']			= 'Album Update';
 $lang['albuns_edicao_faixas'] 	= 'Tracklist Update';
+$lang['cod_invalido']   		= "Invalid Catalog Code";
 
 ////// MOEDA ////// VITOR
 
@@ -329,3 +330,10 @@ $lang['periodo_de_apuracao']                   = "Period of Determination";
 $lang['apuracao_invalida']                     = "Invalid Period of Determination";
 $lang['data_importacao']                       = "Date of Import";
 $lang['modelo_relatorio']                      = "Model";
+
+
+
+
+// notificacoes
+$lang['notificacao']   		                = "Notifications";
+$lang['contrato_nome']   		            = "Contract";

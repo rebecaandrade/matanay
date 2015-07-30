@@ -58,7 +58,7 @@
 	        <div class="row">
 	          	<div class="input-field col s12 m6 l4 offset-l2">
 	            	<label><?php echo $this->lang->line('catalogo'); ?></label>
-	            	<input pattern="[a-zA-Z0-9]+{0,10}" maxlength="10" title="Até 10 caracteres alfanumericos" type="text" name="catalogo"/>
+	            	<input id="codCatalogo" pattern="[a-zA-Z0-9]+{0,10}" maxlength="10" title="Até 10 caracteres alfanumericos" type="text" name="catalogo"/>
 	          	</div>
 	          	<div class="input-field col s12 m6 l4"/>
 	          		<label><?php echo $this->lang->line('lancamento');?></label>
@@ -101,6 +101,7 @@
 	        <input type="hidden" name="msg_erro_artista" value="<?= $this->lang->line('erro_artista') ?>">
 	        <input type="hidden" name="msg_erro_ano" value="<?= $this->lang->line('erro_ano') ?>">
 	        <input type="hidden" name="msg_erro_faixas" value="<?= $this->lang->line('erro_faixas') ?>">
+            <input type="hidden" name="codMessageDisplay" value="<?= $this->lang->line('cod_invalido') ?>">
 
 	        <button class="btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
 	          	<i class="mdi-content-send right"></i>

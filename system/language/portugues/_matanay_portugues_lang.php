@@ -138,6 +138,8 @@ $lang['nao_ha_albums']			= 'Não há álbuns cadastrados!';
 $lang['albuns_cadastro']		= 'Cadastro de Álbum';
 $lang['albuns_edicao']			= 'Edição de Álbum';
 $lang['albuns_edicao_faixas'] 	= 'Edição de Faixas';
+$lang['cod_invalido']   		= "Código do catalogo inválido";
+
 
 ////// MOEDA ////// Vitor
 
@@ -332,3 +334,7 @@ $lang['periodo_de_apuracao']                   = "Período de Apuração";
 $lang['apuracao_invalida']                     = "Período de Apuração Inválido";
 $lang['data_importacao']                       = "Data de importação";
 $lang['modelo_relatorio']                      = "Modelo";
+
+// notificacoes
+$lang['notificacao']   		                = "Notificações";
+$lang['contrato_nome']   		            = "Contrato";

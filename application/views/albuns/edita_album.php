@@ -83,7 +83,7 @@
                 </div>
                 <div class="input-field col s12 m4 l3">
                     <label><?php echo $this->lang->line('catalogo'); ?></label>
-                    <input pattern="[a-zA-Z0-9]+{0,10}" maxlength="10" title="Até 10 caracteres alfanumericos" type="text" name="catalogo" value="<?php echo $album->codigo_catalogo; ?>"/>
+                    <input id="codCatalogo1" pattern="[a-zA-Z0-9]+{0,10}" maxlength="10" title="Até 10 caracteres alfanumericos" type="text" name="catalogo" value="<?php echo $album->codigo_catalogo; ?>"/>
                 </div>
             </div>
 
@@ -107,6 +107,7 @@
             </div>
 
             <input type="hidden" name="msg_erro_ano" value="<?= $this->lang->line('erro_ano') ?>">
+            <input type="hidden" name="codMessageDisplay" value="<?= $this->lang->line('cod_invalido') ?>">
 
             <button class="btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('atualizar'); ?>
                 <i class="mdi-content-send right"></i>

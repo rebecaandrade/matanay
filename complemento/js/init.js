@@ -364,6 +364,25 @@ function validaCpf(strCPF) {
     if (Resto != parseInt(strCPF.substring(10, 11))) return false;
     return true;
 }
+
+/* validacao do codigo do catalogo */
+function validaCodCatalogo(codCat) {
+    console.log(codCat);
+
+    if ((codCat == "0000000000") ||
+        (codCat == "1111111111") ||
+        (codCat == "2222222222") ||
+        (codCat == "3333333333") ||
+        (codCat == "4444444444") ||
+        (codCat == "5555555555") ||
+        (codCat == "6666666666") ||
+        (codCat == "7777777777") ||
+        (codCat == "8888888888") ||
+        (codCat == "9999999999")) return false;
+    else 
+        return true;
+}
+
 /* validacao cnpj */
 function validarCNPJ(cnpj) {
 
@@ -568,6 +587,12 @@ $(document).ready(function () {
         } else if (ano > 2050) {
             mensagem += "*" + $('input[name=msg_erro_ano]').val();
         }
+        
+        var $codCat = $('#codCatalogo').val();
+        if (validaCodCatalogo($codCat)==false) {
+            console.log(!validaCodCatalogo($codCat));
+            mensagem += "*" + $('input[name=codMessageDisplay]').val() + "\n";
+        }
 
         var tipo = $('#tipo option:selected').val();
         if (tipo < 0) {
@@ -606,6 +631,12 @@ $(document).ready(function () {
             mensagem += "*" + $('input[name=msg_erro_ano]').val();
         } else if (ano > 2050) {
             mensagem += "*" + $('input[name=msg_erro_ano]').val();
+        }
+
+        var $codCat = $('#codCatalogo1').val();
+        if (validaCodCatalogo($codCat)==false) {
+            console.log(!validaCodCatalogo($codCat));
+            mensagem += "*" + $('input[name=codMessageDisplay]').val() + "\n";
         }
 
         if (mensagem.length > 3) {
