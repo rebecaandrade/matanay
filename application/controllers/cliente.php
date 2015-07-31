@@ -221,7 +221,7 @@ class Cliente extends CI_Controller
         );
     }
 
-    public function excluir_perfil($id_perfil, $id_cliente)
+    public function excluir_perfil($id_perfil,$id_cliente)
     {
         $this->cliente_model->excluir_perfil($id_perfil);
         $this->session->set_userdata('mensagem', $this->lang->line('excluido_sucesso'));

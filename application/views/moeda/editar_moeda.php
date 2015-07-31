@@ -30,7 +30,7 @@
 					</div>
 				</div>
 				<input type='hidden' name='id' value="<?php echo $moeda->idMoeda; ?>">
-				<input type='hidden' name='id_cliente' value="<?php echo $moeda->idCliente; ?>">
+				<input type='hidden' name='cliente_id' value="<?php echo $moeda->idCliente; ?>">
 				<button class="btn waves-effect waves-light col s12 m10 offset-m1 l8 offset-l2" type="submit"><?php echo $this->lang->line('atualizar'); ?>
 					<i class="mdi-content-send right"></i>
 				</button>

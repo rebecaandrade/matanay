@@ -26,7 +26,7 @@
 				$nome = $this->input->post('nome');
 				$sigla = $this->input->post('sigla');
 				$cambio = $this->input->post('cambio');
-				$id_cliente = $this->session->userdata('id_cliente');
+				$id_cliente = $this->session->userdata('cliente_id');
 				$this->moeda_model->cadastrar($nome,$sigla,$cambio,$id_cliente);
 				$mensagem = array(
 									'mensagem'				=> $this->lang->line('cadastro_sucesso'),
@@ -46,7 +46,7 @@
 			}
 		}
 		public function listar(){
-			$dados['moedas'] = $this->moeda_model->buscar_moedas($this->session->userdata('id_cliente'));
+			$dados['moedas'] = $this->moeda_model->buscar_moedas($this->session->userdata('cliente_id'));
 			$this->load->view('moeda/listar_moedas',$dados);
 		}
 		public function deletar(){
@@ -61,7 +61,7 @@
 			$id = $this->input->get('param');
 			if((string)(int)$id == $id){ // verifica se o ID é valido
 				$dados['moeda'] = $this->moeda_model->buscar_moeda($id);
-				if($dados['moeda']->idCliente == $this->session->userdata('id_cliente')){
+				if($dados['moeda']->idCliente == $this->session->userdata('cliente_id')){
 					$this->load->view('moeda/editar_moeda',$dados);
 				}
 				else{
@@ -83,8 +83,8 @@
 			}
 		}
 		public function editar_moeda(){
-			$id_cliente = $this->input->post('id_cliente');
-			if($id_cliente == $this->session->userdata('id_cliente')){ //checa se o id não foi manipulado
+			$id_cliente = $this->input->post('cliente_id');
+			if($id_cliente == $this->session->userdata('cliente_id')){ //checa se o id não foi manipulado
 				$this->form_validation->set_message('required', $this->lang->line('form_error_required') );
 				$this->form_validation->set_message('max_length', $this->lang->line('form_error_max_length'));
 				$this->form_validation->set_message('decimal_num', $this->lang->line('form_error_decimal_num'));

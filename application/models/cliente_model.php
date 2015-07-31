@@ -139,10 +139,10 @@ class Cliente_model extends CI_Model
 
     public function excluir_perfil($id)
     {
-        $this->db->where('idPerfis', $id);
+        $this->db->where('idUsuario', $id);
         $array = array(
             'excluido' => 1
         );
-        return $this->db->update('perfis', $array);
+        return $this->db->update('usuario', $array);
     }
 }
