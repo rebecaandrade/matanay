@@ -44,99 +44,187 @@
             <div class="row myLojas mySubLojas">
                 <div class="col s6 m6">
                     <h5><?= $this->lang->line('loja') ?></h5>
-                    <select name="loja" id="relLojas" class="browser-default">
-                        <option selected value="-1"><?= $this->lang->line('loja') ?></option>
-                        <?php if (isset($modelos)) { ?>
-                            <?php foreach ($modelos as $loja) { ?>
-                                <option value="<?= $loja['loja'] ?>"><?= $loja['loja'] ?></option>
-                            <?php }
-                        } ?>
-                    </select>
+
+                    <div class="row">
+                        <div class="col s8 m8">
+                            <select name="loja" id="relLojas" class="browser-default">
+                                <option selected value="-1"><?= $this->lang->line('loja') ?></option>
+                                <?php if (isset($modelos)) { ?>
+                                    <?php foreach ($modelos as $loja) { ?>
+                                        <option value="<?= $loja['loja'] ?>"><?= $loja['loja'] ?></option>
+                                    <?php }
+                                } ?>
+                            </select>
+                        </div>
+                        <div class="col s4 m4">
+                            <select name="escolhaLoja" id="">
+                                <option value="0"><?= $this->lang->line('exclusao') ?></option>
+                                <option selected value="1"><?= $this->lang->line('adicao') ?></option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="col s6 m6">
                     <h5><?= $this->lang->line('subloja') ?></h5>
-                    <select name="subloja" id="relSubLojas" class="browser-default">
-                        <option selected value="-1"><?= $this->lang->line('subloja') ?></option>
-                        <?php if (isset($modelos)) { ?>
-                            <?php foreach ($modelos as $subLoja) { ?>
-                                <option value="<?= $subLoja['subloja'] ?>"><?= $subLoja['subloja'] ?></option>
-                            <?php }
-                        } ?>
-                    </select>
+
+                    <div class="row">
+                        <div class="col s8 m8">
+                            <select name="subloja" id="relSubLojas" class="browser-default">
+                                <option selected value="-1"><?= $this->lang->line('subloja') ?></option>
+                                <?php if (isset($modelos)) { ?>
+                                    <?php foreach ($modelos as $subLoja) { ?>
+                                        <option value="<?= $subLoja['subloja'] ?>"><?= $subLoja['subloja'] ?></option>
+                                    <?php }
+                                } ?>
+                            </select>
+                        </div>
+                        <div class="col s4 m4">
+                            <select name="escolhaSubLoja" id="">
+                                <option value="0"><?= $this->lang->line('exclusao') ?></option>
+                                <option selected value="1"><?= $this->lang->line('adicao') ?></option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row myTerritorios myArtista">
                 <div class="col s6 m6">
                     <h5><?= $this->lang->line('territorio') ?></h5>
-                    <select name="territorio" id="relTerritorio" class="browser-default">
-                        <option selected value="-1"><?= $this->lang->line('territorio') ?></option>
-                        <?php if (isset($modelos)) { ?>
-                            <?php foreach ($modelos as $territorio) { ?>
-                                <option
-                                    value="<?= $territorio['territorio'] ?>"><?= $territorio['territorio'] ?></option>
-                            <?php }
-                        } ?>
-                    </select>
+
+                    <div class="row">
+                        <div class="col s8 m8">
+                            <select name="territorio" id="relTerritorio" class="browser-default">
+                                <option selected value="-1"><?= $this->lang->line('territorio') ?></option>
+                                <?php if (isset($modelos)) { ?>
+                                    <?php foreach ($modelos as $territorio) { ?>
+                                        <option
+                                            value="<?= $territorio['territorio'] ?>"><?= $territorio['territorio'] ?></option>
+                                    <?php }
+                                } ?>
+                            </select>
+                        </div>
+                        <div class="col s4 m4">
+                            <select name="escolhaTerritorio" id="">
+                                <option value="0"><?= $this->lang->line('exclusao') ?></option>
+                                <option selected value="1"><?= $this->lang->line('adicao') ?></option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="col s6 m6">
                     <h5><?= $this->lang->line('artista') ?></h5>
-                    <select name="artista" id="relArtista" class="browser-default">
-                        <option selected value="-1"><?= $this->lang->line('artista') ?></option>
-                        <?php if (isset($artistas)) { ?>
-                            <?php foreach ($artistas as $artista) { ?>
-                                <option value="<?= $artista->nome ?>"><?= $artista->nome ?></option>
-                            <?php }
-                        } ?>
-                    </select>
+
+                    <div class="row">
+                        <div class="col s8 m8">
+                            <select name="artista" id="relArtista" class="browser-default">
+                                <option selected value="-1"><?= $this->lang->line('artista') ?></option>
+                                <?php if (isset($artistas)) { ?>
+                                    <?php foreach ($artistas as $artista) { ?>
+                                        <option value="<?= $artista->nome ?>"><?= $artista->nome ?></option>
+                                    <?php }
+                                } ?>
+                            </select>
+                        </div>
+                        <div class="col s4 m4">
+                            <select name="escolhaArtista" id="">
+                                <option value="0"><?= $this->lang->line('exclusao') ?></option>
+                                <option selected value="1"><?= $this->lang->line('adicao') ?></option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row myAutor myProdutor">
                 <div class="col s6 m6">
                     <h5><?= $this->lang->line('autor') ?></h5>
-                    <select name="autor" id="relAutor" class="browser-default">
-                        <option selected value="-1"><?= $this->lang->line('autor') ?></option>
-                        <?php if (isset($autores)) { ?>
-                            <?php foreach ($autores as $autor) { ?>
-                                <option value="<?= $autor->nome ?>"><?= $autor->nome ?></option>
-                            <?php }
 
-                        } ?>
-                    </select>
+                    <div class="row">
+                        <div class="col s8 m8">
+                            <select name="autor" id="relAutor" class="browser-default">
+                                <option selected value="-1"><?= $this->lang->line('autor') ?></option>
+                                <?php if (isset($autores)) { ?>
+                                    <?php foreach ($autores as $autor) { ?>
+                                        <option value="<?= $autor->nome ?>"><?= $autor->nome ?></option>
+                                    <?php }
+
+                                } ?>
+                            </select>
+                        </div>
+                        <div class="col s4 m4">
+                            <select name="escolhaAutor" id="">
+                                <option value="0"><?= $this->lang->line('exclusao') ?></option>
+                                <option selected value="1"><?= $this->lang->line('adicao') ?></option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="col s6 m6">
                     <h5><?= $this->lang->line('produtor') ?></h5>
-                    <select name="produtor" id="relProdutor" class="browser-default">
-                        <option selected value="-1"><?= $this->lang->line('produtor') ?></option>
-                        <?php if (isset($produtores)) { ?>
-                            <?php foreach ($produtores as $produtor) { ?>
-                                <option value="<?= $produtor->nome ?>"><?= $produtor->nome ?></option>
-                            <?php }
-                        } ?>
-                    </select>
+
+                    <div class="row">
+                        <div class="col s8 m8">
+                            <select name="produtor" id="relProdutor" class="browser-default">
+                                <option selected value="-1"><?= $this->lang->line('produtor') ?></option>
+                                <?php if (isset($produtores)) { ?>
+                                    <?php foreach ($produtores as $produtor) { ?>
+                                        <option value="<?= $produtor->nome ?>"><?= $produtor->nome ?></option>
+                                    <?php }
+                                } ?>
+                            </select>
+                        </div>
+                        <div class="col s4 m4">
+                            <select name="escolhaProdutor" id="">
+                                <option value="0"><?= $this->lang->line('exclusao') ?></option>
+                                <option selected value="1"><?= $this->lang->line('adicao') ?></option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row  myAlbum myFaixa">
                 <div class="col s6 m6">
                     <h5><?= $this->lang->line('albums') ?></h5>
-                    <select name="album" id="relAlbum" class="browser-default">
-                        <option selected value="-1"><?= $this->lang->line('albums') ?></option>
-                        <?php if (isset($albuns)) { ?>
-                            <?php foreach ($albuns as $album) { ?>
-                                <option value="<?= $album->nome ?>"><?= $album->nome ?></option>
-                            <?php }
-                        } ?>
-                    </select>
+
+                    <div class="row">
+                        <div class="col s8 m8">
+                            <select name="album" id="relAlbum" class="browser-default">
+                                <option selected value="-1"><?= $this->lang->line('albums') ?></option>
+                                <?php if (isset($albuns)) { ?>
+                                    <?php foreach ($albuns as $album) { ?>
+                                        <option value="<?= $album->nome ?>"><?= $album->nome ?></option>
+                                    <?php }
+                                } ?>
+                            </select>
+                        </div>
+                        <div class="col s4 m4">
+                            <select name="escolhaAlbum" id="">
+                                <option value="0"><?= $this->lang->line('exclusao') ?></option>
+                                <option selected value="1"><?= $this->lang->line('adicao') ?></option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="col s6 m6">
                     <h5><?= $this->lang->line('faixas') ?></h5>
-                    <select name="faixa" id="relFaixa" class="browser-default">
-                        <option selected value="-1"><?= $this->lang->line('faixas') ?></option>
-                        <?php if (isset($faixas)) { ?>
-                            <?php foreach ($faixas as $faixa) { ?>
-                                <option value="<?= $faixa->nome ?>"><?= $faixa->nome ?></option>
-                            <?php }
-                        } ?>
-                    </select>
+
+                    <div class="row">
+                        <div class="col s8 m8">
+                            <select name="faixa" id="relFaixa" class="browser-default">
+                                <option selected value="-1"><?= $this->lang->line('faixas') ?></option>
+                                <?php if (isset($faixas)) { ?>
+                                    <?php foreach ($faixas as $faixa) { ?>
+                                        <option value="<?= $faixa->nome ?>"><?= $faixa->nome ?></option>
+                                    <?php }
+                                } ?>
+                            </select>
+                        </div>
+                        <div class="col s4 m4">
+                            <select name="escolhaFaixa" id="">
+                                <option value="0"><?= $this->lang->line('exclusao') ?></option>
+                                <option selected value="1"><?= $this->lang->line('adicao') ?></option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <input type="hidden" name="startDateIsGreaterMessegeDisplay"

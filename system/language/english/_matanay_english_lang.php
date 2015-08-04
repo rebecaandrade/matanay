@@ -330,9 +330,8 @@ $lang['periodo_de_apuracao']                   = "Period of Determination";
 $lang['apuracao_invalida']                     = "Invalid Period of Determination";
 $lang['data_importacao']                       = "Date of Import";
 $lang['modelo_relatorio']                      = "Model";
-
-
-
+$lang['exclusao']                              = "Exclusão";
+$lang['adicao']                                = "Adição";
 
 // notificacoes
 $lang['notificacao']   		                = "Notifications";

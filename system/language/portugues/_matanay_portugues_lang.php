@@ -334,7 +334,8 @@ $lang['periodo_de_apuracao']                   = "Período de Apuração";
 $lang['apuracao_invalida']                     = "Período de Apuração Inválido";
 $lang['data_importacao']                       = "Data de importação";
 $lang['modelo_relatorio']                      = "Modelo";
-
+$lang['exclusao']                              = "Exclusão";
+$lang['adicao']                                = "Adição";
 // notificacoes
 $lang['notificacao']   		                = "Notificações";
 $lang['contrato_nome']   		            = "Contrato";

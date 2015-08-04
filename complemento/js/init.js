@@ -379,7 +379,7 @@ function validaCodCatalogo(codCat) {
         (codCat == "7777777777") ||
         (codCat == "8888888888") ||
         (codCat == "9999999999")) return false;
-    else 
+    else
         return true;
 }
 
@@ -508,11 +508,39 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('.percentage').mask("000.00%", {reverse:true});
+    $('.percentage').mask("000.00%", {reverse: true});
+    $('.percentage').on("blur", function () {
+        //console.log("entrei no change");
+        var troca = false;
+        var valor = $(this).val();
+        var valor = valor.slice(0, valor.length - 1);
+        var testeValor = valor.split(".");
+        if (testeValor[0] == 100) {
+            if (testeValor[1] > 0) troca = true;
+        }
+        if (testeValor[0] > 100) {
+            troca = true;
+        }
+        if (troca == true) $(this).prop("value", null);
+    });
 });
 
 $(document).ready(function () {
-    $('.porcentagem').mask("000,00%", {reverse:true});
+    $('.porcentagem').mask("000,00%", {reverse: true});
+    $('.porcentagem').on("blur", function () {
+        //console.log("entrei no change");
+        var troca = false;
+        var valor = $(this).val();
+        var valor = valor.slice(0, valor.length - 1);
+        var testeValor = valor.split(",");
+        if (testeValor[0] == 100) {
+            if (testeValor[1] > 0) troca = true;
+        }
+        if (testeValor[0] > 100) {
+            troca = true;
+        }
+        if (troca == true) $(this).prop("value", null);
+    });
 });
 var maskBrOptions = {
     translation: {
@@ -587,9 +615,9 @@ $(document).ready(function () {
         } else if (ano > 2050) {
             mensagem += "*" + $('input[name=msg_erro_ano]').val();
         }
-        
+
         var $codCat = $('#codCatalogo').val();
-        if (validaCodCatalogo($codCat)==false) {
+        if (validaCodCatalogo($codCat) == false) {
             console.log(!validaCodCatalogo($codCat));
             mensagem += "*" + $('input[name=codMessageDisplay]').val() + "\n";
         }
@@ -604,9 +632,9 @@ $(document).ready(function () {
             mensagem += "*" + $('input[name=msg_erro_artista]').val();
         }
 
-        var faixas = $('select[name="faixas[]"]').map(function(){
-        if ($(this).val())
-            return $(this).val();
+        var faixas = $('select[name="faixas[]"]').map(function () {
+            if ($(this).val())
+                return $(this).val();
         }).get();
 
         if (faixas.indexOf("-1") != -1) {
@@ -634,7 +662,7 @@ $(document).ready(function () {
         }
 
         var $codCat = $('#codCatalogo1').val();
-        if (validaCodCatalogo($codCat)==false) {
+        if (validaCodCatalogo($codCat) == false) {
             console.log(!validaCodCatalogo($codCat));
             mensagem += "*" + $('input[name=codMessageDisplay]').val() + "\n";
         }
