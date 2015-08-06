@@ -13,14 +13,45 @@ class Cliente extends CI_Controller
         }
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
+        $this->load->model('Contrato_model');
     }
 
     public function home()
     {
+        $dados["notificacao"] = $this->existeNotificacao();
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
-        $this->load->view('cliente/home');
+        $this->load->view('cliente/home', $dados);
+    }
+
+    public function existeNotificacao(){
+        $id_cliente = $this->session->userdata('cliente_id');
+        $dadoNotificacao = $this->Contrato_model->buscar_datas($id_cliente);
+        $flag=0;
+        foreach ($dadoNotificacao as $notificacao) { 
+            /*verificao das datas atuais e convercoes para unix*/
+            $unix =  mysql_to_unix($notificacao->data_fim);
+            $now = now();
+            $tempo = timespan($now,$unix  );
+            /*verificacao do numero de meses*/
+            $meses=0;
+            if($tempo[2] == "Y"){
+                $meses=$tempo[0] *12 + $tempo[8];
+            }
+            else
+                if($tempo[2] == "M"){
+                    $meses=$tempo[0] + $tempo[10] / 4 ;
+                }
+            if($meses <= $notificacao->alerta){      
+                $flag = 1;
+            }else
+                $flag = 0;
+            if ($flag == 1) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public function cadastros()

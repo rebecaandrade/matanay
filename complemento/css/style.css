@@ -520,3 +520,10 @@ label {
 
 /**************FIM - FOOTER**********************/
 
+
+
+#notificacao {
+    color: red;
+    top:-10px;
+    position: relative;
+}

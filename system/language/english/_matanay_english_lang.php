@@ -56,6 +56,7 @@ $lang['coluna']				= 'Column';
 $lang['escolha_opcao']		= 'Choose an option';
 $lang['erro']				= 'An error happened';
 $lang['indisponivel']       = 'Unavailable';
+$lang['disponivel']       	= 'Available';
 
 ////// FORM VALIDATION
 
