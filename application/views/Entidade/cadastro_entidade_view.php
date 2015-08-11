@@ -12,9 +12,6 @@
 
     <div class="row">
         <form id="myForm" action="<?= base_url() . 'index.php/Entidade/cadastrar' ?>" method="post">
-            <?php if (isset($variavel)) {
-                echo $variavel;
-            } ?>
             <div class="row">
                 <div class="input-field col s12 m9 l8 offset-l2">
                     <i class="mdi-action-perm-identity prefix"></i>

@@ -2,13 +2,11 @@
 
 class Relatorio_model extends CI_Model
 {
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
-    public function buscar_modelos($id_cliente = 0)
-    {
+    public function buscar_modelos($id_cliente = 0) {
         $this->db->select('mod.loja,mod.subloja,mod.territorio')->from('Modelo mod');
         $this->db->where('mod.idCliente', $id_cliente);
         $dados = $this->db->get()->result();
@@ -16,8 +14,7 @@ class Relatorio_model extends CI_Model
         return $dados;
     }
 
-    public function busca_artistas($id_cliente = 0)
-    {
+    public function busca_artistas($id_cliente = 0) {
         $this->db->select('ent.*,ehte.*,te.*')->from('Entidade ent');
         $this->db->join('Entidade_has_Tipo_Entidade ehte', ' ehte.idEntidade = ent.idEntidade');
         $this->db->join('Tipo_Entidade te', ' te.idTipo_Entidade = ehte.idTipo_Entidade');
@@ -28,8 +25,7 @@ class Relatorio_model extends CI_Model
         return $dados;
     }
 
-    public function busca_produtores($id_cliente)
-    {
+    public function busca_produtores($id_cliente) {
         $this->db->select('ent.*,ehte.*,te.*')->from('Entidade ent');
         $this->db->join('Entidade_has_Tipo_Entidade ehte', ' ehte.idEntidade = ent.idEntidade');
         $this->db->join('Tipo_Entidade te', ' te.idTipo_Entidade = ehte.idTipo_Entidade');
@@ -40,8 +36,7 @@ class Relatorio_model extends CI_Model
         return $dados;
     }
 
-    public function busca_autores($id_cliente)
-    {
+    public function busca_autores($id_cliente) {
         $this->db->select('ent.*,ehte.*,te.*')->from('Entidade ent');
         $this->db->join('Entidade_has_Tipo_Entidade ehte', ' ehte.idEntidade = ent.idEntidade');
         $this->db->join('Tipo_Entidade te', ' te.idTipo_Entidade = ehte.idTipo_Entidade');
@@ -52,8 +47,7 @@ class Relatorio_model extends CI_Model
         return $dados;
     }
 
-    public function busca_faixas($id_cliente = 0)
-    {
+    public function busca_faixas($id_cliente = 0) {
         $this->db->select('fai.*')->from('faixa_video fai');
         $this->db->where('fai.idCliente', $id_cliente);
         $dados = $this->db->get()->result();
@@ -61,8 +55,7 @@ class Relatorio_model extends CI_Model
         return $dados;
     }
 
-    public function busca_albuns($id_cliente = 0)
-    {
+    public function busca_albuns($id_cliente = 0) {
         $this->db->select('alb.*')->from('album alb');
         $this->db->where('alb.idCliente', $id_cliente);
         $dados = $this->db->get()->result();
@@ -70,24 +63,29 @@ class Relatorio_model extends CI_Model
         return $dados;
     }
 
-    public function modelos($id_cliente = 0)
-    {
+    public function modelos($id_cliente = 0) {
         $this->db->where(array('idCliente' => $id_cliente, 'excluido' => NULL));
         $dados = $this->db->get('modelo')->result();
         //die(var_dump($dados));
         return $dados;
     }
 
-    public function cadastrar_relatorio_importado($relatorio)
-    {
+    public function cadastrar_relatorio_importado($relatorio) {
         $this->db->insert('relatorio', $relatorio);
     }
 
-    public function busca_relatorios($id_cliente = 0)
-    {
-        $this->db->select('rel.*,mod.nome')->from('relatorio rel');
-        $this->db->join('modelo mod','mod.idModelo = rel.idModelo');
+    public function busca_relatorios($id_cliente = 0) {
+        $this->db->select('rel.*,mod.*')->from('relatorio rel');
+        $this->db->join('modelo mod', 'mod.idModelo = rel.idModelo');
         $this->db->where('rel.idCliente', $id_cliente);
+        $this->db->where('mod.excluido',NULL);
+        $dados = $this->db->get()->result();
+        return $dados;
+    }
+    public function getMatanayRelatorio(){
+        $this->db->select('rel.*,mod.*')->from('relatorio rel');
+        $this->db->join('modelo mod','mod.idModelo = rel.idModelo');
+        $this->db->where('mod.idModelo',9);
         $dados = $this->db->get()->result();
         return $dados;
     }

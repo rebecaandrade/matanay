@@ -2,8 +2,7 @@
 
 class Relatorio extends CI_Controller
 {
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->load->model('relatorio_model');
         $this->load->library('excel');
@@ -13,33 +12,79 @@ class Relatorio extends CI_Controller
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
     }
 
-    public function listar_relatorios()
-    {
+    public function listar_relatorios() {
         $id_cliente = $this->session->userdata('cliente_id');
         $dados['relatorios'] = $this->relatorio_model->busca_relatorios($id_cliente);
         /*var_dump(end(end($dados))->arquivo);
         die;*/
-        $this->load->view('relatorio/lista_relatorios',$dados);
+        $this->load->view('relatorio/lista_relatorios', $dados);
     }
 
-    public function opcoes_relatorio()
-    {
+    public function opcoes_relatorio() {
         $id_cliente = $this->session->userdata('cliente_id');
+        $relatorios = $this->relatorio_model->busca_relatorios($id_cliente);
+        $modelos = $this->getModelos($relatorios);
         //$dados['modelos'] = $this->relatorio_model->buscar_modelos($id_cliente);
         $dados['artistas'] = $this->relatorio_model->busca_artistas($id_cliente);
         $dados['produtores'] = $this->relatorio_model->busca_produtores($id_cliente);
         $dados['autores'] = $this->relatorio_model->busca_autores($id_cliente);
         $dados['faixas'] = $this->relatorio_model->busca_faixas($id_cliente);
         $dados['albuns'] = $this->relatorio_model->busca_albuns($id_cliente);
-        $dados['modelos'] = $this->gera_modelos(50);
+        //$dados['modelos'] = $this->gera_modelos(50);
+        $dados['lojas'] = $modelos['lojas'];
+        $dados['territorios'] = $modelos['territorios'];
+        $dados['sublojas'] = $modelos['sublojas'];
         //die(var_dump($dados));
-
         $this->load->view('relatorio/opcoes_relatorio_view', $dados);
         return;
     }
 
-    public function gera_relatorio()
-    {
+    public function getModelos($relatorios) {
+        $lojas = array();
+        $subLojas = array();
+        $territorios = array();
+        foreach ($relatorios as $relatorio) {
+            try {
+                if (is_readable($relatorio->arquivo)) {
+                    $objReader = PHPExcel_IOFactory::createReader('Excel2007');
+                    $objReader->setReadDataOnly(TRUE);
+                    $objPHPExcel = $objReader->load($relatorio->arquivo);
+                    $arquivo = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
+                    $lines = $objPHPExcel->getActiveSheet()->getHighestRow();
+                    $loja = $relatorio->loja;
+                    $subLoja = $relatorio->subloja;
+                    $territorio = $relatorio->territorio;
+                    for ($line = 2; $line < $lines; $line++) {
+                        if ($arquivo[$line][$loja] != NULL && !in_array($arquivo[$line][$loja], $lojas)) {
+                            array_push($lojas, $arquivo[$line][$loja]);
+                        }
+                    }
+                    for ($line = 2; $line < $lines; $line++) {
+                        if ($arquivo[$line][$subLoja] != NULL && !in_array($arquivo[$line][$subLoja], $subLojas)) {
+                            array_push($subLojas, $arquivo[$line][$subLoja]);
+                        }
+                    }
+                    for ($line = 2; $line < $lines; $line++) {
+                        if ($arquivo[$line][$territorio] != NULL && !in_array($arquivo[$line][$territorio],
+                                $territorios)
+                        ) {
+                            array_push($territorios, $arquivo[$line][$territorio]);
+                        }
+                    }
+                }
+            } catch
+            (Exception $e) {
+                continue;
+            }
+            return array(
+                'lojas' => $lojas,
+                'sublojas' => $subLojas,
+                'territorios' => $territorios
+            );
+        }
+    }
+
+    public function gera_relatorio() {
         $info = $this->input->post();
         $dateStart = date_create($this->input->post('datainicio'));
         $dateStart = $dateStart->format('Y-m-d');
@@ -52,12 +97,11 @@ class Relatorio extends CI_Controller
         $this->session->set_userdata('mensagem', '=)');
         $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
         $this->session->set_userdata('tipo_mensagem', 'success');
-        redirect('acesso/index');
+        redirect('relatorio/listar_relatorios');
         //die(var_dump($date, $this->input->post()));
     }
 
-    public function gera_relatorio_excel($info)
-    {
+    public function gera_relatorio_excel($info) {
         $titulo = 'report_' . date('y-m-d');
         $this->excel->setActiveSheetIndex(0);
         $this->excel->getActiveSheet()->setTitle($titulo);
@@ -164,8 +208,7 @@ class Relatorio extends CI_Controller
         return;
     }
 
-    public function gera_modelos($num)
-    {
+    public function gera_modelos($num) {
         $modelos = NULL;
         $loja = 'loja';
         $subLoja = 'subloja';
@@ -182,15 +225,13 @@ class Relatorio extends CI_Controller
         return $modelos;
     }
 
-    public function importa_relatorio()
-    {
+    public function importa_relatorio() {
         $id_cliente = $this->session->userdata('cliente_id');
         $dados['modelos'] = $this->relatorio_model->modelos($id_cliente);
         $this->load->view('relatorio/importa_relatorio', $dados);
     }
 
-    public function importar()
-    {
+    public function importar() {
         $fileName = $this->gera_nome_arquivo();
         $fileConfig = getExcelUploadConfig($fileName);
         $this->load->library('upload', $fileConfig);
@@ -212,8 +253,7 @@ class Relatorio extends CI_Controller
         }
     }
 
-    public function gera_array_relatorio($arquivo)
-    {
+    public function gera_array_relatorio($arquivo) {
         $modelo = $this->input->post('relModel');
         $filePath = getExcelDirectory() . $arquivo;
         return array(
@@ -225,16 +265,14 @@ class Relatorio extends CI_Controller
         );
     }
 
-    public function gera_nome_arquivo()
-    {
+    public function gera_nome_arquivo() {
         $surname = md5(microtime());
         $surname = substr($surname, 0, 6) . "_";
         $fileName = $surname . $_FILES['excelFile']['name'];
         return $fileName;
     }
 
-    public function testeDisplayDirs()
-    {
+    public function testeDisplayDirs() {
         $this->load->view('_include/header');
         $current = getcwd();
         $myDirectory = getExcelDirectory();
@@ -243,19 +281,23 @@ class Relatorio extends CI_Controller
         die();
     }
 
-    public function testaExcel()
-    {
+    public function testaExcel() {
+        $this->load->helper('download');
         $myRelName = NULL;
         $id_cliente = $this->session->userdata('cliente_id');
         $dados = $this->relatorio_model->busca_relatorios($id_cliente);
         if ($dados != NULL) {
-            $myRelName = $dados[1]->arquivo;
+            $myRelName = $dados[0]->arquivo;
         }
         //$coisa = unlink($myRelName);
         /*$myRel = PHPExcel_IOFactory::load($myRelName);
         $sheetData = $myRel->getActiveSheet()->toArray(null,true,true,true);*/
+        /*$data = file_get_contents($myRelName); // Read the file's contents
+        $name = 'teste.xlsx';*/
 
-        var_dump($myRelName);
+        var_dump("cheguei aqui no force download");
+        /*force_download($name,$data);
+        redirect("relatorio/listar_relatorios");*/
         die();
     }
 

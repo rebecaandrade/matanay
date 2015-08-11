@@ -407,6 +407,7 @@ insert into matanay.entidade_has_faixa_video values(13,20,100,1);
 insert into matanay.entidade_has_faixa_video values(14,20,100,2);
 insert into matanay.entidade_has_faixa_video values(18,20,100,3);
 
+/*modelo relatorio*/
 insert into matanay.modelo values(DEFAULT ,"queridaEsqueciAsKids","A","C","E","G","I","K","M","O",1,NULL,1);
 insert into matanay.modelo values(DEFAULT ,"aPoupancaDosAneis","O","M","K","I","G","E","C","A",1,NULL,1);
 insert into matanay.modelo values(DEFAULT ,"oInfernoDaPoupanca","E","G","I","K","M","O","A","C",1,NULL,1);
@@ -415,6 +416,16 @@ insert into matanay.modelo values(DEFAULT ,"aPoderosaPoupanca","A","C","E","N","
 insert into matanay.modelo values(DEFAULT ,"poupancaDeMatar","X","T","R","P","N","E","C","A",2,NULL,2);
 insert into matanay.modelo values(DEFAULT ,"eAPoupancaLevou","R","P","N","E","C","A","X","T",2,NULL,2);
 insert into matanay.modelo values(DEFAULT ,"poupancaEvil","A","R","F","X","N","U","D","I",2,NULL,2);
+insert into matanay.modelo values(20,"MatanayPadrao","C","A","D","F","V","U","T","N",1,NULL,1);
+
+/*relatorio*/
+insert into matanai.relatorio values(DEFAULT,"./complemento/Excel_Files/14a004_accounted-2015-02.xlsx","02/2015",
+                                     "2015-08-09",20,1);
+insert into matanai.relatorio values(DEFAULT,"./complemento/Excel_Files/2f103f_accounted-2015-03.xlsx","03/2015",
+                                     "2015-09-09",20,1);
+insert into matanai.relatorio values(DEFAULT,"./complemento/Excel_Files/0a3c87_accounted-2015-05.xlsx","05/2015",
+                                     "2015-09-09",20,1);
+
 
 #Funcionalidades
 

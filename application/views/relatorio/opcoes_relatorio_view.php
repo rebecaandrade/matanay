@@ -49,9 +49,9 @@
                         <div class="col s8 m8">
                             <select name="loja" id="relLojas" class="browser-default">
                                 <option selected value="-1"><?= $this->lang->line('loja') ?></option>
-                                <?php if (isset($modelos)) { ?>
-                                    <?php foreach ($modelos as $loja) { ?>
-                                        <option value="<?= $loja['loja'] ?>"><?= $loja['loja'] ?></option>
+                                <?php if (isset($lojas)) { ?>
+                                    <?php foreach ($lojas as $loja) { ?>
+                                        <option value="<?= $loja ?>"><?= $loja ?></option>
                                     <?php }
                                 } ?>
                             </select>
@@ -71,9 +71,9 @@
                         <div class="col s8 m8">
                             <select name="subloja" id="relSubLojas" class="browser-default">
                                 <option selected value="-1"><?= $this->lang->line('subloja') ?></option>
-                                <?php if (isset($modelos)) { ?>
-                                    <?php foreach ($modelos as $subLoja) { ?>
-                                        <option value="<?= $subLoja['subloja'] ?>"><?= $subLoja['subloja'] ?></option>
+                                <?php if (isset($sublojas)) { ?>
+                                    <?php foreach ($sublojas as $subLoja) { ?>
+                                        <option value="<?= $subLoja ?>"><?= $subLoja ?></option>
                                     <?php }
                                 } ?>
                             </select>
@@ -95,10 +95,10 @@
                         <div class="col s8 m8">
                             <select name="territorio" id="relTerritorio" class="browser-default">
                                 <option selected value="-1"><?= $this->lang->line('territorio') ?></option>
-                                <?php if (isset($modelos)) { ?>
-                                    <?php foreach ($modelos as $territorio) { ?>
+                                <?php if (isset($territorios)) { ?>
+                                    <?php foreach ($territorios as $territorio) { ?>
                                         <option
-                                            value="<?= $territorio['territorio'] ?>"><?= $territorio['territorio'] ?></option>
+                                            value="<?= $territorio ?>"><?= $territorio ?></option>
                                     <?php }
                                 } ?>
                             </select>

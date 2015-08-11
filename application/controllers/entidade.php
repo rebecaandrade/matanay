@@ -3,8 +3,7 @@
 class Entidade extends CI_Controller
 {
 
-    function __construct()
-    {//carregar os models que sao de onde carrega as paradas do banco
+    function __construct() {//carregar os models que sao de onde carrega as paradas do banco
         parent:: __construct();
         $this->load->model('Entidade_model');
         $this->load->model('Favorecido_model');
@@ -19,27 +18,25 @@ class Entidade extends CI_Controller
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
     }
 
-    public function index()
-    {
+    public function index() {
         $this->listar();
         //$this->mostrar_cadastro($sucesso);
 
     }
 
-    public function validar_telefone($telefone)
-    {
+    public function validar_telefone($telefone) {
         if (!preg_match('|\(?\d{2}\)? ?\d{4}\-?\d{4}|', $telefone)) {
             return false;
         }
     }
 
-    public function validar_cpnj($cnpj)
-    {
+    public function validar_cpnj($cnpj) {
         $cnpj = preg_replace('/[^0-9]/', '', (string)$cnpj);
 
         // Valida tamanho
-        if (strlen($cnpj) != 14)
+        if (strlen($cnpj) != 14) {
             return false;
+        }
 
         // Valida primeiro dígito verificador
         for ($i = 0, $j = 5, $soma = 0; $i < 12; $i++) {
@@ -49,8 +46,9 @@ class Entidade extends CI_Controller
 
         $resto = $soma % 11;
 
-        if ($cnpj{12} != ($resto < 2 ? 0 : 11 - $resto))
+        if ($cnpj{12} != ($resto < 2 ? 0 : 11 - $resto)) {
             return false;
+        }
 
         // Valida segundo dígito verificador
         for ($i = 0, $j = 6, $soma = 0; $i < 13; $i++) {
@@ -64,8 +62,7 @@ class Entidade extends CI_Controller
     }
 
 
-    public function mostrar_cadastro()
-    {
+    public function mostrar_cadastro() {
         $id_cliente = $this->session->userdata('cliente_id');
         $dados["dadofavorecido"] = $this->Favorecido_model->buscar_favorecido($id_cliente);
         $dados["dadoentidade"] = $this->Entidade_model->buscar_entidades();
@@ -73,8 +70,7 @@ class Entidade extends CI_Controller
         $this->load->view("Entidade/cadastro_entidade_view", $dados);
     }
 
-    public function cadastrar()
-    {
+    public function cadastrar() {
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
@@ -140,8 +136,7 @@ class Entidade extends CI_Controller
         }
     }
 
-    public function gera_favorecido($info)
-    {
+    public function gera_favorecido($info) {
         return array(
             'nome' => $info['nomeentidade'],
             'cpf' => $info['cpf'],
@@ -154,8 +149,7 @@ class Entidade extends CI_Controller
         );
     }
 
-    public function gera_entidade($info)
-    {
+    public function gera_entidade($info) {
         return array(
             'nome' => $info['nomeentidade'],
             'cpf' => $info['cpf'],
@@ -167,8 +161,7 @@ class Entidade extends CI_Controller
         );
     }
 
-    public function gera_entidade_has_tipo_entidade($info, $id_ent)
-    {
+    public function gera_entidade_has_tipo_entidade($info, $id_ent) {
         if (isset($info['porcentagemganhodigital'])) {
             $porDig = str_replace(",", ".", $info['porcentagemganhodigital']);
         } else {
@@ -190,8 +183,7 @@ class Entidade extends CI_Controller
         return $arr;
     }
 
-    public function gera_favorecido_has_tipo_favorecido($info, $id_fav)
-    {
+    public function gera_favorecido_has_tipo_favorecido($info, $id_fav) {
         $porcFis = str_replace(",", ".", $info['porcentagemganhofisico']);
         $porDig = str_replace(",", ".", $info['porcentagemganhodigital']);
         $arr = NULL;
@@ -207,24 +199,21 @@ class Entidade extends CI_Controller
         return $arr;
     }
 
-    public function gera_telefone1($id, $telefone)
-    {
+    public function gera_telefone1($id, $telefone) {
         return array(
             'idFavorecido' => $id,
             'numero' => $telefone
         );
     }
 
-    public function gera_telefone($id, $telefone)
-    {
+    public function gera_telefone($id, $telefone) {
         return array(
             'idEntidade' => $id,
             'numero' => $telefone
         );
     }
 
-    public function valida_cadastro_entidade()
-    {
+    public function valida_cadastro_entidade() {
         //define as regras de validacao do formulario
         $this->form_validation->set_rules('nomeentidade', 'nomeentidade', 'required|max_length[45]');
         $this->form_validation->set_rules('cpf_cnpj', 'cpf_cnpj', 'required|max_length[18]|min_length[11]');
@@ -268,16 +257,14 @@ class Entidade extends CI_Controller
         } else return NULL;
     }
 
-    public function listar()
-    {
+    public function listar() {
         $id_cliente = $this->session->userdata('cliente_id');
         $dados['entidades'] = $this->Entidade_model->buscar_entidades($id_cliente);
         //die(var_dump($dados));
         $this->load->view("Entidade/listar_entidades_view", $dados);
     }
 
-    public function deletar($idEntidade)
-    {
+    public function deletar($idEntidade) {
         $this->Entidade_model->mudar_entidade_pra_excluidos($idEntidade);
         $this->session->set_userdata('mensagem', '=)');
         $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('excluido_sucesso'));
@@ -285,8 +272,7 @@ class Entidade extends CI_Controller
         redirect('Entidade/listar');
     }
 
-    public function camposatualizacao($id = -1)
-    {
+    public function camposatualizacao($id = -1) {
         $id_cliente = $this->session->userdata('cliente_id');
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
@@ -294,8 +280,11 @@ class Entidade extends CI_Controller
         //die(var_dump($this->input->post()));
         if ($this->input->post('oneInput') != null) {
             $id = $this->input->post('oneInput');
-        } else if ($id == -1)
-            redirect('entidade/listar');
+        } else {
+            if ($id == -1) {
+                redirect('entidade/listar');
+            }
+        }
         $dados["dadosentidade"] = $this->Entidade_model->buscar_entidade_especifica($id);
         $dados["dadospercentual"] = $this->Entidade_model->buscar_entidade_has_tipo_especifico($id);
         $dados["dadosfavorecido"] = $this->Favorecido_model->buscar_favorecido($id_cliente);
@@ -310,8 +299,7 @@ class Entidade extends CI_Controller
 
     }
 
-    public function valida_atualizacao_entidade()
-    {
+    public function valida_atualizacao_entidade() {
         //define as regras de validacao do formulario
         $this->form_validation->set_rules('nome', 'nomeentidade', 'required|max_length[45]');
         $this->form_validation->set_rules('contato', 'contato', 'required|max_length[45]');
@@ -362,8 +350,7 @@ class Entidade extends CI_Controller
         }
     }
 
-    public function atualizar()
-    {
+    public function atualizar() {
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
@@ -394,8 +381,7 @@ class Entidade extends CI_Controller
         }
     }
 
-    public function gera_atualizacao_entidade($info)
-    {
+    public function gera_atualizacao_entidade($info) {
         return array(
             'idEntidade' => $info['idEntidade'],
             'nome' => $info['nome'],
@@ -409,8 +395,7 @@ class Entidade extends CI_Controller
         );
     }
 
-    public function gera_atualizacao_entidade_has_tipo($info)
-    {
+    public function gera_atualizacao_entidade_has_tipo($info) {
         return array(
             'idEntidade' => $info['idEntidade'],
             'idTipo_Entidade' => $info['identificacao'][0],
@@ -420,16 +405,14 @@ class Entidade extends CI_Controller
         );
     }
 
-    public function gera_atualizacao_telefone($id, $numero)
-    {
+    public function gera_atualizacao_telefone($id, $numero) {
         return array(
             'idTelefone' => $id,
             'numero' => $numero,
         );
     }
 
-    public function validar_cpf($cpf)
-    {
+    public function validar_cpf($cpf) {
         // Verifiva se o número digitado contém todos os digitos
         $cpf = str_pad(preg_replace('/[^0-9]/', '', $cpf), 11, '0', STR_PAD_LEFT);
 
@@ -539,8 +522,7 @@ class Entidade extends CI_Controller
      */
 
     /******************** fucao de teste ************/
-    public function testeEntidad($id_cliente = 0)
-    {
+    public function testeEntidad($id_cliente = 0) {
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
@@ -548,18 +530,15 @@ class Entidade extends CI_Controller
         $this->load->view('relatorio/opcoes_relatorio_view');
     }
 
-    public function testeEntidadeForm()
-    {
+    public function testeEntidadeForm() {
         die(var_dump($this->input->post()));
     }
 
-    public function verifica_login($login)
-    {
+    public function verifica_login($login) {
         return sizeof($this->cliente_model->buscar_login($login)) == 0;
     }
 
-    public function gera_form_perfil_antigo()
-    {
+    public function gera_form_perfil_antigo() {
         $arr = array(
             'nome' => $this->input->post('nome'),
             'func' => $this->input->post('func')
