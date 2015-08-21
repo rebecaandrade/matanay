@@ -1207,3 +1207,15 @@ function validaformupdateentidade() {
         return true;
     }
 }
+
+
+function notificacaoMensagem(langOpt) {
+    var thisTitle = ["Alerta!", "Alert!"];
+    var thisText = ["Existem contratos perto da data de vencimento.", "There are contracts close to the expiration date."];
+    swal({
+        type: "warning",
+        title: thisTitle[langOpt],
+        text: thisText[langOpt],  
+        timer: 4000,
+    });
+}

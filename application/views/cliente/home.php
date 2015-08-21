@@ -62,12 +62,14 @@
 			        <div class="card-panel grey lighten-2">
 			          	<i class="mdi-alert-warning"></i>
 			          	<div class="label"><?php echo $this->lang->line('notificacao'); ?></div>
-			          	<?php if ($notificacao == true){ ?>
-			          		<div id="notificacao" class="label"><?php echo $this->lang->line('disponivel'); ?></div>
-			          	<?php } ?>
 			      	</div>
 		      	</a>
 	        </div>
+	        <?php if ($notificacao == true){ ?>
+			    <script type="text/javascript">
+			    	notificacaoMensagem(<?= $this->lang->line('langOpt') ?>);
+			    </script>
+			<?php } ?>
 	    </div>
 	</div>
 </div>
