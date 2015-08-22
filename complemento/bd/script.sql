@@ -231,48 +231,90 @@ insert into matanay.imposto values(DEFAULT,"Imposto 7","300",2,1,NULL);
 insert into matanay.imposto values(DEFAULT,"Imposto 8","400",2,2,NULL);
 
 /* faixas */
-insert into matanay.faixa_video values(DEFAULT,"Faixa 1","BRRGE1500600",NULL,NULL,1,1);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 2","BRRGE1500601",NULL,NULL,2,1);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 3","BRRGE1500602",NULL,NULL,3,1);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 4","BRRGE1500603",NULL,NULL,4,1);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 5","BRRGE1500604",NULL,NULL,1,1);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 6","BRRGE1500605",NULL,NULL,2,1);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 7","BRRGE1500606",NULL,NULL,3,1);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 8","BRRGE1500607",NULL,NULL,4,1);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 9","BRRGE1500608",NULL,NULL,1,1);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 10","BRRGE1500600",NULL,NULL,5,1);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 11","BRRGE1500601",NULL,NULL,6,2);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 12","BRRGE1500601",NULL,NULL,7,2);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 13","BRRGE1500602",NULL,NULL,8,2);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 14","BRRGE1500603",NULL,NULL,5,2);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 15","BRRGE1500604",NULL,NULL,6,2);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 16","BRRGE1500605",NULL,NULL,7,2);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 17","BRRGE1500606",NULL,NULL,8,2);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 18","BRRGE1500607",NULL,NULL,5,2);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 19","BRRGE1500608",NULL,NULL,6,2);
-insert into matanay.faixa_video values(DEFAULT,"Faixa 20","BRRGE1500601",NULL,NULL,7,2);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 1","BRRGE1500600",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 2","BRRGE1500601",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 3","BRRGE1500602",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 4","BRRGE1500603",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 5","BRRGE1500604",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 6","BRRGE1500605",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 7","BRRGE1500606",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 8","BRRGE1500607",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 9","BRRGE1500608",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 10","BRRGE1500600",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 11","BRRGE1500601",NULL,NULL,2);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 12","BRRGE1500601",NULL,NULL,2);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 13","BRRGE1500602",NULL,NULL,2);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 14","BRRGE1500603",NULL,NULL,2);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 15","BRRGE1500604",NULL,NULL,2);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 16","BRRGE1500605",NULL,NULL,2);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 17","BRRGE1500606",NULL,NULL,2);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 18","BRRGE1500607",NULL,NULL,2);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 19","BRRGE1500608",NULL,NULL,2);
+insert into matanay.faixa_video values(DEFAULT,"Faixa 20","BRRGE1500601",NULL,NULL,2);
+
+/* faixa has imposto */
+insert into matanay.faixa_video_has_imposto values(1,1);
+insert into matanay.faixa_video_has_imposto values(1,2);
+insert into matanay.faixa_video_has_imposto values(1,3);
+insert into matanay.faixa_video_has_imposto values(2,1);
+insert into matanay.faixa_video_has_imposto values(3,4);
+insert into matanay.faixa_video_has_imposto values(4,1);
+insert into matanay.faixa_video_has_imposto values(5,3);
+insert into matanay.faixa_video_has_imposto values(7,2);
+insert into matanay.faixa_video_has_imposto values(9,4);
+insert into matanay.faixa_video_has_imposto values(10,5);
+insert into matanay.faixa_video_has_imposto values(11,6);
+insert into matanay.faixa_video_has_imposto values(11,8);
+insert into matanay.faixa_video_has_imposto values(13,6);
+insert into matanay.faixa_video_has_imposto values(15,7);
+insert into matanay.faixa_video_has_imposto values(15,5);
+insert into matanay.faixa_video_has_imposto values(16,5);
+insert into matanay.faixa_video_has_imposto values(17,6);
+insert into matanay.faixa_video_has_imposto values(18,7);
+insert into matanay.faixa_video_has_imposto values(19,7);
 
 /* albuns */
-insert into matanay.album values(DEFAULT,"Album 1",2,"7891430144791",50,"2001","11111",1,NULL,1,4);
-insert into matanay.album values(DEFAULT,"Album 2",2,"7891430144791",50,"2002","22222",2,NULL,1,3);
-insert into matanay.album values(DEFAULT,"Album 3",2,"7891430144791",50,"2003","33333",3,NULL,1,2);
-insert into matanay.album values(DEFAULT,"Album 4",2,"7891430144791",50,"2004","44444",1,NULL,1,1);
-insert into matanay.album values(DEFAULT,"Album 5",2,"7891430144791",50,"2005","55555",2,NULL,1,2);
-insert into matanay.album values(DEFAULT,"Album 6",2,"7891430144791",50,"2006","66666",3,NULL,1,3);
-insert into matanay.album values(DEFAULT,"Album 7",2,"7891430144791",50,"2007","77777",1,NULL,1,4);
-insert into matanay.album values(DEFAULT,"Album 8",2,"7891430144791",50,"2008","88888",2,NULL,1,3);
-insert into matanay.album values(DEFAULT,"Album 9",2,"7891430144791",50,"2009","99999",3,NULL,1,2);
-insert into matanay.album values(DEFAULT,"Album 10",2,"7891430144791",50,"2001","11111",1,NULL,1,1);
-insert into matanay.album values(DEFAULT,"Album 11",2,"7891430144791",50,"2001","11111",1,NULL,2,5);
-insert into matanay.album values(DEFAULT,"Album 12",2,"7891430144791",50,"2002","22222",2,NULL,2,6);
-insert into matanay.album values(DEFAULT,"Album 13",2,"7891430144791",50,"2003","33333",3,NULL,2,7);
-insert into matanay.album values(DEFAULT,"Album 14",2,"7891430144791",50,"2004","44444",1,NULL,2,8);
-insert into matanay.album values(DEFAULT,"Album 15",2,"7891430144791",50,"2005","55555",2,NULL,2,7);
-insert into matanay.album values(DEFAULT,"Album 16",2,"7891430144791",50,"2006","66666",3,NULL,2,6);
-insert into matanay.album values(DEFAULT,"Album 17",2,"7891430144791",50,"2007","77777",1,NULL,2,5);
-insert into matanay.album values(DEFAULT,"Album 18",2,"7891430144791",50,"2008","88888",2,NULL,2,6);
-insert into matanay.album values(DEFAULT,"Album 19",2,"7891430144791",50,"2009","99999",3,NULL,2,7);
-insert into matanay.album values(DEFAULT,"Album 20",2,"7891430144791",50,"2001","11111",1,NULL,2,8);
+insert into matanay.album values(DEFAULT,"Album 1",2,"7891430144791",50,"2001","11111",1,NULL,1);
+insert into matanay.album values(DEFAULT,"Album 2",2,"7891430144791",50,"2002","22222",2,NULL,1);
+insert into matanay.album values(DEFAULT,"Album 3",2,"7891430144791",50,"2003","33333",3,NULL,1);
+insert into matanay.album values(DEFAULT,"Album 4",2,"7891430144791",50,"2004","44444",1,NULL,1);
+insert into matanay.album values(DEFAULT,"Album 5",2,"7891430144791",50,"2005","55555",2,NULL,1);
+insert into matanay.album values(DEFAULT,"Album 6",2,"7891430144791",50,"2006","66666",3,NULL,1);
+insert into matanay.album values(DEFAULT,"Album 7",2,"7891430144791",50,"2007","77777",1,NULL,1);
+insert into matanay.album values(DEFAULT,"Album 8",2,"7891430144791",50,"2008","88888",2,NULL,1);
+insert into matanay.album values(DEFAULT,"Album 9",2,"7891430144791",50,"2009","99999",3,NULL,1);
+insert into matanay.album values(DEFAULT,"Album 10",2,"7891430144791",50,"2001","11111",1,NULL,1);
+insert into matanay.album values(DEFAULT,"Album 11",2,"7891430144791",50,"2001","11111",1,NULL,2);
+insert into matanay.album values(DEFAULT,"Album 12",2,"7891430144791",50,"2002","22222",2,NULL,2);
+insert into matanay.album values(DEFAULT,"Album 13",2,"7891430144791",50,"2003","33333",3,NULL,2);
+insert into matanay.album values(DEFAULT,"Album 14",2,"7891430144791",50,"2004","44444",1,NULL,2);
+insert into matanay.album values(DEFAULT,"Album 15",2,"7891430144791",50,"2005","55555",2,NULL,2);
+insert into matanay.album values(DEFAULT,"Album 16",2,"7891430144791",50,"2006","66666",3,NULL,2);
+insert into matanay.album values(DEFAULT,"Album 17",2,"7891430144791",50,"2007","77777",1,NULL,2);
+insert into matanay.album values(DEFAULT,"Album 18",2,"7891430144791",50,"2008","88888",2,NULL,2);
+insert into matanay.album values(DEFAULT,"Album 19",2,"7891430144791",50,"2009","99999",3,NULL,2);
+insert into matanay.album values(DEFAULT,"Album 20",2,"7891430144791",50,"2001","11111",1,NULL,2);
+
+/* album has imposto */
+insert into matanay.album_has_imposto values(1,1);
+insert into matanay.album_has_imposto values(1,2);
+insert into matanay.album_has_imposto values(1,3);
+insert into matanay.album_has_imposto values(2,1);
+insert into matanay.album_has_imposto values(3,4);
+insert into matanay.album_has_imposto values(4,1);
+insert into matanay.album_has_imposto values(5,3);
+insert into matanay.album_has_imposto values(7,2);
+insert into matanay.album_has_imposto values(9,4);
+insert into matanay.album_has_imposto values(10,5);
+insert into matanay.album_has_imposto values(11,6);
+insert into matanay.album_has_imposto values(11,8);
+insert into matanay.album_has_imposto values(13,6);
+insert into matanay.album_has_imposto values(15,7);
+insert into matanay.album_has_imposto values(15,5);
+insert into matanay.album_has_imposto values(16,5);
+insert into matanay.album_has_imposto values(17,6);
+insert into matanay.album_has_imposto values(18,7);
+insert into matanay.album_has_imposto values(19,7);
 
 /* album has faixa */
 insert into matanay.album_has_faixa values(1,1);
@@ -419,11 +461,11 @@ insert into matanay.modelo values(DEFAULT ,"poupancaEvil","A","R","F","X","N","U
 insert into matanay.modelo values(20,"MatanayPadrao","C","A","D","F","V","U","T","N",1,NULL,1);
 
 /*relatorio*/
-insert into matanai.relatorio values(DEFAULT,"./complemento/Excel_Files/14a004_accounted-2015-02.xlsx","02/2015",
+insert into matanay.relatorio values(DEFAULT,"./complemento/Excel_Files/14a004_accounted-2015-02.xlsx","02/2015",
                                      "2015-08-09",20,1);
-insert into matanai.relatorio values(DEFAULT,"./complemento/Excel_Files/2f103f_accounted-2015-03.xlsx","03/2015",
+insert into matanay.relatorio values(DEFAULT,"./complemento/Excel_Files/2f103f_accounted-2015-03.xlsx","03/2015",
                                      "2015-09-09",20,1);
-insert into matanai.relatorio values(DEFAULT,"./complemento/Excel_Files/0a3c87_accounted-2015-05.xlsx","05/2015",
+insert into matanay.relatorio values(DEFAULT,"./complemento/Excel_Files/0a3c87_accounted-2015-05.xlsx","05/2015",
                                      "2015-09-09",20,1);
 
 

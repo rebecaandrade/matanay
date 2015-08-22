@@ -618,22 +618,22 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `matanay`.`Imposto_has_Faixa_Video`
+-- Table `matanay`.`Faixa_Video_has_Imposto`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `matanay`.`Imposto_has_Faixa_Video` ;
+DROP TABLE IF EXISTS `matanay`.`Faixa_Video_has_Imposto` ;
 
-CREATE  TABLE IF NOT EXISTS `matanay`.`Imposto_has_Faixa_Video` (
-  `idImposto` INT NOT NULL ,
+CREATE  TABLE IF NOT EXISTS `matanay`.`Faixa_Video_has_Imposto` (
   `idFaixa` INT NOT NULL ,
-  PRIMARY KEY (`idImposto`, `idFaixa`) ,
-  INDEX `fk_Imposto_has_Faixa_Video_Faixa_Video1_idx` (`idFaixa` ASC) ,
-  INDEX `fk_Imposto_has_Faixa_Video_Imposto1_idx` (`idImposto` ASC) ,
-  CONSTRAINT `fk_Imposto_has_Faixa_Video_Imposto1`
+  `idImposto` INT NOT NULL ,
+  PRIMARY KEY (`idFaixa`, `idImposto`) ,
+  INDEX `fk_Faixa_Video_has_Imposto_Faixa_Video1_idx` (`idFaixa` ASC) ,
+  INDEX `fk_Faixa_Video_has_Imposto_Imposto1_idx` (`idImposto` ASC) ,
+  CONSTRAINT `fk_Faixa_Video_has_Imposto_Imposto1`
     FOREIGN KEY (`idImposto` )
     REFERENCES `matanay`.`Imposto` (`idImposto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Imposto_has_Faixa_Video_Faixa_Video1`
+  CONSTRAINT `fk_Faixa_Video_has_Imposto_Faixa_Video1`
     FOREIGN KEY (`idFaixa` )
     REFERENCES `matanay`.`Faixa_Video` (`idFaixa` )
     ON DELETE NO ACTION
@@ -642,22 +642,22 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `matanay`.`Imposto_has_Album`
+-- Table `matanay`.`Album_has_Imposto`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `matanay`.`Imposto_has_Album` ;
+DROP TABLE IF EXISTS `matanay`.`Album_has_Imposto` ;
 
-CREATE  TABLE IF NOT EXISTS `matanay`.`Imposto_has_Album` (
-  `idImposto` INT NOT NULL ,
+CREATE  TABLE IF NOT EXISTS `matanay`.`Album_has_Imposto` (
   `idAlbum` INT NOT NULL ,
-  PRIMARY KEY (`idImposto`, `idAlbum`) ,
-  INDEX `fk_Imposto_has_Album_Album1_idx` (`idAlbum` ASC) ,
-  INDEX `fk_Imposto_has_Album_Imposto1_idx` (`idImposto` ASC) ,
-  CONSTRAINT `fk_Imposto_has_Album_Imposto1`
+  `idImposto` INT NOT NULL ,
+  PRIMARY KEY (`idAlbum`, `idImposto`) ,
+  INDEX `fk_Album_has_Imposto_Album1_idx` (`idAlbum` ASC) ,
+  INDEX `fk_Album_has_Imposto_Imposto1_idx` (`idImposto` ASC) ,
+  CONSTRAINT `fk_Album_has_Imposto_Imposto1`
     FOREIGN KEY (`idImposto` )
     REFERENCES `matanay`.`Imposto` (`idImposto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Imposto_has_Album_Album1`
+  CONSTRAINT `fk_Album_has_Imposto_Album1`
     FOREIGN KEY (`idAlbum` )
     REFERENCES `matanay`.`Album` (`idAlbum` )
     ON DELETE NO ACTION
