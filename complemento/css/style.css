@@ -418,6 +418,10 @@ label {
     color: #777;
 }
 
+#selectLabel.active {
+    transform: none !important;
+}
+
 
 .checkAll {
 	margin-bottom: 1rem;

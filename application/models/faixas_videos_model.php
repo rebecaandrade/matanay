@@ -81,11 +81,22 @@ class Faixas_Videos_model extends CI_Model {
         return $result;
     }
 
-    public function atualizar_faixa($dados, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores){
+    public function atualizar_faixa($dados, $impostos, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores){
         $this->db->trans_start();
 
         $this->db->where('idFaixa', $dados['idFaixa']);
         $this->db->update('faixa_video', $dados);
+
+        $this->db->where('idFaixa', $dados['idFaixa']);
+        $this->db->delete('faixa_video_has_imposto');
+
+        foreach($impostos as $imposto->idImposto){
+            $imposto_faixa = array(
+                'idFaixa' => $dados['idFaixa'],
+                'idImposto' => $imposto->idImposto
+            );
+            $this->db->insert('faixa_video_has_imposto', $imposto_faixa);
+        }
 
         $this->db->where('idFaixa', $dados['idFaixa']);
         $this->db->delete('entidade_has_faixa_video');

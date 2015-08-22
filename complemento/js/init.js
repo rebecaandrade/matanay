@@ -507,10 +507,6 @@ $(document).ready(function () {
     $('.cnpjCadastreInput').mask("00.000.000/0000-00");
 });
 
-$(document).ready(function(){
-    $(".100").attr("value", "100.00%");
-});
-
 $(document).ready(function () {
     $('.percentage').mask("000.00%", {reverse: true});
     $('.percentage').on("blur", function () {
@@ -605,6 +601,98 @@ $(document).ready(function () {
         }
         $('#cppjUpdate').prop('value', $cpf_cnpj);
     });
+});
+
+/********** inicia participações com 100% e divide igualmente no cadastro de faixa **********/
+
+$(document).ready(function(){
+    $("input[name*=percentualArtista]").prop("value", "100.00%");
+});
+
+$(document).ready(function(){
+    var i = 2;
+    $('#100artista').click(function () {
+        var perc = 100/i;
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentualArtista]").prop('value', res);
+        i++;
+    })
+});
+
+$(document).ready(function(){
+    $("input[name*=percentualAutor]").prop("value", "100.00%");
+});
+
+$(document).ready(function(){
+    var i = 2;
+    $('#100autor').click(function () {
+        var perc = 100/i;
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentualAutor]").prop('value', res);
+        i++;
+    })
+});
+
+$(document).ready(function(){
+    $("input[name*=percentualProdutor]").prop("value", "100.00%");
+});
+
+$(document).ready(function(){
+    var i = 2;
+    $('#100produtor').click(function () {
+        var perc = 100/i;
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentualProdutor]").prop('value', res);
+        i++;
+    })
+});
+
+/********** inicia participações com 100% e divide igualmente na edição de faixa **********/
+
+$(document).ready(function(){
+    var i = 2;
+    $('#100art').click(function () {
+        var perc = 100/i;
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentArtista]").prop('value', res);
+        i++;
+    })
+});
+
+$(document).ready(function(){
+    var i = 2;
+    $('#100aut').click(function () {
+        var perc = 100/i;
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentAutor]").prop('value', res);
+        i++;
+    })
+});
+
+$(document).ready(function(){
+    $(".prodNull").prop("value", "100.00%");
+});
+
+$(document).ready(function(){
+    var i = 2;
+    $('#100prod').click(function () {
+        var perc = 100/i;
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentProdutor]").prop('value', res);
+        i++;
+    })
 });
 
 /********** validar cadastro de album **********/
@@ -742,6 +830,70 @@ $(document).ready(function () {
     });
 });
 
+/********** validar edição de faixa **********/
+
+$(document).ready(function () {
+    $('#edicao_faixa').on("submit", function () {
+        var mensagem = "";
+
+        var artista = $('#artista option:selected').val();
+        if (artista < 0) {
+            mensagem += "*" + $('input[name=msg_erro_artistas]').val();
+        }
+        else {
+            var perc_artista = new Array();
+            $("input[name*=percentArtista]").each(function () {
+                perc_artista.push($(this).val());
+            });
+            var perc_total = 0;
+            $.each(perc_artista, function () {
+                perc_total += parseFloat(this) || 0;
+            });
+            if (perc_total != 100) {
+                mensagem += "*" + $('input[name=msg_perc_artista]').val();
+            }
+        }
+
+        var autor = $('#autor option:selected').val();
+        if (autor < 0) {
+            mensagem += "*" + $('input[name=msg_erro_autores]').val();
+        }
+        else {
+            var perc_autor = new Array();
+            $("input[name*=percentAutor]").each(function () {
+                perc_autor.push($(this).val());
+            });
+            var perc_total = 0;
+            $.each(perc_autor, function () {
+                perc_total += parseFloat(this) || 0;
+            });
+            if (perc_total != 100) {
+                mensagem += "*" + $('input[name=msg_perc_autor]').val();
+            }
+        }
+
+        var produtor = $('#produtor option:selected').val();
+        if (produtor > 0) {
+            var perc_produtor = new Array();
+            $("input[name*=percentProdutor]").each(function () {
+                perc_produtor.push($(this).val());
+            });
+            var perc_total = 0;
+            $.each(perc_produtor, function () {
+                perc_total += parseFloat(this) || 0;
+            });
+            if (perc_total != 100) {
+                mensagem += "*" + $('input[name=msg_perc_produtor]').val();
+            }
+        }
+
+        if (mensagem.length > 3) {
+            swal(mensagem, "", "error");
+            return false;
+        }
+    });
+});
+
 /********** radio button pra dizer se vai cadastrar faixa ou video **********/
 
 $(document).ready(function () {
@@ -781,8 +933,25 @@ function addSelectEntidade(entidades, selecione, label, participacao, mask) {
     $('#Select' + label).append('<div class="row"><div class="input-field col s11 m8 l8 offset-l1">' +
         '<select id="select' + label + '" class="add' + label + ' browser-default" name="' + nameLower + 's[]">' +
         geraOpcoesEntidade(entidades, selecione) + '</select><label id="selectLabel">' + label + '</label></div>' +
-        '<div class="input-field col s12 m3 l2"><label id="porcentagemLabel">' + participacao + '</label>' +
+        '<div class="input-field col s12 m3 l2"><label id="selectLabel">' + participacao + '</label>' +
         '<input class="porcentagem" name="percentual' + label + '[]" type="text"></div>' +
+        '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
+        'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
+        '<i class="mdi-content-remove"></i></a></div>');
+
+    $('.add' + label).chosen({search_contains: true});
+    $('.porcentagem').mask("000,00%", {reverse: true});
+}
+
+function addSelectEnt(entidades, selecione, label, participacao, mask) {
+    var nameLower = label;
+    var nameLower = nameLower.toLowerCase();
+
+    $('#Select' + label).append('<div class="row"><div class="input-field col s11 m8 l8 offset-l1">' +
+        '<select id="select' + label + '" class="add' + label + ' browser-default" name="' + nameLower + 's[]">' +
+        geraOpcoesEntidade(entidades, selecione) + '</select><label id="selectLabel">' + label + '</label></div>' +
+        '<div class="input-field col s12 m3 l2"><label id="selectLabel">' + participacao + '</label>' +
+        '<input class="porcentagem" name="percent' + label + '[]" type="text"></div>' +
         '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
         'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
         '<i class="mdi-content-remove"></i></a></div>');

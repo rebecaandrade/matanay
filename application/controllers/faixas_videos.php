@@ -123,28 +123,29 @@ class Faixas_Videos extends CI_Controller {
         $dados = array(
             'idFaixa' => $this->input->post('idFaixa'),
             'nome' => $this->input->post('nome'),
-            'isrc' => str_replace("-", "", $this->input->post('isrc')),
-            'idImposto' => $this->input->post('imposto')
+            'isrc' => str_replace("-", "", $this->input->post('isrc'))
         );
 
         $artistas = $this->input->post('artistas[]');
         $autores = $this->input->post('autors[]');
         $produtores = $this->input->post('produtors[]');
 
-        $perc_artistas = $this->input->post('percentualArtista[]');
-        $perc_autores = $this->input->post('percentualAutor[]');
-        $perc_produtores = $this->input->post('percentualProdutor[]');
+        $perc_artistas = $this->input->post('percentArtista[]');
+        $perc_autores = $this->input->post('percentAutor[]');
+        $perc_produtores = $this->input->post('percentProdutor[]');
+
+        $impostos = $this->input->post('impostos_faixa[]');
 
         if($dados['nome'] != NULL && $dados['isrc'] != NULL){
-            $this->faixas_videos_model->atualizar_faixa($dados, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
-            $this->session->set_userdata('mensagem', 'Faixa atualizada com sucesso!');
-            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->faixas_videos_model->atualizar_faixa($dados, $impostos, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
+            $this->session->set_userdata('mensagem', '=)');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
             redirect('faixas_videos/listar');       
         }else{
             $id = $this->input->post('idFaixa');
-            $this->session->set_userdata('mensagem', 'Problemas na atualização');
-            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('mensagem', '=(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
             $this->session->set_userdata('tipo_mensagem', 'error');
             redirect('faixas_videos/listar');
         }

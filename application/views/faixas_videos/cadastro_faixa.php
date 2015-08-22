@@ -58,10 +58,10 @@
 					</div>
 					<div class="input-field col s10 m3 l2">
 						<label id="porcentagemLabel"><?php echo $this->lang->line('participacao');?></label>
-		            	<input class="porcentagem 100" name="percentualArtista[]" type="text">
+		            	<input class="porcentagem" name="percentualArtista[]" type="text">
 		          	</div>
 					<a onclick="addSelectEntidade(getArtistas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('artista'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
-						class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
+						class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
 		        	<script>
 		        		$('.addEntidade').chosen({search_contains: true});
 		            	function getArtistas(){
@@ -85,10 +85,10 @@
 		          	</div>
 		          	<div class="input-field col s10 m3 l2">
 		          		<label id="porcentagemLabel"><?php echo $this->lang->line('participacao');?></label>
-		            	<input class="porcentagem 100" name="percentualAutor[]" type="text">
+		            	<input class="porcentagem" name="percentualAutor[]" type="text">
 		          	</div>
 		          	<a onclick="addSelectEntidade(getAutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('autor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
-						class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
+						class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100autor" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
 		        	<script>
 		        		$('.addEntidade').chosen({search_contains: true});
 		            	function getAutores(){
@@ -112,10 +112,10 @@
 		          	</div>
 		          	<div class="input-field col s10 m3 l2">
 		          		<label id="porcentagemLabel"><?php echo $this->lang->line('participacao');?></label>
-		            	<input class="porcentagem 100" name="percentualProdutor[]" type="text">
+		            	<input class="porcentagem" name="percentualProdutor[]" type="text">
 		          	</div>
 		          	<a onclick="addSelectEntidade(getProdutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('produtor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
-						class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
+						class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100produtor" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
 		        	<script>
 		        		$('.addEntidade').chosen({search_contains: true});
 		            	function getProdutores(){
