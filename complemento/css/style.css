@@ -413,6 +413,12 @@ label {
     color: #777;
 }
 
+#porcentagemLabel {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+
 .checkAll {
 	margin-bottom: 1rem;
 	margin-top: 1rem;

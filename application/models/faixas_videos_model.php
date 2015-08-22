@@ -135,15 +135,28 @@ class Faixas_Videos_model extends CI_Model {
     }
 
     public function buscar_impostos($idCliente){
-            $this->db->where('idCliente', $idCliente);
-            return $this->db->get('imposto')->result();
-        }
+        $this->db->where('idCliente', $idCliente);
+        return $this->db->get('imposto')->result();
+    }
 
-    public function cadastrar_faixa($faixa, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores){
+    public function buscar_impostos_faixa($id){
+        $this->db->where('idFaixa', $id);
+        return $this->db->get('faixa_video_has_imposto')->result();
+    }
+
+    public function cadastrar_faixa($faixa, $impostos, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores){
         $this->db->trans_start();
 
         $this->db->insert('faixa_video', $faixa);
         $faixa_id = $this->db->insert_id();
+
+        foreach($impostos as $imposto->idImposto){
+            $imposto_faixa = array(
+                'idFaixa' => $faixa_id,
+                'idImposto' => $imposto->idImposto
+            );
+            $this->db->insert('faixa_video_has_imposto', $imposto_faixa);
+        }
 
         $i = 0;
         foreach($artistas as $artista->idEntidade){

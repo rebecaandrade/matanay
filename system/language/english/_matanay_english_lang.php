@@ -233,7 +233,7 @@ $lang['subloja']					= 'sub-store';
 $lang['territorio']					= 'Territory';
 $lang['identificador_moeda']		= 'Currency identificator';
 $lang['selecione_coluna']			= 'Select the corresponding column for the following attributes:';
-$lang['modelos']					= 'Models';
+$lang['modelos']					= 'MODELS';
 
 ////// CLIENTE ////// Vitor
 
@@ -333,6 +333,7 @@ $lang['data_importacao']                       = "Date of Import";
 $lang['modelo_relatorio']                      = "Model";
 $lang['exclusao']                              = "Exclusão";
 $lang['adicao']                                = "Adição";
+$lang['exportar']                              = "EXPORT";
 
 // notificacoes
 $lang['notificacao']   		                = "Notifications";

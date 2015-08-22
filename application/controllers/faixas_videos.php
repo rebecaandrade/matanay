@@ -32,7 +32,6 @@ class Faixas_Videos extends CI_Controller {
             'nome' => $this->input->post('nome'),
             'isrc' => str_replace("-", "", $this->input->post('isrc')),
             'codigo_video' => $this->input->post('youtube'),
-            'idImposto' => $this->input->post('imposto'),
             'idCliente' => $this->session->userdata('id_cliente')
         );
 
@@ -44,18 +43,12 @@ class Faixas_Videos extends CI_Controller {
         $perc_autores = $this->input->post('percentualAutor[]');
         $perc_produtores = $this->input->post('percentualProdutor[]');
 
-        if($artistas == NULL){
-            $this->session->set_userdata('mensagem', 'Por favor, escolha pelo menos um artista');
-            redirect('faixas_videos/cadastra_faixa');
-        }
-        elseif($autores == NULL){
-            $this->session->set_userdata('mensagem', 'Por favor, escolha pelo menos um autor');
-            redirect('faixas_videos/cadastra_faixa');
-        }
-        elseif($faixa['nome'] != NULL && $artistas != NULL && $autores != NULL){
-            $this->faixas_videos_model->cadastrar_faixa($faixa, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
-            $this->session->set_userdata('mensagem', 'Faixa cadastrada com sucesso!');
-            $this->session->set_userdata('subtitulo_mensagem', '');
+        $impostos = $this->input->post('impostos_faixa[]');
+
+        if($faixa['nome'] != NULL && $artistas != NULL && $autores != NULL){
+            $this->faixas_videos_model->cadastrar_faixa($faixa, $impostos, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
+            $this->session->set_userdata('mensagem', '=)');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
             redirect('faixas_videos/listar');       
         }
@@ -117,6 +110,7 @@ class Faixas_Videos extends CI_Controller {
         $dados['autores'] = $this->faixas_videos_model->buscar_autores($this->session->userdata('id_cliente'));
         $dados['produtores'] = $this->faixas_videos_model->buscar_produtores($this->session->userdata('id_cliente'));
         $dados['impostos'] = $this->faixas_videos_model->buscar_impostos($this->session->userdata('id_cliente'));
+        $dados['impostos_faixa'] = $this->faixas_videos_model->buscar_impostos_faixa($id);
 
         $dados['artista_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=1);
         $dados['autor_faixa'] = $this->faixas_videos_model->buscar_entidade_faixa($id, $tipo=2);

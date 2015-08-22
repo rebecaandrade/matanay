@@ -233,10 +233,13 @@
                    value="<?= $this->lang->line('datas_invalidas') ?>">
             <input type="hidden" name="typeReportMessegeDisplay"
                    value="<?= $this->lang->line('tipo_relatorio_erro') ?>">
-            <button class="btn waves-effect waves-light col s12 m10 offset-m1 l10 offset-l1"
-                    type="submit"><?php echo $this->lang->line('cadastrar'); ?>
-                <i class="mdi-content-send right"></i>
-            </button>
+
+            <div class="row">
+                <button class="btn waves-effect waves-light col s12 m10 offset-m1 l12" type="submit">
+                        <?php echo $this->lang->line('exportar'); ?>
+                    <i class="mdi-content-send right"></i>
+                </button>
+            </div>
         </form>
     </div>
 </div>

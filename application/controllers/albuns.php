@@ -40,24 +40,25 @@ class Albuns extends CI_Controller {
             'faixa' => 100/$this->input->post('n_faixas'),
             'codigo_catalogo' => $this->input->post('catalogo'),
             'idTipo_Album' => $this->input->post('tipo'),
-            'idCliente' => $this->session->userdata('id_cliente'),
-            'idImposto' => $this->input->post('imposto_album')
+            'idCliente' => $this->session->userdata('id_cliente')
         );
 
         $artista = $this->input->post('artista');
 
 		$faixas = $this->input->post('faixas[]');
 
-        if($album['nome'] != NULL && $album['quantidade'] != NULL && $album['upc_ean'] != NULL && $album['ano'] != NULL && $album['idTipo_Album'] != NULL){
- 			$this->albuns_model->cadastrar_album($album, $artista, $faixas);
+        $impostos = $this->input->post('impostos[]');
+
+        if($album['nome'] != NULL && $album['quantidade'] != NULL && $album['upc_ean'] != NULL && $album['ano'] != NULL){
+ 			$this->albuns_model->cadastrar_album($album, $artista, $faixas, $impostos);
             
             $this->session->set_userdata('mensagem', '=)');
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
             redirect('albuns/listar');       
         }else{
-            $this->session->set_userdata('mensagem', 'Problemas no cadastro');
-            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('mensagem', '=(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
             $this->session->set_userdata('tipo_mensagem', 'error');
             redirect('albuns/cadastra_album');
         }
@@ -88,8 +89,8 @@ class Albuns extends CI_Controller {
         $dados['artistas'] = $this->albuns_model->buscar_artistas($this->session->userdata('id_cliente'));
         $dados['tracklist'] = $this->albuns_model->buscar_tracklist($id);
         $dados['tipos'] = $this->albuns_model->buscar_tipos();
-        $this->load->model('faixas_videos_model');
-        $dados['impostos'] = $this->faixas_videos_model->buscar_impostos($this->session->userdata('id_cliente'));
+        $dados['impostos'] = $this->albuns_model->buscar_impostos($this->session->userdata('id_cliente'));
+        $dados['impostos_album'] = $this->albuns_model->buscar_impostos_album($id);
 
         $this->load->view('albuns/edita_album', $dados);
     }
@@ -121,13 +122,13 @@ class Albuns extends CI_Controller {
         );
 
         if($this->albuns_model->atualizar_faixas($album, $faixas)){
-            $this->session->set_userdata('mensagem', 'Faixas atualizadas com succeso!');
-            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('mensagem', '=)');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
             redirect('albuns/listar');       
         }else{
-            $this->session->set_userdata('mensagem', 'Problemas na atualização.');
-            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('mensagem', '=(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
             $this->session->set_userdata('tipo_mensagem', 'error');
             redirect('albuns/faixas_atualizacao', $album); 
         }
@@ -140,8 +141,7 @@ class Albuns extends CI_Controller {
             'upc_ean' => $this->input->post('upc_ean'),
             'ano' => $this->input->post('ano'),
             'codigo_catalogo' => $this->input->post('catalogo'),
-            'idTipo_Album' => $this->input->post('tipo'),
-            'idImposto' => $this->input->post('imposto_album')
+            'idTipo_Album' => $this->input->post('tipo')
         );
 
         $prev_artista = $this->input->post('artista_album');
@@ -151,10 +151,12 @@ class Albuns extends CI_Controller {
             'idEntidade' => $this->input->post('artista')
         );
 
+        $impostos = $this->input->post('impostos[]');
+
         if($dados['nome'] != NULL && $dados['ano'] != NULL){
-            $this->albuns_model->atualizar_album($dados, $novo_artista, $prev_artista);
-            $this->session->set_userdata('mensagem', 'Album atualizado com sucesso!');
-            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->albuns_model->atualizar_album($dados, $impostos, $novo_artista, $prev_artista);
+            $this->session->set_userdata('mensagem', '=)');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
             redirect('albuns/listar');       
         }else{
@@ -166,8 +168,8 @@ class Albuns extends CI_Controller {
             $dados['tracklist'] = $this->albuns_model->buscar_tracklist($id);
             $dados['tipos'] = $this->albuns_model->buscar_tipos();
 
-            $this->session->set_userdata('mensagem', 'Problemas na atualização');
-            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('mensagem', '=(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
             $this->session->set_userdata('tipo_mensagem', 'error');
             $this->load->view('albuns/edita_album', $dados);
         }

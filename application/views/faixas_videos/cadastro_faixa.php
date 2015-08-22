@@ -57,8 +57,8 @@
 		            	<label id="selectLabel"><?php echo $this->lang->line("artista");?></label>
 					</div>
 					<div class="input-field col s10 m3 l2">
-						<label><?php echo $this->lang->line('participacao');?></label>
-		            	<input class="porcentagem" name="percentualArtista[]" type="text">
+						<label id="porcentagemLabel"><?php echo $this->lang->line('participacao');?></label>
+		            	<input class="porcentagem 100" name="percentualArtista[]" type="text">
 		          	</div>
 					<a onclick="addSelectEntidade(getArtistas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('artista'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
 						class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
@@ -84,8 +84,8 @@
 		            	<label id="selectLabel"><?php echo $this->lang->line('autor');?></label>
 		          	</div>
 		          	<div class="input-field col s10 m3 l2">
-		          		<label><?php echo $this->lang->line('participacao');?></label>
-		            	<input class="porcentagem" name="percentualAutor[]" type="text">
+		          		<label id="porcentagemLabel"><?php echo $this->lang->line('participacao');?></label>
+		            	<input class="porcentagem 100" name="percentualAutor[]" type="text">
 		          	</div>
 		          	<a onclick="addSelectEntidade(getAutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('autor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
 						class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
@@ -111,8 +111,8 @@
 		            	<label id="selectLabel"><?php echo $this->lang->line('produtor');?></label>
 		          	</div>
 		          	<div class="input-field col s10 m3 l2">
-		          		<label><?php echo $this->lang->line('participacao');?></label>
-		            	<input class="porcentagem" name="percentualProdutor[]" type="text">
+		          		<label id="porcentagemLabel"><?php echo $this->lang->line('participacao');?></label>
+		            	<input class="porcentagem 100" name="percentualProdutor[]" type="text">
 		          	</div>
 		          	<a onclick="addSelectEntidade(getProdutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('produtor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
 						class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
@@ -130,7 +130,7 @@
 					<?php if (isset($impostos)) { ?>
 						<?php foreach ($impostos as $imposto) { ?>
 							<div class="col s4 m3 l3">
-								<input type='radio' name="imposto" checked value="<?php echo $imposto->idImposto ?>" id="<?php echo $imposto->idImposto ?>"/>
+								<input type='checkbox' class='filled-in' name="impostos_faixa[]" value="<?php echo $imposto->idImposto ?>" id="<?php echo $imposto->idImposto ?>"/>
 								<label for="<?php echo $imposto->idImposto ?>"><?php echo $imposto->nome; ?></label>	
 							</div>
 						<?php }

@@ -238,7 +238,7 @@ $lang['subloja']					= 'sub-loja';
 $lang['territorio']					= 'Território';
 $lang['identificador_moeda']		= 'identificador de moeda';
 $lang['selecione_coluna']			= 'Selecione a coluna dos atributos abaixo:';
-$lang['modelos']					= 'Modelos';
+$lang['modelos']					= 'MODELOS';
 
 ////// CLIENTE ////// Vitor
 
@@ -338,6 +338,9 @@ $lang['data_importacao']                       = "Data de importação";
 $lang['modelo_relatorio']                      = "Modelo";
 $lang['exclusao']                              = "Exclusão";
 $lang['adicao']                                = "Adição";
+$lang['exportar']                              = "EXPORTAR";
+
+
 // notificacoes
 $lang['notificacao']   		                = "Notificações";
 $lang['contrato_nome']   		            = "Contrato";

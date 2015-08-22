@@ -15,7 +15,7 @@
 	          	<div class="input-field col s12 m12 l8 offset-l2">
 	          		<i class="mdi-av-album prefix"></i>
 	          		<label><?php echo $this->lang->line('titulo'); ?></label>
-	            	<input required pattern="[a-zA-Z0-9][\\sa-zA-Z0-9]{0,40}" title="nao coloque espaços no começo ou final do titulo" id="icon-prefix" type="text" name="nome"/>
+	            	<input required pattern=".{1,45}" id="icon-prefix" type="text" name="nome"/>
 	          	</div>
 	        </div>
 
@@ -85,14 +85,18 @@
 
 	        <div class="row" id="SelectImposto">
 				<div class="col s12 m12 l8 offset-l2">
+					<?php $nada = "" ?>
 					<h5><?php echo $this->lang->line('impostos'); ?></h5><br>
 					<?php if (isset($impostos)) { ?>
 						<?php foreach ($impostos as $imposto) { ?>
-							<div class="col s4 m3 l3">
-								<input type='radio' name="imposto_album" checked value="<?php echo $imposto->idImposto ?>" id="<?php echo $imposto->idImposto ?>"/>
-								<label for="<?php echo $imposto->idImposto ?>"><?php echo $imposto->nome; ?></label>	
-							</div>
-						<?php }
+                            <?php $index = $imposto->idImposto ?>
+                            	<div class="col s4 m3 l3">
+                                	<input type='checkbox' class="filled-in" id="<?php echo $imposto->idImposto ?>"
+                                       	name="impostos[]"
+                                       	value="<?php echo $imposto->idImposto ?>" <?= (isset($antigos['imposto'][$index]) ? "checked" : $nada) ?>/>
+                                	<label for="<?php echo $imposto->idImposto ?>"><?php echo $imposto->nome; ?></label>
+                            	</div>
+                        <?php }
 					} ?>
 				</div>
 			</div>
@@ -238,7 +242,7 @@
 							<?php if (isset($impostos)) { ?>
 								<?php foreach ($impostos as $imposto) { ?>
 									<div class="col s4 m3 l4">
-										<input type='radio' name="imposto" checked value="<?php echo $imposto->idImposto ?>" id="<?php echo $imposto->idImposto ?>"/>
+										<input type='checkbox' class='filled-in' name="impostos_faixa[]" value="<?php echo $imposto->idImposto ?>" id="<?php echo $imposto->idImposto ?>"/>
 										<label for="<?php echo $imposto->idImposto ?>"><?php echo $imposto->nome; ?></label>	
 									</div>
 								<?php }

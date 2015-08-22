@@ -507,6 +507,10 @@ $(document).ready(function () {
     $('.cnpjCadastreInput').mask("00.000.000/0000-00");
 });
 
+$(document).ready(function(){
+    $(".100").attr("value", "100.00%");
+});
+
 $(document).ready(function () {
     $('.percentage').mask("000.00%", {reverse: true});
     $('.percentage').on("blur", function () {
@@ -777,14 +781,14 @@ function addSelectEntidade(entidades, selecione, label, participacao, mask) {
     $('#Select' + label).append('<div class="row"><div class="input-field col s11 m8 l8 offset-l1">' +
         '<select id="select' + label + '" class="add' + label + ' browser-default" name="' + nameLower + 's[]">' +
         geraOpcoesEntidade(entidades, selecione) + '</select><label id="selectLabel">' + label + '</label></div>' +
-        '<div class="input-field col s12 m3 l2"><label>' + participacao + '</label>' +
+        '<div class="input-field col s12 m3 l2"><label id="porcentagemLabel">' + participacao + '</label>' +
         '<input class="porcentagem" name="percentual' + label + '[]" type="text"></div>' +
         '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
         'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
         '<i class="mdi-content-remove"></i></a></div>');
 
     $('.add' + label).chosen({search_contains: true});
-    $('.porcentagem').mask("00,00%", {reverse: true});
+    $('.porcentagem').mask("000,00%", {reverse: true});
 }
 
 function geraOpcoesEntidade(entidades, selecione) {

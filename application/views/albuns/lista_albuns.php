@@ -24,7 +24,6 @@
                     <th><?php echo $this->lang->line('tipo'); ?></th>
                     <th><?php echo $this->lang->line('ano'); ?></th>
                     <th><?php echo $this->lang->line('acao'); ?></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -48,7 +47,6 @@
                             <td><a onclick="passaParametroAlbum('<?= $album->idAlbum ?>','<?=base_url()?>')"><?php echo $this->lang->line('editar'); ?></a> |
                             	<a onclick="excluirAlbum('<?= base_url() . 'index.php/albuns/deletar/' . $album->idAlbum ?>','<?= $this->lang->line('langOpt') ?>')"><?php echo $this->lang->line('deletar'); ?></a>
                             </td>
-                            <td><a class="detalhes tooltipped" data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('detalhes'); ?>" href="<?php echo base_url(); ?>index.php/albuns/detalhar/<?php echo $album->idAlbum ?>"><i class="mdi-action-visibility"></i></a></td>
                         </tr> 
                 <?php } } ?>                  
             </tbody>

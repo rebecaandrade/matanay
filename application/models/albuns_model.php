@@ -48,7 +48,19 @@ class Albuns_model extends CI_Model {
         return $this->db->get('album_has_faixa')->result();
     }
 
-    public function cadastrar_album($album, $artista, $faixas){
+    public function buscar_impostos($idCliente){
+        $this->db->where('idCliente', $idCliente);
+        return $this->db->get('imposto')->result();
+    }
+
+    public function buscar_impostos_album($id){
+        $this->db->select('*')->from('album_has_imposto');
+        $this->db->where('idAlbum', $id);
+        $dados = $this->db->get()->result();
+        return $dados;
+    }
+
+    public function cadastrar_album($album, $artista, $faixas, $impostos){
     	$this->db->trans_start();
 		$this->db->insert('album', $album);
 		$album_id = $this->db->insert_id();
@@ -67,15 +79,34 @@ class Albuns_model extends CI_Model {
 			$this->db->insert('album_has_faixa', $tracklist);
 		}
 
+        foreach($impostos as $imposto->idImposto){
+            $imposto_album = array(
+                'idAlbum' => $album_id,
+                'idImposto' => $imposto->idImposto
+            );
+            $this->db->insert('album_has_imposto', $imposto_album);
+        }
+
 		$this->db->trans_complete();
         return TRUE;
 	}
 
-    public function atualizar_album($dados, $novo_artista, $prev_artista){
+    public function atualizar_album($dados, $impostos, $novo_artista, $prev_artista){
         $this->db->trans_start();
 
         $this->db->where('idAlbum', $dados['idAlbum']);
         $this->db->update('album', $dados);
+
+        $this->db->where('idAlbum', $dados['idAlbum']);
+        $this->db->delete('album_has_imposto');
+
+        foreach($impostos as $imposto->idImposto){
+            $imposto_album = array(
+                'idAlbum' => $dados['idAlbum'],
+                'idImposto' => $imposto->idImposto
+            );
+            $this->db->insert('album_has_imposto', $imposto_album);
+        }
 
         $this->db->where('idAlbum', $dados['idAlbum']);
         $this->db->where('idEntidade', $prev_artista);
