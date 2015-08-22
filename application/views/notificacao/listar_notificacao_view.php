@@ -42,12 +42,14 @@ $this->load->view('_include/header') ?>
                         <tr>
                             <td>    <?php echo $notificacao->nome; ?>           </td>
                             <td>    <?php echo $notificacao->data_fim; ?>       </td>
-                            <?php foreach ($dadosEntidade as $entidade){ 
+                            <?php foreach ($dadosEntidade as $entidade){
                                 if ($entidade->idEntidade == $notificacao->idEntidade){ ?>
-                                    <td>    <?php echo $entidade->nome; ?>      </td>                                    
+                                    <td>    <?php echo $entidade->nome; ?>      </td> 
+                                    <?php break; ?>                                   
                             <?php } } foreach ($dadosFavorecido as $favorecido) {
                                 if ($favorecido->idFavorecido == $notificacao->idFavorecido) { ?>
                                     <td>    <?php echo $favorecido->nome; ?>      </td>                                    
+                                    <?php break; ?>                                   
                             <?php } } ?>
                         </tr>
                 <?php } } ?>
