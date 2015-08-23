@@ -43,7 +43,7 @@
                 <input type="hidden" name="fileMessegeDisplay" value="<?= $this->lang->line('rel_file') ?>">
                 <input type="hidden" name="apuracaoMessegeDisplay" value="<?= $this->lang->line('apuracao_invalida') ?>">
                 <button class="btn waves-effect waves-light col s12 m10 offset-m1 l10 offset-l1"
-                        type="submit"><?php echo $this->lang->line('cadastrar'); ?>
+                        type="submit"><?php echo $this->lang->line('importar'); ?>
                     <i class="mdi-content-send right"></i>
                 </button>
             </form>

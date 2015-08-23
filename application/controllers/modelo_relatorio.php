@@ -139,7 +139,7 @@
 		public function colunas($quant){
 			//Função recebe um int representando a quantidade de colunas desejadas a partir de 'a' e retorna um array com todas elas
 			$colunas 	= array();
-			$coluna 	='a';
+			$coluna 	='A';
 			array_push($colunas, $coluna);
 			for ($i=1; $i <$quant ; $i++) { 
 				$coluna = ++$coluna;

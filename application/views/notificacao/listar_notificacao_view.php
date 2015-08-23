@@ -17,9 +17,9 @@ $this->load->view('_include/header') ?>
             <thead>
                 <tr>
                     <th>   <?php echo $this->lang->line('contrato_nome'); ?>    </th>
-                    <th>   <?php echo $this->lang->line('data_fim'); ?>   </th>
-                    <th>   <?php echo $this->lang->line('nome_entidade'); ?>         </th>
-                    <th>   <?php echo $this->lang->line('nome_favorecido'); ?>       </th>
+                    <th>   <?php echo $this->lang->line('data_fim'); ?>         </th>
+                    <th>   <?php echo $this->lang->line('nome_entidade'); ?>    </th>
+                    <th>   <?php echo $this->lang->line('nome_favorecido'); ?>  </th>
                 </tr>
             </thead>
             <tbody>

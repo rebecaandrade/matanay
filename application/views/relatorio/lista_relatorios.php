@@ -10,7 +10,7 @@
                 <?= $this->lang->line('listar_relatorios'); ?>
                 <a href="<?php echo base_url(); ?>index.php/relatorio/importa_relatorio"
                    class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo"
-                   data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('nova'); ?>"
+                   data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('novo'); ?>"
                    id="addButton">
                     <i class="mdi-content-add"></i>
                 </a>

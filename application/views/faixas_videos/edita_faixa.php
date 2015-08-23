@@ -64,7 +64,7 @@
                                 </script>
                             <?php $j++; } else { ?>
                                 <a class="btn-floating btn-medium waves-effect waves-light btn"
-                                    data-position="right" data-delay="50" id="removeArtista"><i class="mdi-content-remove"></i></a>
+                                    data-position="right" data-delay="50" id="remArtista"><i class="mdi-content-remove"></i></a>
                             <?php } ?>
                         </div>
                 <?php } } if(empty($artista_faixa)) { ?>
@@ -139,7 +139,7 @@
                                 </script>
                             <?php $j++; } else { ?>
                                 <a class="btn-floating btn-medium waves-effect waves-light btn"
-                                    data-position="right" data-delay="50" id="removeAutor"><i class="mdi-content-remove"></i></a>
+                                    data-position="right" data-delay="50" id="remAutor"><i class="mdi-content-remove"></i></a>
                             <?php } ?>
                         </div>
                 <?php } } if(empty($autor_faixa)) { ?>
@@ -214,7 +214,7 @@
                                 </script>
                             <?php $j++; } else { ?>
                                 <a class="btn-floating btn-medium waves-effect waves-light btn"
-                                    data-position="right" data-delay="50" id="removeProdutor"><i class="mdi-content-remove"></i></a>
+                                    data-position="right" data-delay="50" id="remProdutor"><i class="mdi-content-remove"></i></a>
                             <?php } ?>
                         </div>
                 <?php } } if(empty($produtor_faixa)) { ?>

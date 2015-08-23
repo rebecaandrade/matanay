@@ -337,5 +337,5 @@ $lang['exportar']                              = "EXPORT";
 $lang['importar']                              = "IMPORT";
 
 // notificacoes
-$lang['notificacao']   		                = "Notifications";
-$lang['contrato_nome']   		            = "Contract";
+$lang['notificacao']   		        		   = "NOTIFICATIONS";
+$lang['contrato_nome']   		               = "Contract";

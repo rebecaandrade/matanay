@@ -603,98 +603,6 @@ $(document).ready(function () {
     });
 });
 
-/********** inicia participações com 100% e divide igualmente no cadastro de faixa **********/
-
-$(document).ready(function(){
-    $("input[name*=percentualArtista]").prop("value", "100.00%");
-});
-
-$(document).ready(function(){
-    var i = 2;
-    $('#100artista').click(function () {
-        var perc = 100/i;
-        var str = "%";
-        var res = perc.toFixed(2).concat(str);
-
-        $("input[name*=percentualArtista]").prop('value', res);
-        i++;
-    })
-});
-
-$(document).ready(function(){
-    $("input[name*=percentualAutor]").prop("value", "100.00%");
-});
-
-$(document).ready(function(){
-    var i = 2;
-    $('#100autor').click(function () {
-        var perc = 100/i;
-        var str = "%";
-        var res = perc.toFixed(2).concat(str);
-
-        $("input[name*=percentualAutor]").prop('value', res);
-        i++;
-    })
-});
-
-$(document).ready(function(){
-    $("input[name*=percentualProdutor]").prop("value", "100.00%");
-});
-
-$(document).ready(function(){
-    var i = 2;
-    $('#100produtor').click(function () {
-        var perc = 100/i;
-        var str = "%";
-        var res = perc.toFixed(2).concat(str);
-
-        $("input[name*=percentualProdutor]").prop('value', res);
-        i++;
-    })
-});
-
-/********** inicia participações com 100% e divide igualmente na edição de faixa **********/
-
-$(document).ready(function(){
-    var i = 2;
-    $('#100art').click(function () {
-        var perc = 100/i;
-        var str = "%";
-        var res = perc.toFixed(2).concat(str);
-
-        $("input[name*=percentArtista]").prop('value', res);
-        i++;
-    })
-});
-
-$(document).ready(function(){
-    var i = 2;
-    $('#100aut').click(function () {
-        var perc = 100/i;
-        var str = "%";
-        var res = perc.toFixed(2).concat(str);
-
-        $("input[name*=percentAutor]").prop('value', res);
-        i++;
-    })
-});
-
-$(document).ready(function(){
-    $(".prodNull").prop("value", "100.00%");
-});
-
-$(document).ready(function(){
-    var i = 2;
-    $('#100prod').click(function () {
-        var perc = 100/i;
-        var str = "%";
-        var res = perc.toFixed(2).concat(str);
-
-        $("input[name*=percentProdutor]").prop('value', res);
-        i++;
-    })
-});
-
 /********** validar cadastro de album **********/
 
 $(document).ready(function () {
@@ -763,6 +671,184 @@ $(document).ready(function () {
             swal(mensagem, "", "error");
             return false;
         }
+    });
+});
+
+/********** inicia participações com 100% e divide igualmente no cadastro de faixa **********/
+
+$(document).ready(function(){
+    $("input[name*=percentualArtista]").prop("value", "100.00%");
+});
+
+$(document).ready(function(){
+    $('#100artista').click(function () {
+        var i = $('input[name*=percentualArtista]').length;
+        var perc = 100/i;
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentualArtista]").prop('value', res);
+    })
+});
+
+$(document).ready(function(){
+    $("input[name*=percentualAutor]").prop("value", "100.00%");
+});
+
+$(document).ready(function(){
+    $('#100autor').click(function () {
+        var i = $('input[name*=percentualAutor]').length;
+        var perc = 100/i;
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentualAutor]").prop('value', res);
+    })
+});
+
+$(document).ready(function(){
+    $("input[name*=percentualProdutor]").prop("value", "100.00%");
+});
+
+$(document).ready(function(){
+    $('#100produtor').click(function () {
+        var i = $('input[name*=percentualProdutor]').length;
+        var perc = 100/i;
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentualProdutor]").prop('value', res);
+    })
+});
+
+/********** reverte percentual de participação no cadastro de faixas **********/
+
+$(function () {
+    $("#SelectArtista").on("click", "#removeArtista", function (e) {
+        var i = $('input[name*=percentualArtista]').length;
+        var perc = 100/(i-1);
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentualArtista]").prop('value', res);
+
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
+        geraEntidadesSelecionadas();
+    });
+
+    $("#SelectAutor").on("click", "#removeAutor", function (e) {
+        var i = $('input[name*=percentualAutor]').length;
+        var perc = 100/(i-1);
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentualAutor]").prop('value', res);
+
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
+        geraEntidadesSelecionadas();
+    });
+
+    $("#SelectProdutor").on("click", "#removeProdutor", function (e) {
+        var i = $('input[name*=percentualProdutor]').length;
+        var perc = 100/(i-1);
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentualProdutor]").prop('value', res);
+
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
+        geraEntidadesSelecionadas();
+    });
+});
+
+/********** divide as participações igualmente na edição de faixa **********/
+
+$(document).ready(function(){
+    $('#100art').click(function () {
+        var i = $('input[name*=percentArtista]').length;
+        var perc = 100/i;
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentArtista]").prop('value', res);
+    })
+});
+
+$(document).ready(function(){
+    $('#100aut').click(function () {
+        var i = $('input[name*=percentAutor]').length;
+        var perc = 100/i;
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentAutor]").prop('value', res);
+    })
+});
+
+$(document).ready(function(){
+    $(".prodNull").prop("value", "100.00%");
+});
+
+$(document).ready(function(){
+    $('#100prod').click(function () {
+        var i = $('input[name*=percentProdutor]').length;
+        var perc = 100/i;
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentProdutor]").prop('value', res);
+    })
+});
+
+/********** reverte percentual de participação na edição de faixas **********/
+
+$(function () {
+    $("#SelectArtista").on("click", "#remArtista", function (e) {
+        var i = $('input[name*=percentArtista]').length;
+        var perc = 100/(i-1);
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentArtista]").prop('value', res);
+
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
+        geraEntidadesSelecionadas();
+    });
+
+    $("#SelectAutor").on("click", "#remAutor", function (e) {
+        var i = $('input[name*=percentAutor]').length;
+        var perc = 100/(i-1);
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentAutor]").prop('value', res);
+
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
+        geraEntidadesSelecionadas();
+    });
+
+    $("#SelectProdutor").on("click", "#remProdutor", function (e) {
+        var i = $('input[name*=percentProdutor]').length;
+        var perc = 100/(i-1);
+        var str = "%";
+        var res = perc.toFixed(2).concat(str);
+
+        $("input[name*=percentProdutor]").prop('value', res);
+
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
+        geraEntidadesSelecionadas();
     });
 });
 
@@ -927,8 +1013,7 @@ $(document).ready(function () {
 /********** cadastro/edição de faixas com chosen no select de entidades e função que impede selecionar o mesmo valor 2x **********/
 
 function addSelectEntidade(entidades, selecione, label, participacao, mask) {
-    var nameLower = label;
-    var nameLower = nameLower.toLowerCase();
+    var nameLower = label.toLowerCase();
 
     $('#Select' + label).append('<div class="row"><div class="input-field col s11 m8 l8 offset-l1">' +
         '<select id="select' + label + '" class="add' + label + ' browser-default" name="' + nameLower + 's[]">' +
@@ -944,8 +1029,7 @@ function addSelectEntidade(entidades, selecione, label, participacao, mask) {
 }
 
 function addSelectEnt(entidades, selecione, label, participacao, mask) {
-    var nameLower = label;
-    var nameLower = nameLower.toLowerCase();
+    var nameLower = label.toLowerCase();
 
     $('#Select' + label).append('<div class="row"><div class="input-field col s11 m8 l8 offset-l1">' +
         '<select id="select' + label + '" class="add' + label + ' browser-default" name="' + nameLower + 's[]">' +
@@ -953,7 +1037,7 @@ function addSelectEnt(entidades, selecione, label, participacao, mask) {
         '<div class="input-field col s12 m3 l2"><label id="selectLabel">' + participacao + '</label>' +
         '<input class="porcentagem" name="percent' + label + '[]" type="text"></div>' +
         '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
-        'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
+        'data-position="right" data-delay="50" data-tooltip="Remover" id="rem' + label + '">' +
         '<i class="mdi-content-remove"></i></a></div>');
 
     $('.add' + label).chosen({search_contains: true});
@@ -1047,29 +1131,6 @@ $(function () {
             }
         });
     }
-});
-
-$(function () {
-    $("#SelectArtista").on("click", "#removeArtista", function (e) {
-        e.preventDefault();
-        $(this).parent('div').remove();
-        x--;
-        geraEntidadesSelecionadas();
-    });
-
-    $("#SelectAutor").on("click", "#removeAutor", function (e) {
-        e.preventDefault();
-        $(this).parent('div').remove();
-        x--;
-        geraEntidadesSelecionadas();
-    });
-
-    $("#SelectProdutor").on("click", "#removeProdutor", function (e) {
-        e.preventDefault();
-        $(this).parent('div').remove();
-        x--;
-        geraEntidadesSelecionadas();
-    });
 });
 
 /********** ediçao de album com chosen no select de faixas e função que impede selecionar o mesmo valor 2x **********/
