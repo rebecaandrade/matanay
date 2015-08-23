@@ -109,7 +109,21 @@
                 </li>
             </ul>
 
-            <li><a href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header"><a><?php echo $this->lang->line('listar_relatorios'); ?></a></div>
+                    <div class="collapsible-body">
+                        <a href="<?php echo base_url(); ?>index.php/modelo_relatorio/listar_modelos"><?php echo $this->lang->line('modelos'); ?></a>
+                    </div>
+                    <div class="collapsible-body">
+                        <a href="<?php echo base_url(); ?>index.php/relatorio/listar_relatorios"><?php echo $this->lang->line('importar'); ?></a>
+                    </div>
+                    <div class="collapsible-body">
+                        <a href="<?=base_url().'index.php/relatorio/opcoes_relatorio'?>"><?php echo $this->lang->line('exportar'); ?></a>
+                    </div>
+                </li>
+            </ul>
+
             <li><a  href="#"><?php echo $this->lang->line('vendas'); ?></a></li>
             <li><a href="<?php echo base_url(); ?>index.php/acesso/deslogar"><?php echo $this->lang->line('sair'); ?></a></li>
 
@@ -180,13 +194,13 @@
     <div id="sub_menu2" class="nav-wrapper container">
         <ul class="right hide-on-med-and-down">
             <li>
-                <a href="<?php echo base_url(); ?>index.php/modelo_relatorio/listar_modelos">MODELOS</a>
+                <a href="<?php echo base_url(); ?>index.php/modelo_relatorio/listar_modelos"><?php echo $this->lang->line('modelos'); ?></a>
             </li>
             <li>
-                <a href="#">IMPORTAR</a>
+                <a href="<?php echo base_url(); ?>index.php/relatorio/listar_relatorios"><?php echo $this->lang->line('importar'); ?></a>
             </li>
             <li>
-                <a href="<?=base_url().'index.php/relatorio/opcoes_relatorio'?>">EXPORTAR</a>
+                <a href="<?=base_url().'index.php/relatorio/opcoes_relatorio'?>"><?php echo $this->lang->line('exportar'); ?></a>
             </li>
         </ul>
     </div>

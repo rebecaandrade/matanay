@@ -315,7 +315,7 @@ $lang['login_existente']                       = "Login already exists";
 $lang['checkbox_erro']                         = "Choose a functionality";
 
 // relatoriios
-$lang['listar_relatorios']                     = "Reports";
+$lang['listar_relatorios']                     = "REPORTS";
 $lang['ralatorio_opcoes']                      = "Report Options";
 $lang['data_inicio']                           = "Start Date";
 $lang['data_fim']                              = "End Date";
@@ -334,6 +334,7 @@ $lang['modelo_relatorio']                      = "Model";
 $lang['exclusao']                              = "Exclusão";
 $lang['adicao']                                = "Adição";
 $lang['exportar']                              = "EXPORT";
+$lang['importar']                              = "IMPORT";
 
 // notificacoes
 $lang['notificacao']   		                = "Notifications";

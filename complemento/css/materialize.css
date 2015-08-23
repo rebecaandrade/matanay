@@ -1709,7 +1709,7 @@ a {
  */
 a:active, a:hover {
   outline: 0;
-  color: #aaa; }
+  color: #555; }
 
 /* Text-level semantics
    ========================================================================== */

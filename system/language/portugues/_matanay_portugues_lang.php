@@ -320,7 +320,7 @@ $lang['login_existente']                       = "Login já existe";
 $lang['checkbox_erro']                         = "Seleciona uma funcionalidade";
 
 // relatoriios
-$lang['listar_relatorios']                     = "Relatórios";
+$lang['listar_relatorios']                     = "RELATÓRIOS";
 $lang['ralatorio_opcoes']                      = "Opções do Relatório";
 $lang['data_inicio']                           = "Data de Início";
 $lang['data_fim']                              = "Data Final";
@@ -339,6 +339,7 @@ $lang['modelo_relatorio']                      = "Modelo";
 $lang['exclusao']                              = "Exclusão";
 $lang['adicao']                                = "Adição";
 $lang['exportar']                              = "EXPORTAR";
+$lang['importar']                              = "IMPORTAR";
 
 
 // notificacoes
