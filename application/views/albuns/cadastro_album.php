@@ -124,7 +124,7 @@
 		  	<div class="row">
 		      	<form id="cadastro_faixa" action="<?= base_url() . 'index.php/faixas_videos/cadastrar_modal' ?>" method="post">
 			        <div class="row">
-			          	<div class="input-field col s11 m8 l6 offset-l1">
+			          	<div class="input-field col s10 offset-s1 m8 offset-m1 l6 offset-l1">
 			          		<i class="mdi-image-audiotrack prefix"></i>
 			          		<label><?php echo $this->lang->line('titulo'); ?></label>
 			            	<input required id="icon-prefix" type="text" name="nome">
@@ -132,12 +132,12 @@
 			        </div>
 
 			        <div class="row">
-		                <div id="isrcCadastre" class="input-field col s12 m9 l6 offset-l1">
+		                <div id="isrcCadastre" class="input-field col s10 offset-s1 m8 offset-m1 l6 offset-l1">
 		                    <label>ISRC</label>
 		                    <input required pattern="[A-Z]{2}[A-Z0-9]{3}[0-9]{7}" id="isrcCadastreInput" class="isrcCadastreInput" type="text" name="isrc">
 		                </div>
 
-		                <div style="display: none" id="youtubeCadastre" class="input-field col s12 m9 l6 offset-l1">
+		                <div style="display: none" id="youtubeCadastre" class="input-field col s10 offset-s1 m8 offset-m1 l6 offset-l1">
 		                    <label>YouTube</label>
 		                    <input id="youtubeCadastreInput" class="youtubeCadastreInput" type="text" name="youtube">
 		                </div>
@@ -157,7 +157,7 @@
 
 			        <div id="SelectArtista">
 				        <div class="row">
-							<div class="input-field col s10 m8 l6 offset-l1">
+							<div class="input-field col s9 offset-s1 m8 offset-m1 l6 offset-l1">
 							    <select class="addArtista browser-default" name="artistas[]" id="artista">
 				              		<option value="-1" disabled selected><?php echo $this->lang->line("selecione");?></option> 
 				              		<?php
@@ -168,12 +168,12 @@
 				            	</select>
 				            	<label id="selectLabel"><?php echo $this->lang->line("artista");?></label>
 							</div>
-							<div class="input-field col s10 m3 l3">
+							<div class="input-field col s9 offset-s1 m2 l3">
 								<label><?php echo $this->lang->line('participacao');?></label>
 				            	<input required class="<?= $this->lang->line('classPercent') ?>" name="percentualArtista[]" type="text">
 				          	</div>
-							<a onclick="addSelectEntidade(getArtistas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('artista'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
-								class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
+							<a onclick="addSelectEntidadeModal(getArtistas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('artista'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
+								class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
 				        	<script>
 				        		$('.addEntidade').chosen({search_contains: true});
 				            	function getArtistas(){
@@ -184,7 +184,7 @@
 
 			        <div id="SelectAutor">
 				        <div class="row">
-				          	<div class="input-field col s10 m8 l6 offset-l1">
+				          	<div class="input-field col s9 offset-s1 m8 offset-m1 l6 offset-l1">
 				            	<select class="addAutor browser-default" name="autors[]" id="autor">
 				              		<option value="-1" disabled selected><?php echo $this->lang->line('selecione');?></option>
 				              		<?php
@@ -195,12 +195,12 @@
 				            	</select>
 				            	<label id="selectLabel"><?php echo $this->lang->line('autor');?></label>
 				          	</div>
-				          	<div class="input-field col s10 m3 l3">
+				          	<div class="input-field col s9 offset-s1 m2 l3">
 				          		<label><?php echo $this->lang->line('participacao');?></label>
 				            	<input required class="<?= $this->lang->line('classPercent') ?>" name="percentualAutor[]" type="text">
 				          	</div>
-				          	<a onclick="addSelectEntidade(getAutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('autor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
-								class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
+				          	<a onclick="addSelectEntidadeModal(getAutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('autor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
+								class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100autor" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
 				        	<script>
 				        		$('.addEntidade').chosen({search_contains: true});
 				            	function getAutores(){
@@ -211,7 +211,7 @@
 
 			        <div id="SelectProdutor">
 				        <div class="row">
-				          	<div class="input-field col s10 m8 l6 offset-l1">
+				          	<div class="input-field col s9 offset-s1 m8 offset-m1 l6 offset-l1">
 				            	<select class="addProdutor browser-default" name="produtors[]">
 				              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
 				              		<?php
@@ -222,12 +222,12 @@
 				            	</select>
 				            	<label id="selectLabel"><?php echo $this->lang->line('produtor');?></label>
 				          	</div>
-				          	<div class="input-field col s10 m3 l3">
+				          	<div class="input-field col s9 offset-s1 m2 l3">
 				          		<label><?php echo $this->lang->line('participacao');?></label>
 				            	<input class="<?= $this->lang->line('classPercent') ?>" name="percentualProdutor[]" type="text">
 				          	</div>
-				          	<a onclick="addSelectEntidade(getProdutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('produtor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
-								class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
+				          	<a onclick="addSelectEntidadeModal(getProdutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('produtor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
+								class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100produtor" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
 				        	<script>
 				        		$('.addEntidade').chosen({search_contains: true});
 				            	function getProdutores(){
@@ -237,13 +237,13 @@
 			        </div>
 
 			        <div class="row" id="SelectImposto">
-						<div class="col s12 m12 l8 offset-l1">
+						<div class="col s10 offset-s1 m10 offset-m1 l8 offset-l1">
 							<h5><?php echo $this->lang->line('impostos'); ?></h5><br>
 							<?php if (isset($impostos)) { ?>
 								<?php foreach ($impostos as $imposto) { ?>
 									<div class="col s4 m3 l4">
-										<input type='checkbox' class='filled-in' name="impostos_faixa[]" value="<?php echo $imposto->idImposto ?>" id="<?php echo $imposto->idImposto ?>"/>
-										<label for="<?php echo $imposto->idImposto ?>"><?php echo $imposto->nome; ?></label>	
+										<input type='checkbox' class='filled-in' name="impostos_faixa[]" value="<?php echo $imposto->idImposto ?>" id="<?php echo $imposto->nome ?>"/>
+										<label for="<?php echo $imposto->nome ?>"><?php echo $imposto->nome; ?></label>	
 									</div>
 								<?php }
 							} ?>
@@ -253,7 +253,7 @@
 					<input type="hidden" name="msg_erro_artistas" value="<?= $this->lang->line('erro_artistas') ?>">
 			        <input type="hidden" name="msg_erro_autores" value="<?= $this->lang->line('erro_autores') ?>">
 
-			        <button class="btn waves-effect waves-light col s11 m12 l8 offset-l1" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
+			        <button class="btn waves-effect waves-light col s10 offset-s1 m10 offset-m1 l8 offset-l1" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
 			          	<i class="mdi-content-send right"></i>
 			        </button>
 			    </form>
