@@ -460,6 +460,18 @@ insert into matanay.modelo values(DEFAULT ,"eAPoupancaLevou","R","P","N","E","C"
 insert into matanay.modelo values(DEFAULT ,"poupancaEvil","A","R","F","X","N","U","D","I",2,NULL,2);
 insert into matanay.modelo values(20,"MatanayPadrao","C","A","D","F","V","U","T","N",1,NULL,1);
 
+/* contrato */
+insert into matanay.contrato values(DEFAULT,"Contrato 1","2015-01-01","2015-02-01",NULL,1,1,NULL,1);
+insert into matanay.contrato values(DEFAULT,"Contrato 2","2015-01-01","2015-10-01",NULL,3,4,NULL,1);
+insert into matanay.contrato values(DEFAULT,"Contrato 3","2015-01-01","2015-07-01",NULL,6,6,NULL,1);
+insert into matanay.contrato values(DEFAULT,"Contrato 4","2015-01-01","2015-03-01",NULL,4,7,NULL,1);
+insert into matanay.contrato values(DEFAULT,"Contrato 5","2015-01-01","2015-11-01",NULL,8,2,NULL,1);
+insert into matanay.contrato values(DEFAULT,"Contrato 6","2015-01-01","2015-05-01",NULL,12,13,NULL,2);
+insert into matanay.contrato values(DEFAULT,"Contrato 7","2015-01-01","2015-09-01",NULL,19,17,NULL,2);
+insert into matanay.contrato values(DEFAULT,"Contrato 8","2015-01-01","2015-12-01",NULL,14,15,NULL,2);
+insert into matanay.contrato values(DEFAULT,"Contrato 9","2015-01-01","2015-06-01",NULL,13,16,NULL,2);
+insert into matanay.contrato values(DEFAULT,"Contrato 10","2015-01-01","2015-10-01",NULL,20,12,NULL,2);	
+
 /*relatorio*/
 insert into matanay.relatorio values(DEFAULT,"./complemento/Excel_Files/14a004_accounted-2015-02.xlsx","02/2015",
                                      "2015-08-09",20,1);

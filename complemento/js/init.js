@@ -916,6 +916,70 @@ $(document).ready(function () {
     });
 });
 
+/********** validar cadastro de faixa no modal **********/
+
+$(document).ready(function () {
+    $('#cadastro_modal').on("submit", function () {
+        var mensagem = "";
+
+        var artista = $('#artista option:selected').val();
+        if (artista < 0) {
+            mensagem += "*" + $('input[name=msg_erro_artistas]').val();
+        }
+        else {
+            var perc_artista = new Array();
+            $("input[name*=percentualArtista]").each(function () {
+                perc_artista.push($(this).val());
+            });
+            var perc_total = 0;
+            $.each(perc_artista, function () {
+                perc_total += parseFloat(this) || 0;
+            });
+            if (perc_total != 100) {
+                mensagem += "*" + $('input[name=msg_perc_artista]').val();
+            }
+        }
+
+        var autor = $('#autor option:selected').val();
+        if (autor < 0) {
+            mensagem += "*" + $('input[name=msg_erro_autores]').val();
+        }
+        else {
+            var perc_autor = new Array();
+            $("input[name*=percentualAutor]").each(function () {
+                perc_autor.push($(this).val());
+            });
+            var perc_total = 0;
+            $.each(perc_autor, function () {
+                perc_total += parseFloat(this) || 0;
+            });
+            if (perc_total != 100) {
+                mensagem += "*" + $('input[name=msg_perc_autor]').val();
+            }
+        }
+
+        var produtor = $('#produtor option:selected').val();
+        if (produtor > 0) {
+            var perc_produtor = new Array();
+            $("input[name*=percentualProdutor]").each(function () {
+                perc_produtor.push($(this).val());
+            });
+            var perc_total = 0;
+            $.each(perc_produtor, function () {
+                perc_total += parseFloat(this) || 0;
+            });
+            if (perc_total != 100) {
+                mensagem += "*" + $('input[name=msg_perc_produtor]').val();
+            }
+        }
+
+        if (mensagem.length > 3) {
+            swal(mensagem, "", "error");
+            return false;
+        }
+    });
+});
+
 /********** validar edição de faixa **********/
 
 $(document).ready(function () {

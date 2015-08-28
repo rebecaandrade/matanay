@@ -122,7 +122,7 @@
 		        </div>
 		  	</div><br>
 		  	<div class="row">
-		      	<form id="cadastro_faixa" action="<?= base_url() . 'index.php/faixas_videos/cadastrar_modal' ?>" method="post">
+		      	<form action="<?= base_url() . 'index.php/faixas_videos/cadastrar_modal' ?>" method="post">
 			        <div class="row">
 			          	<div class="input-field col s10 offset-s1 m8 offset-m1 l6 offset-l1">
 			          		<i class="mdi-image-audiotrack prefix"></i>
