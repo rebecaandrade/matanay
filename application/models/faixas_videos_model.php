@@ -155,6 +155,10 @@ class Faixas_Videos_model extends CI_Model {
         return $this->db->get('faixa_video_has_imposto')->result();
     }
 
+    public function buscar_faixas_has_imposto(){
+        return $this->db->get('faixa_video_has_imposto')->result();
+    }
+
     public function cadastrar_faixa($faixa, $impostos, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores){
         $this->db->trans_start();
 

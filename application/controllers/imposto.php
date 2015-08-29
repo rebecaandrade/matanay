@@ -30,8 +30,9 @@ class Imposto extends CI_Controller
     {
         $dados["dadoimposto"]   = $this->Imposto_model->buscar_imposto();
         //Eh necessario as faixas para se saber quais impostos se pode apagar.
-        $id_cliente = $this->session->userdata('cliente_id');
-        $dados["faixas"]        = $this->faixas_videos_model->buscar_faixas($id_cliente);
+        $id_cliente                     = $this->session->userdata('cliente_id');
+        $dados["faixas_has_imposto"]    = $this->faixas_videos_model->buscar_faixas_has_imposto();
+        //die(var_dump($dados));
         $this->load->view("Imposto/listar_impostos_view", $dados);
     }
 

@@ -40,8 +40,8 @@ $this->load->view('_include/header') ?>
                         <td>
                             <?php
                             $flag=0;
-                            foreach ($faixas as $key) {
-                                if ($key->idImposto==$row1->idImposto)
+                            foreach ($faixas_has_imposto as $key) {
+                                if ($key->idImposto == $row1->idImposto)
                                     $flag=1;
                             }
                             if ($flag==0){ ?>
