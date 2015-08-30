@@ -1112,10 +1112,10 @@ function addSelectEntidadeModal(entidades, selecione, label, participacao, mask)
     var nameLower = label.toLowerCase();
 
     $('#Select' + label).append('<div class="row"><div class="input-field col s9 offset-s1 m8 offset-m1 l6 offset-l1">' +
-        '<select id="select' + label + '" class="add' + label + ' browser-default" name="' + nameLower + 's[]">' +
+        '<select id="select' + label + '" class="select'+label+' add' + label + ' browser-default" name="' + nameLower + 's[]">' +
         geraOpcoesEntidade(entidades, selecione) + '</select><label id="selectLabel">' + label + '</label></div>' +
         '<div class="input-field col s9 offset-s1 m2 l3"><label id="selectLabel">' + participacao + '</label>' +
-        '<input class="porcentagem" name="percentual' + label + '[]" type="text"></div>' +
+        '<input class="porcentagem porcentagem'+label+'" name="percentual' + label + '[]" type="text"></div>' +
         '<a onclick="remove' + label + '()"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
         'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
         '<i class="mdi-content-remove"></i></a></div>');

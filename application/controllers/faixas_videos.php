@@ -61,7 +61,7 @@ class Faixas_Videos extends CI_Controller {
 
 	}
 
-    public function cadastrar_modal(){
+    public function cadastrar_faixa_ajax(){
         $faixa = array(
             'nome' => $this->input->post('nome'),
             'isrc' => str_replace("-", "", $this->input->post('isrc')),
@@ -69,28 +69,31 @@ class Faixas_Videos extends CI_Controller {
             'idCliente' => $this->session->userdata('id_cliente')
         );
 
-        $artistas = $this->input->post('artistas[]');
-        $autores = $this->input->post('autors[]');
-        $produtores = $this->input->post('produtors[]');
+        $artistas = $this->input->post('artistas');
+        $autores = $this->input->post('autors');
+        $produtores = $this->input->post('produtors');
 
-        $perc_artistas = $this->input->post('percentualArtista[]');
-        $perc_autores = $this->input->post('percentualAutor[]');
-        $perc_produtores = $this->input->post('percentualProdutor[]');
+        $perc_artistas = $this->input->post('percentualArtista');
+        $perc_autores = $this->input->post('percentualAutor');
+        $perc_produtores = $this->input->post('percentualProdutor');
 
-        $impostos = $this->input->post('impostos_faixa[]');
+        $impostos = $this->input->post('impostos_faixa');
 
         if($faixa['nome'] != NULL && $artistas != NULL && $autores != NULL){
-            $this->faixas_videos_model->cadastrar_faixa($faixa, $impostos, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
-            $this->session->set_userdata('mensagem', '=)');
+            $idFaixa = $this->faixas_videos_model->cadastrar_faixa($faixa, $impostos, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
+            /*$this->session->set_userdata('mensagem', '=)');
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
-            $this->session->set_userdata('tipo_mensagem', 'success');
-            return TRUE;       
+            $this->session->set_userdata('tipo_mensagem', 'success');*/
+
+            $dados_faixa = $this->faixas_videos_model->buscar_dados($idFaixa);
+            die(json_encode($dados_faixa));
+
         }
         else{
             $this->session->set_userdata('mensagem', 'Problemas no cadastro.');
             $this->session->set_userdata('subtitulo_mensagem', '');
             $this->session->set_userdata('tipo_mensagem', 'error');
-            return FALSE;
+
         }
 
     }

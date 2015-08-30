@@ -1,5 +1,6 @@
 <?php $this->load->view('_include/header') ?> <!-- Evandro -->
 
+
 <div id="wrapper-body">
 	<div id="titulo_lista">
         <div class="row">
@@ -101,6 +102,24 @@
 				</div>
 			</div>
 
+			<div class="row " >
+
+						<h5>Faixas</h5>
+						<div class="col s6">
+						<table id="tableFaixas" class="centered">
+							<thead>
+								<tr>
+									<th>
+										Título
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+							</div>
+					</div>
+
 	        <input type="hidden" name="msg_erro_tipo" value="<?= $this->lang->line('erro_tipo') ?>">
 	        <input type="hidden" name="msg_erro_artista" value="<?= $this->lang->line('erro_artista') ?>">
 	        <input type="hidden" name="msg_erro_ano" value="<?= $this->lang->line('erro_ano') ?>">
@@ -112,6 +131,7 @@
 	        </button>
 	    </form>
 
+
 	    <div id="modal1" class="modal">
 		    <div id="titulo_lista">
 		        <div class="row">
@@ -121,35 +141,35 @@
 		            </div>
 		        </div>
 		  	</div><br>
+		  	<form action="" id="formFaixa">
 		  	<div class="row">
-		      	<form action="<?= base_url() . 'index.php/faixas_videos/cadastrar_modal' ?>" method="post">
 			        <div class="row">
 			          	<div class="input-field col s10 offset-s1 m8 offset-m1 l6 offset-l1">
 			          		<i class="mdi-image-audiotrack prefix"></i>
 			          		<label><?php echo $this->lang->line('titulo'); ?></label>
-			            	<input required id="icon-prefix" type="text" name="nome">
+			            	<input required id="tituloFaixa" type="text" name="nome">
 			          	</div>
 			        </div>
 
 			        <div class="row">
 		                <div id="isrcCadastre" class="input-field col s10 offset-s1 m8 offset-m1 l6 offset-l1">
 		                    <label>ISRC</label>
-		                    <input required pattern="[A-Z]{2}[A-Z0-9]{3}[0-9]{7}" id="isrcCadastreInput" class="isrcCadastreInput" type="text" name="isrc">
+		                    <input required pattern="[A-Z]{2}[A-Z0-9]{3}[0-9]{7}" id="isrcFaixa" class="isrcCadastreInput" type="text" name="isrc">
 		                </div>
 
 		                <div style="display: none" id="youtubeCadastre" class="input-field col s10 offset-s1 m8 offset-m1 l6 offset-l1">
 		                    <label>YouTube</label>
-		                    <input id="youtubeCadastreInput" class="youtubeCadastreInput" type="text" name="youtube">
+		                    <input id="youtubeFaixa" class="youtubeCadastreInput" type="text" name="youtube">
 		                </div>
 		                <input id="isrc_youtube" type="hidden" name="isrc_youtube">
 
 		                <div class="switch col s6 offset-s6 m3 l3">
 		                	<?php echo $this->lang->line('video'); ?>
 		                    <p>
-		                    	<input type="radio" value="isrc" checked name="isrc/youtube" id="n_video"/>
+		                    	<input type="radio" value="isrc" checked name="isVideo" id="n_video"/>
 		                        <label for="n_video"><?php echo $this->lang->line('nao'); ?></label>
 
-		                    	<input type="radio" value="youtube" name="isrc/youtube" id="eh_video"/>
+		                    	<input 	type="radio" value="youtube" name="isVideo" id="eh_video"/>
 		                        <label for="eh_video"><?php echo $this->lang->line('sim'); ?></label>
 		                    </p>
 		                </div>
@@ -158,8 +178,8 @@
 			        <div id="SelectArtista">
 				        <div class="row">
 							<div class="input-field col s9 offset-s1 m8 offset-m1 l6 offset-l1">
-							    <select class="addArtista browser-default" name="artistas[]" id="artista">
-				              		<option value="-1" disabled selected><?php echo $this->lang->line("selecione");?></option> 
+							    <select  class="selectArtista addArtista browser-default" name="artistas[]" id="artista">
+				              		<option value="-1" disabled selected><?php echo $this->lang->line("selecione");?></option>
 				              		<?php
 			                			if(isset($artistas)){
 			                    			foreach ($artistas as $artista) { ?>
@@ -170,9 +190,9 @@
 							</div>
 							<div class="input-field col s9 offset-s1 m2 l3">
 								<label><?php echo $this->lang->line('participacao');?></label>
-				            	<input required class="<?= $this->lang->line('classPercent') ?>" name="percentualArtista[]" type="text">
+				            	<input required class="<?= $this->lang->line('classPercent') ?> porcentagemArtista" name="percentualArtista[]" type="text">
 				          	</div>
-							<a onclick="addSelectEntidadeModal(getArtistas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('artista'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
+							<a onclick="addSelectEntidadeModal(getArtistas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('artista'); ?>', '<?php echo $this->lang->line('participacao'); ?>')"
 								class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
 				        	<script>
 				        		$('.addEntidade').chosen({search_contains: true});
@@ -185,7 +205,7 @@
 			        <div id="SelectAutor">
 				        <div class="row">
 				          	<div class="input-field col s9 offset-s1 m8 offset-m1 l6 offset-l1">
-				            	<select class="addAutor browser-default" name="autors[]" id="autor">
+				            	<select id="selectArtista" class="selectAutor addAutor browser-default" name="autors[]" id="autor">
 				              		<option value="-1" disabled selected><?php echo $this->lang->line('selecione');?></option>
 				              		<?php
 			                			if(isset($autores)){
@@ -197,9 +217,9 @@
 				          	</div>
 				          	<div class="input-field col s9 offset-s1 m2 l3">
 				          		<label><?php echo $this->lang->line('participacao');?></label>
-				            	<input required class="<?= $this->lang->line('classPercent') ?>" name="percentualAutor[]" type="text">
+				            	<input required class="<?= $this->lang->line('classPercent') ?> porcentagemAutor" name="percentualAutor[]" type="text">
 				          	</div>
-				          	<a onclick="addSelectEntidadeModal(getAutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('autor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
+				          	<a onclick="addSelectEntidadeModal(getAutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('autor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')"
 								class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100autor" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
 				        	<script>
 				        		$('.addEntidade').chosen({search_contains: true});
@@ -212,7 +232,7 @@
 			        <div id="SelectProdutor">
 				        <div class="row">
 				          	<div class="input-field col s9 offset-s1 m8 offset-m1 l6 offset-l1">
-				            	<select class="addProdutor browser-default" name="produtors[]">
+				            	<select id="selectArtista" class="selectProdutor addProdutor browser-default" name="produtors[]">
 				              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
 				              		<?php
 			                			if(isset($produtores)){
@@ -224,9 +244,9 @@
 				          	</div>
 				          	<div class="input-field col s9 offset-s1 m2 l3">
 				          		<label><?php echo $this->lang->line('participacao');?></label>
-				            	<input class="<?= $this->lang->line('classPercent') ?>" name="percentualProdutor[]" type="text">
+				            	<input class="<?= $this->lang->line('classPercent') ?> porcentagemProdutor" name="percentualProdutor[]" type="text">
 				          	</div>
-				          	<a onclick="addSelectEntidadeModal(getProdutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('produtor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
+				          	<a onclick="addSelectEntidadeModal(getProdutores(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('produtor'); ?>', '<?php echo $this->lang->line('participacao'); ?>')"
 								class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100produtor" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
 				        	<script>
 				        		$('.addEntidade').chosen({search_contains: true});
@@ -242,28 +262,39 @@
 							<?php if (isset($impostos)) { ?>
 								<?php foreach ($impostos as $imposto) { ?>
 									<div class="col s4 m3 l4">
-										<input type='checkbox' class='filled-in' name="impostos_faixa[]" value="<?php echo $imposto->idImposto ?>" id="<?php echo $imposto->nome ?>"/>
-										<label for="<?php echo $imposto->nome ?>"><?php echo $imposto->nome; ?></label>	
+										<input type='checkbox' class='filled-in impostoFaixa' name="impostos_faixa[]" value="<?php echo $imposto->idImposto ?>" id="<?php echo $imposto->nome ?>"/>
+										<label for="<?php echo $imposto->nome ?>"><?php echo $imposto->nome; ?></label>
 									</div>
 								<?php }
 							} ?>
 						</div>
 					</div>
 
+
+
+
+
 					<input type="hidden" name="msg_erro_artistas" value="<?= $this->lang->line('erro_artistas') ?>">
 			        <input type="hidden" name="msg_erro_autores" value="<?= $this->lang->line('erro_autores') ?>">
 
-			        <button class="btn waves-effect waves-light col s10 offset-s1 m10 offset-m1 l8 offset-l1" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
+			        <button id="btnSalvarFaixa" class="btn waves-effect waves-light col s10 offset-s1 m10 offset-m1 l8 offset-l1" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
 			          	<i class="mdi-content-send right"></i>
 			        </button>
-			    </form>
 		    </div>
-
+			</form>
 		    <div class="modal-footer">
 		      	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">CANCELAR</a>
 		    </div>
 		</div>
+
     </div>
+
 </div>
 
+<input id="baseUrl" type="hidden" value="<?php echo base_url();?>"/>
+
+
+
+
+<script src="<?php echo base_url(); ?>complemento/js/cadastro_album.js"></script>
 <?php $this->load->view('_include/footer') ?>

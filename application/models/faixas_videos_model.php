@@ -165,19 +165,19 @@ class Faixas_Videos_model extends CI_Model {
         $this->db->insert('faixa_video', $faixa);
         $faixa_id = $this->db->insert_id();
 
-        foreach($impostos as $imposto->idImposto){
+        foreach($impostos as $imposto){
             $imposto_faixa = array(
                 'idFaixa' => $faixa_id,
-                'idImposto' => $imposto->idImposto
+                'idImposto' => $imposto
             );
             $this->db->insert('faixa_video_has_imposto', $imposto_faixa);
         }
 
         $i = 0;
-        foreach($artistas as $artista->idEntidade){
+        foreach($artistas as $artista){
             $artista_faixa = array(
                 'idFaixa' => $faixa_id,
-                'idEntidade' => $artista->idEntidade,
+                'idEntidade' => $artista,
                 'tipoEntidade' => 1,
                 'percentual' => $perc_artistas[$i]
             );
@@ -186,10 +186,10 @@ class Faixas_Videos_model extends CI_Model {
         }
 
         $i = 0;
-        foreach($autores as $autor->idEntidade){
+        foreach($autores as $autor){
             $autor_faixa = array(
                 'idFaixa' => $faixa_id,
-                'idEntidade' => $autor->idEntidade,
+                'idEntidade' => $autor,
                 'tipoEntidade' => 2,
                 'percentual' => $perc_autores[$i]
             );
@@ -198,11 +198,11 @@ class Faixas_Videos_model extends CI_Model {
         }
 
         $i = 0;
-        foreach($produtores as $produtor->idEntidade){
-            if($produtor->idEntidade != NULL){
+        foreach($produtores as $produtor){
+            if($produtor != NULL){
                 $produtor_faixa = array(
                     'idFaixa' => $faixa_id,
-                    'idEntidade' => $produtor->idEntidade,
+                    'idEntidade' => $produtor,
                     'tipoEntidade' => 3,
                     'percentual' => $perc_produtores[$i]
                 );
@@ -212,6 +212,7 @@ class Faixas_Videos_model extends CI_Model {
         }
 
         $this->db->trans_complete();
+        return $faixa_id;
     }
 
     public function deletar($id){
