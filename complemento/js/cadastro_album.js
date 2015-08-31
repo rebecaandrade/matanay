@@ -5,22 +5,15 @@
 $(document).ready(function () {
     $('#btnSalvarFaixa').on('click', function () {
 
-        //var divEditar = $('.popUp');f
-
         var url = $('#baseUrl').val() + 'index.php/faixas_videos/cadastrar_faixa_ajax';
         $.ajax({
             url: url,
             type: 'POST',
             data: montarDadosFaixa(),
+            async: false,
             success: function (data) {
                 var json = $.parseJSON(data);
-                var row = "<tr> <td>"+json.nome+"</td></td>";
-                if($('#tableFaixas tbody').children().length  == 0) {
-                    $('#tableFaixas tbody').html(row);
-                } else {
-                    console.log("oieoie");
-                    $('#tableFaixas tbody tr:last').after(row);
-                }
+               
                 $('#modal1').closeModal();
                 limparDadosModal();
             }

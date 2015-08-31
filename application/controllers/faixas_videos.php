@@ -53,8 +53,8 @@ class Faixas_Videos extends CI_Controller {
             redirect('faixas_videos/listar');       
         }
         else{
-            $this->session->set_userdata('mensagem', 'Problemas no cadastro.');
-            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('mensagem', '=(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
             $this->session->set_userdata('tipo_mensagem', 'error');
             redirect('faixas_videos/cadastra_faixa');
         }
@@ -81,17 +81,17 @@ class Faixas_Videos extends CI_Controller {
 
         if($faixa['nome'] != NULL && $artistas != NULL && $autores != NULL){
             $idFaixa = $this->faixas_videos_model->cadastrar_faixa($faixa, $impostos, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
-            /*$this->session->set_userdata('mensagem', '=)');
+            $this->session->set_userdata('mensagem', '=)');
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
-            $this->session->set_userdata('tipo_mensagem', 'success');*/
+            $this->session->set_userdata('tipo_mensagem', 'success');
 
             $dados_faixa = $this->faixas_videos_model->buscar_dados($idFaixa);
             die(json_encode($dados_faixa));
 
         }
         else{
-            $this->session->set_userdata('mensagem', 'Problemas no cadastro.');
-            $this->session->set_userdata('subtitulo_mensagem', '');
+            $this->session->set_userdata('mensagem', '=(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
             $this->session->set_userdata('tipo_mensagem', 'error');
 
         }

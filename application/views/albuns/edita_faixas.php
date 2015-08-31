@@ -38,7 +38,7 @@
                 if(isset($tracklist, $faixas)){
                     foreach ($tracklist as $track) { ?>
                         <div class="row">
-                            <div class="input-field col s11 m8 l8 offset-l2">
+                            <div class="input-field col s10 m10 offset-m1 l8 offset-l2">
                                 <select class="addFaixa browser-default" name="faixas[]">
                                     <?php $i=0;
                                         foreach ($faixas as $faixa) {
@@ -58,7 +58,7 @@
                             </div>
                             <?php if($j==0) { ?>
                                 <a onclick="addSelectFaixa(getFaixas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('faixa'); ?>')" 
-                                    class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
+                                    class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('adicionar'); ?>"><i class="mdi-content-add"></i></a>
                                 <script>
                                     $('.addFaixa').chosen({search_contains: true});
                                     function getFaixas(){
@@ -74,7 +74,7 @@
                         </div>
                 <?php } } if(empty($tracklist)) { ?>
                     <div class="row">
-                        <div class="input-field col s11 m8 l8 offset-l2">
+                        <div class="input-field col s10 m10 offset-m1 l8 offset-l2">
                             <select class="addFaixa browser-default" name="faixas[]">
                                 <?php $i=0;
                                     foreach ($faixas as $faixa) {
@@ -93,7 +93,7 @@
                             <label id="selectLabel"><?php echo $this->lang->line("faixa");?></label>
                         </div>
                         <a onclick="addSelectFaixa(getFaixas(),'<?php echo $this->lang->line('selecione'); ?>', '<?php echo $this->lang->line('artista'); ?>', '<?php echo $this->lang->line('participacao'); ?>')" 
-                            class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
+                            class="btn-floating btn-medium waves-effect waves-light btn tooltipped" data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('adicionar'); ?>"><i class="mdi-content-add"></i></a>
                         <script>
                             $('.addFaixa').chosen({search_contains: true});
                             function getFaixas(){
@@ -103,7 +103,7 @@
                 <?php } ?>
             </div>
             <div class="row">
-                <button class="input-field btn waves-effect waves-light col s12 m12 l8 offset-l2" type="submit"><?php echo $this->lang->line('atualizar'); ?>
+                <button class="input-field btn waves-effect waves-light col s11 m10 offset-m1 l8 offset-l2" type="submit"><?php echo $this->lang->line('atualizar'); ?>
                     <i class="mdi-content-send right"></i>
                 </button>
             </div>

@@ -1,6 +1,5 @@
 <?php $this->load->view('_include/header') ?> <!-- Evandro -->
 
-
 <div id="wrapper-body">
 	<div id="titulo_lista">
         <div class="row">
@@ -102,24 +101,6 @@
 				</div>
 			</div>
 
-			<div class="row " >
-
-						<h5>Faixas</h5>
-						<div class="col s6">
-						<table id="tableFaixas" class="centered">
-							<thead>
-								<tr>
-									<th>
-										Título
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-							</div>
-					</div>
-
 	        <input type="hidden" name="msg_erro_tipo" value="<?= $this->lang->line('erro_tipo') ?>">
 	        <input type="hidden" name="msg_erro_artista" value="<?= $this->lang->line('erro_artista') ?>">
 	        <input type="hidden" name="msg_erro_ano" value="<?= $this->lang->line('erro_ano') ?>">
@@ -144,7 +125,7 @@
 		  	<form action="" id="formFaixa">
 		  	<div class="row">
 			        <div class="row">
-			          	<div class="input-field col s10 offset-s1 m8 offset-m1 l6 offset-l1">
+			          	<div class="input-field col s10 offset-s1 m7 offset-m1 l6 offset-l1">
 			          		<i class="mdi-image-audiotrack prefix"></i>
 			          		<label><?php echo $this->lang->line('titulo'); ?></label>
 			            	<input required id="tituloFaixa" type="text" name="nome">
@@ -152,18 +133,18 @@
 			        </div>
 
 			        <div class="row">
-		                <div id="isrcCadastre" class="input-field col s10 offset-s1 m8 offset-m1 l6 offset-l1">
+		                <div id="isrcCadastre" class="input-field col s10 offset-s1 m7 offset-m1 l6 offset-l1">
 		                    <label>ISRC</label>
 		                    <input required pattern="[A-Z]{2}[A-Z0-9]{3}[0-9]{7}" id="isrcFaixa" class="isrcCadastreInput" type="text" name="isrc">
 		                </div>
 
-		                <div style="display: none" id="youtubeCadastre" class="input-field col s10 offset-s1 m8 offset-m1 l6 offset-l1">
+		                <div style="display: none" id="youtubeCadastre" class="input-field col s10 offset-s1 m7 offset-m1 l6 offset-l1">
 		                    <label>YouTube</label>
 		                    <input id="youtubeFaixa" class="youtubeCadastreInput" type="text" name="youtube">
 		                </div>
 		                <input id="isrc_youtube" type="hidden" name="isrc_youtube">
 
-		                <div class="switch col s6 offset-s6 m3 l3">
+		                <div class="switch col s6 offset-s6 m4 l3">
 		                	<?php echo $this->lang->line('video'); ?>
 		                    <p>
 		                    	<input type="radio" value="isrc" checked name="isVideo" id="n_video"/>
@@ -177,7 +158,7 @@
 
 			        <div id="SelectArtista">
 				        <div class="row">
-							<div class="input-field col s9 offset-s1 m8 offset-m1 l6 offset-l1">
+							<div class="input-field col s9 offset-s1 m7 offset-m1 l6 offset-l1">
 							    <select  class="selectArtista addArtista browser-default" name="artistas[]" id="artista">
 				              		<option value="-1" disabled selected><?php echo $this->lang->line("selecione");?></option>
 				              		<?php
@@ -188,7 +169,7 @@
 				            	</select>
 				            	<label id="selectLabel"><?php echo $this->lang->line("artista");?></label>
 							</div>
-							<div class="input-field col s9 offset-s1 m2 l3">
+							<div class="input-field col s9 offset-s1 m3 l3">
 								<label><?php echo $this->lang->line('participacao');?></label>
 				            	<input required class="<?= $this->lang->line('classPercent') ?> porcentagemArtista" name="percentualArtista[]" type="text">
 				          	</div>
@@ -204,7 +185,7 @@
 
 			        <div id="SelectAutor">
 				        <div class="row">
-				          	<div class="input-field col s9 offset-s1 m8 offset-m1 l6 offset-l1">
+				          	<div class="input-field col s9 offset-s1 m7 offset-m1 l6 offset-l1">
 				            	<select id="selectArtista" class="selectAutor addAutor browser-default" name="autors[]" id="autor">
 				              		<option value="-1" disabled selected><?php echo $this->lang->line('selecione');?></option>
 				              		<?php
@@ -215,7 +196,7 @@
 				            	</select>
 				            	<label id="selectLabel"><?php echo $this->lang->line('autor');?></label>
 				          	</div>
-				          	<div class="input-field col s9 offset-s1 m2 l3">
+				          	<div class="input-field col s9 offset-s1 m3 l3">
 				          		<label><?php echo $this->lang->line('participacao');?></label>
 				            	<input required class="<?= $this->lang->line('classPercent') ?> porcentagemAutor" name="percentualAutor[]" type="text">
 				          	</div>
@@ -231,7 +212,7 @@
 
 			        <div id="SelectProdutor">
 				        <div class="row">
-				          	<div class="input-field col s9 offset-s1 m8 offset-m1 l6 offset-l1">
+				          	<div class="input-field col s9 offset-s1 m7 offset-m1 l6 offset-l1">
 				            	<select id="selectArtista" class="selectProdutor addProdutor browser-default" name="produtors[]">
 				              		<option value="" disabled selected><?php echo $this->lang->line('selecione');?></option>
 				              		<?php
@@ -242,7 +223,7 @@
 				            	</select>
 				            	<label id="selectLabel"><?php echo $this->lang->line('produtor');?></label>
 				          	</div>
-				          	<div class="input-field col s9 offset-s1 m2 l3">
+				          	<div class="input-field col s9 offset-s1 m3 l3">
 				          		<label><?php echo $this->lang->line('participacao');?></label>
 				            	<input class="<?= $this->lang->line('classPercent') ?> porcentagemProdutor" name="percentualProdutor[]" type="text">
 				          	</div>
@@ -261,7 +242,7 @@
 							<h5><?php echo $this->lang->line('impostos'); ?></h5><br>
 							<?php if (isset($impostos)) { ?>
 								<?php foreach ($impostos as $imposto) { ?>
-									<div class="col s4 m3 l4">
+									<div class="col s6 m4 l4">
 										<input type='checkbox' class='filled-in impostoFaixa' name="impostos_faixa[]" value="<?php echo $imposto->idImposto ?>" id="<?php echo $imposto->nome ?>"/>
 										<label for="<?php echo $imposto->nome ?>"><?php echo $imposto->nome; ?></label>
 									</div>
@@ -270,12 +251,11 @@
 						</div>
 					</div>
 
-
-
-
-
 					<input type="hidden" name="msg_erro_artistas" value="<?= $this->lang->line('erro_artistas') ?>">
 			        <input type="hidden" name="msg_erro_autores" value="<?= $this->lang->line('erro_autores') ?>">
+			        <input type="hidden" name="msg_perc_artista" value="<?= $this->lang->line('erro_perc_artista') ?>">
+			        <input type="hidden" name="msg_perc_autor" value="<?= $this->lang->line('erro_perc_autor') ?>">
+	        		<input type="hidden" name="msg_perc_produtor" value="<?= $this->lang->line('erro_perc_produtor') ?>">
 
 			        <button id="btnSalvarFaixa" class="btn waves-effect waves-light col s10 offset-s1 m10 offset-m1 l8 offset-l1" type="submit"><?php echo $this->lang->line('cadastrar'); ?>
 			          	<i class="mdi-content-send right"></i>
@@ -293,8 +273,6 @@
 
 <input id="baseUrl" type="hidden" value="<?php echo base_url();?>"/>
 
-
-
-
 <script src="<?php echo base_url(); ?>complemento/js/cadastro_album.js"></script>
+
 <?php $this->load->view('_include/footer') ?>

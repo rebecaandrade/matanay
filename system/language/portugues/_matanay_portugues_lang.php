@@ -44,6 +44,7 @@ $lang['portugues']			= 'PORTUGUÊS';
 $lang['deletar']			= 'Deletar';
 $lang['editar']				= 'Editar';
 $lang['atualizar']			= 'ATUALIZAR';
+$lang['adicionar']			= 'ADICIONAR';
 $lang['acao']				= 'ação';
 $lang['novo']				= 'NOVO';
 $lang['nova']				= 'NOVA';
