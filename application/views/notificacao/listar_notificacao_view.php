@@ -32,13 +32,13 @@ $this->load->view('_include/header') ?>
                     /*verificacao do numero de meses*/
                     $meses=0;
                     if($tempo[2] == "Y"){
-                        $meses=$tempo[0] *12 + $tempo[8];
+                        $meses = $tempo[0] *12 + $tempo[8];
                     }
                     else
                         if($tempo[2] == "M"){
-                            $meses=$tempo[0] + $tempo[10] / 4 ;
+                            $meses = $tempo[0] + $tempo[10] / 4 ;
                         }
-                    if($meses <= $notificacao->alerta){ ?>
+                    if(($meses <= $notificacao->alerta)&&($meses != 0)){ ?>
                         <tr>
                             <td>    <?php echo $notificacao->nome; ?>           </td>
                             <td>    <?php echo $notificacao->data_fim; ?>       </td>

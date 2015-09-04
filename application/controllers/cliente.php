@@ -37,13 +37,13 @@ class Cliente extends CI_Controller
             /*verificacao do numero de meses*/
             $meses=0;
             if($tempo[2] == "Y"){
-                $meses=$tempo[0] *12 + $tempo[8];
+                $meses = $tempo[0] * 12 + $tempo[8];
             }
             else
                 if($tempo[2] == "M"){
-                    $meses=$tempo[0] + $tempo[10] / 4 ;
+                    $meses = $tempo[0] + $tempo[10] / 4 ;
                 }
-            if($meses <= $notificacao->alerta){      
+            if (($meses <= $notificacao->alerta)&&($meses != 0)){      
                 $flag = 1;
             }else
                 $flag = 0;
