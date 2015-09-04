@@ -43,7 +43,7 @@ class Cliente extends CI_Controller
                 if($tempo[2] == "M"){
                     $meses = $tempo[0] + $tempo[10] / 4 ;
                 }
-            if (($meses <= $notificacao->alerta)&&($meses != 0)){      
+            if ((($meses <= $notificacao->alerta)&&($meses != 0))||(($meses <= $notificacao->alerta)&&($tempo != '1 Second'))){      
                 $flag = 1;
             }else
                 $flag = 0;
