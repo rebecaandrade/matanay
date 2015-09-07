@@ -14,11 +14,17 @@ class Cliente extends CI_Controller
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
         $this->load->model('Contrato_model');
+        $this->load->model('Entidade_model');
+        $this->load->model('Favorecido_model');
     }
 
     public function home()
     {
         $dados["notificacao"] = $this->existeNotificacao();
+        $id_cliente = $this->session->userdata('cliente_id');
+        $dados["dadoNotificacao"] = $this->Contrato_model->buscar_datas($id_cliente);
+        $dados["dadosFavorecido"] = $this->Favorecido_model->buscar_favorecido($id_cliente);
+        $dados["dadosEntidade"] = $this->Entidade_model->buscar_entidades($id_cliente);
         $this->session->set_flashdata('redirect_url', current_url());
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);

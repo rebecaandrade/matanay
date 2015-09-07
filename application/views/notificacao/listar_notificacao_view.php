@@ -38,10 +38,7 @@ $this->load->view('_include/header') ?>
                         if($tempo[2] == "M"){
                             $meses = $tempo[0] + $tempo[10] / 4 ;
                         }
-                    var_dump($notificacao->data_fim);
-                    var_dump($meses);
-                    var_dump($tempo);
-                    if((($meses <= $notificacao->alerta)&&($meses != 0))||(($meses <= NULL)&&($tempo != '1 Second'))){ ?>
+                    if((($meses <= $notificacao->alerta)&&($meses != 0))||(($meses <= $notificacao->alerta)&&($tempo != '1 Second'))){ ?>
                         <tr>
                             <td>    <?php echo $notificacao->nome; ?>           </td>
                             <td>    <?php echo $notificacao->data_fim; ?>       </td>

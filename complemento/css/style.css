@@ -537,3 +537,15 @@ label {
     top:-10px;
     position: relative;
 }
+
+
+/***NOTIFICACOES***/
+
+#tituloNotificacao {
+    margin-left: 11%;
+}
+
+#myTable_wrapper1 {
+    width: 76%;
+    margin: auto;
+}
