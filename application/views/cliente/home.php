@@ -75,48 +75,48 @@
 </div>
 
 <div id="wrapper-body">
-    <div id="titulo_lista">
-        <div class="row">
-            <div id="tituloNotificacao" class="input-field col s12 m8 l9">
-                <i class="mdi-alert-warning"></i>
-                <?php echo $this->lang->line('principaisNotificacoes'); ?>
-            </div>
-        </div>
-    </div>
     <div class="row">
     </div>
     <div class="row">
-        <table  id="myTable_wrapper1" class="hoverable bordered">
-            <thead>
-                <tr>
-                    <th>   <?php echo $this->lang->line('contrato_nome'); ?>    </th>
-                    <th>   <?php echo $this->lang->line('data_fim'); ?>         </th>
-                    <th>   <?php echo $this->lang->line('nome_entidade'); ?>    </th>
-                    <th>   <?php echo $this->lang->line('nome_favorecido'); ?>  </th>
-                </tr>
-            </thead>
-            <tbody>
-            	<?php $contador = 0?>
-                <?php foreach ($dadoNotificacao as $notificacao) { 
-                    //contador serve para imprimir apenas as tres notificacoes mais 
-                    if ($contador >= 3)
-                    	break;
-                    /*verificao das datas atuais e convercoes para unix*/
-                    $unix =  mysql_to_unix($notificacao->data_fim);
-                    $now = now();
+    	<?php $contador = 0?>
+        <?php foreach ($dadoNotificacao as $notificacao) { 
+            //contador serve para imprimir apenas as tres notificacoes mais 
+            if ($contador >= 3)
+            	break;
+            /*verificao das datas atuais e convercoes para unix*/
+            $unix =  mysql_to_unix($notificacao->data_fim);
+            $now = now();
 
-                    $tempo = timespan($now,$unix  );
-                    /*verificacao do numero de meses*/
-                    $meses=0;
-                    if($tempo[2] == "Y"){
-                        $meses = $tempo[0] *12 + $tempo[8];
-                    }
-                    else
-                        if($tempo[2] == "M"){
-                            $meses = $tempo[0] + $tempo[10] / 4 ;
-                        }
-                    if((($meses <= $notificacao->alerta)&&($meses != 0))||(($meses <= $notificacao->alerta)&&($tempo != '1 Second'))){ 
-                    	$contador ++; ?>
+            $tempo = timespan($now,$unix  );
+            /*verificacao do numero de meses*/
+            $meses=0;
+            if($tempo[2] == "Y"){
+                $meses = $tempo[0] *12 + $tempo[8];
+            }
+            else
+                if($tempo[2] == "M"){
+                    $meses = $tempo[0] + $tempo[10] / 4 ;
+                }
+            if((($meses <= $notificacao->alerta)&&($meses != 0))||(($meses <= $notificacao->alerta)&&($tempo != '1 Second'))){ 
+            	$contador ++; ?>
+                <div id="titulo_lista">
+			        <div class="row">
+			            <div id="tituloNotificacao" class="input-field col s12 m8 l9">
+			                <i class="mdi-alert-warning"></i>
+			                <?php echo $this->lang->line('principaisNotificacoes'); ?>
+			            </div>
+			        </div>
+			    </div>
+                <table  id="myTable_wrapper1" class="hoverable bordered">
+		            <thead>
+		                <tr>
+		                    <th>   <?php echo $this->lang->line('contrato_nome'); ?>    </th>
+		                    <th>   <?php echo $this->lang->line('data_fim'); ?>         </th>
+		                    <th>   <?php echo $this->lang->line('nome_entidade'); ?>    </th>
+		                    <th>   <?php echo $this->lang->line('nome_favorecido'); ?>  </th>
+		                </tr>
+		            </thead>
+		            <tbody>
                         <tr>
                             <td>    <?php echo $notificacao->nome; ?>           </td>
                             <td>    <?php echo $notificacao->data_fim; ?>       </td>
