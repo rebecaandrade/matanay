@@ -441,6 +441,10 @@ label {
 	margin-bottom: 2rem;
 }
 
+#grafico {
+    top: 3rem;
+}
+
 /**************PAGINAS DAS ENTIADADES Jadiel**********************/
 .box {
     display: none;

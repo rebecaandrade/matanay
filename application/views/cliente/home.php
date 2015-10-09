@@ -22,7 +22,7 @@
 	        </div>
 
 	        <div class="input-field col s5 m4 l3">
-		        <a href="#">
+		        <a href="<?php echo base_url(); ?>index.php/relatorio/gerar_vendas">
 			        <div class="card-panel grey lighten-2">
 			          	<i class="mdi-action-trending-up"></i>
 			          	<div class="label"><?php echo $this->lang->line('vendas'); ?></div>

@@ -12,6 +12,25 @@ class Relatorio extends CI_Controller
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
     }
 
+    public function gerar_vendas() {
+        $id_cliente = $this->session->userdata('cliente_id');
+        $relatorios = $this->relatorio_model->busca_relatorios($id_cliente);
+        $modelos = $this->getModelos($relatorios);
+        //$dados['modelos'] = $this->relatorio_model->buscar_modelos($id_cliente);
+        $dados['artistas'] = $this->relatorio_model->busca_artistas($id_cliente);
+        $dados['produtores'] = $this->relatorio_model->busca_produtores($id_cliente);
+        $dados['autores'] = $this->relatorio_model->busca_autores($id_cliente);
+        $dados['faixas'] = $this->relatorio_model->busca_faixas($id_cliente);
+        $dados['albuns'] = $this->relatorio_model->busca_albuns($id_cliente);
+        //$dados['modelos'] = $this->gera_modelos(50);
+        $dados['lojas'] = $modelos['lojas'];
+        $dados['territorios'] = $modelos['territorios'];
+        $dados['sublojas'] = $modelos['sublojas'];
+
+        $this->load->view('relatorio/vendas', $dados);
+        return;
+    }
+
     public function listar_relatorios() {
         $id_cliente = $this->session->userdata('cliente_id');
         $dados['relatorios'] = $this->relatorio_model->busca_relatorios($id_cliente);

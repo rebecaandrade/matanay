@@ -241,6 +241,15 @@ $lang['identificador_moeda']		= 'identificador de moeda';
 $lang['selecione_coluna']			= 'Selecione a coluna dos atributos abaixo:';
 $lang['modelos']					= 'MODELOS';
 
+////// VENDAS ////// Evandro
+
+$lang['entidade'] 					= 'Entidade';
+$lang['vendas_min'] 				= 'Vendas';
+$lang['vendas_total'] 				= 'Total de Vendas';
+$lang['album_min'] 					= 'Álbum';
+$lang['faixa_min'] 					= 'Faixa';
+
+
 ////// CLIENTE ////// Vitor
 
 $lang['clientes'] 					= 'CLIENTES';
