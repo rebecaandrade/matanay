@@ -1,6 +1,7 @@
 <?php $this->load->view('_include/header') ?>
 <?php $dataFrom30Ago = date('j F, Y', strtotime("-30 days")); ?>
 <?php $dataToday = date('j F, Y'); ?>
+
 <div id="wrapper-body" xmlns="http://www.w3.org/1999/html">
     <div id="titulo_lista">
         <div class="row">
@@ -241,6 +242,89 @@
                 </button>
             </div>
         </form>
+    </div>
+
+    <div id="titulo_lista">
+        <div class="row">
+            <div class="input-field col s12 m8 l9">
+                <i class="mdi-action-assignment"></i>
+                <?= $this->lang->line('listar_relatorios'); ?>
+            </div>
+        </div>
+    </div>    
+    <div class="row">
+        <p id="renderingEngineFilter"></p>
+        <p id="browserFilter"></p>
+        <p id="platformsFilter"></p>
+        <p id="engineVersionFilter"></p>
+        <p id="cssGradeFilter"></p>
+        <table id="<?= $this->lang->line('myTable') ?>" class="relTable hoverable bordered">
+            <thead>
+                <th><?= $this->lang->line('tipo') ?></th>
+                <th><?= $this->lang->line('loja') ?></th>
+                <th><?= $this->lang->line('subloja') ?></th>
+                <th><?= $this->lang->line('territorio') ?></th>
+                <th><?= $this->lang->line('artista') ?></th>
+                <th><?= $this->lang->line('autor') ?></th>
+                <th><?= $this->lang->line('produtor') ?></th>
+                <th><?= $this->lang->line('faixa') ?></th>
+                <th><?= $this->lang->line('produto') ?>oi</th>
+                <th><?= $this->lang->line('catalogo') ?></th>
+                <th><?= $this->lang->line('isrc') ?></th>
+                <th><?= $this->lang->line('upc') ?></th>
+                <th><?= $this->lang->line('qnt_vendida') ?></th>
+                <th><?= $this->lang->line('valor_recebido') ?></th>
+                <th><?= $this->lang->line('percentual_aplicado') ?>oii</th>
+                <th><?= $this->lang->line('valor_pagar') ?>oiiii</th>
+                <th><?= $this->lang->line('receita') ?>o</th>
+            </thead>
+            <tbody>
+            <?php if (isset($vendas)) { ?>
+                <?php foreach ($vendas as $venda) { ?>
+                    <tr>
+                        <td><?= $venda->descricao ?></td>
+                        <td><?= $venda->loja ?></td>
+                        <td><?= $venda->subloja ?></td>
+                        <td><?= $venda->territorio ?></td>
+                        <td><?= $venda->artista ?></td>
+                        <td><?= $venda->autor ?></td>
+                        <td><?= $venda->produtor ?></td>
+                        <td><?= $venda->faixa ?></td>
+                        <td><?= $venda->produto ?></td>
+                        <td><?= $venda->catalogo ?></td>
+                        <td><?= $venda->isrc ?></td>
+                        <td><?= $venda->upc ?></td>
+                        <td><?= $venda->qnt_vendida ?></td>
+                        <td><?= $venda->valor_recebido ?></td>
+                        <td><?= $venda->percentual_aplicado ?></td>
+                        <td><?= $venda->valor_pagar ?></td>
+                        <td><?= $venda->receita ?></td>
+                    </tr>
+                <?php }
+            } ?>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 </div>
 <script src="<?= base_url() . 'complemento/js/relatorio.js' ?>"></script>

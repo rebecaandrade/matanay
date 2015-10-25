@@ -153,4 +153,15 @@ class Albuns_model extends CI_Model {
 
         return $this->db->get("album")->result();
     }
+
+    public function procurar_album_upc_ean($busca){
+        if($busca != NULL){
+            $this->db->where('excluido =', NULL);
+            $this->db->where("upc_ean", $busca);
+
+            return $this->db->get("album")->result()[0];
+        } else{
+            return NULL;
+        }
+    }
 }

@@ -11,7 +11,7 @@
 				<div class="row">
 		          	<div class="input-field col s12 m12 l12">
 		          		<i class="mdi-action-account-circle prefix"></i>
-		            	<input id="icon-prefix" type="text" name="usuario">
+		            	<input id="icon-prefix" type="text" name="usuario" autofocus>
 		            	<label for="icon_prefix"><?php echo $this->lang->line('login'); ?></label>
 		          	</div>
 		          	<div class="input-field col s12 m12 l12">

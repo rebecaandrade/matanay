@@ -5,6 +5,11 @@ class Relatorio extends CI_Controller
     public function __construct() {
         parent::__construct();
         $this->load->model('relatorio_model');
+        $this->load->model('modelo_relatorio_model');
+        $this->load->model('vendas_model');
+        $this->load->model('albuns_model');
+        $this->load->model('faixas_videos_model');
+        $this->load->model('entidade_model');
         $this->load->library('excel');
         $this->load->helper('myDirectory');
         $this->session->set_flashdata('redirect_url', current_url());
@@ -23,23 +28,38 @@ class Relatorio extends CI_Controller
     public function opcoes_relatorio() {
         $id_cliente = $this->session->userdata('cliente_id');
         $relatorios = $this->relatorio_model->busca_relatorios($id_cliente);
-        $modelos = $this->getModelos($relatorios);
-        //$dados['modelos'] = $this->relatorio_model->buscar_modelos($id_cliente);
-        $dados['artistas'] = $this->relatorio_model->busca_artistas($id_cliente);
-        $dados['produtores'] = $this->relatorio_model->busca_produtores($id_cliente);
-        $dados['autores'] = $this->relatorio_model->busca_autores($id_cliente);
-        $dados['faixas'] = $this->relatorio_model->busca_faixas($id_cliente);
-        $dados['albuns'] = $this->relatorio_model->busca_albuns($id_cliente);
-        //$dados['modelos'] = $this->gera_modelos(50);
-        $dados['lojas'] = $modelos['lojas'];
-        $dados['territorios'] = $modelos['territorios'];
-        $dados['sublojas'] = $modelos['sublojas'];
-        //die(var_dump($dados));
+        foreach ($relatorios as $relatorio) {
+            $venda = $this->vendas_model->buscar_vendas($relatorio->idRelatorio)[0];
+            $venda->tipo = $this->albuns_model->buscar_impostos_album($venda->idAlbum);
+            $venda->artistaInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,1)[0];
+            $venda->artista = $this->entidade_model->buscar_entidade_especifica($venda->artistaInfo['idEntidade'])->nome;
+            $venda->autorInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,2)[0];
+            $venda->autor = $this->entidade_model->buscar_entidade_especifica($venda->autorInfo['idEntidade'])->nome;
+            $venda->produtorInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,3)[0];
+            $venda->produtor = $this->entidade_model->buscar_entidade_especifica($venda->produtorInfo['idEntidade'])->nome;
+            $venda->faixaInfo = $this->faixas_videos_model->buscar_dados($venda->idFaixa);
+            $venda->faixa = $venda->faixaInfo->nome;
+            if($venda->faixaInfo->codigo_video == '')
+                $venda->produto = "Faixa";
+            else
+                $venda->produto = "Video";
+            $venda->albumIndo = $this->albuns_model->buscar_dados($venda->idAlbum);
+            $venda->catalogo = $venda->albumIndo->codigo_catalogo;
+            $venda->isrc = $venda->faixaInfo->isrc;
+            $venda->upc = $venda->albumIndo->upc_ean;
+            $venda->percentual_aplicado = calcularPercentual();
+            $venda->valor_pagar = calcularValorPagar();
+            $venda->receita = calcularReceita();
+            $venda->descricao = "OI";
+
+            $dados['vendas'][] = $venda;
+        }
+
         $this->load->view('relatorio/opcoes_relatorio_view', $dados);
         return;
     }
 
-    public function getModelos($relatorios) {
+    /*public function getModelos($relatorios) {
         $lojas = array();
         $subLojas = array();
         $territorios = array();
@@ -82,7 +102,7 @@ class Relatorio extends CI_Controller
                 'territorios' => $territorios
             );
         }
-    }
+    }*/
 
     public function gera_relatorio() {
         $info = $this->input->post();
@@ -239,7 +259,35 @@ class Relatorio extends CI_Controller
         //die(var_dump($_FILES, $fileName, $fileConfig, $ok, $fileData, $this->upload->display_errors()));
         if ($ok) {
             $relatorio = $this->gera_array_relatorio($fileName);
-            $this->relatorio_model->cadastrar_relatorio_importado($relatorio);
+            $id = $this->relatorio_model->cadastrar_relatorio_importado($relatorio);
+            $objPHPExcel = PHPExcel_IOFactory::load($relatorio['arquivo']);
+            $modelo = $this->modelo_relatorio_model->buscar_modelo($relatorio['idModelo']);
+            $highestRow = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
+
+            for ($i = 2; $i <= $highestRow ; $i++) {
+                $isrc = $objPHPExcel->getActiveSheet()->getCell($modelo->isrc.$i)->getValue();
+                if($isrc != NULL)
+                    $data['idFaixa'] = $this->faixas_videos_model->procurar_faixa_isrc($isrc)->idFaixa;
+                else
+                    $data['idFaixa'] = NULL;
+                
+                $upc_ean = $objPHPExcel->getActiveSheet()->getCell($modelo->upc.$i)->getValue();
+                if($upc_ean != NULL)
+                    $data['idAlbum'] = $this->albuns_model->procurar_album_upc_ean($upc_ean)->idAlbum;
+                else
+                    $data['idAlbum'] = NULL;
+
+                $data['idRelatorio'] = $id;
+                $data['qnt_vendida'] = $objPHPExcel->getActiveSheet()->getCell($modelo->qnt_vendida.$i)->getValue();
+                $data['valor_recebido'] = $objPHPExcel->getActiveSheet()->getCell($modelo->valor_recebido.$i)->getValue();
+                $data['loja'] = $objPHPExcel->getActiveSheet()->getCell($modelo->loja.$i)->getValue();
+                $data['subloja'] = $objPHPExcel->getActiveSheet()->getCell($modelo->subloja.$i)->getValue();
+                $data['territorio'] = $objPHPExcel->getActiveSheet()->getCell($modelo->territorio.$i)->getValue();
+
+                if($data['idFaixa'] != NULL && $data['idAlbum'] != NULL)
+                   $this->vendas_model->cadastar_venda($data);
+            }
+
             $this->session->set_userdata('mensagem', '=)');
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastro_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
@@ -300,5 +348,16 @@ class Relatorio extends CI_Controller
         redirect("relatorio/listar_relatorios");*/
         die();
     }
+}
 
+function calcularPercentual(){
+    return 0;
+}
+
+function calcularValorPagar(){
+    return 0;
+}
+
+function calcularReceita(){
+    return 0;
 }
