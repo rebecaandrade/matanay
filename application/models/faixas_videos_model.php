@@ -221,11 +221,14 @@ class Faixas_Videos_model extends CI_Model {
         $this->db->update('faixa_video', $dados);
     }
 	
-    public function procurar_faixa($busca){
-        $this->db->where('excluido =', NULL);
-        $this->db->like("nome", $busca);
-        $this->db->or_like("isrc", $busca);
+    public function procurar_faixa_isrc($busca){
+        if($busca != NULL){
+            $this->db->where('excluido =', NULL);
+            $this->db->where("isrc", $busca);
 
-        return $this->db->get("faixa_video")->result();
+            return $this->db->get("faixa_video")->result()[0];
+        } else {
+            return NULL;
+        }
     }
 }

@@ -72,6 +72,7 @@ class Relatorio_model extends CI_Model
 
     public function cadastrar_relatorio_importado($relatorio) {
         $this->db->insert('relatorio', $relatorio);
+        return $this->db->insert_id();
     }
 
     public function busca_relatorios($id_cliente = 0) {

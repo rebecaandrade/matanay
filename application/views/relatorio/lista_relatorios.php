@@ -20,11 +20,11 @@
     <div class="row">
         <table id="<?= $this->lang->line('myTable') ?>" class="relTable hoverable bordered">
             <thead>
-            <th><?= $this->lang->line('listar_relatorios') ?></th>
-            <th><?= $this->lang->line('periodo_de_apuracao') ?></th>
-            <th><?= $this->lang->line('data_importacao') ?></th>
-            <th><?= $this->lang->line('modelo_relatorio') ?></th>
-            <th><?= $this->lang->line('acao') ?></th>
+                <th><?= $this->lang->line('listar_relatorios') ?></th>
+                <th><?= $this->lang->line('periodo_de_apuracao') ?></th>
+                <th><?= $this->lang->line('data_importacao') ?></th>
+                <th><?= $this->lang->line('modelo_relatorio') ?></th>
+                <th><?= $this->lang->line('acao') ?></th>
             </thead>
             <tbody>
             <?php if (isset($relatorios)) { ?>
