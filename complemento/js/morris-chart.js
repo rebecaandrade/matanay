@@ -3,37 +3,39 @@ $(function() {
     Morris.Bar({
         element: 'morris-bar-chart',
         data: [{
-            y: '2006',
+            y: 'Album 1',
             a: 95,
-            b: 90
+            b: 90,
+            c: 58
         }, {
-            y: '2007',
+            y: 'Album 2',
             a: 75,
             b: 65
         }, {
-            y: '2008',
+            y: 'Album 3',
             a: 30,
             b: 15
         }, {
-            y: '2009',
+            y: 'Album 4',
             a: 75,
-            b: 65
+            b: 65,
+            c: 34
         }, {
-            y: '2010',
+            y: 'Album 5',
             a: 50,
             b: 40
         }, {
-            y: '2011',
+            y: 'Album 6',
             a: 75,
             b: 65
         }, {
-            y: '2012',
+            y: 'Album 7',
             a: 40,
             b: 90
         }],
         xkey: 'y',
-        ykeys: ['a', 'b'],
-        labels: ['Series A', 'Series B'],
+        ykeys: ['a', 'b', 'c'],
+        labels: ['Artista A', 'Produtor B', 'Autor C'],
         hideHover: 'auto',
         resize: true
     });

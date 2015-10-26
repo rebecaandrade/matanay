@@ -26,19 +26,19 @@
                     <td>Alvin</td>
                     <td>Album 1</td>
                     <td>Faixa 1</td>
-                    <td>R$ 0.87</td>
+                    <td>R$ 1.872,00</td>
                 </tr>
                 <tr>
                     <td>Alan</td>
                     <td>Album 2</td>
                     <td>Faixa 2</td>
-                    <td>R$ 3.76</td>
+                    <td>R$ 3.765,00</td>
                 </tr>
                 <tr>
                     <td>Jonathan</td>
                     <td>Album 3</td>
                     <td>Faixa 3</td>
-                    <td>R$ 7.00</td>
+                    <td>R$ 7.000,00</td>
                 </tr>
             </tbody>
         </table>
