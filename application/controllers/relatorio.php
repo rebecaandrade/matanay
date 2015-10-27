@@ -10,6 +10,7 @@ class Relatorio extends CI_Controller
         $this->load->model('albuns_model');
         $this->load->model('faixas_videos_model');
         $this->load->model('entidade_model');
+        $this->load->model('imposto_model');
         $this->load->library('excel');
         $this->load->helper('myDirectory');
         $this->session->set_flashdata('redirect_url', current_url());
@@ -50,6 +51,10 @@ class Relatorio extends CI_Controller
         foreach ($relatorios as $relatorio) {
             $venda = $this->vendas_model->buscar_vendas($relatorio->idRelatorio)[0];
             $venda->tipo = $this->albuns_model->buscar_impostos_album($venda->idAlbum);
+            foreach ($venda->tipo as $imposto) {
+                $venda->imposto[] = $this->imposto_model->tipo_imposto($imposto->idImposto)[0]->descricao;
+            }
+            $venda->imposto = array_unique($venda->imposto);
             $venda->artistaInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,1)[0];
             $venda->artista = $this->entidade_model->buscar_entidade_especifica($venda->artistaInfo['idEntidade'])->nome;
             $venda->autorInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,2)[0];
@@ -69,7 +74,9 @@ class Relatorio extends CI_Controller
             $venda->percentual_aplicado = calcularPercentual();
             $venda->valor_pagar = calcularValorPagar();
             $venda->receita = calcularReceita();
-            $venda->descricao = "OI";
+            $venda->relatorio = $relatorio;
+            $venda->apuracao = $venda->relatorio->periodo_apuracao;
+            $venda->descricao = "Ambos";
 
             $dados['vendas'][] = $venda;
         }

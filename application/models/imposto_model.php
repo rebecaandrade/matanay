@@ -7,6 +7,13 @@ class Imposto_model extends CI_Model{
         return $query->result();
 	}
 
+	public function tipo_imposto($idImposto){
+        $this->db->select('descricao')->from('imposto');
+        $this->db->where('imposto.idImposto', $idImposto);
+        $this->db->join('tipo_imposto', ' tipo_imposto.idTipo_Imposto = imposto.idTipo_Imposto');
+        return $this->db->get()->result();
+    }
+
 	public function cadastrar_imposto($imposto){
 		$this->db->insert('imposto',$imposto);
 		return  $this->db->insert_id();
@@ -14,7 +21,7 @@ class Imposto_model extends CI_Model{
 	
 
 	function deletar($id){
-            $this->db->where('idImposto', $id);
-            return $this->db->delete('imposto');
-        }
+        $this->db->where('idImposto', $id);
+        return $this->db->delete('imposto');
+    }
 }

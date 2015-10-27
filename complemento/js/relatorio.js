@@ -62,3 +62,41 @@ $(document).ready(function () {
         return true;
     });
 });
+
+
+ 
+$(document).ready(function() {
+    var table = $('#myTable').DataTable();
+     
+    $('#min, #max, #tipoRelatorioFisico, #tipoRelatorioDigital').change( function() {
+        table.draw();
+    } );
+} );
+$(document).ready(function() {
+    var table = $('#usTable').DataTable();
+     
+    $('#min, #max, #tipoRelatorioFisico, #tipoRelatorioDigital').change( function() {
+        table.draw();
+    } );
+} );
+
+
+$.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+        var min = Date.parse($('#min').val());
+        var max = Date.parse($('#max').val());
+        var dateAr =  ('01/'+data[0]).split('/');
+        var newDate = dateAr[1] + '-' + dateAr[0] + '-' + dateAr[2];
+        var date = new Date(newDate);
+        date = Date.parse(date);
+
+        if ( ( isNaN( min ) && isNaN( max ) ) ||
+             ( isNaN( min ) && date <= max ) ||
+             ( min <= date   && isNaN( max ) ) ||
+             ( min <= date   && date <= max ) )
+        {
+            return true;
+        }
+        return false;
+    }
+);

@@ -226,6 +226,7 @@ $lang['valor']				='Valor';
 $lang['cadastro_imposto'] 	= 'Cadastro de Imposto';
 $lang['fisico'] 			= 'Fisico';
 $lang['digital'] 			= 'Digital';
+$lang['ambos'] 				= 'Ambos';
 
 ////// MODELO DE RELATORIO ////// Vitor
 
