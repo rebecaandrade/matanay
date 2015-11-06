@@ -116,4 +116,9 @@ class Entidade_model extends CI_Model
     {
         return $this->db->where('idTipo_Entidade', $id)->get('tipo_entidade')->row()->descricao;
     }
+
+    public function buscar_entidade_has_faixa(){
+        return $this->db->get('entidade_has_faixa_video')->result();
+    }
+
 }

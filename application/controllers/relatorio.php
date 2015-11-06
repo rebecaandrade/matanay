@@ -77,12 +77,43 @@ class Relatorio extends CI_Controller
             $venda->relatorio = $relatorio;
             $venda->apuracao = $venda->relatorio->periodo_apuracao;
             $venda->descricao = "Ambos";
+            //die(var_dump($venda));
+
+            //Envio das informacoes do calculo do valor para cada entidade
+            $dadosMontante['porcentagem_ganho'] = $this->entidade_model->buscar_entidade_has_faixa();
+            $dadosMontante['impostos_faixas'] = $this->imposto_model->pegar_impostos_faixa();
+            $dadosMontante['impostos_album'] = $this->imposto_model->pegar_impostos_album();
+
+            $dados["montante"] = $this->calculoPagamento($dadosMontante,$idEntidade = 7, $idFaixa = 9);
 
             $dados['vendas'][] = $venda;
         }
 
         $this->load->view('relatorio/opcoes_relatorio_view', $dados);
         return;
+    }
+
+    public function calculoPagamento($dadosMontante, $idEntidade, $idFaixa){
+        //valores apenas para exemplo
+        $valorPagamento = 100;
+
+
+
+        foreach ($dadosMontante['porcentagem_ganho'] as $montante) {
+            if($montante->idEntidade == $idEntidade){
+                $pagamentoIndividual[$idEntidade] = $valorPagamento * $montante->percentual / 100;
+            }
+        }
+        var_dump($dadosMontante);
+        foreach ($dadosMontante['impostos_faixas'] as $impostos_faixas) {
+            if($impostos_faixas->idFaixa == $idFaixa){
+                $impostoFaixa[$idFaixa] = $valorPagamento * $impostos_faixas->valor / 100;
+            }
+        }
+        die(var_dump($impostoFaixa));
+
+
+
     }
 
     /*public function getModelos($relatorios) {
