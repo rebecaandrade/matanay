@@ -473,13 +473,9 @@ insert into matanay.contrato values(DEFAULT,"Contrato 9","2015-01-01","2015-06-0
 insert into matanay.contrato values(DEFAULT,"Contrato 10","2015-01-01","2015-10-01",NULL,20,12,NULL,2);	
 
 /*relatorio*/
-insert into matanay.relatorio values(DEFAULT,"./complemento/Excel_Files/14a004_accounted-2015-02.xlsx","02/2015",
-                                     "2015-08-09",20,1);
-insert into matanay.relatorio values(DEFAULT,"./complemento/Excel_Files/2f103f_accounted-2015-03.xlsx","03/2015",
-                                     "2015-09-09",20,1);
-insert into matanay.relatorio values(DEFAULT,"./complemento/Excel_Files/0a3c87_accounted-2015-05.xlsx","05/2015",
-                                     "2015-09-09",20,1);
-
+insert into matanay.relatorio values(DEFAULT,"./complemento/Excel_Files/14a004_accounted-2015-02.xlsx","02/2015","2015-08-09",20,NULL,1);
+insert into matanay.relatorio values(DEFAULT,"./complemento/Excel_Files/2f103f_accounted-2015-03.xlsx","03/2015","2015-09-09",20,NULL,1);
+insert into matanay.relatorio values(DEFAULT,"./complemento/Excel_Files/0a3c87_accounted-2015-05.xlsx","05/2015","2015-09-09",20,NULL,1);
 
 #Funcionalidades
 

@@ -217,6 +217,7 @@ CREATE  TABLE IF NOT EXISTS `matanay`.`Relatorio` (
   `periodo_apuracao` VARCHAR(45) NOT NULL ,
   `data_importacao` DATE NOT NULL ,
   `idModelo` INT NOT NULL ,
+  `excluido` BIT NULL ,
   `idCliente` INT NOT NULL ,
   PRIMARY KEY (`idRelatorio`) ,
   INDEX `fk_Relatorio_Modelo1_idx` (`idModelo` ASC) ,
