@@ -1,7 +1,3 @@
-<?php 
-// Controller: Acesso
-?>
-
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Acesso extends CI_Controller {

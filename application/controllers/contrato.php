@@ -1,8 +1,4 @@
 <?php
-// Controller: Contrato
-?>
-
-<?php
 	// by : Vitor Pontes
 	class Contrato extends CI_controller {
 		public function __construct() {
