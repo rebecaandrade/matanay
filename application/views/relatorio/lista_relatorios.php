@@ -1,8 +1,8 @@
 <?php $this->load->view('_include/header') ?>
 <div id="wrapper-body" xmlns="http://www.w3.org/1999/html">
-    <div class="row">
+    <!-- <div class="row">
         <a href="<?= base_url() . 'index.php/relatorio/testaExcel' ?>" class="btn"> Teste Excel</a>
-    </div>
+    </div> -->
     <div id="titulo_lista">
         <div class="row">
             <div class="input-field col s12 m8 l9">
@@ -35,7 +35,7 @@
                         <td><?= $relatorio->periodo_apuracao ?></td>
                         <td><?= $relatorio->data_importacao ?></td>
                         <td><?= $relatorio->nome ?></td>
-                        <td><a href="#"><?=$this->lang->line('deletar')?></a></td>
+                        <td><a onclick="excluirRelatorio('<?= base_url() . 'index.php/relatorio/deletar/' . $relatorio->idRelatorio ?>','<?= $this->lang->line('langOpt') ?>')"><?php echo $this->lang->line('deletar'); ?></a></td>
                     </tr>
                 <?php }
             } ?>

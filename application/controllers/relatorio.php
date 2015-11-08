@@ -46,6 +46,14 @@ class Relatorio extends CI_Controller
         $this->load->view('relatorio/lista_relatorios', $dados);
     }
 
+    public function deletar($id) {
+        $this->relatorio_model->deletar($id);
+        $this->session->set_userdata('mensagem', '=)');
+        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('excluido_sucesso'));
+        $this->session->set_userdata('tipo_mensagem', 'success');
+        redirect('relatorio/listar_relatorios');
+    }
+
     public function opcoes_relatorio() {
         //FUNCAO DE IMPORTACAO
         $this->getModelos();

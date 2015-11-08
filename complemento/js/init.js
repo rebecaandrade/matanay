@@ -216,6 +216,27 @@ var excluirFaixa = function (url, langOpt) {
     });
 }
 
+var excluirRelatorio = function (url, langOpt) {
+    var thisTitle = ["Tem Certeza?", "Are you sure?"];
+    var thisText = ["O Relatório selecionado será excluido.", "The selected Report will be deleted."];
+    var confirmation = ["Sim, pode excluir.", "Yes, You may delete it."];
+    var canceltext = ["Não, cancele!", "No, cancel it!"];
+    swal({
+        title: thisTitle[langOpt],
+        text: thisText[langOpt],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: confirmation[langOpt],
+        cancelButtonText: canceltext[langOpt],
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            window.location.href = url;
+        }
+    });
+}
+
 $(document).ready(function () {
     $('a').css('cursor', 'pointer')
 });
