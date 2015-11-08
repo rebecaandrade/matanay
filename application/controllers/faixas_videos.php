@@ -1,3 +1,7 @@
+<?php
+// Controller: Faixa_Videos
+?>
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Faixas_Videos extends CI_Controller {

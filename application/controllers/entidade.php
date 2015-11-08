@@ -1,3 +1,7 @@
+<?php
+// Controller: Entidade
+?>
+
 <?php /*FEITO POR MIM JADIEL*/
 
 class Entidade extends CI_Controller

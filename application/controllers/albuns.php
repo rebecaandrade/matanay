@@ -1,3 +1,7 @@
+<?php 
+// controller: Albuns
+?>
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Albuns extends CI_Controller {
