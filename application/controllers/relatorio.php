@@ -255,7 +255,7 @@ class Relatorio extends CI_Controller
             }
         }
         //Laco para cadastro dos dados adquiridos
-        for ($i=0; $i < 3 ; $i++) { 
+        for ($i=0; $i < $linesAux ; $i++) { 
             
             //Cadastro de artista(entidade e favorecido)
             //Cadastro favorecido
