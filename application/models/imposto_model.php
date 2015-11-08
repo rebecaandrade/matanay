@@ -8,30 +8,30 @@ class Imposto_model extends CI_Model{
 	}
 
 	public function tipo_imposto($idImposto){
-        $this->db->select('descricao')->from('imposto');
+        $this->db->select('descricao')->from('Imposto');
         $this->db->where('imposto.idImposto', $idImposto);
-        $this->db->join('tipo_imposto', ' tipo_imposto.idTipo_Imposto = imposto.idTipo_Imposto');
+        $this->db->join('Tipo_Imposto', ' Tipo_Imposto.idTipo_Imposto = imposto.idTipo_Imposto');
         return $this->db->get()->result();
     }
 
 	public function cadastrar_imposto($imposto){
-		$this->db->insert('imposto',$imposto);
+		$this->db->insert('Imposto',$imposto);
 		return  $this->db->insert_id();
 	}
 	
 
 	public function deletar($id){
         $this->db->where('idImposto', $id);
-        return $this->db->delete('imposto');
+        return $this->db->delete('Imposto');
     }
 
     public function pegar_impostos_faixa(){
     	$query = $this->db->query(
     		"SELECT imposto.nome, imposto.valor, imposto.idCliente, tipo_imposto.descricao, faixa_video_has_imposto.idFaixa
 			FROM imposto
-			JOIN faixa_video_has_imposto
+			JOIN Faixa_Video_has_Imposto
 			ON imposto.idImposto = faixa_video_has_imposto.idImposto
-			JOIN tipo_imposto
+			JOIN Tipo_Tmposto
 			ON tipo_imposto.idTipo_Imposto = imposto.idTipo_Imposto
 			WHERE imposto.excluido is null;
 		");
@@ -41,10 +41,10 @@ class Imposto_model extends CI_Model{
     public function pegar_impostos_album(){
     	$query = $this->db->query(
     		"SELECT imposto.nome, imposto.valor, imposto.idCliente, tipo_imposto.descricao, album_has_imposto.idAlbum
-			FROM imposto
-			JOIN album_has_imposto
+			FROM Imposto
+			JOIN Album_has_Imposto
 			ON imposto.idImposto = album_has_imposto.idImposto
-			JOIN tipo_imposto
+			JOIN Tipo_Imposto
 			ON tipo_imposto.idTipo_Imposto = imposto.idTipo_Imposto
 			WHERE imposto.excluido is null;
 		");

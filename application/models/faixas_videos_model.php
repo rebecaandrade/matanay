@@ -38,19 +38,19 @@ class Faixas_Videos_model extends CI_Model {
     public function buscar_faixas($idCliente){
         $this->db->where('idCliente', $idCliente);
         $this->db->where('excluido =', NULL);
-        return $this->db->get('faixa_video')->result();
+        return $this->db->get('Faixa_Video')->result();
     }
 
     public function buscar_entidade_faixa($id, $tipo){
         $this->db->where('idFaixa', $id);
-        $entidades_faixa = $this->db->get('entidade_has_faixa_video')->result();
+        $entidades_faixa = $this->db->get('Entidade_has_Faixa_Video')->result();
 
         $result = array();
 
         foreach($entidades_faixa as $entidade){
             if($entidade->tipoEntidade == $tipo) {
                 $this->db->where('idEntidade', $entidade->idEntidade);
-                $dados = $this->db->get('entidade_has_tipo_entidade')->row();
+                $dados = $this->db->get('Entidade_has_Tipo_Entidade')->row();
 
                 $entidade_faixa = array(
                     'idEntidade' => $entidade->idEntidade,
@@ -65,7 +65,7 @@ class Faixas_Videos_model extends CI_Model {
 
     public function buscar_album_faixa($id){
         $this->db->where('idFaixa', $id);
-        $albuns = $this->db->get('album_has_faixa')->result();
+        $albuns = $this->db->get('Album_has_Faixa')->result();
 
         $result = array();
 
@@ -86,21 +86,21 @@ class Faixas_Videos_model extends CI_Model {
         $this->db->trans_start();
 
         $this->db->where('idFaixa', $dados['idFaixa']);
-        $this->db->update('faixa_video', $dados);
+        $this->db->update('Faixa_Video', $dados);
 
         $this->db->where('idFaixa', $dados['idFaixa']);
-        $this->db->delete('faixa_video_has_imposto');
+        $this->db->delete('Faixa_Video_has_Imposto');
 
         foreach($impostos as $imposto->idImposto){
             $imposto_faixa = array(
                 'idFaixa' => $dados['idFaixa'],
                 'idImposto' => $imposto->idImposto
             );
-            $this->db->insert('faixa_video_has_imposto', $imposto_faixa);
+            $this->db->insert('Faixa_Video_has_Imposto', $imposto_faixa);
         }
 
         $this->db->where('idFaixa', $dados['idFaixa']);
-        $this->db->delete('entidade_has_faixa_video');
+        $this->db->delete('Entidade_has_Faixa_Video');
 
         $i = 0;
         foreach($artistas as $artista->idEntidade){
@@ -110,7 +110,7 @@ class Faixas_Videos_model extends CI_Model {
                 'tipoEntidade' => 1,
                 'percentual' => $perc_artistas[$i]
             );
-            $this->db->insert('entidade_has_faixa_video', $artista_faixa);
+            $this->db->insert('Entidade_has_Faixa_Video', $artista_faixa);
             $i++;
         }
 
@@ -122,7 +122,7 @@ class Faixas_Videos_model extends CI_Model {
                 'tipoEntidade' => 2,
                 'percentual' => $perc_autores[$i]
             );
-            $this->db->insert('entidade_has_faixa_video', $autor_faixa);
+            $this->db->insert('Entidade_has_Faixa_Video', $autor_faixa);
             $i++;
         }
 
@@ -134,7 +134,7 @@ class Faixas_Videos_model extends CI_Model {
                 'tipoEntidade' => 3,
                 'percentual' => $perc_produtores[$i]
             );
-            $this->db->insert('entidade_has_faixa_video', $produtor_faixa);
+            $this->db->insert('Entidade_has_Faixa_Video', $produtor_faixa);
             $i++;
         }
 
@@ -148,16 +148,16 @@ class Faixas_Videos_model extends CI_Model {
 
     public function buscar_impostos($idCliente){
         $this->db->where('idCliente', $idCliente);
-        return $this->db->get('imposto')->result();
+        return $this->db->get('Imposto')->result();
     }
 
     public function buscar_impostos_faixa($id){
         $this->db->where('idFaixa', $id);
-        return $this->db->get('faixa_video_has_imposto')->result();
+        return $this->db->get('Faixa_Video_has_Imposto')->result();
     }
 
     public function buscar_faixas_has_imposto(){
-        return $this->db->get('faixa_video_has_imposto')->result();
+        return $this->db->get('Faixa_Video_has_Imposto')->result();
     }
 
     public function cadastrar_faixa($faixa, $impostos, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores){
@@ -171,7 +171,7 @@ class Faixas_Videos_model extends CI_Model {
                 'idFaixa' => $faixa_id,
                 'idImposto' => $imposto
             );
-            $this->db->insert('faixa_video_has_imposto', $imposto_faixa);
+            $this->db->insert('Faixa_Video_has_Imposto', $imposto_faixa);
         }
 
         $i = 0;
@@ -182,7 +182,7 @@ class Faixas_Videos_model extends CI_Model {
                 'tipoEntidade' => 1,
                 'percentual' => $perc_artistas[$i]
             );
-            $this->db->insert('entidade_has_faixa_video', $artista_faixa);
+            $this->db->insert('Entidade_has_Faixa_Video', $artista_faixa);
             $i++;
         }
 
@@ -194,7 +194,7 @@ class Faixas_Videos_model extends CI_Model {
                 'tipoEntidade' => 2,
                 'percentual' => $perc_autores[$i]
             );
-            $this->db->insert('entidade_has_faixa_video', $autor_faixa);
+            $this->db->insert('Entidade_has_Faixa_Video', $autor_faixa);
             $i++;
         }
 
@@ -207,7 +207,7 @@ class Faixas_Videos_model extends CI_Model {
                     'tipoEntidade' => 3,
                     'percentual' => $perc_produtores[$i]
                 );
-                $this->db->insert('entidade_has_faixa_video', $produtor_faixa);
+                $this->db->insert('Entidade_has_Faixa_Video', $produtor_faixa);
                 $i++;
             }
         }
@@ -219,7 +219,7 @@ class Faixas_Videos_model extends CI_Model {
     public function deletar($id){
         $this->db->where('idFaixa', $id);
         $dados['excluido'] = 1;
-        $this->db->update('faixa_video', $dados);
+        $this->db->update('Faixa_Video', $dados);
     }
 	
     public function procurar_faixa_isrc($busca){
@@ -227,7 +227,7 @@ class Faixas_Videos_model extends CI_Model {
             $this->db->where('excluido =', NULL);
             $this->db->where("isrc", $busca);
 
-            return $this->db->get("faixa_video")->result()[0];
+            return $this->db->get("Faixa_Video")->result()[0];
         } else {
             return NULL;
         }

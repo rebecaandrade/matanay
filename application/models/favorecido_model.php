@@ -4,31 +4,31 @@ class Favorecido_model extends CI_Model{
 
 
 	public function cadastrar_favorecido($favorecido){
-		$this->db->insert('favorecido',$favorecido);
+		$this->db->insert('Favorecido',$favorecido);
 		return  $this->db->insert_id();
 	}
 	
 	public function cadastra_fav_has_tipo_fav($fav_has_tipo_fav){
 		foreach ($fav_has_tipo_fav as $fav) {
-			$this->db->insert('favorecido_has_tipo_favorecido', $fav);
+			$this->db->insert('Favorecido_has_Tipo_Favorecido', $fav);
 		}
 	}
 
     public function cadastra_fav_has_tipo_fav_unico($fav){
 
-        $this->db->insert('favorecido_has_tipo_favorecido', $fav);
+        $this->db->insert('Favorecido_has_Tipo_Favorecido', $fav);
 
     }
 	
 	public function cadastrar_telefone($telefone){
-		$this->db->insert('telefone_favorecido',$telefone);
+		$this->db->insert('Telefone_Favorecido',$telefone);
 		return  $this->db->insert_id();
 	}
 
 	public function buscar_favorecidos($id_cliente = 0){
 		//if($qtde > 0) $this->db->limit($qtde, $inicio);
-		$this->db->where('favorecido.idCliente',$id_cliente);
-        return $this->db->get('favorecido');
+		$this->db->where('Favorecido.idCliente',$id_cliente);
+        return $this->db->get('Favorecido');
 	}
 
 	public function buscar_favorecido($id_cliente = 0){
@@ -52,18 +52,18 @@ class Favorecido_model extends CI_Model{
         $this->db->where('idFavorecido', $id);
         $dados=$this->db->get('Favorecido_has_Tipo_Favorecido')->result();
         $this->db->where('idTipo_Favorecido', $dados[0]->idTipo_Favorecido);
-        return $this->db->get('tipo_favorecido')->result()[0];
+        return $this->db->get('Tipo_Favorecido')->result()[0];
     }
 
 	public function atualizar_favorecido($favorecido){
 		$this->db->where('idFavorecido',$favorecido['idFavorecido']);
-		return  $this->db->update('favorecido', $favorecido);
+		return  $this->db->update('Favorecido', $favorecido);
 	}
 
 	function buscar_favorecido_has_tipo_especifico($id)
     {
         $this->db->where('idFavorecido', $id);
-        return $this->db->get('favorecido_has_tipo_favorecido')->result()[0];
+        return $this->db->get('Favorecido_has_Tipo_Favorecido')->result()[0];
     }
 
 
@@ -71,28 +71,28 @@ class Favorecido_model extends CI_Model{
     {
         $this->db->where('idFavorecido', $tipofavorecido['idFavorecido']);
         $this->db->where('idTipo_Favorecido', $idTipo_FavorecidoAntigo);
-        return $this->db->update('favorecido_has_tipo_favorecido', $tipofavorecido);
+        return $this->db->update('Favorecido_has_Tipo_Favorecido', $tipofavorecido);
     }
 
 	public function atualizar_telefone($telefone){
 		$this->db->where('idTelefone_Favorecido',$telefone['idTelefone_Favorecido']);
-		return  $this->db->update('telefone_favorecido', $telefone);
+		return  $this->db->update('Telefone_Favorecido', $telefone);
 	}
 
 	function buscar_telefone_especifico($id, $indicetelefone){
     		$this->db->where('idFavorecido', $id);
-    		$query=$this->db->get('telefone_favorecido')->result();
+    		$query=$this->db->get('Telefone_Favorecido')->result();
         	return $query[$indicetelefone];
    	}
 
    	function buscar_identificacao_especifica1($id){
     		$this->db->where('idTipo_Favorecido', $id);
-        	return $this->db->get('tipo_favorecido')->result()[0];
+        	return $this->db->get('Tipo_Favorecido')->result()[0];
    	}
 
 	public function buscar_favorecido_especifico($id){
     		$this->db->where('idFavorecido', $id);
-        	return $this->db->get('favorecido')->result()[0];
+        	return $this->db->get('Favorecido')->result()[0];
    	}
    	
    	public function procurar_favorecido($dado){
@@ -105,7 +105,7 @@ class Favorecido_model extends CI_Model{
 		$this->db->or_like("contato",$dado);
 		$this->db->or_like("idTipo_Favorecido",$dado);
 		$this->db->or_where("email",$dado);
-		$query = $this->db->get("favorecido");
+		$query = $this->db->get("Favorecido");
 
 		return $query->result();
    	}
@@ -116,13 +116,5 @@ class Favorecido_model extends CI_Model{
         $dados['excluido'] = 1;
         $this->db->update('Favorecido', $dados);
     }
-
-
-
-
-
-
-
-
 
 }
