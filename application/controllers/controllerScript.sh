@@ -1,15 +1,15 @@
 #!/bin/bash
 
-mv acesso.txt Acesso.txt
-mv albuns.txt Albuns.txt
-mv cliente.txt Cliente.txt
-mv contrato.txt Contrato.txt
-mv entidade.txt Entidade.txt
-mv faixas_videos.txt Faixas_videos.txt
-mv favorecido.txt Favorecido.txt
-mv imposto.txt Imposto.txt
-mv modelo_relatorio.txt Modelo_relatorio.txt
-mv moeda.txt Moeda.txt
-mv notificacao.txt Notificacao.txt
-mv produtor.txt Produtor.txt
-mv relatorio.txt Relatorio.txt
+mv acesso.php Acesso.php
+mv albuns.php Albuns.php
+mv cliente.php Cliente.php
+mv contrato.php Contrato.php
+mv entidade.php Entidade.php
+mv faixas_videos.php Faixas_videos.php
+mv favorecido.php Favorecido.php
+mv imposto.php Imposto.php
+mv modelo_relatorio.php Modelo_relatorio.php
+mv moeda.php Moeda.php
+mv notificacao.php Notificacao.php
+mv produtor.php Produtor.php
+mv relatorio.php Relatorio.php
