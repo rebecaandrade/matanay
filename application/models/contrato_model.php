@@ -8,7 +8,7 @@
 						'alerta'		=> $alerta,
 						'idEntidade'	=> $id,
 			);
-			return	$this->db->insert('contrato',$contrato);
+			return	$this->db->insert('Contrato',$contrato);
 		}
 		
 		public function buscar_entidades($id_cliente){
@@ -17,18 +17,18 @@
 		
 		public function buscar_favorecidos($id_cliente){
 			$this->db->where('entidade.idCliente', $id_cliente);
-			$this->db->select('*')->from('entidade')->join('favorecido', 'favorecido.idFavorecido = entidade.idFavorecido')->group_by('favorecido.nome');
+			$this->db->select('*')->from('Entidade')->join('Favorecido', 'favorecido.idFavorecido = entidade.idFavorecido')->group_by('favorecido.nome');
 			$this->db->where('entidade.excluido', NULL);
 			return $this->db->get()->result();
 		}
 		
 		public function buscar_entidade($id){
-			return $this->db->get_where('entidade',array('idEntidade' => $id,'excluido' => NULL))->row();
+			return $this->db->get_where('Entidade',array('idEntidade' => $id,'excluido' => NULL))->row();
 		}
 		
 		public function buscar_favorecido($id){
 			$this->db->where('entidade.idCliente', $this->session->userdata('id_cliente'));
-			$this->db->select('*')->from('favorecido')->join('entidade', 'entidade.idFavorecido = favorecido.idFavorecido');
+			$this->db->select('*')->from('Favorecido')->join('Entidade', 'Entidade.idFavorecido = Favorecido.idFavorecido');
 			$this->db->where('entidade.idFavorecido', $id);
 			$this->db->where('entidade.excluido', NULL);
 			return $this->db->get()->row();
@@ -37,6 +37,6 @@
 		public function buscar_datas($id_cliente){
 			$this->load->helper('date');
 			$this->db->where('idCliente', $id_cliente);
-			return $this->db->get('contrato')->result();	
+			return $this->db->get('Contrato')->result();	
 		}
 	}

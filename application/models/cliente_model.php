@@ -10,21 +10,21 @@ class Cliente_model extends CI_Model
     public function buscar_cliente($id)
     {
         $this->db->where('idCliente', $id);
-        return $this->db->get('cliente')->row();
+        return $this->db->get('Cliente')->row();
     }
 
     public function buscar_perfil($id_cliente, $id_perfil)
     {
         $this->db->where('idCliente', $id_cliente);
         $this->db->where('idUsuario', $id_perfil);
-        return $this->db->get('usuario')->row();
+        return $this->db->get('Usuario')->row();
     }
 
     public function cliente_existe($nome)
     {
         $this->db->where('nome', $nome);
         $this->db->where('excluido', NULL);
-        if ($this->db->get('cliente')->row()) {
+        if ($this->db->get('Cliente')->row()) {
 
             return TRUE;
         } else {
@@ -37,7 +37,7 @@ class Cliente_model extends CI_Model
         $cliente = array(
             'nome' => $nome,
         );
-        return $this->db->insert('cliente', $cliente);
+        return $this->db->insert('Cliente', $cliente);
     }
 
     public function atualizar_cliente($id, $nome)
@@ -46,12 +46,12 @@ class Cliente_model extends CI_Model
             'nome' => $nome,
         );
         $this->db->where('idCliente', $id);
-        return $this->db->update('cliente', $cliente);
+        return $this->db->update('Cliente', $cliente);
     }
 
     public function cadastrar_perfil($perfil)
     {
-        $this->db->insert('usuario', $perfil);
+        $this->db->insert('Usuario', $perfil);
         return $this->db->insert_id();
     }
 
@@ -60,10 +60,10 @@ class Cliente_model extends CI_Model
         //die(var_dump($perfil, $createfunc, $deletefunc));
         foreach($deletefunc as $oldfunc){
             $this->db->where(array('idUsuario'=>$perfil['idUsuario'],'idFuncionalidades'=>$oldfunc));
-            $this->db->delete('usuario_has_funcionalidades');
+            $this->db->delete('Usuario_has_Funcionalidades');
         }
         foreach ($createfunc as $newfunc) {
-            $this->db->insert('usuario_has_funcionalidades', array('idUsuario' => $perfil['idUsuario'], 'idFuncionalidades' => $newfunc));
+            $this->db->insert('Usuario_has_Funcionalidades', array('idUsuario' => $perfil['idUsuario'], 'idFuncionalidades' => $newfunc));
         }
         $this->db->where('idUsuario',$perfil['idUsuario']);
         return $this->db->update('Usuario',$perfil);
@@ -77,15 +77,15 @@ class Cliente_model extends CI_Model
                 'idFuncionalidades' => $func,
                 'idUsuario' => $id,
             );
-            $this->db->insert('usuario_has_funcionalidades', $array);
+            $this->db->insert('Usuario_has_Funcionalidades', $array);
         }
     }
 
     public function minhas_funcionalidades($id_perfil)
     {
         $this->db->select('func.*')->from('usuario user');
-        $this->db->join('usuario_has_funcionalidades uhf', 'uhf.idUsuario = user.idUsuario');
-        $this->db->join('funcionalidades func', 'func.idFuncionalidades = uhf.idFuncionalidades');
+        $this->db->join('Usuario_has_Funcionalidades uhf', 'uhf.idUsuario = user.idUsuario');
+        $this->db->join('Funcionalidades func', 'func.idFuncionalidades = uhf.idFuncionalidades');
         $this->db->where('user.idUsuario', $id_perfil);
         $dados = $this->db->get()->result();
         //die(var_dump($dados));
@@ -107,7 +107,7 @@ class Cliente_model extends CI_Model
     {
         $this->db->where('login', $login);
         $this->db->where('excluido', NULL);
-        return $this->db->get('usuario')->result();
+        return $this->db->get('Usuario')->result();
     }
 
     public function clientes()
@@ -119,7 +119,7 @@ class Cliente_model extends CI_Model
     {
         $this->db->where('idCliente', $id);
         $this->db->where('excluido', NULL);
-        return $this->db->get('usuario')->result();
+        return $this->db->get('Usuario')->result();
     }
 
     public function excluir_cliente($id_cliente)
@@ -132,7 +132,7 @@ class Cliente_model extends CI_Model
         $this->db->update('perfis', $array);
 
         $this->db->where('idCliente', $id_cliente);
-        $this->db->update('cliente', $array);
+        $this->db->update('Cliente', $array);
 
         $this->db->trans_complete();
     }
@@ -143,6 +143,6 @@ class Cliente_model extends CI_Model
         $array = array(
             'excluido' => 1
         );
-        return $this->db->update('usuario', $array);
+        return $this->db->update('Usuario', $array);
     }
 }
