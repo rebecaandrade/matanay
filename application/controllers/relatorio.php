@@ -96,7 +96,7 @@ class Relatorio extends CI_Controller
             $dadosMontante['impostos_faixas'] = $this->imposto_model->pegar_impostos_faixa();
             $dadosMontante['impostos_album'] = $this->imposto_model->pegar_impostos_album();
 
-            $dados["montante"] = $this->calculoPagamento($valorPagamento = 100,$dadosMontante,$idEntidade = 7,$idFaixa = 9);
+            $dados["montante"] = $this->calculoPagamento($valorPagamento = 100,$dadosMontante,$idEntidade = 7,$idFaixa = 9, $idAlbum = 5);
             //Fim da parte de calculos
 
             $dados['vendas'][] = $venda;
@@ -106,7 +106,7 @@ class Relatorio extends CI_Controller
         return;
     }
 
-    public function calculoPagamento($valorPagamento, $dadosMontante, $idEntidade, $idFaixa){
+    public function calculoPagamento($valorPagamento, $dadosMontante, $idEntidade, $idFaixa,$idAlbum){
         //valores apenas para exemplo jah que nao tenho os valores totais
 
 
