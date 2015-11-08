@@ -13,3 +13,4 @@ mv moeda_model.php Moeda_model.php
 mv notificacao_model.php Notificacao_model.php
 mv produtor_model.php Produtor_model.php
 mv relatorio_model.php Relatorio_model.php
+mv vendas_model.php Vendas_model.php
