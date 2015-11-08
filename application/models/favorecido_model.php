@@ -13,6 +13,12 @@ class Favorecido_model extends CI_Model{
 			$this->db->insert('favorecido_has_tipo_favorecido', $fav);
 		}
 	}
+
+    public function cadastra_fav_has_tipo_fav_unico($fav){
+
+        $this->db->insert('favorecido_has_tipo_favorecido', $fav);
+
+    }
 	
 	public function cadastrar_telefone($telefone){
 		$this->db->insert('telefone_favorecido',$telefone);

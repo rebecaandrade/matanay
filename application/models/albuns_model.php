@@ -91,6 +91,12 @@ class Albuns_model extends CI_Model {
         return TRUE;
 	}
 
+    public function cadastrar_album_simples($album){
+        $this->db->insert('album', $album);
+        return $this->db->insert_id();
+
+    }
+
     public function atualizar_album($dados, $impostos, $novo_artista, $prev_artista){
         $this->db->trans_start();
 
@@ -164,4 +170,10 @@ class Albuns_model extends CI_Model {
             return NULL;
         }
     }
+
+    public function cadastrar_album_has_imposto($imposto_album){
+        $this->db->insert('album_has_imposto', $imposto_album);
+        return $this->db->insert_id();
+    }
+
 }

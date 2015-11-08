@@ -11,6 +11,7 @@ class Faixas_Videos_model extends CI_Model {
         return $dados;
     }
 
+
     public function buscar_autores($idCliente){
         $this->db->select('*')->where('idCliente', $idCliente)->from('Entidade ent');
         $this->db->join('Entidade_has_Tipo_Entidade eht', 'eht.idEntidade = ent.idEntidade');
@@ -230,5 +231,21 @@ class Faixas_Videos_model extends CI_Model {
         } else {
             return NULL;
         }
+    }
+
+
+    public function cadastrar_faixa_simples($faixa){
+        $this->db->insert('faixa_video', $faixa);
+        return $this->db->insert_id();
+
+    }
+
+    public function cadastrar_album_has_faixa($tracklist){
+        $this->db->insert('album_has_faixa', $tracklist);
+        return $this->db->insert_id();
+    }
+
+    public function cadastrar_faixa_has_imposto($imposto_faixa){
+        $this->db->insert('faixa_video_has_imposto', $imposto_faixa);
     }
 }

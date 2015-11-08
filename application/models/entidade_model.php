@@ -22,6 +22,11 @@ class Entidade_model extends CI_Model
         }
     }
 
+    public function cadastra_ent_has_tipo_ent_unica($ent_has_tipo_ent)
+    {
+        $this->db->insert('entidade_has_tipo_entidade', $ent_has_tipo_ent);
+    }
+
     public function buscar_entidades($idCliente = 0)
     {
         //$this->db->select('idFavorecido,nome AS Fnome')->from('Favorecido fav');

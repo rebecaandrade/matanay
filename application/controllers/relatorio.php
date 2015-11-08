@@ -10,6 +10,7 @@ class Relatorio extends CI_Controller
         $this->load->model('albuns_model');
         $this->load->model('faixas_videos_model');
         $this->load->model('entidade_model');
+        $this->load->model('favorecido_model');
         $this->load->model('imposto_model');
         $this->load->library('excel');
         $this->load->helper('myDirectory');
@@ -46,7 +47,11 @@ class Relatorio extends CI_Controller
     }
 
     public function opcoes_relatorio() {
-        $id_cliente = $this->session->userdata('cliente_id');
+        //FUNCAO DE IMPORTACAO
+        $this->getModelos();
+        ////////////////////
+
+
         $relatorios = $this->relatorio_model->busca_relatorios($id_cliente);
         foreach ($relatorios as $relatorio) {
             $venda = $this->vendas_model->buscar_vendas($relatorio->idRelatorio)[0];
@@ -77,14 +82,14 @@ class Relatorio extends CI_Controller
             $venda->relatorio = $relatorio;
             $venda->apuracao = $venda->relatorio->periodo_apuracao;
             $venda->descricao = "Ambos";
-            //die(var_dump($venda));
 
-            //Envio das informacoes do calculo do valor para cada entidade
+            //Envio das informacoes do calculo do valor para cada entidade e inicio da parte de calculo
             $dadosMontante['porcentagem_ganho'] = $this->entidade_model->buscar_entidade_has_faixa();
             $dadosMontante['impostos_faixas'] = $this->imposto_model->pegar_impostos_faixa();
             $dadosMontante['impostos_album'] = $this->imposto_model->pegar_impostos_album();
 
-            $dados["montante"] = $this->calculoPagamento($dadosMontante,$idEntidade = 7, $idFaixa = 9);
+            $dados["montante"] = $this->calculoPagamento($valorPagamento = 100,$dadosMontante,$idEntidade = 7,$idFaixa = 9);
+            //Fim da parte de calculos
 
             $dados['vendas'][] = $venda;
         }
@@ -93,10 +98,8 @@ class Relatorio extends CI_Controller
         return;
     }
 
-    public function calculoPagamento($dadosMontante, $idEntidade, $idFaixa){
-        //valores apenas para exemplo
-        $valorPagamento = 100;
-
+    public function calculoPagamento($valorPagamento, $dadosMontante, $idEntidade, $idFaixa){
+        //valores apenas para exemplo jah que nao tenho os valores totais
 
 
         foreach ($dadosMontante['porcentagem_ganho'] as $montante) {
@@ -104,62 +107,258 @@ class Relatorio extends CI_Controller
                 $pagamentoIndividual[$idEntidade] = $valorPagamento * $montante->percentual / 100;
             }
         }
-        var_dump($dadosMontante);
         foreach ($dadosMontante['impostos_faixas'] as $impostos_faixas) {
             if($impostos_faixas->idFaixa == $idFaixa){
                 $impostoFaixa[$idFaixa] = $valorPagamento * $impostos_faixas->valor / 100;
             }
         }
-        die(var_dump($impostoFaixa));
+        foreach ($dadosMontante['impostos_album'] as $impostos_album) {
+            if($impostos_album->idAlbum == $idAlbum){
+                $impostoAlbum[$idAlbum] = $valorPagamento * $impostos_album->valor / 100;
+            }
+        }
 
-
-
+        return array(
+                'pagamento' => $pagamentoIndividual,
+                'impostoFaixa' => $impostoFaixa,
+                'impostoAlbum' => $impostoAlbum
+            );
     }
 
-    /*public function getModelos($relatorios) {
-        $lojas = array();
-        $subLojas = array();
-        $territorios = array();
+    
+    
+    public function getModelos() {
+        $id_cliente = $this->session->userdata('cliente_id');
+        $relatorios = $this->relatorio_model->busca_relatorios($id_cliente);
+        //Partes da tabela album
+        $nomeAlbum = array();
+        $quantidadeAlbum = array();
+        $upc_ean = array();
+        $numFaixas = array();
+        $ano =  array();
+        $codCatalogo = array();
+        $tipoAlbum = array();
+
+        //Partes da tabela Artista
+        $nomeArtista = array();
+        $isrc = array();
+
+
+        $nomeFaixa = array();
+        $flag = 1;
+
         foreach ($relatorios as $relatorio) {
             try {
                 if (is_readable($relatorio->arquivo)) {
                     $objReader = PHPExcel_IOFactory::createReader('Excel2007');
                     $objReader->setReadDataOnly(TRUE);
-                    $objPHPExcel = $objReader->load($relatorio->arquivo);
+                    $objPHPExcel = $objReader->load($relatorio->arquivo); //TEMPO ABSURDO DE RESPOSTA
                     $arquivo = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
                     $lines = $objPHPExcel->getActiveSheet()->getHighestRow();
-                    $loja = $relatorio->loja;
-                    $subLoja = $relatorio->subloja;
-                    $territorio = $relatorio->territorio;
+                    if($flag == 1){
+                        $flag = 0;
+                        $linesAux = $lines;
+                    }
+                    //Parte da tabela de artista
+                    $nomeArtistaCol = 'P';
+
+                    //Parte da tabela de Faixa
+                    $nomeFaixaCol = 'O';
+                    $isrcCol = 'C';
+
+                    //Parte da tabela album
+                    $nomeAlbumCol = 'Q';
+                    $quantidadeAlbumCol = 'D';
+                    $upc_eanCol = 'A';
+                    $numFaixasCol = 'W';
+                    $anoCol = 'AB';
+                    $codCatalogoCol = 'B';
+                    $tipoAlbumCol = 'X';
+
+                    //Importacao dos dados para a tabela album
                     for ($line = 2; $line < $lines; $line++) {
-                        if ($arquivo[$line][$loja] != NULL && !in_array($arquivo[$line][$loja], $lojas)) {
-                            array_push($lojas, $arquivo[$line][$loja]);
+                        if ($arquivo[$line][$nomeAlbumCol] != NULL ) {
+                            array_push($nomeAlbum, $arquivo[$line][$nomeAlbumCol]);
                         }
                     }
+
                     for ($line = 2; $line < $lines; $line++) {
-                        if ($arquivo[$line][$subLoja] != NULL && !in_array($arquivo[$line][$subLoja], $subLojas)) {
-                            array_push($subLojas, $arquivo[$line][$subLoja]);
+                        if ($arquivo[$line][$quantidadeAlbumCol] != NULL ) {
+                            array_push($quantidadeAlbum, $arquivo[$line][$quantidadeAlbumCol]);
                         }
                     }
+
                     for ($line = 2; $line < $lines; $line++) {
-                        if ($arquivo[$line][$territorio] != NULL && !in_array($arquivo[$line][$territorio],
-                                $territorios)
+                        if ($arquivo[$line][$upc_eanCol] != NULL ) {
+                            array_push($upc_ean, $arquivo[$line][$upc_eanCol]);
+                        }
+                    }
+
+                    for ($line = 2; $line < $lines; $line++) {
+                        if ($arquivo[$line][$numFaixasCol] != NULL ) {
+                            array_push($numFaixas, $arquivo[$line][$numFaixasCol]);
+                        }
+                    }
+
+                    for ($line = 2; $line < $lines; $line++) {
+                        if ($arquivo[$line][$anoCol] != NULL ) {
+                            array_push($ano, $arquivo[$line][$anoCol]);
+                        }
+                    }
+
+                    for ($line = 2; $line < $lines; $line++) {
+                        if ($arquivo[$line][$codCatalogoCol] != NULL ) {
+                            array_push($codCatalogo, $arquivo[$line][$codCatalogoCol]);
+                        }
+                    }
+
+                    for ($line = 2; $line < $lines; $line++) {
+                        if ($arquivo[$line][$tipoAlbumCol] != NULL ) {
+                            array_push($tipoAlbum, $arquivo[$line][$tipoAlbumCol]);
+                        }
+                    }
+
+                    //Parte da importacao do artista
+                    for ($line = 2; $line < $lines; $line++) {
+                        if ($arquivo[$line][$nomeArtistaCol] != NULL ) {
+                            array_push($nomeArtista, $arquivo[$line][$nomeArtistaCol]);
+                        }
+                    }
+
+
+                    //Parte da importacao da Faixa
+                    for ($line = 2; $line < $lines; $line++) {
+                        if ($arquivo[$line][$nomeFaixaCol] != NULL 
                         ) {
-                            array_push($territorios, $arquivo[$line][$territorio]);
+                            array_push($nomeFaixa, $arquivo[$line][$nomeFaixaCol]);
                         }
-                    }
+                    } 
+
+                    for ($line = 2; $line < $lines; $line++) {
+                        if ($arquivo[$line][$isrcCol] != NULL 
+                        ) {
+                            array_push($isrc, $arquivo[$line][$isrcCol]);
+                        }
+                    }                                  
                 }
             } catch
             (Exception $e) {
                 continue;
             }
-            return array(
-                'lojas' => $lojas,
-                'sublojas' => $subLojas,
-                'territorios' => $territorios
-            );
         }
-    }*/
+        //Laco para cadastro dos dados adquiridos
+        for ($i=0; $i < 3 ; $i++) { 
+            
+            //Cadastro de artista(entidade e favorecido)
+            //Cadastro favorecido
+            $favorecido = array(
+                'nome' => $nomeArtista[$i],
+                'cpf' => '01427611173',
+                'cnpj' => NULL,
+                'contato' => 'asfasdf',
+                'email' => 'asdf@gmail.com',
+                'banco' => 'brasuk',
+                'agencia' => '34324',
+                'conta' => '43434',
+                'idCliente' => $this->session->userdata('id_cliente')
+
+            );
+
+            $idFavorecido = $this->favorecido_model->cadastrar_favorecido($favorecido);
+            
+            $fav = array(
+                'idFavorecido' => $idFavorecido,
+                'idTipo_Favorecido' => 1,
+                'percentual_fisico' => 40,
+                'percentual_digital' => 30
+            );
+
+            $this->favorecido_model->cadastra_fav_has_tipo_fav_unico($fav);
+            //fim cadastro favorecido
+
+            //Cadastro de entidade
+            $entidade = array(
+                'nome' => $nomeArtista[$i],
+                'cpf' => '01427611173',
+                'cnpj' => NULL,
+                'contato' => 'asfasdf',
+                'email' => 'asdf@gmail.com',
+                'idFavorecido' => $idFavorecido,
+                'idCliente' => $this->session->userdata('id_cliente')
+            );
+
+            $idEntidade = $this->entidade_model->cadastrar_entidade($entidade);
+
+            $Ent = array(
+                'idEntidade' => $idEntidade,
+                'idTipo_Entidade' => 1,
+                'percentual_fisico' => 40,
+                'percentual_digital' => 30
+            );
+
+            $this->entidade_model->cadastra_ent_has_tipo_ent_unica($Ent);
+            //fim cadastro entidade
+
+
+            //cadastro de album
+            //codigo para identificar o tipo de album
+            $tipoAlbumAux = 1;
+            if($tipoAlbum == "track")
+                $tipoAlbumAux = 1;
+            elseif($tipoAlbum == "live")
+                    $tipoAlbumAux = 2;
+                elseif ($tipoAlbum == "Colectionn") {
+                    $tipoAlbumAux = 3;
+                }
+            $album = array(
+                'nome' => $nomeAlbum[$i],
+                'quantidade' => $quantidadeAlbum[$i],
+                'upc_ean' => $upc_ean[$i],
+                'ano' => $ano[$i],
+                'faixa' => $numFaixas[$i],
+                'codigo_catalogo' => 0,
+                'idTipo_Album' => $tipoAlbumAux,
+                'idCliente' => $this->session->userdata('id_cliente')
+            );
+            $id_album = $this->albuns_model->cadastrar_album_simples($album);
+
+            $imposto_has_album = array(
+                'idAlbum' => $id_album,
+                'idImposto' => 1
+            );
+            $this->albuns_model->cadastrar_album_has_imposto($imposto_has_album);   
+
+            //Fim cadastro album
+            
+            //Cadastro de Faixa
+            $faixa = array(
+                'nome' => $nomeFaixa[$i],
+                'isrc' => $isrc[$i],
+                'codigo_video' => NULL,
+                'idCliente' => $this->session->userdata('id_cliente')
+            );
+
+            $id_faixa = $this->faixas_videos_model->cadastrar_faixa_simples($faixa);
+
+
+            $album_has_faixa = array(
+                'idAlbum' => $id_album,
+                'idFaixa' => $id_faixa
+            );
+            $this->faixas_videos_model->cadastrar_album_has_faixa($album_has_faixa);
+
+            $imposto_faixa = array(
+                'idFaixa' => $id_faixa,
+                'idImposto' => 2
+            );
+
+            $this->faixas_videos_model->cadastrar_faixa_has_imposto($imposto_faixa);            
+
+            //Fim cadastro faixa
+
+        }
+
+    }
 
     public function gera_relatorio() {
         $info = $this->input->post();
