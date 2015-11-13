@@ -121,6 +121,7 @@ $lang['cadastrar'] 			= 'Register';
 $lang['video'] 				= 'Video?';
 $lang['artista'] 			= 'Artist';
 $lang['autor'] 				= 'Writer';
+$lang['editora'] 			= 'Record';
 $lang['autores'] 			= 'Writers';
 $lang['produtor'] 			= 'Producer';
 $lang['produtores'] 		= 'Producers';
@@ -236,6 +237,10 @@ $lang['territorio']					= 'Territory';
 $lang['identificador_moeda']		= 'Currency identificator';
 $lang['selecione_coluna']			= 'Select the corresponding column for the following attributes:';
 $lang['modelos']					= 'MODELS';
+$lang['produto']					= 'Product';
+$lang['percentual_aplicado']		= 'Applied percentual';
+$lang['valor_pagar']				= 'Paying value';
+$lang['receita']					= 'Revenue';
 
 ////// VENDAS ////// Evandro
 

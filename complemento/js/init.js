@@ -1377,7 +1377,7 @@ function passaParamentroFavorecido(param, url) {
 }
 
 /************************* dataTables *************************/
-
+/*
 $(document).ready(function () {
     $('#myTable').dataTable({
         initComplete: function () {
@@ -1477,7 +1477,7 @@ $(document).ready(function () {
         }
     });
 });
-
+*/
 $(document).ready(function () {
     $('#nome').on("change", function () {
         var myName = $('#nome').val().split(" ");
@@ -1593,4 +1593,27 @@ function notificacaoMensagem(langOpt) {
         text: thisText[langOpt],  
         timer: 4000,
     });
+}
+
+function geraOpcoesParam(entidades, selecione,label) {
+    var opcoes = "<option value='' disabled selected>" + selecione + "</option>";
+    jQuery.each(entidades, function(i, val) {
+        opcoes += "<option value='" + entidades[i] + "'>" + entidades[i] + "</option>";
+    });
+    return opcoes;
+}
+function addSelectParam(entidades,selecione,label) {
+    var nameLower = label.toLowerCase();
+
+    $('.'+label).append('<div class="row"><div class="col s10 m8 l8">' +
+        '<select id="select' + label+'" class="add' + label + ' browser-default '+ label +'" name="' + nameLower + 's[]">' +
+        geraOpcoesParam(entidades, selecione) + '</select></div>' +
+        '<div class="col s4 m4"><a onclick="removes(\''+label+'\')"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
+        'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
+        '<i class="mdi-content-remove"></i></a></div></div>');
+    $('.add' + label).chosen({search_contains: true});
+}
+
+function removes(label){
+    $("#select"+label).parent('div').parent('div').remove();
 }

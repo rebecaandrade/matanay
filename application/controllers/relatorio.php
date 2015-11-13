@@ -5,6 +5,7 @@ class Relatorio extends CI_Controller
     public function __construct() {
         parent::__construct();
         $this->load->model('relatorio_model');
+        $this->load->model('cliente_model');
         $this->load->model('modelo_relatorio_model');
         $this->load->model('vendas_model');
         $this->load->model('albuns_model');
@@ -55,53 +56,91 @@ class Relatorio extends CI_Controller
     }
 
     public function opcoes_relatorio() {
-        //FUNCAO DE IMPORTACAO
-        $this->getModelos();
-        ////////////////////
-
-
+        $id_cliente = $this->session->userdata('cliente_id');
+        
         $relatorios = $this->relatorio_model->busca_relatorios($id_cliente);
+
         foreach ($relatorios as $relatorio) {
-            $venda = $this->vendas_model->buscar_vendas($relatorio->idRelatorio)[0];
-            $venda->tipo = $this->albuns_model->buscar_impostos_album($venda->idAlbum);
-            foreach ($venda->tipo as $imposto) {
-                $venda->imposto[] = $this->imposto_model->tipo_imposto($imposto->idImposto)[0]->descricao;
+            $vendas = $this->vendas_model->buscar_vendas($relatorio->idRelatorio);
+            foreach ($vendas as $venda) {
+                $venda->artistaInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,1)[0];
+                $venda->artista = $this->entidade_model->buscar_entidade_especifica($venda->artistaInfo['idEntidade'])->nome;
+                $venda->autorInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,2)[0];
+                $venda->autor = $this->entidade_model->buscar_entidade_especifica($venda->autorInfo['idEntidade'])->nome;
+                $venda->produtorInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,3)[0];
+                $venda->produtor = $this->entidade_model->buscar_entidade_especifica($venda->produtorInfo['idEntidade'])->nome;
+
+                $lojas[] = $venda->loja;
+                $sublojas[] = $venda->subloja;
+                $territorios[] = $venda->territorio;
+                $artistas[] = $venda->artista;
+                $produtores[] = $venda->produtor;
+
+                $venda->apuracao = $relatorio->periodo_apuracao;
+                $venda->tipo = $this->albuns_model->buscar_impostos_album($venda->idAlbum);
+                foreach ($venda->tipo as $imposto) {
+                    $venda->imposto[] = $this->imposto_model->tipo_imposto($imposto->idImposto)[0]->descricao;
+                }
+                $venda->imposto = array_unique($venda->imposto);
+                $venda->faixaInfo = $this->faixas_videos_model->buscar_dados($venda->idFaixa);
+                $venda->faixa = $venda->faixaInfo->nome;
+                if($venda->faixaInfo->codigo_video == '')
+                    $venda->produto = "Faixa";
+                else
+                    $venda->produto = "Video";
+                $isrcs[] = $venda->faixaInfo->isrc;
+                $venda->albumIndo = $this->albuns_model->buscar_dados($venda->idAlbum);
+                $upcs[] = $venda->albumIndo->upc_ean;
+                $catalogos[] = $venda->albumIndo->codigo_catalogo;
+                $venda->catalogo = $venda->albumIndo->codigo_catalogo;
+                $venda->isrc = $venda->faixaInfo->isrc;
+                $venda->upc = $venda->albumIndo->upc_ean;
+                $venda->percentual_aplicado = calcularPercentual($venda->percentual_aplicado = $this->entidade_model->buscar_entidade_has_faixa_id($venda->idFaixa));
+                $venda->valor_pagar = calcularValorPagar($venda->qnt_vendida,$venda->valor_recebido,$venda->percentual_aplicado);
+                $venda->receita = calcularReceita();
+                $venda->relatorio = $relatorio;
+                $venda->apuracao = $venda->relatorio->periodo_apuracao;
+                $venda->descricao = "Ambos";
+                //die(var_dump($this->imposto_model->pegar_impostos_faixa()));
+                //die(var_dump($venda));
+
+                $dados['vendas'][] = $venda;
             }
-            $venda->imposto = array_unique($venda->imposto);
-            $venda->artistaInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,1)[0];
-            $venda->artista = $this->entidade_model->buscar_entidade_especifica($venda->artistaInfo['idEntidade'])->nome;
-            $venda->autorInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,2)[0];
-            $venda->autor = $this->entidade_model->buscar_entidade_especifica($venda->autorInfo['idEntidade'])->nome;
-            $venda->produtorInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,3)[0];
-            $venda->produtor = $this->entidade_model->buscar_entidade_especifica($venda->produtorInfo['idEntidade'])->nome;
-            $venda->faixaInfo = $this->faixas_videos_model->buscar_dados($venda->idFaixa);
-            $venda->faixa = $venda->faixaInfo->nome;
-            if($venda->faixaInfo->codigo_video == '')
-                $venda->produto = "Faixa";
-            else
-                $venda->produto = "Video";
-            $venda->albumIndo = $this->albuns_model->buscar_dados($venda->idAlbum);
-            $venda->catalogo = $venda->albumIndo->codigo_catalogo;
-            $venda->isrc = $venda->faixaInfo->isrc;
-            $venda->upc = $venda->albumIndo->upc_ean;
-            $venda->percentual_aplicado = calcularPercentual();
-            $venda->valor_pagar = calcularValorPagar();
-            $venda->receita = calcularReceita();
-            $venda->relatorio = $relatorio;
-            $venda->apuracao = $venda->relatorio->periodo_apuracao;
-            $venda->descricao = "Ambos";
 
-            //Envio das informacoes do calculo do valor para cada entidade e inicio da parte de calculo
-            $dadosMontante['porcentagem_ganho'] = $this->entidade_model->buscar_entidade_has_faixa();
-            $dadosMontante['impostos_faixas'] = $this->imposto_model->pegar_impostos_faixa();
-            $dadosMontante['impostos_album'] = $this->imposto_model->pegar_impostos_album();
-
-            $dados["montante"] = $this->calculoPagamento($valorPagamento = 100,$dadosMontante,$idEntidade = 7,$idFaixa = 9, $idAlbum = 5);
-            //Fim da parte de calculos
-
-            $dados['vendas'][] = $venda;
+        }
+        $lojas = array_unique($lojas);
+        $sublojas = array_unique($sublojas);
+        $territorios = array_unique($territorios);
+        $artistas = array_unique($artistas);
+        $produtores = array_unique($produtores);
+        $isrcs = array_unique($isrcs);
+        $upcs = array_unique($upcs);
+        $catalogos = array_unique($catalogos);
+        $editoras = $this->cliente_model->clientesNome();
+        foreach ($editoras as $key => $value) {
+            $editoras[$key] = $value->nome;
+        }
+        $albuns = $this->albuns_model->buscar_all_albuns();
+        foreach ($albuns as $key => $value) {
+            $albuns[$key] = $value->nome;
         }
 
+        $faixas = $this->faixas_videos_model->buscar_all_faixas();
+        foreach ($faixas as $key => $value) {
+            $faixas[$key] = $value->nome;
+        }
+        $dados['lojas'] = $lojas;
+        $dados['sublojas'] = $sublojas;
+        $dados['territorios'] = $territorios;
+        $dados['artistas'] = $artistas;
+        $dados['editoras'] = $editoras;
+        $dados['produtores'] = $produtores;
+        $dados['albuns'] = $albuns;
+        $dados['faixas'] = $faixas;
+        $dados['isrcs'] = $isrcs;
+        $dados['upcs'] = $upcs;
+        $dados['catalogos'] = $catalogos;
+        
         $this->load->view('relatorio/opcoes_relatorio_view', $dados);
         return;
     }
@@ -133,8 +172,6 @@ class Relatorio extends CI_Controller
             );
     }
 
-    
-    
     public function getModelos() {
         $id_cliente = $this->session->userdata('cliente_id');
         $relatorios = $this->relatorio_model->busca_relatorios($id_cliente);
@@ -614,14 +651,18 @@ class Relatorio extends CI_Controller
     }
 }
 
-function calcularPercentual(){
-    return 0;
+function calcularPercentual($percentual_aplicados){
+        $percentual_aplicado = 0;
+        foreach ($percentual_aplicados as $key => $percentual) {
+            $percentual_aplicado += $percentual->percentual;
+        }
+        return $percentual_aplicado;
 }
 
-function calcularValorPagar(){
+function calcularValorPagar($qnt_vendida,$valor_recebido,$percentual_aplicado){
     return 0;
 }
 
 function calcularReceita(){
-    return 0;
+    return $qnt_vendida*$valor_recebido*$percentual_aplicado;
 }

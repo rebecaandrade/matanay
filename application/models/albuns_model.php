@@ -29,6 +29,11 @@ class Albuns_model extends CI_Model {
         return $this->db->get('Album')->result();
     }
 
+    public function buscar_all_albuns(){
+        $this->db->where('excluido =', NULL);
+        return $this->db->get('Album')->result();
+    }
+
     public function buscar_dados($id){
         $this->db->where('idAlbum', $id);
         return $this->db->get('Album')->row();

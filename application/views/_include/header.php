@@ -27,6 +27,7 @@
     <script src="<?php echo base_url(); ?>complemento/js/jquery.mask.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/DataTables-1.10.7/media/js/jquery.dataTables.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/DataTables-1.10.7/media/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url(); ?>complemento/js/DataTables-1.10.7/media/js/jquery.dataTables.columnFilter.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/chosen_v1.4.2/chosen.jquery.js"></script>
 </head>
 <body>

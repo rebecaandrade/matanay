@@ -112,7 +112,13 @@ class Cliente_model extends CI_Model
 
     public function clientes()
     {
-        return $this->db->get_where('cliente', array('excluido' => NULL))->result();
+        return $this->db->get_where('Cliente', array('excluido' => NULL))->result();
+    }
+
+    public function clientesNome()
+    {
+        $this->db->select('nome');
+        return $this->db->get_where('Cliente', array('excluido' => NULL, 'nome !=' => 'admin'))->result();
     }
 
     public function perfis($id)
