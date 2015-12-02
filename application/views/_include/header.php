@@ -106,6 +106,9 @@
                         <a href="<?php echo base_url(); ?>index.php/imposto/listar"><?php echo $this->lang->line('imposto'); ?></a>
                     </div>
                     <div class="collapsible-body">
+                        <a href="<?php echo base_url(); ?>index.php/contrato/listar"><?php echo $this->lang->line('contrato'); ?></a>
+                    </div>
+                    <div class="collapsible-body">
                         <a href="<?php echo base_url().'index.php/cliente/lista_perfis/'.$this->session->userdata('cliente_id'); ?>"><?php echo $this->lang->line("perfis"); ?></a>
                     </div>
                 </li>
@@ -187,6 +190,9 @@
             <li>
                 <a href="<?php echo base_url(); ?>index.php/imposto/listar"><?php echo $this->lang->line('imposto'); ?></a>
         	</li>
+            <li>
+                <a href="<?php echo base_url(); ?>index.php/contrato/listar"><?php echo $this->lang->line('contrato'); ?></a>
+            </li>
             <li>
                 <a href="<?php echo base_url().'index.php/cliente/lista_perfis/'.$this->session->userdata('cliente_id'); ?>"><?php echo $this->lang->line("perfis"); ?></a>
             </li>

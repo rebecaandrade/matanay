@@ -1,12 +1,14 @@
 <?php
 	class contrato_model extends CI_Model {
-		public function cadastrar($nome,$data_inicio,$data_fim,$alerta,$id){
+		public function cadastrar($nome,$data_inicio,$data_fim,$alerta,$idEntidade, $idFavorecido, $idCliente){
 			$contrato = array( 
 						'nome'			=> $nome,
 						'data_inicio'	=> $data_inicio,
 						'data_fim'		=> $data_fim,
 						'alerta'		=> $alerta,
-						'idEntidade'	=> $id,
+						'idEntidade'	=> $idEntidade,
+						'idFavorecido'	=> $idFavorecido,
+						'idCliente'		=> $idCliente,
 			);
 			return	$this->db->insert('Contrato',$contrato);
 		}
@@ -39,4 +41,11 @@
 			$this->db->where('idCliente', $id_cliente);
 			return $this->db->get('Contrato')->result();	
 		}
+
+		public function deletar($id)
+	    {
+	        $this->db->where('idContrato', $id);
+	        $dados['excluido'] = 1;
+	        $this->db->update('contrato', $dados);
+	    }
 	}

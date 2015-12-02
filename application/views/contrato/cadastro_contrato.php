@@ -5,7 +5,7 @@
 			<div id="titulo_lista">
 				<div class="row">
 					<div class="input-field col s12 m8 l9">
-						<i class="mdi-action-account-circle"></i>
+						<i class="mdi-action-description"></i>
 						<?php echo $this->lang->line('contrato_cadastro'); ?>
 					</div>
 				</div>
@@ -14,9 +14,8 @@
 				<?php echo form_open('contrato/cadastrar_contrato') ?>
 					<div class="row">
 						<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
-							<i class="mdi-action-description prefix"></i>	
-							<label><?php echo $this->lang->line('nome'); ?></label>
 							<input type='text' name='nome' value="<?php echo set_value('nome'); ?>" required>
+							<label><?php echo $this->lang->line('nome'); ?></label>
 						</div>
 					</div>
 					<div class="row">
@@ -27,6 +26,7 @@
 									<option value="<?php echo $entidade->idEntidade ?>"><?php echo $entidade->nome ?></option>
 								<?php } ?>
 							</select>
+							<label><?php echo $this->lang->line('entidade'); ?></label>
 						</div>
 					</div>
 					<div class="row">
@@ -37,22 +37,23 @@
 									<option value="<?php echo $favorecido->idFavorecido ?>"><?php echo $favorecido->nome ?></option>
 								<?php } ?>
 							</select>
+							<label><?php echo $this->lang->line('favorecido'); ?></label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m10 offset-m1 l4 offset-l2">
-							<label><?php echo $this->lang->line('data_inicio'); ?></label>
 							<input class="datepicker" type='date' name='data_inicio' required >
+							<label><?php echo $this->lang->line('data_inicio'); ?></label>
 						</div>
 					
 						<div class="input-field col s12 m10 offset-m1 l4">
-							<label ><?php echo $this->lang->line('data_fim'); ?></label>
 							<input class="datepicker" type='date' name='data_fim' >
+							<label ><?php echo $this->lang->line('data_fim'); ?></label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m10 offset-m1 l8 offset-l2">
-							<select name="alerta" required >
+							<select name="alerta" required>
 								<option  value='' disabled selected> </option>
 								<option value='1'> 1 <?php echo $this->lang->line('mes'); ?></option>
 								<?php for ($i=2; $i <= 12; $i++) { ?>

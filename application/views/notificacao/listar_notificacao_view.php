@@ -38,7 +38,8 @@ $this->load->view('_include/header') ?>
                         if($tempo[2] == "M"){
                             $meses = $tempo[0] + $tempo[10] / 4 ;
                         }
-                    if((($meses <= $notificacao->alerta)&&($meses != 0))||(($meses <= $notificacao->alerta)&&($tempo != '1 Second'))){ ?>
+                    if((($meses <= $notificacao->alerta)&&($meses != 0))||(($meses <= $notificacao->alerta)&&($tempo != '1 Second'))){ 
+                        if($notificacao->excluido == NULL){?>
                         <tr>
                             <td>    <?php echo $notificacao->nome; ?>           </td>
                             <td>    <?php echo $notificacao->data_fim; ?>       </td>
@@ -50,7 +51,7 @@ $this->load->view('_include/header') ?>
                                 if ($favorecido->idFavorecido == $notificacao->idFavorecido) { ?>
                                     <td>    <?php echo $favorecido->nome; ?>      </td>                                    
                                     <?php break; ?>                                   
-                            <?php } } ?>
+                            <?php } } } ?>
                         </tr>
                 <?php } } ?>
             </tbody>

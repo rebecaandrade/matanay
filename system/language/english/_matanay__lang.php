@@ -100,8 +100,8 @@ $lang['esqueceu_senha'] 	= 'Forgot your password?';
 ////// MENU 
 
 $lang['home'] 				= 'HOME';
-$lang['cadastros'] 			= 'DATA MANAGEMENT';
-$lang['relatorios'] 		= 'REPORTS';
+$lang['cadastros'] 			= 'MENAGE DATA';
+$lang['relatorios'] 		= 'IMPORT REPORTS';
 $lang['vendas'] 			= 'RECEIPTS';
 $lang['sair'] 				= 'LOGOUT';
 
@@ -113,7 +113,6 @@ $lang['albums'] 			= 'ALBUMS';
 $lang['entidades'] 			= 'ENTITIES';
 $lang['favorecidos']		= 'FAVOREDS';
 $lang['imposto']			= 'TAX';
-$lang['contrato']			= 'CONTRACT';
 
 ////// FAIXAS 
 
@@ -122,7 +121,6 @@ $lang['cadastrar'] 			= 'Register';
 $lang['video'] 				= 'Video?';
 $lang['artista'] 			= 'Artist';
 $lang['autor'] 				= 'Writer';
-$lang['editora'] 			= 'Record';
 $lang['autores'] 			= 'Writers';
 $lang['produtor'] 			= 'Producer';
 $lang['produtores'] 		= 'Producers';
@@ -170,7 +168,6 @@ $lang['contrato_cadastrar']		= 'Register';
 $lang['contrato_entidade']		= 'Choose the entity';
 $lang['contrato_favorecido']	= 'Choose the favored';
 $lang['contrato_cadastro']		= 'Contract Registry';
-$lang['contrato_edicao']		= 'Contract Update';
 
 /////ENTIDADES/FAVORECIDO  Jadiel
 $lang['entidade'] 					= 'Entity';
@@ -224,7 +221,6 @@ $lang['valor']				= 'Value';
 $lang['cadastro_imposto'] 	= 'Taxes Cadastre';
 $lang['fisico'] 			= 'Phisical';
 $lang['digital'] 			= 'Digital';
-$lang['ambos'] 				= 'Both';
 
 ////// MODELO DE RELATORIO ////// Vitor
 
@@ -239,18 +235,6 @@ $lang['territorio']					= 'Territory';
 $lang['identificador_moeda']		= 'Currency identificator';
 $lang['selecione_coluna']			= 'Select the corresponding column for the following attributes:';
 $lang['modelos']					= 'MODELS';
-$lang['produto']					= 'Product';
-$lang['percentual_aplicado']		= 'Applied percentual';
-$lang['valor_pagar']				= 'Paying value';
-$lang['receita']					= 'Revenue';
-
-////// VENDAS ////// Evandro
-
-$lang['entidade'] 					= 'Entity';
-$lang['vendas_min'] 				= 'Receipts';
-$lang['vendas_total'] 				= 'Total Sales';
-$lang['album_min'] 					= 'Album';
-$lang['faixa_min'] 					= 'Track';
 
 ////// CLIENTE ////// Vitor
 

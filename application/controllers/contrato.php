@@ -3,7 +3,9 @@
 	class Contrato extends CI_controller {
 		public function __construct() {
 			parent::__construct();
-			$this->load->model('contrato_model');
+	        $this->load->model('Entidade_model');
+	        $this->load->model('Favorecido_model');
+			$this->load->model('Contrato_model');
 			$this->form_validation->set_error_delimiters('',''); // remove tags HTML das mensagem de erro de FORM VALIDATION
 
 			if (!($this->session->userdata('linguagem'))) {
@@ -13,15 +15,24 @@
 			$linguagem_usuario = $this->session->userdata('linguagem');
 			$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 		}
+
+	    public function listar()
+	    {
+	        $id_cliente = $this->session->userdata('cliente_id');
+	        $dados["dadoContrato"] = $this->Contrato_model->buscar_datas($id_cliente);
+	        $dados["dadosFavorecido"] = $this->Favorecido_model->buscar_favorecido($id_cliente);
+	        $dados["dadosEntidade"] = $this->Entidade_model->buscar_entidades($id_cliente);
+	        $this->load->view("contrato/listagem_contrato", $dados);
+	    }
+
 		public function cadastro(){
 			$id_cliente = $this->session->userdata('id_cliente');
-			$dados['entidades'] = $this->contrato_model->buscar_entidades($id_cliente);
-			$dados['favorecidos'] = $this->contrato_model->buscar_favorecidos($id_cliente);
+			$dados['entidades'] = $this->Contrato_model->buscar_entidades($id_cliente);
+			$dados['favorecidos'] = $this->Contrato_model->buscar_favorecidos($id_cliente);
 			$this->load->view('contrato/cadastro_contrato',$dados);
 		}
 		public function cadastrar_contrato(){
-			var_dump($this->input->post());
-			die();
+
 			$this->form_validation->set_message('required', $this->lang->line('form_error_required') );
 			$this->form_validation->set_message('max_length', $this->lang->line('form_error_max_length'));
 			$this->form_validation->set_message('is_int', $this->lang->line('form_error_is_int'));
@@ -36,11 +47,11 @@
 				$alerta = $this->input->post('alerta');
 				$id_entidade = $this->input->post('entidade');
 				$id_favorecido = $this->input->post('favorecido');
-				$this->contrato_model->cadastrar($nome,$data_inicio,$data_fim,$alerta,$id);
-				$mensagem = array(
-								'mensagem'		=> $this->lang->line('cadastrado_sucesso'),
-								'tipo_mensagem' => 'success'
-							);
+				$idCliente = $this->session->userdata('cliente_id');
+				$this->Contrato_model->cadastrar($nome,$data_inicio,$data_fim,$alerta,$id_entidade, $id_favorecido,$idCliente);
+				$this->session->set_userdata('mensagem', '=)');
+	            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
+	            $this->session->set_userdata('tipo_mensagem', 'success');
 				redirect('contrato/listar');
 			} else {
 				$mensagem = array(
@@ -54,16 +65,11 @@
 		}
 		/////// FORM VALIDATION
 		public function data_valida($data){
-			$padrao = "/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/";
-			if(preg_match($padrao,$data)){
-				return TRUE;
-			} 
-			else {
-				return FALSE;
-			}
+			return TRUE;
+
 		}
 		public function permissao_entidade($id){
-			$entidade = $this->contrato_model->buscar_entidade($id);
+			$entidade = $this->Contrato_model->buscar_entidade($id);
 			if($entidade->idCliente == $this->session->userdata('id_cliente')){
 				return TRUE;
 			}
@@ -72,7 +78,7 @@
 			}
 		}
 		public function permissao_favorecido($id){
-			$favorecido = $this->contrato_model->buscar_favorecido($id);
+			$favorecido = $this->Contrato_model->buscar_favorecido($id);
 			if($favorecido->idCliente == $this->session->userdata('id_cliente')){
 				return TRUE;
 			}
@@ -80,19 +86,20 @@
 				return FALSE;
 			}
 		}
+
 		public function depois_data_inicio($fim){
 			$inicio = $this->input->post('data_inicio');
-			$fim = explode("-",$fim);
-			$fim_jd = GregorianToJD($fim[1], $fim[2], $fim[0]);
-			$inicio = explode("-",$inicio);
-			$inicio_jd = GregorianToJD($inicio[1], $inicio[2], $inicio[0]);
-			if($inicio_jd > fim_jd){
+			$inicio = date('d-m-Y', strtotime($inicio));
+			$fim = date('d-m-Y', strtotime($fim));
+
+			if($inicio>$fim){
 				return FALSE;
 			}
 			else{
 				return TRUE;
 			}
 		}
+
 		public function decimal_num($valor){
 			$valor = str_replace (',','.',$valor); //substitui virgulas por pontos para fazer o type casting
 			if((string)(float)$valor == $valor){ //verifica se é um numero
@@ -104,4 +111,14 @@
 			}
 			
 		}
+
+		public function deletar($idCadastro)
+	    {
+	        $this->Contrato_model->deletar($idCadastro);
+	        $this->session->set_userdata('mensagem', '=)');
+	        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('excluido_sucesso'));
+	        $this->session->set_userdata('tipo_mensagem', 'success');
+	        $this->listar();
+	    }
+
 	}

@@ -100,8 +100,8 @@ $lang['esqueceu_senha'] 	= 'Esqueceu sua senha?';
 ////// MENU 
 
 $lang['home'] 				= 'INÍCIO';
-$lang['cadastros'] 			= 'CADASTROS';
-$lang['relatorios'] 		= 'IMPORTAR RELATÓRIOS';
+$lang['cadastros'] 			= 'GERENCIA DE DADOS';
+$lang['relatorios'] 		= 'RELATÓRIOS';
 $lang['vendas'] 			= 'VENDAS';
 $lang['sair'] 				= 'SAIR';
 
@@ -112,6 +112,8 @@ $lang['albums'] 			= 'ÁLBUNS';
 $lang['entidades'] 			= 'ENTIDADES';
 $lang['favorecidos']		= 'FAVORECIDOS';
 $lang['imposto']			= 'IMPOSTOS';
+$lang['contrato']			= 'CONTRATOS';
+
 
 ////// FAIXAS 
 
@@ -169,6 +171,8 @@ $lang['contrato_cadastrar']		= 'Cadastrar';
 $lang['contrato_entidade']		= 'Escolha a entidade';
 $lang['contrato_favorecido']	= 'Escolha o favorecido';
 $lang['contrato_cadastro']		= 'Cadastro de Contrato';
+$lang['contrato_edicao']		= 'Atualização de Contrato';
+
 
 /////ENTIDADES/FAVORECIDO /*FEITO POR MIM JADIEL*/
 $lang['nome_entidade']				='Nome da entidade';
