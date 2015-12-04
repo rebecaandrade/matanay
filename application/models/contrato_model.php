@@ -53,6 +53,7 @@
 		public function buscar_datas($id_cliente){
 			$this->load->helper('date');
 			$this->db->where('idCliente', $id_cliente);
+			$this->db->where('excluido =', NULL);
 			return $this->db->get('Contrato')->result();	
 		}
 

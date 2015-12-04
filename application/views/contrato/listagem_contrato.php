@@ -30,7 +30,7 @@ $this->load->view('_include/header') ?>
             </thead>
             <tbody>
                 <?php foreach ($dadoContrato as $contrato) { 
-                    if(($contrato->excluido == NULL)&&($contrato->idCliente == $this->session->userdata('id_cliente'))){?>
+                    if($contrato->idCliente == $this->session->userdata('id_cliente')){?>
                         <tr>
                             <td>    <?php echo $contrato->nome; ?>           </td>
                             <td>    <?php echo $contrato->data_fim; ?>       </td>

@@ -78,7 +78,10 @@
     <div class="row">
     </div>
     <div class="row">
-    	<?php $contador = 0?>
+    	<?php 
+    	$contador = 0;
+		$flag = 1;
+		?>
         <?php foreach ($dadoNotificacao as $notificacao) { 
             //contador serve para imprimir apenas as tres notificacoes mais 
             if ($contador >= 3)
@@ -99,37 +102,40 @@
                 }
             if((($meses <= $notificacao->alerta)&&($meses != 0))||(($meses <= $notificacao->alerta)&&($tempo != '1 Second'))){ 
             	$contador ++; ?>
-                <div id="titulo_lista">
-			        <div class="row">
-			            <div id="tituloNotificacao" class="input-field col s12 m8 l9">
-			                <i class="mdi-alert-warning"></i>
-			                <?php echo $this->lang->line('principaisNotificacoes'); ?>
-			            </div>
-			        </div>
-			    </div>
-                <table  id="myTable_wrapper1" class="hoverable bordered">
-		            <thead>
-		                <tr>
-		                    <th>   <?php echo $this->lang->line('contrato_nome'); ?>    </th>
-		                    <th>   <?php echo $this->lang->line('data_fim'); ?>         </th>
-		                    <th>   <?php echo $this->lang->line('nome_entidade'); ?>    </th>
-		                    <th>   <?php echo $this->lang->line('nome_favorecido'); ?>  </th>
-		                </tr>
-		            </thead>
-		            <tbody>
-                        <tr>
-                            <td>    <?php echo $notificacao->nome; ?>           </td>
-                            <td>    <?php echo $notificacao->data_fim; ?>       </td>
-                            <?php foreach ($dadosEntidade as $entidade){
-                                if ($entidade->idEntidade == $notificacao->idEntidade){ ?>
-                                    <td>    <?php echo $entidade->nome; ?>      </td> 
-                                    <?php break; ?>                                   
-                            <?php } } foreach ($dadosFavorecido as $favorecido) {
-                                if ($favorecido->idFavorecido == $notificacao->idFavorecido) { ?>
-                                    <td>    <?php echo $favorecido->nome; ?>      </td>                                    
-                                    <?php break; ?>                                   
-                            <?php } } ?>
-                        </tr>
+                <?php if($flag == 1){ 
+                	$flag = 0; ?>
+                	<div id="titulo_lista">
+    			        <div class="row">
+    			            <div id="tituloNotificacao" class="input-field col s12 m8 l9">
+    			                <i class="mdi-alert-warning"></i>
+    			                <?php echo $this->lang->line('principaisNotificacoes'); ?>
+    			            </div>
+    			        </div>
+    			    </div>
+                    <table  id="myTable_wrapper1" class="hoverable bordered">
+    		            <thead>
+    		                <tr>
+    		                    <th>   <?php echo $this->lang->line('contrato_nome'); ?>    </th>
+    		                    <th>   <?php echo $this->lang->line('data_fim'); ?>         </th>
+    		                    <th>   <?php echo $this->lang->line('nome_entidade'); ?>    </th>
+    		                    <th>   <?php echo $this->lang->line('nome_favorecido'); ?>  </th>
+    		                </tr>
+    		            </thead>
+    		    <?php } ?>
+	            <tbody>
+                    <tr>
+                        <td>    <?php echo $notificacao->nome; ?>           </td>
+                        <td>    <?php echo $notificacao->data_fim; ?>       </td>
+                        <?php foreach ($dadosEntidade as $entidade){
+                            if ($entidade->idEntidade == $notificacao->idEntidade){ ?>
+                                <td>    <?php echo $entidade->nome; ?>      </td> 
+                                <?php break; ?>                                   
+                        <?php } } foreach ($dadosFavorecido as $favorecido) {
+                            if ($favorecido->idFavorecido == $notificacao->idFavorecido) { ?>
+                                <td>    <?php echo $favorecido->nome; ?>      </td>                                    
+                                <?php break; ?>                                   
+                        <?php } } ?>
+                    </tr>
                 <?php } } ?>
             </tbody>
         </table>
