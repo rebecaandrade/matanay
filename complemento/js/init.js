@@ -1376,6 +1376,12 @@ function passaParamentroFavorecido(param, url) {
     $('#sendUserToEdit').submit();
 }
 
+function passaParamentroContrato(param, url) {
+    $('#editarEntInput').prop('value', param);
+    $('#sendUserToEdit').prop('action', url + "index.php/contrato/camposatualizacao");
+    $('#sendUserToEdit').submit();
+}
+
 /************************* dataTables *************************/
 /*
 $(document).ready(function () {

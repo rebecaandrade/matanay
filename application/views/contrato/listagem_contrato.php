@@ -30,7 +30,7 @@ $this->load->view('_include/header') ?>
             </thead>
             <tbody>
                 <?php foreach ($dadoContrato as $contrato) { 
-                    if($contrato->excluido == NULL){?>
+                    if(($contrato->excluido == NULL)&&($contrato->idCliente == $this->session->userdata('id_cliente'))){?>
                         <tr>
                             <td>    <?php echo $contrato->nome; ?>           </td>
                             <td>    <?php echo $contrato->data_fim; ?>       </td>
@@ -45,13 +45,17 @@ $this->load->view('_include/header') ?>
                             <?php } } ?>
                             <td>
                                 <a class="acao"
-                                   onclick=" passaParamentroEntidade('<?= $contrato->idContrato ?>','<?= base_url() ?>')"><?php echo $this->lang->line('editar'); ?></a>
+                                   onclick=" passaParamentroContrato('<?= $contrato->idContrato ?>','<?= base_url() ?>')"><?php echo $this->lang->line('editar'); ?></a>
                                 | <a class="deletarLink" onclick="excluirImposto('<?= base_url() . 'index.php/contrato/deletar/' . $contrato->idContrato ?>','<?=$this->lang->line('langOpt')?>')"><?php echo $this->lang->line('deletar') ?> </a>
                             </td>
                         </tr>
                 <?php } } ?>
             </tbody>
         </table>
+        <form id="sendUserToEdit" method="post">
+            <input id="editarEntInput" type="hidden" name="oneInput">
+            <input id="submitAcao" type="submit" style="display: none">
+        </form>
     </div>
 </div>
 

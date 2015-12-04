@@ -78,7 +78,7 @@ class Entidade extends CI_Controller
         if (($info = $this->valida_cadastro_entidade()) != NULL) {
             //se for favorecido coloca no banco o que eh pego no form sobre favorecido
             if ($info['favorecido']) {
-                //die(var_dump($info));
+                die(var_dump($info));
                 $favorecido = $this->gera_favorecido($info);
                 //insere o favorecido no banco
                 $id_favorecido = $this->Favorecido_model->cadastrar_favorecido($favorecido);//coloca os telefones

@@ -12,6 +12,20 @@
 			);
 			return	$this->db->insert('Contrato',$contrato);
 		}
+
+		public function atualizar( $idContrato, $nome,$data_inicio,$data_fim,$alerta,$idEntidade, $idFavorecido, $idCliente){
+			$contrato = array( 
+						'nome'			=> $nome,
+						'data_inicio'	=> $data_inicio,
+						'data_fim'		=> $data_fim,
+						'alerta'		=> $alerta,
+						'idEntidade'	=> $idEntidade,
+						'idFavorecido'	=> $idFavorecido,
+						'idCliente'		=> $idCliente,
+			);
+			$this->db->where('idContrato', $idContrato);
+			return	$this->db->update('contrato', $contrato);
+		}
 		
 		public function buscar_entidades($id_cliente){
 			return $this->db->get_where('entidade',array('idCliente' => $id_cliente,'excluido' => NULL))->result();
@@ -47,5 +61,10 @@
 	        $this->db->where('idContrato', $id);
 	        $dados['excluido'] = 1;
 	        $this->db->update('contrato', $dados);
+	    }
+
+	    public function buscar_contrato_especifico($id_contrato){
+	    	$this->db->where('idContrato', $id_contrato);
+	    	return $this->db->get('contrato')->result()[0];
 	    }
 	}
