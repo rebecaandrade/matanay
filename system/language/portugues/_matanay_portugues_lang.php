@@ -56,7 +56,7 @@ $lang['voltar']				= 'VOLTAR';
 $lang['coluna']				= 'Coluna';
 $lang['escolha_opcao']		= 'Escolha uma opção';
 $lang['erro']				= 'Houve um erro';
-$lang['indisponivel']       = 'Indisponivel';
+$lang['indisponivel']       = 'Indisponível';
 $lang['disponivel']       	= 'Disponível';
 
 
@@ -100,7 +100,7 @@ $lang['esqueceu_senha'] 	= 'Esqueceu sua senha?';
 ////// MENU 
 
 $lang['home'] 				= 'INÍCIO';
-$lang['cadastros'] 			= 'GERENCIA DE DADOS';
+$lang['cadastros'] 			= 'GERÊNCIA DE DADOS';
 $lang['relatorios'] 		= 'RELATÓRIOS';
 $lang['vendas'] 			= 'VENDAS';
 $lang['sair'] 				= 'SAIR';
