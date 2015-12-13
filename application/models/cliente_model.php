@@ -7,6 +7,12 @@ class Cliente_model extends CI_Model
         return $this->db->get('funcionalidades')->result();
     }
 
+    public function buscarEmail($login)
+    {
+        $this->db->where('login', $login);
+        return $this->db->get('Usuario')->row();
+    }
+
     public function buscar_cliente($id)
     {
         $this->db->where('idCliente', $id);
@@ -109,6 +115,13 @@ class Cliente_model extends CI_Model
         $this->db->where('excluido', NULL);
         return $this->db->get('Usuario')->result();
     }
+
+    public function buscar_email($email)
+    {
+        $this->db->where('email', $email);
+        return $this->db->get('Usuario')->row();
+    }
+
 
     public function clientes()
     {

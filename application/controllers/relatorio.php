@@ -106,7 +106,7 @@ class Relatorio extends CI_Controller
                 $venda->upc = $venda->albumIndo->upc_ean;
                 $venda->percentual_aplicado = calcularPercentual($venda->percentual_aplicado = $this->entidade_model->buscar_entidade_has_faixa_id($venda->idFaixa));
                 $venda->valor_pagar = calcularValorPagar($venda->qnt_vendida,$venda->valor_recebido,$venda->percentual_aplicado);
-                $venda->receita = calcularReceita($venda->qnt_vendida,$venda->valor_recebido,$venda->percentual_aplicado);
+                $venda->receita = calcularReceita();
                 $venda->relatorio = $relatorio;
                 $venda->apuracao = $venda->relatorio->periodo_apuracao;
                 $venda->descricao = "Ambos";
@@ -149,6 +149,7 @@ class Relatorio extends CI_Controller
         $dados['isrcs'] = $isrcs;
         $dados['upcs'] = $upcs;
         $dados['catalogos'] = $catalogos;
+        
         $this->load->view('relatorio/opcoes_relatorio_view', $dados);
         return;
     }
@@ -671,6 +672,6 @@ function calcularValorPagar($qnt_vendida,$valor_recebido,$percentual_aplicado){
     return 0;
 }
 
-function calcularReceita($qnt_vendida,$valor_recebido,$percentual_aplicado){
+function calcularReceita(){
     return $qnt_vendida*$valor_recebido*$percentual_aplicado;
 }

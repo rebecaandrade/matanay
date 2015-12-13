@@ -169,7 +169,8 @@ class Cliente extends CI_Controller
         //die(var_dump($this->verifica_login('ComoEuSouGordo')));
         $info = $this->input->post();
         //die(var_dump($info));
-        if (!$this->verifica_login($info['login'])) {
+
+        if (($this->verifica_login_cadastro($info))&&($this->verifica_login_email_cadastro($info)))  {
             $this->session->set_userdata('mensagem', '=(');
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('login_existente'));
             $this->session->set_userdata('tipo_mensagem', 'error');
@@ -182,7 +183,8 @@ class Cliente extends CI_Controller
             $this->session->set_userdata('mensagem', '=)');
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
-            redirect('cliente/lista_perfis');
+            $id_cliente = $this->session->userdata('cliente_id');
+            $this->lista_perfis($id_cliente);
         }
     }
 
@@ -190,15 +192,55 @@ class Cliente extends CI_Controller
     {
         return array(
             'nome' => $info['nome'],
+            'email' => $info['email'],
             'login' => $info['login'],
             'senha' => md5($info['senha']),
             'idCliente' => $info['id']
         );
     }
 
-    public function verifica_login($login)
+    public function verifica_login($info)
     {
-        return sizeof($this->cliente_model->buscar_login($login)) == 0;
+        $id_cliente = $this->session->userdata('cliente_id');
+        $dados = $this->cliente_model->buscar_perfil($id_cliente, $info['id_usuario']);
+        if (sizeof($this->cliente_model->buscar_login($info['login'])) == 0)
+            return FALSE;
+        else
+            if ($dados->login == $info['login'])
+                return FALSE;
+            else
+                return TRUE;
+    }
+
+    public function verifica_login_email($info)
+    {
+        $id_cliente = $this->session->userdata('cliente_id');
+        $dados = $this->cliente_model->buscar_perfil($id_cliente, $info['id_usuario']);
+        if (sizeof($this->cliente_model->buscar_email($info['email'])) == 0)
+            return FALSE;
+        else
+            if ($dados->email == $info['email'])
+                return FALSE;
+            else
+                return TRUE;
+    }
+
+    public function verifica_login_cadastro($info)
+    {
+        if (sizeof($this->cliente_model->buscar_login($info['login'])) == 0)
+            return FALSE;
+        else 
+            return TRUE;
+
+    }
+
+    public function verifica_login_email_cadastro($info)
+    {
+        if (sizeof($this->cliente_model->buscar_email($info['email'])) == 0)
+            return FALSE;
+        else
+            return TRUE;    
+
     }
 
     public function atualiza_perfil_admin($id_cliente, $id_perfil)
@@ -224,7 +266,7 @@ class Cliente extends CI_Controller
         //die(var_dump("falhou o teste"));
         $info = $this->input->post();
         //die(var_dump($info,$this->session->userdata()));
-        if ($this->verifica_login($info['login'])) {
+        if ((!$this->verifica_login($info))&&(!$this->verifica_login_email($info))) {
             $myfunc = $this->cliente_model->minhas_funcionalidades($info['id_usuario']);
             foreach ($myfunc as $key => $dado) {
                 $myfunc[$key] = $dado->idFuncionalidades;
@@ -239,7 +281,8 @@ class Cliente extends CI_Controller
             $this->session->set_userdata('mensagem', '=)');
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
             $this->session->set_userdata('tipo_mensagem', 'success');
-            redirect('cliente/lista_perfis');
+            $id_cliente = $this->session->userdata('cliente_id');
+            $this->lista_perfis($id_cliente);
         } else {
             $this->session->set_userdata('mensagem', '=(');
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('login_existente'));
@@ -253,6 +296,7 @@ class Cliente extends CI_Controller
     {
         return array(
             'nome' => $info['nome'],
+            'email' => $info['email'],
             'login' => $info['login'],
             'idUsuario' => $info['id_usuario']
         );

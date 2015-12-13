@@ -86,6 +86,11 @@ $lang['atualizado_sucesso']		= 'Atualizado com sucesso!';
 $lang['cadastrado_sucesso']		= 'Cadastrado com sucesso!';
 $lang['excluido_sucesso']		= 'Excluído com sucesso!';
 $lang['acesso_negado']			= 'Acesso indevido';
+$lang['usuario_invalido']		= 'Usuario inválido';
+$lang['usuario_ou_senha_invalida']	= 'Usuario ou senha inválida';
+$lang['senha_invalida']				= 'Senha inválida';
+$lang['resetSuaSenha']				= 'Por favor altere sua senha';
+$lang['resetSuaSenhaLink']			= 'Por favor altere sua senha por esse link';
 $lang['permissao_insuficiente']	= 'Permissão insuficiente para esta ação';
 $lang['confirmar_deletar']		= 'Confirmar deleção?';
 $lang['problemas_formulario']	= 'Problemas com o formulario';
@@ -267,6 +272,7 @@ $lang['clientes'] 					= 'CLIENTES';
 $lang['perfis']						= 'PERFIS';
 $lang['perfis_row']					= 'Perfis';
 $lang['cliente_nome'] 				= 'Nome';
+$lang['cliente_email'] 				= 'Email';
 $lang['cliente_login'] 				= 'Login';
 $lang['cliente_senha']				= 'Senha';
 $lang['cliente_confirmar_senha']	= 'Confirmação de Senha';
@@ -278,6 +284,9 @@ $lang['cliente_cadastro']			= 'Cadastro de Cliente';
 $lang['cliente_edicao']				= 'Edição de Cliente';
 $lang['perfil_cadastro']			= 'Cadastro de Perfil';
 $lang['perfil_edicao']				= 'Edição de Perfil';
+$lang['min6char']				= 'Deve conter pelo menos 6 caracteres';
+$lang['min3char']				= 'Deve conter pelo menos 3 caracteres';
+
 
 
 ///////SIM OU NAO /*FEITO POR MIM JADIEL*/
@@ -337,7 +346,7 @@ $lang['erro_perc_produtor']    	 = 'A soma dos percentuais de Produtor deve ser 
 // mensagens validacao form cadastro de perfil
 $lang['password_error']                        = "Senhas não são iguais";
 $lang['marcar_todas']                          = "Marcar todas";
-$lang['login_existente']                       = "Login já existe";
+$lang['login_existente']                       = "Login ou email já existe";
 $lang['checkbox_erro']                         = "Seleciona uma funcionalidade";
 
 // relatoriios

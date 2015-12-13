@@ -86,6 +86,11 @@ $lang['atualizado_sucesso']			= 'Successfully Updated!';
 $lang['cadastrado_sucesso']			= 'Successfully Registered!';
 $lang['excluido_sucesso']			= 'Successfully Deleted!';
 $lang['acesso_negado']				= 'Undue access';
+$lang['usuario_invalido']			= 'Invalid user';
+$lang['usuario_ou_senha_invalida']	= 'Invalid user or password';
+$lang['senha_invalida']				= 'Invalid password';
+$lang['resetSuaSenha']				= 'Please reset your password';
+$lang['resetSuaSenhaLink']			= 'Please reset your password using this link';
 $lang['permissao_insuficiente']		= 'No authorization to execute this action';
 $lang['confirmar_deletar']			= 'Do you wish to delete this?';
 $lang['problemas_formulario']       = 'Problems with the form';
@@ -258,6 +263,7 @@ $lang['clientes'] 					= 'CUSTOMERS';
 $lang['perfis'] 					= 'PROFILES';
 $lang['perfis_row']					= 'Profiles';
 $lang['cliente_nome'] 				= 'Name';
+$lang['cliente_email'] 				= 'Email';
 $lang['cliente_login'] 				= 'Login';
 $lang['cliente_senha'] 				= 'Password';
 $lang['cliente_confirmar_senha']	= 'Confirm Password';
@@ -269,6 +275,9 @@ $lang['cliente_cadastro']			= 'Customer Registry';
 $lang['cliente_edicao']				= 'Customer Update';
 $lang['perfil_cadastro']			= 'Profile Registry';
 $lang['perfil_edicao']				= 'Profile Update';
+$lang['min6char']				= 'There should be at least 6 characters';
+$lang['min3char']				= 'There should be at least 3 characters';
+
 
 ////// SIM OU NAO
 
@@ -328,7 +337,7 @@ $lang['erro_perc_produtor']    	 = 'The Producer percentage field(s) must sum to
 // mensagens validacao form cadastro de perfil
 $lang['password_error']                        = "Passwords are not the same";
 $lang['marcar_todas']                          = "Check All";
-$lang['login_existente']                       = "Login already exists";
+$lang['login_existente']                       = "Login or email already exists";
 $lang['checkbox_erro']                         = "Choose a functionality";
 
 // relatoriios
