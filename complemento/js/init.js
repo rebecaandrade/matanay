@@ -1383,7 +1383,7 @@ function passaParamentroContrato(param, url) {
 }
 
 /************************* dataTables *************************/
-/*
+
 $(document).ready(function () {
     $('#myTable').dataTable({
         initComplete: function () {
@@ -1483,7 +1483,7 @@ $(document).ready(function () {
         }
     });
 });
-*/
+
 $(document).ready(function () {
     $('#nome').on("change", function () {
         var myName = $('#nome').val().split(" ");
