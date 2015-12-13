@@ -38,6 +38,7 @@ class Faixas_Videos_model extends CI_Model {
         $this->db->where('excluido =', NULL);
         return $this->db->get('Faixa_Video')->result();
     }
+    
     public function buscar_entidade_faixa($id, $tipo){
         $this->db->where('idFaixa', $id);
         $entidades_faixa = $this->db->get('Entidade_has_Faixa_Video')->result();
@@ -56,6 +57,7 @@ class Faixas_Videos_model extends CI_Model {
         }
         return $result;
     }
+    
     public function buscar_album_faixa($id){
         $this->db->where('idFaixa', $id);
         $albuns = $this->db->get('Album_has_Faixa')->result();

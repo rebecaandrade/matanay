@@ -6,7 +6,7 @@
         <div class="card-rec card-panel grey lighten-1">
 	        <div class="logo"><img src="<?php echo base_url().'complemento/img/logo3.fw.png' ?>"></div>
 	          
-			<?php echo form_open('acesso/logar') ?>
+			<?php echo form_open('acesso/recuperarSenha') ?>
 				<div class="row">
 		          	<div class="input-field col s12 m12 l12">
 		          		<i class="mdi-action-account-circle prefix"></i>

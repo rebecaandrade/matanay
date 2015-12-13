@@ -74,6 +74,11 @@ class Acesso extends CI_Controller {
 		$this->load->view('acesso/recuperar_senha');
 	}
 
+	public function recuperarSenha(){
+		
+
+	}
+
 	public function deslogar() {
 		$this->session->sess_destroy();
 		redirect('acesso/login');
