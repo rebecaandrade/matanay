@@ -6,7 +6,12 @@
             <div class="input-field col s12 m8 l10">
                 <i class="mdi-av-my-library-music"></i>
                 <?php echo $this->lang->line('albuns_cadastro'); ?>
+                <a href="<?php echo base_url(); ?>index.php/albuns/listar"
+                    class="btn-floating btn-medium waves-effect waves-light btn novo" id="addButton">
+                    <i class="mdi-hardware-keyboard-arrow-left"></i>
+                </a>
             </div>
+
         </div>
   	</div><br>
     <div class="row">

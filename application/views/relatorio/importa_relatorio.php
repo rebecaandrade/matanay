@@ -1,13 +1,15 @@
 <?php $this->load->view('_include/header') ?>
 <div id="wrapper-body" xmlns="http://www.w3.org/1999/html">
-    <div class="row">
-        <a href="<?=base_url().'index.php/relatorio/testaExcel'?>" class="btn"> Teste Excel</a>
-    </div>
     <div id="titulo_lista">
         <div class="row">
             <div class="input-field col s12 m8 l9">
                 <i class="mdi-action-assignment"></i>
                 <?= $this->lang->line('relatorios'); ?>
+                <a href="<?php echo base_url(); ?>index.php/relatorio/listar_relatorios"
+                    class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo" 
+                    data-position="top" data-delay="50" data-tooltip="<?php echo $this->lang->line('voltar'); ?>" id="backButton">
+                    <i class="mdi-hardware-keyboard-arrow-left"></i>
+                </a>
             </div>
         </div>
     </div>
