@@ -22,8 +22,8 @@ insert into matanay.cliente values(DEFAULT, "admin",NULL);
 insert into matanay.cliente values(DEFAULT, "cliente",NULL);
 
 /* usuario */
-insert into matanay.usuario values(DEFAULT, "admin","admin","21232f297a57a5a743894a0e4a801fc3",NULL,1);
-insert into matanay.usuario values(DEFAULT, "cliente","cliente","4983a0ab83ed86e0e7213c8783940193",NULL,2);
+insert into matanay.usuario values(DEFAULT, "admin","admin","21232f297a57a5a743894a0e4a801fc3",NULL,1,"email@gmail.com");
+insert into matanay.usuario values(DEFAULT, "cliente","cliente","4983a0ab83ed86e0e7213c8783940193",NULL,2,"email1@gmail.com");
 
 /* favorecidos */
 insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","fastAndFurious","170.252.797-22",NULL,"pleaseSomeBodyStopUs","oneMOreRide@email.com",NULL,1);
