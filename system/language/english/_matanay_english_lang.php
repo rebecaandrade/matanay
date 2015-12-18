@@ -109,7 +109,6 @@ $lang['cadastros'] 			= 'DATA MANAGEMENT';
 $lang['cadastros1'] 		= 'ENTITIES/FAVOREDS';
 $lang['relatorios'] 		= 'REPORTS';
 $lang['vendas'] 			= 'EXPORTATION OF REPORTS';
-$lang['vendas1'] 			= 'EXPORTATION OF REPORTS';
 $lang['sair'] 				= 'LOGOUT';
 
 ////// SUB_MENU 

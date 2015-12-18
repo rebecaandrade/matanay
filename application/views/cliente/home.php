@@ -7,7 +7,7 @@
 		    	<a href="<?php echo base_url(); ?>index.php/relatorio/gerar_vendas">
 			        <div class="card-panel grey ">
 			          	<i class="mdi-action-trending-up"></i>
-			          	<div class="label"><?php echo $this->lang->line('vendas1'); ?></div>
+			          	<div class="label"><?php echo $this->lang->line('vendas'); ?></div>
 			        </div> 
 		        </a> 
 	      	</div>
