@@ -106,8 +106,10 @@ $lang['esqueceu_senha'] 	= 'Esqueceu sua senha?';
 
 $lang['home'] 				= 'INÍCIO';
 $lang['cadastros'] 			= 'GERÊNCIA DE DADOS';
+$lang['cadastros1'] 		= 'ENTIDADES/FAVORECIDOS';
 $lang['relatorios'] 		= 'RELATÓRIOS';
 $lang['vendas'] 			= 'VENDAS';
+$lang['vendas1'] 			= 'EXPORTAÇÃO DE RELATÓRIOS';
 $lang['sair'] 				= 'SAIR';
 
 ////// SUB_MENU

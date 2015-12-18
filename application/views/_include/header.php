@@ -54,7 +54,6 @@
             </li>
             <li><a class="opcao-menu" id="cadastro" href="#"><?php echo $this->lang->line('cadastros'); ?></a></li>
             <li><a class="opcao-menu" id="relatorio" href="#"><?php echo $this->lang->line('relatorios'); ?></a></li>
-            <li><a class="opcao-menu" href="<?php echo base_url(); ?>index.php/relatorio/gerar_vendas"><?php echo $this->lang->line('vendas'); ?></a></li>
             <li><a class="opcao-menu"
                    href="<?php echo base_url(); ?>index.php/acesso/deslogar"><?php echo $this->lang->line('sair'); ?></a>
             </li>

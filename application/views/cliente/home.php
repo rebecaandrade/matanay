@@ -4,30 +4,30 @@
 	<div id="wrapper">
 	    <div id="home" class="row">
 	    	<div class="input-field col s12 m7 l4">
-		    	<a href="<?=base_url().'index.php/relatorio/listar_relatorios'?>">
-			        <div class="card-panel grey">
-			          	<i class="mdi-content-content-paste"></i>
-			          	<div class="label"><?php echo $this->lang->line('relatorios'); ?></div>
+		    	<a href="<?php echo base_url(); ?>index.php/relatorio/gerar_vendas">
+			        <div class="card-panel grey ">
+			          	<i class="mdi-action-trending-up"></i>
+			          	<div class="label"><?php echo $this->lang->line('vendas1'); ?></div>
 			        </div> 
-		        </a>
+		        </a> 
 	      	</div>
 
 	      	<div class="input-field col s7 m5 l3">
 		      	<a href="<?php echo base_url(); ?>index.php/cliente/cadastros">
 			        <div class="card-panel grey lighten-1">
 			          	<i class="mdi-action-account-child"></i>
-			          	<div class="label"><?php echo $this->lang->line('cadastros'); ?></div>
+			          	<div class="label"><?php echo $this->lang->line('cadastros1'); ?></div>
 			        </div>
 		        </a>
 	        </div>
 
 	        <div class="input-field col s5 m4 l3">
-		        <a href="<?php echo base_url(); ?>index.php/relatorio/gerar_vendas">
+		        <a href="<?=base_url().'index.php/relatorio/listar_relatorios'?>">
 			        <div class="card-panel grey lighten-2">
-			          	<i class="mdi-action-trending-up"></i>
-			          	<div class="label"><?php echo $this->lang->line('vendas'); ?></div>
+			          	<i class="mdi-content-content-paste"></i>
+			          	<div class="label"><?php echo $this->lang->line('relatorios'); ?></div>
 			        </div> 
-		        </a> 
+		        </a>
 	        </div>
 
 	        <div class="input-field col s12 m8 l2">
