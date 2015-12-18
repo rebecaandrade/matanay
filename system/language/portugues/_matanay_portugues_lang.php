@@ -108,7 +108,7 @@ $lang['home'] 				= 'INÍCIO';
 $lang['cadastros'] 			= 'GERÊNCIA DE DADOS';
 $lang['cadastros1'] 		= 'ENTIDADES/FAVORECIDOS';
 $lang['relatorios'] 		= 'RELATÓRIOS';
-$lang['vendas'] 			= 'VENDAS';
+$lang['vendas'] 			= 'EXPORTAÇÃO DE RELATÓRIOS';
 $lang['vendas1'] 			= 'EXPORTAÇÃO DE RELATÓRIOS';
 $lang['sair'] 				= 'SAIR';
 
@@ -262,7 +262,7 @@ $lang['receita']					= 'Receita';
 ////// VENDAS ////// Evandro
 
 $lang['entidade'] 					= 'Entidade';
-$lang['vendas_min'] 				= 'Vendas';
+$lang['vendas_min'] 				= 'Exportação de relatórios';
 $lang['vendas_total'] 				= 'Total de Vendas';
 $lang['album_min'] 					= 'Álbum';
 $lang['faixa_min'] 					= 'Faixa';
