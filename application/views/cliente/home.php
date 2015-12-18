@@ -30,14 +30,28 @@
 		        </a>
 	        </div>
 
-	        <div class="input-field col s12 m8 l2">
-		        <a href="<?php echo base_url(); ?>index.php/cliente/lista_clientes">
-			        <div class="card-panel grey lighten-3">
-			          	<i class="mdi-social-person"></i>
-			          	<div class="label"><?php echo $this->lang->line('clientes'); ?></div>
-			        </div> 
-		        </a> 
-	        </div>
+	        <!--O unico que pode acessar os clientes eh o admin, para um usuario comum soh pode ser visto os perfis-->
+	        <?php if ($this->session->userdata('login') == "admin"){?>
+		        <div class="input-field col s12 m8 l2">
+			        <a href="<?php echo base_url(); ?>index.php/cliente/lista_clientes">
+				        <div class="card-panel grey lighten-3">
+				          	<i class="mdi-social-person"></i>
+				          	<div class="label"><?php echo $this->lang->line('clientes'); ?></div>
+				        </div> 
+			        </a> 
+		        </div>
+		    <?php } else { ?>
+		    	<div class="input-field col s12 m8 l2">
+			        <a href="<?php echo base_url().'index.php/cliente/lista_perfis/'.$this->session->userdata('cliente_id');?>">
+				        <div class="card-panel grey lighten-3">
+				          	<i class="mdi-social-person"></i>
+				          	<div class="label"><?php echo $this->lang->line('perfis'); ?></div>
+				        </div> 
+			        </a> 
+		        </div>
+
+		    <?php } ?>
+
 
 	    	<div class="input-field col s5 m6 l2">
 		        <a href="<?php echo base_url(); ?>index.php/albuns/listar">

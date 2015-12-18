@@ -148,7 +148,7 @@ class Cliente_model extends CI_Model
             'excluido' => 1
         );
         $this->db->where('idCliente', $id_cliente);
-        $this->db->update('perfis', $array);
+        $this->db->update('usuario', $array);
 
         $this->db->where('idCliente', $id_cliente);
         $this->db->update('Cliente', $array);

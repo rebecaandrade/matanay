@@ -67,7 +67,12 @@ class Cliente extends CI_Controller
 
     public function cadastro_cliente()
     {
-        $this->load->view('cliente/cadastrar_cliente');
+        if ($this->session->userdata('login') == "admin"){
+            $this->load->view('cliente/cadastrar_cliente');
+        }
+        else{
+            $this->home();
+        }
     }
 
     public function cadastrar_cliente()
@@ -90,8 +95,14 @@ class Cliente extends CI_Controller
 
     public function atualiza_cliente($id)
     {
-        $dados['cliente'] = $this->cliente_model->buscar_cliente($id);
-        $this->load->view('cliente/atualizar_cliente', $dados);
+        if ($this->session->userdata('login') == "admin"){
+            $dados['cliente'] = $this->cliente_model->buscar_cliente($id);
+            $this->load->view('cliente/atualizar_cliente', $dados);
+        }
+        else{
+            $this->home();
+        }
+        
     }
 
     public function atualizar_cliente($id)
@@ -118,16 +129,27 @@ class Cliente extends CI_Controller
 
     public function lista_clientes()
     {
-        $dados['clientes'] = $this->cliente_model->clientes();
-        $this->load->view('cliente/lista_clientes', $dados);
+        if ($this->session->userdata('login') == "admin"){
+            $dados['clientes'] = $this->cliente_model->clientes();
+            $this->load->view('cliente/lista_clientes', $dados);
+        }
+        else{
+            $this->home();
+        }
+        
     }
 
     public function excluir_cliente($id_cliente)
     {
-        $this->cliente_model->excluir_cliente($id_cliente);
-        $this->session->set_userdata('mensagem', $this->lang->line('excluido_sucesso'));
-        $this->session->set_userdata('tipo_mensagem', 'success');
-        redirect('cliente/lista_clientes');
+        if ($this->session->userdata('login') == "admin"){
+            $this->cliente_model->excluir_cliente($id_cliente);
+            $this->session->set_userdata('mensagem', $this->lang->line('excluido_sucesso'));
+            $this->session->set_userdata('tipo_mensagem', 'success');
+            redirect('cliente/lista_clientes');
+        }
+        else{
+            $this->home();
+        }
     }
 
     public function lista_perfis($id_cliente)
