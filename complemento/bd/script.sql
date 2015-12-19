@@ -18,12 +18,12 @@ insert into matanay.tipo_modelo values(DEFAULT, "Nacional");
 insert into matanay.tipo_modelo values(DEFAULT, "Internacional");
 
 /* cliente */
-insert into matanay.cliente values(DEFAULT, "admin",NULL);
-insert into matanay.cliente values(DEFAULT, "cliente",NULL);
+insert into matanay.cliente values(DEFAULT, "admin",NULL, NULL);
+insert into matanay.cliente values(DEFAULT, "cliente",NULL, NULL);
 
 /* usuario */
-insert into matanay.usuario values(DEFAULT, "admin","admin","21232f297a57a5a743894a0e4a801fc3",NULL,1,"email@gmail.com");
-insert into matanay.usuario values(DEFAULT, "cliente","cliente","4983a0ab83ed86e0e7213c8783940193",NULL,2,"email1@gmail.com");
+insert into matanay.usuario values(DEFAULT, "admin","admin","21232f297a57a5a743894a0e4a801fc3","email@gmail.com",NULL,NULL,1);
+insert into matanay.usuario values(DEFAULT, "cliente","cliente","4983a0ab83ed86e0e7213c8783940193","email1@gmail.com",NULL,NULL,2);
 
 /* favorecidos */
 insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","fastAndFurious","170.252.797-22",NULL,"pleaseSomeBodyStopUs","oneMOreRide@email.com",NULL,1);

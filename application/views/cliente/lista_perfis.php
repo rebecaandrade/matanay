@@ -20,6 +20,7 @@
 				<tr>
 					<th><?php echo $this->lang->line('cliente_nome'); ?></th>
 					<th><?php echo $this->lang->line('cliente_login'); ?></th>
+					<th><?php echo $this->lang->line('status'); ?></th>
 					<th><?php echo $this->lang->line('acao'); ?></th>
 				</tr>
 			</thead>
@@ -29,8 +30,20 @@
 						<td><?php echo $perfil->nome;?></td>
 						<td><?php echo $perfil->login;?></td>
 						<td>
+							<?php if($perfil->bloqueado){
+								echo $this->lang->line('bloqueado');
+							} else
+								echo $this->lang->line('desbloqueado');
+							?>
+						</td>
+						<td>
 							<a href=<?php echo base_url().'index.php/cliente/atualiza_perfil_admin/'.$perfil->idCliente.'/'.$perfil->idUsuario;?> ><?php echo $this->lang->line('editar'); ?></a> |
-							<a onclick="excluirImposto('<?= base_url() . 'index.php/cliente/excluir_perfil/' . $perfil->idUsuario.'/'.$perfil->idCliente ?>','<?=$this->lang->line('langOpt')?>')"><?php echo $this->lang->line('deletar'); ?></a>
+							<a onclick="excluirPerfil('<?= base_url() . 'index.php/cliente/excluir_perfil/' . $perfil->idUsuario.'/'.$perfil->idCliente ?>','<?=$this->lang->line('langOpt')?>')"><?php echo $this->lang->line('deletar'); ?></a> | 
+							<?php if($perfil->bloqueado){?>
+								<a onclick="desbloquearPerfil('<?= base_url() . 'index.php/cliente/desbloquear_perfil/' . $perfil->idUsuario.'/'.$perfil->idCliente ?>','<?=$this->lang->line('langOpt')?>')"><?php echo $this->lang->line('desbloquear'); ?></a>
+							<?php }else{ ?>
+								<a onclick="bloquearPerfil('<?= base_url() . 'index.php/cliente/bloquear_perfil/' . $perfil->idUsuario.'/'.$perfil->idCliente ?>','<?=$this->lang->line('langOpt')?>')"><?php echo $this->lang->line('bloquear'); ?></a>
+							<?php } ?>
 						</td>
 					</tr> 
 				<?php } ?>

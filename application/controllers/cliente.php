@@ -152,6 +152,38 @@ class Cliente extends CI_Controller
         }
     }
 
+    public function bloquear_cliente($id_cliente)
+    {
+        $idClienteAtual = $this->session->userdata('cliente_id');
+        if($id_cliente == $idClienteAtual){
+            $this->session->set_userdata('mensagem', $this->lang->line('impossivel_bloquear'));
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            redirect('cliente/lista_clientes');
+        }
+        if ($this->session->userdata('login') == "admin"){
+            $this->cliente_model->bloquear_cliente($id_cliente);
+            $this->session->set_userdata('mensagem', $this->lang->line('bloqueado_sucesso'));
+            $this->session->set_userdata('tipo_mensagem', 'success');
+            redirect('cliente/lista_clientes');
+        }
+        else{
+            $this->home();
+        }
+    }
+
+    public function desbloquear_cliente($id_cliente)
+    {
+        if ($this->session->userdata('login') == "admin"){
+            $this->cliente_model->desbloquear_cliente($id_cliente);
+            $this->session->set_userdata('mensagem', $this->lang->line('desbloqueado_sucesso'));
+            $this->session->set_userdata('tipo_mensagem', 'success');
+            redirect('cliente/lista_clientes');
+        }
+        else{
+            $this->home();
+        }
+    }
+
     public function lista_perfis($id_cliente)
     {
         if (isset($id_cliente)) {
@@ -328,6 +360,28 @@ class Cliente extends CI_Controller
     {
         $this->cliente_model->excluir_perfil($id_perfil);
         $this->session->set_userdata('mensagem', $this->lang->line('excluido_sucesso'));
+        $this->session->set_userdata('tipo_mensagem', 'success');
+        redirect('cliente/lista_perfis/' . $id_cliente);
+    }
+
+    public function bloquear_perfil($id_perfil,$id_cliente)
+    {
+        $idPerfilAtual = $this->session->userdata('id_usuario');
+        if($id_perfil == $idPerfilAtual){
+            $this->session->set_userdata('mensagem', $this->lang->line('impossivel_bloquear'));
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            redirect('cliente/lista_perfis/' . $id_cliente);
+        }
+        $this->cliente_model->bloquear_perfil($id_perfil);
+        $this->session->set_userdata('mensagem', $this->lang->line('bloqueado_sucesso'));
+        $this->session->set_userdata('tipo_mensagem', 'success');
+        redirect('cliente/lista_perfis/' . $id_cliente);
+    }
+
+    public function desbloquear_perfil($id_perfil,$id_cliente)
+    {
+        $this->cliente_model->desbloquear_perfil($id_perfil);
+        $this->session->set_userdata('mensagem', $this->lang->line('desbloqueado_sucesso'));
         $this->session->set_userdata('tipo_mensagem', 'success');
         redirect('cliente/lista_perfis/' . $id_cliente);
     }

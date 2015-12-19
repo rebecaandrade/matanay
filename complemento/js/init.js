@@ -174,6 +174,132 @@ var excluirImposto = function (url, langOpt) {
     });
 }
 
+var excluirPerfil = function (url, langOpt) {
+    var thisTitle = ["Tem Certeza?", "Are you sure?"];
+    var thisText = ["O Perfil selecionada será excluido", "The Selected Profile Will be deleted"];
+    var confirmation = ["Sim, pode excluir!", "Yes, You may delete it"];
+    var canceltext = ["Não, cancele!", "No, cancel it!"];
+    swal({
+        title: thisTitle[langOpt],
+        text: thisText[langOpt],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: confirmation[langOpt],
+        cancelButtonText: canceltext[langOpt],
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            window.location.href = url;
+        }
+    });
+}
+
+var bloquearPerfil = function (url, langOpt) {
+    var thisTitle = ["Tem Certeza?", "Are you sure?"];
+    var thisText = ["O Perfil selecionada será bloqueado", "The Selected Profile Will be blocked"];
+    var confirmation = ["Sim, pode bloquear!", "Yes, You may block it"];
+    var canceltext = ["Não, cancele!", "No, cancel it!"];
+    swal({
+        title: thisTitle[langOpt],
+        text: thisText[langOpt],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: confirmation[langOpt],
+        cancelButtonText: canceltext[langOpt],
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            window.location.href = url;
+        }
+    });
+}
+
+var desbloquearPerfil = function (url, langOpt) {
+    var thisTitle = ["Tem Certeza?", "Are you sure?"];
+    var thisText = ["O Perfil selecionada será desbloqueado", "The Selected Profile Will be unblocked"];
+    var confirmation = ["Sim, pode desbloquear!", "Yes, You may unblock it"];
+    var canceltext = ["Não, cancele!", "No, cancel it!"];
+    swal({
+        title: thisTitle[langOpt],
+        text: thisText[langOpt],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: confirmation[langOpt],
+        cancelButtonText: canceltext[langOpt],
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            window.location.href = url;
+        }
+    });
+}
+
+var excluirCliente = function (url, langOpt) {
+    var thisTitle = ["Tem Certeza?", "Are you sure?"];
+    var thisText = ["O Cliente selecionada será excluido", "The Selected Client Will be deleted"];
+    var confirmation = ["Sim, pode excluir!", "Yes, You may delete it"];
+    var canceltext = ["Não, cancele!", "No, cancel it!"];
+    swal({
+        title: thisTitle[langOpt],
+        text: thisText[langOpt],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: confirmation[langOpt],
+        cancelButtonText: canceltext[langOpt],
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            window.location.href = url;
+        }
+    });
+}
+
+var bloquearCliente = function (url, langOpt) {
+    var thisTitle = ["Tem Certeza?", "Are you sure?"];
+    var thisText = ["O Cliente selecionada será bloqueado", "The Selected Client Will be blocked"];
+    var confirmation = ["Sim, pode bloquear!", "Yes, You may block it"];
+    var canceltext = ["Não, cancele!", "No, cancel it!"];
+    swal({
+        title: thisTitle[langOpt],
+        text: thisText[langOpt],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: confirmation[langOpt],
+        cancelButtonText: canceltext[langOpt],
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            window.location.href = url;
+        }
+    });
+}
+
+var desbloquearCliente = function (url, langOpt) {
+    var thisTitle = ["Tem Certeza?", "Are you sure?"];
+    var thisText = ["O Cliente selecionada será desbloqueado", "The Selected Client Will be unblocked"];
+    var confirmation = ["Sim, pode desbloquear!", "Yes, You may unblock it"];
+    var canceltext = ["Não, cancele!", "No, cancel it!"];
+    swal({
+        title: thisTitle[langOpt],
+        text: thisText[langOpt],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: confirmation[langOpt],
+        cancelButtonText: canceltext[langOpt],
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            window.location.href = url;
+        }
+    });
+}
+
 var excluirAlbum = function (url, langOpt) {
     var thisTitle = ["Tem Certeza?", "Are you sure?"];
     var thisText = ["O Álbum selecionado será excluido.", "The selected Album will be deleted."];

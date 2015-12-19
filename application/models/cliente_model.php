@@ -156,11 +156,59 @@ class Cliente_model extends CI_Model
         $this->db->trans_complete();
     }
 
+    public function bloquear_cliente($id_cliente)
+    {
+        $this->db->trans_start();
+        $array = array(
+            'bloqueado' => 1
+        );
+        $this->db->where('idCliente', $id_cliente);
+        $this->db->update('usuario', $array);
+
+        $this->db->where('idCliente', $id_cliente);
+        $this->db->update('Cliente', $array);
+
+        $this->db->trans_complete();
+    }
+
+    public function desbloquear_cliente($id_cliente)
+    {
+        $this->db->trans_start();
+        $array = array(
+            'bloqueado' => NULL
+        );
+        $this->db->where('idCliente', $id_cliente);
+        $this->db->update('usuario', $array);
+
+        $this->db->where('idCliente', $id_cliente);
+        $this->db->update('Cliente', $array);
+
+        $this->db->trans_complete();
+    }
+
     public function excluir_perfil($id)
     {
         $this->db->where('idUsuario', $id);
         $array = array(
             'excluido' => 1
+        );
+        return $this->db->update('Usuario', $array);
+    }
+
+    public function bloquear_perfil($id)
+    {
+        $this->db->where('idUsuario', $id);
+        $array = array(
+            'bloqueado' => 1
+        );
+        return $this->db->update('Usuario', $array);
+    }
+
+    public function desbloquear_perfil($id)
+    {
+        $this->db->where('idUsuario', $id);
+        $array = array(
+            'bloqueado' => NULL
         );
         return $this->db->update('Usuario', $array);
     }
