@@ -146,6 +146,11 @@ $lang['nao_ha_faixas']		= 'There are no tracks registered!';
 $lang['participacao']		= 'Track Participation';
 $lang['faixas_cadastro']	= 'Track Registry';
 $lang['faixas_edicao']		= 'Track Update';
+$lang['faixa_nao_encontrado']	= 'One Track from the report was not found in the system, register the album of UPC/EAN ';
+$lang['faixa_nao_encontrado10']	= 'The Track from the report was not found in the correct album, register the the track of IRSC ';
+$lang['faixa_nao_encontrado11']	= 'in the album of UPC/EAN ';
+
+
 
 ////// ALBUNS 
 
@@ -160,6 +165,8 @@ $lang['albuns_cadastro']		= 'Album Registry';
 $lang['albuns_edicao']			= 'Album Update';
 $lang['albuns_edicao_faixas'] 	= 'Tracklist Update';
 $lang['cod_invalido']   		= "Invalid Catalog Code";
+$lang['album_nao_encontrado']	= 'One Album from the report was not found in the system, register the album of UPC/EAN ';
+
 
 ////// MOEDA ////// VITOR
 

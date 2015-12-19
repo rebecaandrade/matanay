@@ -203,6 +203,37 @@ class Faixas_Videos_model extends CI_Model {
             return NULL;
         }
     }
+
+    public function existe_faixa_isrc($busca, $upc_ean){
+        if($busca != NULL){
+            $this->db->where('excluido =', NULL);
+            $this->db->where("isrc", $busca);
+            $info = $this->db->get("Faixa_Video")->result()[0];
+            if($info == NULL)
+                return 0;
+            else{
+                $idFaixa = $info->idFaixa;
+                
+                $this->db->where('excluido =', NULL);
+                $this->db->where("upc_ean", $upc_ean);
+                $idAlbum = $this->db->get("album")->result()[0]->idAlbum;
+
+
+                $this->db->where('idFaixa', $idFaixa);
+                $this->db->where('idAlbum', $idAlbum);
+                $coneccao = $this->db->get('album_has_faixa')->result();
+
+                if($coneccao == NULL){
+                    return -1;
+                }
+                else
+                    return 1;
+            }
+        } else {
+            return NULL;
+        }
+    }
+
     public function cadastrar_faixa_simples($faixa){
         $this->db->insert('faixa_video', $faixa);
         return $this->db->insert_id();

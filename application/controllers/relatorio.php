@@ -569,24 +569,59 @@ class Relatorio extends CI_Controller
         //die(var_dump($_FILES, $fileName, $fileConfig, $ok, $fileData, $this->upload->display_errors()));
         if ($ok) {
             $relatorio = $this->gera_array_relatorio($fileName);
-            $id = $this->relatorio_model->cadastrar_relatorio_importado($relatorio);
             $objPHPExcel = PHPExcel_IOFactory::load($relatorio['arquivo']);
             $modelo = $this->modelo_relatorio_model->buscar_modelo($relatorio['idModelo']);
             $highestRow = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
 
+
             for ($i = 2; $i <= $highestRow ; $i++) {
-                $isrc = $objPHPExcel->getActiveSheet()->getCell($modelo->isrc.$i)->getValue();
-                if($isrc != NULL)
-                    $data['idFaixa'] = $this->faixas_videos_model->procurar_faixa_isrc($isrc)->idFaixa;
-                else
-                    $data['idFaixa'] = NULL;
                 
                 $upc_ean = $objPHPExcel->getActiveSheet()->getCell($modelo->upc.$i)->getValue();
-                if($upc_ean != NULL)
-                    $data['idAlbum'] = $this->albuns_model->procurar_album_upc_ean($upc_ean)->idAlbum;
-                else
-                    $data['idAlbum'] = NULL;
 
+                if($upc_ean != NULL){
+                    $existeAlbum = $this->albuns_model->existe_album_upc_ean($upc_ean);
+
+                    if($existeAlbum){ 
+
+                        $data['idAlbum'] = $this->albuns_model->procurar_album_upc_ean($upc_ean)->idAlbum;
+                    }
+                    else{
+                        $this->session->set_userdata('mensagem', '=(');
+                        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('album_nao_encontrado') . $upc_ean );
+                        $this->session->set_userdata('tipo_mensagem', 'error');
+                        redirect('relatorio/cadastroAlbumRelatorio/'. $upc_ean); 
+                    }
+                }else{
+                    $data['idAlbum'] = NULL;
+                }
+
+                $isrc = $objPHPExcel->getActiveSheet()->getCell($modelo->isrc.$i)->getValue();
+                if($isrc != NULL){
+                    $existefaixa = $this->faixas_videos_model->existe_faixa_isrc($isrc, $upc_ean);
+
+                    if($existefaixa == 1){ 
+                        $data['idFaixa'] = $this->faixas_videos_model->procurar_faixa_isrc($isrc, $upc_ean)->idFaixa;
+                    }
+                    else{
+                        if($existefaixa == -1){
+                            $this->session->set_userdata('mensagem', '=(');
+                            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('faixa_nao_encontrado10') . $isrc . $this->lang->line('faixa_nao_encontrado11') . $upc_ean);
+                            $this->session->set_userdata('tipo_mensagem', 'error');
+                            redirect('albuns/camposatualizacao/'. $data['idAlbum']);
+                        }
+                        if($existefaixa == 0){
+                            $this->session->set_userdata('mensagem', '=(');
+                            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('faixa_nao_encontrado') . $isrc);
+                            $this->session->set_userdata('tipo_mensagem', 'error');
+                            redirect('relatorio/cadastra_faixa_relatorio/'. $isrc);
+                        }
+                    }
+                }else{
+                    $data['idFaixa'] = NULL;
+                }
+
+                
+                $id = $this->relatorio_model->cadastrar_relatorio_importado($relatorio);
                 $data['idRelatorio'] = $id;
                 $data['qnt_vendida'] = $objPHPExcel->getActiveSheet()->getCell($modelo->qnt_vendida.$i)->getValue();
                 $data['valor_recebido'] = $objPHPExcel->getActiveSheet()->getCell($modelo->valor_recebido.$i)->getValue();
@@ -594,8 +629,9 @@ class Relatorio extends CI_Controller
                 $data['subloja'] = $objPHPExcel->getActiveSheet()->getCell($modelo->subloja.$i)->getValue();
                 $data['territorio'] = $objPHPExcel->getActiveSheet()->getCell($modelo->territorio.$i)->getValue();
 
-                if($data['idFaixa'] != NULL && $data['idAlbum'] != NULL)
-                   $this->vendas_model->cadastar_venda($data);
+
+     //           if($data['idFaixa'] != NULL && $data['idAlbum'] != NULL)
+//                   $this->vendas_model->cadastar_venda($data);
             }
 
             $this->session->set_userdata('mensagem', '=)');
@@ -608,6 +644,110 @@ class Relatorio extends CI_Controller
             $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('tipo_arquivo_invalido'));
             $this->session->set_userdata('tipo_mensagem', 'error');
             redirect('relatorio/importa_relatorio');
+        }
+    }
+
+    public function cadastra_faixa_relatorio($isrc){
+        $this->session->set_flashdata('redirect_url', current_url());
+
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+
+        $dados['isrc'] = $isrc;
+
+        $dados['artistas'] = $this->faixas_videos_model->buscar_artistas($this->session->userdata('id_cliente'));
+        $dados['autores'] = $this->faixas_videos_model->buscar_autores($this->session->userdata('id_cliente'));
+        $dados['produtores'] = $this->faixas_videos_model->buscar_produtores($this->session->userdata('id_cliente'));
+        $dados['impostos'] = $this->faixas_videos_model->buscar_impostos($this->session->userdata('id_cliente'));
+        
+        $this->load->view('faixas_videos/cadastro_faixa_relatorio', $dados);
+    }
+
+    public function cadastrar_faixa_relatorio(){
+        $faixa = array(
+            'nome' => $this->input->post('nome'),
+            'isrc' => str_replace("-", "", $this->input->post('isrc')),
+            'codigo_video' => $this->input->post('youtube'),
+            'idCliente' => $this->session->userdata('id_cliente')
+        );
+
+        $artistas = $this->input->post('artistas[]');
+        $autores = $this->input->post('autors[]');
+        $produtores = $this->input->post('produtors[]');
+
+        $perc_artistas = $this->input->post('percentualArtista[]');
+        $perc_autores = $this->input->post('percentualAutor[]');
+        $perc_produtores = $this->input->post('percentualProdutor[]');
+
+        $impostos = $this->input->post('impostos_faixa[]');
+
+        if($faixa['nome'] != NULL && $artistas != NULL && $autores != NULL){
+            $this->faixas_videos_model->cadastrar_faixa($faixa, $impostos, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
+            $this->session->set_userdata('mensagem', '=)');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
+            $this->session->set_userdata('tipo_mensagem', 'success');
+            redirect('relatorio/importa_relatorio');       
+        }
+        else{
+            $this->session->set_userdata('mensagem', '=(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            redirect('faixas_videos/cadastra_faixa');
+        }
+
+    }
+
+    public function cadastroAlbumRelatorio($upc_ean) {
+        $this->session->set_flashdata('redirect_url', current_url());
+
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+
+        $dados['upc_ean'] = $upc_ean;
+
+        $dados['tipos'] = $this->albuns_model->buscar_tipos();
+        $dados['faixas'] = $this->albuns_model->buscar_faixas($this->session->userdata('id_cliente'));
+        $dados['artistas'] = $this->albuns_model->buscar_artistas($this->session->userdata('id_cliente'));
+
+        $this->load->model('faixas_videos_model');
+        $dados['autores'] = $this->faixas_videos_model->buscar_autores($this->session->userdata('id_cliente'));
+        $dados['produtores'] = $this->faixas_videos_model->buscar_produtores($this->session->userdata('id_cliente'));
+        $dados['impostos'] = $this->faixas_videos_model->buscar_impostos($this->session->userdata('id_cliente'));
+        
+        $this->load->view('albuns/cadastro_album_relatorio', $dados);
+    }
+
+    public function cadastrarAlbumRelatorio() {
+
+        $album = array(
+            'nome' => $this->input->post('nome'),
+            'quantidade' => $this->input->post('n_faixas'),
+            'upc_ean' => $this->input->post('upc_ean'),
+            'ano' => $this->input->post('ano'),
+            'faixa' => 100/$this->input->post('n_faixas'),
+            'codigo_catalogo' => $this->input->post('catalogo'),
+            'idTipo_Album' => $this->input->post('tipo'),
+            'idCliente' => $this->session->userdata('id_cliente')
+        );
+
+        $artista = $this->input->post('artista');
+
+        $faixas = $this->input->post('faixas[]');
+
+        $impostos = $this->input->post('impostos[]');
+
+        if($album['nome'] != NULL && $album['quantidade'] != NULL && $album['upc_ean'] != NULL && $album['ano'] != NULL){
+            $this->albuns_model->cadastrar_album($album, $artista, $faixas, $impostos);
+            
+            $this->session->set_userdata('mensagem', '=)');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
+            $this->session->set_userdata('tipo_mensagem', 'success');
+            redirect('relatorio/importa_relatorio');       
+        }else{
+            $this->session->set_userdata('mensagem', '=(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            redirect('albuns/cadastra_album');
         }
     }
 

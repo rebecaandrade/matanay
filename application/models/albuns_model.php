@@ -170,7 +170,24 @@ class Albuns_model extends CI_Model {
             $this->db->where('excluido =', NULL);
             $this->db->where("upc_ean", $busca);
 
+
             return $this->db->get("Album")->result()[0];
+        } else{
+            return NULL;
+        }
+    }
+
+    public function existe_album_upc_ean($busca){
+        if($busca != NULL){
+            $this->db->where('excluido =', NULL);
+            $this->db->where("upc_ean", $busca);
+
+
+            if ( $this->db->get("Album")->result() == NULL)
+                return 0;
+            else
+                return 1;
+
         } else{
             return NULL;
         }
