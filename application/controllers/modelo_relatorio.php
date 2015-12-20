@@ -12,14 +12,14 @@
 			$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 		}
 		public function listar_modelos(){
-			$dados['modelos'] = $this->modelo_relatorio_model->buscar_modelos($this->session->userdata('id_cliente'));
+			$dados['modelos'] = $this->modelo_relatorio_model->buscar_modelos($this->session->userdata('cliente_id'));
 			$this->load->view('modelo_relatorio/listar_modelos',$dados);
 		}
 		public function deletar_modelo(){
 			$id = $this->input->get("param");
 			if((string)(int)$id == $id){ //verifica se o ID é valido
 				$id = (int) $id;
-				$linhas = $this->modelo_relatorio_model->deletar_modelo($id,$this->session->userdata('id_cliente'));
+				$linhas = $this->modelo_relatorio_model->deletar_modelo($id,$this->session->userdata('cliente_id'));
 				if($linhas == 0 ){
 					$mensagem = array(
 									'mensagem'				=> $this->lang->line('permissao_insuficiente'),
@@ -45,7 +45,7 @@
 				$id_tipo = $post['tipo'];
 				unset($post['tipo']);
 				$post['idTipo_Modelo'] 	= $id_tipo;
-				$post['idCliente']		= $this->session->userdata('id_cliente');
+				$post['idCliente']		= $this->session->userdata('cliente_id');
 				$query = $this->modelo_relatorio_model->cadastrar_modelo($post);
 				if($query){
 					$mensagem = array(
@@ -81,7 +81,7 @@
 			$dados['tipos'] = $this->modelo_relatorio_model->buscar_tipos_modelo();
 			$dados['colunas'] = $this->colunas(100);
 			$dados['modelo'] = $this->modelo_relatorio_model->buscar_modelo($id);
-			if($dados['modelo']->idCliente == $this->session->userdata('id_cliente')){
+			if($dados['modelo']->idCliente == $this->session->userdata('cliente_id')){
 				$this->load->view('modelo_relatorio/editar_modelo',$dados);
 			}
 			else{

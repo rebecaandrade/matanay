@@ -20,6 +20,14 @@
 			        </div>
 		        </a>
 	        </div>
+	        <div class="input-field col s12 m10 offset-m1 l6 offset-l3">
+		      	<a href="<?php echo base_url(); ?>index.php/cliente/home">
+			        <div class="card-panel grey lighten-2">
+			          	<i class="mdi-hardware-keyboard-arrow-left"></i>
+			          	<div class="label"><?php echo $this->lang->line('voltar'); ?></div>
+			        </div>
+		        </a>
+	        </div>
 	    </div>
 	</div>
 </div>

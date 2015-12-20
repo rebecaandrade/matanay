@@ -12,6 +12,11 @@ $this->load->view('_include/header') ?>
                     data-position="right" data-delay="50" data-tooltip="<?php echo $this->lang->line('novo'); ?>" id="addButton">
                     <i class="mdi-content-add"></i>
                 </a>
+                <a href="<?php echo base_url(); ?>index.php/cliente/home"
+                    class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo" 
+                    data-position="top" data-delay="50" data-tooltip="<?php echo $this->lang->line('voltar'); ?>" id="backButton">
+                    <i class="mdi-hardware-keyboard-arrow-left"></i>
+                </a>
             </div>
         </div>
     </div>

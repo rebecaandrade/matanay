@@ -7,6 +7,11 @@
 					<div class="input-field col s12 m8 l9">
 						<i class="mdi-action-description"></i>
 						<?php echo $this->lang->line('contrato_edicao'); ?>
+						<a href="<?php echo base_url(); ?>index.php/contrato/listar"
+                		    class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo" 
+                		    data-position="top" data-delay="50" data-tooltip="<?php echo $this->lang->line('voltar'); ?>" id="backButton">
+                		    <i class="mdi-hardware-keyboard-arrow-left"></i>
+                		</a>
 					</div>
 				</div>
 			</div><br>

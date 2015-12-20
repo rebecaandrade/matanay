@@ -12,21 +12,7 @@ class Modelo_relatorio_model extends CI_Model {
 	}
 
 	public function cadastrar_modelo($post){
-		$query = $this->db->query(
-			"CREATE TABLE ".$post['nome']."(
-				".$post['isrc']." varchar(255) NOT NULL, 
-				".$post['upc']." varchar(255) NOT NULL, 
-				".$post['qnt_vendida']." varchar(255) NOT NULL, 
-				".$post['valor_recebido']." varchar(255) NOT NULL, 
-				".$post['loja']." varchar(255) NOT NULL, 
-				".$post['subloja']." varchar(255) NOT NULL, 
-				".$post['territorio']." varchar(255) NOT NULL, 
-				".$post['moeda']." varchar(255) NOT NULL,
-				idTipo_Modelo int NOT NULL DEFAULT '".$post['idTipo_Modelo']."',
-				idModelo int NOT NULL PRIMARY KEY,
-				idCliente int NOT NULL DEFAULT '".$post['idCliente']."');"
-			);
-		return 1;
+		return $this->db->insert('modelo', $post);
 	}
 
 	public function deletar_modelo($id,$id_cliente){

@@ -5,6 +5,11 @@
             <div class="input-field col s12 m8 l9">
                 <i class="mdi-action-assignment-ind"></i>
                 <?php echo $this->lang->line('cadastro_entidade'); ?>
+                <a href="<?php echo base_url(); ?>index.php/entidade/listar"
+                    class="btn-floating btn-medium waves-effect waves-light btn tooltipped novo" 
+                    data-position="top" data-delay="50" data-tooltip="<?php echo $this->lang->line('voltar'); ?>" id="backButton">
+                    <i class="mdi-hardware-keyboard-arrow-left"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -144,7 +149,7 @@
             </div>
             <input type="hidden" name="favoredMessageDisplay" value="<?= $this->lang->line('erro_favorecido') ?>">
             <input type="hidden" name="IdMessageDisplay" value="<?= $this->lang->line('erro_identificacao') ?>">
-            <input type="hidden" name="cpfMessageDisplay" value="<?= $this->lang->line('cpf/cnpf_invalido') ?>">
+            <input type="hidden" name="cpfMessageDisplay" value="<?= $this->lang->line('cpf/cnpj_invalido') ?>">
             <input type="hidden" name="nomeMessageDisplay" value="<?= $this->lang->line('nome_invalido') ?>">
             <button name="botao" class="btn waves-effect waves-light col s12 m12 l8 offset-l2"
                     type="submit"><?php echo $this->lang->line('cadastrar'); ?>

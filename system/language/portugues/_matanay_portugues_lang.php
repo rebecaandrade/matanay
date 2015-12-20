@@ -93,8 +93,8 @@ $lang['excluido_sucesso']		= 'Excluído com sucesso!';
 $lang['bloqueado_sucesso']		= 'Bloqueado com sucesso!';
 $lang['impossivel_bloquear']	= 'Não é possível bloquear o seu próprio perfil!';
 $lang['desbloqueado_sucesso']	= 'Desbloqueado com sucesso!';
-$lang['acesso_negado']			= 'Acesso indevido';
 $lang['usuario_bloqueado']		= 'Usuario se encontra bloqueado';
+$lang['acesso_negado']			= 'Acesso indevido';
 $lang['usuario_invalido']		= 'Usuario inválido';
 $lang['usuario_ou_senha_invalida']	= 'Usuario ou senha inválida';
 $lang['senha_invalida']				= 'Senha inválida';
@@ -123,12 +123,12 @@ $lang['sair'] 				= 'SAIR';
 ////// SUB_MENU
 
 $lang['faixas'] 			= 'FAIXAS';
+$lang['videos'] 			= 'VIDEOS';
 $lang['albums'] 			= 'ÁLBUNS';
 $lang['entidades'] 			= 'ENTIDADES';
 $lang['favorecidos']		= 'FAVORECIDOS';
 $lang['imposto']			= 'IMPOSTOS';
 $lang['contrato']			= 'CONTRATOS';
-
 
 ////// FAIXAS 
 
@@ -192,11 +192,12 @@ $lang['contrato_favorecido']	= 'Escolha o favorecido';
 $lang['contrato_cadastro']		= 'Cadastro de Contrato';
 $lang['contrato_edicao']		= 'Atualização de Contrato';
 
+/////ENTIDADES/FAVORECIDO //// Jadiel
 
-/////ENTIDADES/FAVORECIDO /*FEITO POR MIM JADIEL*/
-$lang['nome_entidade']				='Nome da entidade';
-$lang['nome_favorecido']			='Nome do favorecido';
-$lang['cpf_cnpj']					='CPF/CNPJ';
+$lang['entidade'] 					= 'Entidade';
+$lang['nome_entidade']				= 'Nome da entidade';
+$lang['nome_favorecido']			= 'Nome do favorecido';
+$lang['cpf_cnpj']					= 'CPF/CNPJ';
 $lang['telefone']					= 'Telefone';
 $lang['telefone_alternativo']		= 'Telefone Alternativo';
 $lang['contato'] 					= 'Contato';
@@ -207,31 +208,26 @@ $lang['identificacao']				= 'Identificação';
 $lang['banco']						= 'Banco';
 $lang['conta']						= 'Conta corrente';
 $lang['agencia']					= 'Agencia Bancária';
-$lang['atual']						='Atual';
-$lang['Artista']					='Artista';
-$lang['Autor']						='Autor';
-$lang['Produtor']					='Produtor';
-$lang['artista_min']				='artista';
-$lang['autor_min']					='autor';
-$lang['produtor_min']				='produtor';
-$lang['eh_favorecido']				='É um favorecido?';
-$lang['favorecido_cadastrado']		='Favorecidos Registrados';
-$lang['acao']						='Ação';
-$lang['delear']						='Deletar';
-$lang['editar']						='Editar';
-$lang['nao_ha_entidades']			='Não há entidades cadastradas!';
-$lang['selecione']					='Selecione';
-$lang['cadastro_realizado']			='Cadastro Realizado!';
-$lang['campo_vazio']				='Todos os campos devem ser preenchidos!';
-$lang['cnpj_invalido']				='CNPJ inválido';
-$lang['cpf_invalido']				='CPF inválido';
-$lang['cadastrar_entidade']			='Cadastrar uma nova entidade!';
-$lang['cadastrar_favorecido']		='Cadastrar um novo favorecido';
-$lang['nao_ha_entidades']			='Não existem entidades cadastradas!';
-$lang['nao_ha_favorecidos']			='Não existem favorecidos cadastrados!';
-$lang['nao_ha_impostos']			='Não existem impostos cadastrados!';
+$lang['atual']						= 'Atual';
+$lang['Artista']					= 'Artista';
+$lang['Autor']						= 'Autor';
+$lang['Produtor']					= 'Produtor';
+$lang['artista_min']				= 'artista';
+$lang['autor_min']					= 'autor';
+$lang['produtor_min']				= 'produtor';
+$lang['eh_favorecido']				= 'É um favorecido?';
+$lang['favorecido_cadastrado']		= 'Favorecidos Registrados';
+$lang['cadastro_realizado']			= 'Cadastro Realizado!';
+$lang['campo_vazio']				= 'Todos os campos devem ser preenchidos!';
+$lang['cnpj_invalido']				= 'CNPJ inválido';
+$lang['cpf_invalido']				= 'CPF inválido';
+$lang['cadastrar_entidade']			= 'Cadastrar uma nova entidade!';
+$lang['cadastrar_favorecido']		= 'Cadastrar um novo favorecido';
+$lang['nao_ha_entidades']			= 'Não existem entidades cadastradas!';
+$lang['nao_ha_favorecidos']			= 'Não existem favorecidos cadastrados!';
+$lang['nao_ha_impostos']			= 'Não existem impostos cadastrados!';
 $lang['descricao_entidade']			= "Descrição";
-$lang['classPercent']				="porcentagem";
+$lang['classPercent']				= "porcentagem";
 $lang['cadastro_entidade']			= 'Cadastro de Entidade';
 $lang['edicao_entidade']			= 'Edição de Entidade';
 $lang['cadastro_favorecido']		= 'Cadastro de Favorecido';
@@ -241,10 +237,8 @@ $lang['myTable'] 					= 'myTable';
 $lang['favorecido'] 				= 'Favorecido';
 $lang['favorecido_nao_cadastrado']	= 'É nessesário ter um favorecido cadastrado para cadastrar uma entidade.';
 
-
-
-
 //IMPOSTO JADIEL
+
 $lang['imposto_nome']		='Nome do Imposto';
 $lang['valor']				='Valor';
 $lang['cadastro_imposto'] 	= 'Cadastro de Imposto';
@@ -270,15 +264,12 @@ $lang['percentual_aplicado']		= 'Percentual aplicado';
 $lang['valor_pagar']				= 'Valor a pagar';
 $lang['receita']					= 'Receita';
 
-
 ////// VENDAS ////// Evandro
 
-$lang['entidade'] 					= 'Entidade';
 $lang['vendas_min'] 				= 'Exportação de relatórios';
 $lang['vendas_total'] 				= 'Total de Vendas';
 $lang['album_min'] 					= 'Álbum';
 $lang['faixa_min'] 					= 'Faixa';
-
 
 ////// CLIENTE ////// Vitor
 
@@ -298,14 +289,13 @@ $lang['cliente_cadastro']			= 'Cadastro de Cliente';
 $lang['cliente_edicao']				= 'Edição de Cliente';
 $lang['perfil_cadastro']			= 'Cadastro de Perfil';
 $lang['perfil_edicao']				= 'Edição de Perfil';
-$lang['min6char']				= 'Deve conter pelo menos 6 caracteres';
-$lang['min3char']				= 'Deve conter pelo menos 3 caracteres';
+$lang['min6char']					= 'Deve conter pelo menos 6 caracteres';
+$lang['min3char']					= 'Deve conter pelo menos 3 caracteres';
 
+////// SIM OU NAO //// Jadiel
 
-
-///////SIM OU NAO /*FEITO POR MIM JADIEL*/
-$lang['sim']	='Sim';
-$lang['nao']	='Não';
+$lang['sim']	= 'Sim';
+$lang['nao']	= 'Não';
 
 // FUNCIONALIDADES
 $lang['func_manter_cliente']            = 'Manter Cliente';
@@ -339,9 +329,9 @@ $lang['func_listar_relatorio']          = 'Listar Relatório';
 $lang['func_excluir_relatorio']         = 'Excluir Relatório';
 $lang['func_atualizar_relatorio']       = 'Atualizar Relatório';
 
-
 //SODRE   //FORMVALIDATION
-$lang['cpf/cnpf_invalido']       = 'CPF/CNPJ Inválido';
+
+$lang['cpf/cnpj_invalido']       = 'CPF/CNPJ Inválido';
 $lang['campos_incorretos']       = 'Alguns campos foram preenchidos incorretamente';
 $lang['langOpt']                 = '0';
 $lang['nome_invalido']           = 'Nome inválido';
@@ -358,12 +348,14 @@ $lang['erro_perc_autor']    	 = 'A soma dos percentuais de Autor deve ser 100% '
 $lang['erro_perc_produtor']    	 = 'A soma dos percentuais de Produtor deve ser 100% ';
 
 // mensagens validacao form cadastro de perfil
+
 $lang['password_error']                        = "Senhas não são iguais";
 $lang['marcar_todas']                          = "Marcar todas";
 $lang['login_existente']                       = "Login ou email já existe";
 $lang['checkbox_erro']                         = "Seleciona uma funcionalidade";
 
-// relatoriios
+// relatorios
+
 $lang['listar_relatorios']                     = "RELATÓRIOS";
 $lang['ralatorio_opcoes']                      = "Opções do Relatório";
 $lang['data_inicio']                           = "Data de Início";
@@ -385,8 +377,8 @@ $lang['adicao']                                = "Adição";
 $lang['exportar']                              = "EXPORTAR";
 $lang['importar']                              = "IMPORTAR";
 
-
 // notificacoes
+
 $lang['notificacao']   		       			   = "NOTIFICAÇÕES";
 $lang['principaisNotificacoes']   		       = "PRINCIPAIS NOTIFICAÇÕES";
 $lang['contrato_nome']   		               = "Contrato";
