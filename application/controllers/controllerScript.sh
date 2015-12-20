@@ -1,15 +1,15 @@
 #!/bin/bash
 
-mv acesso.php Acesso.php
-mv albuns.php Albuns.php
-mv cliente.php Cliente.php
-mv contrato.php Contrato.php
-mv entidade.php Entidade.php
-mv faixas_videos.php Faixas_videos.php
-mv favorecido.php Favorecido.php
-mv imposto.php Imposto.php
-mv modelo_relatorio.php Modelo_relatorio.php
-mv moeda.php Moeda.php
-mv notificacao.php Notificacao.php
-mv produtor.php Produtor.php
-mv relatorio.php Relatorio.php
+git mv -f acesso.php Acesso.php
+git mv -f albuns.php Albuns.php
+git mv -f cliente.php Cliente.php
+git mv -f contrato.php Contrato.php
+git mv -f entidade.php Entidade.php
+git mv -f faixas_videos.php Faixas_videos.php
+git mv -f favorecido.php Favorecido.php
+git mv -f imposto.php Imposto.php
+git mv -f modelo_relatorio.php Modelo_relatorio.php
+git mv -f moeda.php Moeda.php
+git mv -f notificacao.php Notificacao.php
+git mv -f produtor.php Produtor.php
+git mv -f relatorio.php Relatorio.php
