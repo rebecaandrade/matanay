@@ -88,6 +88,7 @@ $lang['form_error_modelo_relatorio_alpha']	= "O campo {field} deve conter uma co
 
 $lang['nada_encontrado']		= 'Nada encontrado.';
 $lang['atualizado_sucesso']		= 'Atualizado com sucesso!';
+$lang['email_enviado']			= 'Email com configurações da mudança de senha enviado com sucesso!';
 $lang['cadastrado_sucesso']		= 'Cadastrado com sucesso!';
 $lang['excluido_sucesso']		= 'Excluído com sucesso!';
 $lang['bloqueado_sucesso']		= 'Bloqueado com sucesso!';

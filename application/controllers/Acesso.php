@@ -122,6 +122,10 @@ class Acesso extends CI_Controller {
 
 		$this->email->message($message);
 		$this->email->send();
+		$this->session->set_userdata('mensagem', '=)');
+        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('email_enviado'));
+        $this->session->set_userdata('tipo_mensagem', 'success');
+		$this->login();
 
 	}
 
