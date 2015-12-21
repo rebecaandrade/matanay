@@ -87,6 +87,7 @@ $lang['form_error_modelo_relatorio_alpha']	= "The {field} field doesn't contain 
 ////// ALERTAS SISTEMA
 
 $lang['nada_encontrado']			= 'Nothing found.';
+$lang['email_enviado']				= 'The email containing the link to the password change was sent successfully!';
 $lang['atualizado_sucesso']			= 'Successfully Updated!';
 $lang['cadastrado_sucesso']			= 'Successfully Registered!';
 $lang['excluido_sucesso']			= 'Successfully Deleted!';
