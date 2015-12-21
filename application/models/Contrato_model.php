@@ -66,6 +66,7 @@
 
 	    public function buscar_contrato_especifico($id_contrato){
 	    	$this->db->where('idContrato', $id_contrato);
-	    	return $this->db->get('contrato')->result()[0];
+	    	// return $this->db->get('contrato')->result()[0];
+	    	return $this->db->get('contrato')->result();
 	    }
 	}
