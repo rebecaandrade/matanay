@@ -150,7 +150,7 @@ $lang['faixas_cadastro']	= 'Cadastro de Faixa';
 $lang['faixas_edicao']		= 'Edição de Faixa';
 $lang['faixa_nao_encontrado']	= 'Uma Faixa do relatorio não se encontra no sistema, realize o cadastro da faixa de ISRC ';
 $lang['faixa_nao_encontrado10']	= 'Uma faixa do relatório não foi encontrada no album do relatório, registre a faixa de ISRC ';
-$lang['faixa_nao_encontrado11']	= 'no album de UPC/EAN ';
+$lang['faixa_nao_encontrado11']	= ' no album de UPC/EAN ';
 
 ////// ALBUMS 
 

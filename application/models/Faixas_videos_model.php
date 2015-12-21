@@ -198,6 +198,7 @@ class Faixas_Videos_model extends CI_Model {
         if($busca != NULL){
             $this->db->where('excluido =', NULL);
             $this->db->where("isrc", $busca);
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
             return $this->db->get("Faixa_Video")->result()[0];
         } else {
             return NULL;
@@ -208,6 +209,7 @@ class Faixas_Videos_model extends CI_Model {
         if($busca != NULL){
             $this->db->where('excluido =', NULL);
             $this->db->where("isrc", $busca);
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
             $info = $this->db->get("Faixa_Video")->result()[0];
             if($info == NULL)
                 return 0;
@@ -216,6 +218,7 @@ class Faixas_Videos_model extends CI_Model {
                 
                 $this->db->where('excluido =', NULL);
                 $this->db->where("upc_ean", $upc_ean);
+                $this->db->where("idCliente", $this->session->userdata('id_cliente'));
                 $idAlbum = $this->db->get("album")->result()[0]->idAlbum;
 
 

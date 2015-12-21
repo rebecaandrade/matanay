@@ -150,7 +150,7 @@ $lang['faixas_cadastro']	= 'Track Registry';
 $lang['faixas_edicao']		= 'Track Update';
 $lang['faixa_nao_encontrado']	= 'One Track from the report was not found in the system, register the album of UPC/EAN ';
 $lang['faixa_nao_encontrado10']	= 'The Track from the report was not found in the correct album, register the the track of IRSC ';
-$lang['faixa_nao_encontrado11']	= 'in the album of UPC/EAN ';
+$lang['faixa_nao_encontrado11']	= ' in the album of UPC/EAN ';
 
 ////// ALBUNS 
 
