@@ -15,7 +15,7 @@
 		          	</div>
 		        </div>
 
-				<button class="send-login btn waves-effect waves-light col s12 m12 l12 " type="submit"><?php echo $this->lang->line('entrar'); ?>
+				<button class="send-login btn waves-effect waves-light col s12 m12 l12 " type="submit"><?php echo $this->lang->line('enviar'); ?>
 		          	
 		        </button>	
 			<?php echo form_close() ?>	

@@ -110,6 +110,7 @@ $lang['problemas_formulario']	= 'Problemas com o formulario';
 $lang['login'] 				= 'usuário';
 $lang['senha'] 				= 'senha';
 $lang['entrar'] 			= 'Entrar';
+$lang['enviar'] 			= 'Enviar';
 $lang['esqueceu_senha'] 	= 'Esqueceu sua senha?';
 
 ////// MENU 
