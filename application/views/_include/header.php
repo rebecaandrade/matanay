@@ -13,10 +13,9 @@
     <link href="http://fonts.googleapis.com/css?family=Titillium+Web" rel='stylesheet' type='text/css'>
     <link href="<?php echo base_url(); ?>complemento/js/chosen_v1.4.2/chosen.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url(); ?>complemento/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <script src="<?php echo base_url(); ?>complemento/js/jquery-2.1.4.min.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/sweetalert/lib/sweet-alert.min.js"></script>
-    <script src="<?php echo base_url(); ?>complemento/js/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/jquery.matanay.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/materialize.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/init.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/alert.js"></script>
