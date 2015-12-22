@@ -88,6 +88,7 @@ $lang['form_error_modelo_relatorio_alpha']	= "O campo {field} deve conter uma co
 
 $lang['nada_encontrado']		= 'Nada encontrado.';
 $lang['atualizado_sucesso']		= 'Atualizado com sucesso!';
+$lang['email_enviado']			= 'Email com configurações da mudança de senha enviado com sucesso!';
 $lang['cadastrado_sucesso']		= 'Cadastrado com sucesso!';
 $lang['excluido_sucesso']		= 'Excluído com sucesso!';
 $lang['bloqueado_sucesso']		= 'Bloqueado com sucesso!';
@@ -109,6 +110,7 @@ $lang['problemas_formulario']	= 'Problemas com o formulario';
 $lang['login'] 				= 'usuário';
 $lang['senha'] 				= 'senha';
 $lang['entrar'] 			= 'Entrar';
+$lang['enviar'] 			= 'Enviar';
 $lang['esqueceu_senha'] 	= 'Esqueceu sua senha?';
 
 ////// MENU 
@@ -148,7 +150,7 @@ $lang['faixas_cadastro']	= 'Cadastro de Faixa';
 $lang['faixas_edicao']		= 'Edição de Faixa';
 $lang['faixa_nao_encontrado']	= 'Uma Faixa do relatorio não se encontra no sistema, realize o cadastro da faixa de ISRC ';
 $lang['faixa_nao_encontrado10']	= 'Uma faixa do relatório não foi encontrada no album do relatório, registre a faixa de ISRC ';
-$lang['faixa_nao_encontrado11']	= 'no album de UPC/EAN ';
+$lang['faixa_nao_encontrado11']	= ' no album de UPC/EAN ';
 
 ////// ALBUMS 
 

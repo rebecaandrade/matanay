@@ -169,7 +169,7 @@ class Albuns_model extends CI_Model {
         if($busca != NULL){
             $this->db->where('excluido =', NULL);
             $this->db->where("upc_ean", $busca);
-
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
 
             return $this->db->get("Album")->result()[0];
         } else{
@@ -181,6 +181,7 @@ class Albuns_model extends CI_Model {
         if($busca != NULL){
             $this->db->where('excluido =', NULL);
             $this->db->where("upc_ean", $busca);
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
 
 
             if ( $this->db->get("Album")->result() == NULL)

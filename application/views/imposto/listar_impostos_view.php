@@ -53,7 +53,7 @@ $this->load->view('_include/header') ?>
                                 <a class="deletarLink" onclick="excluirImposto('<?= base_url() . 'index.php/Imposto/deletar/' . $row1->idImposto ?>','<?=$this->lang->line('langOpt')?>')"><?php echo $this->lang->line('deletar') ?> </a>
                             <?php }
                             else 
-                                echo " " /*. $this->lang->line('indisponivel')*/;
+                                echo " " . $this->lang->line('indisponivel');
                             ?>
                         </td>
                     </tr>

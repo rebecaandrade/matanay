@@ -25,7 +25,7 @@
                 <input type="hidden" name="checkBoxMessageDisplay" value="<?= $this->lang->line('checkbox_erro') ?>">
                 <input type="hidden" name="nomeMessageDisplay" value="<?= $this->lang->line('nome_invalido') ?>">
 
-				<button class="send-login btn waves-effect waves-light col s12 m12 l12 " type="submit"><?php echo $this->lang->line('entrar'); ?>
+				<button class="send-login btn waves-effect waves-light col s12 m12 l12 " type="submit"><?php echo $this->lang->line('enviar'); ?>
 		          	
 		        </button>	
 			<?php echo form_close() ?>	

@@ -87,6 +87,7 @@ $lang['form_error_modelo_relatorio_alpha']	= "The {field} field doesn't contain 
 ////// ALERTAS SISTEMA
 
 $lang['nada_encontrado']			= 'Nothing found.';
+$lang['email_enviado']				= 'The email containing the link to the password change was sent successfully!';
 $lang['atualizado_sucesso']			= 'Successfully Updated!';
 $lang['cadastrado_sucesso']			= 'Successfully Registered!';
 $lang['excluido_sucesso']			= 'Successfully Deleted!';
@@ -109,6 +110,7 @@ $lang['problemas_formulario']       = 'Problems with the form';
 $lang['login'] 				= 'username';
 $lang['senha'] 				= 'password';
 $lang['entrar'] 			= 'Log In';
+$lang['enviar'] 			= 'Send';
 $lang['esqueceu_senha'] 	= 'Forgot your password?';
 
 ////// MENU 
@@ -148,7 +150,7 @@ $lang['faixas_cadastro']	= 'Track Registry';
 $lang['faixas_edicao']		= 'Track Update';
 $lang['faixa_nao_encontrado']	= 'One Track from the report was not found in the system, register the album of UPC/EAN ';
 $lang['faixa_nao_encontrado10']	= 'The Track from the report was not found in the correct album, register the the track of IRSC ';
-$lang['faixa_nao_encontrado11']	= 'in the album of UPC/EAN ';
+$lang['faixa_nao_encontrado11']	= ' in the album of UPC/EAN ';
 
 ////// ALBUNS 
 

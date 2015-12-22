@@ -590,50 +590,50 @@ insert into matanay.contrato values(DEFAULT,"Contrato 10","2015-01-01","2015-10-
 #Funcionalidades
 
 #cliente
-insert into matanay.funcionalidades values(DEFAULT,"func_manter_cliente",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_manter_cliente",NULL);
 
 #perfil
-insert into matanay.funcionalidades values(DEFAULT,"func_manter_perfil",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_manter_perfil",NULL);
 
 #Entidade
-insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_entidade",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_listar_entidade",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_excluir_entidade",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_entidade",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_cadastrar_Entidade",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_listar_Entidade",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_excluir_Entidade",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_atualizar_Entidade",NULL);
 
-#favorecido
-insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_favorecido",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_listar_favorecido",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_excluir_favorecido",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_favorecido",NULL);
+#Favorecido
+insert into matanay.Funcionalidades values(DEFAULT,"func_cadastrar_Favorecido",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_listar_Favorecido",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_excluir_Favorecido",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_atualizar_Favorecido",NULL);
 
 #faixas
-insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_faixas",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_listar_faixas",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_excluir_faixas",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_faixas",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_cadastrar_faixas",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_listar_faixas",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_excluir_faixas",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_atualizar_faixas",NULL);
 
 #albuns
-insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_albuns",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_listar_albuns",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_excluir_albuns",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_albuns",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_cadastrar_albuns",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_listar_albuns",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_excluir_albuns",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_atualizar_albuns",NULL);
 
-#imposto
-insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_imposto",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_listar_imposto",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_excluir_imposto",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_imposto",NULL);
+#Imposto
+insert into matanay.Funcionalidades values(DEFAULT,"func_cadastrar_Imposto",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_listar_Imposto",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_excluir_Imposto",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_atualizar_Imposto",NULL);
 
-#moeda
-insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_moeda",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_listar_moeda",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_excluir_moeda",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_moeda",NULL);
+#Moeda
+insert into matanay.Funcionalidades values(DEFAULT,"func_cadastrar_Moeda",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_listar_Moeda",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_excluir_Moeda",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_atualizar_Moeda",NULL);
 
 #rio
-insert into matanay.funcionalidades values(DEFAULT,"func_cadastrar_relatorio",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_listar_relatorio",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_excluir_relatorio",NULL);
-insert into matanay.funcionalidades values(DEFAULT,"func_atualizar_relatorio",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_cadastrar_relatorio",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_listar_relatorio",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_excluir_relatorio",NULL);
+insert into matanay.Funcionalidades values(DEFAULT,"func_atualizar_relatorio",NULL);
 

@@ -30,11 +30,17 @@
                 </div>
                 <div class="input-field col s5 offset-s2 offset-m2 m4">
                     <h5><?= $this->lang->line('rel_file') ?></h5>
-
-                    <div id="activeExcelFile" class="btn waves-effect"><p>ADD</p></div>
-                    <input type="file" name="excelFile" style="display: none">
+                    <!-- <div id="activeExcelFile" class="btn waves-effect"><p>ADD</p></div>
+                    <input type="file" name="excelFile" style="display: none"> -->
+                    <div class="file-field input-field">
+                        <input class="file-path validate" type="text">
+                        <div id="activeExcelFile" class="btn waves-effect">
+                            <p>ADD</p>
+                            <input type="file" name="excelFile" >
+                        </div>
+                    </div>
                 </div>
-                <div class="input-field col m5 s5">
+                <div class="input-field col m5 s5 offset-m1 offset-s1">
                     <h5><?= $this->lang->line('periodo_apuracao') ?></h5>
 
                     <div class="col s3 m3 input-field offset-m4 offset-s2">
