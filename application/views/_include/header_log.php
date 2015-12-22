@@ -7,9 +7,9 @@
 	<link href="<?php echo base_url(); ?>complemento/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
 	<link href="<?php echo base_url(); ?>complemento/css/style_log.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>complemento/css/materialize.css" rel="stylesheet">
-	<link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+	<link href='<?php echo base_url(); ?>complemento/css/TitilliumWeb.css' rel='stylesheet' type='text/css'>
+    <script src="<?php echo base_url(); ?>complemento/js/jquery-2.1.4.min.js"></script>
 	<script src="<?php echo base_url();?>complemento/js/sweetalert/lib/sweet-alert.min.js"></script>
-	<script src="<?php echo base_url(); ?>complemento/js/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>complemento/js/jquery.matanay.js"></script>
 	<script src="<?php echo base_url(); ?>complemento/js/materialize.js"></script>
 	<script src="<?php echo base_url(); ?>complemento/js/init.js"></script>
