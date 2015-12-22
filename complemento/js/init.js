@@ -102,15 +102,6 @@ function id(el) {
     return document.getElementById(el);
 }
 
-window.onload = function () {
-    id('telefone').onkeypress = function () {
-        mascara(this, mtel);
-    }
-    id('telefone1').onkeypress = function () {
-        mascara(this, mtel1);
-    }
-}
-
 var excluirEntidade = function (url, langOpt) {
     var thisTitle = ["Tem Certeza?", "Are you sure?"];
     var thisText = ["A entidade selecionada será excluida", "The Selected Entity Will be deleted"];
