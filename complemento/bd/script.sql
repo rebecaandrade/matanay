@@ -89,6 +89,9 @@ insert into matanay.entidade values(DEFAULT,"obamaCell","170.252.797-22",NULL,"d
 insert into matanay.entidade values(DEFAULT,"whoLetTheDogsOut","170.252.797-22",NULL,"rouffRouff","evenYouRouffus@coisa.com",NULL,18,NULL,2);
 insert into matanay.entidade values(DEFAULT,"oRaulPerguntou",NULL,"49.116.743/0001-10","voceNaoAcertou_pegueSeuBanquinho","eSaiaDeMansinho@coisa.com",NULL,19,NULL,2);
 insert into matanay.entidade values(DEFAULT,"hitmonlee",NULL,"49.116.743/0001-10","hitmonchan","hitmondefesta@coisa.com",NULL,20,NULL,2);
+insert into matanay.entidade values(DEFAULT,"Zuza Zapata",NULL,"49.116.743/0001-10","Zuza Zapata","hitmondefesta@coisa.com",NULL,20,NULL,1);
+insert into matanay.entidade values(DEFAULT,"Glaucio Christelo","170.252.797-22",NULL,"Glaucio Christelo","evenYouRouffus@coisa.com",NULL,18,NULL,1);
+insert into matanay.entidade values(DEFAULT,"Glaucio Cristelo",NULL,"49.116.743/0001-10","Glaucio Cristelo","eSaiaDeMansinho@coisa.com",NULL,19,NULL,1);
 
 /*entidade_has_tipo_entidade*/
 insert into matanay.entidade_has_tipo_entidade values(1,1,20,20,NULL);
@@ -118,7 +121,15 @@ insert into matanay.entidade_has_tipo_entidade values(18,3,20,20,NULL);
 insert into matanay.entidade_has_tipo_entidade values(19,1,20,20,NULL);
 insert into matanay.entidade_has_tipo_entidade values(20,1,20,20,NULL);
 insert into matanay.entidade_has_tipo_entidade values(20,2,20,20,NULL);
-insert into matanay.entidade_has_tipo_entidade values(20,3,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(21,1,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(21,2,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(21,3,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(22,1,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(22,2,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(22,3,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(23,1,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(23,2,20,20,NULL);
+insert into matanay.entidade_has_tipo_entidade values(23,3,20,20,NULL);
 
 /* telefone entidade */
 insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",1);
@@ -161,6 +172,9 @@ insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",19);
 insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",19);
 insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",20);
 insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",20);
+insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",21);
+insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",22);
+insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",23);
 
 /* telefone favorecidos */
 insert into matanay.telefone_favorecido values(DEFAULT,NULL,"(99)9999-9999",1);
@@ -252,6 +266,17 @@ insert into matanay.faixa_video values(DEFAULT,"Faixa 18","BRRGE1500607",NULL,NU
 insert into matanay.faixa_video values(DEFAULT,"Faixa 19","BRRGE1500608",NULL,NULL,2);
 insert into matanay.faixa_video values(DEFAULT,"Faixa 20","BRRGE1500601",NULL,NULL,2);
 
+insert into matanay.faixa_video values(DEFAULT,"Desastre Mental","BRI680900005",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Just The Way You Are","BR5VU1100010",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Pegue uma Mochila","BRI681300001",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Beat It","BRE8T0901269",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Talking to the Moon","US7VG1322805",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Meu Amor, Meu Abrigo","BRI681400002",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Coração em Combustão","BRI681400008",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Wasting Love","US7VG1322810",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Need You Now","BR5VU1100008",NULL,NULL,1);
+insert into matanay.faixa_video values(DEFAULT,"Clocks","BRE8T0901275",NULL,NULL,1);
+
 /* faixa has imposto */
 insert into matanay.faixa_video_has_imposto values(1,1);
 insert into matanay.faixa_video_has_imposto values(1,2);
@@ -262,6 +287,26 @@ insert into matanay.faixa_video_has_imposto values(4,1);
 insert into matanay.faixa_video_has_imposto values(5,3);
 insert into matanay.faixa_video_has_imposto values(7,2);
 insert into matanay.faixa_video_has_imposto values(9,4);
+insert into matanay.faixa_video_has_imposto values(21,1);
+insert into matanay.faixa_video_has_imposto values(22,2);
+insert into matanay.faixa_video_has_imposto values(23,3);
+insert into matanay.faixa_video_has_imposto values(24,4);
+insert into matanay.faixa_video_has_imposto values(25,1);
+insert into matanay.faixa_video_has_imposto values(26,2);
+insert into matanay.faixa_video_has_imposto values(27,3);
+insert into matanay.faixa_video_has_imposto values(28,4);
+insert into matanay.faixa_video_has_imposto values(29,1);
+insert into matanay.faixa_video_has_imposto values(30,2);
+insert into matanay.faixa_video_has_imposto values(20,2);
+insert into matanay.faixa_video_has_imposto values(21,3);
+insert into matanay.faixa_video_has_imposto values(22,4);
+insert into matanay.faixa_video_has_imposto values(23,1);
+insert into matanay.faixa_video_has_imposto values(24,2);
+insert into matanay.faixa_video_has_imposto values(25,3);
+insert into matanay.faixa_video_has_imposto values(26,4);
+insert into matanay.faixa_video_has_imposto values(27,1);
+insert into matanay.faixa_video_has_imposto values(28,2);
+insert into matanay.faixa_video_has_imposto values(29,3);
 insert into matanay.faixa_video_has_imposto values(10,4);
 insert into matanay.faixa_video_has_imposto values(11,6);
 insert into matanay.faixa_video_has_imposto values(11,8);
@@ -295,6 +340,13 @@ insert into matanay.album values(DEFAULT,"Album 18",2,"7891430144791",50,"2008",
 insert into matanay.album values(DEFAULT,"Album 19",2,"7891430144791",50,"2009","99999",3,NULL,2);
 insert into matanay.album values(DEFAULT,"Album 20",2,"7891430144791",50,"2001","11111",1,NULL,2);
 
+insert into matanay.album values(DEFAULT,"Zuza Zapata",2,"7898270417160",1,"2001","11111",1,NULL,1);
+insert into matanay.album values(DEFAULT,"Piano Rock 2",2,"7898943042644",2,"2001","11111",1,NULL,1);
+insert into matanay.album values(DEFAULT,"Crônicas de Ontem e Outras Saudades",2,"646809641862",3,"2001","11111",1,NULL,1);
+insert into matanay.album values(DEFAULT,"Piano Rock",2,"7898929400239",1,"2001","11111",1,NULL,1);
+insert into matanay.album values(DEFAULT,"Piano Rock 3",2,"81159477554",2,"2001","11111",1,NULL,1);
+insert into matanay.album values(DEFAULT,"Finest Collection of Rock for Piano",2,"758524169696",1,"2001","11111",1,NULL,1);
+
 /* album has imposto */
 insert into matanay.album_has_imposto values(1,1);
 insert into matanay.album_has_imposto values(1,2);
@@ -305,6 +357,14 @@ insert into matanay.album_has_imposto values(4,1);
 insert into matanay.album_has_imposto values(5,3);
 insert into matanay.album_has_imposto values(7,2);
 insert into matanay.album_has_imposto values(9,4);
+
+insert into matanay.album_has_imposto values(21,1);
+insert into matanay.album_has_imposto values(22,2);
+insert into matanay.album_has_imposto values(23,3);
+insert into matanay.album_has_imposto values(24,4);
+insert into matanay.album_has_imposto values(25,1);
+insert into matanay.album_has_imposto values(26,2);
+
 insert into matanay.album_has_imposto values(10,4);
 insert into matanay.album_has_imposto values(11,6);
 insert into matanay.album_has_imposto values(11,8);
@@ -358,6 +418,20 @@ insert into matanay.album_has_faixa values(19,19);
 insert into matanay.album_has_faixa values(20,18);
 insert into matanay.album_has_faixa values(20,19);
 
+
+insert into matanay.album_has_faixa values(21,21);
+insert into matanay.album_has_faixa values(22,22);
+insert into matanay.album_has_faixa values(23,23);
+insert into matanay.album_has_faixa values(24,24);
+insert into matanay.album_has_faixa values(25,25);
+insert into matanay.album_has_faixa values(23,26);
+insert into matanay.album_has_faixa values(23,27);
+insert into matanay.album_has_faixa values(25,28);
+insert into matanay.album_has_faixa values(22,29);
+insert into matanay.album_has_faixa values(26,30);
+
+
+
 /* entidade has album */
 insert into matanay.entidade_has_album values(1,1);
 insert into matanay.entidade_has_album values(4,2);
@@ -368,6 +442,14 @@ insert into matanay.entidade_has_album values(1,6);
 insert into matanay.entidade_has_album values(4,7);
 insert into matanay.entidade_has_album values(1,8);
 insert into matanay.entidade_has_album values(7,9);
+
+insert into matanay.entidade_has_album values(21,21);
+insert into matanay.entidade_has_album values(23,22);
+insert into matanay.entidade_has_album values(21,23);
+insert into matanay.entidade_has_album values(22,24);
+insert into matanay.entidade_has_album values(23,25);
+insert into matanay.entidade_has_album values(23,26);
+
 insert into matanay.entidade_has_album values(10,10);
 insert into matanay.entidade_has_album values(19,11);
 insert into matanay.entidade_has_album values(13,12);
@@ -448,6 +530,39 @@ insert into matanay.entidade_has_faixa_video values(20,19,100,3);
 insert into matanay.entidade_has_faixa_video values(13,20,100,1);
 insert into matanay.entidade_has_faixa_video values(14,20,100,2);
 insert into matanay.entidade_has_faixa_video values(18,20,100,3);
+
+insert into matanay.entidade_has_faixa_video values(21,21,100,1);
+insert into matanay.entidade_has_faixa_video values(23,22,100,1);
+insert into matanay.entidade_has_faixa_video values(21,23,100,1);
+insert into matanay.entidade_has_faixa_video values(22,24,100,1);
+insert into matanay.entidade_has_faixa_video values(23,25,100,1);
+insert into matanay.entidade_has_faixa_video values(21,26,100,1);
+insert into matanay.entidade_has_faixa_video values(21,27,100,1);
+insert into matanay.entidade_has_faixa_video values(23,28,100,1);
+insert into matanay.entidade_has_faixa_video values(23,29,100,1);
+insert into matanay.entidade_has_faixa_video values(23,30,100,1);
+
+insert into matanay.entidade_has_faixa_video values(21,21,100,2);
+insert into matanay.entidade_has_faixa_video values(23,22,100,2);
+insert into matanay.entidade_has_faixa_video values(21,23,100,2);
+insert into matanay.entidade_has_faixa_video values(22,24,100,2);
+insert into matanay.entidade_has_faixa_video values(23,25,100,2);
+insert into matanay.entidade_has_faixa_video values(21,26,100,2);
+insert into matanay.entidade_has_faixa_video values(21,27,100,2);
+insert into matanay.entidade_has_faixa_video values(23,28,100,2);
+insert into matanay.entidade_has_faixa_video values(23,29,100,2);
+insert into matanay.entidade_has_faixa_video values(23,30,100,2);
+
+insert into matanay.entidade_has_faixa_video values(21,21,100,3);
+insert into matanay.entidade_has_faixa_video values(23,22,100,3);
+insert into matanay.entidade_has_faixa_video values(21,23,100,3);
+insert into matanay.entidade_has_faixa_video values(22,24,100,3);
+insert into matanay.entidade_has_faixa_video values(23,25,100,3);
+insert into matanay.entidade_has_faixa_video values(21,26,100,3);
+insert into matanay.entidade_has_faixa_video values(21,27,100,3);
+insert into matanay.entidade_has_faixa_video values(23,28,100,3);
+insert into matanay.entidade_has_faixa_video values(23,29,100,3);
+insert into matanay.entidade_has_faixa_video values(23,30,100,3);
 
 /*modelo relatorio*/
 insert into matanay.modelo values(DEFAULT ,"queridaEsqueciAsKids","A","C","E","G","I","K","M","O",1,NULL,1);

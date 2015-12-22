@@ -11,6 +11,7 @@ $(document).ready(function () {
     $('#relIsrc').chosen();
     $('#relUpc').chosen();
     $('#relCatalogo').chosen();
+    $('#select').chosen();
     $('#relOpt').on("submit", function () {
         var mensagem = "";
         var dataInicio = ($('input[name=datainicio]').val());
@@ -66,181 +67,297 @@ $(document).ready(function () {
     });
 });
 
-$.fn.dataTableExt.afnFiltering.push(function (oSettings, aData, iDataIndex) {
-    for (var i = 0; i < $('select[name^="lojas"]').length; i++) {
-        var lojas = ($("select[name^='lojas']")[i]).value;
-        if (lojas == -1) {
-            return true;
-        }
-        if((lojas == oSettings.aoData[iDataIndex]._aData[2])){
-            return true;
-        }
+$.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
+    var valido = true;
+    var validoFlag = false;
+    var validoFlagExcluir = false;
+
+    //oSettings.aoData[iDataIndex]._aData[0] -> DATA
+    var min = Date.parse($('#datainicio').val());
+    var max = Date.parse($('#datafim').val());
+    var dateAr =  ('01/'+aoData[0]).split('/');
+    var newDate = dateAr[1] + '-' + dateAr[0] + '-' + dateAr[2];
+    var date = new Date(newDate);
+    date = Date.parse(date);
+    if ( !(( isNaN( min ) && isNaN( max ) ) ||
+         ( isNaN( min ) && date <= max ) ||
+         ( min <= date   && isNaN( max ) ) ||
+         ( min <= date   && date <= max )) ) {
+
+        valido = false;
     }
-    return false;
-});
+    //oSettings.aoData[iDataIndex]._aData[1] -> TIPO
+    //Feito na View por motivos de PHP
+    
+    //oSettings.aoData[iDataIndex]._aData[2] -> LOJA
+    var lojasFiltros = {};
+    $("select[name^='lojas']").map(function(i, opt) {
+        lojasFiltros[opt.value] = $("select[name^='lojaSelect']")[i].value;
+    });
 
-$.fn.dataTableExt.afnFiltering.push(function (oSettings, aData, iDataIndex) {
-    for (var i = 0; i < $('select[name^="sub-lojas"]').length; i++) {
-        var subLojas = ($("select[name^='sub-lojas']")[i]).value;
-        if (subLojas == -1) {
-            return true;
+    $.each(lojasFiltros , function( key, type ) {
+        if(type == "Incluir"){
+            if(oSettings.aoData[iDataIndex]._aData[2] == key || key == '-1'){
+                validoFlag = validoFlag || true;
+            }
         }
-        if((subLojas == oSettings.aoData[iDataIndex]._aData[3])){
-            return true;
+        else if(type == "Excluir"){
+            if(oSettings.aoData[iDataIndex]._aData[2] == key){
+                validoFlagExcluir = validoFlagExcluir || true;
+            }
         }
+    });
+
+    if(!validoFlag)
+        valido = false;
+    if(validoFlagExcluir)
+        valido = false;
+    validoFlag = false;
+
+    //oSettings.aoData[iDataIndex]._aData[3] -> SUB-LOJA
+    var subLojasFiltros = {};
+    $("select[name^='sub-lojas']").map(function(i, opt) {
+        subLojasFiltros[opt.value] = $("select[name^='sub-lojaSelect']")[i].value;
+    })
+
+    $.each(subLojasFiltros , function( key, type ) {
+        if(type == "Incluir"){
+            if(oSettings.aoData[iDataIndex]._aData[3] == key || key == '-1'){
+                validoFlag = validoFlag || true;
+            }
+        }
+        else if(type == "Excluir"){
+            if(oSettings.aoData[iDataIndex]._aData[3] == key){
+                validoFlagExcluir = validoFlagExcluir || true;
+            }
+        }
+    });
+
+    if(!validoFlag)
+        valido = false;
+    if(validoFlagExcluir)
+        valido = false;
+    validoFlag = false;
+
+    //oSettings.aoData[iDataIndex]._aData[4] - TERRITORIO
+    var territoriosFiltros = {};
+    $("select[name^='territorios']").map(function(i, opt) {
+        territoriosFiltros[opt.value] = $("select[name^='territorioSelect']")[i].value;
+    })
+
+    $.each(territoriosFiltros , function( key, type ) {
+        if(type == "Incluir"){
+            if(oSettings.aoData[iDataIndex]._aData[4] == key || key == '-1'){
+                validoFlag = validoFlag || true;
+            }
+        }
+        else if(type == "Excluir"){
+            if(oSettings.aoData[iDataIndex]._aData[4] == key){
+                validoFlagExcluir = validoFlagExcluir || true;
+            }
+        }
+    });
+
+    if(!validoFlag)
+        valido = false;
+    if(validoFlagExcluir)
+        valido = false;
+    validoFlag = false;
+
+    //oSettings.aoData[iDataIndex]._aData[5] -> ARTISTA
+    var artistasFiltros = {};
+    $("select[name^='artistas']").map(function(i, opt) {
+        artistasFiltros[opt.value] = $("select[name^='artistaSelect']")[i].value;
+    })
+
+    $.each(artistasFiltros , function( key, type ) {
+        if(type == "Incluir"){
+            if(oSettings.aoData[iDataIndex]._aData[5] == key || key == '-1'){
+                validoFlag = validoFlag || true;
+            }
+        }
+        else if(type == "Excluir"){
+            if(oSettings.aoData[iDataIndex]._aData[5] == key){
+                validoFlagExcluir = validoFlagExcluir || true;
+            }
+        }
+    });
+
+    if(!validoFlag)
+        valido = false;
+    if(validoFlagExcluir)
+        valido = false;
+    validoFlag = false;
+
+    //oSettings.aoData[iDataIndex]._aData[7] -> PRODUTOR
+    var produtorsFiltros = {};
+    $("select[name^='produtors']").map(function(i, opt) {
+        produtorsFiltros[opt.value] = $("select[name^='produtorSelect']")[i].value;
+    })
+
+    $.each(produtorsFiltros , function( key, type ) {
+        if(type == "Incluir"){
+            if(oSettings.aoData[iDataIndex]._aData[7] == key || key == '-1'){
+                validoFlag = validoFlag || true;
+            }
+        }
+        else if(type == "Excluir"){
+            if(oSettings.aoData[iDataIndex]._aData[7] == key){
+                validoFlagExcluir = validoFlagExcluir || true;
+            }
+        }
+    });
+
+    if(!validoFlag)
+        valido = false;
+    if(validoFlagExcluir)
+        valido = false;
+    validoFlag = false;
+
+    //oSettings.aoData[iDataIndex]._aData[8] -> FAIXA
+    var faixasFiltros = {};
+    $("select[name^='faixas']").map(function(i, opt) {
+        faixasFiltros[opt.value] = $("select[name^='faixaSelect']")[i].value;
+    })
+
+    $.each(faixasFiltros , function( key, type ) {
+        if(type == "Incluir"){
+            if(oSettings.aoData[iDataIndex]._aData[8] == key || key == '-1'){
+                validoFlag = validoFlag || true;
+            }
+        }
+        else if(type == "Excluir"){
+            if(oSettings.aoData[iDataIndex]._aData[8] == key){
+                validoFlagExcluir = validoFlagExcluir || true;
+            }
+        }
+    });
+
+    if(!validoFlag)
+        valido = false;
+    if(validoFlagExcluir)
+        valido = false;
+    validoFlag = false;
+
+    //oSettings.aoData[iDataIndex]._aData[9] -> PRODUTO
+    // var produtosFiltros = {};
+    // $("select[name^='produtos']").map(function(i, opt) {
+    //     produtosFiltros[opt.value] = $("select[name^='produtoSelect']")[i].value;
+    // })
+
+    // $.each(produtosFiltros , function( key, type ) {
+    //     if(type == "Incluir"){
+    //         if(oSettings.aoData[iDataIndex]._aData[9] == key || key == '-1'){
+    //             validoFlag = validoFlag || true;
+    //         }
+    //     }
+    //     else if(type == "Excluir"){
+    //         if(oSettings.aoData[iDataIndex]._aData[9] == key){
+    //             validoFlagExcluir = validoFlagExcluir || true;
+    //         }
+    //     }
+    // });
+
+    // if(!validoFlag)
+    //     valido = false;
+    if(validoFlagExcluir)
+        valido = false;
+    // validoFlag = false;
+
+    //oSettings.aoData[iDataIndex]._aData[10] -> COD. CATALOGO
+    var catalogosFiltros = {};
+    $("select[name^='catalogos']").map(function(i, opt) {
+        catalogosFiltros[opt.value] = $("select[name^='catalogoSelect']")[i].value;
+    })
+
+    $.each(catalogosFiltros , function( key, type ) {
+        if(type == "Incluir"){
+            if(oSettings.aoData[iDataIndex]._aData[10] == key || key == '-1'){
+                validoFlag = validoFlag || true;
+            }
+        }
+        else if(type == "Excluir"){
+            if(oSettings.aoData[iDataIndex]._aData[10] == key){
+                validoFlagExcluir = validoFlagExcluir || true;
+            }
+        }
+    });
+
+    if(!validoFlag)
+        valido = false;
+    if(validoFlagExcluir)
+        valido = false;
+    validoFlag = false;
+
+
+    //oSettings.aoData[iDataIndex]._aData[11] -> ISRC
+    var isrcsFiltros = {};
+    $("select[name^='isrcs']").map(function(i, opt) {
+        isrcsFiltros[opt.value] = $("select[name^='isrcSelect']")[i].value;
+    })
+
+    $.each(isrcsFiltros , function( key, type ) {
+        if(type == "Incluir"){
+            if(oSettings.aoData[iDataIndex]._aData[11] == key || key == '-1'){
+                validoFlag = validoFlag || true;
+            }
+        }
+        else if(type == "Excluir"){
+            if(oSettings.aoData[iDataIndex]._aData[11] == key){
+                validoFlagExcluir = validoFlagExcluir || true;
+            }
+        }
+    });
+
+    if(!validoFlag)
+        valido = false;
+    if(validoFlagExcluir)
+        valido = false;
+    validoFlag = false;
+
+    //oSettings.aoData[iDataIndex]._aData[12] -> UPC
+    var upcsFiltros = {};
+    $("select[name^='upcs']").map(function(i, opt) {
+        upcsFiltros[opt.value] = $("select[name^='upcSelect']")[i].value;
+    })
+
+    $.each(upcsFiltros , function( key, type ) {
+        if(type == "Incluir"){
+            if(oSettings.aoData[iDataIndex]._aData[12] == key || key == '-1'){
+                validoFlag = validoFlag || true;
+            }
+        }
+        else if(type == "Excluir"){
+            if(oSettings.aoData[iDataIndex]._aData[12] == key){
+                validoFlagExcluir = validoFlagExcluir || true;
+            }
+        }
+    });
+
+    if(!validoFlag)
+        valido = false;
+    if(validoFlagExcluir)
+        valido = false;
+    validoFlag = false;
+
+    if(valido){
+        return true;
     }
-    return false;
-});
-
-$.fn.dataTableExt.afnFiltering.push(function (oSettings, aData, iDataIndex) {
-    for (var i = 0; i < $('select[name^="territorios"]').length; i++) {
-        var territorios = ($("select[name^='territorios']")[i]).value;
-        if (territorios == -1) {
-            return true;
-        }
-        if((territorios == oSettings.aoData[iDataIndex]._aData[4])){
-            return true;
-        }
-    }
-    return false;
-});
-
-$.fn.dataTableExt.afnFiltering.push(function (oSettings, aData, iDataIndex) {
-    for (var i = 0; i < $('select[name^="artistas"]').length; i++) {
-        var artistas = ($("select[name^='artistas']")[i]).value;
-        if (artistas == -1) {
-            return true;
-        }
-        if((artistas == oSettings.aoData[iDataIndex]._aData[5])){
-            return true;
-        }
-    }
-    return false;
-});
-
-// $.fn.dataTableExt.afnFiltering.push(function (oSettings, aData, iDataIndex) {
-//     for (var i = 0; i < $('select[name^="editoras"]').length; i++) {
-//         var editoras = ($("select[name^='editoras']")[i]).value;
-//         if (editoras == -1) {
-//             return true;
-//         }
-//         if((editoras == oSettings.aoData[iDataIndex]._aData[3])){
-//             return true;
-//         }
-//     }
-//     return false;
-// });
-
-$.fn.dataTableExt.afnFiltering.push(function (oSettings, aData, iDataIndex) {
-    for (var i = 0; i < $('select[name^="produtors"]').length; i++) {
-        var produtors = ($("select[name^='produtors']")[i]).value;
-        if (produtors == -1) {
-            return true;
-        }
-        if((produtors == oSettings.aoData[iDataIndex]._aData[7])){
-            return true;
-        }
-    }
-    return false;
-});
-
-$.fn.dataTableExt.afnFiltering.push(function (oSettings, aData, iDataIndex) {
-    for (var i = 0; i < $('select[name^="isrcs"]').length; i++) {
-        var isrcs = ($("select[name^='isrcs']")[i]).value;
-        if (isrcs == -1) {
-            return true;
-        }
-        if((isrcs == oSettings.aoData[iDataIndex]._aData[11])){
-            return true;
-        }
-    }
-    return false;
-});
-
-$.fn.dataTableExt.afnFiltering.push(function (oSettings, aData, iDataIndex) {
-    for (var i = 0; i < $('select[name^="upcs"]').length; i++) {
-        var upcs = ($("select[name^='upcs']")[i]).value;
-        if (upcs == -1) {
-            return true;
-        }
-        if((upcs == oSettings.aoData[iDataIndex]._aData[12])){
-            return true;
-        }
-    }
-    return false;
-});
-
-// $.fn.dataTableExt.afnFiltering.push(function (oSettings, aData, iDataIndex) {
-//     for (var i = 0; i < $('select[name^="albums"]').length; i++) {
-//         var albums = ($("select[name^='albums']")[i]).value;
-//         if (albums == -1) {
-//             return true;
-//         }
-//         if((albums == oSettings.aoData[iDataIndex]._aData[3])){
-//             return true;
-//         }
-//     }
-//     return false;
-// });
-
-$.fn.dataTableExt.afnFiltering.push(function (oSettings, aData, iDataIndex) {
-    for (var i = 0; i < $('select[name^="faixass"]').length; i++) {
-        var faixas = ($("select[name^='faixass']")[i]).value;
-        if (faixas == -1) {
-            return true;
-        }
-        if((faixas == oSettings.aoData[iDataIndex]._aData[8])){
-            return true;
-        }
-    }
-    return false;
-});
-
-$.fn.dataTableExt.afnFiltering.push(function (oSettings, aData, iDataIndex) {
-    for (var i = 0; i < $('select[name^="catalogos"]').length; i++) {
-        var catalogos = ($("select[name^='catalogos']")[i]).value;
-        if (catalogos == -1) {
-            return true;
-        }
-        if((catalogos == oSettings.aoData[iDataIndex]._aData[10])){
-            return true;
-        }
-    }
-    return false;
+    return false
 });
 
  
 $(document).ready(function() {
     var table = $('#myTable').DataTable();
-          
     $('#datainicio, #datafim, #tipoRelatorioFisico, #tipoRelatorioDigital, .myLojas, .mySubLojas, .myTerritorios, .myArtista, .myEditora, .myProdutor, .myISRC, .myUPC, .myAlbum, .myFaixa, .myCatalogo').change( function() {
+
         table.draw();
     } );
 } );
 $(document).ready(function() {
     var table = $('#usTable').DataTable();
-     
+
     $('#datainicio, #datafim, #tipoRelatorioFisico, #tipoRelatorioDigital, .myLojas, .mySubLojas, .myTerritorios, .myArtista, .myEditora, .myProdutor, .myISRC, .myUPC, .myAlbum, .myFaixa, .myCatalogo').change( function() {
         table.draw();
     } );
 } );
-
-$.fn.dataTable.ext.search.push(
-    function( settings, data, dataIndex ) {
-        var min = Date.parse($('#datainicio').val());
-        var max = Date.parse($('#datafim').val());
-        var dateAr =  ('01/'+data[0]).split('/');
-        var newDate = dateAr[1] + '-' + dateAr[0] + '-' + dateAr[2];
-        var date = new Date(newDate);
-        date = Date.parse(date);
-        if ( ( isNaN( min ) && isNaN( max ) ) ||
-             ( isNaN( min ) && date <= max ) ||
-             ( min <= date   && isNaN( max ) ) ||
-             ( min <= date   && date <= max ) )
-        {
-
-            return true;
-        }
-        return false;
-    }
-);

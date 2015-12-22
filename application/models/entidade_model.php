@@ -48,13 +48,13 @@ class Entidade_model extends CI_Model
     function buscar_entidade_especifica($id)
     {
         $this->db->where('idEntidade', $id);
-        return $this->db->get('Entidade')->result()[0];
+        return $this->db->get('Entidade')->row();
     }
 
     function buscar_entidade_has_tipo_especifico($id)
     {
         $this->db->where('idEntidade', $id);
-        return $this->db->get('Entidade_has_Tipo_Entidade')->result()[0];
+        return $this->db->get('Entidade_has_Tipo_Entidade')->result();
     }
 
     function buscar_telefone_especifico($id, $idtelefone)
@@ -74,7 +74,7 @@ class Entidade_model extends CI_Model
         $this->db->where('idEntidade', $id);
         $dados=$this->db->get('Entidade_has_Tipo_Entidade')->result();
         $this->db->where('idTipo_Entidade', $dados[0]->idTipo_Entidade);
-        return $this->db->get('tipo_entidade')->result()[0];
+        return $this->db->get('tipo_entidade')->result();
     }
 
     public function atualizar_entidade($entidade)

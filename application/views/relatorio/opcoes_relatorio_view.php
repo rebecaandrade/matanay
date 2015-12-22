@@ -51,9 +51,10 @@
                     <h5><?= $this->lang->line('loja') ?></h5>
 
                     <div class="row">
-                        <div class="col s10 m8 l8">
+                        <div class="col s7 m7">
                             <select name="lojas[]" id="relLojas" class="browser-default">
-                                <option selected value="-1"><?= $this->lang->line('loja') ?></option>
+                                <option value="-2"><?= $this->lang->line('loja') ?></option>
+                                <option selected value="-1">Todos</option>
                                 <?php if (isset($lojas)) { ?>
                                     <?php foreach ($lojas as $loja) { ?>
                                         <option value="<?= $loja ?>"><?= $loja ?></option>
@@ -61,7 +62,13 @@
                                 } ?>
                             </select>
                         </div>
-                        <div class="col s4 m4">
+                        <div class="col s3 s3">                            
+                            <select name="lojaSelect[]">
+                                <option>Incluir</option>
+                                <option>Excluir</option>
+                            </select>
+                        </div>
+                        <div class="col s2 m2">
                             <a onclick="addSelectParam(getLojas(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('loja')?>')" 
                                 class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
                         </div>
@@ -71,9 +78,10 @@
                     <h5><?= $this->lang->line('subloja') ?></h5>
 
                     <div class="row">
-                        <div class="col s8 m8">
+                        <div class="col s7 m7">
                             <select name="sub-lojas[]" id="relSubLojas" class="browser-default ">
-                                <option selected value="-1"><?= $this->lang->line('subloja') ?></option>
+                                <option value="-2"><?= $this->lang->line('subloja') ?></option>
+                                <option selected value="-1">Todos</option>
                                 <?php if (isset($sublojas)) { ?>
                                     <?php foreach ($sublojas as $subLoja) { ?>
                                         <option value="<?= $subLoja ?>"><?= $subLoja ?></option>
@@ -81,7 +89,13 @@
                                 } ?>
                             </select>
                         </div>
-                        <div class="col s4 m4">
+                        <div class="col s3 s3">                            
+                            <select name="sub-lojaSelect[]">
+                                <option>Incluir</option>
+                                <option>Excluir</option>
+                            </select>
+                        </div>
+                        <div class="col s2 m2">
                             <a onclick="addSelectParam(getSubLojas(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('subloja')?>')" 
                                 class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
                         </div>
@@ -93,9 +107,10 @@
                     <h5><?= $this->lang->line('territorio') ?></h5>
 
                     <div class="row">
-                        <div class="col s8 m8">
+                        <div class="col s7 m7">
                             <select name="territorios[]" id="relTerritorio" class="browser-default">
-                                <option selected value="-1"><?= $this->lang->line('territorio') ?></option>
+                                <option value="-2"><?= $this->lang->line('territorio') ?></option>
+                                <option selected value="-1">Todos</option>
                                 <?php if (isset($territorios)) { ?>
                                     <?php foreach ($territorios as $territorio) { ?>
                                         <option
@@ -104,7 +119,13 @@
                                 } ?>
                             </select>
                         </div>
-                        <div class="col s4 m4">
+                        <div class="col s3 s3">                            
+                            <select name="territorioSelect[]">
+                                <option>Incluir</option>
+                                <option>Excluir</option>
+                            </select>
+                        </div>
+                        <div class="col s2 m2">
                             <a onclick="addSelectParam(getTerritorios(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('territorio')?>')" 
                                 class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
                         </div>
@@ -114,9 +135,10 @@
                     <h5><?= $this->lang->line('artista') ?></h5>
 
                     <div class="row">
-                        <div class="col s8 m8">
+                        <div class="col s7 m7">
                             <select name="artistas[]" id="relArtista" class="browser-default">
-                                <option selected value="-1"><?= $this->lang->line('artista') ?></option>
+                                <option value="-2"><?= $this->lang->line('artista') ?></option>
+                                <option selected value="-1">Todos</option>
                                 <?php if (isset($artistas)) { ?>
                                     <?php foreach ($artistas as $artista) { ?>
                                         <option value="<?= $artista ?>"><?= $artista ?></option>
@@ -124,7 +146,13 @@
                                 } ?>
                             </select>
                         </div>
-                        <div class="col s4 m4">
+                        <div class="col s3 s3">                            
+                            <select name="artistaSelect[]">
+                                <option>Incluir</option>
+                                <option>Excluir</option>
+                            </select>
+                        </div>
+                        <div class="col s2 m2">
                             <a onclick="addSelectParam(getArtistas(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('artista')?>')" 
                                 class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
                         </div>
@@ -136,9 +164,10 @@
                     <h5><?= $this->lang->line('editora') ?></h5>
 
                     <div class="row">
-                        <div class="col s8 m8">
+                        <div class="col s7 m7">
                             <select name="editoras[]" id="relAutor" class="browser-default">
-                                <option selected value="-1"><?= $this->lang->line('editora') ?></option>
+                                <option value="-2"><?= $this->lang->line('editora') ?></option>
+                                <option selected value="-1">Todos</option>
                                 <?php if (isset($editoras)) { ?>
                                     <?php foreach ($editoras as $editora) { ?>
                                         <option value="<?= $editora ?>"><?= $editora ?></option>
@@ -146,7 +175,13 @@
                                 } ?>
                             </select>
                         </div>
-                        <div class="col s4 m4">
+                        <div class="col s3 s3">                            
+                            <select name="editoraSelect[]">
+                                <option>Incluir</option>
+                                <option>Excluir</option>
+                            </select>
+                        </div>
+                        <div class="col s2 m2">
                             <a onclick="addSelectParam(getEditoras(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('editora')?>')" 
                                 class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
                         </div>
@@ -156,9 +191,10 @@
                     <h5><?= $this->lang->line('produtor') ?></h5>
 
                     <div class="row">
-                        <div class="col s8 m8">
+                        <div class="col s7 m7">
                             <select name="produtors[]" id="relProdutor" class="browser-default">
-                                <option selected value="-1"><?= $this->lang->line('produtor') ?></option>
+                                <option value="-2"><?= $this->lang->line('produtor') ?></option>
+                                <option selected value="-1">Todos</option>
                                 <?php if (isset($produtores)) { ?>
                                     <?php foreach ($produtores as $produtor) { ?>
                                         <option value="<?= $produtor ?>"><?= $produtor ?></option>
@@ -166,7 +202,13 @@
                                 } ?>
                             </select>
                         </div>
-                        <div class="col s4 m4">
+                        <div class="col s3 s3">                            
+                            <select name="produtorSelect[]">
+                                <option>Incluir</option>
+                                <option>Excluir</option>
+                            </select>
+                        </div>
+                        <div class="col s2 m2">
                             <a onclick="addSelectParam(getProdutores(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('produtor')?>')" 
                                 class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
                         </div>
@@ -178,9 +220,10 @@
                     <h5><?= $this->lang->line('isrc') ?></h5>
 
                     <div class="row">
-                        <div class="col s8 m8">
+                        <div class="col s7 m7">
                             <select name="isrcs[]" id="relIsrc" class="browser-default">
-                                <option selected value="-1"><?= $this->lang->line('isrc') ?></option>
+                                <option value="-2"><?= $this->lang->line('isrc') ?></option>
+                                <option selected value="-1">Todos</option>
                                 <?php if (isset($isrcs)) { ?>
                                     <?php foreach ($isrcs as $isrc) { ?>
                                         <option value="<?= $isrc ?>"><?= $isrc ?></option>
@@ -188,7 +231,13 @@
                                 } ?>
                             </select>
                         </div>
-                        <div class="col s4 m4">
+                        <div class="col s3 s3">                            
+                            <select name="isrcSelect[]">
+                                <option>Incluir</option>
+                                <option>Excluir</option>
+                            </select>
+                        </div>
+                        <div class="col s2 m2">
                             <a onclick="addSelectParam(getIsrcs(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('isrc')?>')" 
                                 class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
                         </div>
@@ -198,9 +247,10 @@
                     <h5><?= $this->lang->line('upc') ?></h5>
 
                     <div class="row">
-                        <div class="col s8 m8">
+                        <div class="col s7 m7">
                             <select name="upcs[]" id="relUpc" class="browser-default">
-                                <option selected value="-1"><?= $this->lang->line('upc') ?></option>
+                                <option value="-2"><?= $this->lang->line('upc') ?></option>
+                                <option selected value="-1">Todos</option>
                                 <?php if (isset($upcs)) { ?>
                                     <?php foreach ($upcs as $upc) { ?>
                                         <option value="<?= $upc ?>"><?= $upc ?></option>
@@ -208,7 +258,13 @@
                                 } ?>
                             </select>
                         </div>
-                        <div class="col s4 m4">
+                        <div class="col s3 s3">                            
+                            <select name="upcSelect[]">
+                                <option>Incluir</option>
+                                <option>Excluir</option>
+                            </select>
+                        </div>
+                        <div class="col s2 m2">
                             <a onclick="addSelectParam(getUpcs(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('upc')?>')" 
                                 class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
                         </div>
@@ -220,9 +276,10 @@
                     <h5><?= $this->lang->line('albums') ?></h5>
 
                     <div class="row">
-                        <div class="col s8 m8">
+                        <div class="col s7 m7">
                             <select name="albums[]" id="relAlbum" class="browser-default">
-                                <option selected value="-1"><?= $this->lang->line('albums') ?></option>
+                                <option value="-2"><?= $this->lang->line('albums') ?></option>
+                                <option selected value="-1">Todos</option>
                                 <?php if (isset($albuns)) { ?>
                                     <?php foreach ($albuns as $album) { ?>
                                         <option value="<?= $album ?>"><?= $album ?></option>
@@ -230,7 +287,13 @@
                                 } ?>
                             </select>
                         </div>
-                        <div class="col s4 m4">
+                        <div class="col s3 s3">                            
+                            <select name="albumSelect[]">
+                                <option>Incluir</option>
+                                <option>Excluir</option>
+                            </select>
+                        </div>
+                        <div class="col s2 m2">
                             <a onclick="addSelectParam(getAlbuns(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('album')?>')" 
                                 class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
                         </div>
@@ -240,9 +303,10 @@
                     <h5><?= $this->lang->line('faixas') ?></h5>
 
                     <div class="row">
-                        <div class="col s8 m8">
+                        <div class="col s7 m7">
                             <select name="faixass[]" id="relFaixa" class="browser-default">
-                                <option selected value="-1"><?= $this->lang->line('faixas') ?></option>
+                                <option value="-2"><?= $this->lang->line('faixas') ?></option>
+                                <option selected value="-1">Todos</option>
                                 <?php if (isset($faixas)) { ?>
                                     <?php foreach ($faixas as $faixa) { ?>
                                         <option value="<?= $faixa ?>"><?= $faixa ?></option>
@@ -250,7 +314,13 @@
                                 } ?>
                             </select>
                         </div>
-                        <div class="col s4 m4">
+                        <div class="col s3 s3">                            
+                            <select name="faixaSelect[]">
+                                <option>Incluir</option>
+                                <option>Excluir</option>
+                            </select>
+                        </div>
+                        <div class="col s2 m2">
                             <a onclick="addSelectParam(getFaixas(),'<?php echo $this->lang->line('selecione'); ?>','<?php echo $this->lang->line('faixas')?>')" 
                                 class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
                         </div>
@@ -262,9 +332,10 @@
                     <h5><?= $this->lang->line('catalogo') ?></h5>
 
                     <div class="row">
-                        <div class="col s8 m8">
+                        <div class="col s7 m7">
                             <select name="catalogos[]" id="relCatalogo" class="browser-default">
-                                <option selected value="-1"><?= $this->lang->line('catalogo') ?></option>
+                                <option value="-2"><?= $this->lang->line('catalogo') ?></option>
+                                <option selected value="-1">Todos</option>
                                 <?php if (isset($catalogos)) { ?>
                                     <?php foreach ($catalogos as $catalogo) { ?>
                                         <option value="<?= $catalogo ?>"><?= $catalogo ?></option>
@@ -272,7 +343,13 @@
                                 } ?>
                             </select>
                         </div>
-                        <div class="col s4 m4">
+                        <div class="col s3 s3">                            
+                            <select name="catalogoSelect[]">
+                                <option>Incluir</option>
+                                <option>Excluir</option>
+                            </select>
+                        </div>
+                        <div class="col s2 m2">
                             <a onclick="addSelectParam(getCatalogos(),'<?php echo $this->lang->line('selecione'); ?>','catalogo')" 
                                 class="btn-floating btn-medium waves-effect waves-light btn tooltipped" id="100artista" data-position="right" data-delay="50" data-tooltip="Adicionar"><i class="mdi-content-add"></i></a>
                         </div>
@@ -352,28 +429,6 @@
                     <?php }
                 } ?>
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </tfoot>
             </table>
             <div class="row">
                 <br><br>
