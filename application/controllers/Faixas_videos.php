@@ -39,7 +39,7 @@ class Faixas_Videos extends CI_Controller {
         $autores = $this->input->post('autors[]');
         $produtores = $this->input->post('produtors[]');
 
-         $perc_artistas = str_replace("%","",$this->input->post('percentualArtista[]'));
+        $perc_artistas = str_replace("%","",$this->input->post('percentualArtista[]'));
         $perc_autores = str_replace("%","",$this->input->post('percentualAutor[]'));
         $perc_produtores = str_replace("%","",$this->input->post('percentualProdutor[]'));
 
