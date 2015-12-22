@@ -26,25 +26,25 @@ insert into matanay.usuario values(DEFAULT, "admin","admin","21232f297a57a5a7438
 insert into matanay.usuario values(DEFAULT, "cliente","cliente","4983a0ab83ed86e0e7213c8783940193","email1@gmail.com",NULL,NULL,2);
 
 /* favorecidos */
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","fastAndFurious","170.252.797-22",NULL,"pleaseSomeBodyStopUs","oneMOreRide@email.com",NULL,1);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","22JumpStreet",NULL,"49.116.743/0001-10","theBossDaughter","angelsOfLaw@email.com",NULL,1);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","fastAndFurious","772.985.954-82",NULL,"pleaseSomeBodyStopUs","oneMOreRide@email.com",NULL,1);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","22JumpStreet",NULL,"32.085.727/0001-05","theBossDaughter","angelsOfLaw@email.com",NULL,1);
 insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","meuAmigoDaEscola","170.252.797-22",NULL,"isAMonkey","kacoKacoKaco@email.com",NULL,1);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","yingYangYo",NULL,"49.116.743/0001-10","yingYangYoooohhh","issoDoi@tchan.com",NULL,1);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","seguraOchan","170.252.797-22",NULL,"amarraOChan","seguraOChan@Chan.Chan",NULL,1);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","digaAondeVoceVai",NULL,"49.116.743/0001-10","queEuVouVarrendo","vouVarrendo@vouVarrendo.com",NULL,1);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","bomXiBom","170.252.797-22",NULL,"xiBomBomBom","euDecimaSobe@oDeBaixoDesce.com",NULL,1);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","paraBailarLaBamba",NULL,"49.116.743/0001-10","seNecesita","unBoca@deGraca.com",NULL,1);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","kdsjhfkjshdfBuena","170.252.797-22",NULL,"dkjfdjBela","eeeeeMacarena@aaaaii.com",NULL,1);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","weAreHalfWayThere",NULL,"49.116.743/0001-10","ooohhooo","livingOnAPrayer@email.com",NULL,1);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","songMakerSaysItAnitSoBad","170.252.797-22",NULL,"dreamMakerIsGonnaMakeYouMad","SpaceManSays@everyBody.lookDown",NULL,2);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","CJR",NULL,"49.116.743/0001-10","theBest","junior@Company.com",NULL,2);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","hodor","170.252.797-22",NULL,"hodor","hodor@email.com",NULL,2);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","mutleyFacaALgumaCoisa",NULL,"49.116.743/0001-10","pegueOPompo","prendamSeguerem@agarrem.capturem",NULL,2);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","ninguemTemPacienciaComigo","170.252.797-22",NULL,"soNaoTeDouOutra","porQueeee@email.com",NULL,2);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","aCidadeDeTownsVille",NULL,"49.116.743/0001-10","macacoLouco","meninas@super.poderosas",NULL,2);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","seOPicaPauTivesse","170.252.797-22",NULL,"comunicadoAPolicia","nadaDisso@teria.acontecido",NULL,2);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","emTodosEssesAnos",NULL,"49.116.743/0001-10","nessaIndustriaVital","essaEAPrimeiraVez@queIsso.meAcontece",NULL,2);
-insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","mayTheForce","170.252.797-22",NULL,"beWithYou","yoda@email.com",NULL,2);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","yingYangYo",NULL,"37.143.686/0001-80","yingYangYoooohhh","issoDoi@tchan.com",NULL,1);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","seguraOchan","170.592.569-38",NULL,"amarraOChan","seguraOChan@Chan.Chan",NULL,1);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","digaAondeVoceVai",NULL,"37.744.577/0001-18","queEuVouVarrendo","vouVarrendo@vouVarrendo.com",NULL,1);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","bomXiBom","662.576.537-62",NULL,"xiBomBomBom","euDecimaSobe@oDeBaixoDesce.com",NULL,1);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","paraBailarLaBamba",NULL,"23.351.566/0001-63","seNecesita","unBoca@deGraca.com",NULL,1);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","kdsjhfkjshdfBuena","978.753.652-95",NULL,"dkjfdjBela","eeeeeMacarena@aaaaii.com",NULL,1);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","weAreHalfWayThere",NULL,"71.593.358/0001-13","ooohhooo","livingOnAPrayer@email.com",NULL,1);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","songMakerSaysItAnitSoBad","473.764.892-23",NULL,"dreamMakerIsGonnaMakeYouMad","SpaceManSays@everyBody.lookDown",NULL,2);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","CJR",NULL,"14.955.472/0001-02","theBest","junior@Company.com",NULL,2);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","hodor","222.716.033-07",NULL,"hodor","hodor@email.com",NULL,2);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","mutleyFacaALgumaCoisa",NULL,"16.769.978/0001-52","pegueOPompo","prendamSeguerem@agarrem.capturem",NULL,2);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","ninguemTemPacienciaComigo","737.073.622-99",NULL,"soNaoTeDouOutra","porQueeee@email.com",NULL,2);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","aCidadeDeTownsVille",NULL,"48.107.382/0001-83","macacoLouco","meninas@super.poderosas",NULL,2);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","seOPicaPauTivesse","998.063.129-53",NULL,"comunicadoAPolicia","nadaDisso@teria.acontecido",NULL,2);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","emTodosEssesAnos",NULL,"42.784.133/0001-46","nessaIndustriaVital","essaEAPrimeiraVez@queIsso.meAcontece",NULL,2);
+insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","mayTheForce","604.045.824-00",NULL,"beWithYou","yoda@email.com",NULL,2);
 insert into matanay.favorecido values(DEFAULT,"banco","agencia","conta","ifYouDidntGet",NULL,"49.116.743/0001-10","theReferences","captain@america.does",NULL,2);
 
 /*favorecido_has_tipo_favorecido*/
@@ -70,28 +70,28 @@ insert into matanay.favorecido_has_tipo_favorecido values(19,3,98,63,NULL);
 
 /* entidades */
 insert into matanay.entidade values(DEFAULT,"BillyOLindo",NULL,"49.116.743/0001-10","sirBilly","masterBilly@coisa.com",NULL,1,NULL,1);
-insert into matanay.entidade values(DEFAULT,"totoroMaisDe8000",NULL,"49.116.743/0001-10","oneTotoro","thatTotoro@coisa.com",NULL,2,NULL,1);
-insert into matanay.entidade values(DEFAULT,"tiaMei","170.252.797-22",NULL,"tioBen","spider@coisa.com",NULL,3,NULL,1);
-insert into matanay.entidade values(DEFAULT,"Jairo","170.252.797-22",NULL,"joe","myJoe@coisa.com",NULL,4,NULL,1);
-insert into matanay.entidade values(DEFAULT,"mundoCanibal",NULL,"49.116.743/0001-10","travesseiroDepreda","michelin@coisa.com",NULL,5,NULL,1);
-insert into matanay.entidade values(DEFAULT,"pabloDoArrocha",NULL,"49.116.743/0001-10","estouIndoEmbora","aMalaJaEstaLaFora@coisa.com",NULL,6,NULL,1);
-insert into matanay.entidade values(DEFAULT,"mrCatra","170.252.797-22",NULL,"25Filhos","talvezSejaVoce@coisa.com",NULL,7,NULL,1);
-insert into matanay.entidade values(DEFAULT,"starLord","170.252.797-22",NULL,"Who?","guardioes@coisa.com",NULL,8,NULL,1);
-insert into matanay.entidade values(DEFAULT,"manOfStell",NULL,"49.116.743/0001-10","Betsy","Tony@coisa.com",NULL,9,NULL,1);
-insert into matanay.entidade values(DEFAULT,"NedStark",NULL,"49.116.743/0001-10","WinterIsComing","noHead@coisa.com",NULL,10,NULL,1);
-insert into matanay.entidade values(DEFAULT,"RRMartin",NULL,"49.116.743/0001-10","whoIsGonnaDieNext","Tyrion@coisa.com",NULL,11,NULL,2);
-insert into matanay.entidade values(DEFAULT,"shiaLabouf",NULL,"49.116.743/0001-10","DoIt","nothingIsImpossible@coisa.com",NULL,12,NULL,2);
-insert into matanay.entidade values(DEFAULT,"onlyAGinger",NULL,"49.116.743/0001-10","canCall","anotherGingerGinger@coisa.com",NULL,13,NULL,2);
-insert into matanay.entidade values(DEFAULT,"dragonBall","170.252.797-22",NULL,"Ressurection","ofFreeza@coisa.com",NULL,14,NULL,2);
-insert into matanay.entidade values(DEFAULT,"knockKnock","170.252.797-22",NULL,"whoIsThere___YouKnow","youKnowWho___Exactly@coisa.com",NULL,15,NULL,2);
-insert into matanay.entidade values(DEFAULT,"IIIIIiiiIIWillAlwaysLoveYou","170.252.797-22",NULL,"leoDiCaprio","Anita@coisa.com",NULL,16,NULL,2);
-insert into matanay.entidade values(DEFAULT,"obamaCell","170.252.797-22",NULL,"don_uanaBi","obamaCell_EniMor@coisa.com",NULL,17,NULL,2);
-insert into matanay.entidade values(DEFAULT,"whoLetTheDogsOut","170.252.797-22",NULL,"rouffRouff","evenYouRouffus@coisa.com",NULL,18,NULL,2);
-insert into matanay.entidade values(DEFAULT,"oRaulPerguntou",NULL,"49.116.743/0001-10","voceNaoAcertou_pegueSeuBanquinho","eSaiaDeMansinho@coisa.com",NULL,19,NULL,2);
-insert into matanay.entidade values(DEFAULT,"hitmonlee",NULL,"49.116.743/0001-10","hitmonchan","hitmondefesta@coisa.com",NULL,20,NULL,2);
-insert into matanay.entidade values(DEFAULT,"Zuza Zapata",NULL,"49.116.743/0001-10","Zuza Zapata","hitmondefesta@coisa.com",NULL,20,NULL,1);
+insert into matanay.entidade values(DEFAULT,"totoroMaisDe8000",NULL,"42.784.133/0001-46","oneTotoro","thatTotoro@coisa.com",NULL,2,NULL,1);
+insert into matanay.entidade values(DEFAULT,"tiaMei","443.085.394-04",NULL,"tioBen","spider@coisa.com",NULL,3,NULL,1);
+insert into matanay.entidade values(DEFAULT,"Jairo","262.631.302-53",NULL,"joe","myJoe@coisa.com",NULL,4,NULL,1);
+insert into matanay.entidade values(DEFAULT,"mundoCanibal",NULL,"86.119.923/0001-82","travesseiroDepreda","michelin@coisa.com",NULL,5,NULL,1);
+insert into matanay.entidade values(DEFAULT,"pabloDoArrocha",NULL,"77.605.258/0001-46","estouIndoEmbora","aMalaJaEstaLaFora@coisa.com",NULL,6,NULL,1);
+insert into matanay.entidade values(DEFAULT,"mrCatra","124.134.793-09",NULL,"25Filhos","talvezSejaVoce@coisa.com",NULL,7,NULL,1);
+insert into matanay.entidade values(DEFAULT,"starLord","223.048.594-61",NULL,"Who?","guardioes@coisa.com",NULL,8,NULL,1);
+insert into matanay.entidade values(DEFAULT,"manOfStell",NULL,"64.476.351/0001-56","Betsy","Tony@coisa.com",NULL,9,NULL,1);
+insert into matanay.entidade values(DEFAULT,"NedStark",NULL,"85.455.667/0001-31","WinterIsComing","noHead@coisa.com",NULL,10,NULL,1);
+insert into matanay.entidade values(DEFAULT,"RRMartin",NULL,"72.337.345/0001-46","whoIsGonnaDieNext","Tyrion@coisa.com",NULL,11,NULL,2);
+insert into matanay.entidade values(DEFAULT,"shiaLabouf",NULL,"67.996.445/0001-44","DoIt","nothingIsImpossible@coisa.com",NULL,12,NULL,2);
+insert into matanay.entidade values(DEFAULT,"onlyAGinger",NULL,"82.246.756/0001-80","canCall","anotherGingerGinger@coisa.com",NULL,13,NULL,2);
+insert into matanay.entidade values(DEFAULT,"dragonBall","564.854.866-40",NULL,"Ressurection","ofFreeza@coisa.com",NULL,14,NULL,2);
+insert into matanay.entidade values(DEFAULT,"knockKnock","797.248.236-52",NULL,"whoIsThere___YouKnow","youKnowWho___Exactly@coisa.com",NULL,15,NULL,2);
+insert into matanay.entidade values(DEFAULT,"IIIIIiiiIIWillAlwaysLoveYou","442.222.731-98",NULL,"leoDiCaprio","Anita@coisa.com",NULL,16,NULL,2);
+insert into matanay.entidade values(DEFAULT,"obamaCell","042.747.575-95",NULL,"don_uanaBi","obamaCell_EniMor@coisa.com",NULL,17,NULL,2);
+insert into matanay.entidade values(DEFAULT,"whoLetTheDogsOut","518.718.124-61",NULL,"rouffRouff","evenYouRouffus@coisa.com",NULL,18,NULL,2);
+insert into matanay.entidade values(DEFAULT,"oRaulPerguntou",NULL,"87.054.838/0001-46","voceNaoAcertou_pegueSeuBanquinho","eSaiaDeMansinho@coisa.com",NULL,19,NULL,2);
+insert into matanay.entidade values(DEFAULT,"hitmonlee",NULL,"87.996.675/0001-10","hitmonchan","hitmondefesta@coisa.com",NULL,20,NULL,2);
+insert into matanay.entidade values(DEFAULT,"Zuza Zapata",NULL,"04.236.495/0001-03","Zuza Zapata","hitmondefesta@coisa.com",NULL,20,NULL,1);
 insert into matanay.entidade values(DEFAULT,"Glaucio Christelo","170.252.797-22",NULL,"Glaucio Christelo","evenYouRouffus@coisa.com",NULL,18,NULL,1);
-insert into matanay.entidade values(DEFAULT,"Glaucio Cristelo",NULL,"49.116.743/0001-10","Glaucio Cristelo","eSaiaDeMansinho@coisa.com",NULL,19,NULL,1);
+insert into matanay.entidade values(DEFAULT,"Glaucio Cristelo",NULL,"87.672.867/0001-71","Glaucio Cristelo","eSaiaDeMansinho@coisa.com",NULL,19,NULL,1);
 
 /*entidade_has_tipo_entidade*/
 insert into matanay.entidade_has_tipo_entidade values(1,1,20,20,NULL);
