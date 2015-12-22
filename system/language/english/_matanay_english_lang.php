@@ -117,9 +117,9 @@ $lang['esqueceu_senha'] 	= 'Forgot your password?';
 
 $lang['home'] 				= 'HOME';
 $lang['cadastros'] 			= 'DATA MANAGEMENT';
-$lang['cadastros1'] 		= 'ENTITIES/FAVOREDS';
+$lang['cadastros1'] 		= 'ENTITIES / FAVORED';
 $lang['relatorios'] 		= 'REPORTS';
-$lang['vendas'] 			= 'EXPORTATION OF REPORTS';
+$lang['vendas'] 			= 'EXPORT REPORTS';
 $lang['sair'] 				= 'LOGOUT';
 
 ////// SUB_MENU 
@@ -128,7 +128,7 @@ $lang['faixas'] 			= 'TRACKS';
 $lang['videos'] 			= 'VIDEOS';
 $lang['albums'] 			= 'ALBUMS';
 $lang['entidades'] 			= 'ENTITIES';
-$lang['favorecidos']		= 'FAVOREDS';
+$lang['favorecidos']		= 'FAVORED';
 $lang['imposto']			= 'TAX';
 $lang['contrato']			= 'CONTRACT';
 
@@ -268,7 +268,7 @@ $lang['receita']					= 'Revenue';
 
 ////// VENDAS ////// Evandro
 
-$lang['vendas_min'] 				= 'Exportation of reports';
+$lang['vendas_min'] 				= 'Export reports';
 $lang['vendas_total'] 				= 'Total Sales';
 $lang['album_min'] 					= 'Album';
 $lang['faixa_min'] 					= 'Track';
