@@ -678,9 +678,9 @@ class Relatorio extends CI_Controller
         $autores = $this->input->post('autors[]');
         $produtores = $this->input->post('produtors[]');
 
-        $perc_artistas = $this->input->post('percentualArtista[]');
-        $perc_autores = $this->input->post('percentualAutor[]');
-        $perc_produtores = $this->input->post('percentualProdutor[]');
+        $perc_artistas = str_replace("%","",$this->input->post('percentualArtista[]'));
+        $perc_autores = str_replace("%","",$this->input->post('percentualAutor[]'));
+        $perc_produtores = str_replace("%","",$this->input->post('percentualProdutor[]'));
 
         $impostos = $this->input->post('impostos_faixa[]');
 
