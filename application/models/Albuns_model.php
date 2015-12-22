@@ -194,6 +194,29 @@ class Albuns_model extends CI_Model {
         }
     }
 
+    public function existe_album_upc_ean_cadastro($upc_ean, $id){
+        if($upc_ean != NULL){
+            $this->db->where('excluido =', NULL);
+            $this->db->where("upc_ean", $upc_ean);
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
+
+            $dados = $this->db->get("Album")->result();
+
+            $this->db->where('idAlbum', $id);
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
+            $this->db->where('excluido =', NULL);
+            $dadosAtual = $this->db->get('Album')->result()[0];
+
+            if ( $dados == NULL || $dadosAtual->upc_ean == $upc_ean)
+                return 0;
+            else
+                return 1;
+
+        } else{
+            return NULL;
+        }
+    }
+
     public function cadastrar_album_has_imposto($imposto_album){
         $this->db->insert('Album_has_Imposto', $imposto_album);
         return $this->db->insert_id();

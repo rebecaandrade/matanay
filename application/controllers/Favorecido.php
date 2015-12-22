@@ -79,6 +79,16 @@ class Favorecido extends CI_Controller
         if (($info = $this->valida_cadastro_favorecido()) != NULL) {
             //coloca no banco o que eh pego no form sobre favorecido
             //die(var_dump($info));
+            if(isset($info['cpf']))
+                $existe_favorecido = $this->Favorecido_model->existe_favorecido_cpf($info['cpf'], $info['idFavorecido']);
+            else
+                $existe_favorecido = $this->Favorecido_model->existe_favorecido_cpf($info['cnpj'], $info['idFavorecido']);
+            if($existe_favorecido){
+                $this->session->set_userdata('mensagem', '=`(');
+                $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf_cnpj_repetido'));
+                $this->session->set_userdata('tipo_mensagem', 'error');
+                redirect('Favorecido/mostrar_cadastro');
+            }
              $favorecido = $this->gera_favorecido($info);
             //insere o favorecido no banco
             $id_favorecido = $this->Favorecido_model->cadastrar_favorecido($favorecido);//coloca os telefones
@@ -288,6 +298,16 @@ class Favorecido extends CI_Controller
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
         if (($info = $this->valida_atualizacao_favorecido()) != NULL) {
+            if(isset($info['cpf']))
+                $existe_favorecido = $this->Favorecido_model->existe_favorecido_cpf($info['cpf'], $info['idFavorecido']);
+            else
+                $existe_favorecido = $this->Favorecido_model->existe_favorecido_cpf($info['cnpj'], $info['idFavorecido']);
+            if($existe_favorecido){
+                $this->session->set_userdata('mensagem', '=`(');
+                $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf_cnpj_repetido'));
+                $this->session->set_userdata('tipo_mensagem', 'error');
+                redirect('Favorecido/listar');
+            }
             if(isset($info['cpf']))
                 $info['cnpj']=null;
             if(isset($info['cnpj']))

@@ -91,6 +91,7 @@ class Favorecido_model extends CI_Model{
    	}
 
 	public function buscar_favorecido_especifico($id){
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
     		$this->db->where('idFavorecido', $id);
         	return $this->db->get('Favorecido')->result()[0];
    	}
@@ -115,6 +116,30 @@ class Favorecido_model extends CI_Model{
         $this->db->where('idFavorecido', $id);
         $dados['excluido'] = 1;
         $this->db->update('Favorecido', $dados);
+    }
+
+    public function existe_favorecido_cpf($cpf_cnpj, $id){
+        if($cpf_cnpj != NULL){
+            $this->db->where('excluido =', NULL);
+            $this->db->where("cpf", $cpf_cnpj);
+            $this->db->or_where("cnpj", $cpf_cnpj);
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
+
+            $dados = $this->db->get("Favorecido")->result();
+
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
+            $this->db->where('excluido =', NULL);
+            $this->db->where('idFavorecido', $id);
+            $dadosFavorecidoAntigo =  $this->db->get('Favorecido')->result()[0];
+
+            if ( $dados == NULL || $dadosFavorecidoAntigo->cpf == $cpf_cnpj || $dadosFavorecidoAntigo->cnpj == $cpf_cnpj)
+                return 0;
+            else
+                return 1;
+
+        } else{
+            return NULL;
+        }
     }
 
 }

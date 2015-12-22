@@ -2,38 +2,47 @@
 
 class Faixas_Videos extends CI_Controller {
 
-	public function __construct() {
-   		parent::__construct();
-   		$this->load->model('faixas_videos_model');
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('faixas_videos_model');
         if (!($this->session->userdata('linguagem'))) {
             $this->session->set_userdata('linguagem', 'portugues');
         }
         
         $linguagem_usuario = $this->session->userdata('linguagem');
         $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
-	}
+    }
 
-	public function cadastra_faixa(){
-		$this->session->set_flashdata('redirect_url', current_url());
+    public function cadastra_faixa(){
+        $this->session->set_flashdata('redirect_url', current_url());
 
-		$linguagem_usuario = $this->session->userdata('linguagem');
-		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
+        $linguagem_usuario = $this->session->userdata('linguagem');
+        $this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 
-		$dados['artistas'] = $this->faixas_videos_model->buscar_artistas($this->session->userdata('id_cliente'));
-		$dados['autores'] = $this->faixas_videos_model->buscar_autores($this->session->userdata('id_cliente'));
-		$dados['produtores'] = $this->faixas_videos_model->buscar_produtores($this->session->userdata('id_cliente'));
+        $dados['artistas'] = $this->faixas_videos_model->buscar_artistas($this->session->userdata('id_cliente'));
+        $dados['autores'] = $this->faixas_videos_model->buscar_autores($this->session->userdata('id_cliente'));
+        $dados['produtores'] = $this->faixas_videos_model->buscar_produtores($this->session->userdata('id_cliente'));
         $dados['impostos'] = $this->faixas_videos_model->buscar_impostos($this->session->userdata('id_cliente'));
-		
-		$this->load->view('faixas_videos/cadastro_faixa', $dados);
-	}
+        
+        $this->load->view('faixas_videos/cadastro_faixa', $dados);
+    }
 
-	public function cadastrar_faixa(){
-		$faixa = array(
+    public function cadastrar_faixa(){
+        $faixa = array(
             'nome' => $this->input->post('nome'),
             'isrc' => str_replace("-", "", $this->input->post('isrc')),
             'codigo_video' => $this->input->post('youtube'),
             'idCliente' => $this->session->userdata('id_cliente')
         );
+
+        $existefaixa = $this->faixas_videos_model->existe_faixa_isrc_cadastro($faixa["isrc"], $faixa['idFaixa']);
+
+        if($existefaixa){
+            $this->session->set_userdata('mensagem', '=(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('isrc_repetido'));
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            redirect('faixas_videos/cadastra_faixa');
+        }
 
         $artistas = $this->input->post('artistas[]');
         $autores = $this->input->post('autors[]');
@@ -59,7 +68,7 @@ class Faixas_Videos extends CI_Controller {
             redirect('faixas_videos/cadastra_faixa');
         }
 
-	}
+    }
 
     public function cadastrar_faixa_ajax(){
         $faixa = array(
@@ -69,44 +78,55 @@ class Faixas_Videos extends CI_Controller {
             'idCliente' => $this->session->userdata('id_cliente')
         );
 
-        $artistas = $this->input->post('artistas');
-        $autores = $this->input->post('autors');
-        $produtores = $this->input->post('produtors');
+        $existefaixa = $this->faixas_videos_model->existe_faixa_isrc_cadastro($faixa["isrc"], $faixa['idFaixa']);
 
-        $perc_artistas = $this->input->post('percentualArtista');
-        $perc_autores = $this->input->post('percentualAutor');
-        $perc_produtores = $this->input->post('percentualProdutor');
-
-        $impostos = $this->input->post('impostos_faixa');
-
-        if($faixa['nome'] != NULL && $artistas != NULL && $autores != NULL){
-            $idFaixa = $this->faixas_videos_model->cadastrar_faixa($faixa, $impostos, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
-            $this->session->set_userdata('mensagem', '=)');
-            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
-            $this->session->set_userdata('tipo_mensagem', 'success');
-
-            $dados_faixa = $this->faixas_videos_model->buscar_dados($idFaixa);
-            die(json_encode($dados_faixa));
-
+        if($existefaixa){
+            $this->session->set_userdata('mensagem', '=(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('isrc_repetido'));
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            
         }
         else{
-            $this->session->set_userdata('mensagem', '=(');
-            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
-            $this->session->set_userdata('tipo_mensagem', 'error');
+            
+            $artistas = $this->input->post('artistas');
+            $autores = $this->input->post('autors');
+            $produtores = $this->input->post('produtors');
 
+            $perc_artistas = $this->input->post('percentualArtista');
+            $perc_autores = $this->input->post('percentualAutor');
+            $perc_produtores = $this->input->post('percentualProdutor');
+
+            $impostos = $this->input->post('impostos_faixa');
+
+            if($faixa['nome'] != NULL && $artistas != NULL && $autores != NULL && !$existefaixa){
+                $idFaixa = $this->faixas_videos_model->cadastrar_faixa($faixa, $impostos, $artistas, $autores, $produtores, $perc_artistas, $perc_autores, $perc_produtores);
+                $this->session->set_userdata('mensagem', '=)');
+                $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cadastrado_sucesso'));
+                $this->session->set_userdata('tipo_mensagem', 'success');
+
+                $dados_faixa = $this->faixas_videos_model->buscar_dados($idFaixa);
+                die(json_encode($dados_faixa));
+
+            }
+            else{
+                $this->session->set_userdata('mensagem', '=(');
+                $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
+                $this->session->set_userdata('tipo_mensagem', 'error');
+
+            }
         }
 
     }
 
-	public function listar(){
+    public function listar(){
         $dados = array(
             'faixas' => $this->faixas_videos_model->buscar_faixas($this->session->userdata('id_cliente')),
             'artistas' => $this->faixas_videos_model->buscar_artistas($this->session->userdata('id_cliente')),
             'entidades' => $this->faixas_videos_model->buscar_entidades($tipo=1)
         );
 
-		$this->load->view('faixas_videos/lista_faixas', $dados);
-	}
+        $this->load->view('faixas_videos/lista_faixas', $dados);
+    }
 
     public function camposatualizacao($id = -1){
         if ($this->input->post('oneInput') != null) {
@@ -134,6 +154,15 @@ class Faixas_Videos extends CI_Controller {
             'nome' => $this->input->post('nome'),
             'isrc' => str_replace("-", "", $this->input->post('isrc'))
         );
+
+        $existefaixa = $this->faixas_videos_model->existe_faixa_isrc_cadastro($dados["isrc"], $dados['idFaixa']);
+
+        if($existefaixa){
+            $this->session->set_userdata('mensagem', '=(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('isrc_repetido'));
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            redirect('faixas_videos/listar');
+        }
 
         $artistas = $this->input->post('artistas[]');
         $autores = $this->input->post('autors[]');
