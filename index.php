@@ -1,4 +1,7 @@
 <?php
+
+die(phpinfo());
+
 /**
  * CodeIgniter
  *
