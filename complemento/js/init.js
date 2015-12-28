@@ -102,15 +102,6 @@ function id(el) {
     return document.getElementById(el);
 }
 
-window.onload = function () {
-    id('telefone').onkeypress = function () {
-        mascara(this, mtel);
-    }
-    id('telefone1').onkeypress = function () {
-        mascara(this, mtel1);
-    }
-}
-
 var excluirEntidade = function (url, langOpt) {
     var thisTitle = ["Tem Certeza?", "Are you sure?"];
     var thisText = ["A entidade selecionada será excluida", "The Selected Entity Will be deleted"];
@@ -1728,24 +1719,36 @@ function notificacaoMensagem(langOpt) {
 }
 
 function geraOpcoesParam(entidades, selecione,label) {
-    var opcoes = "<option value='' disabled selected>" + selecione + "</option>";
+    var opcoes = "<option value='-2' disabled selected>" + label + "</option>";
+    var opcoes = "<option value='-1' selected>" + "Todos" + "</option>";
     jQuery.each(entidades, function(i, val) {
-        opcoes += "<option value='" + entidades[i] + "'>" + entidades[i] + "</option>";
+        if (entidades[i] != null) {
+            opcoes += "<option value='" + entidades[i] + "'>" + entidades[i] + "</option>";
+        }
     });
     return opcoes;
 }
 function addSelectParam(entidades,selecione,label) {
     var nameLower = label.toLowerCase();
 
-    $('.'+label).append('<div class="row"><div class="col s10 m8 l8">' +
+    $('.'+label).append('<div class="row"><div class="col s7 m7">' +
         '<select id="select' + label+'" class="add' + label + ' browser-default '+ label +'" name="' + nameLower + 's[]">' +
         geraOpcoesParam(entidades, selecione) + '</select></div>' +
-        '<div class="col s4 m4"><a onclick="removes(\''+label+'\')"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
+        '<div class="col s3 s3">'+
+            '<select name="'+nameLower+'Select[]" class="'+label+'Select">'+
+                '<option>Incluir</option>'+
+                '<option>Excluir</option>'+
+            '</select>'+
+        '</div>'+
+        '<div class="col s2 m2"><a onclick="removes(\''+label+'\')"" class="btn-floating btn-medium waves-effect waves-light btn tooltipped"' +
         'data-position="right" data-delay="50" data-tooltip="Remover" id="remove' + label + '">' +
         '<i class="mdi-content-remove"></i></a></div></div>');
     $('.add' + label).chosen({search_contains: true});
+    $('.'+label+"Select").chosen({search_contains: true});
 }
 
 function removes(label){
     $("#select"+label).parent('div').parent('div').remove();
 }
+
+

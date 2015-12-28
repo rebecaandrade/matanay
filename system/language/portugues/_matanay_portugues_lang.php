@@ -98,18 +98,22 @@ $lang['usuario_bloqueado']		= 'Usuario se encontra bloqueado';
 $lang['acesso_negado']			= 'Acesso indevido';
 $lang['usuario_invalido']		= 'Usuario inválido';
 $lang['usuario_ou_senha_invalida']	= 'Usuario ou senha inválida';
-$lang['senha_invalida']				= 'Senha inválida';
-$lang['resetSuaSenha']				= 'Por favor altere sua senha';
-$lang['resetSuaSenhaLink']			= 'Por favor altere sua senha por esse link';
+$lang['senha_invalida']			= 'Senha inválida';
+$lang['resetSuaSenha']			= 'Por favor altere sua senha';
+$lang['resetSuaSenhaLink']		= 'Por favor altere sua senha por esse link';
 $lang['permissao_insuficiente']	= 'Permissão insuficiente para esta ação';
 $lang['confirmar_deletar']		= 'Confirmar deleção?';
 $lang['problemas_formulario']	= 'Problemas com o formulario';
+$lang['cpf_cnpj_repetido']      = 'Esse CPF/CNPJ já está registrado!';
+$lang['isrc_repetido']       	= 'Esse ISRC já está registrado!';
+$lang['upc_repetido']      		= 'Esse UPC já está registrado!';
 
 ////// LOGIN
 
 $lang['login'] 				= 'usuário';
 $lang['senha'] 				= 'senha';
 $lang['entrar'] 			= 'Entrar';
+$lang['enviar'] 			= 'Enviar';
 $lang['esqueceu_senha'] 	= 'Esqueceu sua senha?';
 
 ////// MENU 
@@ -149,7 +153,7 @@ $lang['faixas_cadastro']	= 'Cadastro de Faixa';
 $lang['faixas_edicao']		= 'Edição de Faixa';
 $lang['faixa_nao_encontrado']	= 'Uma Faixa do relatorio não se encontra no sistema, realize o cadastro da faixa de ISRC ';
 $lang['faixa_nao_encontrado10']	= 'Uma faixa do relatório não foi encontrada no album do relatório, registre a faixa de ISRC ';
-$lang['faixa_nao_encontrado11']	= 'no album de UPC/EAN ';
+$lang['faixa_nao_encontrado11']	= ' no album de UPC/EAN ';
 
 ////// ALBUMS 
 

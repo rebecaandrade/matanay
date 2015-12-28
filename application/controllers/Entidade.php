@@ -78,7 +78,16 @@ class Entidade extends CI_Controller
         if (($info = $this->valida_cadastro_entidade()) != NULL) {
             //se for favorecido coloca no banco o que eh pego no form sobre favorecido
             if ($info['favorecido']) {
-                die(var_dump($info));
+                if(isset($info['cpf']))
+                    $existe_favorecido = $this->Favorecido_model->existe_favorecido($info['cpf']);
+                else
+                    $existe_favorecido = $this->Favorecido_model->existe_favorecido($info['cnpj']);
+                if($existe_favorecido){
+                    $this->session->set_userdata('mensagem', '=`(');
+                    $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf_cnpj_repetido'));
+                    $this->session->set_userdata('tipo_mensagem', 'error');
+                    redirect('Entidade/mostrar_cadastro');
+                }
                 $favorecido = $this->gera_favorecido($info);
                 //insere o favorecido no banco
                 $id_favorecido = $this->Favorecido_model->cadastrar_favorecido($favorecido);//coloca os telefones
@@ -110,6 +119,16 @@ class Entidade extends CI_Controller
                 redirect('Favorecido/listar');
             } //se nao for favorecido segue o codigo
             else {
+                if(isset($info['cpf']))
+                    $existe_entidade = $this->Entidade_model->existe_entidade_cpf($info['cpf'], $info['idEntidade']);
+                else
+                    $existe_entidade = $this->Entidade_model->existe_entidade_cpf($info['cnpj'], $info['idEntidade']);
+                if($existe_entidade){
+                    $this->session->set_userdata('mensagem', '=`(');
+                    $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf_cnpj_repetido'));
+                    $this->session->set_userdata('tipo_mensagem', 'error');
+                    redirect('Entidade/mostrar_cadastro');
+                }
                 $entidade = $this->gera_entidade($info);
                 //insere a entidade no banco
                 $id_entidade = $this->Entidade_model->cadastrar_entidade($entidade);
@@ -356,6 +375,16 @@ class Entidade extends CI_Controller
         $this->lang->load('_matanay_' . $linguagem_usuario, $linguagem_usuario);
         //die(var_dump($this->input->post()));
         if (($info = $this->valida_atualizacao_entidade()) != NULL) {
+            if(isset($info['cpf']))
+                $existe_entidade = $this->Entidade_model->existe_entidade_cpf($info['cpf'], $info['idEntidade']);
+            else
+                $existe_entidade = $this->Entidade_model->existe_entidade_cpf($info['cnpj'], $info['idEntidade']);
+            if($existe_entidade){
+                $this->session->set_userdata('mensagem', '=`(');
+                $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('cpf_cnpj_repetido'));
+                $this->session->set_userdata('tipo_mensagem', 'error');
+                redirect('Entidade/listar');
+            }
             if ($info['idCliente'] == "") {
                 $info['idCliente'] = null;
             }

@@ -630,7 +630,7 @@ CREATE TABLE IF NOT EXISTS `matanay`.`Vendas` (
   `idAlbum` INT NOT NULL,
   `idFaixa` INT NOT NULL,
   `idRelatorio` INT NOT NULL COMMENT '\n',
-  `qnt_vendida` INT NULL,
+  `qnt_vendida` FLOAT NULL,
   `valor_recebido` INT NULL,
   `loja` VARCHAR(45) NULL,
   `subloja` VARCHAR(45) NULL,

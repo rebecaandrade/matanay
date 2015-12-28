@@ -75,7 +75,7 @@
 	          	<div class="input-field col s12 m12 l8 offset-l2">
 	            	<select name="tipo" id="tipo">
 	              		<option value="-1" disabled selected><?php echo $this->lang->line('selecione');?></option>
-	              		<?php
+	              		<?php 
                 			if(isset($tipos)){
                     			foreach ($tipos as $tipo) { ?>
                         		<option value="<?php echo $tipo->idTipo_Album; ?>"> <?php echo $tipo->descricao; ?>

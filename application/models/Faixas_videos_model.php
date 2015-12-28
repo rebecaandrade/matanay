@@ -35,6 +35,7 @@ class Faixas_Videos_model extends CI_Model {
     }
 
     public function buscar_all_faixas(){
+        $this->db->where("idCliente", $this->session->userdata('id_cliente'));
         $this->db->where('excluido =', NULL);
         return $this->db->get('Faixa_Video')->result();
     }
@@ -198,6 +199,7 @@ class Faixas_Videos_model extends CI_Model {
         if($busca != NULL){
             $this->db->where('excluido =', NULL);
             $this->db->where("isrc", $busca);
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
             return $this->db->get("Faixa_Video")->result()[0];
         } else {
             return NULL;
@@ -208,6 +210,7 @@ class Faixas_Videos_model extends CI_Model {
         if($busca != NULL){
             $this->db->where('excluido =', NULL);
             $this->db->where("isrc", $busca);
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
             $info = $this->db->get("Faixa_Video")->result()[0];
             if($info == NULL)
                 return 0;
@@ -216,6 +219,7 @@ class Faixas_Videos_model extends CI_Model {
                 
                 $this->db->where('excluido =', NULL);
                 $this->db->where("upc_ean", $upc_ean);
+                $this->db->where("idCliente", $this->session->userdata('id_cliente'));
                 $idAlbum = $this->db->get("album")->result()[0]->idAlbum;
 
 
@@ -230,6 +234,29 @@ class Faixas_Videos_model extends CI_Model {
                     return 1;
             }
         } else {
+            return NULL;
+        }
+    }
+
+    public function existe_faixa_isrc_cadastro($isrc, $id){
+        if($isrc != NULL){
+            $this->db->where('excluido =', NULL);
+            $this->db->where("isrc", $isrc);
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
+
+            $dados = $this->db->get("Faixa_Video")->result();
+
+            $this->db->where('idFaixa', $id);
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
+            $this->db->where('excluido =', NULL);
+            $dadosAtual = $this->db->get('Faixa_Video')->result()[0];
+
+            if ( $dados == NULL || $dadosAtual->isrc == $isrc)
+                return 0;
+            else
+                return 1;
+
+        } else{
             return NULL;
         }
     }

@@ -104,21 +104,25 @@ $lang['resetSuaSenhaLink']			= 'Please reset your password using this link';
 $lang['permissao_insuficiente']		= 'No authorization to execute this action';
 $lang['confirmar_deletar']			= 'Do you wish to delete this?';
 $lang['problemas_formulario']       = 'Problems with the form';
+$lang['cpf_cnpj_repetido']       	= 'This CPF/CNPJ is already registered!';
+$lang['isrc_repetido']       		= 'This ISRC is already registered!';
+$lang['upc_repetido']       		= 'This UPC is already registered!';
 
 ////// LOGIN 
 
 $lang['login'] 				= 'username';
 $lang['senha'] 				= 'password';
 $lang['entrar'] 			= 'Log In';
+$lang['enviar'] 			= 'Send';
 $lang['esqueceu_senha'] 	= 'Forgot your password?';
 
 ////// MENU 
 
 $lang['home'] 				= 'HOME';
 $lang['cadastros'] 			= 'DATA MANAGEMENT';
-$lang['cadastros1'] 		= 'ENTITIES/FAVOREDS';
+$lang['cadastros1'] 		= 'ENTITIES / FAVORED';
 $lang['relatorios'] 		= 'REPORTS';
-$lang['vendas'] 			= 'EXPORTATION OF REPORTS';
+$lang['vendas'] 			= 'EXPORT REPORTS';
 $lang['sair'] 				= 'LOGOUT';
 
 ////// SUB_MENU 
@@ -127,7 +131,7 @@ $lang['faixas'] 			= 'TRACKS';
 $lang['videos'] 			= 'VIDEOS';
 $lang['albums'] 			= 'ALBUMS';
 $lang['entidades'] 			= 'ENTITIES';
-$lang['favorecidos']		= 'FAVOREDS';
+$lang['favorecidos']		= 'FAVORED';
 $lang['imposto']			= 'TAX';
 $lang['contrato']			= 'CONTRACT';
 
@@ -149,7 +153,7 @@ $lang['faixas_cadastro']	= 'Track Registry';
 $lang['faixas_edicao']		= 'Track Update';
 $lang['faixa_nao_encontrado']	= 'One Track from the report was not found in the system, register the album of UPC/EAN ';
 $lang['faixa_nao_encontrado10']	= 'The Track from the report was not found in the correct album, register the the track of IRSC ';
-$lang['faixa_nao_encontrado11']	= 'in the album of UPC/EAN ';
+$lang['faixa_nao_encontrado11']	= ' in the album of UPC/EAN ';
 
 ////// ALBUNS 
 
@@ -267,7 +271,7 @@ $lang['receita']					= 'Revenue';
 
 ////// VENDAS ////// Evandro
 
-$lang['vendas_min'] 				= 'Exportation of reports';
+$lang['vendas_min'] 				= 'Export reports';
 $lang['vendas_total'] 				= 'Total Sales';
 $lang['album_min'] 					= 'Album';
 $lang['faixa_min'] 					= 'Track';

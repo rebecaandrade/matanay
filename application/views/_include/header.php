@@ -10,19 +10,15 @@
     <link href="<?php echo base_url(); ?>complemento/js/DataTables-1.10.7/media/css/jquery.dataTables.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>complemento/js/DataTables-1.10.7/media/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>complemento/js/DataTables-1.10.7/media/css/jquery.dataTables_themeroller.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Titillium+Web" rel='stylesheet' type='text/css'>
+    <link href='<?php echo base_url(); ?>complemento/css/TitilliumWeb.css' rel='stylesheet' type='text/css'>
     <link href="<?php echo base_url(); ?>complemento/js/chosen_v1.4.2/chosen.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url(); ?>complemento/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <script src="<?php echo base_url(); ?>complemento/js/jquery-2.1.4.min.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/sweetalert/lib/sweet-alert.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquer y/1.11.2/jquery.min.js"></script>
-    <script src="<?php echo base_url(); ?>complemento/js/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/jquery.matanay.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/materialize.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/init.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/alert.js"></script>
-    <script src="js/jquery/validate.js"></script>
-    <script src="js/singup-form.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/jquery.mask.min.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/jquery.mask.js"></script>
     <script src="<?php echo base_url(); ?>complemento/js/DataTables-1.10.7/media/js/jquery.dataTables.js"></script>
@@ -128,7 +124,6 @@
                 </li>
             </ul>
 
-            <li><a  href="<?php echo base_url(); ?>index.php/relatorio/gerar_vendas"><?php echo $this->lang->line('vendas'); ?></a></li>
             <li><a href="<?php echo base_url(); ?>index.php/acesso/deslogar"><?php echo $this->lang->line('sair'); ?></a></li>
 
             <ul class="collapsible" data-collapsible="accordion">

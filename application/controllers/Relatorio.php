@@ -72,12 +72,19 @@ class Relatorio extends CI_Controller
         foreach ($relatorios as $relatorio) {
             $vendas = $this->vendas_model->buscar_vendas($relatorio->idRelatorio);
             foreach ($vendas as $venda) {
-                $venda->artistaInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,1)[0];
-                $venda->artista = $this->entidade_model->buscar_entidade_especifica($venda->artistaInfo['idEntidade'])->nome;
-                $venda->autorInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,2)[0];
-                $venda->autor = $this->entidade_model->buscar_entidade_especifica($venda->autorInfo['idEntidade'])->nome;
-                $venda->produtorInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,3)[0];
-                $venda->produtor = $this->entidade_model->buscar_entidade_especifica($venda->produtorInfo['idEntidade'])->nome;
+                $venda->artistasInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,1);
+                foreach ($venda->artistasInfo as $artistaInfo) {
+                    $venda->artista = $this->entidade_model->buscar_entidade_especifica($artistaInfo['idEntidade'])->nome;
+                }
+                $venda->autoresInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,2);
+                foreach ($venda->autoresInfo as $autorInfo) {
+                    $venda->autor = $this->entidade_model->buscar_entidade_especifica($autorInfo['idEntidade'])->nome;    
+                }
+                
+                $venda->produtoresInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,3);
+                foreach ($venda->produtoresInfo as $produtorInfo) {
+                    $venda->produtor = $this->entidade_model->buscar_entidade_especifica($produtorInfo['idEntidade'])->nome;
+                }
 
                 $lojas[] = $venda->loja;
                 $sublojas[] = $venda->subloja;
@@ -106,13 +113,10 @@ class Relatorio extends CI_Controller
                 $venda->upc = $venda->albumIndo->upc_ean;
                 $venda->percentual_aplicado = calcularPercentual($venda->percentual_aplicado = $this->entidade_model->buscar_entidade_has_faixa_id($venda->idFaixa));
                 $venda->valor_pagar = calcularValorPagar($venda->qnt_vendida,$venda->valor_recebido,$venda->percentual_aplicado);
-                $venda->receita = calcularReceita();
+                $venda->receita = calcularReceita($venda->qnt_vendida,$venda->valor_recebido,$venda->percentual_aplicado);
                 $venda->relatorio = $relatorio;
                 $venda->apuracao = $venda->relatorio->periodo_apuracao;
                 $venda->descricao = "Ambos";
-                //die(var_dump($this->imposto_model->pegar_impostos_faixa()));
-                //die(var_dump($venda));
-
                 $dados['vendas'][] = $venda;
             }
 
@@ -149,15 +153,14 @@ class Relatorio extends CI_Controller
         $dados['isrcs'] = $isrcs;
         $dados['upcs'] = $upcs;
         $dados['catalogos'] = $catalogos;
-        
+
         $this->load->view('relatorio/opcoes_relatorio_view', $dados);
         return;
     }
 
     public function calculoPagamento($valorPagamento, $dadosMontante, $idEntidade, $idFaixa,$idAlbum){
         //valores apenas para exemplo jah que nao tenho os valores totais
-
-
+        
         foreach ($dadosMontante['porcentagem_ganho'] as $montante) {
             if($montante->idEntidade == $idEntidade){
                 $pagamentoIndividual[$idEntidade] = $valorPagamento * $montante->percentual / 100;
@@ -573,7 +576,6 @@ class Relatorio extends CI_Controller
             $modelo = $this->modelo_relatorio_model->buscar_modelo($relatorio['idModelo']);
             $highestRow = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
 
-
             for ($i = 2; $i <= $highestRow ; $i++) {
                 
                 $upc_ean = $objPHPExcel->getActiveSheet()->getCell($modelo->upc.$i)->getValue();
@@ -620,8 +622,9 @@ class Relatorio extends CI_Controller
                     $data['idFaixa'] = NULL;
                 }
 
+                if($i == 2)
+                    $id = $this->relatorio_model->cadastrar_relatorio_importado($relatorio);
                 
-                $id = $this->relatorio_model->cadastrar_relatorio_importado($relatorio);
                 $data['idRelatorio'] = $id;
                 $data['qnt_vendida'] = $objPHPExcel->getActiveSheet()->getCell($modelo->qnt_vendida.$i)->getValue();
                 $data['valor_recebido'] = $objPHPExcel->getActiveSheet()->getCell($modelo->valor_recebido.$i)->getValue();
@@ -630,8 +633,8 @@ class Relatorio extends CI_Controller
                 $data['territorio'] = $objPHPExcel->getActiveSheet()->getCell($modelo->territorio.$i)->getValue();
 
 
-     //           if($data['idFaixa'] != NULL && $data['idAlbum'] != NULL)
-//                   $this->vendas_model->cadastar_venda($data);
+                if($data['idFaixa'] != NULL && $data['idAlbum'] != NULL)
+                   $this->vendas_model->cadastar_venda($data);
             }
 
             $this->session->set_userdata('mensagem', '=)');
@@ -675,9 +678,9 @@ class Relatorio extends CI_Controller
         $autores = $this->input->post('autors[]');
         $produtores = $this->input->post('produtors[]');
 
-        $perc_artistas = $this->input->post('percentualArtista[]');
-        $perc_autores = $this->input->post('percentualAutor[]');
-        $perc_produtores = $this->input->post('percentualProdutor[]');
+        $perc_artistas = str_replace("%","",$this->input->post('percentualArtista[]'));
+        $perc_autores = str_replace("%","",$this->input->post('percentualAutor[]'));
+        $perc_produtores = str_replace("%","",$this->input->post('percentualProdutor[]'));
 
         $impostos = $this->input->post('impostos_faixa[]');
 
@@ -812,6 +815,6 @@ function calcularValorPagar($qnt_vendida,$valor_recebido,$percentual_aplicado){
     return 0;
 }
 
-function calcularReceita(){
+function calcularReceita($qnt_vendida,$valor_recebido,$percentual_aplicado){
     return $qnt_vendida*$valor_recebido*$percentual_aplicado;
 }

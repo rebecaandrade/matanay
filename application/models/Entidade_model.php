@@ -47,14 +47,15 @@ class Entidade_model extends CI_Model
 
     function buscar_entidade_especifica($id)
     {
+        $this->db->where("idCliente", $this->session->userdata('id_cliente'));
         $this->db->where('idEntidade', $id);
-        return $this->db->get('Entidade')->result()[0];
+        return $this->db->get('Entidade')->row();
     }
 
     function buscar_entidade_has_tipo_especifico($id)
     {
         $this->db->where('idEntidade', $id);
-        return $this->db->get('Entidade_has_Tipo_Entidade')->result()[0];
+        return $this->db->get('Entidade_has_Tipo_Entidade')->result();
     }
 
     function buscar_telefone_especifico($id, $idtelefone)
@@ -74,7 +75,7 @@ class Entidade_model extends CI_Model
         $this->db->where('idEntidade', $id);
         $dados=$this->db->get('Entidade_has_Tipo_Entidade')->result();
         $this->db->where('idTipo_Entidade', $dados[0]->idTipo_Entidade);
-        return $this->db->get('tipo_entidade')->result()[0];
+        return $this->db->get('tipo_entidade')->result();
     }
 
     public function atualizar_entidade($entidade)
@@ -129,6 +130,31 @@ class Entidade_model extends CI_Model
     public function buscar_entidade_has_faixa_id($faixaId){
         $this->db->where('idFaixa', $faixaId);
         return $this->db->get('Entidade_has_Faixa_Video')->result();
+    }
+
+    public function existe_entidade_cpf($cpf_cnpj, $id){
+        if($cpf_cnpj != NULL){
+            $this->db->where('excluido =', NULL);
+            $this->db->where("cpf", $cpf_cnpj);
+            $this->db->or_where("cnpj", $cpf_cnpj);
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
+
+
+            $dados = $this->db->get("Entidade")->result();
+
+            $this->db->where("idCliente", $this->session->userdata('id_cliente'));
+            $this->db->where('excluido =', NULL);
+            $this->db->where('idEntidade', $id);
+            $dadosEntidadeAntiga =  $this->db->get('Entidade')->result()[0];
+
+            if ( $dados == NULL || $dadosEntidadeAntiga->cpf == $cpf_cnpj || $dadosEntidadeAntiga->cnpj == $cpf_cnpj)
+                return 0;
+            else
+                return 1;
+
+        } else{
+            return NULL;
+        }
     }
 
 }

@@ -42,10 +42,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $lang['ingles']				= 'ENGLISH';
 $lang['portugues']			= 'PORTUGUÊS';
 $lang['deletar']			= 'Delete';
+$lang['bloquear']			= 'Block';
+$lang['desbloquear']		= 'Unblock';
+$lang['bloqueado']			= 'Blocked';
+$lang['desbloqueado']		= 'Unblocked';
 $lang['editar']				= 'Edit';
 $lang['atualizar']			= 'UPDATE';
 $lang['adicionar']			= 'ADD';
 $lang['acao']				= 'Action';
+$lang['status']				= 'Status';
 $lang['novo']				= 'NEW';
 $lang['nova']				= 'NEW';
 $lang['nome']				= 'Name';
@@ -82,10 +87,20 @@ $lang['form_error_modelo_relatorio_alpha']	= "The {field} field doesn't contain 
 ////// ALERTAS SISTEMA
 
 $lang['nada_encontrado']			= 'Nothing found.';
+$lang['email_enviado']				= 'The email containing the link to the password change was sent successfully!';
 $lang['atualizado_sucesso']			= 'Successfully Updated!';
 $lang['cadastrado_sucesso']			= 'Successfully Registered!';
 $lang['excluido_sucesso']			= 'Successfully Deleted!';
+$lang['bloqueado_sucesso']			= 'Successfully Blocked!';
+$lang['impossivel_bloquear']		= 'It is not possible to block your own profile!';
+$lang['desbloqueado_sucesso']		= 'Successfully Unblocked!';
+$lang['usuario_bloqueado']			= 'This user is currently blocked';
 $lang['acesso_negado']				= 'Undue access';
+$lang['usuario_invalido']			= 'Invalid user';
+$lang['usuario_ou_senha_invalida']	= 'Invalid user or password';
+$lang['senha_invalida']				= 'Invalid password';
+$lang['resetSuaSenha']				= 'Please reset your password';
+$lang['resetSuaSenhaLink']			= 'Please reset your password using this link';
 $lang['permissao_insuficiente']		= 'No authorization to execute this action';
 $lang['confirmar_deletar']			= 'Do you wish to delete this?';
 $lang['problemas_formulario']       = 'Problems with the form';
@@ -95,14 +110,16 @@ $lang['problemas_formulario']       = 'Problems with the form';
 $lang['login'] 				= 'username';
 $lang['senha'] 				= 'password';
 $lang['entrar'] 			= 'Log In';
+$lang['enviar'] 			= 'Send';
 $lang['esqueceu_senha'] 	= 'Forgot your password?';
 
 ////// MENU 
 
 $lang['home'] 				= 'HOME';
-$lang['cadastros'] 			= 'MENAGE DATA';
-$lang['relatorios'] 		= 'IMPORT REPORTS';
-$lang['vendas'] 			= 'RECEIPTS';
+$lang['cadastros'] 			= 'DATA MANAGEMENT';
+$lang['cadastros1'] 		= 'ENTITIES/FAVOREDS';
+$lang['relatorios'] 		= 'REPORTS';
+$lang['vendas'] 			= 'EXPORTATION OF REPORTS';
 $lang['sair'] 				= 'LOGOUT';
 
 ////// SUB_MENU 
@@ -113,6 +130,7 @@ $lang['albums'] 			= 'ALBUMS';
 $lang['entidades'] 			= 'ENTITIES';
 $lang['favorecidos']		= 'FAVOREDS';
 $lang['imposto']			= 'TAX';
+$lang['contrato']			= 'CONTRACT';
 
 ////// FAIXAS 
 
@@ -121,6 +139,7 @@ $lang['cadastrar'] 			= 'Register';
 $lang['video'] 				= 'Video?';
 $lang['artista'] 			= 'Artist';
 $lang['autor'] 				= 'Writer';
+$lang['editora'] 			= 'Record';
 $lang['autores'] 			= 'Writers';
 $lang['produtor'] 			= 'Producer';
 $lang['produtores'] 		= 'Producers';
@@ -129,6 +148,9 @@ $lang['nao_ha_faixas']		= 'There are no tracks registered!';
 $lang['participacao']		= 'Track Participation';
 $lang['faixas_cadastro']	= 'Track Registry';
 $lang['faixas_edicao']		= 'Track Update';
+$lang['faixa_nao_encontrado']	= 'One Track from the report was not found in the system, register the album of UPC/EAN ';
+$lang['faixa_nao_encontrado10']	= 'The Track from the report was not found in the correct album, register the the track of IRSC ';
+$lang['faixa_nao_encontrado11']	= ' in the album of UPC/EAN ';
 
 ////// ALBUNS 
 
@@ -143,8 +165,10 @@ $lang['albuns_cadastro']		= 'Album Registry';
 $lang['albuns_edicao']			= 'Album Update';
 $lang['albuns_edicao_faixas'] 	= 'Tracklist Update';
 $lang['cod_invalido']   		= "Invalid Catalog Code";
+$lang['album_nao_encontrado']	= 'One Album from the report was not found in the system, register the album of UPC/EAN ';
 
-////// MOEDA ////// VITOR
+
+////// MOEDA ////// Vitor
 
 $lang['moeda']				= 'Currency';
 $lang['moeda_menu']			= 'CURRENCY';
@@ -157,7 +181,7 @@ $lang['moeda_erro_listar']	= 'No currency registered';
 $lang['moeda_cadastro']		= 'Currency Registry';
 $lang['moeda_edicao']		= 'Currency Update';
 
-////// CONTRATO
+////// CONTRATO ////// Vitor
 
 $lang['data_inicio']			= 'Start date';
 $lang['data_fim']				= 'End date';
@@ -168,11 +192,13 @@ $lang['contrato_cadastrar']		= 'Register';
 $lang['contrato_entidade']		= 'Choose the entity';
 $lang['contrato_favorecido']	= 'Choose the favored';
 $lang['contrato_cadastro']		= 'Contract Registry';
+$lang['contrato_edicao']		= 'Contract Update';
 
-/////ENTIDADES/FAVORECIDO  Jadiel
+/////ENTIDADES/FAVORECIDO //// Jadiel
+
 $lang['entidade'] 					= 'Entity';
-$lang['nome_favorecido']			='Name of favored';
 $lang['nome_entidade']				= 'Name of the Entity';
+$lang['nome_favorecido']			= 'Name of favored';
 $lang['cpf_cnpj']					= 'ID';
 $lang['telefone']					= 'Telephone number';
 $lang['telefone_alternativo']		= 'Alternative telephone number';
@@ -184,26 +210,26 @@ $lang['identificacao']				= 'Identification';
 $lang['banco']						= 'Bank';
 $lang['conta']						= 'Checking account';
 $lang['agencia']					= 'Bank Branch';
-$lang['atual']						='Actual';
-$lang['Artista']					='Artist';
-$lang['Autor']						='Author';
-$lang['Produtor']					='Producer';
-$lang['artista_min']				='artist';
-$lang['autor_min']					='author';
-$lang['produtor_min']				='producer';
-$lang['eh_favorecido']				='Is it a favored?';
-$lang['favorecido_cadastrado']		='Registed favoreds';
-$lang['cadastro_realizado']			='The Entity was successfully registered!';
-$lang['campo_vazio']				='One shall not leave an empty field!';
-$lang['cnpj_invalido']				='Invalid CNPJ';
-$lang['cpf_invalido']				='Invalid CPF';
-$lang['cadastrar_entidade']			='Register a new Entity!';
-$lang['cadastrar_favorecido']		='Register a new Favored!';
-$lang['nao_ha_entidades']			='There are no entities registered!';
-$lang['nao_ha_favorecidos']			='There are no favoreds registered!';
-$lang['nao_ha_impostos']			='There are no taxes registered!';
+$lang['atual']						= 'Actual';
+$lang['Artista']					= 'Artist';
+$lang['Autor']						= 'Author';
+$lang['Produtor']					= 'Producer';
+$lang['artista_min']				= 'artist';
+$lang['autor_min']					= 'author';
+$lang['produtor_min']				= 'producer';
+$lang['eh_favorecido']				= 'Is it a favored?';
+$lang['favorecido_cadastrado']		= 'Registed favoreds';
+$lang['cadastro_realizado']			= 'The Entity was successfully registered!';
+$lang['campo_vazio']				= 'One shall not leave an empty field!';
+$lang['cnpj_invalido']				= 'Invalid CNPJ';
+$lang['cpf_invalido']				= 'Invalid CPF';
+$lang['cadastrar_entidade']			= 'Register a new Entity!';
+$lang['cadastrar_favorecido']		= 'Register a new Favored!';
+$lang['nao_ha_entidades']			= 'There are no entities registered!';
+$lang['nao_ha_favorecidos']			= 'There are no favoreds registered!';
+$lang['nao_ha_impostos']			= 'There are no taxes registered!';
 $lang['descricao_entidade'] 		= "Description";
-$lang['classPercent']				="percentage";
+$lang['classPercent']				= "percentage";
 $lang['cadastro_entidade'] 			= 'Entity Cadastre';
 $lang['edicao_entidade'] 			= 'Entity Update';
 $lang['cadastro_favorecido']		= 'Favored Cadastre';
@@ -213,7 +239,6 @@ $lang['myTable'] 					= 'usTable';
 $lang['favorecido'] 				= 'Favored';
 $lang['favorecido_nao_cadastrado']	= 'It is required a registered favored to register a Entity.';
 
-
 //IMPOSTO JADIEL
 
 $lang['imposto_nome']		= 'Name of the Tax';
@@ -221,6 +246,7 @@ $lang['valor']				= 'Value';
 $lang['cadastro_imposto'] 	= 'Taxes Cadastre';
 $lang['fisico'] 			= 'Phisical';
 $lang['digital'] 			= 'Digital';
+$lang['ambos'] 				= 'Both';
 
 ////// MODELO DE RELATORIO ////// Vitor
 
@@ -235,6 +261,17 @@ $lang['territorio']					= 'Territory';
 $lang['identificador_moeda']		= 'Currency identificator';
 $lang['selecione_coluna']			= 'Select the corresponding column for the following attributes:';
 $lang['modelos']					= 'MODELS';
+$lang['produto']					= 'Product';
+$lang['percentual_aplicado']		= 'Applied percentual';
+$lang['valor_pagar']				= 'Paying value';
+$lang['receita']					= 'Revenue';
+
+////// VENDAS ////// Evandro
+
+$lang['vendas_min'] 				= 'Exportation of reports';
+$lang['vendas_total'] 				= 'Total Sales';
+$lang['album_min'] 					= 'Album';
+$lang['faixa_min'] 					= 'Track';
 
 ////// CLIENTE ////// Vitor
 
@@ -242,6 +279,7 @@ $lang['clientes'] 					= 'CUSTOMERS';
 $lang['perfis'] 					= 'PROFILES';
 $lang['perfis_row']					= 'Profiles';
 $lang['cliente_nome'] 				= 'Name';
+$lang['cliente_email'] 				= 'Email';
 $lang['cliente_login'] 				= 'Login';
 $lang['cliente_senha'] 				= 'Password';
 $lang['cliente_confirmar_senha']	= 'Confirm Password';
@@ -253,11 +291,13 @@ $lang['cliente_cadastro']			= 'Customer Registry';
 $lang['cliente_edicao']				= 'Customer Update';
 $lang['perfil_cadastro']			= 'Profile Registry';
 $lang['perfil_edicao']				= 'Profile Update';
+$lang['min6char']					= 'There should be at least 6 characters';
+$lang['min3char']					= 'There should be at least 3 characters';
 
-////// SIM OU NAO
+////// SIM OU NAO //// Jadiel
 
-$lang['sim'] = 'Yes';
-$lang['nao'] = 'No';
+$lang['sim'] 	= 'Yes';
+$lang['nao'] 	= 'No';
 
 // FUNCIONALIDADES
 $lang['func_manter_cliente']            = 'CRUD Customers';
@@ -310,12 +350,14 @@ $lang['erro_perc_autor']    	 = 'The Author percentage field(s) must sum to 100%
 $lang['erro_perc_produtor']    	 = 'The Producer percentage field(s) must sum to 100% ';
 
 // mensagens validacao form cadastro de perfil
+
 $lang['password_error']                        = "Passwords are not the same";
 $lang['marcar_todas']                          = "Check All";
-$lang['login_existente']                       = "Login already exists";
+$lang['login_existente']                       = "Login or email already exists";
 $lang['checkbox_erro']                         = "Choose a functionality";
 
-// relatoriios
+// relatorios
+
 $lang['listar_relatorios']                     = "REPORTS";
 $lang['ralatorio_opcoes']                      = "Report Options";
 $lang['data_inicio']                           = "Start Date";
@@ -338,6 +380,7 @@ $lang['exportar']                              = "EXPORT";
 $lang['importar']                              = "IMPORT";
 
 // notificacoes
+
 $lang['notificacao']   		       			   = "NOTIFICATIONS";
 $lang['principaisNotificacoes']   		       = "MAIN NOTIFICATIONS";
 $lang['contrato_nome']   		               = "Contract";
