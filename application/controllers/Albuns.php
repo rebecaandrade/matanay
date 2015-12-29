@@ -20,6 +20,7 @@ class Albuns extends CI_Controller {
 		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 
 		$dados['tipos'] = $this->albuns_model->buscar_tipos();
+
 		$dados['faixas'] = $this->albuns_model->buscar_faixas($this->session->userdata('id_cliente'));
 		$dados['artistas'] = $this->albuns_model->buscar_artistas($this->session->userdata('id_cliente'));
 
@@ -42,6 +43,15 @@ class Albuns extends CI_Controller {
             'idTipo_Album' => $this->input->post('tipo'),
             'idCliente' => $this->session->userdata('id_cliente')
         );
+
+        $existeAlbum = $this->albuns_model->existe_album_upc_ean_cadastro($album['upc_ean'], $album['idAlbum']);
+
+        if($existeAlbum){
+            $this->session->set_userdata('mensagem', '=(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('upc_repetido'));
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            redirect('albuns/cadastra_album');
+        }
 
         $artista = $this->input->post('artista');
 
@@ -143,6 +153,15 @@ class Albuns extends CI_Controller {
             'codigo_catalogo' => $this->input->post('catalogo'),
             'idTipo_Album' => $this->input->post('tipo')
         );
+
+        $existeAlbum = $this->albuns_model->existe_album_upc_ean_cadastro($dados['upc_ean'], $dados['idAlbum']);
+
+        if($existeAlbum){
+            $this->session->set_userdata('mensagem', '=(');
+            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('upc_repetido'));
+            $this->session->set_userdata('tipo_mensagem', 'error');
+            redirect('albuns/listar');
+        }
 
         $prev_artista = $this->input->post('artista_album');
 

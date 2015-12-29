@@ -20,7 +20,7 @@ $this->load->view('_include/header') ?>
         <form id="myFormUpdate" onsubmit="return validaformupdateentidade()"
               action="<?= base_url() . 'index.php/entidade/atualizar' ?>" method="post">
             <input type="hidden" name='idEntidade' value="<?= $dadosentidade->idEntidade; ?>"/>
-            <input type="hidden" name='idTipo_Entidade' value="<?= $dadosidentificacao->idTipo_Entidade; ?>"/>
+            <input type="hidden" name='idTipo_Entidade' value="<?= $dadosidentificacao[0]->idTipo_Entidade; ?>"/>
             <input type="hidden" name='idCliente' value="<?= $dadosentidade->idCliente; ?>"/>
             <?php if ($dadosentidade->cpf == null) {
                 $nome = "cnpj";
@@ -86,13 +86,13 @@ $this->load->view('_include/header') ?>
                 <div class="input-field col s12 m6 l4 offset-l2">
                     <label><?php echo $this->lang->line('percentual_fisico'); ?>:</label>
                     <input class="<?= $this->lang->line('classPercent') ?>"
-                           value="<?php echo $dadospercentual->percentual_fisico; ?>" name="percentual_fisico" required
+                           value="<?php echo $dadospercentual[0]->percentual_fisico; ?>" name="percentual_fisico" required
                            type="text"/>
                 </div>
                 <div class="input-field col s12 m6 l4">
                     <label><?php echo $this->lang->line('percentual_digital'); ?>:</label>
                     <input class="<?= $this->lang->line('classPercent') ?>"
-                           value="<?php echo $dadospercentual->percentual_digital; ?>" name="percentual_digital"
+                           value="<?php echo $dadospercentual[0]->percentual_digital; ?>" name="percentual_digital"
                            required
                            type="text"/>
                 </div>
@@ -101,15 +101,15 @@ $this->load->view('_include/header') ?>
                 <div class="col s12 m12 l8 offset-l2 IdEntityCheckBox">
                     <label><?php echo $this->lang->line('identificacao'); ?></label></label>
                     <p>
-                        <input type="checkbox" <?php if ($dadosidentificacao->idTipo_Entidade == 1) echo "checked" ?>
+                        <input type="checkbox" <?php if ($dadosidentificacao[0]->idTipo_Entidade == 1) echo "checked" ?>
                                class="filled-in" id="checkArtist" name="identificacao[]" value=1>
                         <label for="checkArtist"><?php echo $this->lang->line('artista'); ?></label>
 
-                        <input type="checkbox" <?php if ($dadosidentificacao->idTipo_Entidade == 2) echo "checked" ?>
+                        <input type="checkbox" <?php if ($dadosidentificacao[0]->idTipo_Entidade == 2) echo "checked" ?>
                                class="filled-in" id="checkAutor" name="identificacao[]" value=2>
                         <label for="checkAutor"><?php echo $this->lang->line('autor'); ?></label>
 
-                        <input type="checkbox" <?php if ($dadosidentificacao->idTipo_Entidade == 3) echo "checked" ?>
+                        <input type="checkbox" <?php if ($dadosidentificacao[0]->idTipo_Entidade == 3) echo "checked" ?>
                                class="filled-in" id="checkProd" name="identificacao[]" value=3>
                         <label for="checkProd"><?php echo $this->lang->line('produtor'); ?></label>
                     </p>

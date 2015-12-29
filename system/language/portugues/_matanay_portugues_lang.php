@@ -98,12 +98,15 @@ $lang['usuario_bloqueado']		= 'Usuario se encontra bloqueado';
 $lang['acesso_negado']			= 'Acesso indevido';
 $lang['usuario_invalido']		= 'Usuario inválido';
 $lang['usuario_ou_senha_invalida']	= 'Usuario ou senha inválida';
-$lang['senha_invalida']				= 'Senha inválida';
-$lang['resetSuaSenha']				= 'Por favor altere sua senha';
-$lang['resetSuaSenhaLink']			= 'Por favor altere sua senha por esse link';
+$lang['senha_invalida']			= 'Senha inválida';
+$lang['resetSuaSenha']			= 'Por favor altere sua senha';
+$lang['resetSuaSenhaLink']		= 'Por favor altere sua senha por esse link';
 $lang['permissao_insuficiente']	= 'Permissão insuficiente para esta ação';
 $lang['confirmar_deletar']		= 'Confirmar deleção?';
 $lang['problemas_formulario']	= 'Problemas com o formulario';
+$lang['cpf_cnpj_repetido']      = 'Esse CPF/CNPJ já está registrado!';
+$lang['isrc_repetido']       	= 'Esse ISRC já está registrado!';
+$lang['upc_repetido']      		= 'Esse UPC já está registrado!';
 
 ////// LOGIN
 

@@ -104,6 +104,9 @@ $lang['resetSuaSenhaLink']			= 'Please reset your password using this link';
 $lang['permissao_insuficiente']		= 'No authorization to execute this action';
 $lang['confirmar_deletar']			= 'Do you wish to delete this?';
 $lang['problemas_formulario']       = 'Problems with the form';
+$lang['cpf_cnpj_repetido']       	= 'This CPF/CNPJ is already registered!';
+$lang['isrc_repetido']       		= 'This ISRC is already registered!';
+$lang['upc_repetido']       		= 'This UPC is already registered!';
 
 ////// LOGIN 
 

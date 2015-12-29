@@ -13,10 +13,10 @@
 	      	</div>
 
 	      	<div class="input-field col s7 m5 l3">
-		      	<a href="<?php echo base_url(); ?>index.php/cliente/cadastros">
+		      	<a href="<?php echo base_url(); ?>index.php/notificacao/listar">
 			        <div class="card-panel grey lighten-1">
-			          	<i class="mdi-action-account-child"></i>
-			          	<div class="label"><?php echo $this->lang->line('cadastros1'); ?></div>
+			          	<i class="mdi-alert-warning"></i>
+			          	<div class="label"><?php echo $this->lang->line('notificacao'); ?></div>
 			        </div>
 		        </a>
 	        </div>
@@ -72,10 +72,10 @@
 	        </div>
 
 	        <div class="input-field col s12 m12 l6">
-	        	<a href="<?php echo base_url(); ?>index.php/notificacao/listar">
+	        	<a href="<?php echo base_url(); ?>index.php/cliente/cadastros">
 			        <div class="card-panel grey lighten-2">
-			          	<i class="mdi-alert-warning"></i>
-			          	<div class="label"><?php echo $this->lang->line('notificacao'); ?></div>
+			          	<i class="mdi-action-account-child"></i>
+			          	<div class="label"><?php echo $this->lang->line('cadastros1'); ?></div>
 			      	</div>
 		      	</a>
 	        </div>
