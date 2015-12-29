@@ -4,7 +4,7 @@
 	<div id="wrapper">
 	    <div id="home" class="row">
 	    	<div class="input-field col s12 m7 l4">
-		    	<a href="<?php echo base_url(); ?>index.php/relatorio/gerar_vendas">
+		    	<a href="<?php echo base_url(); ?>index.php/relatorio/opcoes_relatorio">
 			        <div class="card-panel grey ">
 			          	<i class="mdi-action-trending-up"></i>
 			          	<div class="label"><?php echo $this->lang->line('vendas'); ?></div>

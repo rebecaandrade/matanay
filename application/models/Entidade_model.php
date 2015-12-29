@@ -45,6 +45,40 @@ class Entidade_model extends CI_Model
         return $dados;
     }
 
+    public function buscar_entidade($id)
+    {
+        $this->db->select('ent.*,eht.*,te.*,fav.nome AS Fnome')->from('Entidade ent');
+        $this->db->join('Entidade_has_Tipo_Entidade eht', 'eht.idEntidade = ent.idEntidade');
+        $this->db->join('Tipo_Entidade te', 'te.idTipo_Entidade = eht.idTipo_Entidade');
+        $this->db->join('Favorecido fav', 'fav.idFavorecido = ent.idFavorecido');
+        $this->db->where(array('ent.excluido' => NULL));
+        $this->db->where(array('ent.idEntidade' => $id));
+        $dados = $this->db->get()->row();
+        return $dados;
+    }
+
+    public function buscar_artistas(){
+        $this->db->select('ent.*,eht.*,te.*,fav.nome AS Fnome')->from('Entidade ent');
+        $this->db->join('Entidade_has_Tipo_Entidade eht', 'eht.idEntidade = ent.idEntidade');
+        $this->db->join('Tipo_Entidade te', 'te.idTipo_Entidade = eht.idTipo_Entidade');
+        $this->db->join('Favorecido fav', 'fav.idFavorecido = ent.idFavorecido');
+        $this->db->where(array('ent.excluido' => NULL));
+        $this->db->where(array('eht.idTipo_Entidade' => 1));
+        $dados = $this->db->get()->result();
+        return $dados;
+    }
+
+    public function buscar_produtores(){
+        $this->db->select('ent.*,eht.*,te.*,fav.nome AS Fnome')->from('Entidade ent');
+        $this->db->join('Entidade_has_Tipo_Entidade eht', 'eht.idEntidade = ent.idEntidade');
+        $this->db->join('Tipo_Entidade te', 'te.idTipo_Entidade = eht.idTipo_Entidade');
+        $this->db->join('Favorecido fav', 'fav.idFavorecido = ent.idFavorecido');
+        $this->db->where(array('ent.excluido' => NULL));
+        $this->db->where(array('eht.idTipo_Entidade' => 3));
+        $dados = $this->db->get()->result();
+        return $dados;
+    }
+
     function buscar_entidade_especifica($id)
     {
         $this->db->where('idEntidade', $id);
@@ -54,7 +88,7 @@ class Entidade_model extends CI_Model
     function buscar_entidade_has_tipo_especifico($id)
     {
         $this->db->where('idEntidade', $id);
-        return $this->db->get('Entidade_has_Tipo_Entidade')->result();
+        return $this->db->get('Entidade_has_Tipo_Entidade')->row();
     }
 
     function buscar_telefone_especifico($id, $idtelefone)
@@ -74,7 +108,7 @@ class Entidade_model extends CI_Model
         $this->db->where('idEntidade', $id);
         $dados=$this->db->get('Entidade_has_Tipo_Entidade')->result();
         $this->db->where('idTipo_Entidade', $dados[0]->idTipo_Entidade);
-        return $this->db->get('tipo_entidade')->result();
+        return $this->db->get('tipo_entidade')->row();
     }
 
     public function atualizar_entidade($entidade)

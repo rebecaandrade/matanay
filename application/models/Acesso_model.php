@@ -5,6 +5,7 @@ class Acesso_model extends CI_Model {
 	public function procurar_usuario($user, $senha){
 		$this->db->where('login', $user);
 		$this->db->where('senha', $senha);
+        $this->db->join('Cliente', ' Cliente.idCliente = Usuario.idCliente');
 		return $this->db->get('Usuario')->row();
 	}
 

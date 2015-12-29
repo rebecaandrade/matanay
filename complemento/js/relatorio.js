@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    //opcoes relatorio view
+    //opcoes relatoo view
     $('#relLojas').chosen();
     $('#relFaixa').chosen();
     $('#relAlbum').chosen();
@@ -113,6 +113,7 @@ $.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
     if(validoFlagExcluir)
         valido = false;
     validoFlag = false;
+    validoFlagExcluir = false;
 
     //oSettings.aoData[iDataIndex]._aData[3] -> SUB-LOJA
     var subLojasFiltros = {};
@@ -138,6 +139,7 @@ $.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
     if(validoFlagExcluir)
         valido = false;
     validoFlag = false;
+    validoFlagExcluir = false;
 
     //oSettings.aoData[iDataIndex]._aData[4] - TERRITORIO
     var territoriosFiltros = {};
@@ -163,7 +165,7 @@ $.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
     if(validoFlagExcluir)
         valido = false;
     validoFlag = false;
-
+    validoFlagExcluir = false;
     //oSettings.aoData[iDataIndex]._aData[5] -> ARTISTA
     var artistasFiltros = {};
     $("select[name^='artistas']").map(function(i, opt) {
@@ -172,12 +174,12 @@ $.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
 
     $.each(artistasFiltros , function( key, type ) {
         if(type == "Incluir"){
-            if(oSettings.aoData[iDataIndex]._aData[5] == key || key == '-1'){
+            if(oSettings.aoData[iDataIndex]._aData[5].indexOf(key) != -1 || key == '-1'){
                 validoFlag = validoFlag || true;
             }
         }
         else if(type == "Excluir"){
-            if(oSettings.aoData[iDataIndex]._aData[5] == key){
+            if(oSettings.aoData[iDataIndex]._aData[5].indexOf(key) != -1 ){
                 validoFlagExcluir = validoFlagExcluir || true;
             }
         }
@@ -188,6 +190,7 @@ $.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
     if(validoFlagExcluir)
         valido = false;
     validoFlag = false;
+    validoFlagExcluir = false;
 
     //oSettings.aoData[iDataIndex]._aData[7] -> PRODUTOR
     var produtorsFiltros = {};
@@ -197,12 +200,12 @@ $.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
 
     $.each(produtorsFiltros , function( key, type ) {
         if(type == "Incluir"){
-            if(oSettings.aoData[iDataIndex]._aData[7] == key || key == '-1'){
+            if(oSettings.aoData[iDataIndex]._aData[7].indexOf(key) != -1  || key == '-1'){
                 validoFlag = validoFlag || true;
             }
         }
         else if(type == "Excluir"){
-            if(oSettings.aoData[iDataIndex]._aData[7] == key){
+            if(oSettings.aoData[iDataIndex]._aData[7].indexOf(key) != -1 ){
                 validoFlagExcluir = validoFlagExcluir || true;
             }
         }
@@ -213,6 +216,7 @@ $.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
     if(validoFlagExcluir)
         valido = false;
     validoFlag = false;
+    validoFlagExcluir = false;
 
     //oSettings.aoData[iDataIndex]._aData[8] -> FAIXA
     var faixasFiltros = {};
@@ -238,6 +242,7 @@ $.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
     if(validoFlagExcluir)
         valido = false;
     validoFlag = false;
+    validoFlagExcluir = false;
 
     //oSettings.aoData[iDataIndex]._aData[9] -> PRODUTO
     // var produtosFiltros = {};
@@ -260,8 +265,8 @@ $.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
 
     // if(!validoFlag)
     //     valido = false;
-    if(validoFlagExcluir)
-        valido = false;
+    // if(validoFlagExcluir)
+    //    valido = false;
     // validoFlag = false;
 
     //oSettings.aoData[iDataIndex]._aData[10] -> COD. CATALOGO
@@ -288,6 +293,7 @@ $.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
     if(validoFlagExcluir)
         valido = false;
     validoFlag = false;
+    validoFlagExcluir = false;
 
 
     //oSettings.aoData[iDataIndex]._aData[11] -> ISRC
@@ -314,6 +320,7 @@ $.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
     if(validoFlagExcluir)
         valido = false;
     validoFlag = false;
+    validoFlagExcluir = false;
 
     //oSettings.aoData[iDataIndex]._aData[12] -> UPC
     var upcsFiltros = {};
@@ -339,6 +346,7 @@ $.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
     if(validoFlagExcluir)
         valido = false;
     validoFlag = false;
+    validoFlagExcluir = false;
 
     if(valido){
         return true;
@@ -349,6 +357,7 @@ $.fn.dataTableExt.afnFiltering.push(function (oSettings, aoData, iDataIndex) {
  
 $(document).ready(function() {
     var table = $('#myTable').DataTable();
+        
     $('#datainicio, #datafim, #tipoRelatorioFisico, #tipoRelatorioDigital, .myLojas, .mySubLojas, .myTerritorios, .myArtista, .myEditora, .myProdutor, .myISRC, .myUPC, .myAlbum, .myFaixa, .myCatalogo').change( function() {
 
         table.draw();

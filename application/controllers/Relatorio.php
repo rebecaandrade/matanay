@@ -63,39 +63,31 @@ class Relatorio extends CI_Controller
         $lojas[] = NULL;
         $sublojas[] = NULL;
         $territorios[] = NULL;
-        $artistas[] = NULL;
-        $produtores[] = NULL;
-        $isrcs[] = NULL;
-        $upcs[] = NULL;
-        $catalogos[] = NULL;
 
         foreach ($relatorios as $relatorio) {
             $vendas = $this->vendas_model->buscar_vendas($relatorio->idRelatorio);
             foreach ($vendas as $venda) {
                 $venda->artistasInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,1);
                 foreach ($venda->artistasInfo as $artistaInfo) {
-                    $venda->artista = $this->entidade_model->buscar_entidade_especifica($artistaInfo['idEntidade'])->nome;
+                    $venda->artista[] = $this->entidade_model->buscar_entidade($artistaInfo['idEntidade']);
                 }
                 $venda->autoresInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,2);
                 foreach ($venda->autoresInfo as $autorInfo) {
-                    $venda->autor = $this->entidade_model->buscar_entidade_especifica($autorInfo['idEntidade'])->nome;    
+                    $venda->autor[] = $this->entidade_model->buscar_entidade($autorInfo['idEntidade']);    
                 }
                 
                 $venda->produtoresInfo = $this->faixas_videos_model->buscar_entidade_faixa($venda->idFaixa,3);
                 foreach ($venda->produtoresInfo as $produtorInfo) {
-                    $venda->produtor = $this->entidade_model->buscar_entidade_especifica($produtorInfo['idEntidade'])->nome;
+                    $venda->produtor[] = $this->entidade_model->buscar_entidade($produtorInfo['idEntidade']);
                 }
 
                 $lojas[] = $venda->loja;
                 $sublojas[] = $venda->subloja;
                 $territorios[] = $venda->territorio;
-                $artistas[] = $venda->artista;
-                $produtores[] = $venda->produtor;
-
                 $venda->apuracao = $relatorio->periodo_apuracao;
-                $venda->tipo = $this->albuns_model->buscar_impostos_album($venda->idAlbum);
-                foreach ($venda->tipo as $imposto) {
-                    $venda->imposto[] = $this->imposto_model->tipo_imposto($imposto->idImposto)[0]->descricao;
+                $venda->impostos = $this->albuns_model->buscar_impostos_album($venda->idAlbum);
+                foreach ($venda->impostos as $imposto) {
+                    $venda->imposto[] = $this->imposto_model->buscar_imposto($imposto->idImposto);
                 }
                 $venda->imposto = array_unique($venda->imposto);
                 $venda->faixaInfo = $this->faixas_videos_model->buscar_dados($venda->idFaixa);
@@ -104,16 +96,13 @@ class Relatorio extends CI_Controller
                     $venda->produto = "Faixa";
                 else
                     $venda->produto = "Video";
-                $isrcs[] = $venda->faixaInfo->isrc;
-                $venda->albumIndo = $this->albuns_model->buscar_dados($venda->idAlbum);
-                $upcs[] = $venda->albumIndo->upc_ean;
-                $catalogos[] = $venda->albumIndo->codigo_catalogo;
-                $venda->catalogo = $venda->albumIndo->codigo_catalogo;
+                $venda->albumInfo = $this->albuns_model->buscar_dados($venda->idAlbum);
+                $venda->catalogo = $venda->albumInfo->codigo_catalogo;
                 $venda->isrc = $venda->faixaInfo->isrc;
-                $venda->upc = $venda->albumIndo->upc_ean;
-                $venda->percentual_aplicado = calcularPercentual($venda->percentual_aplicado = $this->entidade_model->buscar_entidade_has_faixa_id($venda->idFaixa));
-                $venda->valor_pagar = calcularValorPagar($venda->qnt_vendida,$venda->valor_recebido,$venda->percentual_aplicado);
-                $venda->receita = calcularReceita($venda->qnt_vendida,$venda->valor_recebido,$venda->percentual_aplicado);
+                $venda->upc = $venda->albumInfo->upc_ean;
+                $venda->percentual_aplicado = $this->_calcularPercentual($this->entidade_model->buscar_entidade_has_faixa_id($venda->idFaixa),$venda->tipo);
+                $venda->valor_pagar = $this->_calcularValorPagar($venda->qnt_vendida,$venda->valor_recebido,$venda->percentual_aplicado,$venda->imposto);
+                $venda->receita = $this->_calcularReceita($venda->qnt_vendida,$venda->valor_recebido,$venda->percentual_aplicado);
                 $venda->relatorio = $relatorio;
                 $venda->apuracao = $venda->relatorio->periodo_apuracao;
                 $venda->descricao = "Ambos";
@@ -124,11 +113,7 @@ class Relatorio extends CI_Controller
         $lojas = array_unique($lojas);
         $sublojas = array_unique($sublojas);
         $territorios = array_unique($territorios);
-        $artistas = array_unique($artistas);
-        $produtores = array_unique($produtores);
-        $isrcs = array_unique($isrcs);
-        $upcs = array_unique($upcs);
-        $catalogos = array_unique($catalogos);
+
         $editoras = $this->cliente_model->clientesNome();
         foreach ($editoras as $key => $value) {
             $editoras[$key] = $value->nome;
@@ -136,12 +121,26 @@ class Relatorio extends CI_Controller
         $albuns = $this->albuns_model->buscar_all_albuns();
         foreach ($albuns as $key => $value) {
             $albuns[$key] = $value->nome;
+            $upcs[$key] = $value->upc_ean;
+            $catalogos[$key] = $value->codigo_catalogo;
         }
 
         $faixas = $this->faixas_videos_model->buscar_all_faixas();
         foreach ($faixas as $key => $value) {
             $faixas[$key] = $value->nome;
+            $isrcs[$key] = $value->isrc;
         }
+
+        $artistas = $this->entidade_model->buscar_artistas();
+        foreach ($artistas as $key => $value) {
+            $artistas[$key] = $value->nome;
+        }
+
+        $produtores = $this->entidade_model->buscar_produtores();
+        foreach ($produtores as $key => $value) {
+            $produtores[$key] = $value->nome;
+        }
+
         $dados['lojas'] = $lojas;
         $dados['sublojas'] = $sublojas;
         $dados['territorios'] = $territorios;
@@ -439,96 +438,244 @@ class Relatorio extends CI_Controller
         $this->excel->setActiveSheetIndex(0);
         $this->excel->getActiveSheet()->setTitle($titulo);
         $col = "A";
-        if (isset($info['tiporelatorio'])) {
+        if (isset($info['tiporelatorios'])) {
             $line = 1;
             $cell = $col . $line;
             $this->excel->getActiveSheet()->setCellValue($cell, 'Tipo Relatorio');
             $cell = $col . ++$line;
-            foreach ($info['tiporelatorio'] as $relType) {
+                $this->excel->getActiveSheet()->setCellValue($cell, '');
+                $line++;
+                $cell = $col . $line;
+            foreach ($info['tiporelatorios'] as $relType) {
                 $this->excel->getActiveSheet()->setCellValue($cell, $relType);
                 $line++;
                 $cell = $col . $line;
             }
-            $col++;
             $col++;
         }
         if (isset($info['loja'])) {
             $line = 1;
             $cell = $col . $line;
             $this->excel->getActiveSheet()->setCellValue($cell, 'Loja');
+            $cell = $col . ++$line;
+            $this->excel->getActiveSheet()->setCellValue($cell, '');
             $line++;
             $cell = $col . $line;
-            $this->excel->getActiveSheet()->setCellValue($cell, $info['loja']);
-            $col++;
+            foreach ($info['loja'] as $loja) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $loja);
+                $line++;
+                $cell = $col . $line;
+            }
             $col++;
         }
         if (isset($info['subloja'])) {
             $line = 1;
             $cell = $col . $line;
             $this->excel->getActiveSheet()->setCellValue($cell, 'Sub Loja');
+            $cell = $col . ++$line;
+            $this->excel->getActiveSheet()->setCellValue($cell, '');
             $line++;
             $cell = $col . $line;
-            $this->excel->getActiveSheet()->setCellValue($cell, $info['subloja']);
-            $col++;
+            foreach ($info['subloja'] as $subloja) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $subloja);
+                $line++;
+                $cell = $col . $line;
+            }
             $col++;
         }
         if (isset($info['territorio'])) {
             $line = 1;
             $cell = $col . $line;
             $this->excel->getActiveSheet()->setCellValue($cell, 'Territorio');
+            $cell = $col . ++$line;
+            $this->excel->getActiveSheet()->setCellValue($cell, '');
             $line++;
             $cell = $col . $line;
-            $this->excel->getActiveSheet()->setCellValue($cell, $info['territorio']);
-            $col++;
+            foreach ($info['territorio'] as $territorio) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $territorio);
+                $line++;
+                $cell = $col . $line;
+            }
             $col++;
         }
         if (isset($info['artista'])) {
             $line = 1;
             $cell = $col . $line;
             $this->excel->getActiveSheet()->setCellValue($cell, 'Artista');
+            $cell = $col . ++$line;
+            $this->excel->getActiveSheet()->setCellValue($cell, '');
             $line++;
             $cell = $col . $line;
-            $this->excel->getActiveSheet()->setCellValue($cell, $info['artista']);
-            $col++;
+            foreach ($info['artista'] as $artista) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $artista);
+                $line++;
+                $cell = $col . $line;
+            }
             $col++;
         }
         if (isset($info['autor'])) {
             $line = 1;
             $cell = $col . $line;
             $this->excel->getActiveSheet()->setCellValue($cell, 'Autor');
+            $cell = $col . ++$line;
+            $this->excel->getActiveSheet()->setCellValue($cell, '');
             $line++;
             $cell = $col . $line;
-            $this->excel->getActiveSheet()->setCellValue($cell, $info['autor']);
-            $col++;
+            foreach ($info['autor'] as $autor) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $autor);
+                $line++;
+                $cell = $col . $line;
+            }
             $col++;
         }
         if (isset($info['produtor'])) {
             $line = 1;
             $cell = $col . $line;
             $this->excel->getActiveSheet()->setCellValue($cell, 'Produtor');
+            $cell = $col . ++$line;
+            $this->excel->getActiveSheet()->setCellValue($cell, '');
             $line++;
             $cell = $col . $line;
-            $this->excel->getActiveSheet()->setCellValue($cell, $info['produtor']);
-            $col++;
-            $col++;
-        }
-        if (isset($info['album'])) {
-            $line = 1;
-            $cell = $col . $line;
-            $this->excel->getActiveSheet()->setCellValue($cell, 'album');
-            $line++;
-            $cell = $col . $line;
-            $this->excel->getActiveSheet()->setCellValue($cell, $info['album']);
-            $col++;
+            foreach ($info['produtor'] as $produtor) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $produtor);
+                $line++;
+                $cell = $col . $line;
+            }
             $col++;
         }
         if (isset($info['faixa'])) {
             $line = 1;
             $cell = $col . $line;
             $this->excel->getActiveSheet()->setCellValue($cell, 'Faixa');
+            $cell = $col . ++$line;
+            $this->excel->getActiveSheet()->setCellValue($cell, '');
             $line++;
             $cell = $col . $line;
-            $this->excel->getActiveSheet()->setCellValue($cell, $info['faixa']);
+            foreach ($info['faixa'] as $faixa) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $faixa);
+                $line++;
+                $cell = $col . $line;
+            }
+            $col++;
+        }
+        if (isset($info['album'])) {
+            $line = 1;
+            $cell = $col . $line;
+            $this->excel->getActiveSheet()->setCellValue($cell, 'Album');
+            $cell = $col . ++$line;
+            $this->excel->getActiveSheet()->setCellValue($cell, '');
+            $line++;
+            $cell = $col . $line;
+            foreach ($info['album'] as $album) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $album);
+                $line++;
+                $cell = $col . $line;
+            }
+            $col++;
+        }
+        if (isset($info['catalogo'])) {
+            $line = 1;
+            $cell = $col . $line;
+            $this->excel->getActiveSheet()->setCellValue($cell, 'Código de Catalogo');
+            $cell = $col . ++$line;
+            $this->excel->getActiveSheet()->setCellValue($cell, '');
+            $line++;
+            $cell = $col . $line;
+            foreach ($info['catalogo'] as $catalogo) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $catalogo);
+                $line++;
+                $cell = $col . $line;
+            }
+            $col++;
+        }
+        if (isset($info['isrc'])) {
+            $line = 1;
+            $cell = $col . $line;
+            $this->excel->getActiveSheet()->setCellValue($cell, 'ISRC');
+            $cell = $col . ++$line;
+            $this->excel->getActiveSheet()->setCellValue($cell, '');
+            $line++;
+            $cell = $col . $line;
+            foreach ($info['isrc'] as $isrc) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $isrc);
+                $line++;
+                $cell = $col . $line;
+            }
+            $col++;
+        }
+        if (isset($info['upc'])) {
+            $line = 1;
+            $cell = $col . $line;
+            $this->excel->getActiveSheet()->setCellValue($cell, 'UPC');
+            $cell = $col . ++$line;
+            $this->excel->getActiveSheet()->setCellValue($cell, '');
+            $line++;
+            $cell = $col . $line;
+            foreach ($info['upc'] as $upc) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $upc);
+                $line++;
+                $cell = $col . $line;
+            }
+            $col++;
+        }
+        if (isset($info['qnt_vendida'])) {
+            $line = 1;
+            $cell = $col . $line;
+            $this->excel->getActiveSheet()->setCellValue($cell, 'Quantidade Vendida');
+            $cell = $col . ++$line;
+            foreach ($info['qnt_vendida'] as $qnt_vendida) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $qnt_vendida);
+                $line++;
+                $cell = $col . $line;
+            }
+            $col++;
+        }
+        if (isset($info['valor_recebido'])) {
+            $line = 1;
+            $cell = $col . $line;
+            $this->excel->getActiveSheet()->setCellValue($cell, 'Valor Recebido');
+            $cell = $col . ++$line;
+            foreach ($info['valor_recebido'] as $valor_recebido) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $valor_recebido);
+                $line++;
+                $cell = $col . $line;
+            }
+            $col++;
+        }
+        if (isset($info['percentual_aplicado'])) {
+            $line = 1;
+            $cell = $col . $line;
+            $this->excel->getActiveSheet()->setCellValue($cell, 'Percentual Aplicado');
+            $cell = $col . ++$line;
+            foreach ($info['percentual_aplicado'] as $percentual_aplicado) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $percentual_aplicado);
+                $line++;
+                $cell = $col . $line;
+            }
+            $col++;
+        }
+        if (isset($info['valor_pagar'])) {
+            $line = 1;
+            $cell = $col . $line;
+            $this->excel->getActiveSheet()->setCellValue($cell, 'Valor a Pagar');
+            $cell = $col . ++$line;
+            foreach ($info['valor_pagar'] as $valor_pagar) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $valor_pagar);
+                $line++;
+                $cell = $col . $line;
+            }
+            $col++;
+        }
+        if (isset($info['receita'])) {
+            $line = 1;
+            $cell = $col . $line;
+            $this->excel->getActiveSheet()->setCellValue($cell, 'Receita');
+            $cell = $col . ++$line;
+            foreach ($info['receita'] as $receita) {
+                $this->excel->getActiveSheet()->setCellValue($cell, $receita);
+                $line++;
+                $cell = $col . $line;
+            }
         }
         $filename = $titulo . '.xls';
         header('Content-Type: application/vnd.ms-excel'); //mime type
@@ -561,6 +708,8 @@ class Relatorio extends CI_Controller
     public function importa_relatorio() {
         $id_cliente = $this->session->userdata('cliente_id');
         $dados['modelos'] = $this->relatorio_model->modelos($id_cliente);
+
+        $dados['tipo'] = $this->session->userdata('tipo');
         $this->load->view('relatorio/importa_relatorio', $dados);
     }
 
@@ -631,6 +780,7 @@ class Relatorio extends CI_Controller
                 $data['loja'] = $objPHPExcel->getActiveSheet()->getCell($modelo->loja.$i)->getValue();
                 $data['subloja'] = $objPHPExcel->getActiveSheet()->getCell($modelo->subloja.$i)->getValue();
                 $data['territorio'] = $objPHPExcel->getActiveSheet()->getCell($modelo->territorio.$i)->getValue();
+                $data['tipo'] = $this->input->post()['tipo'];
 
 
                 if($data['idFaixa'] != NULL && $data['idAlbum'] != NULL)
@@ -801,20 +951,29 @@ class Relatorio extends CI_Controller
         redirect("relatorio/listar_relatorios");*/
         die();
     }
-}
 
-function calcularPercentual($percentual_aplicados){
-        $percentual_aplicado = 0;
-        foreach ($percentual_aplicados as $key => $percentual) {
-            $percentual_aplicado += $percentual->percentual;
+    private function _calcularPercentual($percentual_aplicados, $tipo){
+            $percentual_aplicado = 0;
+            foreach ($percentual_aplicados as $key => $percentual) {
+                $entidade = $this->entidade_model->buscar_entidade($percentual->idEntidade);
+
+                if($tipo == 'Digital')
+                    $percentual_aplicado += $percentual->percentual * $entidade->percentual_digital;
+                else
+                    $percentual_aplicado += $percentual->percentual * $entidade->percentual_fisico;
+            }
+            return $percentual_aplicado/100;
+    }
+
+    private function _calcularValorPagar($qnt_vendida,$valor_recebido,$percentual_aplicado, $impostos){
+        $valorP = $percentual_aplicado;
+        foreach ($impostos as $imposto) {
+            $valorP += $imposto->valor;
         }
-        return $percentual_aplicado;
-}
+        return $valorP*$valor_recebido/100;
+    }
 
-function calcularValorPagar($qnt_vendida,$valor_recebido,$percentual_aplicado){
-    return 0;
-}
-
-function calcularReceita($qnt_vendida,$valor_recebido,$percentual_aplicado){
-    return $qnt_vendida*$valor_recebido*$percentual_aplicado;
+    private function _calcularReceita($qnt_vendida,$valor_recebido,$percentual_aplicado){
+        return $valor_recebido - $valor_recebido*$percentual_aplicado/100;
+    }
 }

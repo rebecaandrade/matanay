@@ -80,20 +80,20 @@ class Faixas_Videos_model extends CI_Model {
         $this->db->update('Faixa_Video', $dados);
         $this->db->where('idFaixa', $dados['idFaixa']);
         $this->db->delete('Faixa_Video_has_Imposto');
-        foreach($impostos as $imposto->idImposto){
+        foreach($impostos as $imposto){
             $imposto_faixa = array(
                 'idFaixa' => $dados['idFaixa'],
-                'idImposto' => $imposto->idImposto
+                'idImposto' => $imposto
             );
             $this->db->insert('Faixa_Video_has_Imposto', $imposto_faixa);
         }
         $this->db->where('idFaixa', $dados['idFaixa']);
         $this->db->delete('Entidade_has_Faixa_Video');
         $i = 0;
-        foreach($artistas as $artista->idEntidade){
+        foreach($artistas as $artista){
             $artista_faixa = array(
                 'idFaixa' => $dados['idFaixa'],
-                'idEntidade' => $artista->idEntidade,
+                'idEntidade' => $artista,
                 'tipoEntidade' => 1,
                 'percentual' => $perc_artistas[$i]
             );
@@ -101,10 +101,10 @@ class Faixas_Videos_model extends CI_Model {
             $i++;
         }
         $i = 0;
-        foreach($autores as $autor->idEntidade){
+        foreach($autores as $autor){
             $autor_faixa = array(
                 'idFaixa' => $dados['idFaixa'],
-                'idEntidade' => $autor->idEntidade,
+                'idEntidade' => $autor,
                 'tipoEntidade' => 2,
                 'percentual' => $perc_autores[$i]
             );
@@ -112,10 +112,10 @@ class Faixas_Videos_model extends CI_Model {
             $i++;
         }
         $i = 0;
-        foreach($produtores as $produtor->idEntidade){
+        foreach($produtores as $produtor){
             $produtor_faixa = array(
                 'idFaixa' => $dados['idFaixa'],
-                'idEntidade' => $produtor->idEntidade,
+                'idEntidade' => $produtor,
                 'tipoEntidade' => 3,
                 'percentual' => $perc_produtores[$i]
             );

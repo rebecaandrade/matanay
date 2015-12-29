@@ -28,6 +28,8 @@ CREATE TABLE IF NOT EXISTS `matanay`.`Cliente` (
   `nome` VARCHAR(45) NULL DEFAULT NULL COMMENT '',
   `bloqueado` BIT NULL DEFAULT NULL COMMENT '',
   `excluido` BIT NULL DEFAULT NULL COMMENT '',
+  `tipo` INT NOT NULL COMMENT '',
+  `data_inicio` DATE NULL DEFAULT NULL COMMENT '',
   PRIMARY KEY (`idCliente`)  COMMENT '')
 ENGINE = InnoDB;
 
@@ -630,11 +632,12 @@ CREATE TABLE IF NOT EXISTS `matanay`.`Vendas` (
   `idAlbum` INT NOT NULL,
   `idFaixa` INT NOT NULL,
   `idRelatorio` INT NOT NULL COMMENT '\n',
-  `qnt_vendida` FLOAT NULL,
-  `valor_recebido` INT NULL,
+  `qnt_vendida` INT NULL,
+  `valor_recebido` FLOAT NULL,
   `loja` VARCHAR(45) NULL,
   `subloja` VARCHAR(45) NULL,
   `territorio` VARCHAR(45) NULL,
+  `tipo` VARCHAR(45) NULL,
   PRIMARY KEY (`idVendas`, `idAlbum`, `idFaixa`, `idRelatorio`),
   INDEX `fk_Vendas_Album1_idx` (`idAlbum` ASC),
   INDEX `fk_Vendas_Faixa_Video1_idx` (`idFaixa` ASC),

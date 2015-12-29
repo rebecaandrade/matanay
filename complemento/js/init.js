@@ -664,7 +664,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('.porcentagem').mask("000,00%", {reverse: true});
+    $('.porcentagem').mask("000.00%", {reverse: true});
     $('.porcentagem').on("blur", function () {
         //console.log("entrei no change");
         var troca = false;
@@ -691,8 +691,8 @@ var maskBrOptions = {
     },
     reverse: true,
     onChange: function (porc, e, field, maskBrOptions) {
-        maskOne = "000,00%";
-        maskTwo = "SZZ,ZZ%";
+        maskOne = "000.00%";
+        maskTwo = "SZZ.ZZ%";
         var mask = (porc.length <= 6) ? maskOne : maskTwo;
         $('.porcentagem').mask(mask, maskBrOptions);
     }
@@ -1227,7 +1227,7 @@ function addSelectEntidade(entidades, selecione, label, participacao, mask) {
         '<i class="mdi-content-remove"></i></a></div>');
 
     $('.add' + label).chosen({search_contains: true});
-    $('.porcentagem').mask("000,00%", {reverse: true});
+    $('.porcentagem').mask("000.00%", {reverse: true});
 }
 
 function addSelectEnt(entidades, selecione, label, participacao, mask) {
@@ -1243,7 +1243,7 @@ function addSelectEnt(entidades, selecione, label, participacao, mask) {
         '<i class="mdi-content-remove"></i></a></div>');
 
     $('.add' + label).chosen({search_contains: true});
-    $('.porcentagem').mask("000,00%", {reverse: true});
+    $('.porcentagem').mask("000.00%", {reverse: true});
 }
 
 function addSelectEntidadeModal(entidades, selecione, label, participacao, mask) {
@@ -1259,7 +1259,7 @@ function addSelectEntidadeModal(entidades, selecione, label, participacao, mask)
         '<i class="mdi-content-remove"></i></a></div>');
 
     $('.add' + label).chosen({search_contains: true});
-    $('.porcentagem').mask("000,00%", {reverse: true});
+    $('.porcentagem').mask("000.00%", {reverse: true});
 }
 
 function geraOpcoesEntidade(entidades, selecione) {
@@ -1502,7 +1502,7 @@ function passaParamentroContrato(param, url) {
 /************************* dataTables *************************/
 
 $(document).ready(function () {
-    $('#myTable').dataTable({
+    var table = $('#myTable').dataTable({
         initComplete: function () {
             this.api().columns().every( function () {
                 var column = this;
@@ -1523,8 +1523,13 @@ $(document).ready(function () {
                 } );
             } );
         },
+        dom: 'lfrtBip',
+        buttons: [
+            'excel'
+        ],
+        "aoColumnDefs": [{ 'bSortable': false, 'aTargets': [ 1 ] }],
         "LengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
-        "pageLength": 25,
+        "pageLength": 10,
         "language": {
             "emptyTable": "Nenhum Resultado Encontrado",
             "info": "Mostrando _START_ à _END_ de _TOTAL_ elementos",
@@ -1547,6 +1552,98 @@ $(document).ready(function () {
                 "sortAscending": ": activate to sort column ascending",
                 "sortDescending": ": activate to sort column descending"
             }
+        },
+        "fnDrawCallback": function(oSettings) {
+            if (oSettings.aiDisplay.length == 0) {
+                return;
+            }
+            var rows = $(".relExTable").dataTable().$('tr', {"filter":"applied"});
+
+            // GROUP ROWS
+            var nTrs = $('.relExTable tbody tr');
+            var iColspan = nTrs[0].getElementsByTagName('td').length;
+            var nGroup = document.createElement('tr');
+            nGroup.setAttribute("id",  "valores");
+            var space = document.createElement('td');
+            space.colSpan = 13;
+            space.className = "group";
+            nGroup.appendChild(space);
+            var qntVendida = document.createElement('td');
+            qntVendida.colSpan = 1;
+            qntVendida.className = "group";
+            sumQntVendida = 0;
+            var inpqntVendida = document.createElement("input");
+                inpqntVendida.setAttribute("type",  "hidden");
+                inpqntVendida.setAttribute("name",  "qnt_vendida[]");
+
+            var valorRecebido = document.createElement('td');
+            valorRecebido.colSpan = 1;
+            valorRecebido.className = "group";
+            sumValorRecebido = 0;
+            var inpvalorRecebido = document.createElement("input");
+                inpvalorRecebido.setAttribute("type",  "hidden");
+                inpvalorRecebido.setAttribute("name",  "valor_recebido[]");
+
+            var percentual = document.createElement('td');
+            percentual.colSpan = 1;
+            percentual.className = "group";
+            sumPercentual = 0;
+            var inppercentual = document.createElement("input");
+                inppercentual.setAttribute("type",  "hidden");
+                inppercentual.setAttribute("name",  "percentual_aplicado[]");
+
+            var valorAPagar = document.createElement('td');
+            valorAPagar.colSpan = 1;
+            valorAPagar.className = "group";
+            sumValorAPagar = 0;
+            var inpvalorAPagar = document.createElement("input");
+                inpvalorAPagar.setAttribute("type",  "hidden");
+                inpvalorAPagar.setAttribute("name",  "valor_pagar[]");
+
+            var receita = document.createElement('td');
+            receita.colSpan = 1;
+            receita.className = "group";
+            sumReceita = 0; 
+            var inpreceita = document.createElement("input");
+                inpreceita.setAttribute("type",  "hidden");
+                inpreceita.setAttribute("name",  "receita[]");
+
+            $(rows).each(function( key, value ) {
+                sumQntVendida += Number($(this).find('td').eq(13).text());
+                sumValorRecebido += Number($(this).find('td').eq(14).text());
+                sumPercentual += Number($(this).find('td').eq(15).text());
+                sumValorAPagar += Number($(this).find('td').eq(16).text());
+                sumReceita += Number($(this).find('td').eq(17).text());
+            });
+
+
+            qntVendida.innerHTML = sumQntVendida;
+            valorRecebido.innerHTML = sumValorRecebido;
+            percentual.innerHTML = sumPercentual;
+            valorAPagar.innerHTML = sumValorAPagar;
+            receita.innerHTML = sumReceita;
+
+            nGroup.appendChild(qntVendida);
+            inpqntVendida.setAttribute("value", sumQntVendida);
+            nGroup.appendChild(inpqntVendida);
+
+            nGroup.appendChild(valorRecebido);
+            inpvalorRecebido.setAttribute("value", sumValorRecebido);
+            nGroup.appendChild(inpvalorRecebido);
+
+            nGroup.appendChild(percentual);
+            inppercentual.setAttribute("value", sumPercentual);
+            nGroup.appendChild(inppercentual);
+
+            nGroup.appendChild(valorAPagar);
+            inpvalorAPagar.setAttribute("value", sumValorAPagar);
+            nGroup.appendChild(inpvalorAPagar);
+
+            nGroup.appendChild(receita);
+            inpreceita.setAttribute("value", sumReceita);
+            nGroup.appendChild(inpreceita);
+
+            nTrs[nTrs.length - 1].parentNode.insertBefore(nGroup, nTrs[0]);
         }
     });
 });    
@@ -1596,6 +1693,73 @@ $(document).ready(function () {
             "aria": {
                 "sortAscending": ": activate to sort column ascending",
                 "sortDescending": ": activate to sort column descending"
+            }
+        },
+        "fnDrawCallback": function(oSettings) {
+            if (oSettings.aiDisplay.length == 0) {
+                return;
+            }
+
+            // GROUP ROWS
+            var nTrs = $('.relTable tbody tr');
+            var iColspan = nTrs[0].getElementsByTagName('td').length;
+            var nGroup = document.createElement('tr');
+            var space = document.createElement('td');
+            space.colSpan = 13;
+            space.className = "group";
+            nGroup.appendChild(space);
+            var qntVendida = document.createElement('td');
+            qntVendida.colSpan = 1;
+            qntVendida.className = "group";
+            sumQntVendida = 0;
+
+            var valorRecebido = document.createElement('td');
+            valorRecebido.colSpan = 1;
+            valorRecebido.className = "group";
+            sumValorRecebido = 0;
+
+            var percentual = document.createElement('td');
+            percentual.colSpan = 1;
+            percentual.className = "group";
+            sumPercentual = 0;
+
+            var valorAPagar = document.createElement('td');
+            valorAPagar.colSpan = 1;
+            valorAPagar.className = "group";
+            sumValorAPagar = 0;
+
+            var receita = document.createElement('td');
+            receita.colSpan = 1;
+            receita.className = "group";
+            sumReceita = 0;
+
+            for (var i = 0; i < nTrs.length; i++) {
+                var iDisplayIndex = oSettings._iDisplayStart + i;
+                var qntVendidaCell = oSettings.aoData[oSettings.aiDisplay[iDisplayIndex]]._aData[13];
+                var valorRecebidoCell = oSettings.aoData[oSettings.aiDisplay[iDisplayIndex]]._aData[14];
+                var percentualCell = oSettings.aoData[oSettings.aiDisplay[iDisplayIndex]]._aData[15];
+                var valorAPagarCell = oSettings.aoData[oSettings.aiDisplay[iDisplayIndex]]._aData[16];
+                var receitaCell = oSettings.aoData[oSettings.aiDisplay[iDisplayIndex]]._aData[17];
+
+                
+                sumQntVendida += Number(qntVendidaCell);
+                sumValorRecebido += Number(valorRecebidoCell);
+                sumPercentual += Number(percentualCell);
+                sumValorAPagar += Number(valorAPagarCell);
+                sumReceita += Number(receitaCell);
+
+                qntVendida.innerHTML = sumQntVendida;
+                valorRecebido.innerHTML = sumValorRecebido;
+                percentual.innerHTML = sumPercentual;
+                valorAPagar.innerHTML = sumValorAPagar;
+                receita.innerHTML = sumReceita;
+
+                nGroup.appendChild(qntVendida);
+                nGroup.appendChild(valorRecebido);
+                nGroup.appendChild(percentual);
+                nGroup.appendChild(valorAPagar);
+                nGroup.appendChild(receita);
+                nTrs[i].parentNode.insertBefore(nGroup, nTrs[0]);
             }
         }
     });

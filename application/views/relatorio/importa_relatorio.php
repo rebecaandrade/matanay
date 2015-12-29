@@ -47,6 +47,17 @@
                         <input required pattern=".{7,}" type="text" name="apuracao" id="apuracao" placeholder="MM/YYYY">
                     </div>
                 </div>
+                <div class="input-field col m5 s5 offset-m1 offset-s1">
+                    <h5><?= $this->lang->line('tipo_relatorio') ?></h5>
+                    <div class="col s3 m3 input-field offset-m4 offset-s2">
+                        <select name="tipo">
+                        <?php if ($tipo >= 2) {?>
+                            <option value="<?= $this->lang->line('fisico') ?>"><?= $this->lang->line('fisico') ?></option>
+                        <?php } ?>
+                        <option value="<?= $this->lang->line('digital') ?>"><?= $this->lang->line('digital') ?></option>
+                        </select>
+                    </div>
+                </div>
                 <input type="hidden" name="modelMessegeDisplay" value="<?= $this->lang->line('selecione_modelo') ?>">
                 <input type="hidden" name="fileMessegeDisplay" value="<?= $this->lang->line('rel_file') ?>">
                 <input type="hidden" name="apuracaoMessegeDisplay" value="<?= $this->lang->line('apuracao_invalida') ?>">

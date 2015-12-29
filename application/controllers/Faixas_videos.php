@@ -139,10 +139,11 @@ class Faixas_Videos extends CI_Controller {
         $autores = $this->input->post('autors[]');
         $produtores = $this->input->post('produtors[]');
 
-        $perc_artistas = $this->input->post('percentArtista[]');
-        $perc_autores = $this->input->post('percentAutor[]');
-        $perc_produtores = $this->input->post('percentProdutor[]');
 
+        $perc_artistas = str_replace("%","",$this->input->post('percentArtista[]'));
+        $perc_autores = str_replace("%","",$this->input->post('percentAutor[]'));
+        $perc_produtores = str_replace("%","",$this->input->post('percentProdutor[]'));
+        
         $impostos = $this->input->post('impostos_faixa[]');
 
         if($dados['nome'] != NULL && $dados['isrc'] != NULL){

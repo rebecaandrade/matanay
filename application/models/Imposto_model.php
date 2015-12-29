@@ -2,8 +2,15 @@
 	
 class Imposto_model extends CI_Model{
 
-	public function buscar_imposto(){
+	public function buscar_impostos(){
         return $this->db->get('imposto')->result();
+
+	}
+
+	public function buscar_imposto($idImposto){
+        $this->db->where('idImposto', $idImposto);
+        $this->db->where('excluido', null);
+        return $this->db->get('imposto')->row();
 
 	}
 
@@ -11,7 +18,7 @@ class Imposto_model extends CI_Model{
         $this->db->select('descricao')->from('Imposto');
         $this->db->where('imposto.idImposto', $idImposto);
         $this->db->join('Tipo_Imposto', ' Tipo_Imposto.idTipo_Imposto = imposto.idTipo_Imposto');
-        return $this->db->get()->result();
+        return $this->db->get()->row();
     }
 
 	public function cadastrar_imposto($imposto){

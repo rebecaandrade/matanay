@@ -18,8 +18,8 @@ insert into matanay.tipo_modelo values(DEFAULT, "Nacional");
 insert into matanay.tipo_modelo values(DEFAULT, "Internacional");
 
 /* cliente */
-insert into matanay.cliente values(DEFAULT, "admin",NULL, NULL);
-insert into matanay.cliente values(DEFAULT, "cliente",NULL, NULL);
+insert into matanay.cliente values(DEFAULT, "admin",NULL, NULL, 3, NULL);
+insert into matanay.cliente values(DEFAULT, "cliente",NULL, NULL, 1, NULL);
 
 /* usuario */
 insert into matanay.usuario values(DEFAULT, "admin","admin","21232f297a57a5a743894a0e4a801fc3","email@gmail.com",NULL,NULL,1);
@@ -170,7 +170,6 @@ insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",18);
 insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",18);
 insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",19);
 insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",19);
-insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",20);
 insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",20);
 insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",21);
 insert into matanay.telefone_entidade values(DEFAULT,"(99)9999-9999",22);

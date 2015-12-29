@@ -41,7 +41,7 @@
 
                     <p>
                         <input id="tipoRelatorioDigital" type="checkbox" class="filled-in" value="2"
-                               name="tiporelatorio[]">
+                               name="tiporelatorio[]" checked="true">
                         <label for="tipoRelatorioDigital"><?= $this->lang->line('digital') ?></label>
                     </p>
                 </div>
@@ -271,7 +271,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row  myAlbum myFaixa">
+            <div class="row  myProduto myFaixa">
                 <div class="col s6 m6 <?= $this->lang->line('albums') ?>">
                     <h5><?= $this->lang->line('albums') ?></h5>
 
@@ -363,84 +363,91 @@
             <input type="hidden" name="typeReportMessegeDisplay"
                    value="<?= $this->lang->line('tipo_relatorio_erro') ?>">
 
-            <table id="<?= $this->lang->line('myTable') ?>" class="relTable hoverable bordered">
+            <table id="<?= $this->lang->line('myTable') ?>" class="relTable hoverable bordered relExTable">
                 <thead>
-                    <th><?= $this->lang->line('periodo_de_apuracao') ?></th>
-                    <th><?= $this->lang->line('tipo') ?></th>
-                    <th><?= $this->lang->line('loja') ?></th>
-                    <th><?= $this->lang->line('subloja') ?></th>
-                    <th><?= $this->lang->line('territorio') ?></th>
-                    <th><?= $this->lang->line('artista') ?></th>
-                    <th><?= $this->lang->line('autor') ?></th>
-                    <th><?= $this->lang->line('produtor') ?></th>
-                    <th><?= $this->lang->line('faixa') ?></th>
-                    <th><?= $this->lang->line('produto') ?></th>
-                    <th><?= $this->lang->line('catalogo') ?></th>
-                    <th><?= $this->lang->line('isrc') ?></th>
-                    <th><?= $this->lang->line('upc') ?></th>
-                    <th><?= $this->lang->line('qnt_vendida') ?></th>
-                    <th><?= $this->lang->line('valor_recebido') ?></th>
-                    <th><?= $this->lang->line('percentual_aplicado') ?></th>
-                    <th><?= $this->lang->line('valor_pagar') ?></th>
-                    <th><?= $this->lang->line('receita') ?></th>
+                    <tr>
+                        <th><?= $this->lang->line('periodo_de_apuracao') ?></th>
+                        <th><?= $this->lang->line('tipo') ?></th>
+                        <th><?= $this->lang->line('loja') ?></th>
+                        <th><?= $this->lang->line('subloja') ?></th>
+                        <th><?= $this->lang->line('territorio') ?></th>
+                        <th><?= $this->lang->line('artista') ?></th>
+                        <th><?= $this->lang->line('autor') ?></th>
+                        <th><?= $this->lang->line('produtor') ?></th>
+                        <th><?= $this->lang->line('faixa') ?></th>
+                        <th><?= $this->lang->line('produto') ?></th>
+                        <th><?= $this->lang->line('catalogo') ?></th>
+                        <th><?= $this->lang->line('isrc') ?></th>
+                        <th><?= $this->lang->line('upc') ?></th>
+                        <th><?= $this->lang->line('qnt_vendida') ?></th>
+                        <th><?= $this->lang->line('valor_recebido') ?></th>
+                        <th><?= $this->lang->line('percentual_aplicado') ?></th>
+                        <th><?= $this->lang->line('valor_pagar') ?></th>
+                        <th><?= $this->lang->line('receita') ?></th>
+                    </tr>
                 </thead>
                 <tbody>
                 <?php if (isset($vendas)) { ?>
                     <?php foreach ($vendas as $venda) { ?>
                         <tr>
                             <td><?= $venda->apuracao ?></td>
+                            <td><?= $venda->tipo ?></td><input type='hidden' name='tiporelatorios[]' value='<?= $venda->tipo ?>'>
+                            <td><?= $venda->loja ?></td><input type='hidden' name='loja[]' value='<?= $venda->loja ?>'>
+                            <td><?= $venda->subloja ?></td><input type='hidden' name='subloja[]' value='<?= $venda->subloja ?>'>
+                            <td><?= $venda->territorio ?></td><input type='hidden' name='territorio[]' value='<?= $venda->territorio ?>'>
                             <td>
-                                <?php
-                                $f = false;
-                                $d = false;
-
-                                foreach ($venda->imposto as $imposto) {
-                                    if($imposto == 'Fisico')
-                                        $f = true;
-                                    if($imposto == 'Digital')
-                                        $d = true;
-                                }
-
-                                if($f && $d)
-                                    echo $this->lang->line('ambos');
-                                elseif($f)
-                                    echo $this->lang->line('fisico');
-                                else
-                                    echo $this->lang->line('digital');
-                            ?>
+                                <?php foreach ($venda->artista as $key => $value) {
+                                    if(sizeof($venda->artista)-1 == $key)
+                                        echo $value->nome;
+                                    else
+                                        echo $value->nome.", ";
+                                    echo("<input type='hidden' name='artista[]' value='<?= value->nome ?>'>");
+                                } ?>
                             </td>
-                            <td><?= $venda->loja ?></td>
-                            <td><?= $venda->subloja ?></td>
-                            <td><?= $venda->territorio ?></td>
-                            <td><?= $venda->artista ?></td>
-                            <td><?= $venda->autor ?></td>
-                            <td><?= $venda->produtor ?></td>
-                            <td><?= $venda->faixa ?></td>
-                            <td><?= $venda->produto ?></td>
-                            <td><?= $venda->catalogo ?></td>
-                            <td><?= $venda->isrc ?></td>
-                            <td><?= $venda->upc ?></td>
-                            <td><?= $venda->qnt_vendida ?></td>
-                            <td><?= $venda->valor_recebido ?></td>
-                            <td><?= $venda->percentual_aplicado ?></td>
-                            <td><?= $venda->valor_pagar ?></td>
-                            <td><?= $venda->receita ?></td>
+                            <td>
+                                <?php foreach ($venda->autor as $key => $value) {
+                                    if(sizeof($venda->autor)-1 == $key)
+                                        echo $value->nome;
+                                    else
+                                        echo $value->nome.", ";
+                                    echo("<input type='hidden' name='autor[]' value='<?= value->nome ?>'>");
+                                } ?>
+                            </td>
+                            <td>
+                                <?php foreach ($venda->produtor as $key => $value) {
+                                    if(sizeof($venda->produtor)-1 == $key)
+                                        echo $value->nome;
+                                    else
+                                        echo $value->nome.", ";
+                                    echo("<input type='hidden' name='produtor[]' value='<?= value->nome ?>'>");
+                                } ?>
+                            </td>
+                            <td><?= $venda->faixa ?></td><input type='hidden' name='faixa[]' value='<?= $venda->faixa ?>'>
+                            <td><?= $venda->albumInfo->nome ?></td><input type='hidden' name='album[]' value='<?= $venda->albumInfo->nome ?>'>
+                            <td><?= $venda->catalogo ?></td><input type='hidden' name='catalogo[]' value='<?= $venda->catalogo ?>'>
+                            <td><?= $venda->isrc ?></td><input type='hidden' name='isrc[]' value='<?= $venda->isrc ?>'>
+                            <td><?= $venda->upc ?></td><input type='hidden' name='upc[]' value='<?= $venda->upc ?>'>
+                            <td><?= $venda->qnt_vendida ?></td><input type='hidden' name='qnt_vendida[]' value='<?= $venda->qnt_vendida ?>'>
+                            <td><?= $venda->valor_recebido ?></td><input type='hidden' name='valor_recebido[]' value='<?= $venda->valor_recebido ?>'>
+                            <td><?= $venda->percentual_aplicado ?></td><input type='hidden' name='percentual_aplicado[]' value='<?= $venda->percentual_aplicado ?>'>
+                            <td><?= $venda->valor_pagar ?></td><input type='hidden' name='valor_pagar[]' value='<?= $venda->valor_pagar ?>'>
+                            <td><?= $venda->receita ?></td><input type='hidden' name='receita[]' value='<?= $venda->receita ?>'>
                         </tr>
                     <?php }
                 } ?>
                 </tbody>
             </table>
-            <div class="row">
-                <br><br>
-                <button class="btn waves-effect waves-light col s12 m10 offset-m1 l12" type="submit">
-                        <?php echo $this->lang->line('exportar'); ?>
-                    <i class="mdi-content-send right"></i>
-                </button>
-            </div>
         </form>
     </div>
 </div>
 <script src="<?= base_url() . 'complemento/js/relatorio.js' ?>"></script>
+<script src="<?= base_url() . 'complemento/js/DataTables-1.10.7/media/js/dataTables.buttons.min.js' ?>"></script>
+<script src="<?= base_url() . 'complemento/js/jszip.min.js' ?>"></script>
+<script src="<?= base_url() . 'complemento/js/buttons.html5.min.js' ?>"></script>
+<script src="<?= base_url() . 'complemento/js/pdfmake.min.js' ?>"></script>
+<script src="<?= base_url() . 'complemento/js/vfs_fonts.js' ?>"></script>
+<script src="<?= base_url() . 'complemento/js/fnGetHiddenNodes.js' ?>"></script>
+<link rel="stylesheet"  href="<?= base_url() . 'complemento/css/buttons.dataTables.min.css' ?>">
 <?php $this->load->view('_include/footer') ?>
 
 <script language="javascript">

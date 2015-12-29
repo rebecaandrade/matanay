@@ -124,7 +124,6 @@
                 </li>
             </ul>
 
-            <li><a  href="<?php echo base_url(); ?>index.php/relatorio/gerar_vendas"><?php echo $this->lang->line('vendas'); ?></a></li>
             <li><a href="<?php echo base_url(); ?>index.php/acesso/deslogar"><?php echo $this->lang->line('sair'); ?></a></li>
 
             <ul class="collapsible" data-collapsible="accordion">
