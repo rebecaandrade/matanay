@@ -11,7 +11,7 @@
 						'taxa_cambio'	=> $cambio,
 						'idCliente'		=> $id_cliente
 					);
-				$this->db->insert('moeda',$moeda);
+				$this->db->insert('Moeda',$moeda);
 				return TRUE;
 			}
 			else{

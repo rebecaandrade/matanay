@@ -3,21 +3,21 @@
 class Imposto_model extends CI_Model{
 
 	public function buscar_impostos(){
-        return $this->db->get('imposto')->result();
+        return $this->db->get('Imposto')->result();
 
 	}
 
 	public function buscar_imposto($idImposto){
         $this->db->where('idImposto', $idImposto);
         $this->db->where('excluido', null);
-        return $this->db->get('imposto')->row();
+        return $this->db->get('Imposto')->row();
 
 	}
 
 	public function tipo_imposto($idImposto){
         $this->db->select('descricao')->from('Imposto');
-        $this->db->where('imposto.idImposto', $idImposto);
-        $this->db->join('Tipo_Imposto', ' Tipo_Imposto.idTipo_Imposto = imposto.idTipo_Imposto');
+        $this->db->where('Imposto.idImposto', $idImposto);
+        $this->db->join('Tipo_Imposto', ' Tipo_Imposto.idTipo_Imposto = Imposto.idTipo_Imposto');
         return $this->db->get()->row();
     }
 
@@ -34,12 +34,12 @@ class Imposto_model extends CI_Model{
 
     public function pegar_impostos_faixa(){
     	$query = $this->db->query(
-    		"SELECT imposto.nome, imposto.valor, imposto.idCliente, tipo_imposto.descricao, faixa_video_has_imposto.idFaixa
-			FROM imposto
+    		"SELECT Imposto.nome, Imposto.valor, Imposto.idCliente, Tipo_Imposto.descricao, Faixa_Video_has_Imposto.idFaixa
+			FROM Imposto
 			JOIN Faixa_Video_has_Imposto
-			ON imposto.idImposto = faixa_video_has_imposto.idImposto
+			ON Imposto.idImposto = Faixa_Video_has_Imposto.idImposto
 			JOIN Tipo_Tmposto
-			ON tipo_imposto.idTipo_Imposto = imposto.idTipo_Imposto
+			ON tipo_Imposto.idTipo_Imposto = Imposto.idTipo_Imposto
 			WHERE imposto.excluido is null;
 		");
 		return $query->result();
@@ -47,13 +47,13 @@ class Imposto_model extends CI_Model{
 
     public function pegar_impostos_album(){
     	$query = $this->db->query(
-    		"SELECT imposto.nome, imposto.valor, imposto.idCliente, tipo_imposto.descricao, album_has_imposto.idAlbum
+    		"SELECT Imposto.nome, Imposto.valor, Imposto.idCliente, Tipo_Imposto.descricao, Album_has_Imposto.idAlbum
 			FROM Imposto
 			JOIN Album_has_Imposto
-			ON imposto.idImposto = album_has_imposto.idImposto
+			ON Imposto.idImposto = Album_has_Imposto.idImposto
 			JOIN Tipo_Imposto
-			ON tipo_imposto.idTipo_Imposto = imposto.idTipo_Imposto
-			WHERE imposto.excluido is null;
+			ON tipo_Imposto.idTipo_Imposto = Imposto.idTipo_Imposto
+			WHERE Imposto.excluido is null;
 		");
 		return $query->result();
     }

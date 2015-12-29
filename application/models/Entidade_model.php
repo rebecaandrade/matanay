@@ -109,7 +109,7 @@ class Entidade_model extends CI_Model
         $this->db->where('idEntidade', $id);
         $dados=$this->db->get('Entidade_has_Tipo_Entidade')->result();
         $this->db->where('idTipo_Entidade', $dados[0]->idTipo_Entidade);
-        return $this->db->get('tipo_entidade')->row();
+        return $this->db->get('Tipo_Entidade')->row();
     }
 
     public function atualizar_entidade($entidade)

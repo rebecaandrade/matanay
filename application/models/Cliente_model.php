@@ -4,7 +4,7 @@ class Cliente_model extends CI_Model
 {
     public function funcionalidades()
     {
-        return $this->db->get('funcionalidades')->result();
+        return $this->db->get('Funcionalidades')->result();
     }
 
     public function buscarEmail($login)
@@ -148,7 +148,7 @@ class Cliente_model extends CI_Model
             'excluido' => 1
         );
         $this->db->where('idCliente', $id_cliente);
-        $this->db->update('usuario', $array);
+        $this->db->update('Usuario', $array);
 
         $this->db->where('idCliente', $id_cliente);
         $this->db->update('Cliente', $array);
@@ -163,7 +163,7 @@ class Cliente_model extends CI_Model
             'bloqueado' => 1
         );
         $this->db->where('idCliente', $id_cliente);
-        $this->db->update('usuario', $array);
+        $this->db->update('Usuario', $array);
 
         $this->db->where('idCliente', $id_cliente);
         $this->db->update('Cliente', $array);
@@ -178,7 +178,7 @@ class Cliente_model extends CI_Model
             'bloqueado' => NULL
         );
         $this->db->where('idCliente', $id_cliente);
-        $this->db->update('usuario', $array);
+        $this->db->update('Usuario', $array);
 
         $this->db->where('idCliente', $id_cliente);
         $this->db->update('Cliente', $array);

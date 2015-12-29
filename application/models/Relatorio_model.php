@@ -65,7 +65,7 @@ class Relatorio_model extends CI_Model
 
     public function modelos($id_cliente = 0) {
         $this->db->where(array('idCliente' => $id_cliente, 'excluido' => NULL));
-        $dados = $this->db->get('modelo')->result();
+        $dados = $this->db->get('Modelo')->result();
         //die(var_dump($dados));
         return $dados;
     }
@@ -73,7 +73,7 @@ class Relatorio_model extends CI_Model
     public function deletar($id){
         $this->db->where('idRelatorio', $id);
         $dados['excluido'] = 1;
-        $this->db->update('relatorio', $dados);
+        $this->db->update('Relatorio', $dados);
     }
 
     public function cadastrar_relatorio_importado($relatorio) {

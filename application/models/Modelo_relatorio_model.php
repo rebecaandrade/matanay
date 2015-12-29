@@ -12,7 +12,7 @@ class Modelo_relatorio_model extends CI_Model {
 	}
 
 	public function cadastrar_modelo($post){
-		return $this->db->insert('modelo', $post);
+		return $this->db->insert('Modelo', $post);
 	}
 
 	public function deletar_modelo($id,$id_cliente){
@@ -29,7 +29,7 @@ class Modelo_relatorio_model extends CI_Model {
 		$this->db->from('Modelo');
 		$this->db->where('excluido',NULL);
 		$this->db->where('idCLiente',$id_cliente);
-		$this->db->join('Tipo_Modelo', 'Tipo_Modelo.idTipo_Modelo = modelo.idTipo_Modelo');
+		$this->db->join('Tipo_Modelo', 'Tipo_Modelo.idTipo_Modelo = Modelo.idTipo_Modelo');
 		return $this->db->get()->result();
 	}
 	public function buscar_modelo($id_modelo){
