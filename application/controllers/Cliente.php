@@ -67,17 +67,17 @@ class Cliente extends CI_Controller
 
     public function cadastro_cliente()
     {
+        $flag = 0;
         $funcionalidades = $this->cliente_model->minhas_funcionalidades($this->session->userdata('id_usuario'));
         foreach ($funcionalidades as $funcionalidade){
             if ( $funcionalidade->nome == "func_manter_cliente"){
                 $this->load->view('cliente/cadastrar_cliente');
-                break;
-            }
-            else{
-                $this->home();
+                $flag = 1;
                 break;
             }
         }
+        if($flag == 0)
+            redirect('Cliente/home');
     }
 
     public function cadastrar_cliente()
@@ -100,18 +100,18 @@ class Cliente extends CI_Controller
 
     public function atualiza_cliente($id)
     {
+        $flag = 0;
         $funcionalidades = $this->cliente_model->minhas_funcionalidades($this->session->userdata('id_usuario'));
         foreach ($funcionalidades as $funcionalidade){
             if ( $funcionalidade->nome == "func_manter_cliente"){
                 $dados['cliente'] = $this->cliente_model->buscar_cliente($id);
                 $this->load->view('cliente/atualizar_cliente', $dados);
-                break;
-            }
-            else{
-                $this->home();
+                $flag = 1;
                 break;
             }
         }
+        if($flag == 0)
+            redirect('Cliente/home');
     }
 
     public function atualizar_cliente($id)
@@ -138,22 +138,23 @@ class Cliente extends CI_Controller
 
     public function lista_clientes()
     {
+        $flag = 0;
         $funcionalidades = $this->cliente_model->minhas_funcionalidades($this->session->userdata('id_usuario'));
         foreach ($funcionalidades as $funcionalidade){
             if ( $funcionalidade->nome == "func_manter_cliente"){
                 $dados['clientes'] = $this->cliente_model->clientes();
                 $this->load->view('cliente/lista_clientes', $dados);
-                break;
-            }
-            else{
-                $this->home();
+                $flag = 1;
                 break;
             }
         }
+        if($flag == 0)
+            redirect('Cliente/home');
     }
 
     public function excluir_cliente($id_cliente)
     {
+        $flag = 0;
         $funcionalidades = $this->cliente_model->minhas_funcionalidades($this->session->userdata('id_usuario'));
         foreach ($funcionalidades as $funcionalidade){
             if ( $funcionalidade->nome == "func_manter_cliente"){
@@ -161,13 +162,12 @@ class Cliente extends CI_Controller
                 $this->session->set_userdata('mensagem', $this->lang->line('excluido_sucesso'));
                 $this->session->set_userdata('tipo_mensagem', 'success');
                 redirect('cliente/lista_clientes');
-                break;
-            }
-            else{
-                $this->home();
+                $flag = 1;
                 break;
             }
         }
+        if($flag == 0)
+            redirect('Cliente/home');
     }
 
     public function bloquear_cliente($id_cliente)
@@ -178,6 +178,7 @@ class Cliente extends CI_Controller
             $this->session->set_userdata('tipo_mensagem', 'error');
             redirect('cliente/lista_clientes');
         }
+        $flag = 0;
         $funcionalidades = $this->cliente_model->minhas_funcionalidades($this->session->userdata('id_usuario'));
         foreach ($funcionalidades as $funcionalidade){
             if ( $funcionalidade->nome == "func_manter_cliente"){
@@ -185,17 +186,17 @@ class Cliente extends CI_Controller
                 $this->session->set_userdata('mensagem', $this->lang->line('bloqueado_sucesso'));
                 $this->session->set_userdata('tipo_mensagem', 'success');
                 redirect('cliente/lista_clientes');
-                break;
-            }
-            else{
-                $this->home();
+                $flag = 1;
                 break;
             }
         }
+        if($flag == 0)
+            redirect('Cliente/home');
     }
 
     public function desbloquear_cliente($id_cliente)
     {
+        $flag = 0;
         $funcionalidades = $this->cliente_model->minhas_funcionalidades($this->session->userdata('id_usuario'));
         foreach ($funcionalidades as $funcionalidade){
             if ( $funcionalidade->nome == "func_manter_cliente"){
@@ -203,13 +204,12 @@ class Cliente extends CI_Controller
                 $this->session->set_userdata('mensagem', $this->lang->line('desbloqueado_sucesso'));
                 $this->session->set_userdata('tipo_mensagem', 'success');
                 redirect('cliente/lista_clientes');
-                break;
-            }
-            else{
-                $this->home();
+                $flag = 1;
                 break;
             }
         }
+        if($flag == 0)
+            redirect('Cliente/home');
     }
 
     public function lista_perfis($id_cliente)
