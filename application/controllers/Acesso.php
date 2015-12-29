@@ -123,7 +123,7 @@ class Acesso extends CI_Controller {
 		$this->email->set_mailtype('html');
 		$this->email->from($this->config->item('carlosjoel.tavares@gmail.com'), 'Matanay');
 		$this->email->to($email);
-		$this->email->subject($this->lang->line('resetSuaSeWnha'));
+		$this->email->subject($this->lang->line('resetSuaSenha'));
 
 		$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><hltm>
@@ -132,7 +132,7 @@ class Acesso extends CI_Controller {
 
 		$message .= '<p>' . $login . '</p>';
 		$message .= '<p>' . $this->lang->line('resetSuaSenhaLink') . '</p>';
-		$message .= '<p><strong><a href="' . base_url() . 'asseso/reset_senha_form/' . $email . '/'. $codigo_email . '">link</a></strong></p>';
+		$message .= '<p><strong><a href="' . base_url() . 'index.php/acesso/reset_senha_form/' . $email . '/'. $codigo_email . '">link</a></strong></p>';
 		$message .= '</body></html>';
 
 		$this->email->message($message);
@@ -141,16 +141,14 @@ class Acesso extends CI_Controller {
         $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('email_enviado'));
         $this->session->set_userdata('tipo_mensagem', 'success');
 
-        echo $this->email->print_debugger();
-        die();
 		$this->login();
 
 	}
 
 	public function reset_senha_form($email, $codigo_email){
-		if(md5($email . 'matanay') == $email_code){
+		if(md5($email . 'matanay') == $codigo_email){
 			$dados['perfil'] = $this->acesso_model->pegarDadosPorEmail($email);
-			$this->load->view('acesso/novaSenha');
+			$this->load->view('acesso/novaSenha', $dados);
 		}
 		else{
 			$mensagem = array(
