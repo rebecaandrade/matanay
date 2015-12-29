@@ -148,6 +148,7 @@ class Acesso extends CI_Controller {
 	public function reset_senha_form($email, $codigo_email){
 		if(md5($email . 'matanay') == $codigo_email){
 			$dados['perfil'] = $this->acesso_model->pegarDadosPorEmail($email);
+			$dados['email'] = $email;
 			$this->load->view('acesso/novaSenha', $dados);
 		}
 		else{
@@ -163,23 +164,33 @@ class Acesso extends CI_Controller {
 
 		$info = $this->input->post();
 
-		$data = array(
+		if($info["senha"] == $info["confirmar_senha"]){
+			$data = array(
 				'senha' => md5($info["senha"]),
 			 );
 
-		if($this->acesso_model->atualizar_senha($info["id_usuario"], $data)){
-			$this->session->set_userdata('mensagem', '=)');
-            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
-            $this->session->set_userdata('tipo_mensagem', 'success');
-            $id_cliente = $this->session->userdata('cliente_id');
-            $this->login();
-        } else {
-            $this->session->set_userdata('mensagem', '=(');
-            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('login_existente'));
-            $this->session->set_userdata('tipo_mensagem', 'error');
-            $this->login();
-            return;
-        }
+			if($this->acesso_model->atualizar_senha($info["id_usuario"], $data)){
+				$this->session->set_userdata('mensagem', '=)');
+	            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
+	            $this->session->set_userdata('tipo_mensagem', 'success');
+	            $id_cliente = $this->session->userdata('cliente_id');
+	            $this->login();
+	        } else {
+	            $this->session->set_userdata('mensagem', '=(');
+	            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
+	            $this->session->set_userdata('tipo_mensagem', 'error');
+	            $this->login();
+	            return;
+	        }
+		}
+		else{
+			$this->session->set_userdata('mensagem', '=(');
+	        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('form_error_confirmar_senha'));
+	        $this->session->set_userdata('tipo_mensagem', 'error');
+			$dados['perfil'] = $this->acesso_model->pegarDadosPorEmail($info['email']);
+			$this->load->view('acesso/novaSenha', $dados);
+		}
+
 	}
 
 	public function deslogar() {
