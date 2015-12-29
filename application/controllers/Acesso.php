@@ -116,6 +116,8 @@ class Acesso extends CI_Controller {
         $config['mailtype'] = 'text'; // or html
         $config['validation'] = TRUE; // bool whether to validate email or not      
 
+        $this->email->initialize($config);
+
 		$codigo_email = md5($email . 'matanay');
 
 		$this->email->set_mailtype('html');
@@ -138,6 +140,9 @@ class Acesso extends CI_Controller {
 		$this->session->set_userdata('mensagem', '=)');
         $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('email_enviado'));
         $this->session->set_userdata('tipo_mensagem', 'success');
+
+        echo $this->email->print_debugger();
+        die();
 		$this->login();
 
 	}
