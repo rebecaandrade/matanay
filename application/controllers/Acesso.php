@@ -105,17 +105,18 @@ class Acesso extends CI_Controller {
 	public function enviar_email_recuperacao($email, $login){
 		$this->load->library('email');
 
-        $config = Array(
-		    'protocol' => 'smtp',
-		    'smtp_host' => 'ssl://smtp.googlemail.com',
-		    'smtp_port' => 465,
-		    'smtp_user' => 'carlosjoel.tavares@gmail.com',
-		    'smtp_pass' => 'Apoptose1?',
-		    'mailtype'  => 'html', 
-		    'charset'   => 'iso-8859-1'
-		);
-		$this->load->library('email', $config);
-		$this->email->set_newline("\r\n");
+        $config['protocol']    = 'smtp';
+        $config['smtp_host']    = 'ssl://smtp.gmail.com';
+        $config['smtp_port']    = '465';
+        $config['smtp_timeout'] = '7';
+        $config['smtp_user']    = 'carlosjoel.tavares@gmail.com';
+        $config['smtp_pass']    = 'Apoptose1?';
+        $config['charset']    = 'utf-8';
+        $config['newline']    = "\r\n";
+        $config['mailtype'] = 'text'; // or html
+        $config['validation'] = TRUE; // bool whether to validate email or not      
+
+        $this->email->initialize($config);
 
 		$codigo_email = md5($email . 'matanay');
 
