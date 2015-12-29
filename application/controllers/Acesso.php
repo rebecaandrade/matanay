@@ -40,13 +40,6 @@ class Acesso extends CI_Controller {
 		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 
 		$usuario = $this->acesso_model->procurar_usuario($user, $senha);
-		if($usuario->bloqueado){
-			$mensagem = array(
-							'mensagem' => $this->lang->line('usuario_bloqueado')
-						);
-			$this->session->set_userdata($mensagem);
-			redirect('acesso/login');
-		}
 		if(!$usuario){
 			$mensagem = array(
 							'mensagem' => $this->lang->line('usuario_ou_senha_invalida')
@@ -54,7 +47,14 @@ class Acesso extends CI_Controller {
 			$this->session->set_userdata($mensagem);
 			redirect('acesso/login');
 		}
-		else{	
+		else{
+			if($usuario->bloqueado){
+				$mensagem = array(
+								'mensagem' => $this->lang->line('usuario_bloqueado')
+							);
+				$this->session->set_userdata($mensagem);
+				redirect('acesso/login');
+			}	
 			$newdata = array(
 				'id_usuario' => $usuario->idUsuario,
 				'nome' => $usuario->nome,

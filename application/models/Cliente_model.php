@@ -89,7 +89,7 @@ class Cliente_model extends CI_Model
 
     public function minhas_funcionalidades($id_perfil)
     {
-        $this->db->select('func.*')->from('usuario user');
+        $this->db->select('func.*')->from('Usuario user');
         $this->db->join('Usuario_has_Funcionalidades uhf', 'uhf.idUsuario = user.idUsuario');
         $this->db->join('Funcionalidades func', 'func.idFuncionalidades = uhf.idFuncionalidades');
         $this->db->where('user.idUsuario', $id_perfil);
