@@ -32,34 +32,34 @@
 
 	        <!--O unico que pode acessar os clientes eh o admin, para um usuario comum soh pode ser visto os perfis-->
 	        <?php   
-	        		$funcionalidades = $this->cliente_model->minhas_funcionalidades($this->session->userdata('id_usuario'));
-			        foreach ($funcionalidades as $funcionalidade){
-			            if ( $funcionalidade->nome == "func_manter_cliente"){?>
-					        <div class="input-field col s12 m8 l2">
-						        <a href="<?php echo base_url(); ?>index.php/cliente/lista_clientes">
-							        <div class="card-panel grey lighten-3">
-							          	<i class="mdi-social-person"></i>
-							          	<div class="label"><?php echo $this->lang->line('clientes'); ?></div>
-							        </div> 
-						        </a> 
-					        </div>
+        		$funcionalidades = $this->cliente_model->minhas_funcionalidades($this->session->userdata('id_usuario'));
+		        foreach ($funcionalidades as $funcionalidade){
+		            if ( $funcionalidade->nome == "func_manter_cliente"){?>
+				        <div class="input-field col s12 m8 l2">
+					        <a href="<?php echo base_url(); ?>index.php/cliente/lista_clientes">
+						        <div class="card-panel grey lighten-3">
+						          	<i class="mdi-social-person"></i>
+						          	<div class="label"><?php echo $this->lang->line('clientes'); ?></div>
+						        </div> 
+					        </a> 
+				        </div>
 			<?php 
-			            	break; ?>
+			            break; ?>
 		    <?php 
-						} else { ?>
-					    	<div class="input-field col s12 m8 l2">
-						        <a href="<?php echo base_url().'index.php/cliente/lista_perfis/'.$this->session->userdata('cliente_id');?>">
-							        <div class="card-panel grey lighten-3">
-							          	<i class="mdi-social-person"></i>
-							          	<div class="label"><?php echo $this->lang->line('perfis'); ?></div>
-							        </div> 
-						        </a> 
-					        </div>
+					} else { ?>
+				    	<div class="input-field col s12 m8 l2">
+					        <a href="<?php echo base_url().'index.php/cliente/lista_perfis/'.$this->session->userdata('cliente_id');?>">
+						        <div class="card-panel grey lighten-3">
+						          	<i class="mdi-social-person"></i>
+						          	<div class="label"><?php echo $this->lang->line('perfis'); ?></div>
+						        </div> 
+					        </a> 
+				        </div>
 
 		    <?php 
-		    				break; 
-		    			} 
-		    		}?>
+		    			break; 
+		    		} 
+		    	}?>
 
 
 	    	<div class="input-field col s5 m6 l2">

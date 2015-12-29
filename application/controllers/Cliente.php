@@ -230,6 +230,16 @@ class Cliente extends CI_Controller
             $dados['id_cliente'] = $id_cliente;
             $dados['funcionalidades'] = $this->cliente_model->funcionalidades();
             $dados['antigos'] = $this->gera_form_perfil_antigo();
+            $funcionalidades = $this->cliente_model->minhas_funcionalidades($this->session->userdata('id_usuario'));
+            foreach ($funcionalidades as $funcionalidade){
+                if ( $funcionalidade->nome == "func_manter_cliente"){
+                    $dados['direitoSobreCliente'] = 1;
+                    break;
+                }
+                else{
+                    $dados['direitoSobreCliente'] = 0;
+                }
+            }
             $this->load->view('cliente/cadastrar_perfil', $dados);
         } else {
             //mensagem de erro
@@ -337,6 +347,16 @@ class Cliente extends CI_Controller
                 $dados['funcionalidades'][$key]->checked = TRUE;
             } else {
                 $dados['funcionalidades'][$key]->checked = FALSE;
+            }
+        }
+        $funcionalidades = $this->cliente_model->minhas_funcionalidades($this->session->userdata('id_usuario'));
+        foreach ($funcionalidades as $funcionalidade){
+            if ( $funcionalidade->nome == "func_manter_cliente"){
+                $dados['direitoSobreCliente'] = 1;
+                break;
+            }
+            else{
+                $dados['direitoSobreCliente'] = 0;
             }
         }
         //die(var_dump($myresult,$dados['funcionalidades']));
