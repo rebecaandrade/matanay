@@ -90,6 +90,18 @@ class Relatorio_model extends CI_Model
         $dados = $this->db->get()->result();
         return $dados;
     }
+
+    public function busca_relatorio($id) {
+        $this->db->select('rel.*,mod.*')->from('Relatorio rel');
+        $this->db->join('Modelo mod', 'mod.idModelo = rel.idModelo');
+        $this->db->join('Tipo_Modelo tmod', 'mod.idTipo_Modelo = tmod.idTipo_Modelo');
+        $this->db->where('rel.idRelatorio', $idRelatorio);
+        $this->db->where('rel.excluido', NULL);
+        $this->db->where('mod.excluido', NULL);
+        $dados = $this->db->get()->result();
+        return $dados;
+    }
+
     public function getMatanayRelatorio(){
         $this->db->select('rel.*,mod.*')->from('Relatorio rel');
         $this->db->join('Modelo mod','mod.idModelo = rel.idModelo');

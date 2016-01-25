@@ -132,7 +132,7 @@ class Acesso extends CI_Controller {
 
 		$message .= '<p>' . $login . '</p>';
 		$message .= '<p>' . $this->lang->line('resetSuaSenhaLink') . '</p>';
-		$message .= '<p><strong><a href="' . base_url() . 'asseso/reset_senha_form/' . $email . '/'. $codigo_email . '">link</a></strong></p>';
+		$message .= '<p><strong><a href="' . base_url() . 'index.php/acesso/reset_senha_form/' . $email . '/'. $codigo_email . '">link</a></strong></p>';
 		$message .= '</body></html>';
 
 		$this->email->message($message);
@@ -142,7 +142,6 @@ class Acesso extends CI_Controller {
         $this->session->set_userdata('tipo_mensagem', 'success');
 
         echo $this->email->print_debugger();
-        die();
 		$this->login();
 
 	}
