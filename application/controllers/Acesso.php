@@ -40,13 +40,6 @@ class Acesso extends CI_Controller {
 		$this->lang->load('_matanay_'. $linguagem_usuario, $linguagem_usuario);
 
 		$usuario = $this->acesso_model->procurar_usuario($user, $senha);
-		if($usuario->bloqueado){
-			$mensagem = array(
-							'mensagem' => $this->lang->line('usuario_bloqueado')
-						);
-			$this->session->set_userdata($mensagem);
-			redirect('acesso/login');
-		}
 		if(!$usuario){
 			$mensagem = array(
 							'mensagem' => $this->lang->line('usuario_ou_senha_invalida')
@@ -54,7 +47,14 @@ class Acesso extends CI_Controller {
 			$this->session->set_userdata($mensagem);
 			redirect('acesso/login');
 		}
-		else{	
+		else{
+			if($usuario->bloqueado){
+				$mensagem = array(
+								'mensagem' => $this->lang->line('usuario_bloqueado')
+							);
+				$this->session->set_userdata($mensagem);
+				redirect('acesso/login');
+			}	
 			$newdata = array(
 				'id_usuario' => $usuario->idUsuario,
 				'nome' => $usuario->nome,
@@ -123,7 +123,7 @@ class Acesso extends CI_Controller {
 		$this->email->set_mailtype('html');
 		$this->email->from($this->config->item('carlosjoel.tavares@gmail.com'), 'Matanay');
 		$this->email->to($email);
-		$this->email->subject($this->lang->line('resetSuaSeWnha'));
+		$this->email->subject($this->lang->line('resetSuaSenha'));
 
 		$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><hltm>
@@ -141,15 +141,15 @@ class Acesso extends CI_Controller {
         $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('email_enviado'));
         $this->session->set_userdata('tipo_mensagem', 'success');
 
-        echo $this->email->print_debugger();
 		$this->login();
 
 	}
 
 	public function reset_senha_form($email, $codigo_email){
-		if(md5($email . 'matanay') == $email_code){
+		if(md5($email . 'matanay') == $codigo_email){
 			$dados['perfil'] = $this->acesso_model->pegarDadosPorEmail($email);
-			$this->load->view('acesso/novaSenha');
+			$dados['email'] = $email;
+			$this->load->view('acesso/novaSenha', $dados);
 		}
 		else{
 			$mensagem = array(
@@ -164,23 +164,33 @@ class Acesso extends CI_Controller {
 
 		$info = $this->input->post();
 
-		$data = array(
+		if($info["senha"] == $info["confirmar_senha"]){
+			$data = array(
 				'senha' => md5($info["senha"]),
 			 );
 
-		if($this->acesso_model->atualizar_senha($info["id_usuario"], $data)){
-			$this->session->set_userdata('mensagem', '=)');
-            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
-            $this->session->set_userdata('tipo_mensagem', 'success');
-            $id_cliente = $this->session->userdata('cliente_id');
-            $this->login();
-        } else {
-            $this->session->set_userdata('mensagem', '=(');
-            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('login_existente'));
-            $this->session->set_userdata('tipo_mensagem', 'error');
-            $this->login();
-            return;
-        }
+			if($this->acesso_model->atualizar_senha($info["id_usuario"], $data)){
+				$this->session->set_userdata('mensagem', '=)');
+	            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('atualizado_sucesso'));
+	            $this->session->set_userdata('tipo_mensagem', 'success');
+	            $id_cliente = $this->session->userdata('cliente_id');
+	            $this->login();
+	        } else {
+	            $this->session->set_userdata('mensagem', '=(');
+	            $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('problemas_formulario'));
+	            $this->session->set_userdata('tipo_mensagem', 'error');
+	            $this->login();
+	            return;
+	        }
+		}
+		else{
+			$this->session->set_userdata('mensagem', '=(');
+	        $this->session->set_userdata('subtitulo_mensagem', $this->lang->line('form_error_confirmar_senha'));
+	        $this->session->set_userdata('tipo_mensagem', 'error');
+			$dados['perfil'] = $this->acesso_model->pegarDadosPorEmail($info['email']);
+			$this->load->view('acesso/novaSenha', $dados);
+		}
+
 	}
 
 	public function deslogar() {

@@ -49,18 +49,34 @@
                                 <input type="checkbox" class="filled-in" id="updateMarkAllFunc"/>
                                 <label for="updateMarkAllFunc"><?= $this->lang->line('marcar_todas') ?></label>
                             </div>
-                            <?php foreach ($funcionalidades as $func) { ?>
-                                <div class="col s4 m4 checkFunc">
-                                    <p>
-                                        <input type='checkbox' class="filled-in"
-                                               id="<?php echo $func->idFuncionalidades ?>"
-                                               name='func[]'
-                                               value="<?php echo $func->idFuncionalidades ?>"<?= (($func->checked) ? "checked" : "") ?>/>
-                                        <label
-                                            for="<?php echo $func->idFuncionalidades ?>"> <?= $this->lang->line($func->nome); ?></label>
-                                    </p>
-                                </div>
-                            <?php }
+                            <?php foreach ($funcionalidades as $func) { 
+                                if ($direitoSobreCliente){ ?>
+                                    <div class="col s4 m4 checkFunc">
+                                        <p>
+                                            <input type='checkbox' class="filled-in"
+                                                   id="<?php echo $func->idFuncionalidades ?>"
+                                                   name='func[]'
+                                                   value="<?php echo $func->idFuncionalidades ?>"<?= (($func->checked) ? "checked" : "") ?>/>
+                                            <label
+                                                for="<?php echo $func->idFuncionalidades ?>"> <?= $this->lang->line($func->nome); ?></label>
+                                        </p>
+                                    </div>
+                            <?php 
+                                } else{
+                                    if ($func->nome != 'func_manter_cliente'){ ?>
+                                        <div class="col s4 m4 checkFunc">
+                                            <p>
+                                                <input type='checkbox' class="filled-in"
+                                                       id="<?php echo $func->idFuncionalidades ?>"
+                                                       name='func[]'
+                                                       value="<?php echo $func->idFuncionalidades ?>"<?= (($func->checked) ? "checked" : "") ?>/>
+                                                <label
+                                                    for="<?php echo $func->idFuncionalidades ?>"> <?= $this->lang->line($func->nome); ?></label>
+                                            </p>
+                                        </div>
+                                <?php } 
+                                }   
+                            }
                         } ?>
                     </div>
                 </div>

@@ -20,6 +20,7 @@
 		          	</div>
 		        </div>
 		        <input type='hidden' name='id_cliente' value="<?php echo $perfil->idCliente ?>"/>
+		        <input type='hidden' name='email' value='<?php echo $email ?>'/>
                 <input type='hidden' name='id_usuario' value="<?php echo $perfil->idUsuario ?>"/>
                 <input type="hidden" name="passMessageDisplay" value="<?= $this->lang->line('password_error') ?>">
                 <input type="hidden" name="checkBoxMessageDisplay" value="<?= $this->lang->line('checkbox_erro') ?>">

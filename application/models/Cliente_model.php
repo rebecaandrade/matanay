@@ -21,7 +21,17 @@ class Cliente_model extends CI_Model
 
     public function buscar_perfil($id_cliente, $id_perfil)
     {
-        $this->db->where('idCliente', $id_cliente);
+        $flag = 0;
+        $funcionalidades = $this->cliente_model->minhas_funcionalidades($this->session->userdata('id_usuario'));
+        foreach ($funcionalidades as $funcionalidade){
+            if ( $funcionalidade->nome == "func_manter_cliente"){
+                $flag = 1;
+                break;
+            }
+        }
+        if($flag == 0){            
+            $this->db->where('idCliente', $id_cliente);
+        }
         $this->db->where('idUsuario', $id_perfil);
         return $this->db->get('Usuario')->row();
     }
@@ -89,7 +99,7 @@ class Cliente_model extends CI_Model
 
     public function minhas_funcionalidades($id_perfil)
     {
-        $this->db->select('func.*')->from('usuario user');
+        $this->db->select('func.*')->from('Usuario user');
         $this->db->join('Usuario_has_Funcionalidades uhf', 'uhf.idUsuario = user.idUsuario');
         $this->db->join('Funcionalidades func', 'func.idFuncionalidades = uhf.idFuncionalidades');
         $this->db->where('user.idUsuario', $id_perfil);

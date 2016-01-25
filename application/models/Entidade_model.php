@@ -81,9 +81,9 @@ class Entidade_model extends CI_Model
 
     function buscar_entidade_especifica($id)
     {
-        $this->db->where("idCliente", $this->session->userdata('id_cliente'));
+        $this->db->where("idCliente", $this->session->userdata('cliente_id'));
         $this->db->where('idEntidade', $id);
-        return $this->db->get('Entidade')->row();
+        return $this->db->get('Entidade')->result()[0];
     }
 
     function buscar_entidade_has_tipo_especifico($id)
